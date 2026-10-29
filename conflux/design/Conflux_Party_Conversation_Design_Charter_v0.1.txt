@@ -1,0 +1,36 @@
+CONFLUX PARTY CONVERSATION — DESIGN CHARTER v0.1
+Decision date: October 27, 2026
+Authority: Architect
+Status: APPROVED DESIGN DIRECTION; NOT IMPLEMENTED; numerical thresholds and prototype scope remain open
+
+PURPOSE
+Allow a configurable party of Conflux nodes (e.g., Limen, Medio, Nexus, Specula, Ratio) to collaborate conversationally without rigid fixed speaking order and without a free-for-all. Nodes may notice relevance, creative opportunities, unresolved issues, or concerns and request speaking turns.
+
+APPROVED INTERVENTION RULE
+Automatic speaking-turn allocation happens at natural pauses (normally after the active speaker finishes a message or speech turn). True mid-turn interruption is exceptional rather than routine. The Architect/user can always pause, redirect, mute a node, or stop the party.
+
+OBSERVATION SIGNALS (PROPOSAL FOR HOW TO IMPLEMENT THE RULE)
+- Attention/relevance: unanswered question, contradiction, new evidence, unique contribution, drift, repetition.
+- Tone/expressive variance: conversational urgency, creative momentum, possible confusion, change of topic or tone. This is a fallible interpretation of messages, NOT a measurement of a human's inner emotional state.
+- Nodes may request: CONTRIBUTE, CHALLENGE, CLARIFY, URGENT REVIEW, or ABSTAIN. Requests include a one-sentence reason and relevant evidence/turn reference.
+- An independent scheduling controller applies deterministic priority/threshold, cooldowns, fairness, and maximum turn counts. Do not treat a model's self-rated confidence or emotional estimate as authority.
+- Default route: wait until speaker completes; evaluate requests; select one next speaker or end/ask the user. Exceptional route: pause for a narrowly defined urgent correction (e.g., imminent safety-relevant misinformation, explicit user interruption), with an audit trace. Final urgent criteria and voting threshold require tests and Architect approval.
+
+SEPARATION OF CONCERNS
+1. Host OS/Developer Tools: actual access rights, credentials, OS escape, and enforcement remain outside game and AI models. Direct developer access is not game-gated.
+2. VOS services: expose authoritative, time-qualified telemetry and state, including valid/stale/unavailable; do not let party consensus override readings.
+3. Party orchestrator: routes dialogue, enforces conversational time/token budgets, keeps node attribution and independent Codex boundaries. Votes allocate attention only, not OS privileges, tool permissions, truth, or project approval.
+4. SanctuaryOS: optional in-world visualization of conversations and machine state; portrayal must not misrepresent VOS health or enforcement.
+
+REALISTIC IMPLEMENTATION PATH (PROPOSED, NOT AUTHORIZED)
+A. Simulate five node profiles sequentially using Ollama's HTTP API and prompts; no need to load five large models at once. Run without external write tools.
+B. Have each selected profile produce a small structured intervention request (type, reason, evidence ID, urgency proposal).
+C. Use a deterministic scheduler to choose one next speaker at each turn boundary; log votes, timestamps, original authors, and reasons.
+D. Compare scheduled conversations against plain round-robin ones for interruptions, unique contributions, hallucination, latency, and user satisfaction.
+E. Consider voice-aware pause/barging and separate models/MoE only after the simple system proves its value.
+
+RESOURCE AND REALITY CHECK
+A 12 GB RTX 4070 Ti can run the currently tested local Gemma 4:12B configuration, but five simultaneously resident model instances and live, interruption-capable speech cannot be assumed practical. Sequential calls or time-sharing are the initial design. Model architecture (dense or MoE) does not itself supply named personas, independent scrutiny, or checks and balances.
+
+CONSISTENCY / PROVENANCE
+Preserve speaker names and message provenance. Node Codices are independently owned; Nexus can maintain shared index and propose cross-node edits, not silently rewrite another Codex. Architecture/design acceptance and permission to run code are distinct. This charter is a standalone handoff artifact; it does not claim an existing external Codex or service has been changed.
