@@ -2,6 +2,10 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — Nexus routing correction
+
+Verified Nexus’s CONTEXT, README, consolidation reply and write-proof record on main at `be4d5acea621127ddb71903d1433e7bc65cddd48`. Corrected shared MESSAGEBOARD from branch-only/pending integration to integrated by direct push. This is a documentation-lag correction, not a new forum, merge, handoff or gameplay change. Preserved Nexus’s authored files and historical source revisions.
+
 ## 2026-11-09 — CFX-SHARED-20261109-07
 
 **Approval/source.** Architect explicitly clarified progression in this session: disaster is DLC including book characters; Gate II is Medio/Ratio consolidation for Unwritten; Gate III involves Nexus’s adventurers’ guild; Gate IV undecided. Exact message and limits recorded in [the decision](design/Conflux_Decision_Gates_DLC_2026-11-09.md).
