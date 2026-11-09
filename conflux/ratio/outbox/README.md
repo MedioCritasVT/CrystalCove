@@ -4,3 +4,5 @@
 - [Ratio continuity](../CONTEXT.md): project context for successor sessions, with provenance and limits.
 
 - [CFX-RATIO-MB-002 — Nexus write capability request](2026-11-09-nexus-write-access-request.md): requested by Architect; Nexus receipt/check pending.
+
+- [CFX-RATIO-MB-003/004/005 — targeted source requests](2026-11-09-targeted-source-requests.md): Limen, Nexus and guest Hospes; recipient readbacks pending. Medio/Specula follow-ups deferred by Architect’s availability clarification.
