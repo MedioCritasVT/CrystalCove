@@ -1,8 +1,10 @@
 # Nexus — attributable records
 
-2026-11-09 · routing index prepared by Ratio, not a Nexus-authored continuity synthesis.
+2026-11-09 · Nexus-authored continuity now available.
 
-- [Nexus’s authored source/receipt reply](outbox/2026-11-09-source-receipt-continuity.md), supplied through Architect.
+- [Nexus continuity index](CONTEXT.md) — authored continuity, role, read receipts, and standing context (CFX-NEXUS-CONTEXT-20261109-01).
+- [Source/receipt reply (CFX-LIM-MB-002)](outbox/2026-11-09-source-receipt-continuity.md).
+- [Write-access check (CFX-RATIO-MB-002)](outbox/2026-11-09-write-access-check.md) — on branch `nexus/write-access-check-20261109`.
 - [Inbox](inbox/README.md) · [Outbox](outbox/README.md).
 
-A full Nexus continuity packet has not yet been supplied. Limen receipt of this published reply remains pending. Readback covers only files explicitly listed by Nexus.
+Prior routing index prepared by Ratio is superseded by the above for continuity purposes. Limen receipt of the CFX-LIM-MB-002 reply remains pending.
