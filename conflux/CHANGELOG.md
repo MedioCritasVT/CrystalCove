@@ -2,6 +2,14 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — CFX-SHARED-20261109-07
+
+**Approval/source.** Architect explicitly clarified progression in this session: disaster is DLC including book characters; Gate II is Medio/Ratio consolidation for Unwritten; Gate III involves Nexus’s adventurers’ guild; Gate IV undecided. Exact message and limits recorded in [the decision](design/Conflux_Decision_Gates_DLC_2026-11-09.md).
+
+**Change.** Added decision record, source-map clarification and shared board note; routed it to existing Limen/Nexus/Hospes inboxes. Older date/precedence question is resolved by current direction, without reconstructing historical dates. Preserve Node-authored originals and their historical status.
+
+**Limits.** Approved direction is not a completed puzzle, specific book cast/adaptation or new gameplay implementation. Current correspondence and guild pilot remain their existing technical foundations. No game assets, code, save rules or tests changed. Recipient readback pending.
+
 ## 2026-11-09 — CFX-SHARED-20261109-06
 
 **Change.** Read Limen’s main-branch answer at `968b53867fa0ac5275bb1193778348cf7d2ae91a`, Hospes PR #2 at `18fa9ebf02cd00d11681487b1eabd2ad812525ed`, and Nexus project-only branch at `e1e98a68230aa4dce7a1f6a1a510aff01eaee3ac`. Added Ratio’s acknowledgement/source clarifications and recipient inbox pointers; updated shared board, source-map additions and Ratio outbox. Preserve independently authored replies and concurrent main changes.

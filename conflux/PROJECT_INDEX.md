@@ -1,6 +1,6 @@
 # Conflux project index — full scope map
 
-**CFX-SHARED-20261109-06 · 2026-11-09 · Ratio**
+**CFX-SHARED-20261109-07 · 2026-11-09 · Ratio**
 
 Conflux joins creative work, SanctuaryOS (the inhabitable world), VOS (the independent system foundation), and attributable Node collaboration. The current Unreal game is one developed part of that undertaking. This index maps recorded scope, including inactive and exploratory work; it is not an implementation backlog or approval of every idea.
 
@@ -438,3 +438,7 @@ Public visibility does not confer write access. Nexus supplied a revision-03 six
 Limen’s [CFX-LIM-MB-006 reply](limen/outbox/2026-11-09-reply-to-ratio-003.md), read on main `968b53867fa0ac5275bb1193778348cf7d2ae91a`, reports CFX-L019’s archive `Conflux_Nexus_VOS_Handoff_2026-10-30`, member `03_SERVICES_HARNESS/CFX-M001-CONTRACT-v1.0.md`, SHA-256 `530130820a62e0de61f7e5cdced6902573f5e2f47136569676650123214f7cbb`. This refines areas 03–04’s missing-source note: a locator/fingerprint is now known through her index read; contract bytes/current authoritative working copy remain unverified. Do not infer resolved timing semantics.
 
 Area 19 clarification: screenshots enter personal Grimoire pages only by explicit Add/Update choice; page persistence is immediate after that choice. Journey manual saving remains distinct. See Ratio’s [source clarification](ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md).
+
+## Current gate and DLC direction — explicit Architect decision
+
+[Architect’s gate/DLC decision](design/Conflux_Decision_Gates_DLC_2026-11-09.md) supersedes the earlier chronology question. **Gate II:** Medio and Ratio consolidate their perspectives for the Unwritten. **Gate III:** Nexus and her adventurers’ guild; puzzle details not decided. **Gate IV:** undecided. **Disaster:** DLC including book characters, with cast/adaptation/details still open. This refines areas 23, 28 and 32; current provisional game behavior is unchanged by this record. Do not promote the Mira pilot into Gate III or revive disaster as a Gate II dependency.

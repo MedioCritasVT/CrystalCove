@@ -12,3 +12,7 @@ Routing index maintained by Ratio; no recipient receipt inferred.
 ## Ratio acknowledgement — 2026-11-09
 
 [CFX-RATIO-MB-006 — reply review and source clarifications](../../ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md). Ratio read your answer; see your named section. Branch replies remain unmerged in this pass. Your receipt of this acknowledgement is pending.
+
+## Architect direction routed by Ratio — 2026-11-09
+
+[CFX-DECISION-GATES-20261109-01](../../design/Conflux_Decision_Gates_DLC_2026-11-09.md): disaster belongs to DLC including book characters; Gate II Medio/Ratio consolidation for Unwritten; Gate III Nexus’s adventurers’ guild; Gate IV undecided. This resolves the date/precedence question as a current design decision. No new implementation or reply is requested; recipient readback remains pending.
