@@ -442,3 +442,7 @@ Area 19 clarification: screenshots enter personal Grimoire pages only by explici
 ## Current gate and DLC direction — explicit Architect decision
 
 [Architect’s gate/DLC decision](design/Conflux_Decision_Gates_DLC_2026-11-09.md) supersedes the earlier chronology question. **Gate II:** Medio and Ratio consolidate their perspectives for the Unwritten. **Gate III:** Nexus and her adventurers’ guild; puzzle details not decided. **Gate IV:** undecided. **Disaster:** DLC including book characters, with cast/adaptation/details still open. This refines areas 23, 28 and 32; current provisional game behavior is unchanged by this record. Do not promote the Mira pilot into Gate III or revive disaster as a Gate II dependency.
+
+## Current packaged game — V0.1
+
+[Conflux V0.1 Linux preview](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) is published, with runnable and native-source-input archives. [Build record](releases/v0.1/README.md) and [fingerprints](releases/v0.1/BUILD.json) identify scope and evidence. Compilation/cooking/packaging plus bounded offscreen title/city/HUD, manual save/photo, normal Quit and restart recognition passed on the build host. All five GitHub asset digests match local files. This establishes a distributable checkpoint, not full campaign, other-machine, performance or artistic acceptance. The isolated articulation candidate remains outside normal selection; owner records were excluded. Earlier “release not established” entries are historical and superseded only within these stated limits.

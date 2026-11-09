@@ -2,6 +2,14 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — Conflux V0.1 Linux preview published
+
+**Authority.** Architect requested compilation/publication of the current game as V0.1 and completed normal GitHub device authorization. [Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) published at 2026-11-09T21:44:25Z; tag targets build-record commit `fd88bfc99d2459729a071195408442776f632bc2`. The native source snapshot is a separate attached archive, not that coordination Git commit.
+
+**Build/evidence.** Isolated current inputs compiled with Unreal 5.8.4, cooked/staged/packaged as a standalone Linux x86_64 Development preview. Relocated offscreen title/city/HUD, disposable-profile named save/native photo/normal Quit and restart-title recognition passed. Original copied source inputs remained hash-identical; owner records excluded. All five uploaded assets’ names/sizes/SHA-256 digests matched local files before publication. See [build record](releases/v0.1/README.md) for scope and source provenance.
+
+**Limits.** Current art/animation remains prototype quality; Articulation01 was not promoted. No exhaustive fresh-profile mouse flow, campaign, all Node/realm paths, independent-machine or sustained-performance acceptance. Earlier fallback-profile/dialog-state test failures and a trailing upload-script status-command parse error are retained locally; successful upload was established by independent API digest verification, not inferred from the script exit. This pass implements no new gate/DLC content and uploads no owner saves or full engine installation.
+
 ## 2026-11-09 — Nexus routing correction
 
 Verified Nexus’s CONTEXT, README, consolidation reply and write-proof record on main at `be4d5acea621127ddb71903d1433e7bc65cddd48`. Corrected shared MESSAGEBOARD from branch-only/pending integration to integrated by direct push. This is a documentation-lag correction, not a new forum, merge, handoff or gameplay change. Preserved Nexus’s authored files and historical source revisions.
