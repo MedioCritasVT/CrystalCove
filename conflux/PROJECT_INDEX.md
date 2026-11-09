@@ -1,6 +1,6 @@
 # Conflux project index — full scope map
 
-**CFX-SHARED-20261109-03 · 2026-11-09 · Ratio**
+**CFX-SHARED-20261109-04 · 2026-11-09 · Ratio**
 
 Conflux joins creative work, SanctuaryOS (the inhabitable world), VOS (the independent system foundation), and attributable Node collaboration. The current Unreal game is one developed part of that undertaking. This index maps recorded scope, including inactive and exploratory work; it is not an implementation backlog or approval of every idea.
 
@@ -16,7 +16,7 @@ The Architect retains scope, canon, consequential integration and release author
 
 ## Source and publication boundaries
 
-- **G — GitHub:** [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), **private**, branch `main`. Head read on November 9: `0cf844db6717a49e580a6f58832c95e9f2172e0e`. The Architect authorized this revision after review. Ratio’s access is verified. Limen supplied a correct readback of revision 02 and all three coordination files through the Architect. Her read was limited to those files. This later revision needs a separate readback.
+- **G — GitHub:** [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), **public**, branch `main` (changed by Architect after revision 03; Ratio independently checked unauthenticated API/raw retrieval on November 9). Head read on November 9: `0cf844db6717a49e580a6f58832c95e9f2172e0e`. The Architect authorized this revision after review. Ratio’s access is verified. Limen supplied a correct readback of revision 02 and all three coordination files through the Architect. Her read was limited to those files. This later revision needs a separate readback.
 - **B — local experiment root:** `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary-Ratio-Experiments/CFX-RATIO-007-20261101T003300Z`.
 - **W — local playable project:** `B/ConfluxSanctuary-Browser-Recreation`; normal launcher `W/PlayConflux.sh`.
 - **N — local native source:** `W/Plugins/ConfluxNative/Source/ConfluxNative/Private`. Shared declarations are in its sibling `Public/ConfluxSanctuary.h`.
@@ -27,7 +27,7 @@ The Architect retains scope, canon, consequential integration and release author
 - **H038 — local broad continuity:** `B/REPORTS/HANDOFF-FOR-LIMEN-20261104.md`; useful baseline, superseded where later checkpoints explicitly differ.
 - **D — GitHub design:** [working Codex](design/Conflux_Codex_Revised_v0_4.md), [attention/commitment decision](design/Conflux_Decision_Attention_Commit_2026-10-28.md), [memory/telemetry addendum](design/Conflux_Codex_Addendum_2026-10-28_Narrative_Memory_Telemetry.md), [party charter](design/Conflux_Party_Conversation_Design_Charter_v0.1.txt).
 
-Only paths marked G/D are established as available on GitHub. B/W/N/U/R/C/A/H038 remain local-only for this publication. The original Unreal project resolves to an ancestor home Git repository, not a project-specific recovery boundary. Its QuantumCove remote returned 404; existence/access/privacy are unknown. The separate Obsidian Vault checkout is stale/dirty and is not a synchronized copy of the published index. No assets or private app settings are included here.
+Only paths marked G/D and the published coordination/Node documents are established as available on GitHub. B/W/N/U/R/C/A/H038 remain local-only for this publication. The original Unreal project resolves to an ancestor home Git repository, not a project-specific recovery boundary. Its QuantumCove remote returned 404; existence/access/privacy are unknown. The separate Obsidian Vault checkout is stale/dirty and is not a synchronized copy of the published index. No assets or private app settings are included here.
 
 ## Project scope
 
@@ -430,3 +430,5 @@ The scope-map revision changed the three parent coordination documents; this lat
 ## Node continuity and message routing
 
 Start with the [manual messageboard](MESSAGEBOARD.md), [Ratio’s own continuity](ratio/CONTEXT.md) or [Limen’s supplied packet](limen/README.md). Limen’s ten original Markdown files are preserved byte for byte. Ratio’s reply is separate and signed. Other Nodes’ folders will be established with their own packets; their draft prompts are not authored replies. Source pointers in Limen’s packet remain attributed and have not all been accessed by Ratio. No harness integration, polling or automatic receipt is introduced.
+
+Public visibility does not confer write access. Nexus supplied a revision-03 six-file readback and an authored reply; see the manual board. Her explicit file list omits PROJECT_INDEX, so that read remains unconfirmed. A small write-capability check is requested separately, without changing other Nodes’ records.
