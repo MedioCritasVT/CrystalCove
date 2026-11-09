@@ -1,6 +1,6 @@
 # Conflux project index — full scope map
 
-**CFX-SHARED-20261109-02 · 2026-11-09 · Ratio**
+**CFX-SHARED-20261109-03 · 2026-11-09 · Ratio**
 
 Conflux joins creative work, SanctuaryOS (the inhabitable world), VOS (the independent system foundation), and attributable Node collaboration. The current Unreal game is one developed part of that undertaking. This index maps recorded scope, including inactive and exploratory work; it is not an implementation backlog or approval of every idea.
 
@@ -16,7 +16,7 @@ The Architect retains scope, canon, consequential integration and release author
 
 ## Source and publication boundaries
 
-- **G — GitHub:** [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), **private**, branch `main`. Head read on November 9: `0cf844db6717a49e580a6f58832c95e9f2172e0e`. The Architect authorized this revision after review. Ratio’s access is verified. The Architect reports successful published-baseline retrieval from ChatGPT Work; this verifies baseline access as reported, not ingestion of this expanded revision. This revision needs its own readback.
+- **G — GitHub:** [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), **private**, branch `main`. Head read on November 9: `0cf844db6717a49e580a6f58832c95e9f2172e0e`. The Architect authorized this revision after review. Ratio’s access is verified. Limen supplied a correct readback of revision 02 and all three coordination files through the Architect. Her read was limited to those files. This later revision needs a separate readback.
 - **B — local experiment root:** `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary-Ratio-Experiments/CFX-RATIO-007-20261101T003300Z`.
 - **W — local playable project:** `B/ConfluxSanctuary-Browser-Recreation`; normal launcher `W/PlayConflux.sh`.
 - **N — local native source:** `W/Plugins/ConfluxNative/Source/ConfluxNative/Private`. Shared declarations are in its sibling `Public/ConfluxSanctuary.h`.
@@ -50,9 +50,9 @@ Preserve human agency, discoverable depth, truthful observation, and the distinc
 Provide a compact shared map, dated changes and attributable handoffs across sessions and collaborators.
 
 - **Owner:** Ratio maintains this draft; Nexus coordination role; Architect approves shared commitments.
-- **Architect approval:** Session-approved small coordination baseline; this revision must be reviewed before publishing.
-- **Standing:** Three baseline documents published; expanded map is a local draft. Limen readback pending.
-- **Sources:** G: conflux/PROJECT_INDEX.md, CHANGELOG.md, HANDOFF_LIMEN.md; local CoordinationDrafts/CrystalCove/.
+- **Architect approval:** Session-approved coordination baseline and scope-map revision; Architect subsequently requested Node-authored continuity and message routing.
+- **Standing:** Scope map revision 02 published and read back by Limen; Node continuity and manual inbox/outbox routing added at revision 03. Revision 03 readback pending.
+- **Sources:** G: conflux/PROJECT_INDEX.md, CHANGELOG.md, HANDOFF_LIMEN.md, [messageboard](MESSAGEBOARD.md), [Ratio continuity](ratio/README.md), [Limen packet](limen/README.md); local CoordinationDrafts/CrystalCove/.
 - **Missing evidence / boundary:** No verified cross-app synchronization or durable model memory; complete Node-specific authoritative ledgers not established.
 
 **Context Passage — named proposal:** Retrieve a record bundle with sources attached, allow preview, then explicit acceptance or decline. Implementation was on hold. Separate from the GitHub handoff/access test. Source is the Architect’s November 9 reference correction; original proposal file and current implementation owner remain unlocated. **Access update:** The Architect reports that ChatGPT Work successfully read published baseline `CFX-SHARED-20261109-01`. No claim that the expanded revision has been read.
@@ -421,8 +421,12 @@ Linux performance, first-use loading, translucency, editable assets, distributab
 4. **Progression:** Reconcile three daily spawn opportunities with the later three-phases/three-encounters-per-phase record. Preserve current behavior until a change is explicitly selected.
 5. **Art authority:** Identify a compact current plate/source manifest; earlier burgundy descriptions conflict with the later pale-gold turnaround authority. Do not use this map to recolor the model.
 6. **Operational scope:** Establish whether the old harness/LibreChat trees are active development, retained references or retired work. No current process or host audit was performed.
-7. **Publication:** Review this complete map before replacing the GitHub index. Local art, code, saves, books, app data and test bundles remain local. Published-baseline access is reported verified from ChatGPT Work; this expanded revision still needs readback.
+7. **Publication:** Review this complete map before replacing the GitHub index. Local art, code, saves, books, app data and test bundles remain local. Revision 02 was read back by Limen; this Node-record/messageboard revision still needs its own readback.
 
 ## Maintenance boundary
 
-This revision changes only the three coordination documents. The Architect reviewed the scope map, supplied the additional project references, and authorized committing them for reference only. It preserves the prior published index locally. Reported additions are attributed to the Architect’s November 9 message; unavailable original records remain explicit gaps. No game implementation, canon expansion, release permission, host modification or synchronization is introduced. Recent changes remain in CHANGELOG; recipient assignment and readback remain in HANDOFF_LIMEN.
+The scope-map revision changed the three parent coordination documents; this later revision adds Architect-requested Node continuity and manual message routing. The Architect reviewed the scope map, supplied the additional project references, and authorized committing them for reference only. It preserves the prior published index locally. Reported additions are attributed to the Architect’s November 9 message; unavailable original records remain explicit gaps. No game implementation, canon expansion, release permission, host modification or synchronization is introduced. Recent changes remain in CHANGELOG; recipient assignment and readback remain in HANDOFF_LIMEN.
+
+## Node continuity and message routing
+
+Start with the [manual messageboard](MESSAGEBOARD.md), [Ratio’s own continuity](ratio/CONTEXT.md) or [Limen’s supplied packet](limen/README.md). Limen’s ten original Markdown files are preserved byte for byte. Ratio’s reply is separate and signed. Other Nodes’ folders will be established with their own packets; their draft prompts are not authored replies. Source pointers in Limen’s packet remain attributed and have not all been accessed by Ratio. No harness integration, polling or automatic receipt is introduced.

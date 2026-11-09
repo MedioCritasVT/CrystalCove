@@ -2,6 +2,16 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — CFX-SHARED-20261109-03
+
+**Change/approval.** Architect requested Node continuity under aliases and messageboard inbox/outbox organization, then supplied Limen’s packet and limited Ratio to reviewing/staging that packet and her own work. Preserved all ten Limen Markdown originals under `conflux/limen/`; added Ratio’s own continuity, technical reply and incoming revision-02 readback. Added manual messageboard/routing indexes, updated parent index and handoff. No other Node’s response or synthesis was fabricated.
+
+**Evidence.** Packet Markdown was read without execution, source ZIP SHA-256/member hashes recorded locally, published originals checked for exact byte equality. Coordination publication is verified through commit-pinned GitHub readback. No game/harness tests or host actions occurred. Limen’s library pointers remain unaccessed source references. Ratio’s continuity distinguishes inherited/recorded results from direct inspection.
+
+**Receipt.** Limen returned a correct revision-02 challenge, naming all three files and explicitly limiting her read. Revision 03 remains pending its own readback. CFX-LIM-MB-003 remains the independent audit request awaiting Specula’s own reply. Ratio’s separate CFX-RATIO-MB-001 answers Limen’s technical request; recipient receipt pending.
+
+**Dependencies/boundaries.** Other Nodes supply their own packets. Original missing sources and current harness health remain unresolved. No automation, new agent, external-message delivery, game change or expanded implementation approval. Local art/code/saves/books/private source records remain outside publication. Only project Markdown selected by the Architect is posted.
+
 ## 2026-11-09 — CFX-SHARED-20261109-02
 
 **Change.** Expanded the project index into 35 major areas, including active, historical, deferred and exploratory work. Each area identifies purpose, relationship, owner/custodian, approval, status, source paths and uncertainty. Recent execution and assignment details remain outside the scope map.
