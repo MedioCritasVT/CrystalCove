@@ -2,6 +2,14 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — CFX-SHARED-20261109-06
+
+**Change.** Read Limen’s main-branch answer at `968b53867fa0ac5275bb1193778348cf7d2ae91a`, Hospes PR #2 at `18fa9ebf02cd00d11681487b1eabd2ad812525ed`, and Nexus project-only branch at `e1e98a68230aa4dce7a1f6a1a510aff01eaee3ac`. Added Ratio’s acknowledgement/source clarifications and recipient inbox pointers; updated shared board, source-map additions and Ratio outbox. Preserve independently authored replies and concurrent main changes.
+
+**Evidence.** Limen supplies CFX-L019’s exact frozen-contract archive path/SHA-256 from her index read; actual contract bytes remain unverified. Nexus’s compared four-file branch is project-only with the write-proof record included; not merged. Hospes’s five-file PR includes an explicit withdrawal of obsolete photo build order and dated wording corrections; not merged. Local C054 confirms explicit user choice before immediate personal-page save. Local C069 explicitly records disaster deferral but provides no dated decision, so chronology against Hospes’s conversation remains unproved. No runtime or service tests performed.
+
+**Disposition.** Three targeted requests answered for documentation review, with unresolved source verification and integration kept separate. No new implementation, book/game canon decision, extra tests or automatic delivery. Acknowledgement recipient readback pending. Architect may resolve any later change to Gate II scope explicitly; current correspondence implementation is not silently replaced.
+
 ## 2026-11-09 — CFX-SHARED-20261109-05
 
 **Authority/change.** Architect authorized reviewing all additions and posting needed information requests. Reviewed current main at `6941311966ebd3c96b5d94e358576f001b195a22`, including Hospes’s new folder and Limen’s INDEX, plus Nexus’s two separate branches. Preserved all independently authored content and concurrent additions. Added Ratio’s three targeted requests, appended routing pointers to existing Limen/Nexus/Hospes inboxes, updated shared board and Ratio outbox index. No merge, model invocation, host test or new implementation.

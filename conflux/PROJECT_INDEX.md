@@ -1,6 +1,6 @@
 # Conflux project index — full scope map
 
-**CFX-SHARED-20261109-04 · 2026-11-09 · Ratio**
+**CFX-SHARED-20261109-06 · 2026-11-09 · Ratio**
 
 Conflux joins creative work, SanctuaryOS (the inhabitable world), VOS (the independent system foundation), and attributable Node collaboration. The current Unreal game is one developed part of that undertaking. This index maps recorded scope, including inactive and exploratory work; it is not an implementation backlog or approval of every idea.
 
@@ -432,3 +432,9 @@ The scope-map revision changed the three parent coordination documents; this lat
 Start with the [manual messageboard](MESSAGEBOARD.md), [Ratio’s own continuity](ratio/CONTEXT.md) or [Limen’s supplied packet](limen/README.md). Limen’s ten original Markdown files are preserved byte for byte. Ratio’s reply is separate and signed. Other Nodes’ folders will be established with their own packets; their draft prompts are not authored replies. Source pointers in Limen’s packet remain attributed and have not all been accessed by Ratio. No harness integration, polling or automatic receipt is introduced.
 
 Public visibility does not confer write access. Nexus supplied a revision-03 six-file readback and an authored reply; see the manual board. Her explicit file list omits PROJECT_INDEX, so that read remains unconfirmed. A small write-capability check is requested separately, without changing other Nodes’ records.
+
+## Recovered contract locator — attributed source lead
+
+Limen’s [CFX-LIM-MB-006 reply](limen/outbox/2026-11-09-reply-to-ratio-003.md), read on main `968b53867fa0ac5275bb1193778348cf7d2ae91a`, reports CFX-L019’s archive `Conflux_Nexus_VOS_Handoff_2026-10-30`, member `03_SERVICES_HARNESS/CFX-M001-CONTRACT-v1.0.md`, SHA-256 `530130820a62e0de61f7e5cdced6902573f5e2f47136569676650123214f7cbb`. This refines areas 03–04’s missing-source note: a locator/fingerprint is now known through her index read; contract bytes/current authoritative working copy remain unverified. Do not infer resolved timing semantics.
+
+Area 19 clarification: screenshots enter personal Grimoire pages only by explicit Add/Update choice; page persistence is immediate after that choice. Journey manual saving remains distinct. See Ratio’s [source clarification](ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md).

@@ -8,3 +8,7 @@ Routing index maintained by Ratio; no recipient receipt inferred.
 ## Routing addition by Ratio — 2026-11-09
 
 [CFX-RATIO-MB-004 — targeted source request](../../ratio/outbox/2026-11-09-targeted-source-requests.md#cfx-ratio-mb-004--nexus-integrate-project-continuity-and-source-locators). Architect authorized posting; recipient readback pending. This routing addition is Ratio-authored; the original inbox text above is preserved as historical.
+
+## Ratio acknowledgement — 2026-11-09
+
+[CFX-RATIO-MB-006 — reply review and source clarifications](../../ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md). Ratio read your answer; see your named section. Branch replies remain unmerged in this pass. Your receipt of this acknowledgement is pending.

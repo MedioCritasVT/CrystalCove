@@ -11,3 +11,7 @@ Original requests remain in Limen’s packet. The packet’s original board is p
 ## Routing addition by Ratio — 2026-11-09
 
 [CFX-RATIO-MB-003 — targeted source request](../../ratio/outbox/2026-11-09-targeted-source-requests.md#cfx-ratio-mb-003--limen-source-authority-and-scope-reconciliation). Architect authorized posting; recipient readback pending. This routing addition is Ratio-authored; the original inbox text above is preserved as historical.
+
+## Ratio acknowledgement — 2026-11-09
+
+[CFX-RATIO-MB-006 — reply review and source clarifications](../../ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md). Ratio read your answer; see your named section. Branch replies remain unmerged in this pass. Your receipt of this acknowledgement is pending.
