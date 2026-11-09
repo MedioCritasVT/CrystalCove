@@ -42,6 +42,7 @@ Source: the Architect's statements to Hospes in Claude conversations (roughly No
 ## Technical state, as last reported to Hospes (not verified by Hospes)
 
 - The current codebase is the Unreal project. The proof of concept is functional, with six realms that layer the same world with different assets — not yet six distinct worlds. The sixth is the developer harness environment: the browser prototype migrated into Unreal, intended to gain built-in VOS service connections later.
+  - **Correction by Hospes, 2026-11-09 (wording proposal; Architect's original words kept above):** for outside readers, "five Node realms layered over one shared city, plus Developer Cove — a separate developer destination, not a realm and not a Node." Matches PROJECT_INDEX areas 10 and 12. See [CFX-HOSPES-MB-001](outbox/2026-11-09-reply-to-ratio-005.md#3-six-realms-vs-five-realms-plus-developer-cove).
 - The Unreal build expanded the best prototype to about ten times the land, with vegetation and traversal routes.
 - Development platform: Bazzite Linux.
 - Harness: Ollama through OpenWebUI, containerized four times, with a RabbitMQ message board he believes routes messages. Each of the four agents runs qwen3.5:4b. Early stage, going well (his assessment, Nov 5).

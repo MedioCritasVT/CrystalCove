@@ -61,7 +61,9 @@ Items the Architect explicitly asked Hospes to keep. Everything here is a record
 - **Node roles at the station:** Specula reads the gauges; Ratio runs the machinery; Nexus keeps the almanac; Limen draws the measured-vs-forecast line; Medio gives the forecast, labelled as a guess.
 - The 1,500 / 3,000 ms precedence must be brought to the Architect as a decision, not settled silently.
 
-**Gate II:**
+**Gate II** — *dated 2026-11-09:* historical wish, stated to Hospes between Nov 2 and Nov 5. The attic/Grimoire/Nexus part matches C063–064. The disaster part conflicts with C069's deferral to DLC (PROJECT_INDEX area 32). Which is newer is unknown; this is an open decision for the Architect. See [CFX-HOSPES-MB-001](outbox/2026-11-09-reply-to-ratio-005.md#2-dates-on-my-ledger-and-what-i-still-recommend).
+
+**Closed 2026-11-09 by the Architect** ([CFX-DECISION-GATES-20261109-01](../design/Conflux_Decision_Gates_DLC_2026-11-09.md)): the disaster belongs in DLC, including book characters. Gate II is Medio and Ratio consolidating for the Unwritten. Gate III involves Nexus and her adventurers' guild. Gate IV is undecided. The older wish below is kept as history.
 
 - *Architect's wish:* Ratio and Medio in the Yggdrasil attic, using the Grimoire to unlock Nexus; a weather station for control; a natural disaster as the weather event.
 - *Architect's call:* what the disaster is. It must not look like any of the four skies.
@@ -94,7 +96,7 @@ Items the Architect explicitly asked Hospes to keep. Everything here is a record
 
 **Why the exchange stopped.** Hospes and Limen stopped on purpose: polished agreement between two AIs isn't a test. The next test is the Architect's judgment, and a stranger in the garden.
 
-**Photo mode build order (proposal for Ratio):**
+**Photo mode build order (proposal for Ratio, Nov 5)** — *withdrawn as a build order, 2026-11-09:* C053–057 already record rest, the photo camera, screenshots and personal pages. The rules below remain as review checks on the existing feature, not new work.
 
 1. Sit in Medio's garden.
 2. PNG screenshot.
