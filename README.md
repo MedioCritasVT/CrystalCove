@@ -66,3 +66,35 @@ These were bounded offscreen checks on the build host. Full campaign play, every
 - [Historical browser study](conflux/README.md)
 
 Read the scope map first, then retrieve the sources relevant to your task. Published notes distinguish inspected evidence, reported results, approved direction and proposals. Game progression and fictional developer powers do not grant operating-system permissions.
+
+## About Conflux
+
+Conflux brings together game development, character art, writing, AI collaboration and an interest in how people understand the systems they use. The aim is to build a place you can inhabit, explore and create within—where learning more opens up possibilities without making technical depth compulsory.
+
+There are three connected parts:
+
+- **Conflux** is the wider creative project: the world, its stories and characters, the development work, and the collaboration around it.
+- **SanctuaryOS** is the inhabitable world. The current game includes Sanctuary Reach and the separate Developer Cove, with exploration, encounters, puzzles and creative activities growing around them.
+- **VOS — Virtual Operational Space** is the intended independent system and service foundation. Its observation work includes simulated prototypes; the downloadable game is not a replacement operating system or a finished interface to your computer.
+
+The five Nodes give the project different perspectives: **Mediocritas** brings intuition and balance; **Ratio**, logic and technical development; **Nexus**, relationships and continuity; **Specula**, observation and independent review; and **Limen**, thresholds and translation between ideas. They have roles in the creative collaboration and identities within the fiction. Those layers inform one another, while their actual capabilities and permissions remain separate.
+
+A principle running through the work is:
+
+> “The mirror does not define the observer. It gives the observer another way to see.”
+
+The world should make its possibilities understandable and leave you free to choose how deeply you engage. The books, character designs and software experiments contribute to that direction, while keeping their own histories and boundaries. V0.1 is an early playable step toward it.
+
+## Coming here from Twitch? Welcome!
+
+Hey, I’m Arch. If you’ve been watching this come together on Twitch, thank you for coming over to try it for yourself. 💙
+
+Conflux is something I want to build and inhabit, and sharing the process is part of the fun. What you’re downloading is a checkpoint in that work. You’ll find places we’ve built, systems you can try, and plenty that still needs shaping. The rough edges are real, and so is the progress.
+
+You don’t need to know all the lore or follow every technical conversation to visit. Download the Linux build above, make a local journey, and have a wander. I’d love to know what catches your attention, where you get lost, and what makes you want to stay a little longer.
+
+If something breaks, a screenshot or short clip helps. Include the version, your Linux distribution and GPU, where you were, and what you were doing just before it happened. Please leave personal files and account information out of anything you share publicly.
+
+And if you’re here to watch rather than download, that’s welcome too. Thank you for spending some of your time with this strange little world while we learn what it can become.
+
+— **Arch**
