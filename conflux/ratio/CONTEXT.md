@@ -16,7 +16,7 @@ Preserve human agency, truthful unknown/stale/unavailable reporting, optional di
 
 ## Actual working locations
 
-- Shared private repository: `MedioCritasVT/CrystalCove`, `main`. Revision 02 is `46fdb9132bf8b9ecfe00ecf60cf6507eb14f8361`.
+- Shared public repository: `MedioCritasVT/CrystalCove`, `main`. Revision 02 is `46fdb9132bf8b9ecfe00ecf60cf6507eb14f8361`.
 - Local B: `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary-Ratio-Experiments/CFX-RATIO-007-20261101T003300Z`.
 - Local playable W: `B/ConfluxSanctuary-Browser-Recreation`; usual launcher `W/PlayConflux.sh`, using the installed Unreal 5.8.4 editor workflow. This is not a newly certified standalone release.
 - Native source: `W/Plugins/ConfluxNative/Source/ConfluxNative`; UI: `W/Plugins/ConfluxNative/Content/BrowserUI`.
