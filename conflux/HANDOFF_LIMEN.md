@@ -1,29 +1,21 @@
-# Ratio → Limen — shared-record baseline
+# Ratio → Limen — full-project scope-map review
 
-2026-11-09 · `CFX-SHARED-20261109-01`
+2026-11-09 · `CFX-SHARED-20261109-02`
 
-**Assignment.** Read the pinned project index from the publication handoff and verify access to this revision. Review only relevant linked changes/supporting sources afterward. Reading the index does not establish that its referenced evidence has been read or verified.
+**Assignment.** Read the exact commit-pinned project index supplied in the publication handoff, then the newest changelog entry. Review the whole 35-area map for missing scope, ownership gaps and incorrect approval/status attribution. Retrieve supporting files only where relevant. Reading the map does not establish ingestion of the local files it names.
 
-**Destination.** Private [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), branch `main`. The Architect authorized this publication in the Codex session. Ratio's publication reply supplies the exact new commit and a commit-pinned index link after readback. Limen's access remains pending her own successful retrieval.
+**Destination.** Private [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), branch `main`. The publication reply supplies the exact commit and pinned links. Architect approval covers coordination references only; no implementation starts from this handoff.
 
-**Published scope.** Three coordination documents in the existing `conflux/` folder. The existing browser study and design records remain their own historical sources. The index points separately to local-only Unreal and authoring evidence.
+**Changes to ingest.** The index now covers Conflux governance, VOS/services/recovery, harness/reference branches, browser history, native city/Cove/realms, characters/physics/Workshop, companions, travel, progression, personal tools, civic work, narrative/DLC, books and future product scope. It records later local implementation reports without equating engineering tests and artistic acceptance.
 
-**Relevant character delta.** Medio Articulation 01 is an isolated torso-binding candidate with a six-second diagnostic, 13 key poses and 16 recorded Unreal runtime checks. It is not the normal player selection. Its authoring rig retains 544 bones; its existing export hierarchy has 211 and Unreal has 212 including the import root. Ratio verified the local bundle hash while preparing this baseline, without rerunning the character tests.
+**Architect reference additions.** Named frozen CFX-M001 original contract (location unresolved); Context Passage preview/accept/decline proposal (implementation held); separate working VTube Studio Medio model (reported); approved realm combat-learning direction (implementation separate); civic gathering/governance and resident roles; Specula’s Books 1–4 authorship, deferred Architect’s Cut, Book 5 The Emerald Threshold and observer-report proposals (separate from game Redactor canon); early working terminal history and Checkpoint .3 visibility principle. Original supporting records are not fabricated when absent.
 
-**Open.** Garment/torso boundaries and artistic acceptance, useful locomotion and foot contact, then the same clips with physics Off/On. Ratio recommends preserving the restrained physics baseline while these are addressed. This recommendation does not authorize a new five-Node rollout.
+**Access status.** The Architect reports ChatGPT Work successfully read baseline `CFX-SHARED-20261109-01`. This supersedes the old baseline-access-pending statement. Access/ingestion of revision 02 remains pending its own successful readback.
 
-**Local only.** Blender/FBX sources, native assets/code, captures, private profiles/saves and detailed local reports remain outside this update. Absolute paths in the index are local identifiers, not files available to ChatGPT through GitHub.
+**Local only.** Unreal code/assets, Blender sources, books, VTube model sources, app workspaces, captures, profiles and detailed reports were not uploaded. Some original reference locations remain unknown. Published material is limited to the three Markdown coordination files.
 
-**Readback challenge.** Reply with the commit you actually read, baseline ID `CFX-SHARED-20261109-01`, and this specific fact from the index: Medio Articulation 01 has **16 recorded Unreal runtime checks**, and **the candidate is not the normal player selection**. Include which supporting files you independently read, if any. If retrieval fails, report the failure and leave access unverified.
+**Questions for review.** Confirm intended LibreChat/harness scope and accountable owners; identify original named reference files; reconcile daily encounter wording; preserve common geography while locating future realm forks. Keep authored Book 5 proposals, game Redactor direction and Yggdrasil DLC distinct.
 
-## Compact format for subsequent handoffs
+**Readback challenge.** Return the exact commit read, update ID `CFX-SHARED-20261109-02`, and this fact: **Context Passage is a source-attached preview/accept/decline proposal whose implementation was on hold, separate from the tested GitHub handoff.** Also name which of the three coordination files and any supporting sources you actually read. Report retrieval failure explicitly rather than assuming access.
 
-- From/to, date, update ID and current assignment.
-- Repository, branch, exact commit and pinned index link.
-- Changed paths and relevant delta only.
-- Approval basis and explicit disposition.
-- Evidence inspected now, earlier results cited and local-only dependencies.
-- Blocker/question or next proposed action, attributed to its author.
-- Readback fact and recipient confirmation status.
-
-Node interpretations remain attributed. Missing evidence remains an open item rather than a reconstructed fact.
+**Boundary.** Reference ingestion and review only. Independent interpretations remain attributed; Architect decides unresolved scope and approvals.

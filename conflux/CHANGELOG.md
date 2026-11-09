@@ -2,6 +2,24 @@
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.
 
+## 2026-11-09 — CFX-SHARED-20261109-02
+
+**Change.** Expanded the project index into 35 major areas, including active, historical, deferred and exploratory work. Each area identifies purpose, relationship, owner/custodian, approval, status, source paths and uncertainty. Recent execution and assignment details remain outside the scope map.
+
+**Architect-supplied reference additions.** Named frozen CFX-M001 contract; Context Passage proposal; separate functional VTube Studio Medio model; approved realm-specific combat-learning direction; civic gathering/governance and resident contributions; Specula’s Books 1–4 authorship, deferred Architect’s Cut and Book 5 The Emerald Threshold; early terminal history and Checkpoint .3 visibility principle. These are attributed project references. Original records/paths and implementation evidence remain missing where stated; no new implementation or canon is inferred.
+
+**Affected files.** `conflux/PROJECT_INDEX.md`, `conflux/CHANGELOG.md`, `conflux/HANDOFF_LIMEN.md` only.
+
+**Approval.** After reviewing the scope map, the Architect directed: “You can add this to the list for project reference only and then commit.” This authorizes the coordination revision, not implementing the listed work.
+
+**Evidence.** Local checkpoints and source inventories plus GitHub design records were inspected. Later C062–069 records supersede parts of older C038 continuity, including city/Attic actor lifecycle, all-five control, app integration and progression. Existing tests remain recorded results, not new executions. Scope entries and required fields were checked. No game code, assets, services, saves or tests were changed/run.
+
+**Access.** The Architect reports successful published-baseline retrieval from ChatGPT Work. This is baseline access evidence as relayed; no expanded-revision ingestion is claimed. A new readback challenge is in HANDOFF_LIMEN.
+
+**Dependencies/open matters.** Authoritative original contract/Checkpoint .3/Context Passage/VTube/book records still need location confirmation. Review ownership gaps, shared-city versus future branching scope, and encounter-per-phase versus daily spawn wording. All large/local-only sources remain local.
+
+**Publication.** The publication reply supplies this revision’s exact commit and pinned index after connector readback. Parent baseline: `0cf844db6717a49e580a6f58832c95e9f2172e0e`.
+
 ## 2026-11-09 — CFX-SHARED-20261109-01
 
 **Change.** Ratio prepared the small shared record requested by the Architect, using the existing `conflux/` folder.

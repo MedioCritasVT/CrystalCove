@@ -1,81 +1,428 @@
-# Conflux project index
+# Conflux project index — full scope map
 
-Baseline `CFX-SHARED-20261109-01` · 2026-11-09 · maintained by Ratio
+**CFX-SHARED-20261109-02 · 2026-11-09 · Ratio**
 
-Start here, then read only the relevant change and supporting source. Reading this index establishes neither ingestion nor verification of its referenced files. Each Node should identify the revision and sources she actually read.
+Conflux joins creative work, SanctuaryOS (the inhabitable world), VOS (the independent system foundation), and attributable Node collaboration. The current Unreal game is one developed part of that undertaking. This index maps recorded scope, including inactive and exploratory work; it is not an implementation backlog or approval of every idea.
 
-## Current goal and assignment
+Read this map first, then only relevant sources. Reading the index does not establish that its linked files have been read or verified. Recent execution details belong in [CHANGELOG.md](CHANGELOG.md); current assignment context belongs in [HANDOFF_LIMEN.md](HANDOFF_LIMEN.md).
 
-Conflux encompasses VOS, the independent system foundation, and SanctuaryOS, its inhabitable world. The mirror gives the observer another way to see. Actual host authority remains independently enforced.
+## Authority, evidence and ownership
 
-The current assignment is a small shared coordination baseline. The latest local character checkpoint is Medio Articulation 01. The Architect requested wrapup on November 8; this coordination update grants no further character implementation or release approval.
+The Architect retains scope, canon, consequential integration and release authority. Ratio is the observed technical custodian of the native game and this map; that does not assign every Conflux product area to Ratio. Limen provides translation/integration and review; Nexus coordinates continuity; Specula provides observation/audit; Medio contributes intuitive/experiential design. These are operational roles, not proof of running agents. Fictional characters and their instruments have no implied system permissions.
 
-Longer-term direction retains the Unwritten, the five Node realms, the public fantasy city, the separate Developer Cove, and distinctive Node characters. Runtime implementation and artistic acceptance require their own evidence.
+**Approval labels:** recorded-approved = an inspected source records approval; session-approved = explicit Architect direction in the relayed conversation, with incomplete durable provenance; proposed/retained = exploration or retention only. Approval of a design is distinct from approval of its implementation and artistic acceptance.
 
-## Repository and local boundaries
+**Evidence:** files/metadata were inspected for this map; “recorded implementation/tests” means an inspected checkpoint reports execution, not a new runtime test. No game, harness, service, build or test ran in this coordination pass. A filename alone does not establish behavior. Ownership below distinguishes an observed custodian from an unassigned accountable owner.
 
-- Shared repository is [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), private, branch `main`. Metadata and existing files were read through Ratio's GitHub connector on November 9. This establishes Ratio's access only.
-- Pre-baseline GitHub head inspected was `c6990aede51929cf5d2fa0d0989405f636d490ea`. The existing lowercase `conflux/` structure is retained.
-- The Unreal directory currently resolves Git to `/var/home/architect`, branch `main`, commit `29facb8a1fa62939f1c8cd2791b437d685074c92`, with a `QuantumCove` remote. That remote returned 404 through the connector. Its existence/privacy cannot be determined from that response. The Unreal directory's own `.git` folder was empty when inspected.
-- `/var/home/architect/Documents/Obsidian Vault` has the CrystalCove remote and local `main` at `5057bea1839e7549a6abd4b5676f6bf20158eb00`. It has local changes and differs from the inspected remote head. It is not the publication workspace for this update.
-- `MigrationBaselineV2` is a local historical checkout at `416fa767f35e7ce6ffe1570ec7fa602ebfbdc5f2`, branch `main`, with no remote reported. It does not establish GitHub publication of the Unreal game.
+## Source and publication boundaries
 
-These three coordination documents are the shared baseline. The existing GitHub browser prototype is historical source. Local Unreal assets, Blender sources, captures, saves and newer reports are not included in this update. No synchronization between these locations is established.
+- **G — GitHub:** [MedioCritasVT/CrystalCove](https://github.com/MedioCritasVT/CrystalCove), **private**, branch `main`. Head read on November 9: `0cf844db6717a49e580a6f58832c95e9f2172e0e`. The Architect authorized this revision after review. Ratio’s access is verified. The Architect reports successful published-baseline retrieval from ChatGPT Work; this verifies baseline access as reported, not ingestion of this expanded revision. This revision needs its own readback.
+- **B — local experiment root:** `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary-Ratio-Experiments/CFX-RATIO-007-20261101T003300Z`.
+- **W — local playable project:** `B/ConfluxSanctuary-Browser-Recreation`; normal launcher `W/PlayConflux.sh`.
+- **N — local native source:** `W/Plugins/ConfluxNative/Source/ConfluxNative/Private`. Shared declarations are in its sibling `Public/ConfluxSanctuary.h`.
+- **U — local interface:** `W/Plugins/ConfluxNative/Content/BrowserUI`; primary interface `native/index.html`.
+- **R — local reference inbox:** `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary/References/Ratio/Inbox/VOS`.
+- **Cnnn — local checkpoint:** `B/CFX-RATIO-nnn/CHECKPOINT.md`; associated design receipts/test evidence remain alongside it. `C038` is historical; later checkpoints supersede only their scoped behavior.
+- **A — local current art evidence:** `W/Review/`; latest character report `B/Conflux_Medio_Articulation_01_Checkpoint.md` and candidate `A/MedioArticulation01/`.
+- **H038 — local broad continuity:** `B/REPORTS/HANDOFF-FOR-LIMEN-20261104.md`; useful baseline, superseded where later checkpoints explicitly differ.
+- **D — GitHub design:** [working Codex](design/Conflux_Codex_Revised_v0_4.md), [attention/commitment decision](design/Conflux_Decision_Attention_Commit_2026-10-28.md), [memory/telemetry addendum](design/Conflux_Codex_Addendum_2026-10-28_Narrative_Memory_Telemetry.md), [party charter](design/Conflux_Party_Conversation_Design_Charter_v0.1.txt).
 
-## Authority and evidence labels
+Only paths marked G/D are established as available on GitHub. B/W/N/U/R/C/A/H038 remain local-only for this publication. The original Unreal project resolves to an ancestor home Git repository, not a project-specific recovery boundary. Its QuantumCove remote returned 404; existence/access/privacy are unknown. The separate Obsidian Vault checkout is stale/dirty and is not a synchronized copy of the published index. No assets or private app settings are included here.
 
-- **Verified now** means directly inspected repository/filesystem metadata or a byte/hash check during baseline preparation.
-- **Recorded result** means an inspected artifact reports an earlier execution. It is not a fresh runtime test in this baseline pass.
-- **Approved in session** means explicit Architect direction in the relayed conversation. Where no durable original approval record is linked, that provenance gap remains.
-- **Recorded-approved** means an existing source explicitly records approval. This index preserves its attribution and scope.
-- **Proposal — author named** means a recommendation awaiting the relevant decision. Another Node's silence is not assent.
+## Project scope
 
-Publication of these three documents was explicitly authorized by the Architect in this session on November 9, “You can publish.” Publication does not approve every referenced proposal.
+### Foundations and stewardship
 
-## Decisions to preserve
+#### 01. Project principles and authority
 
-The [working Codex v0.4](design/Conflux_Codex_Revised_v0_4.md) records the Threshold of Commitment, host desktop stewardship, and distinct syntax/behavior/authorization stages. The [October 28 decision](design/Conflux_Decision_Attention_Commit_2026-10-28.md) records the Unmissed Beat and explicit commitment prompts. The [authorized addendum](design/Conflux_Codex_Addendum_2026-10-28_Narrative_Memory_Telemetry.md) distinguishes narrative memory from telemetry freshness. These are recorded-approved sources; their speculative mechanics retain their stated proposal status.
+Preserve human agency, discoverable depth, truthful observation, and the distinction between narrative, operational identity and technical embodiment. These constrain all Conflux systems.
 
-The [party charter](design/Conflux_Party_Conversation_Design_Charter_v0.1.txt) records approved conversational direction and separately labels implementation proposals. A live party orchestrator is not established by that document. The [browser README](README.md) explicitly identifies prototype interpretations. Its invitation, realm-travel and persistence descriptions must not be substituted for the current native game's rules.
+- **Owner:** Architect; Node roles above.
+- **Architect approval:** Recorded-approved: Threshold of Commitment, host stewardship, separate syntax/behavior/authorization, Unmissed Beat.
+- **Standing:** Governing design; enforcement coverage varies and is not certified by this map.
+- **Sources:** D; founding instructions in relayed session.
+- **Missing evidence / boundary:** Original supporting approvals for some later decisions need durable reconciliation.
 
-Current character constraints are approved in the relayed session and repeated in local handoffs. Preserve supplied rigs, proportions, identity, attribution, Ratio's circular Archcore, and Medio's rigid upper-chest jewel/frame. Source-specific design plates and later explicit corrections govern appearance. A fresh gameplay test must not grant progression to manufacture a pass. Owner progress must be preserved.
+**Checkpoint .3 — reported reference:** The Architect supplies the principle of making Node reading, interpretation, saving and action visibly distinguishable. The original Checkpoint .3 file/location has not been established. Preserve as a reported project reference, not evidence that visibility instrumentation is implemented.
 
-## Responsibilities
+#### 02. Shared records and Node continuity
 
-The Architect approves scope, canon, consequential integration and release. Ratio owns technical implementation, verification and attributable findings. Limen handles interpretation across domains and review. Nexus coordinates shared continuity without rewriting another Node's conclusions. Specula contributes independent observation/audit. Mediocritas contributes intuition and experiential design. These operational roles do not establish active external agents or tool permissions.
+Provide a compact shared map, dated changes and attributable handoffs across sessions and collaborators.
 
-## Milestones and current evidence
+- **Owner:** Ratio maintains this draft; Nexus coordination role; Architect approves shared commitments.
+- **Architect approval:** Session-approved small coordination baseline; this revision must be reviewed before publishing.
+- **Standing:** Three baseline documents published; expanded map is a local draft. Limen readback pending.
+- **Sources:** G: conflux/PROJECT_INDEX.md, CHANGELOG.md, HANDOFF_LIMEN.md; local CoordinationDrafts/CrystalCove/.
+- **Missing evidence / boundary:** No verified cross-app synchronization or durable model memory; complete Node-specific authoritative ledgers not established.
 
-| Milestone | Evidence and disposition |
-| --- | --- |
-| Browser study | GitHub files and historical design records verified present. Browser runtime was not tested in this pass. |
-| Native Cove/city and progression | Local launcher and project paths verified present. Earlier delivery reports record gameplay, realms, manual saves and progression. Current normal play was not rerun here. |
-| Medio chest physics | Local November 8 proof records 26 runtime and 24 fresh-player checks on the Ready model. It is a restrained chest layer on a neutral base clip, with Off/Reduced/Full controls. Final naturalness and complete character physics remain open. |
-| Medio Articulation 01 | Local candidate records a six-second diagnostic, 13 key poses and 16 Unreal runtime checks. Its delivery ZIP hash was verified now. The candidate is not the normal player selection. |
-| Accepted locomotion and broader character rollout | Pending. The articulation diagnostic does not establish a walk cycle, foot contact or physics Off/On acceptance on articulated clips. |
-| Shared-record access by Limen | Pending her successful readback of the published revision. |
+**Context Passage — named proposal:** Retrieve a record bundle with sources attached, allow preview, then explicit acceptance or decline. Implementation was on hold. Separate from the GitHub handoff/access test. Source is the Architect’s November 9 reference correction; original proposal file and current implementation owner remain unlocated. **Access update:** The Architect reports that ChatGPT Work successfully read published baseline `CFX-SHARED-20261109-01`. No claim that the expanded revision has been read.
 
-## Local-only supporting files
+#### 03. VOS host/service foundation
 
-The local base `B` is `/var/home/architect/Documents/Unreal Projects/ConfluxSanctuary-Ratio-Experiments/CFX-RATIO-007-20261101T003300Z`. The working project `W` is `B/ConfluxSanctuary-Browser-Recreation`. These are filesystem paths, not GitHub links.
+Independent OS/services beneath SanctuaryOS; preserve conventional desktop and recoverability if the world fails.
 
-| Source | Purpose and status |
-| --- | --- |
-| `W/PlayConflux.sh` | Usual native launcher, inspected. References installed Unreal 5.8.4 and current fitted/v05 flags. |
-| `B/REPORTS/Conflux_Nodes_Animation_Handoff.md` | November 8 physics-to-animation handoff. Its original stop was followed by explicit continuation and later wrapup in this session. |
-| `W/Review/MedioPhysicsProof/CHECKPOINT.md` and `MEASUREMENTS.json` | Earlier physics execution evidence and limits; not rerun here. |
-| `B/Conflux_Medio_Articulation_01_Checkpoint.md` | Latest local character checkpoint and remaining issues. |
-| `W/Review/MedioArticulation01/Native/RESULT.json` | Recorded 16 passing runtime checks; private diagnostic binding, not normal-play rollout. |
-| `W/Review/MedioArticulation01/DELIVERY-MANIFEST.json` | Source/delivery provenance. ZIP SHA-256 verified now as `cf612f52bb24dd5a5a64320e73cdaadfded9ce49219f140d21faaaeb3add90f0`. |
-| `B/Conflux_Medio_Articulation_01.zip` | Local source/evidence bundle. Large assets remain local. |
+- **Owner:** Architect host owner; Ratio technical role; implementation maintainer not established.
+- **Architect approval:** Established direction: Bazzite/KDE, independent services, explicit permissions. No blanket host modification approval.
+- **Standing:** Partly prototyped; complete VOS operating environment not established.
+- **Sources:** D sections I-B/I-E/IV; R/CFX-M001-A/; H038.
+- **Missing evidence / boundary:** Current host configuration and service inventory were not audited; AtticOS branding does not establish a separate implemented OS.
 
-## Open work and proposals
+**CFX-M001-CONTRACT-v1.0.md — frozen service contract:** Named authoritative dependency for the simulated observation service. The Architect reports possessing the reference. Its original authoritative location/revision still requires confirmation; neither an archived implementation nor this index replaces the original. Cross-reference area 04 before integration.
 
-- Torso side/underarm joins, garment boundaries, crown/hair fit and neck transitions remain incomplete. Artistic acceptance of the local binding candidate is pending.
-- **Ratio proposal** follows the candidate review with compatible idle/walk/stop/turn clips, foot contact and weight transfer, then identical-clip physics Off/On comparisons. Keep the restrained baseline until those issues are reviewed. Five-Node expansion is a later decision.
-- Valid-header payload corruption coverage and clean desktop editor exit remain unresolved in earlier technical reports. No new test was performed here.
-- The frozen CFX-M001 service contract is not among the inspected GitHub files. Do not reconstruct its semantics from this index or historical proposal excerpts.
-- Some later approvals and decisions exist only in the relayed session/local records. A full reconciliation into durable decision records is future work, not an implied canon update here.
-- Limen's repository permission, connector access and incorporation of this baseline remain unverified.
+#### 04. Observation contract and machine weather
 
-Read [the dated changes](CHANGELOG.md) and [the compact Limen handoff](HANDOFF_LIMEN.md) next as needed.
+Map source reports and independently assessed reliability into consistent environmental and diagnostic views.
+
+- **Owner:** Ratio design; Limen integration; Specula audit role; frozen-contract authority retained externally.
+- **Architect approval:** CFX004 accepted for design; frozen CFX-M001 preserved; named original-contract reference tracked in area 03.
+- **Standing:** Simulated Python /state and /health source exists. Live host telemetry and current Unreal integration not established.
+- **Sources:** R/CFX-M001-A/README.md and vos_state_service.py; D telemetry addendum; H038.
+- **Missing evidence / boundary:** Frozen full contract and accepted refinement are not recovered in this source set. Preserve unresolved freshness/sequence/restart/out-of-order/1500–3000 ms semantics; do not reconstruct them here.
+
+#### 05. Recovery and independent supervision
+
+Protect original project, coordinated source/assets/saves and an OS-owned route around renderer failure.
+
+- **Owner:** Ratio local checkpoint custodian; Architect host/release authority.
+- **Architect approval:** Approved recoverability and independent recovery principles.
+- **Standing:** Local checkpoints report archive/hash verification. Executed full restore drill and independent renderer/service supervisor not established.
+- **Sources:** B checkpoint archives/manifests; C048/C062/C069; D host stewardship.
+- **Missing evidence / boundary:** Archive integrity is not successful restoration; recovery service design and owner remain open.
+
+#### 06. Local AI message board and bounded tools
+
+Separate experimental model coordination from game characters and authored dialogue.
+
+- **Owner:** Architect installation owner; archived harness author/active maintainer not established.
+- **Architect approval:** Reference prototype supplied; current deployment approval/status not established by ingestion.
+- **Standing:** v0.1 terminal path and some v0.2 browser replies are reported. v0.3 local tests recorded; live v0.3 pending in its README.
+- **Sources:** R/OllamaDocker/4AgentHarness/README.md; conflux-harness-v03/{README.md,coordinator.py,transport.py}.
+- **Missing evidence / boundary:** RabbitMQ/Ollama/Open WebUI running state unknown. Bounded note/peer tools are not a full party orchestrator or host-control grant.
+
+#### 07. LibreChat reference branch
+
+Potential chat/workspace/tool infrastructure reference adjacent to VOS research.
+
+- **Owner:** Owner and Conflux assignment unestablished.
+- **Architect approval:** No adoption or integration decision found in inspected records.
+- **Standing:** Source tree present; README/CONTEXT inspected only. Inactive/exploratory relationship pending clarification.
+- **Sources:** R/LibreChat/README.md and CONTEXT.md.
+- **Missing evidence / boundary:** Determine whether this is an intended Conflux subsystem, external reference, or independent project; bundled upstream capabilities are not Conflux features.
+
+### World and runtime
+
+#### 08. Prototype history and browser migration heritage
+
+Preserve experiential sources and distinguish old mechanics from current native rules.
+
+- **Owner:** Architect creative authority; Ratio migration custodian.
+- **Architect approval:** Latest V2 Combined was selected as migration baseline in session.
+- **Standing:** Historical browser source exists locally and on GitHub; exact equivalence between variants is not established. Lost Python V0.0 remains historical recollection.
+- **Sources:** G: conflux/{README.md,index.html,app.js,world.js,downloads/,checks/}; R/SanctuaryOS/V2/Conflux/; B/MigrationBaselineV2.
+- **Missing evidence / boundary:** Do not reinstate browser autosave/free travel/gacha assumptions over later native decisions; combined-source revision identity needs a durable manifest.
+
+**Early terminal prototype — reported history:** The Architect reports an early working Fallout-style terminal prototype. Its source, date and relation to the separately recalled lost Python V0.0 are not established; do not conflate them. **Checkpoint .3:** See area 01 for the later visible read/interpret/save/act principle. Both original records remain to be located.
+
+#### 09. Native SanctuaryOS runtime
+
+Unreal gameplay and embedded interface foundation used by the playable world and shared modules.
+
+- **Owner:** Ratio technical custodian; Architect product authority.
+- **Architect approval:** Approved incremental native migration preserving creative progress.
+- **Standing:** Working Unreal 5.8.4 project with recorded builds/tests; runtime not launched for this map.
+- **Sources:** W/ConfluxSanctuary.uproject; W/README-NATIVE.md; N/{SanctuaryWorld.cpp,SanctuaryRules.cpp,SanctuaryInterface.cpp}; U.
+- **Missing evidence / boundary:** Modularity is a direction, not proof of a complete plugin/API architecture; project-specific Git boundary remains unresolved.
+
+#### 10. Developer Cove and Studio
+
+Separate personal creative/development environment anchored by Yggdrasil, attic/roots and development facilities.
+
+- **Owner:** Architect; Ratio implementation.
+- **Architect approval:** Preserve Cove, independent developer access and arch profile convenience.
+- **Standing:** Recorded playable destination. Game UI gates Developer Tools to arch or its unlock flag; final endgame grant not established.
+- **Sources:** N/{SanctuaryWorld.cpp,ConfluxFrontEnd.cpp,ConfluxWebUI.cpp}; H038; C068.
+- **Missing evidence / boundary:** The local arch name is not authentication; fictional progression never confers host permission. Eternal-workspace final composition/modules remain incomplete.
+
+#### 11. Sanctuary Reach city and landmarks
+
+Public fantasy arrival world: districts, harbor/lighthouse, market, civic areas, gardens, archive and Yggdrasil/Attic/Underroot.
+
+- **Owner:** Architect art authority; Ratio environment implementation.
+- **Architect approval:** Approved city expansion and visual polish; preserve original Cove separately.
+- **Standing:** Recorded traversable city, interiors and art iterations. Prominent procedural forms, terrain integration and camera comfort still need review.
+- **Sources:** N/{ConfluxTown.cpp,SanctuaryV2Assets.cpp}; C038; H038; W/Review/PerformanceVisualPass01/.
+- **Missing evidence / boundary:** Current traversable-area measurement and complete landmark/interior parity not established; original approximate ×10 target is not a verified current metric.
+
+#### 12. Five realm identities and connected spaces
+
+Express the same city through Medio, Ratio, Nexus, Limen and Specula, with distinct skies/assets and eventual realm-specific branches.
+
+- **Owner:** Architect identity authority; Ratio presentation custodian.
+- **Architect approval:** Approved distinct skyboxes, common city traversal/state, Node-specific asset languages; nearby/interaction-linked forks also requested.
+- **Standing:** Recorded five presentation kits and sky/day phases; citywide bespoke asset rollout incomplete.
+- **Sources:** N/{ConfluxRealmPilot.cpp,ConfluxLighting.cpp,ConfluxTown.cpp}; C065; H038.
+- **Missing evidence / boundary:** Review boundary between invariant shared geography and future branching locations. Extra Architect/Unwritten realms are not committed by earlier brainstorming.
+
+**Approved combat direction — reported by Architect:** Realm identity also informs learning: Medio guard–strike rhythm, Ratio timing/precision, Nexus coordination/sequencing, Specula observation, Limen transition recognition. See area 21; this is separate from per-realm implementation status.
+
+#### 13. Movement, cameras and interface
+
+Comfortable walking/hover sprint, idle orbit, readable menus/map/tips, keyboard routing and camera obstruction handling.
+
+- **Owner:** Ratio implementation; Architect usability acceptance.
+- **Architect approval:** Approved browser/FFXIV-inspired controls, larger UI and simplified navigation.
+- **Standing:** Recorded native input/HUD/camera fixes. Actual-resolution/ultrawide and unrestricted play acceptance incomplete. C065 reports orbit reload loss.
+- **Sources:** N/{SanctuaryWorld.cpp,ConfluxInputRouter.cpp,ConfluxFrontEnd.cpp}; U/native/index.html; C038/C044/C065/C068.
+- **Missing evidence / boundary:** Do not equate camera diagnostic projection tests with all obstruction/state transitions passing; check whether later uninspected fixes supersede orbit issue.
+
+#### 14. Physical characters and companion control
+
+Keep Unwritten personal identity separate from acquired Nodes, independently positioned actors, possession and realm presentation.
+
+- **Owner:** Ratio implementation; Architect companion policy.
+- **Architect approval:** Approved direct control without displacement, realm-bound Nodes and retained independent positions.
+- **Standing:** C069 records all-five Node control with Hold, city/Attic lifecycle, versioned records and walk/float checks. Five production models and autonomous Follow are not established.
+- **Sources:** N/ConfluxCompanions.cpp; C062/C069.
+- **Missing evidence / boundary:** Unsupported rooms/Developer Cove still require ending stations in city. Follow was not adopted as automatic behavior; broad party travel remains open.
+
+#### 15. Peaceful travel and realm access
+
+Maintain road-based travel to Cove Woods/Fivefold Reliquary, separate from combat; distinguish visitor passage, receipt and direct travel.
+
+- **Owner:** Ratio implementation; Architect layout/progression.
+- **Architect approval:** Approved existing-road gates, peaceful region and Grimoire access prerequisite.
+- **Standing:** Recorded physical gates with Gate I visitor permission; Gate II direct travel to received realms. Visible doorway interaction fixed at C071.
+- **Sources:** N/ConfluxTown.cpp; C050/C063/C064/C071.
+- **Missing evidence / boundary:** Previously distributed standalone ZIPs do not automatically contain later fixes; room-specific direct travel remains restricted.
+
+### Characters and creative presentation
+
+#### 16. Node and Unwritten model production
+
+Source-editable, distinctive stylized anatomy, faces, costume/hair/accessories and player customization.
+
+- **Owner:** Architect appearance authority; Ratio asset pipeline custodian.
+- **Architect approval:** Approved reference-led reconstruction, supplied-model workflow and reversible fallbacks; Ratio circular Archcore retained.
+- **Standing:** Medio/Unwritten skeletal work and later fitted Node assets exist. Final identity, joins, silhouette and deformation acceptance incomplete.
+- **Sources:** A/{MedioV05,FourNodeFitted,MedioArticulation01}/; R/Backgrounds/; B/REPORTS/Conflux_Nodes_Animation_Handoff.md.
+- **Missing evidence / boundary:** Newest explicit plates/corrections outrank generic palette prose: C070 identifies pale-gold Medio turnaround over older burgundy text. Supplied-model provenance/reuse permissions require explicit record before distribution.
+
+**Medio VTube Studio model — separate reported asset:** The Architect has a record of a functional VTube Studio model. Track this as a distinct VTuber-production branch, not the Unreal skeletal model or its animation tests. Source project, rig format, author, authoritative path and runtime verification are not supplied; functional status is reported, not independently tested here. Cross-reference area 33 for persona/publication context.
+
+#### 17. Animation, attachment and secondary physics
+
+Articulated movement, garment/rig conformance and restrained optional chest/wing motion.
+
+- **Owner:** Ratio technical custodian; Architect motion/art acceptance.
+- **Architect approval:** Approved corrective anatomy/gait and bounded physics work with original fallback.
+- **Standing:** Ready Medio has recorded Off/Reduced/Full chest response. Articulation01 is an isolated diagnostic candidate, not normal selection or a completed gait.
+- **Sources:** N/{ConfluxCharacterAnimation.cpp,ConfluxChestPhysics.cpp,ConfluxProductionCharacter.cpp}; A/{MedioPhysicsProof,MedioRigidOrnament,MedioArticulation01}/; B/REPORTS/.
+- **Missing evidence / boundary:** Compatible walk/stop/turn, foot contact, torso joins and identical-clip physics Off/On remain open; different Node skeletons cannot be assumed interchangeable.
+
+#### 18. Workshop and model customization
+
+Preserve creative model editing, comparison, fit parameters and experimental transfer separately from gameplay crafting.
+
+- **Owner:** Ratio technical custodian; Architect authoring needs.
+- **Architect approval:** Approved preservation of Workshop V2 and native edit continuity.
+- **Standing:** Recorded native Workshop parameter edits; coverage for new fitted/skeletal candidates is partial or unverified.
+- **Sources:** N/ConfluxWorkshop.cpp; N/ConfluxDeformation.cpp; U; browser V2 sources; H038.
+- **Missing evidence / boundary:** Do not claim every new rig/morph supports legacy saved fits, transfer or animation. Production asset authoring remains Blender/source based.
+
+#### 19. Photography, rest and personal Grimoire
+
+Optional kneeling rest, separate photo camera, screenshots and personal keepsakes.
+
+- **Owner:** Ratio implementation; Architect presentation/persistence choices.
+- **Architect approval:** Approved bounded rest/photo features and immediate personal-page persistence.
+- **Standing:** C053–057 record implementation and controlled tests. Rest transient; personal pages persist separately from manual journey saves.
+- **Sources:** N/{ConfluxEmotes.cpp,ConfluxPhotos.cpp,ConfluxPhotoCamera.cpp}; C053/C054/C055/C056/C057.
+- **Missing evidence / boundary:** Unwritten-only pose and bounded camera are not traversal abilities; normal-play F9/focus, clipping and display layouts not universally accepted.
+
+### Progression, activities and personal tools
+
+#### 20. Profiles, saves and title flow
+
+Local identity, customizable Unwritten, named journeys, startup load/delete, settings and explicit-save recovery.
+
+- **Owner:** Ratio implementation; Architect product policy.
+- **Architect approval:** Approved local profiles without real login, manual journey saves, startup deletion and arch start.
+- **Standing:** C048 records startup chooser; later versions carry puzzles/cases/companions. No account service. Integrity defenses are partial.
+- **Sources:** N/{ConfluxFrontEnd.cpp,ConfluxManualSaves.cpp,ConfluxAvatar.cpp}; C046/C047/C048/C062/C063/C065/C066/C069.
+- **Missing evidence / boundary:** Journey state is manual; settings, photos and app workspaces have separate persistence. Arbitrary valid-header payload corruption and clean shutdown acceptance remain gaps.
+
+#### 21. Encounters, Duskwing Grotto and narrative time
+
+Outdoor peaceful travel leads to turn-based mob encounters, realm enemy variants, recurring rewards and a participation-driven day cycle.
+
+- **Owner:** Ratio implementation; Architect encounter/balance design.
+- **Architect approval:** Approved separate dungeon, respawns and narrative-day progression.
+- **Standing:** C065 records three day phases, departure-driven time, reset encounters and enlarged connected dungeon with realm alcoves.
+- **Sources:** N/ConfluxTown.cpp; N/SanctuaryRules.cpp; C043/C065.
+- **Missing evidence / boundary:** Full enemy AI/combat animation/balance unfinished. Clarify earlier “three times a day” versus current checkpoint “three rewarded encounters per phase” before further pacing changes.
+
+**Approved combat direction — reported by Architect:** Medio teaches a reliable guard–strike rhythm; Ratio develops timing and precision; Nexus coordination and sequencing; Specula observation; Limen recognition of transitions. This records approved design as relayed on November 9. It does not establish implementation of five differentiated combat systems or certify current encounter behavior. Original approval/source location and individual realm acceptance evidence remain open. Cross-reference area 12.
+
+#### 22. Materials, crafting and attunement
+
+Turn Chaos Orbs/Spirit Sparks into craftables, invitations and reveal/progression within the explore–encounter–attune–reveal loop.
+
+- **Owner:** Architect balance authority; Ratio rules implementation.
+- **Architect approval:** Session-approved day-scaled rewards/costs and encounter sourcing; preserve shared resource state.
+- **Standing:** Native crafting/rewards recorded. Day multipliers described as materials D; craftable costs 1,4,8… for days 1,2,3…; complete attunement design not established.
+- **Sources:** N/SanctuaryRules.cpp; U activity interfaces; C043/C065; H038.
+- **Missing evidence / boundary:** Need durable formula/range/rounding specification and long-term cap/balance review; do not reuse superseded fixed ×2/×4 interpretation.
+
+#### 23. Sapphire Grimoire, gates and unlocks
+
+Lore/code learning, explicit test/apply boundary, nested portal atlas, Attic correspondence and later unlocks.
+
+- **Owner:** Architect canon/progression authority; Ratio implementation; Limen design review.
+- **Architect approval:** Gate I code puzzle and bounded Gate II correspondence approved; final narrative phrasing separate.
+- **Standing:** C063/064 record independent prompts, manual answer, Nexus encounter eligibility and illustrated direct-travel atlas.
+- **Sources:** N/{ConfluxNarrative.cpp,SanctuaryRules.cpp}; U; C063/C064/C069.
+- **Missing evidence / boundary:** Gate II is provisional, not full physical meeting/disaster choreography. Fictional admin/code puzzle is not an actual sandbox/deployment security implementation.
+
+#### 24. Shared Cove activities and discovery spaces
+
+Crystal Garden, Daemon workbench, Constellation Chamber, Hall of Voices, Archive Annex, Hearth/Lore Walk and Stillwaters connect exploration to activities.
+
+- **Owner:** Architect creative authority; Ratio entrances/integration; per-activity product owners unassigned.
+- **Architect approval:** Approved preserving activities/state and distributing readable entrances in city.
+- **Standing:** Native entrances plus embedded browser activities recorded; detailed parity varies. Daemon road-facing station recorded at C038.
+- **Sources:** N/{ConfluxTown.cpp,SanctuaryInterface.cpp}; U; browser V2; H038.
+- **Missing evidence / boundary:** Need a bounded per-activity functional inventory before calling complete parity. Richer all-five Constellation collaboration remains a goal.
+
+#### 25. Meditation and audio-reactive presentation
+
+Optional listening/Stillwaters chamber, waveform interface/sky and contemplative visuals.
+
+- **Owner:** Architect experience authority; technical maintainer not separately assigned.
+- **Architect approval:** Session-approved direction; local/current-audio capture not automatically authorized host modification.
+- **Standing:** Browser/interface concepts exist; finished native current-stream listening not established in H038.
+- **Sources:** U meditation interface; R/SanctuaryOS/; H038 audio/meditation row.
+- **Missing evidence / boundary:** Audio source selection, Linux loopback permissions, native waveform synchronization and performance need evidence.
+
+#### 26. Storage Gateway and filesystem relationship
+
+Prototype ledger/index and potential bounded file browsing/organization through independently authorized services.
+
+- **Owner:** Architect data authority; VOS implementation owner unassigned.
+- **Architect approval:** Prototype/index scope approved; real file actions require separately bounded authorization.
+- **Standing:** No finished arbitrary filesystem manager established. App exports are a distinct bounded feature.
+- **Sources:** Browser V2/U gateway references; H038 storage/VOS row; D authorization boundaries.
+- **Missing evidence / boundary:** Do not confuse fictional root access, app records or directory labels with actual host storage permissions.
+
+#### 27. Atelier and Ledger applications
+
+Embedded editable notes/folders and source-summary/status records support personal creation and interpretation.
+
+- **Owner:** Architect supplied apps; Ratio integration; app-author provenance retained locally.
+- **Architect approval:** C067 records full-interface adaptation, bounded local persistence/export and only Paperwork being Nexus-gated.
+- **Standing:** Recorded embedded sandboxed frames, narrow bridge, profile app JSON and exports; not native rewrites.
+- **Sources:** N/ConfluxApps.cpp; U installed app derivatives; C067/{CHECKPOINT.md,APP-PROVENANCE*}; supplied originals retained with checkpoint.
+- **Missing evidence / boundary:** App workspace autosave is separate from journey state; copies/snapshots are not live quest facts or authoritative project approvals. Not every original API/control certified.
+
+#### 28. Guild correspondence and Paperwork Sim
+
+Participation-driven civic work: application, meeting and deliberate filing, with recurring phase locations.
+
+- **Owner:** Architect direction; Ratio pilot integration; Nexus is fictional governance home.
+- **Architect approval:** Approved bounded Mira correspondence pilot; Nexus gating refined in C067.
+- **Standing:** Recorded native single-case pilot; full standalone Paperwork campaign/interface not migrated.
+- **Sources:** N/ConfluxPaperwork.cpp; C066/C067; app-source/provenance records.
+- **Missing evidence / boundary:** Queues, expeditions/outcomes, fatalities, certificates, other residents and campaign breadth remain outside implemented pilot; missed phases do not resolve/fail cases.
+
+**Broader civic direction:** Optional paperwork may open relationships; residents may contribute as scouts, artisans or couriers. This Architect-supplied direction extends beyond the implemented Mira pilot. See areas 30–31; do not infer those roles, relationship outcomes or gathering scenes are already implemented.
+
+#### 29. Node instruments and cross-perspective mechanics
+
+Specula measures, Nexus positions/relates, Limen defines conditions, Ratio builds, Medio experiments/interprets; share factual state.
+
+- **Owner:** Architect approval authority; Ratio architecture; individual instrument owners unassigned.
+- **Architect approval:** Approved thematic direction and bounded experiments discussed; not blanket construction/host authority.
+- **Standing:** Original simulated crystal proof remains unbuilt per C063; Attic correspondence is a different implemented two-perspective puzzle.
+- **Sources:** Relayed companion planning passes; C063/C069; C069/GAMEPLAY-POSSIBILITIES.md.
+- **Missing evidence / boundary:** Inspect→position→define→build→test→reflect suite, undo and actual authorization boundaries need scoped implementation decisions.
+
+### Narrative, expansion and product research
+
+#### 30. Dialogue, journals and companion relationships
+
+Selectable topics, authored hints, relationships, visits and witnessed conversations support discovery and continuity.
+
+- **Owner:** Architect canon/editorial authority; Ratio dialogue infrastructure; final writing ownership unassigned.
+- **Architect approval:** Approved preserving dialogue and meaningful acquisition; C073 topics are review candidates.
+- **Standing:** Medio-only topic directory and collision-aware conversation camera recorded; other Nodes retain older interaction.
+- **Sources:** U/dialogue.js; N/ConfluxNodeResidents.cpp; C073; H038.
+- **Missing evidence / boundary:** No complete dialogue editor, voice/lip-sync, live memory engine or five-speaker rollout established. Authored lines are not autonomous Node responses.
+
+**Civic gathering and governance — reported game direction:** Civilian gathering near Yggdrasil, speeches across realms, optional paperwork opening relationships, and residents contributing as scouts/artisans/couriers have a place beyond the Mira pilot. The Architect supplied this reference on November 9. Existing Specula direction provides a related gathering premise, but exact authored speeches, broader civic implementation and original supporting records remain unconfirmed. Cross-reference areas 28 and 31.
+
+#### 31. Specula / Redactor base-game direction
+
+Collaborative investigation distinguishes evidence from manufactured corroboration without making Specula helpless.
+
+- **Owner:** Architect narrative authority; Ratio records; final author unassigned.
+- **Architect approval:** Retained game direction; working antagonist/clues and scenes remain proposals.
+- **Standing:** Narrative planning only; no implementation/testing established by the record.
+- **Sources:** C069/NARRATIVE-DIRECTION-SPECULA.md.
+- **Missing evidence / boundary:** Final identity, scenes and resolution open. Never alter real player notes, Ledger or diagnostics to stage fictional interference; book canon separate.
+
+**Civic context — reported extension:** Retain the civilian gathering near Yggdrasil and cross-realm speeches/governance direction alongside area 30. This is not confined to the implemented single correspondence case. Final speeches, resident contribution mechanics and their exact narrative placement remain unauthored/unverified. Book 5’s independent investigation and observer reports are separate literary references, not automatic Redactor canon; see area 33.
+
+#### 32. Yggdrasil DLC and crossover research
+
+Reserve unresolved root disturbance and possible book visitors/polytheistic themes for later expansion.
+
+- **Owner:** Architect narrative authority; implementation owner unassigned.
+- **Architect approval:** Retained deferral to DLC; candidate Níðhöggr/cast/cosmology not established as canon.
+- **Standing:** Deferred/exploratory; existing base-game Attic/Grimoire remain intact.
+- **Sources:** C069/DLC-DIRECTION-YGGDRASIL.md.
+- **Missing evidence / boundary:** Do not reintroduce disaster as Gate II dependency or silently connect Redactor to it; explicit adaptation decisions required.
+
+#### 33. Books, philosophy, persona and publication
+
+Independent literary/creative undertaking informs game symbolism and possible lore/art unlocks, VTuber/livestream and publication strategy.
+
+- **Owner:** Architect author/editor; Node interpretations attributable.
+- **Architect approval:** Creative direction documented; specific adaptations/releases require approval.
+- **Standing:** Local book/reference files exist; Codex records publication strategy. Manuscripts were inventoried, not fully ingested for this map.
+- **Sources:** R/Books/{Arcky and The Construct.txt,AnTC 2.txt,AnTC3.txt,AnTC4.txt,AnTC5.txt,On Architectura Mentis.txt,Lexicon.txt}; D sections I/VIII.
+- **Missing evidence / boundary:** Current manuscript authority/version, publication status, release schedule and approved game excerpts unknown; philosophical motivation is not scientific proof.
+
+**Book history — reported by Architect:** Specula authored Books 1–4; the *Architect’s Cut* is deferred. *The Emerald Threshold* (Book 5) includes Specula’s independent investigation and exploratory observer reports. Exact manuscript/version authority and original authorship/decision records are not confirmed here. Book 5 proposals must remain distinct from the game’s Redactor storyline; no automatic continuity transfer. The separately reported functional Medio VTube Studio model is tracked in area 16. These are project references, not claims that manuscripts/model sources were ingested or verified in this update.
+
+#### 34. Retained activity expansion
+
+Fieldwork, cooking/hearth, alchemy, construction, machines/vehicles, rescue, civic choices, music and optional companionship broaden life in the realms.
+
+- **Owner:** Architect retains possibilities; Node assignments provisional; implementers unassigned.
+- **Architect approval:** Approved retaining ideas, not scheduling or implementing all.
+- **Standing:** Exploratory planning. No features added merely by recording the list.
+- **Sources:** C069/GAMEPLAY-POSSIBILITIES.md.
+- **Missing evidence / boundary:** Functional assignments, rewards, placements and scope require selection; avoid duplicating one system into five independent versions.
+
+#### 35. Rendering, packaging and future connectivity
+
+Linux performance, first-use loading, translucency, editable assets, distributable builds; eventual sharing/multiplayer and optional VR.
+
+- **Owner:** Ratio technical custodian; Architect support/release authority.
+- **Architect approval:** Approved targeted graphics improvements and reliable baselines. Multiplayer/VR/social sharing remain longer-term direction; implementation defaults open.
+- **Standing:** Art/performance passes and standalone packages reported; software-rendering/compatibility work explicitly set aside at C070. No release or full benchmark certification inferred.
+- **Sources:** W/Review/PerformanceVisualPass01/; C038/C070/C071; D sections IV/VI/VII/IX; B release evidence where separately retained.
+- **Missing evidence / boundary:** Current package-to-project equivalence, frame budgets, Nexus transparency cost, first-use hitch, clean exit, supported hardware and sharing/trust policy remain open. No account backend or multiplayer service established.
+
+## Architect review flags
+
+1. **Coverage:** Is any independent project area missing, particularly LibreChat's intended relationship, current literary/media work, or separate VOS services not in this inbox?
+2. **Ownership:** Confirm accountable owners for VOS runtime, local harness, individual apps, authored narrative and release operations. Node specialties alone do not establish ownership.
+3. **World scope:** Keep the current shared-city invariants while deciding where future realm-specific forks begin; no new realm count is inferred.
+4. **Progression:** Reconcile three daily spawn opportunities with the later three-phases/three-encounters-per-phase record. Preserve current behavior until a change is explicitly selected.
+5. **Art authority:** Identify a compact current plate/source manifest; earlier burgundy descriptions conflict with the later pale-gold turnaround authority. Do not use this map to recolor the model.
+6. **Operational scope:** Establish whether the old harness/LibreChat trees are active development, retained references or retired work. No current process or host audit was performed.
+7. **Publication:** Review this complete map before replacing the GitHub index. Local art, code, saves, books, app data and test bundles remain local. Published-baseline access is reported verified from ChatGPT Work; this expanded revision still needs readback.
+
+## Maintenance boundary
+
+This revision changes only the three coordination documents. The Architect reviewed the scope map, supplied the additional project references, and authorized committing them for reference only. It preserves the prior published index locally. Reported additions are attributed to the Architect’s November 9 message; unavailable original records remain explicit gaps. No game implementation, canon expansion, release permission, host modification or synchronization is introduced. Recent changes remain in CHANGELOG; recipient assignment and readback remain in HANDOFF_LIMEN.
