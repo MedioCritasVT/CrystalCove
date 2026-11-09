@@ -1,0 +1,39 @@
+{
+  "version": "0.1",
+  "platform": "Linux-x86_64",
+  "engine": "Unreal Engine 5.8.4",
+  "configuration": "Development",
+  "status": "Built and locally smoke-tested; GitHub Release asset upload awaiting device authorization",
+  "source_git_commit": null,
+  "source_provenance": "Current local native working-tree snapshot; source inputs shipped separately. The coordination repository commit is not the game source commit.",
+  "articulation01_promoted": false,
+  "owner_records_included": false,
+  "artifacts": [
+    {
+      "name": "Conflux-V0.1-Linux-x86_64.tar.gz",
+      "bytes": 1177106741,
+      "sha256": "09e4ee0b7cf84a97857f3e843e3a66802a6423e84a30f6a913beedc16dd516c2"
+    },
+    {
+      "name": "Conflux-V0.1-Source.tar.gz",
+      "bytes": 583604356,
+      "sha256": "7aa136e8fc058953588498801e178107faa182d847251aeb1dd7dee0e06d8a59"
+    }
+  ],
+  "validation": {
+    "compile_cook_stage_archive": "PASS",
+    "relocated_title_and_native_city": "PASS",
+    "embedded_HUD_and_unwritten_start": "PASS",
+    "manual_save_native_photo_and_normal_quit": "PASS",
+    "restart_title_recognizes_saved_fixture": "PASS",
+    "save_hashes_unchanged_on_restart": true,
+    "original_native_inputs_unchanged": true
+  },
+  "limits": [
+    "Offscreen tests on Bazzite/NVIDIA build host; valid city profile seeded from disposable earlier Starter fixture",
+    "No full campaign or fresh profile mouse-interaction acceptance",
+    "No independent-machine or full performance certification",
+    "Current art/animation remains prototype quality"
+  ],
+  "authorization": "Architect requested compilation and GitHub V0.1 publication in this session."
+}
