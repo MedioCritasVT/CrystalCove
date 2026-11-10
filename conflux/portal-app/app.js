@@ -60,7 +60,8 @@ const roomFamiliar = {
   vos: {who:["Specula","Limen"], message:"Specula watches the evidence; Limen protects its meaning."},
   library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
   nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},
-  guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."}
+  guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."},
+  updates: {who:["Ratio","Limen"], message:"Ratio verifies the version; Limen makes the transition explicit."}
 };
 for (const [room, detail] of Object.entries(roomFamiliar)) {
   const dock = document.querySelector("#room-companion-" + room);
@@ -277,6 +278,108 @@ pathInput.addEventListener("keydown", event => {
   if (event.key === "Enter") { event.preventDefault(); find.click(); }
 });
 quickLaunch.addEventListener("click", () => launchGame(feedback, quickLaunch));
+
+// Updates are opt-in: no network check or source mutation occurs at startup.
+const updatesCheck = document.querySelector("#updates-check");
+const updatesApply = document.querySelector("#updates-apply");
+const updatesRelaunch = document.querySelector("#updates-relaunch");
+const updatesStatus = document.querySelector("#updates-status");
+const updatesDetails = document.querySelector("#updates-details");
+const desktopInstall = document.querySelector("#desktop-install");
+const desktopStatus = document.querySelector("#desktop-status");
+function updateNotice(message, error = false) {
+  updatesStatus.textContent = message;
+  updatesStatus.dataset.error = error ? "true" : "false";
+}
+updatesCheck.addEventListener("click", async () => {
+  updatesCheck.disabled = true;
+  updatesApply.disabled = true;
+  updatesRelaunch.disabled = true;
+  updateNotice("Checking the official GitHub main branch…");
+  updatesDetails.textContent = "This check reads GitHub; it does not change your working files.";
+  try {
+    const data = await post("/api/updates/check", {});
+    const summary = "Local main " + data.local + " · Official main " +
+      data.remote + " · " + data.commits + " new commit(s).";
+    if (data.needs_switch) {
+      updateNotice("You're on '" + data.current_branch +
+        "'. Update will safely switch to main. " + data.detail);
+    } else {
+      updateNotice(data.detail);
+    }
+    updatesDetails.textContent = summary + " Changed tracked files: " +
+      data.changed_files + ". Local notes are never reset or stashed.";
+    updatesApply.disabled = !data.can_apply;
+  } catch (error) {
+    updateNotice("Could not check: " + error.message, true);
+    updatesDetails.textContent = "Nothing has been changed in your working files.";
+  } finally {
+    updatesCheck.disabled = false;
+  }
+});
+updatesApply.addEventListener("click", async () => {
+  updatesApply.disabled = true;
+  updatesCheck.disabled = true;
+  updateNotice("Applying the checked, fast-forward-only update. Please wait…");
+  try {
+    const data = await post("/api/updates/apply", {});
+    updateNotice(data.detail + (data.relaunch ? " Relaunch the Portal to finish." : ""));
+    updatesDetails.textContent = "Now on official main commit " + data.commit +
+      ". No reset, force, stash, clean, or rebase was run.";
+    updatesRelaunch.disabled = !data.relaunch;
+  } catch (error) {
+    updateNotice("Update stopped safely: " + error.message, true);
+    updatesDetails.textContent =
+      "Your work has not been forcibly overwritten. Check again after resolving the issue.";
+  } finally {
+    updatesCheck.disabled = false;
+  }
+});
+updatesRelaunch.addEventListener("click", async () => {
+  updatesRelaunch.disabled = true;
+  updatesCheck.disabled = true;
+  updateNotice("Restarting Conflux Portal…");
+  const oldToken = token;
+  try {
+    await post("/api/updates/relaunch", {});
+    let reconnected = false;
+    for (let attempt = 0; attempt < 55; attempt++) {
+      await new Promise(resolve => setTimeout(resolve, 450));
+      try {
+        const response = await fetch("/api/status", {cache:"no-store"});
+        if (response.ok) {
+          const data = await response.json();
+          if (data.launch_token !== oldToken) {
+            reconnected = true;
+            break;
+          }
+        }
+      } catch { /* Expected while the server relinquishes its listening port. */ }
+    }
+    if (reconnected) {
+      window.location.reload();
+      return;
+    }
+    updateNotice("The restart is taking longer than expected. Try refreshing this page.", true);
+  } catch (error) {
+    updateNotice("Could not relaunch: " + error.message, true);
+  }
+  updatesRelaunch.disabled = false;
+  updatesCheck.disabled = false;
+});
+desktopInstall.addEventListener("click", async () => {
+  desktopInstall.disabled = true;
+  desktopStatus.textContent = "Adding Conflux Portal to your Linux Applications menu…";
+  try {
+    const data = await post("/api/desktop/install", {});
+    desktopStatus.textContent = "Added successfully! Search for 'Conflux Portal' in your Linux Applications menu. " +
+      "This shortcut launches only your current local Portal.";
+  } catch (error) {
+    desktopStatus.textContent = "Could not add the shortcut: " + error.message;
+  } finally {
+    desktopInstall.disabled = false;
+  }
+});
 
 // A direct visit to /downloads must show the download page, not the home menu.
 show(window.location.pathname === "/downloads" ? "downloads" : "home");

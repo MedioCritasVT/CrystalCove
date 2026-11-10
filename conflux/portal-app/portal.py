@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Conflux Portal: a Linux localhost-only launcher and project entrance."""
 import json
+import time
+import webbrowser
 import os
 import secrets
 import subprocess
@@ -12,11 +14,14 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 import game_locator
+from app_updater import UpdateManager, UpdateError
+from install_desktop_launcher import install_desktop_launcher
 
 ROOT = Path(__file__).resolve().parent
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
+UPDATES = UpdateManager(ROOT.parents[1])
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -156,7 +161,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         route = urlsplit(self.path).path
         if route not in ("/api/launch", "/api/game/browse",
-                         "/api/game/find", "/api/game/register"):
+                         "/api/game/find", "/api/game/register",
+                         "/api/updates/check", "/api/updates/apply",
+                         "/api/updates/relaunch", "/api/desktop/install"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -164,6 +171,33 @@ class Handler(BaseHTTPRequestHandler):
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
         try:
+            if route == "/api/updates/check":
+                return self.respond(200, UPDATES.check())
+            if route == "/api/updates/apply":
+                return self.respond(200, UPDATES.apply())
+            if route == "/api/desktop/install":
+                entry = install_desktop_launcher()
+                return self.respond(200, {"installed": True,
+                                          "desktop_entry": entry})
+            if route == "/api/updates/relaunch":
+                if not UPDATES.restart_needed:
+                    return self.respond(409, {"error": "Apply an update before relaunching."})
+                # Spawn the newly checked-out Portal, which waits for this
+                # server to release the stable port. Never execute a shell.
+                state = Path.home() / ".local" / "state" / "conflux-portal"
+                state.mkdir(parents=True, exist_ok=True)
+                with (state / "portal.log").open("a", encoding="utf-8") as log:
+                    child = subprocess.Popen(
+                        [sys.executable, str(ROOT / "portal.py"), "--handoff"],
+                        cwd=str(ROOT), start_new_session=True,
+                        stdin=subprocess.DEVNULL, stdout=log,
+                        stderr=subprocess.STDOUT, close_fds=True)
+                self.respond(200, {"relaunching": True, "pid": child.pid})
+                def stop_old_server():
+                    time.sleep(0.2)
+                    self.server.shutdown()
+                threading.Thread(target=stop_old_server, daemon=True).start()
+                return
             if route == "/api/game/browse":
                 directory = game_locator.choose_folder()
                 if directory is None:
@@ -197,6 +231,8 @@ class Handler(BaseHTTPRequestHandler):
                              stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                              stderr=subprocess.DEVNULL, close_fds=True)
             return self.respond(200, {"started": True, "id": "conflux-game"})
+        except UpdateError as exc:
+            return self.respond(409, {"error": str(exc)})
         except game_locator.LocateError as exc:
             return self.respond(400, {"error": str(exc)})
         except (OSError, ValueError, RuntimeError):
@@ -215,10 +251,24 @@ if __name__ == "__main__":
             raise ValueError("port out of range")
     except ValueError:
         raise SystemExit("CONFLUX_PORTAL_PORT must be 1024–65535.")
-    try:
-        server = ThreadingHTTPServer((HOST, port), Handler)
-    except OSError as exc:
-        raise SystemExit("Could not bind Portal to 127.0.0.1:%d: %s" % (port, exc))
+    handoff = "--handoff" in sys.argv[1:]
+    if handoff:
+        deadline = time.monotonic() + 35
+        while True:
+            try:
+                server = ThreadingHTTPServer((HOST, port), Handler)
+                break
+            except OSError as exc:
+                if time.monotonic() >= deadline:
+                    raise SystemExit("Relaunch failed to bind port %d: %s" % (port, exc))
+                time.sleep(0.25)
+    else:
+        try:
+            server = ThreadingHTTPServer((HOST, port), Handler)
+        except OSError as exc:
+            raise SystemExit("Could not bind Portal to 127.0.0.1:%d: %s" % (port, exc))
+    if "--open-browser" in sys.argv[1:]:
+        webbrowser.open("http://127.0.0.1:%d" % port)
     print("Conflux Portal: http://127.0.0.1:%d" % server.server_port, flush=True)
     print("Ctrl+C to stop; browser storage uses this exact port.", flush=True)
     try:

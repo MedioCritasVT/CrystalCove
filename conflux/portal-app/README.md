@@ -8,11 +8,27 @@ Python 3.10 or later is required. From the cloned **CrystalCove repository root*
 
 ```bash
 cd conflux/portal-app
-python3 -m unittest test_portal.py -v
+python3 -m unittest discover -p 'test_*.py' -v
 python3 portal.py
 ```
 
 If you are already in `conflux/portal-app`, skip the `cd` command. Open `http://127.0.0.1:8765`. Keep the port stable: the bundled Atelier and Ledger each use browser-local storage, which is specific to your browser profile and the exact origin (including port).
+
+## No-terminal updates and desktop access (new preview)
+
+**One-time setup:** Start the Portal normally from your cloned repository. In the new **Updates & Setup** room, click **Add to Applications Menu**. A user-local `Conflux Portal` entry is created for KDE and other compatible Linux desktop environments. No `sudo` is used. Search for **Conflux Portal** in your Linux application menu thereafter. It opens your already-running instance if present, or starts it on `127.0.0.1:8765` and opens your default browser.
+
+**Update sequence:**
+
+1. **Check for Updates** contacts the official public CrystalCove **main** repository over HTTPS. It does not require an SSH key passphrase or update working files.
+2. **Update** explicitly fast-forwards the checked commit. If you're previewing another branch, it first attempts a normal, safe switch to `main`. It will refuse branch divergence or changes that Git says would be overwritten.
+3. **Relaunch** starts the freshly updated Portal on the same local port and refreshes the browser tab when the new server responds.
+
+No step silently resets, stashes, cleans, rebases or forces your local working tree. Your existing `.obsidian` files and personal notes remain as-is; if Git detects a conflict, it stops and reports the reason rather than discarding work. A check is not an automatic update and a published commit is not an approval to deploy an external operating-system service. The buttons update the **cloned repository**, not the separately downloaded native Unreal game.
+
+The updater requires a real Git checkout with a `main` branch and a verified `origin` pointing to `MedioCritasVT/CrystalCove` on GitHub (standard SSH and HTTPS forms are accepted). ZIP-only installations cannot self-update this way yet. The update fetch uses GitHub's public HTTPS address even if your normal Git remote uses SSH, avoiding noninteractive passphrase prompts. Git and a reachable GitHub connection are required.
+
+For troubleshooting, desktop-launched processes write a local log under `~/.local/state/conflux-portal/portal.log`. Browser-local Atelier/Ledger data stays bound to `http://127.0.0.1:8765` when you use the same browser profile. Keep exports/backups of important workspace content.
 
 ## Start playing
 

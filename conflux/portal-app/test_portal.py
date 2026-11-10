@@ -191,6 +191,69 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(len(entries), 2)
         self.assertEqual(entries[0]["id"], "my-local-tool")
 
+    def test_update_page_and_authenticated_check(self):
+        status, html = self.get("/")
+        self.assertEqual(status, 200)
+        for marker in ('id="updates"', 'id="updates-check"',
+                       'id="updates-apply"', 'id="updates-relaunch"',
+                       'id="desktop-install"'):
+            self.assertIn(marker, html)
+        for route in ("/api/updates/check", "/api/updates/apply",
+                      "/api/updates/relaunch", "/api/desktop/install"):
+            request = Request(self.base + route, data=b"{}", method="POST",
+                              headers={"Content-Type": "application/json"})
+            with self.assertRaises(HTTPError) as err:
+                urlopen(request, timeout=3)
+            self.assertEqual(err.exception.code, 403)
+        with mock.patch.object(portal.UPDATES, "check",
+                               return_value={"status": "current", "can_apply": False}) as check:
+            _, data = self.post("/api/updates/check", {})
+            self.assertEqual(data["status"], "current")
+            check.assert_called_once_with()
+        with mock.patch.object(portal.UPDATES, "apply",
+                               return_value={"updated": True, "relaunch": True}) as apply:
+            _, data = self.post("/api/updates/apply", {})
+            self.assertTrue(data["relaunch"])
+            apply.assert_called_once_with()
+
+    def test_relaunch_requires_completed_update(self):
+        previous = portal.UPDATES.restart_needed
+        portal.UPDATES.restart_needed = False
+        try:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/updates/relaunch", {})
+            self.assertEqual(err.exception.code, 409)
+        finally:
+            portal.UPDATES.restart_needed = previous
+
+    def test_approved_relaunch_spawns_a_waiting_local_process(self):
+        previous = portal.UPDATES.restart_needed
+        portal.UPDATES.restart_needed = True
+        try:
+            with mock.patch("portal.subprocess.Popen") as spawned:
+                spawned.return_value.pid = 12345
+                with mock.patch.object(portal.Path, "home",
+                                       return_value=Path(self.tmp.name)):
+                    status, data = self.post("/api/updates/relaunch", {})
+                self.assertEqual(status, 200)
+                self.assertTrue(data["relaunching"])
+                self.assertEqual(data["pid"], 12345)
+                argv = spawned.call_args.args[0]
+                self.assertIsInstance(argv, list)
+                self.assertEqual(argv[-1], "--handoff")
+                self.assertTrue(argv[1].endswith("portal.py"))
+                self.assertTrue(spawned.call_args.kwargs["start_new_session"])
+        finally:
+            portal.UPDATES.restart_needed = previous
+
+    def test_desktop_shortcut_is_only_installed_on_explicit_click(self):
+        with mock.patch("portal.install_desktop_launcher",
+                        return_value="/fake/user/applications/conflux-portal.desktop") as install:
+            status, data = self.post("/api/desktop/install", {})
+            self.assertEqual(status, 200)
+            self.assertTrue(data["installed"])
+            install.assert_called_once_with()
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         script = Path(__file__).with_name("app.js")

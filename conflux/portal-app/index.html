@@ -224,13 +224,33 @@ nav button[aria-current="page"]{border-left:3px solid #e6d6d0;padding-left:10px}
   @keyframes pet-bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
 }
 
+
+/* Safe updates: Ratio precision and Limen's explicit transition boundary. */
+body[data-view="updates"]{
+ --ambient:var(--blue);--ambient2:var(--green);
+ --room-sky:#1d3d49;--room-mid:#1c3344;--room-floor:#122534;
+ --room-fog:rgba(132,191,243,.25);--room-fog-alt:rgba(156,222,192,.23)
+}
+#updates{--accent:var(--blue);--echo:var(--green)}
+#updates .card,#updates .download-panel,#updates .finder{
+ background:linear-gradient(133deg,#1b3447,#203b40);
+ border-color:#588e9c
+}
+#updates h3{color:#b6e1fb}
+#updates .action{background:linear-gradient(115deg,var(--blue),#b1e3d6)}
+#updates .action.secondary{color:#f0fbff;background:transparent;border-color:var(--green)}
+#updates .action:disabled{opacity:.5;filter:none;cursor:not-allowed}
+#updates-status[data-error="true"]{border-color:#f2aaac;color:#ffe0df}
+#desktop-status{margin-top:15px;color:#c9f1e0}
+#updates-details{overflow-wrap:anywhere}
+
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
-<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="guide">Player Manual</button>
+<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Work in progress — long-term development.</strong> This is a Linux-only preview. Some features are demonstrations or placeholders. More platforms, art, services and interactions are planned; please return for future updates.</div>
 <section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Play the available game, open Atelier and Ledger right here, and discover the books and creative work. No VOS service starts automatically.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
-<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p>The playable Linux game is distributed separately from this portal.</p><button class="action" data-go="downloads">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article></div></section>
+<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p>The playable Linux game is distributed separately from this portal.</p><button class="action" data-go="downloads">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
 
 <section class="panel" id="downloads" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Playable release · Linux</div><h2>Get Conflux V0.1</h2>
@@ -291,5 +311,36 @@ nav button[aria-current="page"]{border-left:3px solid #e6d6d0;padding-left:10px}
 <h3>What to expect</h3>
 <p>The world, characters and menus are evolving. Some locations and progression systems are prototypes, and the current game is Linux-only. If something breaks, note the game version, Linux distribution, graphics card, location in the game, and steps that led to the problem.</p>
 <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/portal-app/PLAYER_MANUAL.md" target="_blank" rel="noopener noreferrer">View the portable Markdown Player Manual</a></p>
+</section>
+
+<section class="panel" id="updates" hidden>
+<div class="room-hero">
+  <div class="room-words">
+    <div class="eyebrow">Ratio × Limen · trusted transitions</div>
+    <h2>Updates & Setup</h2>
+    <p class="lead">Keep your Conflux workspace current, without Git commands. Check first, choose whether to update, then relaunch the Portal when you're ready.</p>
+  </div>
+  <aside class="room-companions" id="room-companion-updates" data-room="updates" aria-label="Node companions for updates"></aside>
+</div>
+<div class="download-panel">
+  <h3>Keep Conflux current</h3>
+  <p>Updates come only from the official public CrystalCove <strong>main</strong> branch. A check retrieves GitHub's latest commit information, but does not change your working files. Nothing installs automatically.</p>
+  <div class="row-actions">
+    <button class="action" id="updates-check" type="button">1 · Check for Updates</button>
+    <button class="action secondary" id="updates-apply" type="button" disabled>2 · Update</button>
+    <button class="action secondary" id="updates-relaunch" type="button" disabled>3 · Relaunch</button>
+  </div>
+  <p id="updates-status" class="status-line" role="status" aria-live="polite">No update check has been run yet.</p>
+  <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
+  <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
+</div>
+<div class="finder">
+  <div class="eyebrow">One-time setup · Linux</div>
+  <h3>Open Conflux from your Applications menu</h3>
+  <p>Install a shortcut for your current Linux user. Afterward, use your desktop's app search to open Conflux Portal. It starts the local service or reuses the one already running, then opens Firefox or your default browser.</p>
+  <button class="action" id="desktop-install" type="button">Add to Applications Menu</button>
+  <p id="desktop-status" role="status" aria-live="polite">No system-wide install, administrator password, or root permissions needed.</p>
+  <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
+</div>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script></body></html>
