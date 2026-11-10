@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conflux Ledger · Architect's Console</title>
+<style>
+:root{
+  color-scheme:dark;
+  /* RATIO x LIMEN: lucid blue and threshold green with a trace of violet. */
+  --bg:#09131b;
+  --bg-soft:#0e1c26;
+  --panel:#122637ee;
+  --panel-soft:#183445f2;
+  --panel-quiet:#18333ef2;
+  --border:#345a72;
+  --border-soft:#4a7689;
+  --ratio-blue:#84bff3;
+  --ratio-blue-soft:#d8edfc;
+  --limen-green:#9cdec0;
+  --limen-green-deep:#67b596;
+  --ink:#edf7f8;
+  --muted:#aec4d0;
+  --muted-2:#839fac;
+  --danger:#d7a4a7;
+  --shadow:0 14px 40px rgba(0,0,0,.28);
+  --radius:18px;
+  --radius-small:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(54,126,173,.25), transparent 30%),
+    radial-gradient(circle at 15% 0%, rgba(97,77,134,.13), transparent 26%),
+    linear-gradient(180deg, #09131b, #0d1e2a 28%, #09131b 100%);
+  color:var(--ink);
+  font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button,input,textarea,select{font:inherit}
+button{
+  cursor:pointer;
+  color:var(--ink);
+  background:#1c3b4b;
+  border:1px solid #487287;
+  border-radius:12px;
+  padding:10px 14px;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+button:hover{background:#285367;border-color:#77a3b7}
+button:active{transform:translateY(1px)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{
+  outline:2px solid var(--ratio-blue);
+  outline-offset:3px;
+}
+button.primary{
+  background:linear-gradient(180deg,#448f78,#276956);
+  border-color:#91d2b4;
+  color:#f4fffc;
+}
+button.primary:hover{background:linear-gradient(180deg,#4d9e83,#347f68)}
+button.subtle{
+  background:rgba(255,255,255,.03);
+  border-color:#416476;
+}
+button.danger{border-color:#96666a;color:#ffd9db}
+button:disabled{opacity:.45;cursor:not-allowed}
+a{color:var(--limen-green)}
+input,textarea,select{
+  width:100%;
+  background:#0b202b;
+  color:var(--ink);
+  border:1px solid var(--border-soft);
+  border-radius:12px;
+  padding:11px 12px;
+}
+textarea{resize:vertical;min-height:120px}
+#raw{min-height:250px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+#summary{min-height:108px}
+label{display:block;margin:0 0 6px;font-size:12px;color:#c4dbe1}
+small,.tiny{color:var(--muted);font-size:12px}
+p{margin:0 0 14px;color:#c6dce4}
+header.shell{
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(16px);
+  background:rgba(8,20,30,.81);
+  border-bottom:1px solid rgba(140,160,178,.14);
+}
+.topbar{
+  max-width:1320px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.sigil{
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  color:var(--ratio-blue);
+  border:1px solid rgba(132,191,243,.5);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border-radius:14px;
+  font-size:22px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.brand{display:flex;flex-direction:column;gap:2px}
+.brand h1{
+  margin:0;
+  font:normal 28px Georgia,"Times New Roman",serif;
+  color:var(--ratio-blue-soft);
+  letter-spacing:.3px;
+}
+.brand small{letter-spacing:1.8px;font-size:10px;color:var(--muted);text-transform:uppercase}
+.status-pill{
+  margin-left:auto;
+  color:var(--muted);
+  font-size:12px;
+  padding:8px 12px;
+  border:1px solid rgba(128,151,168,.25);
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+}
+.actions-bar{display:flex;gap:8px;flex-wrap:wrap}
+.wrapper{max-width:1320px;margin:auto;padding:22px 20px 28px}
+.hero{
+  display:grid;
+  grid-template-columns:minmax(300px,1.5fr) minmax(260px,.9fr);
+  gap:18px;
+  margin-bottom:18px;
+}
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--panel-soft));
+  border:1px solid rgba(83,140,161,.4);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  min-width:0;
+}
+.card-inner{padding:20px}
+.hero-main{
+  position:relative;
+  overflow:hidden;
+}
+.hero-main::after{
+  content:"";
+  position:absolute;inset:auto -60px -70px auto;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle, rgba(127,201,163,.1), transparent 65%);
+  pointer-events:none;
+}
+.eyebrow{
+  display:block;
+  margin-bottom:8px;
+  font:600 10px/1.4 system-ui,sans-serif;
+  letter-spacing:2px;
+  color:var(--ratio-blue);
+  text-transform:uppercase;
+}
+.hero-main h2,.section-title{
+  margin:0 0 10px;
+  font:normal 32px/1.1 Georgia,"Times New Roman",serif;
+  color:var(--ratio-blue-soft);
+}
+.hero-main p{max-width:64ch;color:#c5dde4}
+.hero-main .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.welcome-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+.mini-stat{
+  border:1px solid rgba(99,122,138,.32);
+  border-radius:16px;
+  padding:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+}
+.mini-stat .value{
+  font:normal 28px/1 Georgia,serif;
+  color:var(--ratio-blue-soft);
+}
+.mini-stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.hero-side{
+  background:linear-gradient(180deg,#0d2837f0,#123a42f2);
+}
+.quick-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.quick-list li{
+  padding:10px 12px;
+  border:1px solid rgba(95,119,136,.24);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+}
+.quick-list strong{display:block;color:#edf7f9;font-size:13px;margin-bottom:3px}
+.quick-list span{color:var(--muted);font-size:12px}
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(320px,.85fr);
+  gap:18px;
+  align-items:start;
+}
+.stack{display:grid;gap:18px}
+.section-card .card-inner{padding:18px}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px;flex-wrap:wrap;
+}
+.section-head p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.workflow{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.workflow-step{
+  padding:12px 13px;
+  border:1px solid rgba(95,119,136,.24);
+  border-radius:14px;
+  background:rgba(255,255,255,.022);
+}
+.workflow-step b{display:block;color:#acd5fa;font-size:12px;margin-bottom:4px}
+.workflow-step span{color:var(--muted);font-size:12px}
+.notice{
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(120,152,176,.08);
+  border:1px solid rgba(141,171,196,.18);
+  color:#d4eae6;
+  font-size:12.5px;
+}
+.notice.warn{border-color:rgba(213,164,167,.35);background:rgba(176,109,113,.07)}
+.entry-grid{display:grid;gap:14px}
+.subsection{
+  padding:16px;
+  border:1px solid rgba(92,114,130,.22);
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+}
+.subsection h3{
+  margin:0 0 6px;
+  font:normal 20px Georgia,serif;
+  color:#aedaf4;
+}
+.subsection p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.line{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.line .grow{flex:1 1 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sidebar .panel-block + .panel-block{margin-top:14px}
+.panel-block{
+  padding:16px;
+  border:1px solid rgba(93,114,132,.22);
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+}
+.panel-block h3{
+  margin:0 0 10px;
+  font:normal 20px Georgia,serif;
+  color:#aedaf4;
+}
+.records{display:flex;flex-direction:column;gap:8px;max-height:440px;overflow:auto;padding-right:2px}
+.record{
+  display:block;width:100%;text-align:left;
+  background:#112c3c;
+  padding:12px 13px;
+  border:1px solid #365e75;
+  border-radius:14px;
+}
+.record:hover{background:#194156}
+.record.selected{border-color:var(--limen-green);background:#204c5d}
+.record strong{display:block;font-size:13px;color:#d9ecfc}
+.record small{display:block;margin-top:4px;color:var(--muted);font-size:11px}
+.badge{
+  display:inline-block;
+  margin-top:8px;
+  border:1px solid rgba(126,164,157,.48);
+  color:#bdebd3;
+  font-size:10px;
+  padding:3px 7px;
+  border-radius:999px;
+}
+.empty{
+  padding:28px 14px;
+  color:#9abac7;
+  text-align:center;
+  border:1px dashed rgba(104,126,142,.4);
+  border-radius:14px;
+  background:rgba(255,255,255,.015);
+}
+.inspector .card-inner{padding:18px 18px 16px}
+.inspector-header{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px;
+}
+.inspector-header h2{margin:0;font:normal 28px Georgia,serif;color:var(--ratio-blue-soft)}
+.entry-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 16px;
+  font-size:12px;
+  color:#bdd7df;
+  margin-bottom:14px;
+}
+.entry-meta div{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.025);border:1px solid rgba(100,122,138,.18)}
+.entry-meta b{color:#a6dfc4}
+.detail-block + .detail-block{margin-top:14px}
+.detail-block h3{margin:0 0 8px;font:normal 18px Georgia,serif;color:#aedaf4}
+.detail{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#0c2430;
+  padding:14px;
+  border:1px solid #32596b;
+  border-radius:14px;
+  max-height:330px;
+  overflow:auto;
+  font:12.5px/1.62 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.file{display:none}
+footer{
+  text-align:center;
+  color:var(--muted-2);
+  font:11px system-ui,sans-serif;
+  letter-spacing:.6px;
+  padding:18px 10px 28px;
+}
+#draft-message{min-height:18px}
+#toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#245a4b;
+  color:#f4fffc;
+  border:1px solid #88c8aa;
+  padding:11px 18px;
+  border-radius:14px;
+  display:none;
+  z-index:30;
+  max-width:min(92vw,700px);
+  box-shadow:var(--shadow);
+}
+#toast.visible{display:block}
+summary{cursor:pointer;color:#b9dbf4}
+details{margin-top:12px}
+@media (max-width:1100px){
+  .hero,.layout{grid-template-columns:1fr}
+  .status-pill{margin-left:0}
+}
+@media (max-width:820px){
+  .workflow,.welcome-grid,.grid-2,.grid-3,.entry-meta{grid-template-columns:1fr}
+  .brand h1{font-size:25px}
+  .hero-main h2,.section-title,.inspector-header h2{font-size:28px}
+}
+@media (max-width:560px){
+  .wrapper{padding:14px 12px 20px}
+  .topbar{padding:12px}
+  .actions-bar{width:100%}
+  .actions-bar button{flex:1 1 46%}
+  .status-pill{width:100%}
+  .hero-main .hero-actions button{flex:1 1 45%}
+  .card-inner{padding:16px}
+  .subsection,.panel-block{padding:14px}
+}
+</style>
+</head>
+<body>
+<header class="shell">
+  <div class="topbar">
+    <div class="sigil" aria-hidden="true">✧</div>
+    <div class="brand">
+      <h1>Conflux Ledger</h1>
+      <small>Ratio × Limen · local first · explicit commitment</small>
+    </div>
+    <div class="status-pill" id="storage-indicator">Checking local storage…</div>
+    <div class="actions-bar">
+      <button id="export-md">↓ Conflux.md</button>
+      <button id="export-json">↓ Backup JSON</button>
+      <button id="import-json">↑ Restore backup</button>
+      <input type="file" id="backup-file" class="file" accept=".json,application/json">
+    </div>
+  </div>
+</header>
+
+<div class="wrapper">
+  <section class="hero">
+    <article class="card hero-main">
+      <div class="card-inner">
+        <span class="eyebrow">Welcome back, Architect</span>
+        <h2>A calmer place to keep the record.</h2>
+        <p>This ledger is for text you intentionally preserve. Importing a file does not make it canon. Summaries remain separate from sources. Nothing becomes part of the record until <b>you</b> commit it.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="document.getElementById('raw').focus()">Begin a new entry</button>
+          <button class="subtle" onclick="document.getElementById('search').focus()">Search the ledger</button>
+        </div>
+        <div class="welcome-grid">
+          <div class="mini-stat">
+            <div class="value" id="record-count">0</div>
+            <span>Committed entries</span>
+          </div>
+          <div class="mini-stat">
+            <div class="value" id="approved-count">0</div>
+            <span>Approved entries</span>
+          </div>
+          <div class="mini-stat">
+            <div class="value">Local</div>
+            <span>Stored in this browser</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="card hero-side">
+      <div class="card-inner">
+        <span class="eyebrow">How to use it</span>
+        <h2 class="section-title" style="font-size:24px;margin-bottom:12px">Simple rhythm</h2>
+        <ol class="quick-list">
+          <li><strong>1 · Bring in a source</strong><span>Paste text or load a note file. The source remains intact.</span></li>
+          <li><strong>2 · Interpret it gently</strong><span>Add a title, tags, and your own summary only if you want one.</span></li>
+          <li><strong>3 · Commit deliberately</strong><span>Choose a status, confirm the entry, and let the ledger keep it.</span></li>
+        </ol>
+      </div>
+    </aside>
+  </section>
+
+  <section class="layout">
+    <div class="stack">
+      <article class="card section-card">
+        <div class="card-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Prepare</span>
+              <h2 class="section-title">Draft a new ledger entry</h2>
+              <p>Work left to right in spirit: source → meaning → authority.</p>
+            </div>
+          </div>
+
+          <div class="workflow">
+            <div class="workflow-step"><b>Source</b><span>Preserve what was said.</span></div>
+            <div class="workflow-step"><b>Meaning</b><span>Add your reading, if needed.</span></div>
+            <div class="workflow-step"><b>Authority</b><span>Choose how the record should stand.</span></div>
+          </div>
+
+          <div class="notice">This panel is a <b>staging area</b>. Loading a file or writing a summary does not add it to the ledger automatically.</div>
+
+          <div class="entry-grid">
+            <section class="subsection">
+              <h3>Source</h3>
+              <p>Paste archived material or load a local text file. The original source is preserved verbatim in the entry.</p>
+              <div class="line" style="margin-bottom:12px">
+                <button id="load-text">↑ Load .txt / .md</button>
+                <button class="subtle" id="new-draft">Clear draft</button>
+                <input type="file" id="text-file" class="file" accept=".txt,.md,text/plain,text/markdown">
+              </div>
+              <label for="raw">Original source text</label>
+              <textarea id="raw" placeholder="Paste an archived exchange, handoff, decision, or observation here…"></textarea>
+            </section>
+
+            <section class="subsection">
+              <h3>Meaning</h3>
+              <p>Name the entry and optionally say what it means to you. The summary is stored separately from the source.</p>
+              <div class="grid-2">
+                <div>
+                  <label for="entry-id">Reference ID (optional)</label>
+                  <input id="entry-id" placeholder="CFX-L001">
+                </div>
+                <div>
+                  <label for="entry-type">Kind</label>
+                  <select id="entry-type">
+                    <option>Decision</option>
+                    <option>Observation</option>
+                    <option>Handoff</option>
+                    <option>Design note</option>
+                    <option>Question</option>
+                    <option>Archive excerpt</option>
+                  </select>
+                </div>
+              </div>
+              <div style="margin-top:12px">
+                <label for="title">Entry title</label>
+                <input id="title" placeholder="Short, descriptive title">
+              </div>
+              <div style="margin-top:12px">
+                <label for="summary">Architect interpretation / summary (optional)</label>
+                <textarea id="summary" placeholder="Write what this means. Leave blank to preserve only the source."></textarea>
+              </div>
+            </section>
+
+            <section class="subsection">
+              <h3>Authority</h3>
+              <p>Decide how the entry should be classified and how it should be found later.</p>
+              <div class="grid-2">
+                <div>
+                  <label for="node">Attribution / node</label>
+                  <select id="node">
+                    <option>Architect</option>
+                    <option>Limen</option>
+                    <option>Ratio</option>
+                    <option>Nexus</option>
+                    <option>Medio</option>
+                    <option>Specula</option>
+                    <option>Daemon</option>
+                    <option>Hospes</option>
+                    <option>Multiple / Forum</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="status">Status authorized by Architect</label>
+                  <select id="status">
+                    <option>Exploratory</option>
+                    <option>Proposed</option>
+                    <option>Approved</option>
+                    <option>Deferred</option>
+                    <option>Superseded</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-2" style="margin-top:12px">
+                <div>
+                  <label for="source">Provenance</label>
+                  <input id="source" placeholder="e.g. Forum pass 3 / archived note">
+                </div>
+                <div>
+                  <label for="tags">Tags (comma separated)</label>
+                  <input id="tags" placeholder="realm, narrative, contract">
+                </div>
+              </div>
+              <div class="actions">
+                <button id="preview" class="subtle">Inspect preview</button>
+                <button class="primary" id="commit">✧ Commit entry to Ledger</button>
+              </div>
+              <div id="draft-message" class="tiny" role="status" style="margin-top:8px"></div>
+            </section>
+          </div>
+
+          <details>
+            <summary>Import and interpretation policy</summary>
+            <p class="tiny">The app does not use AI or automatically infer canon. Imported text is treated as source material. Your summary is stored separately from the original text. Existing entries are append-only; corrections should be entered as a new record referencing the old one. Exports place explicitly Approved entries in a dedicated canonical section of <span class="mono">Conflux.md</span>.</p>
+          </details>
+        </div>
+      </article>
+    </div>
+
+    <aside class="stack sidebar">
+      <article class="card section-card">
+        <div class="card-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Review</span>
+              <h2 class="section-title" style="font-size:25px">The ledger</h2>
+              <p>Search committed entries and select one to inspect below.</p>
+            </div>
+          </div>
+
+          <div class="panel-block">
+            <label for="search">Search ledger</label>
+            <input id="search" placeholder="Title, text, source, ID…">
+            <div style="margin-top:12px">
+              <label for="filter">Status</label>
+              <select id="filter">
+                <option value="all">All statuses</option>
+                <option>Exploratory</option>
+                <option>Proposed</option>
+                <option>Approved</option>
+                <option>Deferred</option>
+                <option>Superseded</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="panel-block">
+            <h3>Committed entries</h3>
+            <div id="records" class="records"></div>
+          </div>
+
+          <details>
+            <summary>What counts as committed?</summary>
+            <p class="tiny">Only entries you explicitly approve with the Commit button appear here. Imported source text is staged, not automatically adopted. Status describes your decision, not an AI's judgment.</p>
+          </details>
+        </div>
+      </article>
+    </aside>
+  </section>
+
+  <section class="card inspector" style="margin-top:18px">
+    <div class="card-inner">
+      <div class="inspector-header">
+        <div>
+          <span class="eyebrow">Inspect</span>
+          <h2 id="detail-heading">Awaiting selection</h2>
+        </div>
+        <small>Select a committed record or preview your current draft.</small>
+      </div>
+      <div id="detail-area"><div class="empty">Choose a ledger entry or inspect your current draft.</div></div>
+      <div class="actions" id="detail-actions"></div>
+      <details>
+        <summary>Storage and portability</summary>
+        <p class="tiny">Records are saved only in this browser's localStorage. Export a JSON backup regularly: browser clearing, private mode, or switching browsers can erase local data. Exported Markdown is a readable snapshot, not a live synced document. No data is sent to any server.</p>
+      </details>
+    </div>
+  </section>
+</div>
+
+<footer>Conflux Ledger · Local-first personal archive · Preserve, interpret, and authorize deliberately.</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const KEY='conflux-ledger-v1';
+let entries=[];
+let selected=null;
+let draftFile='';
+let toastTimer=null;
+function safeText(node,text){if(node)node.textContent=String(text)}
+function toast(msg,bad=false){const t=$('toast');t.textContent=msg;t.style.background=bad?'#56333a':'#245a4b';t.style.borderColor=bad?'#b58187':'#88c8aa';t.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('visible'),2600)}
+function makeId(){return 'entry-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
+function validRecord(r){return r&&typeof r==='object'&&!Array.isArray(r)&&typeof r.id==='string'&&typeof r.title==='string'&&typeof r.raw==='string'&&typeof r.status==='string'}
+function normalRecord(r){return {id:String(r.id).slice(0,120),reference:String(r.reference??'').slice(0,120),title:String(r.title??'').slice(0,240),kind:String(r.kind??'Archive excerpt').slice(0,70),node:String(r.node??'Other').slice(0,70),status:String(r.status??'Exploratory').slice(0,70),source:String(r.source??'').slice(0,500),tags:Array.isArray(r.tags)?r.tags.filter(t=>typeof t==='string').map(t=>t.slice(0,60)).slice(0,50):[],summary:String(r.summary??''),raw:String(r.raw??''),committedAt:String(r.committedAt??new Date().toISOString())}}
+function persist(){
+  try{
+    localStorage.setItem(KEY,JSON.stringify({format:'conflux-ledger',version:1,entries}));
+    $('storage-indicator').textContent='● Local records saved';
+    return true;
+  }catch(e){
+    $('storage-indicator').textContent='⚠ Storage unavailable';
+    toast('Local save failed. Export a backup before closing.',true);
+    return false;
+  }
+}
+function load(){
+  try{
+    const o=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(o&&Array.isArray(o.entries))entries=o.entries.filter(validRecord).map(normalRecord);
+    $('storage-indicator').textContent='● Local-only storage';
+  }catch(e){
+    $('storage-indicator').textContent='⚠ Stored data unreadable';
+    toast('Existing records could not be loaded. No changes were made.',true);
+  }
+  renderList();
+}
+function getDraft(){
+  return {
+    id:makeId(),
+    reference:$('entry-id').value.trim(),
+    title:$('title').value.trim(),
+    kind:$('entry-type').value,
+    node:$('node').value,
+    status:$('status').value,
+    source:$('source').value.trim()||draftFile,
+    tags:$('tags').value.split(',').map(x=>x.trim()).filter(Boolean),
+    summary:$('summary').value.trim(),
+    raw:$('raw').value,
+    committedAt:new Date().toISOString()
+  }
+}
+function renderList(){
+  safeText($('record-count'),entries.length);
+  safeText($('approved-count'),entries.filter(e=>e.status==='Approved').length);
+  const q=$('search').value.trim().toLowerCase();
+  const status=$('filter').value;
+  const list=$('records');
+  list.replaceChildren();
+  const arr=entries.filter(e=>(status==='all'||e.status===status)&&(!q||[e.title,e.reference,e.raw,e.summary,e.source,e.node,...e.tags].join(' ').toLowerCase().includes(q))).slice().reverse();
+  if(!arr.length){
+    const p=document.createElement('div');
+    p.className='empty';
+    p.textContent=entries.length?'No matching entries.':'Your ledger is empty. Prepare and commit your first entry.';
+    list.append(p);
+    return;
+  }
+  for(const e of arr){
+    const b=document.createElement('button');
+    b.className='record'+(selected===e.id?' selected':'');
+    const label=document.createElement('strong');
+    label.textContent=(e.reference?e.reference+' · ':'')+e.title;
+    const badge=document.createElement('span');
+    badge.className='badge';
+    badge.textContent=e.status;
+    const sm=document.createElement('small');
+    sm.textContent=e.node+' · '+new Date(e.committedAt).toLocaleDateString()+' · '+e.kind;
+    b.append(label,badge,sm);
+    b.addEventListener('click',()=>{selected=e.id;renderDetail(e,false);renderList()});
+    list.append(b);
+  }
+}
+function appendText(container,tag,text,className){const x=document.createElement(tag);if(className)x.className=className;x.textContent=text;container.append(x);return x}
+function renderDetail(e,isDraft){
+  $('detail-heading').textContent=isDraft?'Draft inspection':e.title;
+  const box=$('detail-area');
+  box.replaceChildren();
+  const meta=document.createElement('div');
+  meta.className='entry-meta';
+  for(const [name,value] of [['Reference',e.reference||'(none)'],['Kind',e.kind],['Attribution',e.node],['Status',e.status],['Source',e.source||'(unspecified)'],['Tags',e.tags.join(', ')||'(none)'],['Committed',isDraft?'Not committed':new Date(e.committedAt).toLocaleString()]]){
+    const line=document.createElement('div');
+    const b=document.createElement('b');
+    b.textContent=name+': ';
+    line.append(b,document.createTextNode(value));
+    meta.append(line);
+  }
+  box.append(meta);
+  const section1=document.createElement('section');
+  section1.className='detail-block';
+  appendText(section1,'h3','Architect interpretation');
+  appendText(section1,'div',e.summary||'(No separate interpretation supplied.)','detail');
+  box.append(section1);
+  const section2=document.createElement('section');
+  section2.className='detail-block';
+  appendText(section2,'h3','Verbatim source');
+  appendText(section2,'div',e.raw||'(No source supplied.)','detail');
+  box.append(section2);
+  const actions=$('detail-actions');
+  actions.replaceChildren();
+  if(!isDraft){
+    const b=document.createElement('button');
+    b.textContent='Use as new correction / follow-up';
+    b.onclick=()=>{
+      if(($('title').value||$('raw').value)&&!confirm('Replace the current draft with a reference to this entry?'))return;
+      clearDraft();
+      $('title').value='Follow-up: '+e.title;
+      $('source').value='Ledger reference '+(e.reference||e.id);
+      $('raw').value='Prior entry: '+(e.reference||e.id)+'\n\n';
+      $('raw').focus();
+      toast('Started a new draft. Original entry unchanged.');
+    };
+    actions.append(b);
+  }
+}
+function clearDraft(){
+  $('raw').value='';
+  $('entry-id').value='';
+  $('title').value='';
+  $('summary').value='';
+  $('source').value='';
+  $('tags').value='';
+  $('entry-type').value='Decision';
+  $('node').value='Architect';
+  $('status').value='Exploratory';
+  draftFile='';
+  safeText($('draft-message'),'Draft cleared; ledger entries are unchanged.');
+}
+function quote(v){return String(v??'').replace(/\r\n?/g,'\n')}
+function mdEntry(e){
+  const lines=['### '+e.title.replace(/\n/g,' '),'','- Ledger key: `'+e.id.replace(/`/g,'')+'`','- Reference: '+(e.reference||'—'),'- Status: '+e.status,'- Kind: '+e.kind,'- Attribution: '+e.node,'- Source: '+(e.source||'—'),'- Committed: '+e.committedAt,'- Tags: '+(e.tags.join(', ')||'—'),'','**Architect interpretation**','',e.summary||'_(No separate interpretation supplied.)_','','**Verbatim source**',''];
+  const raw=quote(e.raw);
+  const maxTicks=Math.max(3,...(raw.match(/`+/g)||[]).map(s=>s.length+1));
+  const fence='`'.repeat(maxTicks);
+  lines.push(fence+'text',raw,fence,'');
+  return lines.join('\n');
+}
+function markdown(){
+  let lines=['# Conflux.md','','> Generated from the Architect\'s explicitly committed local ledger.','> An entry is not canon merely because it is present. Status and provenance are retained.','> Exported '+new Date().toISOString(),'','## Architect-approved records',''];
+  let approved=entries.filter(e=>e.status==='Approved');
+  lines.push(approved.length?approved.map(mdEntry).join('\n'):'_No entries explicitly marked Approved._\n');
+  lines.push('','## Other committed records','','_Exploratory, Proposed, Deferred and Superseded records remain visible but are not canonical approvals._','');
+  let others=entries.filter(e=>e.status!=='Approved');
+  lines.push(others.length?others.map(mdEntry).join('\n'):'_None._\n');
+  return lines.join('\n');
+}
+function download(filename,text,type){
+  const blob=new Blob([text],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=filename;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$('text-file').addEventListener('change',async ev=>{
+  const f=ev.target.files?.[0];
+  if(!f)return;
+  if(f.size>8*1024*1024){toast('Text file exceeds 8 MB. Split it into smaller source entries.',true);ev.target.value='';return}
+  try{
+    const text=await f.text();
+    if(($('raw').value||$('title').value)&&!confirm('Replace the current uncommitted draft with this file?'))return;
+    $('raw').value=text;
+    draftFile=f.name;
+    $('source').value=f.name;
+    if(!$('title').value)$('title').value=f.name.replace(/\.(txt|md)$/i,'');
+    toast('File staged, not committed. Inspect and approve it explicitly.');
+  }catch(e){toast('Could not read file.',true)}
+  finally{ev.target.value=''}
+});
+$('load-text').onclick=()=>$('text-file').click();
+$('new-draft').onclick=()=>{if(($('raw').value||$('title').value)&&!confirm('Clear the uncommitted draft?'))return;clearDraft()};
+$('preview').onclick=()=>{const e=getDraft();if(!e.title)e.title='Untitled draft';renderDetail(e,true)};
+$('commit').onclick=()=>{
+  const e=getDraft();
+  if(!e.title){toast('Enter a title first.',true);$('title').focus();return}
+  if(!e.raw.trim()&&!e.summary.trim()){toast('Provide source text or an explicit interpretation before committing.',true);return}
+  if(entries.some(x=>x.reference&&x.reference===e.reference)){
+    if(!confirm('This reference ID already exists. Commit a separate entry with the same reference?'))return;
+  }
+  const promptText='Commit this exact entry to the local Ledger?\n\n'+e.title+'\nStatus: '+e.status+'\nAttribution: '+e.node+'\n\nThis cannot be silently edited afterward.';
+  if(!confirm(promptText))return;
+  entries.push(e);
+  selected=e.id;
+  persist();
+  renderList();
+  renderDetail(e,false);
+  clearDraft();
+  toast('Entry committed to your local Ledger.');
+};
+$('search').oninput=renderList;
+$('filter').onchange=renderList;
+$('export-md').onclick=()=>{download('Conflux.md',markdown(),'text/markdown;charset=utf-8');toast('Markdown snapshot exported.')};
+$('export-json').onclick=()=>{download('Conflux-ledger-backup.json',JSON.stringify({format:'conflux-ledger',version:1,exportedAt:new Date().toISOString(),entries},null,2),'application/json');toast('Backup exported.')};
+$('import-json').onclick=()=>$('backup-file').click();
+$('backup-file').addEventListener('change',async ev=>{
+  const file=ev.target.files?.[0];
+  if(!file)return;
+  try{
+    if(file.size>32*1024*1024)throw Error('Backup exceeds 32 MB');
+    const obj=JSON.parse(await file.text());
+    if(obj.format!=='conflux-ledger'||obj.version!==1||!Array.isArray(obj.entries)||!obj.entries.every(validRecord))throw Error('Not a valid Conflux Ledger v1 backup');
+    const incoming=obj.entries.map(normalRecord);
+    const ids=new Set();
+    if(incoming.some(x=>{if(ids.has(x.id))return true;ids.add(x.id);return false}))throw Error('Duplicate internal record identifiers found');
+    if(!confirm('Replace your '+entries.length+' current local entries with '+incoming.length+' backup entries? Export a backup of the current ledger first.'))return;
+    const previous=entries;
+    entries=incoming;
+    if(!persist()){entries=previous;throw Error('Browser storage could not save the restored backup')}
+    selected=null;
+    $('detail-heading').textContent='Backup restored';
+    $('detail-area').innerHTML='<div class="empty">Select an entry to inspect.</div>';
+    $('detail-actions').replaceChildren();
+    renderList();
+    toast('Ledger restored from backup.');
+  }catch(e){toast('Restore canceled or rejected: '+e.message,true)}
+  finally{ev.target.value=''}
+});
+load();
+})();
+</script>
+</body>
+</html>
