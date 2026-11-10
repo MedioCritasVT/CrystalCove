@@ -61,6 +61,7 @@ const roomFamiliar = {
   library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
   nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},
   guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."},
+  soundtrack: {who:["Nexus","Medio"], message:"Nexus preserves the voices; Medio welcomes the music."},
   updates: {who:["Ratio","Limen"], message:"Ratio verifies the version; Limen makes the transition explicit."}
 };
 for (const [room, detail] of Object.entries(roomFamiliar)) {
