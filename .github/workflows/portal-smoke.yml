@@ -23,3 +23,6 @@ jobs:
         run: python3 -m unittest test_portal.py -v
       - name: JavaScript parse check
         run: node --check conflux/portal-app/app.js
+      - name: Browser-flow DOM smoke check (no browser packages)
+        working-directory: conflux/portal-app
+        run: node test_ui.js
