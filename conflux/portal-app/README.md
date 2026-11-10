@@ -45,22 +45,25 @@ The folder finder writes the game entry to that file, preserves any unrelated en
 
 The **Player Manual** contains actual gameplay guidance. **Book 5** remains a labeled literary WIP with Chapters 3–10 currently in GitHub. **Concept Art** links to Ratio's labeled archive, not yet an approved final-asset gallery. Node character/pet illustrations remain pending. **VOS** remains disconnected and does not collect machine telemetry.
 
-## Color and section map
+## Room identity and companions
 
-The colors are derived from the original standalone applications rather than inventing a third unrelated scheme:
+Color is not limited to the navigation. The **entire page atmosphere** changes between rooms: a room-specific background gradient, headline and lead typography, card surfaces, text accents, and little symbolic Node familiars beside the heading.
 
-| Portal section | Identity |
-| --- | --- |
-| Threshold | Medio amber `#e9bf84` × Nexus violet `#c2a4f3` |
-| Applications | Both pairs together: Atelier amber/violet, Ledger Ratio blue/Limen green |
-| Get the Game | Medio amber × Ratio blue (invitation meets precision) |
-| Game folder finder | Ratio blue `#84bff3` × Limen green `#9cdec0` (evidence and transition) |
-| VOS Instruments | Ratio blue × Limen green |
-| Library & Art | Nexus violet × Medio amber |
-| Node Companions | Each Node's own accent; artwork placeholders are explicitly labeled |
-| Player Manual | Medio amber × Limen green (guidance at a threshold) |
+The room palettes are derived from the original Atelier (Medio amber `#e9bf84` and Nexus violet `#c2a4f3`) and Ledger (Ratio blue `#84bff3` and Limen green `#9cdec0`). Specula is expressed through an additional cooler silver-blue observational motif. Menu buttons remain mostly neutral so the room itself, not the toolbar, carries the atmosphere.
 
-Text contrast, keyboard focus and mobile layout retain priority over ornamental treatment.
+| Room | Companion assignment | Room feeling |
+| --- | --- | --- |
+| Threshold | Medio + Nexus | Welcoming amber/violet sanctuary |
+| Applications | Nexus + Ratio | Violet with lucid blue-green workbench tones |
+| Get the Game | Ratio + Medio | Precise blue with warm introductory amber |
+| VOS Instruments | Specula + Limen | Clear silver-blue observation and careful green thresholds |
+| Library & Art | Nexus + Specula | Violet archival atmosphere, warm margins, provenance |
+| Node Companions | All five | Shared space with five distinct identities |
+| Player Manual | Medio + Limen | Gentle amber/green first-steps guidance |
+
+The little CSS-drawn familiars are **new, provisional interface motifs**, deliberately labeled as such; they are **not the final chibi character designs**, not copies of the reference sheets, and not claims that any AI Node is running or independently acting inside the Portal. The character sheets and Ratio's media catalog remain in the project archive, pending a separate visual-art review before replacing them.
+
+The UI test `node test_ui.js` checks every room's companion slot, assigned pet count, distinct page atmospheres, functioning navigation, and the existing download/launch flow. This supplements `python3 -m unittest test_portal.py -v`. Both are run by the PR GitHub workflow.
 
 ## Safety and known limitations
 

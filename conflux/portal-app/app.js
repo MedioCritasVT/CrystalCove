@@ -23,22 +23,79 @@ const nodes = [
   ["Specula", "Observation · evidence", "#d2d3df"],
   ["Limen", "Transitions · interpretation", "#9cdec0"]
 ];
+const petSymbols = {medio:"✦",ratio:"▦",nexus:"∞",specula:"◉",limen:"◇"};
+function makePet(name) {
+  const id = name.toLowerCase();
+  const mascot = document.createElement("span");
+  mascot.className = "pet-token";
+  mascot.dataset.node = id;
+  mascot.setAttribute("aria-hidden", "true");
+  const crest = document.createElement("span");
+  crest.className = "pet-crest";
+  const earLeft = document.createElement("span");
+  earLeft.className = "pet-ear left";
+  const earRight = document.createElement("span");
+  earRight.className = "pet-ear right";
+  const body = document.createElement("span");
+  body.className = "pet-body";
+  const face = document.createElement("span");
+  face.className = "pet-face";
+  const eyeLeft = document.createElement("span");
+  eyeLeft.className = "pet-eye left";
+  const eyeRight = document.createElement("span");
+  eyeRight.className = "pet-eye right";
+  face.append(eyeLeft, eyeRight);
+  const mark = document.createElement("span");
+  mark.className = "pet-mark";
+  mark.textContent = petSymbols[id] || "✧";
+  mascot.append(crest, earLeft, earRight, body, face, mark);
+  return mascot;
+}
+
+// The familiar pairs are symbolic UI guides, not live AI presence or final chibi art.
+const roomFamiliar = {
+  home: {who:["Medio","Nexus"], message:"Medio welcomes you; Nexus keeps the doors connected."},
+  apps: {who:["Nexus","Ratio"], message:"Nexus gathers the tools; Ratio helps make them usable."},
+  downloads: {who:["Ratio","Medio"], message:"Ratio checks the path; Medio welcomes the Wayfarer."},
+  vos: {who:["Specula","Limen"], message:"Specula watches the evidence; Limen protects its meaning."},
+  library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
+  nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},
+  guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."}
+};
+for (const [room, detail] of Object.entries(roomFamiliar)) {
+  const dock = document.querySelector("#room-companion-" + room);
+  const crew = document.createElement("div");
+  crew.className = "pet-crew";
+  crew.dataset.count = String(detail.who.length);
+  for (const name of detail.who) crew.append(makePet(name));
+  const names = document.createElement("strong");
+  names.className = "pet-names";
+  names.textContent = detail.who.join(" + ");
+  const note = document.createElement("span");
+  note.className = "pet-purpose";
+  note.textContent = detail.message;
+  const caveat = document.createElement("small");
+  caveat.className = "pet-disclaimer";
+  caveat.textContent = "Symbolic familiars · chibi artwork pending";
+  dock.append(crew, names, note, caveat);
+}
+
 for (const [name, role, color] of nodes) {
   const card = document.createElement("article");
   card.className = "card node-card";
   card.style.setProperty("--node-accent", color);
   const wrap = document.createElement("div");
   wrap.className = "node";
-  const orb = document.createElement("div");
-  orb.className = "orb";
-  orb.setAttribute("aria-hidden", "true");
+  const petFigure = document.createElement("div");
+  petFigure.className = "pet-figure";
+  petFigure.append(makePet(name));
   const words = document.createElement("div");
   const title = document.createElement("strong");
   title.textContent = name;
   const detail = document.createElement("small");
-  detail.textContent = role + " · character art pending";
+  detail.textContent = role + " · symbolic familiar; chibi art pending";
   words.append(title, detail);
-  wrap.append(orb, words);
+  wrap.append(petFigure, words);
   card.append(wrap);
   document.querySelector("#node-list").append(card);
 }

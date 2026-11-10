@@ -9,15 +9,27 @@ const source = fs.readFileSync("app.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
+const roomIds = ["home","apps","downloads","vos","library","nodes","guide"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
-                  "game-launch", "game-linked-state", "game-picker-availability"]) {
+                  "game-launch", "game-linked-state", "game-picker-availability",
+                  ...roomIds.map(id => "room-companion-" + id)]) {
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
 assert(html.includes("#e9bf84") && html.includes("#c2a4f3"));
 assert(html.includes("#84bff3") && html.includes("#9cdec0"));
+
+for (const room of roomIds) {
+  assert(html.includes('id="room-companion-' + room + '"'), "missing room companion: " + room);
+}
+assert.equal((html.match(/class="room-hero"/g) || []).length, roomIds.length);
+assert(html.includes('body[data-view="vos"]') && html.includes('body[data-view="library"]'),
+       "distinct room background layers missing");
+assert(html.includes(".panel .room-hero h2"), "room-specific headline styling missing");
+assert(html.includes(".pet-token .pet-face"), "visible pet artwork motif missing");
+
 
 class Element {
   constructor(tag = "div", id = "") {
@@ -44,7 +56,8 @@ class Element {
 const named = Object.fromEntries(
   panels.concat(["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
-                  "game-launch", "game-linked-state", "game-picker-availability"])
+                  "game-launch", "game-linked-state", "game-picker-availability",
+                  ...roomIds.map(id => "room-companion-" + id)])
         .map(id => [id, new Element("div", id)])
 );
 const nav = navIds.map(id => {
@@ -104,6 +117,18 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(named.home.hidden, true);
   assert.equal(document.body.dataset.view, "downloads");
   assert.equal(named["node-list"].children.length, 5);
+  for (const id of roomIds) {
+    const dock = named["room-companion-" + id];
+    assert.equal(dock.children.length, 4, "missing pet ensemble for " + id);
+    const crew = dock.children[0];
+    assert.equal(crew.children.length, id === "nodes" ? 5 : 2);
+    assert(crew.children.every(pet => pet.className === "pet-token"));
+    assert(dock.children[1].textContent.length > 0, "unlabeled page companion");
+  }
+  const memberCards = named["node-list"].children;
+  assert(memberCards.every(c => c.children[0].children[0].children[0].className === "pet-token"),
+         "Node profiles should show the same familiar character motif");
+
   assert.equal(named["app-list"].children.length, 3);
   const cards = named["app-list"].children;
   assert.equal(cards[0].children[2].href, "/downloads");
