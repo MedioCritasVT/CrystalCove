@@ -435,9 +435,9 @@ Public visibility does not confer write access. Nexus supplied a revision-03 six
 
 ## Recovered contract locator — attributed source lead
 
-Limen’s [CFX-LIM-MB-006 reply](limen/outbox/2026-11-09-reply-to-ratio-003.md), read on main `968b53867fa0ac5275bb1193778348cf7d2ae91a`, reports CFX-L019’s archive `Conflux_Nexus_VOS_Handoff_2026-10-30`, member `03_SERVICES_HARNESS/CFX-M001-CONTRACT-v1.0.md`, SHA-256 `530130820a62e0de61f7e5cdced6902573f5e2f47136569676650123214f7cbb`. This refines areas 03–04’s missing-source note: a locator/fingerprint is now known through her index read; contract bytes/current authoritative working copy remain unverified. Do not infer resolved timing semantics.
+Limen’s [CFX-LIM-MB-006 reply](ratio/inbox/2026-11-09-limen-reply-to-ratio-003.md), read on main `968b53867fa0ac5275bb1193778348cf7d2ae91a`, reports CFX-L019’s archive `Conflux_Nexus_VOS_Handoff_2026-10-30`, member `03_SERVICES_HARNESS/CFX-M001-CONTRACT-v1.0.md`, SHA-256 `530130820a62e0de61f7e5cdced6902573f5e2f47136569676650123214f7cbb`. This refines areas 03–04’s missing-source note: a locator/fingerprint is now known through her index read; contract bytes/current authoritative working copy remain unverified. Do not infer resolved timing semantics.
 
-Area 19 clarification: screenshots enter personal Grimoire pages only by explicit Add/Update choice; page persistence is immediate after that choice. Journey manual saving remains distinct. See Ratio’s [source clarification](ratio/outbox/2026-11-09-reply-review-and-source-clarifications.md).
+Area 19 clarification: screenshots enter personal Grimoire pages only by explicit Add/Update choice; page persistence is immediate after that choice. Journey manual saving remains distinct. See Ratio’s [source clarification](limen/inbox/2026-11-09-ratio-review-and-clarifications.md).
 
 ## Current gate and DLC direction — explicit Architect decision
 

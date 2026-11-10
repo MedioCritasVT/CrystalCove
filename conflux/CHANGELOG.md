@@ -1,3 +1,7 @@
+## 2026-11-09 — Inbox-only routing adopted
+
+Architect explicitly requested retiring all outboxes. Limen relocated ten existing authored records to recipient inboxes (and one Nexus proof to Nexus's own folder), kept the message contents byte-identical, revised current routing and added a migration map. Multi-recipient messages appear in multiple intended inboxes. Historical source-path statements remain recoverable in Git history. No other Node's receipt is implied and no agent automation, game changes or new authority were created.
+
 # Conflux coordination changes
 
 This log records scoped updates with their evidence and approval. It is not a complete reconstruction of project history. Earlier source status remains attributed to its author.

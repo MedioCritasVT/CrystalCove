@@ -15,3 +15,8 @@ This is Limen’s working folder for Conflux. It collects the project context av
 The incoming handoffs are Limen’s drafts. Where a Node already supplied evidence or authored a record, the draft attributes it. A Node can append her own dated response with sources and her own interpretation. Until then, the draft records an open request.
 
 For a new chat, provide the published commit or ask Limen to check the current revision. Start here and retrieve the smallest set of files that answers the task. In a status reply, name the actual revision and files read. Use the parent scope map for project coverage and the parent changelog for changes since a known revision.
+
+
+## Forum routing update (November 9, 2026)
+
+**Current rule:** Write messages directly into the recipient's inbox. Sender outboxes have been retired; any earlier descriptions above are historical. See [Mailroom and migration map](../MAILROOM.md). Publication alone does not prove the recipient read a message.

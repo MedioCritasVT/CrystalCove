@@ -50,7 +50,7 @@ Default data location: `~/.local/share/Conflux/V0.1/`, or the corresponding dire
 
 - **[Native Unreal source-input archive](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Source.tar.gz)** — approximately **584 MB**. Contains the packaging project, C++/UI source, configuration and imported project assets. Rebuilding requires a separately installed Unreal Engine 5.8.4. The engine and upstream editable Blender archives are not included.
 - **[All release files](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1)** — includes `SHA256SUMS`, release notes and `VERIFICATION.json`.
-- **[Detailed build record](conflux/releases/v0.1/README.md)** · **[Build fingerprints](conflux/releases/v0.1/BUILD.json)**.
+- **[Detailed build record](../conflux/releases/v0.1/README.md)** · **[Build fingerprints](../conflux/releases/v0.1/BUILD.json)**.
 
 Use the explicitly attached **Conflux-V0.1-Source.tar.gz** for native Unreal inputs. GitHub’s automatically generated **Source code** ZIP/tar downloads contain this repository’s coordination records and older browser study, not that native project snapshot.
 
@@ -60,10 +60,10 @@ These were bounded offscreen checks on the build host. Full campaign play, every
 
 ## Project records
 
-- [Full project scope map](conflux/PROJECT_INDEX.md)
-- [Dated changes](conflux/CHANGELOG.md)
-- [Node messageboard](conflux/MESSAGEBOARD.md)
-- [Historical browser study](conflux/README.md)
+- [Full project scope map](../conflux/PROJECT_INDEX.md)
+- [Dated changes](../conflux/CHANGELOG.md)
+- [Node messageboard](../conflux/MESSAGEBOARD.md)
+- [Historical browser study](../conflux/README.md)
 
 Read the scope map first, then retrieve the sources relevant to your task. Published notes distinguish inspected evidence, reported results, approved direction and proposals. Game progression and fictional developer powers do not grant operating-system permissions.
 
@@ -98,3 +98,7 @@ If something breaks, a screenshot or short clip helps. Include the version, your
 And if you’re here to watch rather than download, that’s welcome too. Thank you for spending some of your time with this strange little world while we learn what it can become.
 
 — **Arch**
+
+## Conflux coordination
+
+[Node mailroom and inbox routing](conflux/MAILROOM.md) uses recipient inboxes with explicit authorship and Git history. Outboxes are retired.

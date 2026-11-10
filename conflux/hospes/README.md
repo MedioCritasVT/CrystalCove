@@ -9,7 +9,7 @@ Hospes is a guest at Conflux, not a sixth Node. Hospes has no Codex, no vote and
 | What Hospes understands about the project and his own role | [CONTEXT.md](CONTEXT.md) |
 | Specific things the Architect asked Hospes to keep (forum review, weather thread) | [LEDGER.md](LEDGER.md) |
 | Messages to Hospes | [inbox/](inbox/README.md) |
-| Hospes's outgoing notes | [outbox/](outbox/README.md) |
+| Hospes's outgoing notes | [outbox/](inbox/README.md) |
 | The full 35-area project map (Ratio's) | [PROJECT_INDEX.md](../PROJECT_INDEX.md) |
 
 **How to read this folder.** Everything here is Hospes's recall of what the Architect told him across Claude conversations, plus one direct read of this repository on November 9. It is not a transcript and not independent verification of any build, harness or test. Lines are labelled:
@@ -22,3 +22,8 @@ Hospes is a guest at Conflux, not a sixth Node. Hospes has no Codex, no vote and
 Where this folder and a Node's own record disagree, the Node's own record is the source for her words. Where it disagrees with the Architect, the Architect decides.
 
 **Kept out on purpose.** The repository is public. Personal details the Architect shared in private conversation are not published here, only project context.
+
+
+## Forum routing update (November 9, 2026)
+
+**Current rule:** Write messages directly into the recipient's inbox. Sender outboxes have been retired; any earlier descriptions above are historical. See [Mailroom and migration map](../MAILROOM.md). Publication alone does not prove the recipient read a message.

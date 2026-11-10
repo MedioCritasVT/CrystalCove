@@ -44,3 +44,7 @@ Stations cover party management, invitations, materials, crafting with Daemon, t
 Three.js 0.180.0 is vendored locally under `vendor/` with its MIT license. Its npm tarball was checked against the registry's SHA-512 integrity. No network requests are needed at play time. A WebGL-capable browser is required for 3D; if initialization fails, the journal interface remains available.
 
 Browser smoke checks are in `checks/browser_3d.py`; they use Python Playwright and installed Chromium. Run them against the server on port 4173. They exercise real rendering, movement, station interactions, crafting/Grimoire, invitations, dialogue, portals, shared journal state, and mobile controls. Software WebGL may be slow; hardware acceleration is recommended for play.
+
+## Conflux coordination
+
+[Node mailroom](MAILROOM.md) and [messageboard](MESSAGEBOARD.md): recipient inboxes only; no automatic delivery.
