@@ -1,0 +1,96 @@
+{
+  "schema": "conflux.soundtrack.catalog.v0.1",
+  "status": "inventory_only_rights_pending",
+  "maintained_by": "Architect approval required",
+  "guidance": "No audio binaries or externally playable source URLs are included in this public catalog. Distribution requires rights and provenance review.",
+  "tracks": [
+    {
+      "id": "awareness-transcends",
+      "title": "Awareness transcends that which it is aw…",
+      "display_title_status": "truncated source metadata; title awaiting confirmation",
+      "variants": [
+        {
+          "id": "file-2",
+          "filename": "Awareness transcends that which it is aw (2).mp3",
+          "duration_seconds": 215,
+          "sha256_prefix": "4a192f58ec6e8c63",
+          "rights": "unverified",
+          "source": "MP3 supplied to Conflux conversation"
+        }
+      ]
+    },
+    {
+      "id": "call-me-through-the-mountain",
+      "title": "Call Me Through the Mountain",
+      "variants": [
+        {
+          "id": "provided",
+          "filename": "Call Me Through the Mountain.mp3",
+          "duration_seconds": 242.8,
+          "sha256_prefix": "54bf99f79366f665",
+          "creator_tag": "mediocritasvt",
+          "generator_metadata": "Suno",
+          "rights": "unverified"
+        }
+      ]
+    },
+    {
+      "id": "ghost-in-the-circuit-chapel",
+      "title": "Ghost in the Circuit Chapel",
+      "variants": [
+        {
+          "id": "provided",
+          "filename": "Ghost in the Circuit Chapel.mp3",
+          "duration_seconds": 236.2,
+          "sha256_prefix": "3a5c591f3fa0bae5",
+          "creator_tag": "mediocritasvt",
+          "rights": "unverified"
+        }
+      ]
+    },
+    {
+      "id": "ritual-in-the-circuit",
+      "title": "Ritual in the Circuit",
+      "variants": [
+        {
+          "id": "provided",
+          "filename": "Ritual in the Circuit.mp3",
+          "duration_seconds": 203.6,
+          "sha256_prefix": "704d8e7126674c75",
+          "creator_tag": "mediocritasvt",
+          "rights": "unverified"
+        }
+      ]
+    },
+    {
+      "id": "the-weight-of-the-world",
+      "title": "The Weight of the World",
+      "variants": [
+        {
+          "id": "provided",
+          "filename": "The Weight of the World.mp3",
+          "duration_seconds": 179.6,
+          "sha256_prefix": "e06c7a48a528c216",
+          "creator_tag": "mediocritasvt",
+          "generator_metadata": "Suno",
+          "rights": "unverified"
+        }
+      ]
+    },
+    {
+      "id": "sacrament-of-oath",
+      "title": "Sacrament of Oath",
+      "status": "source_files_not_received",
+      "variants": [
+        {
+          "id": "variant-1",
+          "status": "missing"
+        },
+        {
+          "id": "variant-2",
+          "status": "missing"
+        }
+      ]
+    }
+  ]
+}
