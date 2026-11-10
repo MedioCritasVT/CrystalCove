@@ -275,7 +275,7 @@ class PortalSmokeTest(unittest.TestCase):
                     if item["title"] == "Sacrament of Oath")
         self.assertIn("two_distinct_versions", oath["status"])
         self.assertEqual(len(oath["variants"]), 2)
-        self.assertTrue(all(v["status"] == "received_local_unpublished" for v in oath["variants"]))
+        self.assertTrue(all(v["publication_status"] == "staged_pending_upload" for v in oath["variants"]))
         with self.assertRaises(HTTPError) as err:
             self.get("/soundtrack/anything.mp3")
         self.assertEqual(err.exception.code, 404)
