@@ -2,7 +2,7 @@
   "schema": "conflux.soundtrack.catalog.v0.1",
   "status": "inventory_only_rights_pending",
   "maintained_by": "Architect approval required",
-  "guidance": "No audio binaries or externally playable source URLs are included in this public catalog. Distribution requires rights and provenance review.",
+  "guidance": "All seven supplied audio files were inspected on 2026-11-10. This public catalog contains metadata only, no audio binaries or playable public URLs. Creation plan and external distribution entitlements require Architect confirmation.",
   "tracks": [
     {
       "id": "awareness-transcends",
@@ -80,15 +80,29 @@
     {
       "id": "sacrament-of-oath",
       "title": "Sacrament of Oath",
-      "status": "source_files_not_received",
+      "status": "two_distinct_files_received",
       "variants": [
         {
-          "id": "variant-1",
-          "status": "missing"
+          "id": "take-1",
+          "status": "received_local_unpublished",
+          "filename": "Sacrament of Oath(1).mp3",
+          "duration_seconds": 144.984,
+          "sha256_prefix": "16cb8c9317640a41",
+          "creator_tag": "mediocritasvt",
+          "generator_metadata": "Suno",
+          "created_utc": "2026-02-19T19:25:59.071Z",
+          "rights": "unverified"
         },
         {
-          "id": "variant-2",
-          "status": "missing"
+          "id": "take-2",
+          "status": "received_local_unpublished",
+          "filename": "Sacrament of Oath (1)(1).mp3",
+          "duration_seconds": 145.944,
+          "sha256_prefix": "580a10cc21871841",
+          "creator_tag": "mediocritasvt",
+          "generator_metadata": "Suno",
+          "created_utc": "2026-02-19T19:37:54.305Z",
+          "rights": "unverified"
         }
       ]
     }
