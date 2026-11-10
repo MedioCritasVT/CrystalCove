@@ -11,6 +11,8 @@ The planned structure is forty chapters in four ten-chapter acts: **I. Newfoundl
 
 ## Act I: Newfoundland — provenance / transfer register
 
+**Partial single-file manuscript (Chapters 3–10):** [Book_05_The_Emerald_Threshold_WIP_Ch03-10.txt](../Book_05_The_Emerald_Threshold_WIP_Ch03-10.txt). This export deliberately omits Chapters 1–2 until their original text can be retrieved.
+
 Ten **working draft** chapters were written in the literary conversation; this register distinguishes drafted text from chapter prose **actually transferred to this repository**.
 
 | Ch. | Title | Repository status |
