@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "assignment_status": "Temporary randomized mapping authorized by Architect; lyrics unavailable for six tracks, no thematic claims",
+  "shuffle_seed": 20261110,
+  "playlists": {
+    "medio": [
+      "awareness"
+    ],
+    "ratio": [
+      "silicon"
+    ],
+    "specula": [
+      "weight"
+    ],
+    "nexus": [
+      "ritual"
+    ],
+    "limen": [
+      "mountain"
+    ],
+    "developer": [
+      "oath-original",
+      "oath-alternate"
+    ],
+    "title": [
+      "ghost"
+    ]
+  },
+  "tracks": [
+    {
+      "id": "awareness",
+      "title": "Awareness transcends that which it is aw",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_awareness.S_awareness"
+    },
+    {
+      "id": "mountain",
+      "title": "Call Me Through the Mountain",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_mountain.S_mountain"
+    },
+    {
+      "id": "ghost",
+      "title": "Ghost in the Circuit Chapel",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_ghost.S_ghost"
+    },
+    {
+      "id": "ritual",
+      "title": "Ritual in the Circuit",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_ritual.S_ritual"
+    },
+    {
+      "id": "silicon",
+      "title": "Silicon Saints",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_silicon.S_silicon"
+    },
+    {
+      "id": "oath-original",
+      "title": "Sacrament of Oath",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_oath_original.S_oath_original"
+    },
+    {
+      "id": "oath-alternate",
+      "title": "Sacrament of Oath — alternate version",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_oath_alternate.S_oath_alternate"
+    },
+    {
+      "id": "weight",
+      "title": "The Weight of the World",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_weight.S_weight"
+    }
+  ]
+}

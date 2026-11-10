@@ -16,6 +16,10 @@ The **Conflux Portal** brings the playable preview, preserved book manuscripts, 
 
 The portal is a read-only public website, not a game server or live Node service. The downloadable Linux V0.1 game remains available below.
 
+## Native music update
+
+[Realm Music 01 source checkpoint](conflux/releases/realm-music-01/README.md) adds native realm crossfades and title/in-game mute controls. Source and imported-audio archives are published separately; the V0.1 playable download below is unchanged.
+
 ## Play V0.1
 
 **[Download Conflux V0.1 for Linux x86_64](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz)** — approximately **1.18 GB**, about **3.2 GB extracted**.

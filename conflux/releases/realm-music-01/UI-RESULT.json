@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "Music button opens panel",
+    "Rendered slider changes native volume",
+    "Rendered mute routes to native mixer",
+    "Escape closes Music panel",
+    "Close button closes Music panel",
+    "Requested ordinary game quit"
+  ]
+}

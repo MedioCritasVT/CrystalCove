@@ -1,3 +1,7 @@
+## 2026-11-10 — Realm Music 01 source publication
+
+Architect requested publishing the music integration. Added [music source checkpoint](releases/realm-music-01/README.md), new editable code/catalog and bounded test summaries. Separate Release archives carry current source integration files and eight imported audio assets, not private saves or original MP3s. Includes title/in-game mute and independent music preferences. Assignments are provisional; V0.1 standalone downloads remain unchanged. Source compatibility requires review/rebuild; no new packaged game is asserted.
+
 ## 2026-11-10 — Previously supplied gameplay-report media
 
 Added four exact gameplay clips and two screenshots explicitly supplied earlier by the Architect, labeled by the bug/placement request they document. Three sampled frames from each clip were inspected as gameplay-only review, not exhaustive frame-by-frame acceptance. Original bytes preserved. Total unique catalog now 2,805 files, with 58 direct media files and 2,747 images in unchanged archive parts. No unrelated Videos/Downloads scan.

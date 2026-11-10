@@ -1,0 +1,61 @@
+{
+  "assets": [
+    {
+      "id": "awareness",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_awareness.S_awareness",
+      "duration": 214.95997619628906,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "mountain",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_mountain.S_mountain",
+      "duration": 242.8000030517578,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "ghost",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_ghost.S_ghost",
+      "duration": 236.15997314453125,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "ritual",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_ritual.S_ritual",
+      "duration": 203.5999755859375,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "silicon",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_silicon.S_silicon",
+      "duration": 169.23997497558594,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "oath-original",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_oath_original.S_oath_original",
+      "duration": 144.95997619628906,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "oath-alternate",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_oath_alternate.S_oath_alternate",
+      "duration": 145.91998291015625,
+      "looping": false,
+      "channels": 2
+    },
+    {
+      "id": "weight",
+      "asset": "/Game/Conflux/Audio/RealmMusic01/S_weight.S_weight",
+      "duration": 179.55999755859375,
+      "looping": false,
+      "channels": 2
+    }
+  ],
+  "passed": true
+}
