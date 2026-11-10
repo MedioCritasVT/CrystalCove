@@ -81,11 +81,23 @@ The little CSS-drawn familiars are **new, provisional interface motifs**, delibe
 
 The UI test `node test_ui.js` checks every room's companion slot, assigned pet count, distinct page atmospheres, functioning navigation, and the existing download/launch flow. This supplements `python3 -m unittest test_portal.py -v`. Both are run by the PR GitHub workflow.
 
+## Soundtrack (local-only preview)
+
+The Portal has a global **Music Off / Music On** switch and a **Soundtrack** page. Music is **off by default** and never plays merely because you open the Portal or choose files.
+
+Click **Choose MP3s** to select locally saved audio recordings from your computer. The player builds a temporary in-browser playlist with previous/next, pause/play, volume, composition and alternate-version selection. Files named with suffixes such as `(2)`, `- v2`, or `- alternate` are grouped under one composition when the titles match. Selecting a different Portal page does not stop the player; switching it off pauses the audio. Browser audio permissions may require a fresh click on Play.
+
+The `music.js` player uses the standard browser File API and local Blob URLs. **It does not upload or publish audio files.** Selected audio is released when the tab is closed/reloaded, so select files again next time. The public `conflux/soundtrack/catalog.json` is a **metadata-only working register**: the five received MP3s, title/duration/hash-prefix identifiers, and two missing `Sacrament of Oath` versions. No official, final, or commercially licensed version is implied.
+
+**Distribution remains pending.** Some MP3 metadata mentions Suno. The applicable license depends on the music's creation/download rights and on third-party lyrics, voice, samples, remixes or collaborator inputs. Attribution alone does not establish a distribution license. Do not upload the audio bytes into GitHub history, GitHub Releases or packaged games without explicit rights review and Architect approval. The local player lets us evaluate the listening experience without making that decision prematurely.
+
+The musical catalog and player do not modify the existing Atelier, Ledger or native Unreal game packages.
+
 ## Safety and known limitations
 
 The Portal listens on **127.0.0.1** only; **do not expose it through a proxy or public network**. POST actions require same-origin authorization and the server's per-session token. The native folder chooser is invoked only by clicking the button; there is no automatic home-directory scan, shell-command interpolation, or automatic execution of discovered applications. Even so, this is an **experimental local launcher, not a security-audited service**.
 
-Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no auto-installer, auto-updater, background agent or automatic synchronization with GitHub yet.
+Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no automatic game installer or background music service; repository updates require explicit action through Updates & Setup. Audio files are not automatically synchronized with GitHub.
 
 Test locally using `python3 -m unittest test_portal.py -v`. The repository also has `.github/workflows/portal-smoke.yml` for non-destructive GitHub Actions validation; tests must pass before public release. These tests cover routes, app status, bounded scanning, symlink rejection, permission checks, explicit registration and JavaScript syntax. They do not substitute for a hands-on Linux desktop picker or full game-launch test.
 
