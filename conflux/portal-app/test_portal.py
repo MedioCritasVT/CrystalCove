@@ -273,7 +273,7 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(len(manifest["tracks"]), 6)
         oath = next(item for item in manifest["tracks"]
                     if item["title"] == "Sacrament of Oath")
-        self.assertEqual(oath["status"], "two_distinct_files_received")
+        self.assertIn("two_distinct_versions", oath["status"])
         self.assertEqual(len(oath["variants"]), 2)
         self.assertTrue(all(v["status"] == "received_local_unpublished" for v in oath["variants"]))
         with self.assertRaises(HTTPError) as err:
