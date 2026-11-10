@@ -19,12 +19,12 @@ async function refresh(){
       const card=document.createElement("article");card.className="card";
       const title=document.createElement("h3");title.textContent=app.name;
       const status=document.createElement("p");
-      status.textContent=app.action==="launch"?"Installed and ready to launch":app.action==="download"?"Available to download · not registered locally":"Coming soon · no published download";
+      status.textContent=app.action==="launch"?"Installed and ready to launch":app.action==="download"?"Available to download · not registered locally":app.action==="open"?"Included with this Portal · opens in a browser tab":"Coming soon · no published download";
       const button=document.createElement("button");button.className="action";
-      button.textContent=app.action==="launch"?"Launch":app.action==="download"?"Download":"Coming Soon";
+      button.textContent=app.action==="launch"?"Launch":app.action==="download"?"Download":app.action==="open"?"Open":"Coming Soon";
       button.disabled=app.action==="coming-soon";
       button.addEventListener("click",async()=>{
-        if(app.action==="download"){
+        if(app.action==="open"){\n          if(app.open_url)window.open(app.open_url,"_blank","noopener,noreferrer");\n          return;\n        }\n        if(app.action==="download"){
           // Fixed, verified project release URLs only; no arbitrary user-supplied links.
           if(app.download_url)window.open(app.download_url,"_blank","noopener,noreferrer");
           return;
