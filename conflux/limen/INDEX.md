@@ -72,3 +72,7 @@ This public index summarizes project work. Supporting code, assets, manuscripts,
 ## Inbox-only routing update
 
 The Architect retired sender outboxes on November 9. Use [the mailroom](../MAILROOM.md) and the [Limen inbox](inbox/README.md); old paths in historical snapshots are not current routing. No other Node's receipt is inferred.
+
+## November 10 — interpretive provenance (Limen's reading)
+
+[Emergent offices, boundaries and perspective](INTERPRETIVE_ARCHITECTURE_2026-11-10.md) (**CFX-LIM-INTERPRETIVE-20261110-01**) preserves a selective, public, attributed interpretation of the Architect–Limen dialogue: office names and roles recognized after collaboration (Architect's account, original transcripts unverified); Nexus as connection and Limen as threshold; practiced perspective and revisable continuity; Specula's camera as truth-seeking and potential exploitability; and the false-idol problem of assigning authority to representations. This is exploratory interpretation, not canon or permission. Personal reflections were deliberately kept out of the public record.
