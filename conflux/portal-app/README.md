@@ -61,3 +61,9 @@ The local server listens on `127.0.0.1` only. The launch API requires a per-sess
 7. Independently review launcher safety and asset licensing before approving public use.
 
 **Checkpoint 0.3 principle:** source, interpretation, approval and action remain separate. An app being visible does not mean it is trusted, running, or approved.
+
+## Bundled workspace apps
+
+The original Conflux Atelier (Medio/Nexus) and Conflux Ledger (Ratio/Limen) HTML applications are included in `apps/`. Open either from the Portal Applications page. They are not 'coming soon'. Their browser storage is local to the browser profile/origin; export backups before changing browsers or clearing data. They have not yet passed cross-browser integration tests.
+
+Ratio's labeled concept-art catalog and Node reference panels have now appeared in the public repository. Gallery integration and individual rights review are pending; the current Node circles are placeholders.
