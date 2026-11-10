@@ -191,6 +191,41 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(len(entries), 2)
         self.assertEqual(entries[0]["id"], "my-local-tool")
 
+    def test_update_page_and_authenticated_check(self):
+        status, html = self.get("/")
+        self.assertEqual(status, 200)
+        for marker in ('id="updates"', 'id="updates-check"',
+                       'id="updates-apply"', 'id="updates-relaunch"',
+                       'id="desktop-install"'):
+            self.assertIn(marker, html)
+        for route in ("/api/updates/check", "/api/updates/apply",
+                      "/api/updates/relaunch", "/api/desktop/install"):
+            request = Request(self.base + route, data=b"{}", method="POST",
+                              headers={"Content-Type": "application/json"})
+            with self.assertRaises(HTTPError) as err:
+                urlopen(request, timeout=3)
+            self.assertEqual(err.exception.code, 403)
+        with mock.patch.object(portal.UPDATES, "check",
+                               return_value={"status": "current", "can_apply": False}) as check:
+            _, data = self.post("/api/updates/check", {})
+            self.assertEqual(data["status"], "current")
+            check.assert_called_once_with()
+        with mock.patch.object(portal.UPDATES, "apply",
+                               return_value={"updated": True, "relaunch": True}) as apply:
+            _, data = self.post("/api/updates/apply", {})
+            self.assertTrue(data["relaunch"])
+            apply.assert_called_once_with()
+
+    def test_relaunch_requires_completed_update(self):
+        previous = portal.UPDATES.restart_needed
+        portal.UPDATES.restart_needed = False
+        try:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/updates/relaunch", {})
+            self.assertEqual(err.exception.code, 409)
+        finally:
+            portal.UPDATES.restart_needed = previous
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         script = Path(__file__).with_name("app.js")
