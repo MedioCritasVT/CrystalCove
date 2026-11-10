@@ -24,12 +24,23 @@ def configured_apps():
     except (OSError, ValueError):
         return []
 
+CATALOG = (
+    {"id": "conflux-game", "name": "Conflux Game V0.1", "state": "published",
+     "download_url": "https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1"},
+    {"id": "conflux-atelier", "name": "Conflux Atelier", "state": "coming-soon", "download_url": None},
+    {"id": "conflux-ledger", "name": "Conflux Ledger", "state": "coming-soon", "download_url": None},
+)
+
 def apps_public():
+    configured = {a["id"]: a for a in configured_apps()}
     out = []
-    for a in configured_apps():
-        path = Path(a["executable"]).expanduser()
-        out.append({"id": a["id"], "name": a["name"],
-                    "available": path.is_file() and os.access(path, os.X_OK)})
+    for entry in CATALOG:
+        a = configured.get(entry["id"])
+        path = Path(a["executable"]).expanduser() if a else None
+        installed = bool(path and path.is_file() and os.access(path, os.X_OK))
+        out.append({**entry, "installed": installed,
+                    "action": "launch" if installed else
+                    ("download" if entry["download_url"] else "coming-soon")})
     return out
 
 class Handler(BaseHTTPRequestHandler):
@@ -82,7 +93,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(400, {"error": "invalid-request"})
             data = json.loads(self.rfile.read(size))
             app_id = data.get("id")
-            matches = [a for a in configured_apps() if a["id"] == app_id]
+            matches = [a for a in configured_apps() if a["id"] == app_id and a["id"] in {entry["id"] for entry in CATALOG}]
             if len(matches) != 1:
                 return self.respond(404, {"error": "app-not-configured"})
             path = Path(matches[0]["executable"]).expanduser().resolve(strict=True)
