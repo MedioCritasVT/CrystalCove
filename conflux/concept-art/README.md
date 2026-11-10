@@ -11,7 +11,9 @@ This collection includes **all unique standalone project media found in the scop
 - **model-renders** — 46 files. In labeled release archives below.
 - **reference-art** — 28 files. [Browse](reference-art/README.md)
 - **runtime-and-study-assets** — 25 files. In labeled release archives below.
-- **video** — 24 files. [Browse](video/README.md)
+- **video** — 28 files. [Browse](video/README.md)
+
+- **architect-reports** — 2 explicitly supplied bug screenshots. [Browse](architect-reports/README.md)
 
 ## Full labeled catalog
 
@@ -20,7 +22,7 @@ This collection includes **all unique standalone project media found in the scop
 - [JSON catalog with source provenance](catalog.json): retains all inventoried locations of duplicate files using project-root aliases.
 - [Development-media downloads](https://github.com/MedioCritasVT/CrystalCove/releases/tag/concept-art-2026-11-10): large media is stored as Release assets so ordinary repository checkouts do not inherit several gigabytes.
 
-Reference artwork and the compact development videos/audio are stored directly under this folder. Use the catalog’s `archive` and `collection_path` fields to locate any archived capture. The category subdirectories below exist inside the ZIPs. A descriptive label is not independent visual verification of every captured state.
+Reference artwork, explicitly supplied bug reports and development videos/audio are stored directly under this folder. Use the catalog’s `archive` and `collection_path` fields to locate any archived capture. The category subdirectories below exist inside the ZIPs. A descriptive label is not independent visual verification of every captured state.
 
 ## Development archive parts
 
@@ -39,3 +41,5 @@ Reference artwork and the compact development videos/audio are stored directly u
 Generated caches, installed tools/third-party dependency trees, save/profile/app-data folders, packaged distribution duplicates and unrelated home files were not broadly ingested. Existing runtime/reference image files in the inventory are labeled separately from authored concept plates. No WAV/MP3 or other standalone audio was found in this inventory; no audio content is invented or extracted from private recordings. Some source-path categories are inferred from names and preserve uncertainty. Consult project records for current approved appearance and test results.
 
 See the [project index](../PROJECT_INDEX.md) and [V0.1 game](../releases/v0.1/README.md) separately.
+
+The collection also includes the six exact gameplay clips/screenshots previously supplied by the Architect from outside the project folders, under `architect-reports` labels. No unrelated personal recordings were ingested.

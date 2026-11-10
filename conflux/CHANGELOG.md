@@ -1,3 +1,7 @@
+## 2026-11-10 — Previously supplied gameplay-report media
+
+Added four exact gameplay clips and two screenshots explicitly supplied earlier by the Architect, labeled by the bug/placement request they document. Three sampled frames from each clip were inspected as gameplay-only review, not exhaustive frame-by-frame acceptance. Original bytes preserved. Total unique catalog now 2,805 files, with 58 direct media files and 2,747 images in unchanged archive parts. No unrelated Videos/Downloads scan.
+
 ## 2026-11-10 — Labeled concept-art and media collection
 
 Architect requested all unique scoped project media, including development captures, under a separately labeled concept-art folder. Cataloged 2799 unique original files; retained duplicate source locations in provenance. Stored 28 reference images and 24 compact videos directly, with remaining development/model/diagnostic/runtime-study media in seven labeled Release archive parts. Every direct file, ZIP member and ZIP archive was verified against SHA-256. Source files were not moved or edited. No standalone audio was found. Generated caches/profile/app-data trees and unrelated home files were excluded; current approval is not inferred from upload or filename. See [collection](concept-art/README.md), full CSV/JSON and smaller per-archive catalogs. Binary capture archives are published separately to avoid a multi-gigabyte ordinary checkout.

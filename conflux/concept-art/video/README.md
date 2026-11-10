@@ -1,6 +1,6 @@
 # Video
 
-Descriptive labels only; see the parent catalog for source locations, hashes and approval boundaries.
+Historical development material, not final acceptance.
 
 | Label | File | Bytes | Status |
 | --- | --- | ---: | --- |
@@ -28,3 +28,7 @@ Descriptive labels only; see the parent catalog for source locations, hashes and
 | Medio — MovementProof.mp4 — review-MedioPhysicsProof | [MovementProof.mp4](../video/review-MedioPhysicsProof/MovementProof.mp4) | 4365854 | Historical development recording; not acceptance evidence by itself |
 | Medio — MovementProof.mp4 — review-MedioPhysicsProof | [MovementProof.mp4](../video/review-MedioPhysicsProof/MovementProof-9d30317249.mp4) | 175332 | Historical development recording; not acceptance evidence by itself |
 | Medio — Conflux_Medio_Physics_Comparison.mp4 — project-reference | [Conflux_Medio_Physics_Comparison.mp4](../video/project-reference/Conflux_Medio_Physics_Comparison.mp4) | 1312163 | Historical development recording; not acceptance evidence by itself |
+| Mediocritas — shoulder/animation bug report | [Screencast_20261101_204159.webm](../video/architect-reports/Screencast_20261101_204159.webm) | 44665958 | User-supplied historical bug/placement report; not final acceptance |
+| Mediocritas — body/costume bug report | [Screencast_20261103_175412.webm](../video/architect-reports/Screencast_20261103_175412.webm) | 822154 | User-supplied historical bug/placement report; not final acceptance |
+| Daemon workbench — requested placement and road-facing orientation | [Screencast_20261103_220829.webm](../video/architect-reports/Screencast_20261103_220829.webm) | 1348452 | User-supplied historical bug/placement report; not final acceptance |
+| Camera — off-center character framing bug report | [Screencast_20261103_214951.webm](../video/architect-reports/Screencast_20261103_214951.webm) | 2714926 | User-supplied historical bug/placement report; not final acceptance |

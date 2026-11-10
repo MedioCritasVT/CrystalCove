@@ -6,12 +6,13 @@
     "R": "Original Unreal project/reference inbox",
     "B": "CFX-RATIO-007 experimental root",
     "VOS-Backgrounds": "Known mirrored background/design references",
-    "Supplied-Downloads": "Explicitly scoped Medio preview"
+    "Supplied-Downloads": "Explicitly scoped Medio preview",
+    "Architect-Supplied-Reports": "Only the six exact previously supplied gameplay clips/screenshots; no broad personal Videos/Downloads scan."
   },
   "classification": "Labels are descriptive source/path classifications, not a new approval or artistic judgement. Originals unmodified. Duplicate byte-identical files stored once with all inventory source locations retained.",
   "release_tag": "concept-art-2026-11-10",
-  "total_unique_files": 2799,
-  "total_unique_bytes": 2734171437,
+  "total_unique_files": 2805,
+  "total_unique_bytes": 2785762451,
   "archives": [
     {
       "name": "Conflux-Concept-Art-Development-01.zip",
@@ -59767,6 +59768,132 @@
       ],
       "storage": "release-archive",
       "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "b5efeb9e1ef879a8",
+      "label": "Mediocritas — shoulder/animation bug report",
+      "category": "video",
+      "subject": "medio",
+      "source_checkpoint": "Architect report 2026-11-01",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screencast_20261101_204159.webm",
+      "media_type": "webm",
+      "bytes": 44665958,
+      "sha256": "b5efeb9e1ef879a894992d41d6388d65d60c1e793c15a90ffe2644ad3771f9fb",
+      "collection_path": "video/architect-reports/Screencast_20261101_204159.webm",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screencast_20261101_204159.webm"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
+    },
+    {
+      "id": "0f7ca64509f1fbb4",
+      "label": "Mediocritas — body/costume bug report",
+      "category": "video",
+      "subject": "medio",
+      "source_checkpoint": "Architect report 2026-11-03",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screencast_20261103_175412.webm",
+      "media_type": "webm",
+      "bytes": 822154,
+      "sha256": "0f7ca64509f1fbb41740cf864d7c4543d3f6a1b7fae42ee2b746d548ff98ed24",
+      "collection_path": "video/architect-reports/Screencast_20261103_175412.webm",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screencast_20261103_175412.webm"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
+    },
+    {
+      "id": "24d68c5033dd0092",
+      "label": "Daemon workbench — requested placement and road-facing orientation",
+      "category": "video",
+      "subject": "shared",
+      "source_checkpoint": "Architect report 2026-11-03",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screencast_20261103_220829.webm",
+      "media_type": "webm",
+      "bytes": 1348452,
+      "sha256": "24d68c5033dd009243dda77f5a13bbb5a33de809559ee9fb3a44395ad8dcba7b",
+      "collection_path": "video/architect-reports/Screencast_20261103_220829.webm",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screencast_20261103_220829.webm"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
+    },
+    {
+      "id": "a0b4f3bf67f1bd9a",
+      "label": "Camera — off-center character framing bug report",
+      "category": "video",
+      "subject": "shared",
+      "source_checkpoint": "Architect report 2026-11-03",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screencast_20261103_214951.webm",
+      "media_type": "webm",
+      "bytes": 2714926,
+      "sha256": "a0b4f3bf67f1bd9a351e56f9d381a2d04ff94790893b1a810da2eff869bdfc89",
+      "collection_path": "video/architect-reports/Screencast_20261103_214951.webm",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screencast_20261103_214951.webm"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
+    },
+    {
+      "id": "9baf4833308f5e56",
+      "label": "Mediocritas — side silhouette and environment screenshot",
+      "category": "architect-reports",
+      "subject": "medio",
+      "source_checkpoint": "Architect report 2026-11-03",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screenshot_20261103_175307.png",
+      "media_type": "png",
+      "bytes": 1571958,
+      "sha256": "9baf4833308f5e56495c4b73f72ae37c53673f760b512fc8e428d4b4492be2fe",
+      "collection_path": "architect-reports/architect-reports/Screenshot_20261103_175307.png",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screenshot_20261103_175307.png"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
+    },
+    {
+      "id": "37f6f36fdbb8b849",
+      "label": "Mediocritas — annotated upper-body/costume bug screenshot",
+      "category": "architect-reports",
+      "subject": "medio",
+      "source_checkpoint": "Architect report 2026-11-03",
+      "review_status": "User-supplied historical bug/placement report; not final acceptance",
+      "name": "Screenshot_20261103_175229.png",
+      "media_type": "png",
+      "bytes": 467566,
+      "sha256": "37f6f36fdbb8b849228ff1f558c435eac50deb092b0f8a242a73064c39550bb7",
+      "collection_path": "architect-reports/architect-reports/Screenshot_20261103_175229.png",
+      "sources": [
+        {
+          "root_alias": "Architect-Supplied-Reports",
+          "path": "Screenshot_20261103_175229.png"
+        }
+      ],
+      "storage": "repository",
+      "archive": null
     }
   ]
 }
