@@ -1,0 +1,23 @@
+# Conflux Portal — proposed GitHub Pages entry point
+
+This is a **static, read-only portal** prepared for Architect review. It links to the project’s already published game release, books, source records, Node routing, and platform foundations.
+
+## Publication boundary
+
+- These files are proposed in a dedicated branch and pull request. Creating them does **not** enable GitHub Pages, deploy a service, merge into `main`, or grant authority to a Node.
+- To publish **after approval and merge**, the repository owner can visit **Settings → Pages**, choose **Deploy from a branch**, and set branch **main** with folder **/docs**. Then visit `https://mediocritasvt.github.io/CrystalCove/` and confirm it renders before describing it as live.
+- The repository's top-level `README.md` includes a proposed **Conflux Portal** front-page section in the same PR. It remains absent from `main` until merged.
+- The website uses no runtime scripts, forms, analytics, authentication, API keys, personal-data collection, or automated GitHub/agent calls.
+- The sanctuary image is requested from the **public main branch** at `raw.githubusercontent.com` and requires network connectivity; the page remains readable if the image is unavailable.
+- Outbound links point to the published public repo and existing v0.1 release. When files or releases change, review and update links.
+- GitHub Pages is static hosting only. It cannot itself run the Unreal Linux build, Ollama agents, Python services, or VOS.
+
+## Review checklist
+
+1. Verify that the page renders on desktop and mobile and all sections remain keyboard-navigable.
+2. Confirm external links and V0.1 Linux-only status.
+3. Check manuscript titles, Book V WIP labeling, authorship notes, and distinction between archived sources and working systems.
+4. Confirm that the README placement and eventual Pages URL are acceptable.
+5. Only then merge and enable Pages. Verify the live URL before telling visitors it is operational.
+
+**Status: proposal; no public Pages deployment verified.**

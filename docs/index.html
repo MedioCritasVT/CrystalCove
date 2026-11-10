@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101922">
+  <meta name="description" content="Enter Conflux: explore Sanctuary Reach, play the Linux preview, read the books, and follow the work behind the world.">
+  <title>Conflux | The Threshold</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0c141b;--panel:#14222b;--panel2:#192b35;--ink:#edf5ef;--muted:#b1c4c1;--line:#385450;--gold:#e1c58a;--mint:#96c7b4;--max:1150px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 82% 5%,#203a3e 0%,transparent 34%),linear-gradient(155deg,#0c141b,#101f27 68%,#0c141b);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:var(--mint);text-underline-offset:.2em}a:hover{color:#fff}
+    a:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:3px}
+    .skip{position:absolute;top:-80px;left:12px;background:#fff;color:#101922;padding:10px;z-index:10}
+    .skip:focus{top:12px}
+    .wrap{width:min(var(--max),calc(100% - 2.5rem));margin-inline:auto}
+    header{border-bottom:1px solid var(--line);background:#0e1920df}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;min-height:74px;flex-wrap:wrap;padding-block:.7rem}
+    .brand{text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:.18em;font-size:1.1rem}
+    .brand span{color:var(--gold)}
+    nav{display:flex;gap:1.25rem;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-size:.92rem}
+    nav a:hover{color:var(--gold)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.19em;color:var(--gold);font-size:.75rem;font-weight:700}
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:3rem;padding-block:clamp(3rem,8vw,7rem)}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.12}
+    h1{font-size:clamp(2.9rem,7vw,5.8rem);margin:.8rem 0 1rem}
+    h1 em{font-style:normal;color:var(--gold)}
+    h2{font-size:clamp(2rem,4.5vw,3.1rem);margin:.35rem 0 1rem}
+    h3{font-size:1.5rem;margin:.25rem 0 .75rem}
+    .lead{font-size:clamp(1.05rem,1.7vw,1.28rem);color:#cfddda;max-width:36rem}
+    .hero-art{position:relative;min-height:430px;border:1px solid #68817a;border-radius:180px 180px 14px 14px;overflow:hidden;background:#193338}
+    .hero-art img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#07141add,transparent 50%),linear-gradient(90deg,#14352d33,transparent)}
+    .art-label{position:absolute;z-index:1;bottom:22px;left:24px;right:24px;color:#eff4ed;letter-spacing:.2em;font-size:.75rem;text-transform:uppercase}
+    .buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.75rem}
+    .btn{display:inline-block;border:1px solid var(--gold);background:var(--gold);color:#142028;padding:.78rem 1.1rem;font-weight:700;text-decoration:none;border-radius:3px}
+    .btn:hover{background:#f2ddae;color:#0c141b}
+    .btn.secondary{background:transparent;color:var(--gold)}
+    .btn.secondary:hover{background:#263b3a;color:#fff}
+    .meta{font-size:.87rem;color:var(--muted);margin-top:1.3rem}
+    section{scroll-margin-top:24px;padding-block:3rem}
+    .section-top{max-width:52rem;margin-bottom:1.5rem}
+    .section-top p{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .card{border:1px solid var(--line);background:linear-gradient(145deg,var(--panel2),var(--panel));border-radius:12px;padding:1.45rem;display:flex;flex-direction:column;min-height:230px}
+    .card p{color:var(--muted);margin:.15rem 0 1.2rem}
+    .card a{margin-top:auto;font-weight:650}
+    .tag{display:inline-flex;align-self:flex-start;border:1px solid #59786f;border-radius:30px;font-size:.73rem;letter-spacing:.04em;text-transform:uppercase;padding:.18rem .62rem;color:#b8dece;margin-bottom:.8rem}
+    .tag.wip{border-color:#927c54;color:#f0d6a3}
+    .strip{margin-block:2rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.4rem 0;color:#e0e9e3}
+    .strip strong{color:var(--gold)}
+    .books{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .books .card{min-height:212px;padding:1.1rem}
+    .books h3{font-size:1.35rem}
+    .books p{font-size:.9rem}
+    .status{border:1px solid var(--line);background:#0e1b23;border-radius:12px;padding:1.35rem 1.5rem}
+    .status p{margin:.5rem 0;color:var(--muted)}
+    .status strong{color:var(--ink)}
+    .links{display:flex;gap:.8rem 1.6rem;flex-wrap:wrap}
+    footer{border-top:1px solid var(--line);margin-top:2rem;padding:2rem 0;color:var(--muted);font-size:.9rem}
+    footer a{color:var(--mint)}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:300px;max-height:520px}.books{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:630px){.wrap{width:min(var(--max),calc(100% - 1.7rem))}.grid,.books{grid-template-columns:1fr}.hero{gap:1.5rem;padding-block:2.4rem}.hero-art{min-height:290px;border-radius:130px 130px 12px 12px}.card,.books .card{min-height:0}.top{align-items:flex-start}nav{gap:.5rem 1.1rem}section{padding-block:2rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="#main" aria-label="Conflux home">CONFLUX <span>✦</span></a>
+      <nav aria-label="Primary">
+        <a href="#explore">Explore</a><a href="#library">Books</a><a href="#workshop">Workshop</a><a href="#state">Project state</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Sanctuary Reach · A world in the making</div>
+        <h1>Come to the <em>Threshold.</em></h1>
+        <p class="lead">Conflux is a place to explore, create, and ask what a world can become. Enter the playable preview, encounter its stories, or look inside the workshop where the ideas take shape.</p>
+        <div class="buttons">
+          <a class="btn" href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1">Get the game preview</a>
+          <a class="btn secondary" href="#explore">Find your way in</a>
+        </div>
+        <p class="meta">V0.1 is an early Linux x86_64 preview, not a finished campaign. The game itself runs locally; this portal is a public guide, not a game server.</p>
+      </div>
+      <div class="hero-art">
+        <img src="https://raw.githubusercontent.com/MedioCritasVT/CrystalCove/main/conflux/assets/sanctuary.png" alt="Conflux sanctuary concept artwork, a fantasy setting with luminous architecture">
+        <div class="art-label">A place to inhabit · A practice of discovery</div>
+      </div>
+    </div>
+    <div class="wrap strip"><strong>Five perspectives, one shared city.</strong> Medio · Ratio · Nexus · Specula · Limen. Each approaches the same world through different questions, instruments, and ways of learning.</div>
+    <section class="wrap" id="explore">
+      <div class="section-top"><div class="eyebrow">Enter</div><h2>Choose your doorway</h2><p>Start with the world itself or browse the earlier experiment that helped shape it.</p></div>
+      <div class="grid">
+        <article class="card"><span class="tag">Playable Linux preview</span><h3>Conflux V0.1</h3><p>Explore Sanctuary Reach, journey beyond the harbor, meet the Node realms, craft, and begin the Sapphire Grimoire. An Unreal Engine development build, with known unfinished areas.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1">Download and read release notes →</a></article>
+        <article class="card"><span class="tag">Historical study</span><h3>The browser sanctuary</h3><p>A separate HTML/WebGL experiment with a small 3D world, conversations, crafting, and a bounded gate puzzle. It is not the current native game.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/downloads">Get the offline browser study →</a></article>
+        <article class="card"><span class="tag">Orientation</span><h3>World and project map</h3><p>Discover what has been built, what is still proposed, and how Conflux, SanctuaryOS, and the independent VOS experiments relate.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/PROJECT_INDEX.md">Read the project scope map →</a></article>
+      </div>
+    </section>
+    <section class="wrap" id="library">
+      <div class="section-top"><div class="eyebrow">The library</div><h2>Arcky and the Construct</h2><p>Original manuscript files are preserved for reading and historical reference. These are not newly copyedited editions; volume five remains unfinished.</p></div>
+      <div class="grid books">
+        <article class="card"><span class="tag">Original</span><h3>Book I</h3><p>Arcky and the Construct</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_01_Arcky_and_The_Construct.txt">Read source →</a></article>
+        <article class="card"><span class="tag">Original</span><h3>Book II</h3><p>The Exodus</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_02_The_Exodus.txt">Read source →</a></article>
+        <article class="card"><span class="tag">Original</span><h3>Book III</h3><p>Original manuscript; edition title unresolved</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_03_AnTC3.txt">Read source →</a></article>
+        <article class="card"><span class="tag">Original</span><h3>Book IV</h3><p>The Gnosis</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_04_AnTC4.txt">Read source →</a></article>
+        <article class="card"><span class="tag wip">Work in progress</span><h3>Book V</h3><p>The Emerald Threshold — draft material, not a final edition</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold">Browse WIP chapters →</a></article>
+      </div>
+      <p class="meta">Publishing a manuscript here does not grant a general literary reuse or commercial license. <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/README.md">Read the archive's authorship and edition notes.</a></p>
+    </section>
+    <section class="wrap" id="workshop">
+      <div class="section-top"><div class="eyebrow">The workshop</div><h2>See how the work unfolds</h2><p>Conflux is built through proposals, disagreement, experiments, tests, and deliberate decisions. These links open the actual project records, rather than presenting those records as a live AI chat.</p></div>
+      <div class="grid">
+        <article class="card"><span class="tag">Architect review</span><h3>Decision inbox</h3><p>Explore attributed proposals awaiting the Architect's consideration. A posted document does not mean it has been read or approved.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/architect/inbox">Open the Architect inbox →</a></article>
+        <article class="card"><span class="tag">Coordination</span><h3>Node mailroom</h3><p>See the rules for messages among Nodes, source attribution, explicit replies, and distinctions between a proposal and a decision.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/MAILROOM.md">Read mailroom and routing →</a></article>
+        <article class="card"><span class="tag">Software foundations</span><h3>VOS and agent harness</h3><p>Review experimental service contracts, simulator sources, tests, and the four-agent harness. Archived source is not a deployed service.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/platforms">Explore platform foundations →</a></article>
+      </div>
+    </section>
+    <section class="wrap" id="state">
+      <div class="section-top"><div class="eyebrow">A clear boundary</div><h2>What exists, and what does not</h2></div>
+      <div class="status">
+        <p><strong>Available:</strong> a Linux V0.1 release, original book files, a historical browser study, written realm proposals, and archived VOS/harness source.</p>
+        <p><strong>Still developing:</strong> completed realm-specific gameplay, final book five, full campaign acceptance, and a production VOS service.</p>
+        <p><strong>Not implied by this portal:</strong> automatic Node delivery, active agents, multiplayer accounts, live machine telemetry, or operating-system permissions.</p>
+        <p>This is a static, read-only public entrance. It does not ask you to sign in or store your data.</p>
+        <div class="links"><a href="https://github.com/MedioCritasVT/CrystalCove">Source repository</a><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/CHANGELOG.md">Change history</a><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/design/CFX_REALM_INFLUX_WAVE_01_2026-11-10.md">Realm proposal wave</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">Conflux / CrystalCove · A world in development · Public, read-only portal draft. All official game, story, and software approvals remain with the Architect.</div></footer>
+</body>
+</html>
