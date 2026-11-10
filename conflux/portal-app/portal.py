@@ -27,8 +27,8 @@ def configured_apps():
 CATALOG = (
     {"id": "conflux-game", "name": "Conflux Game V0.1", "state": "published",
      "download_url": "https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1"},
-    {"id": "conflux-atelier", "name": "Conflux Atelier", "state": "coming-soon", "download_url": None},
-    {"id": "conflux-ledger", "name": "Conflux Ledger", "state": "coming-soon", "download_url": None},
+    {"id": "conflux-atelier", "name": "Conflux Atelier", "state": "bundled", "download_url": None, "open_url": "/apps/atelier"},
+    {"id": "conflux-ledger", "name": "Conflux Ledger", "state": "bundled", "download_url": None, "open_url": "/apps/ledger"},
 )
 
 def apps_public():
@@ -40,7 +40,7 @@ def apps_public():
         installed = bool(path and path.is_file() and os.access(path, os.X_OK))
         out.append({**entry, "installed": installed,
                     "action": "launch" if installed else
-                    ("download" if entry["download_url"] else "coming-soon")})
+                    ("open" if entry.get("open_url") else ("download" if entry["download_url"] else "coming-soon"))})
     return out
 
 class Handler(BaseHTTPRequestHandler):
@@ -65,7 +65,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             self.wfile.write(body)
-        elif route == "/app.js":
+        elif route in ("/apps/atelier", "/apps/ledger"):\n            filename = "atelier.html" if route == "/apps/atelier" else "ledger.html"\n            body = (ROOT / "apps" / filename).read_bytes()\n            self.send_response(200)\n            self.send_header("Content-Type", "text/html; charset=utf-8")\n            self.send_header("Cache-Control", "no-store")\n            self.send_header("X-Content-Type-Options", "nosniff")\n            self.send_header("Content-Length", str(len(body)))\n            self.end_headers()\n            self.wfile.write(body)\n        elif route == "/app.js":
             body = (ROOT / "app.js").read_bytes()
             self.send_response(200)
             self.send_header("Content-Type", "text/javascript; charset=utf-8")
