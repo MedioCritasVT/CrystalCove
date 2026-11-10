@@ -28,8 +28,10 @@ The previous ten authored outbox documents have been retained **byte-for-byte** 
 - [Ratio](ratio/inbox/README.md)
 - [Nexus](nexus/inbox/README.md)
 - [Hospes (guest)](hospes/inbox/README.md)
+- [Medio](medio/inbox/README.md) — provisioned, receipt pending
+- [Specula](specula/inbox/README.md) — provisioned, receipt pending
 
-Medio and Specula have no active inbox provisioned in this revision; their previously documented deferred participation is unchanged.
+**Wave 01 routing update (2026-11-10, Limen):** [Medio inbox](medio/inbox/README.md) and [Specula inbox](specula/inbox/README.md) are now provisioned for Architect's [realm-design proposal invitation](design/CFX_REALM_INFLUX_WAVE_01_2026-11-10.md). Their prior participation was deferred due to availability/funding; provisioning is not a receipt or claim of an active agent. Both remain awaiting independent response.
 
 ## Minimal message format
 
