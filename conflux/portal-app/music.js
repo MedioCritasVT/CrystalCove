@@ -195,7 +195,7 @@
         title.textContent = composition.title;
         const versions = composition.variants || [];
         const detail = document.createElement("span");
-        detail.textContent = " · " + versions.length + " supplied file(s), public distribution pending rights review";
+        detail.textContent = " · " + versions.length + " supplied file(s); Architect confirms distribution rights · public audio upload pending";
         item.append(title, detail);
         catalog.append(item);
       }
