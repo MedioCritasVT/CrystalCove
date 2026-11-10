@@ -65,7 +65,17 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             self.wfile.write(body)
-        elif route in ("/apps/atelier", "/apps/ledger"):\n            filename = "atelier.html" if route == "/apps/atelier" else "ledger.html"\n            body = (ROOT / "apps" / filename).read_bytes()\n            self.send_response(200)\n            self.send_header("Content-Type", "text/html; charset=utf-8")\n            self.send_header("Cache-Control", "no-store")\n            self.send_header("X-Content-Type-Options", "nosniff")\n            self.send_header("Content-Length", str(len(body)))\n            self.end_headers()\n            self.wfile.write(body)\n        elif route == "/app.js":
+        elif route in ("/apps/atelier", "/apps/ledger"):
+            filename = "atelier.html" if route == "/apps/atelier" else "ledger.html"
+            body = (ROOT / "apps" / filename).read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        elif route == "/app.js":
             body = (ROOT / "app.js").read_bytes()
             self.send_response(200)
             self.send_header("Content-Type", "text/javascript; charset=utf-8")
