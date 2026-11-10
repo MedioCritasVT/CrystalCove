@@ -25,7 +25,7 @@ The proposed GitHub Release tag is `conflux-soundtrack-v0.1`. Do not claim this 
 
 To publish, open the GitHub Releases interface, choose **Draft a new release**, use the proposed tag, and attach the **seven MP3 files individually**, plus the checksums/release notes. Avoid a ZIP-only upload if browser streaming is desired. Publish only after reviewing the public credits and scope. Verify each asset's SHA-256 hash or download it back and compare before marking it live.
 
-Once real asset URLs are verified, add each public URL to its corresponding `catalog.json` variant and enable public playback in the Portal. The current Portal player supports **local file selection with an opt-in music toggle**. It never automatically uploads the user's audio or starts music on load.
+The Portal now discovers **publicly released** MP3 asset URLs automatically using the official GitHub Release API; no manual catalog URL copy is required. Each asset must match the expected filename and release tag. Visitors press **Music On** to play. The Architect may also use **Install soundtrack ZIP once…** for permanent playback on their own machine before GitHub release publication. These steps do not silently upload audio or start playback on page load.
 
 ## Version and game boundaries
 

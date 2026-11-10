@@ -280,6 +280,44 @@ class PortalSmokeTest(unittest.TestCase):
             self.get("/soundtrack/anything.mp3")
         self.assertEqual(err.exception.code, 404)
 
+    def test_auto_soundtrack_catalog_and_audio_range(self):
+        sample = Path(self.tmp.name) / "Conflux-Test.mp3"
+        sample.write_bytes(b"ID3-0123456789")
+        with mock.patch.object(portal.music_library, "library",
+            return_value={"available": 1, "tracks": [
+                {"title": "Conflux Test", "variants": [{"url": "/music/audio/Conflux-Test.mp3"}]}
+            ]}):
+            status, payload = self.get("/api/music/library")
+            self.assertEqual(status, 200)
+            self.assertEqual(json.loads(payload)["available"], 1)
+        with mock.patch.object(portal.music_library, "local_asset",
+                               side_effect=lambda name: sample if name == "Conflux-Test.mp3" else None):
+            request = Request(self.base + "/music/audio/Conflux-Test.mp3",
+                              headers={"Range": "bytes=4-8"})
+            with urlopen(request, timeout=3) as response:
+                self.assertEqual(response.status, 206)
+                self.assertEqual(response.headers["Content-Range"], "bytes 4-8/14")
+                self.assertEqual(response.read(), b"01234")
+            with self.assertRaises(HTTPError) as err:
+                urlopen(self.base + "/music/audio/secrets", timeout=3)
+            self.assertEqual(err.exception.code, 404)
+
+    def test_zip_install_requires_an_explicit_authenticated_post(self):
+        request = Request(self.base + "/api/music/install", data=b"ZIP",
+                          method="POST", headers={"Content-Type": "application/zip"})
+        with self.assertRaises(HTTPError) as err:
+            urlopen(request, timeout=3)
+        self.assertEqual(err.exception.code, 403)
+        request = Request(self.base + "/api/music/install", data=b"ZIP", method="POST",
+                          headers={"Content-Type": "application/zip", "Origin": self.base,
+                                   "X-Conflux-Token": portal.TOKEN})
+        with mock.patch.object(portal.music_library, "install_release_zip",
+                               return_value={"installed": 7}) as install:
+            with urlopen(request, timeout=3) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(json.load(response)["installed"], 7)
+            install.assert_called_once_with(b"ZIP")
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         script = Path(__file__).with_name("app.js")
