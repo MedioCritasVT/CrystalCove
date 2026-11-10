@@ -244,11 +244,95 @@ body[data-view="updates"]{
 #desktop-status{margin-top:15px;color:#c9f1e0}
 #updates-details{overflow-wrap:anywhere}
 
+
+/* Soundtrack room inherits original Atelier amber/violet and has continuous media controls. */
+body[data-view="soundtrack"]{
+  --ambient:var(--violet);--ambient2:var(--amber);
+  --room-sky:#3e2c4d;--room-mid:#292d42;--room-floor:#192334;
+  --room-fog:rgba(194,164,243,.26);--room-fog-alt:rgba(233,191,132,.22)
+}
+#soundtrack{--accent:var(--violet);--echo:var(--amber)}
+#soundtrack .download-panel,#soundtrack .finder{
+  background:linear-gradient(132deg,#30283d,#283444);
+  border-color:#8e749f
+}
+#soundtrack h3{color:#f4d8ac}
+#soundtrack .card{--accent:var(--amber);--echo:var(--violet)}
+#music-catalog li{padding:7px 0;color:#e7e6ee}
+#music-catalog span{color:#c8cad7}
+.music-dock{
+  --accent:var(--amber);--echo:var(--violet);
+  display:grid;grid-template-columns:1.3fr auto auto auto minmax(210px,1.5fr) 100px;
+  align-items:center;gap:11px;border:1px solid #8c7898;border-radius:14px;
+  background:linear-gradient(108deg,#292338,#233344 55%,#293346);
+  padding:12px 16px;margin:0 0 25px;color:#f5f0f5;
+  box-shadow:0 9px 28px #0c102052
+}
+.music-dock-heading{display:flex;gap:11px;align-items:center;min-width:160px}
+.music-dock-heading strong{display:block;font:normal 17px Georgia,serif;color:#f2d3a3;white-space:nowrap}
+.music-dock-heading small{font-size:11px;color:#dbd2df;display:block;line-height:1.2}
+.music-glyph{font-size:25px;color:#c2a4f3}
+.music-controls{display:flex;gap:4px}
+.music-toggle,.music-controls button{border-radius:9px;border:1px solid #a7a2bb;background:#2d3447;color:#fff;padding:8px 10px;min-height:38px;font-size:13px}
+.music-toggle[aria-pressed="true"]{background:#496b60;border-color:#9cdec0;color:#f5fff6}
+.music-controls button:disabled{opacity:.4;cursor:not-allowed}
+.music-file-label{font-size:12px;white-space:nowrap;background:transparent;color:#e9deee;border-color:#e9bf84;padding:8px 10px;cursor:pointer}
+.music-options{display:grid;grid-template-columns:auto minmax(75px,1fr);gap:3px 6px;align-items:center}
+.music-options label,.music-volume label{font-size:11px;color:#d7d4e0;margin:0}
+.music-options select{min-width:0;max-width:100%;border:1px solid #796e90;background:#19263a;color:#f7f3f8;padding:4px 6px;border-radius:6px;font-size:12px}
+.music-options select:disabled{opacity:.5}
+.music-volume input{width:95px;accent-color:#c2a4f3;display:block}
+.music-feedback{grid-column:1 / -1;border-top:1px solid #696279;margin-top:1px;padding-top:5px;color:#d6c9e1;font-size:12px}
+.soundtrack-card{min-width:0}
+.soundtrack-card button{font-size:12px}
+@media(max-width:1380px){
+ .music-dock{grid-template-columns:minmax(165px,1fr) auto auto auto minmax(180px,1.3fr)}
+ .music-volume{grid-column:5}
+ .music-options{grid-column:4 / 6}
+}
+@media(max-width:1150px){
+ .music-dock{grid-template-columns:minmax(180px,1fr) auto auto}
+ .music-options{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:8px}
+ .music-options select{max-width:220px;flex:1}
+ .music-volume{grid-column:auto}
+}
+@media(max-width:700px){
+ .music-dock{grid-template-columns:1fr 1fr;padding:11px}
+ .music-dock-heading{grid-column:1/-1}
+ .music-controls{grid-column:1/-1}
+ .music-options{grid-column:1/-1}
+ .music-volume{grid-column:1/-1}
+ .music-feedback{grid-column:1/-1}
+}
+
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
-<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Work in progress — long-term development.</strong> This is a Linux-only preview. Some features are demonstrations or placeholders. More platforms, art, services and interactions are planned; please return for future updates.</div>
+<div class="music-dock" id="music-dock" aria-label="Conflux soundtrack player">
+  <div class="music-dock-heading">
+    <span class="music-glyph" aria-hidden="true">♫</span>
+    <div><strong>Conflux Soundtrack</strong><small>Off by default · plays local files only</small></div>
+  </div>
+  <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">Music Off</button>
+  <div class="music-choose"><label for="music-files" class="action secondary music-file-label">Choose MP3s…</label>
+    <input id="music-files" type="file" accept=".mp3,.wav,.ogg,.m4a,.flac,audio/*" multiple hidden>
+  </div>
+  <div class="music-controls">
+    <button type="button" id="music-prev" aria-label="Previous track" disabled>◂◂</button>
+    <button type="button" id="music-play" aria-label="Play selected track" disabled>Play</button>
+    <button type="button" id="music-next" aria-label="Next track" disabled>▸▸</button>
+  </div>
+  <div class="music-options"><label for="music-select">Track</label>
+    <select id="music-select" aria-label="Choose composition" disabled></select>
+    <label for="music-version">Version</label>
+    <select id="music-version" aria-label="Choose alternate version" disabled></select>
+  </div>
+  <div class="music-volume"><label for="music-volume">Volume</label><input id="music-volume" type="range" min="0" max="100" value="45" aria-label="Music volume"></div>
+  <div class="music-feedback" id="music-status" role="status" aria-live="polite">Music is off. Choose tracks to begin.</div>
+  <audio id="music-audio" preload="none"></audio>
+</div>
 <section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Play the available game, open Atelier and Ledger right here, and discover the books and creative work. No VOS service starts automatically.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
 <div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p>The playable Linux game is distributed separately from this portal.</p><button class="action" data-go="downloads">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
 
@@ -289,6 +373,30 @@ body[data-view="updates"]{
 <section class="panel" id="library" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Source and provenance</div><h2>Library & Art</h2><p class="lead">Ratio has uploaded the labeled development-media catalog, reference art and captures. These are project records, not automatically approved final artwork.</p></div><aside class="room-companions" id="room-companion-library" data-room="library" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Books I–IV</h3><p>Original manuscripts; not edited final editions.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books">Open archive</a></article><article class="card"><h3>Book V · The Emerald Threshold</h3><p>Work in progress. Read the published Act I chapters (currently Chapters 3–10), or explore the manuscript index. Unpublished chapters are not implied to be complete.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/Act_I_Newfoundland" target="_blank" rel="noopener noreferrer">Read available chapters</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/README.md" target="_blank" rel="noopener noreferrer">Chapter status register</a> <span class="pill">WIP</span></article><article class="card"><h3>Art archive</h3><p>Original labeled references and development captures are now published. A curated in-app gallery and chibi companions are still in development.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/concept-art" target="_blank" rel="noopener noreferrer">Browse project media</a></article></div></section>
 <section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">These are labeled placeholders, not final chibi designs. Reference-panel-based artwork and optional pet-like interactions come after review.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
 
+
+<section class="panel" id="soundtrack" hidden>
+  <div class="room-hero">
+    <div class="room-words">
+      <div class="eyebrow">Conflux · composition & variants</div>
+      <h2>Soundtrack</h2>
+      <p class="lead">Give the world a voice. Explore the working compositions, choose your own local recordings, and compare alternative takes. Music never starts on its own.</p>
+    </div>
+    <aside class="room-companions" id="room-companion-soundtrack" data-room="soundtrack" aria-label="Soundtrack Node companions"></aside>
+  </div>
+  <div class="download-panel">
+    <h3>Listen on this computer</h3>
+    <p>Click <strong>Choose MP3s</strong> above and select one or several audio files from your device. Press <strong>Music Off</strong> to enable playback, then choose a track or version. Your music keeps playing as you navigate between rooms; it pauses when you switch it off.</p>
+    <p id="music-library-status" class="status-line" aria-live="polite">No local files selected yet.</p>
+    <div id="soundtrack-versions" class="cards" aria-label="Locally selected soundtrack versions"></div>
+    <p class="theme-note">This preview uses your browser's local file picker. Files are not uploaded to GitHub or to the Portal server. The temporary selection is lost on reload, so choose files again after restarting. No autoplay.</p>
+  </div>
+  <div class="finder">
+    <h3>Conflux soundtrack register</h3>
+    <p>Known compositions and versions, based only on received source files and filename metadata. This is a public <strong>catalog, not a downloadable album</strong>. Final tracks and distribution rights are awaiting the Architect's review.</p>
+    <ul id="music-catalog"><li>Loading working catalog…</li></ul>
+    <p class="theme-note">The two <em>Sacrament of Oath</em> variants were requested, but their files have not yet been received. They remain listed as missing—not silently replaced.</p>
+  </div>
+</section>
 <section class="panel" id="guide" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Conflux V0.1 · Gameplay reference</div><h2>Player Manual</h2>
 <p class="lead">Welcome to Sanctuary Reach. This manual covers starting a journey, moving through the world, interacting with its systems, and saving your progress. No developer knowledge is needed.</p></div><aside class="room-companions" id="room-companion-guide" data-room="guide" aria-label="Node companions for this section"></aside></div>
@@ -343,4 +451,4 @@ body[data-view="updates"]{
   <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
 </div>
 </section>
-<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script></body></html>
+<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script><script src="/music.js"></script></body></html>

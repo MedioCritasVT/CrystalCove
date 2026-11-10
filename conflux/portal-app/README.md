@@ -81,11 +81,23 @@ The little CSS-drawn familiars are **new, provisional interface motifs**, delibe
 
 The UI test `node test_ui.js` checks every room's companion slot, assigned pet count, distinct page atmospheres, functioning navigation, and the existing download/launch flow. This supplements `python3 -m unittest test_portal.py -v`. Both are run by the PR GitHub workflow.
 
+## Soundtrack (local-only preview)
+
+The Portal has a global **Music Off / Music On** switch and a **Soundtrack** page. Music is **off by default** and never plays merely because you open the Portal or choose files.
+
+Click **Choose MP3s** to select locally saved audio recordings from your computer. The player builds a temporary in-browser playlist with previous/next, pause/play, volume, composition and alternate-version selection. Files named with suffixes such as `(2)`, `- v2`, or `- alternate` are grouped under one composition when the titles match. Selecting a different Portal page does not stop the player; switching it off pauses the audio. Browser audio permissions may require a fresh click on Play.
+
+The `music.js` player uses the standard browser File API and local Blob URLs. **It does not upload or publish audio files.** Selected audio is released when the tab is closed/reloaded, so select files again next time. The public `conflux/soundtrack/catalog.json` is a **metadata-only working register**: seven received MP3s across six compositions, including both distinct `Sacrament of Oath` takes. The Architect confirms distribution eligibility; no mix is automatically declared final. The catalog holds proposed stable release filenames and full checksum verification in the soundtrack folder, but no audio binaries or streaming links are published yet.
+
+**Distribution eligibility confirmed by the Architect (November 10, 2026), not independently audited.** The MP3 metadata identifies Suno-assisted generation, and six tracks have `mediocritasvt` artist metadata. The seven source recordings have been staged for GitHub Release distribution with stable filenames and SHA-256 checksums; the release assets have not actually been uploaded yet. Visitors can currently select their own local music files to preview them in this player. Public streaming will be enabled only after exact uploaded audio links are verified. No general reuse license is conferred on visitors.
+
+The musical catalog and player do not modify the existing Atelier, Ledger or native Unreal game packages.
+
 ## Safety and known limitations
 
 The Portal listens on **127.0.0.1** only; **do not expose it through a proxy or public network**. POST actions require same-origin authorization and the server's per-session token. The native folder chooser is invoked only by clicking the button; there is no automatic home-directory scan, shell-command interpolation, or automatic execution of discovered applications. Even so, this is an **experimental local launcher, not a security-audited service**.
 
-Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no auto-installer, auto-updater, background agent or automatic synchronization with GitHub yet.
+Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no automatic game installer or background music service; repository updates require explicit action through Updates & Setup. Audio files are not automatically synchronized with GitHub.
 
 Test locally using `python3 -m unittest test_portal.py -v`. The repository also has `.github/workflows/portal-smoke.yml` for non-destructive GitHub Actions validation; tests must pass before public release. These tests cover routes, app status, bounded scanning, symlink rejection, permission checks, explicit registration and JavaScript syntax. They do not substitute for a hands-on Linux desktop picker or full game-launch test.
 

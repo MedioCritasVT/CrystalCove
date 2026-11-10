@@ -254,6 +254,32 @@ class PortalSmokeTest(unittest.TestCase):
             self.assertTrue(data["installed"])
             install.assert_called_once_with()
 
+    def test_soundtrack_catalog_and_script_are_served_without_audio(self):
+        status, html = self.get("/")
+        self.assertEqual(status, 200)
+        self.assertIn('id="soundtrack"', html)
+        self.assertIn('id="music-toggle"', html)
+        self.assertIn('id="music-files"', html)
+        self.assertIn('aria-pressed="false"', html)
+        self.assertIn('src="/music.js"', html)
+        status, js = self.get("/music.js")
+        self.assertEqual(status, 200)
+        self.assertIn("URL.createObjectURL(file)", js)
+        self.assertIn('fetch("/soundtrack/catalog.json"', js)
+        status, body = self.get("/soundtrack/catalog.json")
+        self.assertEqual(status, 200)
+        manifest = json.loads(body)
+        self.assertEqual(manifest["schema"], "conflux.soundtrack.catalog.v0.1")
+        self.assertEqual(len(manifest["tracks"]), 6)
+        oath = next(item for item in manifest["tracks"]
+                    if item["title"] == "Sacrament of Oath")
+        self.assertIn("two_distinct_versions", oath["status"])
+        self.assertEqual(len(oath["variants"]), 2)
+        self.assertTrue(all(v["publication_status"] == "staged_pending_upload" for v in oath["variants"]))
+        with self.assertRaises(HTTPError) as err:
+            self.get("/soundtrack/anything.mp3")
+        self.assertEqual(err.exception.code, 404)
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         script = Path(__file__).with_name("app.js")

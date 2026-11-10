@@ -131,6 +131,11 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
+        if route == "/music.js":
+            return self.serve_file(ROOT / "music.js", "text/javascript; charset=utf-8")
+        if route == "/soundtrack/catalog.json":
+            return self.serve_file(ROOT.parent / "soundtrack" / "catalog.json",
+                                   "application/json; charset=utf-8")
         if route in ("/apps/atelier", "/apps/ledger"):
             file = "atelier.html" if route == "/apps/atelier" else "ledger.html"
             return self.serve_file(ROOT / "apps" / file, "text/html; charset=utf-8")
