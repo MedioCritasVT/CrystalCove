@@ -51,7 +51,7 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertIn("Journey progress is not automatically saved", html)
         status, js = self.get("/app.js")
         self.assertEqual(status, 200)
-        self.assertIn('button.dataset.page', js)
+        self.assertIn('b.dataset.page', js)
 
     def test_bundled_apps_open(self):
         for route, expected in (("/apps/atelier", "Conflux · The Atelier"),
@@ -126,7 +126,7 @@ class PortalSmokeTest(unittest.TestCase):
         game = Path(self.tmp.name) / "Games" / "V0.1"
         game.mkdir(parents=True)
         launcher = game / "PlayConflux.sh"
-        launcher.write_text("#!/bin/sh\\nexit 0\\n", encoding="utf-8")
+        launcher.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
         launcher.chmod(0o700)
         status, data = self.post("/api/game/find", {"directory": str(Path(self.tmp.name))})
         self.assertEqual(status, 200)
@@ -144,7 +144,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     def test_registration_requires_a_fresh_inspection(self):
         game = Path(self.tmp.name) / "PlayConflux.sh"
-        game.write_text("#!/bin/sh\\nexit 0\\n", encoding="utf-8")
+        game.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
         game.chmod(0o700)
         with self.assertRaises(HTTPError) as err:
             self.post("/api/game/register", {"path": str(game)})
@@ -158,7 +158,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     def test_symlink_launchers_are_not_suggested(self):
         src = Path(self.tmp.name) / "elsewhere.sh"
-        src.write_text("#!/bin/sh\\nexit 0\\n", encoding="utf-8")
+        src.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
         src.chmod(0o700)
         root = Path(self.tmp.name) / "Game"
         root.mkdir()
@@ -179,7 +179,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     def test_protect_other_app_config(self):
         game = Path(self.tmp.name) / "PlayConflux.sh"
-        game.write_text("#!/bin/sh\\nexit 0\\n", encoding="utf-8")
+        game.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
         game.chmod(0o700)
         portal.CONFIG.write_text(json.dumps([{
             "id": "my-local-tool", "name": "Private tool",
