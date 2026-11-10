@@ -53,8 +53,8 @@ const fakeFetch = async (url, options) => {
   if (url !== "/soundtrack/catalog.json") throw Error("Unexpected network request");
   return {ok:true,json:async()=>({tracks:[
     {title:"Ritual in the Circuit",variants:[{id:"provided"}]},
-    {title:"Sacrament of Oath",status:"source_files_not_received",
-     variants:[{id:"v1",status:"missing"},{id:"v2",status:"missing"}]}
+    {title:"Sacrament of Oath",status:"two_distinct_files_received",
+     variants:[{id:"take-1",status:"received_local_unpublished"},{id:"take-2",status:"received_local_unpublished"}]}
   ]})};
 };
 const fakeURL = {
@@ -76,8 +76,8 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert.equal(calls.length,1);
   // User-selected files stay local and versions are grouped by title.
   files.files = [
-    {name:"Sacrament of Oath.mp3",size:300,lastModified:1},
-    {name:"Sacrament of Oath (2).mp3",size:312,lastModified:2},
+    {name:"Sacrament of Oath(1).mp3",size:300,lastModified:1},
+    {name:"Sacrament of Oath (1)(1).mp3",size:312,lastModified:2},
     {name:"Ritual in the Circuit.mp3",size:300,lastModified:3},
   ];
   files.handlers.change();
