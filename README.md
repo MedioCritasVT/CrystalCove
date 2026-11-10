@@ -8,10 +8,10 @@ This repository holds the shared project records and historical browser prototyp
 
 The **Conflux Portal** brings the playable preview, preserved book manuscripts, Node collaboration records, and VOS/platform foundations into one visitor-friendly place.
 
-- **[Enter the Conflux Portal](https://mediocritasvt.github.io/CrystalCove/)** — the link becomes usable after the Architect approves this change and GitHub Pages is enabled for `main` → `/docs`.
-- **[View the portal source](docs/index.html)** — available in the repository after the proposal is merged.
+- **[Enter the Conflux Portal](https://mediocritasvt.github.io/CrystalCove/)** — live only if GitHub Pages is enabled for `main` → `/docs`; do not assume it is deployed.
+- **[View the portal source](docs/index.html)** — static website source (already part of the merged project).
 - **[Portal publication notes](docs/README.md)** — setup, scope, and verification steps.
-- **[Local Conflux Portal app — Linux testing instructions](https://github.com/MedioCritasVT/CrystalCove/blob/app/portal-linux-preview-0-1/conflux/portal-app/README.md)** — a separate development preview with the bundled Atelier and Ledger apps, an actual in-app gameplay manual and explicit game Download/Launch behavior. **Not yet a one-click installer or independently approved public release.**
+- **[Start here: Local Conflux Portal (Linux)](conflux/portal-app/README.md)** — a separate development preview with Atelier and Ledger, the gameplay manual, a dedicated game download page and an opt-in **Already Cloned?** game-folder finder. **Not yet a one-click installer or independently approved public release.**
 
 The portal is a read-only public website, not a game server or live Node service. The downloadable Linux V0.1 game remains available below.
 
