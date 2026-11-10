@@ -19,12 +19,12 @@ Ten **working draft** chapters were written in the literary conversation; this r
 | 2 | The People the Map Forgot | Drafted in chat; original full prose not currently recoverable from connected files — **not yet migrated** |
 | 3 | The Right to Be Unknown | [Full draft chapter](Act_I_Newfoundland/Chapter_03_The_Right_to_Be_Unknown.md) |
 | 4 | What the Walls Remember | [Full draft chapter](Act_I_Newfoundland/Chapter_04_What_the_Walls_Remember.md) |
-| 5 | The Green Between | Drafted in chat; transfer pending |
-| 6 | Permission to Speak | Drafted in chat; transfer pending |
-| 7 | The Sky Has an Address | Drafted in chat; transfer pending |
-| 8 | The Orders That Outlived Their Owners | Drafted in chat; transfer pending |
-| 9 | The Bell Without a Hand | Drafted in chat; transfer pending |
-| 10 | The First Boundary | Drafted in chat; transfer pending |
+| 5 | The Green Between | [Full draft chapter](Act_I_Newfoundland/Chapter_05_The_Green_Between.md) |
+| 6 | Permission to Speak | [Full draft chapter](Act_I_Newfoundland/Chapter_06_Permission_to_Speak.md) |
+| 7 | The Sky Has an Address | [Full draft chapter](Act_I_Newfoundland/Chapter_07_The_Sky_Has_an_Address.md) |
+| 8 | The Orders That Outlived Their Owners | [Full draft chapter](Act_I_Newfoundland/Chapter_08_The_Orders_That_Outlived_Their_Owners.md) |
+| 9 | The Bell Without a Hand | [Full draft chapter](Act_I_Newfoundland/Chapter_09_The_Bell_Without_a_Hand.md) |
+| 10 | The First Boundary | [Full draft chapter](Act_I_Newfoundland/Chapter_10_The_First_Boundary.md) |
 
 **Do not present this folder as a complete ten-chapter manuscript unless all ten original chapter texts have been migrated and verified.** Summaries and memory handoffs are not replacements for original prose. The dialogue-speaker labeling was deliberately added to support audio reading; preserve it when transferring.
 
