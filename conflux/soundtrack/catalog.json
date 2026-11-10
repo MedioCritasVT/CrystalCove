@@ -1,8 +1,8 @@
 {
   "schema": "conflux.soundtrack.catalog.v0.1",
-  "status": "inventory_only_rights_pending",
+  "status": "architect_confirmed_distribution_release_assets_not_yet_uploaded",
   "maintained_by": "Architect approval required",
-  "guidance": "All seven supplied audio files were inspected on 2026-11-10. This public catalog contains metadata only, no audio binaries or playable public URLs. Creation plan and external distribution entitlements require Architect confirmation.",
+  "guidance": "Seven supplied files checked and grouped into six compositions. Architect confirmed distribution eligibility on 2026-11-10; the assistant did not independently inspect subscription invoices or legal licensing documentation. MP3 binaries are not yet published in this GitHub repository or release.",
   "tracks": [
     {
       "id": "awareness-transcends",
@@ -14,8 +14,12 @@
           "filename": "Awareness transcends that which it is aw (2).mp3",
           "duration_seconds": 215,
           "sha256_prefix": "4a192f58ec6e8c63",
-          "rights": "unverified",
-          "source": "MP3 supplied to Conflux conversation"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "source": "MP3 supplied to Conflux conversation",
+          "release_asset_filename": "Conflux-Awareness-Transcends.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     },
@@ -30,7 +34,11 @@
           "sha256_prefix": "54bf99f79366f665",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-Call-Me-Through-the-Mountain.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     },
@@ -44,7 +52,11 @@
           "duration_seconds": 236.2,
           "sha256_prefix": "3a5c591f3fa0bae5",
           "creator_tag": "mediocritasvt",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-Ghost-in-the-Circuit-Chapel.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     },
@@ -58,7 +70,11 @@
           "duration_seconds": 203.6,
           "sha256_prefix": "704d8e7126674c75",
           "creator_tag": "mediocritasvt",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-Ritual-in-the-Circuit.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     },
@@ -73,38 +89,49 @@
           "sha256_prefix": "e06c7a48a528c216",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-The-Weight-of-the-World.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     },
     {
       "id": "sacrament-of-oath",
       "title": "Sacrament of Oath",
-      "status": "two_distinct_files_received",
+      "status": "two_distinct_versions_confirmed_release_pending",
       "variants": [
         {
           "id": "take-1",
-          "status": "received_local_unpublished",
           "filename": "Sacrament of Oath(1).mp3",
           "duration_seconds": 144.984,
           "sha256_prefix": "16cb8c9317640a41",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
           "created_utc": "2026-02-19T19:25:59.071Z",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-Sacrament-of-Oath-Take-1.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         },
         {
           "id": "take-2",
-          "status": "received_local_unpublished",
           "filename": "Sacrament of Oath (1)(1).mp3",
           "duration_seconds": 145.944,
           "sha256_prefix": "580a10cc21871841",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
           "created_utc": "2026-02-19T19:37:54.305Z",
-          "rights": "unverified"
+          "rights": "architect_confirmed_distribution_eligibility",
+          "release_asset_filename": "Conflux-Sacrament-of-Oath-Take-2.mp3",
+          "license_validation": "self_attested_by_architect_not_independently_audited",
+          "public_audio_url": null,
+          "publication_status": "staged_pending_upload"
         }
       ]
     }
-  ]
+  ],
+  "proposed_release_tag": "conflux-soundtrack-v0.1"
 }
