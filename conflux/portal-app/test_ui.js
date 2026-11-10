@@ -122,7 +122,7 @@ const fakeFetch = async (url, opts = {}) => {
   }
   return {ok:true,json:async()=>result};
 };
-vm.runInNewContext(source, {document, window:{location:{pathname:"/downloads"}},fetch:fakeFetch});
+// The real HTML starts with these action buttons disabled until a check passes.\nnamed["updates-apply"].disabled = true;\nnamed["updates-relaunch"].disabled = true;\nvm.runInNewContext(source, {document, window:{location:{pathname:"/downloads"}},fetch:fakeFetch});
 const tick = () => new Promise(resolve => setTimeout(resolve, 0));
 (async () => {
   await tick();
