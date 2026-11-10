@@ -1,0 +1,25 @@
+name: Conflux Portal smoke checks
+
+on:
+  pull_request:
+    paths:
+      - 'conflux/portal-app/**'
+      - '.github/workflows/portal-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'conflux/portal-app/**'
+
+permissions:
+  contents: read
+
+jobs:
+  portal-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python server and local discovery tests
+        working-directory: conflux/portal-app
+        run: python3 -m unittest test_portal.py -v
+      - name: JavaScript parse check
+        run: node --check conflux/portal-app/app.js
