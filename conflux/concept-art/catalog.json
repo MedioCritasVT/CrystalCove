@@ -48054,16 +48054,16 @@
     },
     {
       "id": "c61bac8247022602",
-      "label": "Shared — ApprovedTurnaround.png — CFX-RATIO-070",
+      "label": "Mediocritas — ApprovedTurnaround.png — reference, consult approval records",
       "category": "reference-art",
-      "subject": "shared",
+      "subject": "medio",
       "source_checkpoint": "CFX-RATIO-070",
       "review_status": "Design/world reference; authority not assigned by upload",
       "name": "ApprovedTurnaround.png",
       "media_type": "png",
       "bytes": 2394243,
       "sha256": "c61bac82470226021678f3b8eda3a1270b915deadf87b2a056979cc5e239605f",
-      "collection_path": "reference-art/shared/ApprovedTurnaround.png",
+      "collection_path": "reference-art/medio/ApprovedTurnaround.png",
       "sources": [
         {
           "root_alias": "B",
@@ -58657,16 +58657,16 @@
     },
     {
       "id": "87f882f0de9de437",
-      "label": "Shared — Supernatural Angel-Demon Character Sheet.png — project-reference",
+      "label": "Mediocritas — Supernatural Angel-Demon Character Sheet.png — reference, consult approval records",
       "category": "reference-art",
-      "subject": "shared",
+      "subject": "medio",
       "source_checkpoint": "project-reference",
       "review_status": "Design/world reference; authority not assigned by upload",
       "name": "Supernatural Angel-Demon Character Sheet.png",
       "media_type": "png",
       "bytes": 2742988,
       "sha256": "87f882f0de9de437089731c0315d2b23ae6c2203a52e950ec25631c69e4ae3b2",
-      "collection_path": "reference-art/shared/Supernatural Angel-Demon Character Sheet.png",
+      "collection_path": "reference-art/medio/Supernatural Angel-Demon Character Sheet.png",
       "sources": [
         {
           "root_alias": "R",
@@ -58740,7 +58740,7 @@
     },
     {
       "id": "2750d8d59f53c8a3",
-      "label": "Shared — Untitled.png — project-reference",
+      "label": "SanctuaryOS — world/interface overview concept",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58765,7 +58765,7 @@
     },
     {
       "id": "0b086da05af30262",
-      "label": "Shared — Untitled1.png — project-reference",
+      "label": "SanctuaryOS — Cove and activity overview concept",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58790,7 +58790,7 @@
     },
     {
       "id": "e8445ba3f4acfae3",
-      "label": "Shared — VOS.png — project-reference",
+      "label": "SanctuaryOS — opening-screen concept",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58835,7 +58835,7 @@
     },
     {
       "id": "12fc2983d213445d",
-      "label": "Shared — VOS2.png — project-reference",
+      "label": "SanctuaryOS — interface/workspace concept",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58860,7 +58860,7 @@
     },
     {
       "id": "20199448408a66b1",
-      "label": "Shared — VOS3.png — project-reference",
+      "label": "SanctuaryOS — fantasy workspace concept",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58885,7 +58885,7 @@
     },
     {
       "id": "43bc99fcacc77916",
-      "label": "Shared — VOS4.png — project-reference",
+      "label": "SanctuaryOS — fantasy workspace variant",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58910,7 +58910,7 @@
     },
     {
       "id": "aae33d599b4a9233",
-      "label": "Shared — VOS5.png — project-reference",
+      "label": "SanctuaryOS — activity/interface motifs",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58935,7 +58935,7 @@
     },
     {
       "id": "c3fbb8fa31cec297",
-      "label": "Shared — VOS6.png — project-reference",
+      "label": "SanctuaryOS — room and destination concepts",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -58960,7 +58960,7 @@
     },
     {
       "id": "ab72b2bc22559910",
-      "label": "Shared — VOS7.png — project-reference",
+      "label": "SanctuaryOS — fantasy workspace variant",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
@@ -59010,7 +59010,7 @@
     },
     {
       "id": "b15fa974a612e514",
-      "label": "Shared — sanctuary.png — project-reference",
+      "label": "SanctuaryOS — historical browser backdrop",
       "category": "reference-art",
       "subject": "shared",
       "source_checkpoint": "project-reference",
