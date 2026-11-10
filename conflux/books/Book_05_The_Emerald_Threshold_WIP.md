@@ -1,15 +1,14 @@
 # Arcky and the Construct — Book 5: The Emerald Threshold
 
-> **WORK IN PROGRESS (WIP) — Not a finished manuscript or publication-ready edition.**
+> **WORK IN PROGRESS (WIP) — Not a finished manuscript or approved canon.**
 
-**Date:** 2026-11-10  
 **Literary authority:** Architect  
-**Full manuscript in GitHub:** Not yet available / not published.
+**Publication state:** Partial working drafts are available; the complete manuscript is not.
 
-This file marks the fifth book as **still in progress**. The recovered October 30 continuity handoff reports Act I, Chapters 1–10 drafted in earlier literary work, but that packet **does not include those chapters' original complete prose** or a verified manuscript export. No missing chapters are reconstructed or presented as fiction here. Later revisions, if any, have not been verified in this publication pass.
+The repository now includes [Act I draft Chapters 3–10](manuscripts/Book_05_The_Emerald_Threshold/README.md) of *The Emerald Threshold*. These are labeled literary drafts, **not final canon**. The full original prose of Chapters 1 and 2 has not yet been migrated into the public manuscript collection. This status note supersedes the earlier November 10 notice that said no complete chapter prose was available in GitHub.
 
-*The Emerald Threshold* is the working **Book 5** title, overriding an older exploratory note that labeled the idea Book 4. Plot direction, literary revisions and any adaptation into the Conflux game remain subject to the Architect's approval.
+The planned manuscript extends beyond Act I. No later chapters should be inferred complete or publication-ready based on an outline or continuity record. Manuscripts are preserved with attribution, draft state, and the Architect's editorial authority intact.
 
-Once the Architect identifies the authoritative manuscript, add it here as a separately versioned **draft**; do not overwrite Books 1–4 or relabel a summary as the original story.
+The correct title is **Book 5**, not the older exploratory Book 4 reference. Material may change before any final edition.
 
-[Return to the books index](README.md).
+[Read the working chapter register](manuscripts/Book_05_The_Emerald_Threshold/README.md) · [Books 1–4 and authorship notes](README.md).

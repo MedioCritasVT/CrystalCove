@@ -24,12 +24,23 @@ def configured_apps():
     except (OSError, ValueError):
         return []
 
+CATALOG = (
+    {"id": "conflux-game", "name": "Conflux Game V0.1", "state": "published",
+     "download_url": "https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1"},
+    {"id": "conflux-atelier", "name": "Conflux Atelier", "state": "bundled", "download_url": None, "open_url": "/apps/atelier"},
+    {"id": "conflux-ledger", "name": "Conflux Ledger", "state": "bundled", "download_url": None, "open_url": "/apps/ledger"},
+)
+
 def apps_public():
+    configured = {a["id"]: a for a in configured_apps()}
     out = []
-    for a in configured_apps():
-        path = Path(a["executable"]).expanduser()
-        out.append({"id": a["id"], "name": a["name"],
-                    "available": path.is_file() and os.access(path, os.X_OK)})
+    for entry in CATALOG:
+        a = configured.get(entry["id"])
+        path = Path(a["executable"]).expanduser() if a else None
+        installed = bool(path and path.is_file() and os.access(path, os.X_OK))
+        out.append({**entry, "installed": installed,
+                    "action": "launch" if installed else
+                    ("open" if entry.get("open_url") else ("download" if entry["download_url"] else "coming-soon"))})
     return out
 
 class Handler(BaseHTTPRequestHandler):
@@ -51,6 +62,16 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'")
             self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        elif route in ("/apps/atelier", "/apps/ledger"):
+            filename = "atelier.html" if route == "/apps/atelier" else "ledger.html"
+            body = (ROOT / "apps" / filename).read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             self.wfile.write(body)
@@ -82,7 +103,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(400, {"error": "invalid-request"})
             data = json.loads(self.rfile.read(size))
             app_id = data.get("id")
-            matches = [a for a in configured_apps() if a["id"] == app_id]
+            matches = [a for a in configured_apps() if a["id"] == app_id and a["id"] in {entry["id"] for entry in CATALOG}]
             if len(matches) != 1:
                 return self.respond(404, {"error": "app-not-configured"})
             path = Path(matches[0]["executable"]).expanduser().resolve(strict=True)
@@ -102,9 +123,21 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     if not sys.platform.startswith("linux"):
         raise SystemExit("This development preview supports Linux only.")
-    server = ThreadingHTTPServer((HOST, 0), Handler)
+    # A stable localhost origin preserves browser-local Atelier/Ledger work between restarts.
+    try:
+        port = int(os.environ.get("CONFLUX_PORTAL_PORT", "8765"))
+        if not 1024 <= port <= 65535:
+            raise ValueError("port out of range")
+    except ValueError:
+        raise SystemExit("CONFLUX_PORTAL_PORT must be an integer from 1024 to 65535.")
+    try:
+        server = ThreadingHTTPServer((HOST, port), Handler)
+    except OSError as exc:
+        raise SystemExit("Cannot bind Conflux Portal to 127.0.0.1:%d: %s. "
+                         "Close the older Portal window/process or choose a stable "
+                         "CONFLUX_PORTAL_PORT." % (port, exc))
     print("Conflux Portal: http://127.0.0.1:%d" % server.server_port, flush=True)
-    print("Ctrl+C to stop. Local access only.", flush=True)
+    print("Ctrl+C to stop. Local access only; keep this port stable for saved work.", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
