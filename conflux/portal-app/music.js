@@ -16,6 +16,9 @@
   const stage = $("#soundtrack-versions");
   const libraryStatus = $("#music-library-status");
   const catalog = $("#music-catalog");
+  const zipInput = $("#music-zip");
+  const reload = $("#music-recheck");
+  const installStatus = $("#music-install-status");
   const accepted = /\.(mp3|wav|ogg|m4a|flac)$/i;
 
   const groups = new Map();
@@ -43,7 +46,7 @@
   }
   function freeUrls() {
     for (const items of groups.values()) {
-      for (const item of items) URL.revokeObjectURL(item.url);
+      for (const item of items) if (item.url.startsWith("blob:")) URL.revokeObjectURL(item.url);
     }
     groups.clear();
   }
@@ -60,7 +63,7 @@
     choices.forEach((item, i) => {
       const option = document.createElement("option");
       option.value = String(i);
-      option.textContent = labelVersion(item.file.name);
+      option.textContent = item.label || labelVersion(item.file.name);
       version.append(option);
     });
     version.value = String(itemIndex);
@@ -85,7 +88,7 @@
       "Pause soundtrack" : "Play selected track");
   }
   async function start() {
-    if (!activeItem()) return setStatus("Choose local MP3s to play first.");
+    if (!activeItem()) return setStatus("Soundtrack unavailable. Install the ZIP once or wait for the published audio release.");
     enabled = true;
     try {
       await audio.play();
@@ -123,7 +126,7 @@
       const title = document.createElement("h3");
       title.textContent = name;
       const subtitle = document.createElement("p");
-      subtitle.textContent = items.length + " local version(s) · " +
+      subtitle.textContent = items.length + " available version(s) · " +
         items.map(item => item.file.name).join(" · ");
       const button = document.createElement("button");
       button.className = "action secondary";
@@ -138,6 +141,77 @@
         " file(s). Nothing was uploaded." :
       "No local files selected yet. The public catalog is metadata only.";
   }
+  async function loadAutomaticLibrary() {
+    installStatus.textContent = "Checking available Conflux soundtrack recordings…";
+    try {
+      const response = await fetch("/api/music/library", {cache:"no-store"});
+      if (!response.ok) throw Error("soundtrack status request failed");
+      const data = await response.json();
+      // Don't replace an actively playing manual file selection during a refresh.
+      if (enabled && groups.size) stop();
+      audio.removeAttribute("src");
+      audio.load();
+      freeUrls();
+      for (const track of data.tracks || []) {
+        const variants = (track.variants || []).filter(item => !!item.url);
+        if (!variants.length) continue;
+        const items = variants.map(item => ({
+          file: {name: item.filename},
+          label: item.id === "provided" ? "Original recording" :
+            item.id.replace(/[-_]/g, " "),
+          source: item.source,
+          url: item.url
+        }));
+        groups.set(track.title, items);
+      }
+      showLibrary();
+      if (groups.size) {
+        choose([...groups.keys()][0]);
+        setStatus("Soundtrack ready · press Music On to start");
+        installStatus.textContent = data.available + " recordings ready automatically (" +
+          data.local + " installed locally, " + data.published +
+          " streaming from GitHub). Music stays off until you enable it.";
+      } else {
+        currentGroup = "";
+        currentVersion = -1;
+        setStatus("Music off · tracks not published or installed yet");
+        installStatus.textContent =
+          "The public release is not available yet. Install the Conflux soundtrack ZIP once here, or publish the MP3 release assets for everyone.";
+      }
+      updateButtons();
+    } catch (error) {
+      installStatus.textContent = "Could not load the music library: " + error.message;
+    }
+  }
+
+  zipInput.addEventListener("change", async () => {
+    const zip = zipInput.files?.[0];
+    if (!zip) return;
+    zipInput.disabled = true;
+    installStatus.textContent = "Verifying and installing the soundtrack…";
+    try {
+      const statusRes = await fetch("/api/status", {cache:"no-store"});
+      if (!statusRes.ok) throw Error("Portal service unavailable");
+      const statusData = await statusRes.json();
+      const response = await fetch("/api/music/install", {
+        method:"POST",
+        headers:{"Content-Type":"application/zip", "X-Conflux-Token":statusData.launch_token},
+        body:zip
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error || "ZIP installation failed");
+      await loadAutomaticLibrary();
+      installStatus.textContent = "Installed and verified " + data.installed +
+        " recordings. They'll be available whenever you open this Portal.";
+    } catch (error) {
+      installStatus.textContent = "Could not install soundtrack: " + error.message;
+    } finally {
+      zipInput.value = "";
+      zipInput.disabled = false;
+    }
+  });
+  reload.addEventListener("click", () => { void loadAutomaticLibrary(); });
+
   files.addEventListener("change", () => {
     // Stop audio and revoke previous URLs before replacing the playlist.
     stop();
@@ -166,7 +240,7 @@
   toggle.addEventListener("click", () => {
     if (enabled) stop();
     else if (groups.size) void start();
-    else setStatus("Choose tracks below first. Music stays off until you enable it.");
+    else setStatus("Music is off. Tracks load automatically when published or installed locally.");
   });
   play.addEventListener("click", () => {
     if (enabled && !audio.paused) stop();
@@ -184,7 +258,10 @@
   audio.volume = Number(volume.value) / 100;
   updateButtons();
 
-  // The public catalog contains no audio URLs. This is informational only.
+  // Published MP3s and verified local music are available without choosing files.
+  void loadAutomaticLibrary();
+
+  // The public catalog records provenance; actual playback uses discovered assets.
   fetch("/soundtrack/catalog.json", {cache:"no-store"})
     .then(res => res.ok ? res.json() : Promise.reject(new Error("missing catalog")))
     .then(data => {
