@@ -24,7 +24,11 @@ async function refresh(){
       button.textContent=app.action==="launch"?"Launch":app.action==="download"?"Download":app.action==="open"?"Open":"Coming Soon";
       button.disabled=app.action==="coming-soon";
       button.addEventListener("click",async()=>{
-        if(app.action==="open"){\n          if(app.open_url)window.open(app.open_url,"_blank","noopener,noreferrer");\n          return;\n        }\n        if(app.action==="download"){
+        if(app.action==="open"){
+          if(app.open_url)window.open(app.open_url,"_blank","noopener,noreferrer");
+          return;
+        }
+        if(app.action==="download"){
           // Fixed, verified project release URLs only; no arbitrary user-supplied links.
           if(app.download_url)window.open(app.download_url,"_blank","noopener,noreferrer");
           return;
