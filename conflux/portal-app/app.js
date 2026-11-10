@@ -91,8 +91,9 @@ async function refresh() {
     browse.title = data.picker_available ?
       "Open the Linux desktop folder chooser" :
       "No kdialog or zenity installed. Paste the folder path below instead.";
-    if (!data.picker_available)
-      notice("No desktop folder picker is available; paste a folder path from your file manager instead.");
+    document.querySelector("#game-picker-availability").textContent = data.picker_available ?
+      "Native Linux folder chooser available. Or paste a path below." :
+      "No native picker installed; paste the folder path from your file manager below.";
     for (const app of data.apps) {
       const card = document.createElement("article");
       card.className = "card app-card";
