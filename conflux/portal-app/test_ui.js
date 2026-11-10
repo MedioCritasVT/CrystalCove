@@ -9,7 +9,7 @@ const source = fs.readFileSync("app.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","guide","updates"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","soundtrack","guide","updates"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
@@ -31,6 +31,14 @@ assert(html.includes('body[data-view="vos"]') && html.includes('body[data-view="
        "distinct room background layers missing");
 assert(html.includes(".panel .room-hero h2"), "room-specific headline styling missing");
 assert(html.includes(".pet-token .pet-face"), "visible pet artwork motif missing");
+assert(html.includes('<script src="/music.js"></script>'), "local player missing");
+for (const id of ["music-toggle", "music-files", "music-select", "music-version",
+                  "music-play", "music-prev", "music-next", "music-volume",
+                  "music-audio", "music-catalog", "soundtrack-versions"]) {
+  assert(html.includes('id="' + id + '"'), "missing music control " + id);
+}
+assert(html.includes('aria-pressed="false"'), "music must start disabled");
+
 
 
 class Element {
