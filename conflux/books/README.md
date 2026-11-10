@@ -8,7 +8,7 @@
 | Book 2 — *Season 2: The Exodus* | [Book 2](manuscripts/Book_02_The_Exodus.txt) | Original preserved |
 | Book 3 | [Book 3](manuscripts/Book_03_AnTC3.txt) | Original preserved; final title/edition not established by this archive |
 | Book 4 — *Season 4: The Gnosis* | [Book 4](manuscripts/Book_04_AnTC4.txt) | Original preserved; drafting commentary remains |
-| Book 5 — *The Emerald Threshold* | [WIP status notice](Book_05_The_Emerald_Threshold_WIP.md) | **WORK IN PROGRESS; original complete chapter prose not included** |
+| Book 5 — *The Emerald Threshold* | [WIP status notice](Book_05_The_Emerald_Threshold_WIP.md) | **WORK IN PROGRESS; draft Chapters 3–10 available, Chapters 1–2 not migrated** |
 
 The Architect's account attributes literary drafting of Books 1–4 to Specula as a formative AI collaborator. The Architect retains canon, editorial and publication authority. The original authorship conversations are not independently verified in this GitHub pass. The proposed **Architect's Cut** is a deferred alternate edition and does not supersede these manuscripts.
 
