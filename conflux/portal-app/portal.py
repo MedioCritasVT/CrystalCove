@@ -123,9 +123,21 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     if not sys.platform.startswith("linux"):
         raise SystemExit("This development preview supports Linux only.")
-    server = ThreadingHTTPServer((HOST, 0), Handler)
+    # A stable localhost origin preserves browser-local Atelier/Ledger work between restarts.
+    try:
+        port = int(os.environ.get("CONFLUX_PORTAL_PORT", "8765"))
+        if not 1024 <= port <= 65535:
+            raise ValueError("port out of range")
+    except ValueError:
+        raise SystemExit("CONFLUX_PORTAL_PORT must be an integer from 1024 to 65535.")
+    try:
+        server = ThreadingHTTPServer((HOST, port), Handler)
+    except OSError as exc:
+        raise SystemExit("Cannot bind Conflux Portal to 127.0.0.1:%d: %s. "
+                         "Close the older Portal window/process or choose a stable "
+                         "CONFLUX_PORTAL_PORT." % (port, exc))
     print("Conflux Portal: http://127.0.0.1:%d" % server.server_port, flush=True)
-    print("Ctrl+C to stop. Local access only.", flush=True)
+    print("Ctrl+C to stop. Local access only; keep this port stable for saved work.", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
