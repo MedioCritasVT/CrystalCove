@@ -9,6 +9,7 @@ const source = fs.readFileSync("app.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
+const roomIds = ["home","apps","downloads","vos","library","nodes","guide"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
@@ -19,7 +20,7 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
 assert(html.includes("#e9bf84") && html.includes("#c2a4f3"));
 assert(html.includes("#84bff3") && html.includes("#9cdec0"));
-const roomIds = ["home","apps","downloads","vos","library","nodes","guide"];
+
 for (const room of roomIds) {
   assert(html.includes('id="room-companion-' + room + '"'), "missing room companion: " + room);
 }
