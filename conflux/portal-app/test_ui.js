@@ -9,11 +9,13 @@ const source = fs.readFileSync("app.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","guide"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","guide","updates"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
                   "game-launch", "game-linked-state", "game-picker-availability",
+                  "updates-check", "updates-apply", "updates-relaunch",
+                  "updates-status", "updates-details", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)]) {
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
@@ -57,6 +59,8 @@ const named = Object.fromEntries(
   panels.concat(["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
                   "game-launch", "game-linked-state", "game-picker-availability",
+                  "updates-check", "updates-apply", "updates-relaunch",
+                  "updates-status", "updates-details", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)])
         .map(id => [id, new Element("div", id)])
 );
@@ -104,6 +108,15 @@ const fakeFetch = async (url, opts = {}) => {
     result = {registered:true};
   } else if (url === "/api/launch") {
     result = {started:true};
+  } else if (url === "/api/updates/check") {
+    result = {status:"available",current_branch:"main",local:"abcdef0000",
+      remote:"abcdef1111",commits:1,changed_files:2,needs_switch:false,
+      can_apply:true,detail:"Update available"};
+  } else if (url === "/api/updates/apply") {
+    result = {updated:true,commit:"abcdef1111",relaunch:true,
+      detail:"Updated official main"};
+  } else if (url === "/api/desktop/install") {
+    result = {installed:true,desktop_entry:"/home/demo/.local/share/applications/conflux-portal.desktop"};
   } else {
     throw Error("Unexpected request: " + url);
   }
@@ -154,5 +167,24 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   await named["game-launch"].click();
   await tick();
   assert(calls.some(c => c.url === "/api/launch"), "launch must use authenticated API");
-  console.log("Portal UI smoke: navigation, palettes, release, folder search, registration and Launch OK");
+  const updatesNav = nav.find(n => n.dataset.page === "updates");
+  updatesNav.click();
+  assert.equal(named.updates.hidden, false);
+  assert.equal(document.body.dataset.view, "updates");
+  assert.equal(named["updates-apply"].disabled, true);
+  await named["updates-check"].click();
+  await tick();
+  assert.equal(named["updates-apply"].disabled, false, "checked update must be actionable");
+  assert(named["updates-status"].textContent.includes("Update available"));
+  await named["updates-apply"].click();
+  await tick();
+  assert.equal(named["updates-relaunch"].disabled, false, "relaunch must become available");
+  await named["desktop-install"].click();
+  await tick();
+  assert(named["desktop-status"].textContent.includes("Added successfully"));
+  assert(calls.some(c => c.url === "/api/updates/check"), "update check must be explicit");
+  assert(calls.some(c => c.url === "/api/updates/apply"), "update apply must be explicit");
+  assert(calls.some(c => c.url === "/api/desktop/install"), "desktop entry must be opt-in");
+
+  console.log("Portal UI smoke: navigation, palettes, release, folder search, registration, Launch, updates and desktop setup OK");
 })().catch(err => {console.error(err);process.exitCode=1;});
