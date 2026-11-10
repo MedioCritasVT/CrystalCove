@@ -5,6 +5,7 @@ import time
 import webbrowser
 import os
 import secrets
+import re
 import subprocess
 import sys
 import tempfile
@@ -14,6 +15,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 import game_locator
+import music_library
 from app_updater import UpdateManager, UpdateError
 from install_desktop_launcher import install_desktop_launcher
 
@@ -119,11 +121,55 @@ class Handler(BaseHTTPRequestHandler):
                 "Content-Security-Policy",
                 "default-src 'self'; style-src 'self' 'unsafe-inline'; "
                 "script-src 'self' 'unsafe-inline'; img-src 'self' data:; "
-                "connect-src 'self'; base-uri 'none'; form-action 'none'")
+                "connect-src 'self'; media-src 'self' https://github.com https://*.githubusercontent.com; "
+                "base-uri 'none'; form-action 'none'")
         self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def serve_music(self, path):
+        """Serve only known, installed soundtrack MP3s with browser seeking."""
+        asset = path
+        size = asset.stat().st_size
+        start, end, status = 0, size - 1, 200
+        req = self.headers.get("Range")
+        if req:
+            match = re.fullmatch(r"bytes=(\\d+)-(\\d*)", req.strip())
+            if not match:
+                self.send_response(416)
+                self.send_header("Content-Range", "bytes */%d" % size)
+                self.end_headers()
+                return
+            start = int(match.group(1))
+            end = int(match.group(2)) if match.group(2) else end
+            if start >= size or end >= size or end < start:
+                self.send_response(416)
+                self.send_header("Content-Range", "bytes */%d" % size)
+                self.end_headers()
+                return
+            status = 206
+        self.send_response(status)
+        self.send_header("Content-Type", "audio/mpeg")
+        self.send_header("Accept-Ranges", "bytes")
+        if status == 206:
+            self.send_header("Content-Range", "bytes %d-%d/%d" % (start, end, size))
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Cache-Control", "private, max-age=3600")
+        self.send_header("Content-Length", str(end - start + 1))
+        self.end_headers()
+        try:
+            with asset.open("rb") as source:
+                source.seek(start)
+                remaining = end - start + 1
+                while remaining:
+                    chunk = source.read(min(65536, remaining))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
 
     def do_GET(self):
         route = urlsplit(self.path).path
@@ -136,6 +182,11 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/soundtrack/catalog.json":
             return self.serve_file(ROOT.parent / "soundtrack" / "catalog.json",
                                    "application/json; charset=utf-8")
+        if route == "/api/music/library":
+            return self.respond(200, music_library.library())
+        if route.startswith("/music/audio/"):
+            asset = music_library.local_asset(route[len("/music/audio/"):])
+            return self.serve_music(asset) if asset else self.respond(404, {"error": "unknown-track"})
         if route in ("/apps/atelier", "/apps/ledger"):
             file = "atelier.html" if route == "/apps/atelier" else "ledger.html"
             return self.serve_file(ROOT / "apps" / file, "text/html; charset=utf-8")
@@ -165,13 +216,24 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         route = urlsplit(self.path).path
-        if route not in ("/api/launch", "/api/game/browse",
+        if route not in ("/api/music/install", "/api/launch", "/api/game/browse",
                          "/api/game/find", "/api/game/register",
                          "/api/updates/check", "/api/updates/apply",
                          "/api/updates/relaunch", "/api/desktop/install"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
+        if route == "/api/music/install":
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+                if not 1 <= size <= music_library.MAX_ZIP_BYTES:
+                    return self.respond(413, {"error": "The soundtrack ZIP must be smaller than 70 MB."})
+                payload = self.rfile.read(size)
+                return self.respond(200, music_library.install_release_zip(payload))
+            except music_library.MusicError as exc:
+                return self.respond(400, {"error": str(exc)})
+            except (OSError, ValueError):
+                return self.respond(400, {"error": "Could not install soundtrack ZIP."})
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
