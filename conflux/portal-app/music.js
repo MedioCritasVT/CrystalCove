@@ -28,7 +28,7 @@
   }
   function groupName(name) {
     return name
-      .replace(/\s*\(\s*\d+\s*\)\s*$/u, "")
+      .replace(/(?:\s*\(\s*\d+\s*\))+\s*$/u, "")
       .replace(/\s*[-_ ]+\b(?:ver(?:sion)?|v|take|mix)\s*[-_ ]*\d+[a-z]?\s*$/iu, "")
       .replace(/\s*[-_ ]+\b(?:alternate|alt)\s*$/iu, "")
       .trim();
@@ -195,10 +195,7 @@
         title.textContent = composition.title;
         const versions = composition.variants || [];
         const detail = document.createElement("span");
-        const missing = composition.status === "source_files_not_received";
-        detail.textContent = missing ?
-          " · awaiting the two files" :
-          " · " + versions.length + " supplied file(s), public distribution pending rights review";
+        detail.textContent = " · " + versions.length + " supplied file(s), public distribution pending rights review";
         item.append(title, detail);
         catalog.append(item);
       }
