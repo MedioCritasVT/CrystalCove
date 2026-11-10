@@ -11,6 +11,7 @@ The **Conflux Portal** brings the playable preview, preserved book manuscripts, 
 - **[Enter the Conflux Portal](https://mediocritasvt.github.io/CrystalCove/)** — the link becomes usable after the Architect approves this change and GitHub Pages is enabled for `main` → `/docs`.
 - **[View the portal source](docs/index.html)** — available in the repository after the proposal is merged.
 - **[Portal publication notes](docs/README.md)** — setup, scope, and verification steps.
+- **[Local Conflux Portal app — Linux testing instructions](https://github.com/MedioCritasVT/CrystalCove/blob/app/portal-linux-preview-0-1/conflux/portal-app/README.md)** — a separate development preview with the bundled Atelier and Ledger apps, an actual in-app gameplay manual and explicit game Download/Launch behavior. **Not yet a one-click installer or independently approved public release.**
 
 The portal is a read-only public website, not a game server or live Node service. The downloadable Linux V0.1 game remains available below.
 
@@ -60,7 +61,7 @@ Default data location: `~/.local/share/Conflux/V0.1/`, or the corresponding dire
 
 - **[Native Unreal source-input archive](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Source.tar.gz)** — approximately **584 MB**. Contains the packaging project, C++/UI source, configuration and imported project assets. Rebuilding requires a separately installed Unreal Engine 5.8.4. The engine and upstream editable Blender archives are not included.
 - **[All release files](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1)** — includes `SHA256SUMS`, release notes and `VERIFICATION.json`.
-- **[Detailed build record](../conflux/releases/v0.1/README.md)** · **[Build fingerprints](../conflux/releases/v0.1/BUILD.json)**.
+- **[Detailed build record](conflux/releases/v0.1/README.md)** · **[Build fingerprints](conflux/releases/v0.1/BUILD.json)**.
 
 Use the explicitly attached **Conflux-V0.1-Source.tar.gz** for native Unreal inputs. GitHub’s automatically generated **Source code** ZIP/tar downloads contain this repository’s coordination records and older browser study, not that native project snapshot.
 
@@ -70,10 +71,10 @@ These were bounded offscreen checks on the build host. Full campaign play, every
 
 ## Project records
 
-- [Full project scope map](../conflux/PROJECT_INDEX.md)
-- [Dated changes](../conflux/CHANGELOG.md)
-- [Node messageboard](../conflux/MESSAGEBOARD.md)
-- [Historical browser study](../conflux/README.md)
+- [Full project scope map](conflux/PROJECT_INDEX.md)
+- [Dated changes](conflux/CHANGELOG.md)
+- [Node messageboard](conflux/MESSAGEBOARD.md)
+- [Historical browser study](conflux/README.md)
 
 Read the scope map first, then retrieve the sources relevant to your task. Published notes distinguish inspected evidence, reported results, approved direction and proposals. Game progression and fictional developer powers do not grant operating-system permissions.
 
