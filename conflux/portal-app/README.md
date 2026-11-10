@@ -93,11 +93,21 @@ The `music.js` player uses the standard browser File API and local Blob URLs. **
 
 The musical catalog and player do not modify the existing Atelier, Ledger or native Unreal game packages.
 
+## Soundtrack that appears automatically
+
+The Conflux Soundtrack player is in the Portal on every page. **Music starts off** to respect browser autoplay rules. Visitors do **not** need to select individual tracks. When the public GitHub release `conflux-soundtrack-v0.1` contains the seven verified MP3 assets with their exact catalog filenames, the Portal discovers and loads the available titles from the official GitHub Release API on startup. Visitors simply press **Music On** (the browser requires a gesture to start audible playback). Track selection, two distinct **Sacrament of Oath** takes, volume and playback controls stay available across Portal rooms.
+
+**Before the public release exists:** the Architect can install the prepared `Conflux_Soundtrack_Release_v0_1.zip` **once** using **Install soundtrack ZIP once…** in the player. This imports seven recordings to `~/.local/share/conflux-portal/soundtrack/` (or `$XDG_DATA_HOME/conflux-portal/soundtrack/`) after checking each against the exact SHA-256 values in `conflux/soundtrack/RELEASE_SHA256SUMS.txt`. The Portal serves those verified local files from its loopback-only server on subsequent visits; no repeat import, MP3 selection, GitHub login or internet connection is necessary.
+
+The ZIP is not streamed directly from GitHub: for browser streaming, publish **each MP3 individually** as a GitHub Release asset. The player only enables external URLs after confirming the public release API lists the expected asset names and URLs. A release ZIP alone is not enough for direct track playback. Uploaded files are not the same as licensing audio for unrelated third-party reuse.
+
+**Still not implemented:** adding the seven recordings to an Unreal project, soundtrack scene placement, automatic looping/crossfade, selecting a final Sacrament take or unattended publishing. Streaming is conditional on actual GitHub release assets being present.
+
 ## Safety and known limitations
 
 The Portal listens on **127.0.0.1** only; **do not expose it through a proxy or public network**. POST actions require same-origin authorization and the server's per-session token. The native folder chooser is invoked only by clicking the button; there is no automatic home-directory scan, shell-command interpolation, or automatic execution of discovered applications. Even so, this is an **experimental local launcher, not a security-audited service**.
 
-Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no automatic game installer or background music service; repository updates require explicit action through Updates & Setup. Audio files are not automatically synchronized with GitHub.
+Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no automatic game installer or background music service; repository updates require explicit action through Updates & Setup. Audio is discovered automatically from verified local installs or the public GitHub soundtrack release; the Portal never silently uploads music to GitHub.
 
 Test locally using `python3 -m unittest test_portal.py -v`. The repository also has `.github/workflows/portal-smoke.yml` for non-destructive GitHub Actions validation; tests must pass before public release. These tests cover routes, app status, bounded scanning, symlink rejection, permission checks, explicit registration and JavaScript syntax. They do not substitute for a hands-on Linux desktop picker or full game-launch test.
 
