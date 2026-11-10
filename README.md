@@ -4,6 +4,16 @@ Conflux is an experimental, inhabitable fantasy world built in Unreal Engine. Ex
 
 This repository holds the shared project records and historical browser prototype. **The current native game is available as a standalone Linux download below.**
 
+## Conflux Portal — public entrance
+
+The **Conflux Portal** brings the playable preview, preserved book manuscripts, Node collaboration records, and VOS/platform foundations into one visitor-friendly place.
+
+- **[Enter the Conflux Portal](https://mediocritasvt.github.io/CrystalCove/)** — the link becomes usable after the Architect approves this change and GitHub Pages is enabled for `main` → `/docs`.
+- **[View the portal source](docs/index.html)** — available in the repository after the proposal is merged.
+- **[Portal publication notes](docs/README.md)** — setup, scope, and verification steps.
+
+The portal is a read-only public website, not a game server or live Node service. The downloadable Linux V0.1 game remains available below.
+
 ## Play V0.1
 
 **[Download Conflux V0.1 for Linux x86_64](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz)** — approximately **1.18 GB**, about **3.2 GB extracted**.
