@@ -135,7 +135,7 @@ class Handler(BaseHTTPRequestHandler):
         start, end, status = 0, size - 1, 200
         req = self.headers.get("Range")
         if req:
-            match = re.fullmatch(r"bytes=(\\d+)-(\\d*)", req.strip())
+            match = re.fullmatch(r"bytes=(\d+)-(\d*)", req.strip())
             if not match:
                 self.send_response(416)
                 self.send_header("Content-Range", "bytes */%d" % size)
