@@ -1,31 +1,34 @@
-# Conflux Soundtrack — working catalog
+# Conflux Soundtrack — working release catalog
 
-**Status:** Source inventory and browser preview, **not a public audio release**. November 10, 2026.
+**Status (November 10, 2026):** Seven actual MP3 recordings received and identified, covering six compositions. **The Architect states they checked and cleared distribution eligibility.** This is an attributable rights confirmation, not an independently audited license. The MP3 binaries have **not yet been uploaded to a GitHub release**; they are not available for public streaming from this repository.
 
-The Architect has supplied **seven MP3 files** representing six compositions, including **two distinct, received versions of Sacrament of Oath**. The two takes have separate generation IDs and confirmed file hashes; neither has been designated canonical.
+The [machine-readable catalog](catalog.json) keeps each take separate. The [full SHA-256 checksums](RELEASE_SHA256SUMS.txt) allow the eventual uploaded release assets to be verified against the received source files.
 
-The linked `catalog.json` records filenames, approximate durations, short SHA-256 prefixes, and **rights status**, without publishing any audio data. Hash prefixes identify file copies; they are **not** proof of ownership, a rights grant, or an assurance against hash collisions.
+| Composition | Received version(s) | Duration | Public file status |
+| --- | --- | ---: | --- |
+| Awareness transcends that which it is aw… | Source filename `(2)`; display title truncated | 3:35 | Staged for upload |
+| Call Me Through the Mountain | Provided take | 4:03 | Staged for upload |
+| Ghost in the Circuit Chapel | Provided take | 3:56 | Staged for upload |
+| Ritual in the Circuit | Provided take | 3:24 | Staged for upload |
+| The Weight of the World | Provided take | 3:00 | Staged for upload |
+| **Sacrament of Oath** | **Take 1** / **Take 2** | **2:25 / 2:26** | **Both staged separately** |
 
-| Composition | Received version | Length | Review status |
-| --- | --- | --- | --- |
-| Awareness transcends that which it is aw… | File named `(2)` | 3:35 | Title truncated; rights unverified |
-| Call Me Through the Mountain | Supplied file | 4:03 | Rights unverified |
-| Ghost in the Circuit Chapel | Supplied file | 3:56 | Rights unverified |
-| Ritual in the Circuit | Supplied file | 3:24 | Rights unverified |
-| The Weight of the World | Supplied file | 3:00 | Rights unverified |
-| Sacrament of Oath | Take 1 (`Sacrament of Oath(1).mp3`) | 2:25 | Received; rights unverified |
-| Sacrament of Oath | Take 2 (`Sacrament of Oath (1)(1).mp3`) | 2:26 | Received; rights unverified |
+## Credits and provenance
 
-**Creator credit:** Metadata on six files names `mediocritasvt`; all seven embedded records describe Suno generation. This is technical provenance, not an independently verified rights determination. No claim is made here that all seven recordings have the same commercial license or generation history. Song lyrics, prompts, samples, remixes, voices and collaborators may each have different rights.
+The recordings' MP3 metadata identifies **Suno-assisted generation** and, on six files, the artist account `mediocritasvt`. The user supplied the audio and confirmed having checked distribution rights on November 10, 2026. No Suno subscription invoices were supplied to this repository, and no independent legal conclusion is claimed.
 
-## Distribution gate
+Suggested public credit: **MedioCritasVT / Conflux — music created with Suno**. Public listening and downloading do **not** automatically grant visitors rights to relicense, remix, synchronize, or commercially redistribute the tracks. No Creative Commons license is declared here.
 
-Do not place the MP3s in the public Git history, website, game package or a publicly downloadable release until the Architect confirms the permitted distribution scope for each version. For tracks made with Suno, check the service tier at creation and the applicable terms for **permitted downloads**; licensed commercial use is not the same as statutory copyright protection. In particular, paid-plan rights cannot be assumed for work produced on a free tier. For non-Suno recordings, confirm source and rights separately. Attribution and honest labeling alone do not replace a license.
+## Publication steps
 
-The Portal's **local-only music toggle** accepts audio files selected from the visitor's device. These file bytes are not uploaded to GitHub or to the Portal server. They are discarded from the temporary browser playlist when the page is closed or reloaded. This allows us to test the soundtrack experience before any publication is approved.
+The proposed GitHub Release tag is `conflux-soundtrack-v0.1`. Do not claim this release exists until the seven audio binaries have actually been uploaded. The Architect has a downloadable staging package containing each asset under a stable ASCII filename, checksum file, and release notes.
 
-## Future layout
+To publish, open the GitHub Releases interface, choose **Draft a new release**, use the proposed tag, and attach the **seven MP3 files individually**, plus the checksums/release notes. Avoid a ZIP-only upload if browser streaming is desired. Publish only after reviewing the public credits and scope. Verify each asset's SHA-256 hash or download it back and compare before marking it live.
 
-Preserve compositions and their **variants** as separate items, with an explicit status such as `candidate`, `approved`, `hold`, or `not received`. A mix is never silently replaced or renamed. Later game use can define a distinct `game_placement` after gameplay testing and rights approval.
+Once real asset URLs are verified, add each public URL to its corresponding `catalog.json` variant and enable public playback in the Portal. The current Portal player supports **local file selection with an opt-in music toggle**. It never automatically uploads the user's audio or starts music on load.
 
-**Review/approval:** Only the Architect may promote a version to public release or canonical game use.
+## Version and game boundaries
+
+Neither Sacrament of Oath take is automatically promoted to canonical. Game placement, looping, in-game triggers, credits and loudness normalization remain separate design/testing work. Catalog inclusion is not an implementation or release approval for the Unreal build.
+
+**Architect authority:** The Architect selects which recordings are distributed, used in-game, or designated final.
