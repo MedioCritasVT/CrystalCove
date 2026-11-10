@@ -15,7 +15,7 @@ python3 -m unittest test_portal.py -v
 python3 portal.py
 ```
 
-If you are **already** in `conflux/portal-app`, do not `cd` into it again. Run the last two Python commands from your current directory. Open the exact `http://127.0.0.1:PORT` address printed by Python. The port is assigned at each launch; stop the server with Ctrl+C.
+If you are **already** in `conflux/portal-app`, do not `cd` into it again. Run the last two Python commands from your current directory. Open the exact `http://127.0.0.1:PORT` address printed by Python. By default the Portal stays at **http://127.0.0.1:8765** across restarts so Atelier/Ledger browser storage stays visible. Stop the server with Ctrl+C. If port 8765 is already in use, close the previous Portal process; you can choose another *stable* port by setting `CONFLUX_PORTAL_PORT` before running Python.
 
 The Portal itself works without the game, VOS, Ollama, a GitHub login, or external services. Links to GitHub require internet access. Don't use a `file://` URL for `index.html`; that bypasses the Portal service.
 
@@ -49,7 +49,7 @@ Replace the path with the location on your machine, and ensure the script is exe
 
 Run `python3 -m unittest test_portal.py -v` from `conflux/portal-app`. This tests local routes, bundled file availability, download/open/launch status decisions, and that unauthorized launch requests are refused; if Node.js is installed, it also syntax-checks the Portal JavaScript. It does **not** execute any external app. Review any failing check before trying Launch.
 
-The server binds only to `127.0.0.1`. It uses an origin check and token for launch requests, but has **not** had an external security audit. Do not expose it to the network. Original Atelier/Ledger browser data is associated with the local browser profile and origin; use their export/backup controls before clearing browser data. A fresh random localhost port can result in different browser storage, so an in-app backup/restore is currently important. Cross-browser persistence is not verified.
+The server binds only to `127.0.0.1`. It uses an origin check and token for launch requests, but has **not** had an external security audit. Do not expose it to the network. Original Atelier/Ledger browser data is associated with the local browser profile and origin; use their export/backup controls before clearing browser data. Changing the local port, using a different browser/profile or clearing site data changes which browser storage is visible. Keep the default port stable, and export backups regularly. If an earlier preview ran on a random port, its old work will not automatically migrate to 8765. Cross-browser persistence is not verified.
 
 This preview is not yet a proper Linux package, automatic app installer, release-feed updater, actual VOS integration, or full offline book gallery. Those are separate future steps requiring design review and testing.
 
