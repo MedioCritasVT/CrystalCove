@@ -1,56 +1,73 @@
-# Conflux Portal — Linux local preview 0.1
+# Conflux Portal — Linux local preview
 
-**Status: development preview.** The initial Portal scaffold reached `main` through PR #4, but the later bundled-app fixes and verification work remain on `app/portal-linux-preview-0-1` pending review. The static public entry page is a separate `docs/` implementation. This is not yet a polished one-click installer or a security-reviewed launcher.
+**Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
-## Start on Linux
+## Run locally
 
-Requires Python 3.10+ (standard library only). From the **repository root**, use:
+Python 3.10 or later is required. From the cloned **CrystalCove repository root**:
 
 ```bash
-git fetch origin
-git switch app/portal-linux-preview-0-1
-git pull --ff-only
 cd conflux/portal-app
 python3 -m unittest test_portal.py -v
 python3 portal.py
 ```
 
-If you are **already** in `conflux/portal-app`, do not `cd` into it again. Run the last two Python commands from your current directory. Open the exact `http://127.0.0.1:PORT` address printed by Python. By default the Portal stays at **http://127.0.0.1:8765** across restarts so Atelier/Ledger browser storage stays visible. Stop the server with Ctrl+C. If port 8765 is already in use, close the previous Portal process; you can choose another *stable* port by setting `CONFLUX_PORTAL_PORT` before running Python.
+If you are already in `conflux/portal-app`, skip the `cd` command. Open `http://127.0.0.1:8765`. Keep the port stable: the bundled Atelier and Ledger each use browser-local storage, which is specific to your browser profile and the exact origin (including port).
 
-The Portal itself works without the game, VOS, Ollama, a GitHub login, or external services. Links to GitHub require internet access. Don't use a `file://` URL for `index.html`; that bypasses the Portal service.
+## Start playing
 
-## What is available
+1. Choose **Get the Game** from the Portal, or **Applications → Download** for Conflux V0.1.
+2. The local **Get Conflux V0.1** page has separate, verified GitHub links for the playable [Linux archive](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz), [release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1), [checksum](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/SHA256SUMS), and developer source archive. Do not confuse the native source archive or GitHub's repository ZIP with a runnable game.
+3. Download and extract the Linux archive (about 1.18 GB compressed and 3.2 GB extracted). Do **not** select the `.tar.gz` file in the finder: it needs an **extracted folder**.
+4. In **Already cloned or downloaded?**, click **Choose game folder…**. On Linux systems with `kdialog` (KDE) or `zenity`, a native desktop picker opens. On systems without either, paste an absolute folder path copied from your file manager and choose **Search this folder**.
+5. The Portal searches **only that selected folder and up to four nested levels**, capped at 450 directories, for `PlayConflux.sh`. It will show its path; click **Use this game** to explicitly register it.
+6. The primary game button becomes **Launch**, without downloading anything again. The game does not launch while you browse or register.
 
-- **Game V0.1:** Download opens the published GitHub release. If you register its installed executable in the local configuration, that same entry becomes **Launch**.
-- **Atelier (Medio/Nexus):** The original standalone HTML application is bundled in `apps/atelier.html`, and **Open** loads it in a browser tab. Its navigation is local; no executable path is needed.
-- **Ledger (Ratio/Limen):** The original standalone HTML application is bundled in `apps/ledger.html`, and **Open** loads it similarly.
-- **Player Manual:** The Portal's section contains actual game controls, exploration and saving instructions, not GitHub setup. `PLAYER_MANUAL.md` is the portable gameplay guide.
-- **Book V:** The Library points to the WIP manuscript directory with currently published Act I Chapters 3–10. Chapters 1–2 are not present as full manuscript files.
-- **Concept art:** Ratio published a labeled concept-art archive and media release on `main`. The Portal links to this archive; a curated interactive gallery and chibi companions remain pending.
-- **VOS:** Not connected; no real machine telemetry or VOS service is started.
+**A source-code clone is not automatically an installed game.** If you have only cloned the CrystalCove repository, the finder may report no `PlayConflux.sh`; download the packaged Linux release instead. If the script exists but is not executable, use your file manager's permissions controls to permit execution, then search again. Only run a build you trust.
 
-## Optional game launch configuration
-
-Create `~/.config/conflux-portal/apps.json` with a local executable you trust:
+For advanced users, manual registration via `~/.config/conflux-portal/apps.json` still works:
 
 ```json
 [
   {
     "id": "conflux-game",
     "name": "Conflux V0.1",
-    "executable": "/absolute/path/to/extracted/Conflux/PlayConflux.sh"
+    "executable": "/absolute/path/to/extracted/game/PlayConflux.sh"
   }
 ]
 ```
 
-Replace the path with the location on your machine, and ensure the script is executable. The app ID must be exactly `conflux-game`. **Downloading the archive does not automatically install or register it.** The Portal does not search your system or launch anything until you explicitly click Launch. Registered executables run with your normal Linux user permissions. Do not run this app as root.
+The folder finder writes the game entry to that file, preserves any unrelated entries, and creates new configuration files with user-only permissions. An invalid existing config is never silently overwritten.
 
-## Tests and limits
+## Other ready applications
 
-Run `python3 -m unittest test_portal.py -v` from `conflux/portal-app`. This tests local routes, bundled file availability, download/open/launch status decisions, and that unauthorized launch requests are refused; if Node.js is installed, it also syntax-checks the Portal JavaScript. It does **not** execute any external app. Review any failing check before trying Launch.
+**Conflux Atelier (Medio/Nexus)** and **Conflux Ledger (Ratio/Limen)** are bundled original HTML apps. Their **Open** buttons work with no installation or executable registration. Export backups regularly, especially before clearing browser data or switching browsers.
 
-The server binds only to `127.0.0.1`. It uses an origin check and token for launch requests, but has **not** had an external security audit. Do not expose it to the network. Original Atelier/Ledger browser data is associated with the local browser profile and origin; use their export/backup controls before clearing browser data. Changing the local port, using a different browser/profile or clearing site data changes which browser storage is visible. Keep the default port stable, and export backups regularly. If an earlier preview ran on a random port, its old work will not automatically migrate to 8765. Cross-browser persistence is not verified.
+The **Player Manual** contains actual gameplay guidance. **Book 5** remains a labeled literary WIP with Chapters 3–10 currently in GitHub. **Concept Art** links to Ratio's labeled archive, not yet an approved final-asset gallery. Node character/pet illustrations remain pending. **VOS** remains disconnected and does not collect machine telemetry.
 
-This preview is not yet a proper Linux package, automatic app installer, release-feed updater, actual VOS integration, or full offline book gallery. Those are separate future steps requiring design review and testing.
+## Color and section map
 
-**Approval boundary:** Archived material, working code, tests, published releases, architectural proposals and production approval are different statuses. No upload or commit authorizes deployment to the Architect's host.
+The colors are derived from the original standalone applications rather than inventing a third unrelated scheme:
+
+| Portal section | Identity |
+| --- | --- |
+| Threshold | Medio amber `#e9bf84` × Nexus violet `#c2a4f3` |
+| Applications | Both pairs together: Atelier amber/violet, Ledger Ratio blue/Limen green |
+| Get the Game | Medio amber × Ratio blue (invitation meets precision) |
+| Game folder finder | Ratio blue `#84bff3` × Limen green `#9cdec0` (evidence and transition) |
+| VOS Instruments | Ratio blue × Limen green |
+| Library & Art | Nexus violet × Medio amber |
+| Node Companions | Each Node's own accent; artwork placeholders are explicitly labeled |
+| Player Manual | Medio amber × Limen green (guidance at a threshold) |
+
+Text contrast, keyboard focus and mobile layout retain priority over ornamental treatment.
+
+## Safety and known limitations
+
+The Portal listens on **127.0.0.1** only; **do not expose it through a proxy or public network**. POST actions require same-origin authorization and the server's per-session token. The native folder chooser is invoked only by clicking the button; there is no automatic home-directory scan, shell-command interpolation, or automatic execution of discovered applications. Even so, this is an **experimental local launcher, not a security-audited service**.
+
+Local folder selection is supported only when `kdialog` or `zenity` is installed and accessible to the Python process; manual absolute-path search is the fallback. The finder does not automatically discover apps outside the chosen folder or inspect packed `.tar.gz` contents. There is no auto-installer, auto-updater, background agent or automatic synchronization with GitHub yet.
+
+Test locally using `python3 -m unittest test_portal.py -v`. The repository also has `.github/workflows/portal-smoke.yml` for non-destructive GitHub Actions validation; tests must pass before public release. These tests cover routes, app status, bounded scanning, symlink rejection, permission checks, explicit registration and JavaScript syntax. They do not substitute for a hands-on Linux desktop picker or full game-launch test.
+
+**Governance:** proposal, test result, merge and deployment are distinct. The Architect retains review and approval authority.

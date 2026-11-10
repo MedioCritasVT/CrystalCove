@@ -1,52 +1,99 @@
 #!/usr/bin/env python3
-"""Conflux Portal local Linux preview. Python standard library only."""
+"""Conflux Portal: a Linux localhost-only launcher and project entrance."""
 import json
 import os
 import secrets
 import subprocess
 import sys
+import tempfile
+import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
+
+import game_locator
 
 ROOT = Path(__file__).resolve().parent
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
+SUGGESTIONS = set()
+SUGGESTIONS_LOCK = threading.Lock()
+
+CATALOG = (
+    {"id": "conflux-game", "name": "Conflux Game V0.1",
+     "state": "published", "download_url": "/downloads"},
+    {"id": "conflux-atelier", "name": "Conflux Atelier",
+     "state": "bundled", "open_url": "/apps/atelier"},
+    {"id": "conflux-ledger", "name": "Conflux Ledger",
+     "state": "bundled", "open_url": "/apps/ledger"},
+)
+
 
 def configured_apps():
     try:
         data = json.loads(CONFIG.read_text(encoding="utf-8"))
         if not isinstance(data, list):
             return []
-        return [x for x in data if isinstance(x, dict) and isinstance(x.get("id"), str)
-                and isinstance(x.get("name"), str) and isinstance(x.get("executable"), str)]
+        return [a for a in data if isinstance(a, dict) and
+                isinstance(a.get("id"), str) and
+                isinstance(a.get("executable"), str)]
     except (OSError, ValueError):
         return []
 
-CATALOG = (
-    {"id": "conflux-game", "name": "Conflux Game V0.1", "state": "published",
-     "download_url": "https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1"},
-    {"id": "conflux-atelier", "name": "Conflux Atelier", "state": "bundled", "download_url": None, "open_url": "/apps/atelier"},
-    {"id": "conflux-ledger", "name": "Conflux Ledger", "state": "bundled", "download_url": None, "open_url": "/apps/ledger"},
-)
 
 def apps_public():
-    configured = {a["id"]: a for a in configured_apps()}
-    out = []
+    game = next((a for a in configured_apps() if a["id"] == "conflux-game"), None)
+    path = Path(game["executable"]).expanduser() if game else None
+    ready = bool(path and path.is_file() and os.access(path, os.X_OK))
+    output = []
     for entry in CATALOG:
-        a = configured.get(entry["id"])
-        path = Path(a["executable"]).expanduser() if a else None
-        installed = bool(path and path.is_file() and os.access(path, os.X_OK))
-        out.append({**entry, "installed": installed,
-                    "action": "launch" if installed else
-                    ("open" if entry.get("open_url") else ("download" if entry["download_url"] else "coming-soon"))})
-    return out
+        if entry["id"] == "conflux-game":
+            output.append({**entry, "installed": ready,
+                           "action": "launch" if ready else "download"})
+        else:
+            output.append({**entry, "installed": True, "action": "open"})
+    return output
+
+
+def register_game(path):
+    if not game_locator.valid_launcher(path):
+        raise game_locator.LocateError("The selected PlayConflux.sh is missing or not executable.")
+    with SUGGESTIONS_LOCK:
+        if path not in SUGGESTIONS:
+            raise game_locator.LocateError("Choose and inspect this folder using the Portal first.")
+        SUGGESTIONS.clear()
+    # Preserve unrelated configuration; fail rather than overwrite invalid data.
+    if CONFIG.exists():
+        try:
+            entries = json.loads(CONFIG.read_text(encoding="utf-8"))
+            if not isinstance(entries, list):
+                raise ValueError("Not an array")
+        except (OSError, ValueError) as exc:
+            raise game_locator.LocateError("Existing apps.json is invalid; back it up and correct it first.") from exc
+    else:
+        entries = []
+    entries = [a for a in entries if not (isinstance(a, dict) and a.get("id") == "conflux-game")]
+    entries.append({"id": "conflux-game", "name": "Conflux Game V0.1", "executable": path})
+    CONFIG.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8",
+                                         dir=CONFIG.parent, prefix=".apps-",
+                                         suffix=".json", delete=False) as handle:
+            temp_path = Path(handle.name)
+            os.chmod(temp_path, 0o600)
+            json.dump(entries, handle, indent=2)
+        os.replace(temp_path, CONFIG)
+    finally:
+        if temp_path is not None:
+            temp_path.unlink(missing_ok=True)
+
 
 class Handler(BaseHTTPRequestHandler):
-    def respond(self, code, payload):
+    def respond(self, status, payload):
         body = json.dumps(payload).encode("utf-8")
-        self.send_response(code)
+        self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
@@ -54,90 +101,126 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def serve_file(self, path, mime):
+        try:
+            body = path.read_bytes()
+        except OSError:
+            return self.respond(404, {"error": "file-not-found"})
+        self.send_response(200)
+        self.send_header("Content-Type", mime)
+        self.send_header("X-Content-Type-Options", "nosniff")
+        if mime.startswith("text/html"):
+            self.send_header(
+                "Content-Security-Policy",
+                "default-src 'self'; style-src 'self' 'unsafe-inline'; "
+                "script-src 'self' 'unsafe-inline'; img-src 'self' data:; "
+                "connect-src 'self'; base-uri 'none'; form-action 'none'")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_GET(self):
         route = urlsplit(self.path).path
-        if route == "/":
-            body = (ROOT / "index.html").read_bytes()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'")
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-        elif route in ("/apps/atelier", "/apps/ledger"):
-            filename = "atelier.html" if route == "/apps/atelier" else "ledger.html"
-            body = (ROOT / "apps" / filename).read_bytes()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-        elif route == "/app.js":
-            body = (ROOT / "app.js").read_bytes()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/javascript; charset=utf-8")
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-        elif route == "/api/status":
-            self.respond(200, {"platform": sys.platform, "mode": "local-preview",
-                               "vos": "not-connected", "apps": apps_public(),
-                               "launch_token": TOKEN})
-        else:
-            self.respond(404, {"error": "not-found"})
+        if route in ("/", "/downloads"):
+            return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
+        if route == "/app.js":
+            return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
+        if route in ("/apps/atelier", "/apps/ledger"):
+            file = "atelier.html" if route == "/apps/atelier" else "ledger.html"
+            return self.serve_file(ROOT / "apps" / file, "text/html; charset=utf-8")
+        if route == "/api/status":
+            return self.respond(200, {
+                "platform": sys.platform, "mode": "local-preview",
+                "vos": "not-connected", "apps": apps_public(),
+                "picker_available": game_locator.picker_program() is not None,
+                "launch_token": TOKEN,
+            })
+        return self.respond(404, {"error": "not-found"})
 
-    def do_POST(self):
-        if urlsplit(self.path).path != "/api/launch":
-            return self.respond(404, {"error": "not-found"})
+    def authorized(self):
         origin = self.headers.get("Origin", "")
         expected = "http://127.0.0.1:" + str(self.server.server_port)
-        if origin != expected or self.headers.get("X-Conflux-Token") != TOKEN:
-            return self.respond(403, {"error": "forbidden"})
+        return origin == expected and self.headers.get("X-Conflux-Token") == TOKEN
+
+    def read_json(self):
         try:
-            size = int(self.headers.get("Content-Length", "0"))
-            if size < 1 or size > 2048:
-                return self.respond(400, {"error": "invalid-request"})
-            data = json.loads(self.rfile.read(size))
-            app_id = data.get("id")
-            matches = [a for a in configured_apps() if a["id"] == app_id and a["id"] in {entry["id"] for entry in CATALOG}]
-            if len(matches) != 1:
-                return self.respond(404, {"error": "app-not-configured"})
-            path = Path(matches[0]["executable"]).expanduser().resolve(strict=True)
+            length = int(self.headers.get("Content-Length", "0"))
+            if not 1 <= length <= 8192:
+                return None
+            data = json.loads(self.rfile.read(length))
+            return data if isinstance(data, dict) else None
+        except (OSError, TypeError, ValueError):
+            return None
+
+    def do_POST(self):
+        route = urlsplit(self.path).path
+        if route not in ("/api/launch", "/api/game/browse",
+                         "/api/game/find", "/api/game/register"):
+            return self.respond(404, {"error": "not-found"})
+        if not self.authorized():
+            return self.respond(403, {"error": "forbidden"})
+        body = self.read_json()
+        if body is None:
+            return self.respond(400, {"error": "invalid-request"})
+        try:
+            if route == "/api/game/browse":
+                directory = game_locator.choose_folder()
+                if directory is None:
+                    return self.respond(200, {"cancelled": True})
+                result = game_locator.scan_folder(directory)
+                with SUGGESTIONS_LOCK:
+                    SUGGESTIONS.clear()
+                    SUGGESTIONS.update(c["path"] for c in result["candidates"] if c["ready"])
+                return self.respond(200, result)
+            if route == "/api/game/find":
+                result = game_locator.scan_folder(body.get("directory"))
+                with SUGGESTIONS_LOCK:
+                    SUGGESTIONS.clear()
+                    SUGGESTIONS.update(c["path"] for c in result["candidates"] if c["ready"])
+                return self.respond(200, result)
+            if route == "/api/game/register":
+                path = body.get("path")
+                if not isinstance(path, str):
+                    return self.respond(400, {"error": "Choose a valid game path."})
+                register_game(path)
+                return self.respond(200, {"registered": True, "apps": apps_public()})
+            if body.get("id") != "conflux-game":
+                return self.respond(404, {"error": "game-not-configured"})
+            games = [a for a in configured_apps() if a.get("id") == "conflux-game"]
+            if len(games) != 1:
+                return self.respond(404, {"error": "game-not-configured"})
+            path = Path(games[0]["executable"]).expanduser().resolve(strict=True)
             if not path.is_file() or not os.access(path, os.X_OK):
-                return self.respond(409, {"error": "app-unavailable"})
-            # Only an executable explicitly listed in the user's local configuration.
+                return self.respond(409, {"error": "game-unavailable"})
             subprocess.Popen([str(path)], cwd=str(path.parent), start_new_session=True,
                              stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                              stderr=subprocess.DEVNULL, close_fds=True)
-            return self.respond(200, {"started": True, "id": app_id})
-        except (OSError, ValueError, TypeError, KeyError):
-            return self.respond(400, {"error": "launch-failed"})
+            return self.respond(200, {"started": True, "id": "conflux-game"})
+        except game_locator.LocateError as exc:
+            return self.respond(400, {"error": str(exc)})
+        except (OSError, ValueError, RuntimeError):
+            return self.respond(400, {"error": "request-failed"})
 
     def log_message(self, fmt, *args):
         print(fmt % args, file=sys.stderr)
 
+
 if __name__ == "__main__":
     if not sys.platform.startswith("linux"):
-        raise SystemExit("This development preview supports Linux only.")
-    # A stable localhost origin preserves browser-local Atelier/Ledger work between restarts.
+        raise SystemExit("This Portal preview supports Linux only.")
     try:
         port = int(os.environ.get("CONFLUX_PORTAL_PORT", "8765"))
         if not 1024 <= port <= 65535:
             raise ValueError("port out of range")
     except ValueError:
-        raise SystemExit("CONFLUX_PORTAL_PORT must be an integer from 1024 to 65535.")
+        raise SystemExit("CONFLUX_PORTAL_PORT must be 1024–65535.")
     try:
         server = ThreadingHTTPServer((HOST, port), Handler)
     except OSError as exc:
-        raise SystemExit("Cannot bind Conflux Portal to 127.0.0.1:%d: %s. "
-                         "Close the older Portal window/process or choose a stable "
-                         "CONFLUX_PORTAL_PORT." % (port, exc))
+        raise SystemExit("Could not bind Portal to 127.0.0.1:%d: %s" % (port, exc))
     print("Conflux Portal: http://127.0.0.1:%d" % server.server_port, flush=True)
-    print("Ctrl+C to stop. Local access only; keep this port stable for saved work.", flush=True)
+    print("Ctrl+C to stop; browser storage uses this exact port.", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
