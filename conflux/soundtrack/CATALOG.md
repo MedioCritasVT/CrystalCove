@@ -2,7 +2,7 @@
 
 **Status:** Source inventory and browser preview, **not a public audio release**. November 10, 2026.
 
-The Architect has supplied five MP3 files for the Conflux Portal and game. Two additional versions of **Sacrament of Oath** were mentioned, but the audio attachments did **not** arrive in the accessible file set. Do not assign a canonical mix or mark either version as received.
+The Architect has supplied **seven MP3 files** representing six compositions, including **two distinct, received versions of Sacrament of Oath**. The two takes have separate generation IDs and confirmed file hashes; neither has been designated canonical.
 
 The linked `catalog.json` records filenames, approximate durations, short SHA-256 prefixes, and **rights status**, without publishing any audio data. Hash prefixes identify file copies; they are **not** proof of ownership, a rights grant, or an assurance against hash collisions.
 
@@ -13,9 +13,10 @@ The linked `catalog.json` records filenames, approximate durations, short SHA-25
 | Ghost in the Circuit Chapel | Supplied file | 3:56 | Rights unverified |
 | Ritual in the Circuit | Supplied file | 3:24 | Rights unverified |
 | The Weight of the World | Supplied file | 3:00 | Rights unverified |
-| Sacrament of Oath | Versions 1 and 2 — awaiting attachment | Unknown | Files missing |
+| Sacrament of Oath | Take 1 (`Sacrament of Oath(1).mp3`) | 2:25 | Received; rights unverified |
+| Sacrament of Oath | Take 2 (`Sacrament of Oath (1)(1).mp3`) | 2:26 | Received; rights unverified |
 
-**Creator credit:** Metadata on four files names `mediocritasvt`; at least two embedded metadata records describe Suno generation. This is technical provenance, not an independently verified rights determination. No claim is made here that all five recordings have the same commercial license or generation history. Song lyrics, prompts, samples, remixes, voices and collaborators may each have different rights.
+**Creator credit:** Metadata on six files names `mediocritasvt`; all seven embedded records describe Suno generation. This is technical provenance, not an independently verified rights determination. No claim is made here that all seven recordings have the same commercial license or generation history. Song lyrics, prompts, samples, remixes, voices and collaborators may each have different rights.
 
 ## Distribution gate
 
