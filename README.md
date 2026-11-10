@@ -119,3 +119,7 @@ And if you’re here to watch rather than download, that’s welcome too. Thank 
 - **[VOS and four-agent harness development source](conflux/platforms/README.md)** — archived contracts, simulator and recovery experiments, and four-agent v0.3 harness. These are inspectable foundations, **not deployed or production-approved systems**; see [validation notes](conflux/platforms/REVIEW_AND_TEST_STATUS_2026-11-10.md).
 
 The books are original manuscript sources, not edited final editions; code publication neither activates services nor grants authority over the host.
+
+## Concept art and development media
+
+[Browse the labeled concept-art collection](conflux/concept-art/README.md): character/world references, development videos and a complete catalog of unique scoped project media. Historical captures and diagnostic images are separated from design references; larger captures are downloadable archive parts. Presence in this collection does not mean an asset is the current approved design.

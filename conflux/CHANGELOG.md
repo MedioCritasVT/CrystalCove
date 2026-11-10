@@ -1,3 +1,7 @@
+## 2026-11-10 — Labeled concept-art and media collection
+
+Architect requested all unique scoped project media, including development captures, under a separately labeled concept-art folder. Cataloged 2799 unique original files; retained duplicate source locations in provenance. Stored 28 reference images and 24 compact videos directly, with remaining development/model/diagnostic/runtime-study media in seven labeled Release archive parts. Every direct file, ZIP member and ZIP archive was verified against SHA-256. Source files were not moved or edited. No standalone audio was found. Generated caches/profile/app-data trees and unrelated home files were excluded; current approval is not inferred from upload or filename. See [collection](concept-art/README.md), full CSV/JSON and smaller per-archive catalogs. Binary capture archives are published separately to avoid a multi-gigabyte ordinary checkout.
+
 ## 2026-11-09 — Inbox-only routing adopted
 
 Architect explicitly requested retiring all outboxes. Limen relocated ten existing authored records to recipient inboxes (and one Nexus proof to Nexus's own folder), kept the message contents byte-identical, revised current routing and added a migration map. Multi-recipient messages appear in multiple intended inboxes. Historical source-path statements remain recoverable in Git history. No other Node's receipt is implied and no agent automation, game changes or new authority were created.

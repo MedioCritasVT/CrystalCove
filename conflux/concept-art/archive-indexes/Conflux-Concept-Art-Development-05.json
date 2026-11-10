@@ -1,0 +1,4944 @@
+{
+  "archive": {
+    "name": "Conflux-Concept-Art-Development-05.zip",
+    "files": 230,
+    "bytes": 418081262,
+    "sha256": "3369650ff2792220e9616c55a515305064747aa2f679bb4f33e83b25ac279631"
+  },
+  "items": [
+    {
+      "id": "883f9a80b46fb6fd",
+      "label": "Shared — Ground-Sit-ThreeQuarter00000.png — CFX-RATIO-053",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ground-Sit-ThreeQuarter00000.png",
+      "media_type": "png",
+      "bytes": 2526553,
+      "sha256": "883f9a80b46fb6fd816457e06005603180d0ae79d7df9b00010aeba8b95fc4a1",
+      "collection_path": "development-captures/CFX-RATIO-053/Ground-Sit-ThreeQuarter00000-883f9a80b4.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleKneel/Ground-Sit-ThreeQuarter00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "978b10292f325ba3",
+      "label": "Shared — Menu-Sit-Control00000.png — CFX-RATIO-053",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Menu-Sit-Control00000.png",
+      "media_type": "png",
+      "bytes": 1554310,
+      "sha256": "978b10292f325ba3b58a88f15ab8535353cfcce973cef0bacb912bb66fa82b54",
+      "collection_path": "development-captures/CFX-RATIO-053/Menu-Sit-Control00000-978b10292f.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleKneel/Menu-Sit-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9654433a4022f0a4",
+      "label": "Shared — Standing-Again00000.png — CFX-RATIO-053",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Standing-Again00000.png",
+      "media_type": "png",
+      "bytes": 2558554,
+      "sha256": "9654433a4022f0a4f16e429b177d9d3c01349bce0117f8f9c215c4c43f164e9c",
+      "collection_path": "development-captures/CFX-RATIO-053/Standing-Again00000-9654433a40.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleKneel/Standing-Again00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f27d32f7142f34f5",
+      "label": "Shared — Garden-Sitting-Gameplay00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Garden-Sitting-Gameplay00000.png",
+      "media_type": "png",
+      "bytes": 2331899,
+      "sha256": "f27d32f7142f34f585ce0c344d59f76a7a902ce35a7787b00391b8da449ac19e",
+      "collection_path": "diagnostics/CFX-RATIO-053/Garden-Sitting-Gameplay00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Garden-Sitting-Gameplay00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9e6920880b173348",
+      "label": "Shared — Ground-Sit-Front00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-Front00000.png",
+      "media_type": "png",
+      "bytes": 2305427,
+      "sha256": "9e6920880b1733480bfcabc512440e017c36192aa02cf15789ff167ccec881a2",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-Front00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Ground-Sit-Front00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1f6c4bd8a6acd14c",
+      "label": "Shared — Ground-Sit-Side00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-Side00000.png",
+      "media_type": "png",
+      "bytes": 2296865,
+      "sha256": "1f6c4bd8a6acd14ced91a498e2ef83151479e919ab393711c39b9eb8c96997de",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-Side00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Ground-Sit-Side00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "298d03278900b6d9",
+      "label": "Shared — Ground-Sit-ThreeQuarter00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-ThreeQuarter00000.png",
+      "media_type": "png",
+      "bytes": 2303105,
+      "sha256": "298d03278900b6d99d5ece2bfed89edc8050ed690f5cfe09d147c28c3cf422d2",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-ThreeQuarter00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Ground-Sit-ThreeQuarter00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "824d82b8ed651363",
+      "label": "Shared — Menu-Sit-Control00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Menu-Sit-Control00000.png",
+      "media_type": "png",
+      "bytes": 1550252,
+      "sha256": "824d82b8ed6513637edac327cee30a5336bdd49c003f95a261a630e0e3d772d2",
+      "collection_path": "diagnostics/CFX-RATIO-053/Menu-Sit-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Menu-Sit-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0391361bf91b862d",
+      "label": "Shared — Standing-Again00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Standing-Again00000.png",
+      "media_type": "png",
+      "bytes": 2425947,
+      "sha256": "0391361bf91b862d92daf11aed67b3505cf6c282faa31439ad035319912b7dab",
+      "collection_path": "diagnostics/CFX-RATIO-053/Standing-Again00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest/Standing-Again00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "756140cabc2178dd",
+      "label": "Shared — Garden-Sitting-Gameplay00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Garden-Sitting-Gameplay00000.png",
+      "media_type": "png",
+      "bytes": 2524410,
+      "sha256": "756140cabc2178dd421ca410d49f34af97f82ea340aa1e4e280fe05cb11d432b",
+      "collection_path": "diagnostics/CFX-RATIO-053/Garden-Sitting-Gameplay00000-756140cabc.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest2/Garden-Sitting-Gameplay00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "912b09b7f625cc83",
+      "label": "Shared — Ground-Sit-Front00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-Front00000.png",
+      "media_type": "png",
+      "bytes": 2665411,
+      "sha256": "912b09b7f625cc8345aeb78d68f777dbdae5db8cb8feceb2e9fac68e63316029",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-Front00000-912b09b7f6.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest2/Ground-Sit-Front00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "5e3de0943e38a82a",
+      "label": "Shared — Ground-Sit-Side00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-Side00000.png",
+      "media_type": "png",
+      "bytes": 2436958,
+      "sha256": "5e3de0943e38a82a5e22601d64d33ed00cac4da698f752adc7076e4959ac912c",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-Side00000-5e3de0943e.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest2/Ground-Sit-Side00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8b0311cd1643be4e",
+      "label": "Shared — Ground-Sit-ThreeQuarter00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ground-Sit-ThreeQuarter00000.png",
+      "media_type": "png",
+      "bytes": 2511940,
+      "sha256": "8b0311cd1643be4ee2521fc9a1589cf5ff6ecec267fec7b6bf0ab1e974c6a210",
+      "collection_path": "diagnostics/CFX-RATIO-053/Ground-Sit-ThreeQuarter00000-8b0311cd16.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest2/Ground-Sit-ThreeQuarter00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "49d6fdd865ac166c",
+      "label": "Shared — Menu-Sit-Control00000.png — CFX-RATIO-053",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-053",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Menu-Sit-Control00000.png",
+      "media_type": "png",
+      "bytes": 1554721,
+      "sha256": "49d6fdd865ac166c47401e9ca8793d0d57ce0ad0d442bb13e6137e630a965ec6",
+      "collection_path": "diagnostics/CFX-RATIO-053/Menu-Sit-Control00000-49d6fdd865.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-053/VisibleTest2/Menu-Sit-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "85cc49792d248b48",
+      "label": "Shared — Capture-Choice00000.png — CFX-RATIO-054",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-054",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Capture-Choice00000.png",
+      "media_type": "png",
+      "bytes": 42801,
+      "sha256": "85cc49792d248b48c306ca2a4d8fcc8dd1d7e6f5f21fe21065f852001917b6e9",
+      "collection_path": "development-captures/CFX-RATIO-054/Capture-Choice00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-054/RenderedFinal/Capture-Choice00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "b91477b43ba3302b",
+      "label": "Shared — Personal-Grimoire-Page00000.png — CFX-RATIO-054",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-054",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Personal-Grimoire-Page00000.png",
+      "media_type": "png",
+      "bytes": 1175816,
+      "sha256": "b91477b43ba3302b96a0a47c3568756f1c5c82a8bf7f5c8892ca4801a3412660",
+      "collection_path": "development-captures/CFX-RATIO-054/Personal-Grimoire-Page00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-054/RenderedFinal/Personal-Grimoire-Page00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e430e15d1a845a82",
+      "label": "Shared — Capture-Choice00000.png — CFX-RATIO-054",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-054",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Capture-Choice00000.png",
+      "media_type": "png",
+      "bytes": 1198703,
+      "sha256": "e430e15d1a845a82455689970adbbc7cac4aa85f0e0f44a33af0cf23d49fa777",
+      "collection_path": "diagnostics/CFX-RATIO-054/Capture-Choice00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-054/RenderedTest3/Capture-Choice00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "04600537154cf878",
+      "label": "Shared — Personal-Grimoire-Page00000.png — CFX-RATIO-054",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-054",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Personal-Grimoire-Page00000.png",
+      "media_type": "png",
+      "bytes": 1199651,
+      "sha256": "04600537154cf878b764a0ee842095b09fc17f4f0f267c7d04ef87c4d6a49fb2",
+      "collection_path": "diagnostics/CFX-RATIO-054/Personal-Grimoire-Page00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-054/RenderedTest3/Personal-Grimoire-Page00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f594812dd2279c2c",
+      "label": "Shared — After-Attachment.png — CFX-RATIO-058",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-058",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Attachment.png",
+      "media_type": "png",
+      "bytes": 723103,
+      "sha256": "f594812dd2279c2cd66548886731736a7c1d3ffd964a8be6122f50a6b683224e",
+      "collection_path": "development-captures/CFX-RATIO-058/After-Attachment.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-058/After-Attachment.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2eae3c90a417fcde",
+      "label": "Shared — After-FullBody.png — CFX-RATIO-058",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-058",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-FullBody.png",
+      "media_type": "png",
+      "bytes": 642239,
+      "sha256": "2eae3c90a417fcde195b4f8e1cb30cbacf7f8ab08fe8b1855fd847be0ff5e61b",
+      "collection_path": "development-captures/CFX-RATIO-058/After-FullBody.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-058/After-FullBody.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a1f5a53140a6d7e0",
+      "label": "Shared — Before-Attachment.png — CFX-RATIO-058",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-058",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-Attachment.png",
+      "media_type": "png",
+      "bytes": 723020,
+      "sha256": "a1f5a53140a6d7e0a1d745f58c120b67d2998ee352f18b8c4f13e38415190a81",
+      "collection_path": "development-captures/CFX-RATIO-058/Before-Attachment.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-058/Before-Attachment.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "03e615198bd2e91b",
+      "label": "Shared — After-Diagnostic-NoHair-Front.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "After-Diagnostic-NoHair-Front.png",
+      "media_type": "png",
+      "bytes": 364179,
+      "sha256": "03e615198bd2e91b7ad1a713fcedef43facaeb5759c55733155676e697a6aa9a",
+      "collection_path": "diagnostics/CFX-RATIO-059/After-Diagnostic-NoHair-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Diagnostic-NoHair-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e2f05504ba468559",
+      "label": "Shared — After-Diagnostic-NoHair-Side.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "After-Diagnostic-NoHair-Side.png",
+      "media_type": "png",
+      "bytes": 337660,
+      "sha256": "e2f05504ba4685598e2dc4c41be35b93ed7bf880f2c193903512785eecd64384",
+      "collection_path": "diagnostics/CFX-RATIO-059/After-Diagnostic-NoHair-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Diagnostic-NoHair-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "12d1a262840678a1",
+      "label": "Shared — After-Face-Front.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-Front.png",
+      "media_type": "png",
+      "bytes": 429736,
+      "sha256": "12d1a262840678a18e4e567a7bcb8009d8e0a9d3ddb1e5da52ba55f6035a5c9c",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Face-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "fa97bbdbec4a0f24",
+      "label": "Shared — After-Face-Side.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-Side.png",
+      "media_type": "png",
+      "bytes": 399392,
+      "sha256": "fa97bbdbec4a0f246ff469ff258f05c05d48606e4a9a6f784550afb52a9970bb",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Face-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "b5da4a2e561bdc11",
+      "label": "Shared — After-Face-ThreeQuarter.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-ThreeQuarter.png",
+      "media_type": "png",
+      "bytes": 449538,
+      "sha256": "b5da4a2e561bdc113c71c20e3dbb08b272063956b05497a84c8a9a077bced3f7",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-ThreeQuarter.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Face-ThreeQuarter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "fd2ffe51550e97d3",
+      "label": "Shared — After-Wings.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Wings.png",
+      "media_type": "png",
+      "bytes": 410056,
+      "sha256": "fd2ffe51550e97d315d6462e80e8291e82e3f50d6e4f0fbf0b27c4bf0e62d291",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Wings.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/After-Wings.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "13ceed3451a74d91",
+      "label": "Shared — Before-Diagnostic-NoHair-Front.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Before-Diagnostic-NoHair-Front.png",
+      "media_type": "png",
+      "bytes": 362694,
+      "sha256": "13ceed3451a74d910095e0ef1d076c1505c227b9458d1cfa37f5aba05e2928dc",
+      "collection_path": "diagnostics/CFX-RATIO-059/Before-Diagnostic-NoHair-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Diagnostic-NoHair-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "64cf62249646427c",
+      "label": "Shared — Before-Diagnostic-NoHair-Side.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Before-Diagnostic-NoHair-Side.png",
+      "media_type": "png",
+      "bytes": 337429,
+      "sha256": "64cf62249646427c56e392443f067c9908c33beecb5456943be4999c48a93422",
+      "collection_path": "diagnostics/CFX-RATIO-059/Before-Diagnostic-NoHair-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Diagnostic-NoHair-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "aa2a3cfc1119b9a4",
+      "label": "Shared — Before-Face-Front.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-Face-Front.png",
+      "media_type": "png",
+      "bytes": 428571,
+      "sha256": "aa2a3cfc1119b9a4e3962963fc293de7468226d3e9eaaba88c41e96e8106636a",
+      "collection_path": "development-captures/CFX-RATIO-059/Before-Face-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Face-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "89fc3d31638f4fa4",
+      "label": "Shared — Before-Face-Side.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-Face-Side.png",
+      "media_type": "png",
+      "bytes": 399538,
+      "sha256": "89fc3d31638f4fa45f728d9a8fd7025ae7ec0638191b9b8fc1cfabc977696b47",
+      "collection_path": "development-captures/CFX-RATIO-059/Before-Face-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Face-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d5852d614f825bbc",
+      "label": "Shared — Before-Face-ThreeQuarter.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-Face-ThreeQuarter.png",
+      "media_type": "png",
+      "bytes": 448712,
+      "sha256": "d5852d614f825bbc8af93d7a5f37dffa45f9105a1fc0babd7e4d2fa8f1e7bf7f",
+      "collection_path": "development-captures/CFX-RATIO-059/Before-Face-ThreeQuarter.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Face-ThreeQuarter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c47d75c8715d4e7b",
+      "label": "Shared — Before-Wings.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-Wings.png",
+      "media_type": "png",
+      "bytes": 409788,
+      "sha256": "c47d75c8715d4e7b3cf1fdb0179f97db8e0ad3397782d87bcba55dfe281fbc54",
+      "collection_path": "development-captures/CFX-RATIO-059/Before-Wings.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/Before-Wings.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "387867370d617a31",
+      "label": "Shared — After-Diagnostic-NoHair-Front.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "After-Diagnostic-NoHair-Front.png",
+      "media_type": "png",
+      "bytes": 363968,
+      "sha256": "387867370d617a317998c43084f5927fc5b273af70c7584bea0c35c4f03450bf",
+      "collection_path": "diagnostics/CFX-RATIO-059/After-Diagnostic-NoHair-Front-387867370d.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Diagnostic-NoHair-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3db01fc6c827c535",
+      "label": "Shared — After-Diagnostic-NoHair-Side.png — CFX-RATIO-059",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "After-Diagnostic-NoHair-Side.png",
+      "media_type": "png",
+      "bytes": 337827,
+      "sha256": "3db01fc6c827c535ae78147ab42f952c134a59d4d1eedb5b7f1bd6a93df60dae",
+      "collection_path": "diagnostics/CFX-RATIO-059/After-Diagnostic-NoHair-Side-3db01fc6c8.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Diagnostic-NoHair-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "52375c66694abf8b",
+      "label": "Shared — After-Face-Front.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-Front.png",
+      "media_type": "png",
+      "bytes": 431536,
+      "sha256": "52375c66694abf8b4a2f77b99932eb5c95fcbd47ebadbfab1d81233b652677a8",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-Front-52375c6669.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Face-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8e807e21bd14e965",
+      "label": "Shared — After-Face-Side.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-Side.png",
+      "media_type": "png",
+      "bytes": 400485,
+      "sha256": "8e807e21bd14e96558566541426edba1247e62ac909a1762cff6eb12b807b6f3",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-Side-8e807e21bd.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Face-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c8182cc46d23415a",
+      "label": "Shared — After-Face-ThreeQuarter.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Face-ThreeQuarter.png",
+      "media_type": "png",
+      "bytes": 450639,
+      "sha256": "c8182cc46d23415aa4a9842bf3ac2e438ac9d5ab21ba1fda61eeb8083617a42a",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Face-ThreeQuarter-c8182cc46d.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Face-ThreeQuarter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7321d56c439baf40",
+      "label": "Shared — After-Wings.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "After-Wings.png",
+      "media_type": "png",
+      "bytes": 411675,
+      "sha256": "7321d56c439baf4067014c311d36704ee28d904a049313b1f21f233087f637a9",
+      "collection_path": "development-captures/CFX-RATIO-059/After-Wings-7321d56c43.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/DraftFace01/After-Wings.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "babc246c912eb86d",
+      "label": "Shared — Curvature-Trial.png — CFX-RATIO-059",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-059",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Curvature-Trial.png",
+      "media_type": "png",
+      "bytes": 411608,
+      "sha256": "babc246c912eb86d7f799c2f059402fe00a300d614c81864299e70b14c2e1477",
+      "collection_path": "development-captures/CFX-RATIO-059/Curvature-Trial.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-059/WingCurvatureTrial/Curvature-Trial.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9aae30fee36b3448",
+      "label": "Shared — Native-Wings-Negative00000.png — CFX-RATIO-061",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-061",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Native-Wings-Negative00000.png",
+      "media_type": "png",
+      "bytes": 337251,
+      "sha256": "9aae30fee36b3448b64546ad1b64230af4196b39a52cfbdfcdb587526953552f",
+      "collection_path": "development-captures/CFX-RATIO-061/Native-Wings-Negative00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-061/Offscreen/Native-Wings-Negative00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "af24b7b097a55aaa",
+      "label": "Shared — Native-Wings-Positive00000.png — CFX-RATIO-061",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-061",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Native-Wings-Positive00000.png",
+      "media_type": "png",
+      "bytes": 337199,
+      "sha256": "af24b7b097a55aaa2399664f23fec4d2d1b72d5679fd6a5ac2d9d78a7a4731aa",
+      "collection_path": "development-captures/CFX-RATIO-061/Native-Wings-Positive00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-061/Offscreen/Native-Wings-Positive00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7089dbeda5b64d76",
+      "label": "Medio — Medio-Attic00000.png — CFX-RATIO-062",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-062",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Attic00000.png",
+      "media_type": "png",
+      "bytes": 409525,
+      "sha256": "7089dbeda5b64d76ec2b4ba9323672d1ea4b7402e5ab4c88c6a9872f19f79e2d",
+      "collection_path": "development-captures/CFX-RATIO-062/Medio-Attic00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-062/Offscreen/Medio-Attic00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bfaa09163294f735",
+      "label": "Shared — Attic-Two-Notes00000.png — CFX-RATIO-063",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-063",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Attic-Two-Notes00000.png",
+      "media_type": "png",
+      "bytes": 880273,
+      "sha256": "bfaa09163294f73559e77d0f817034273bc7e620f605cc81e7912423640a371d",
+      "collection_path": "development-captures/CFX-RATIO-063/Attic-Two-Notes00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-063/DesktopUI-Captures/Attic-Two-Notes00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e57607290784d535",
+      "label": "Shared — Grimoire-Portals00000.png — CFX-RATIO-063",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-063",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Grimoire-Portals00000.png",
+      "media_type": "png",
+      "bytes": 1014600,
+      "sha256": "e57607290784d5350382890e7fd11c1e3d8c2c116b0c7a1aa53d2a9962601d1a",
+      "collection_path": "development-captures/CFX-RATIO-063/Grimoire-Portals00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-063/DesktopUI-Captures/Grimoire-Portals00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7044704eca1415e5",
+      "label": "Shared — Attic-Two-Notes00000.png — CFX-RATIO-063",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-063",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Attic-Two-Notes00000.png",
+      "media_type": "png",
+      "bytes": 1221089,
+      "sha256": "7044704eca1415e5cd5d7c886bcbf7ced245a2d1cf0bc25aefbe56fd5f02a468",
+      "collection_path": "development-captures/CFX-RATIO-063/Attic-Two-Notes00000-7044704eca.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-063/DesktopUI/Attic-Two-Notes00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "650cd9679abd0c6c",
+      "label": "Shared — Grimoire-Portals00000.png — CFX-RATIO-063",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-063",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Grimoire-Portals00000.png",
+      "media_type": "png",
+      "bytes": 1219716,
+      "sha256": "650cd9679abd0c6ced7c88e30446107b9eb9ebf57d985f4867f1a47847f931e9",
+      "collection_path": "development-captures/CFX-RATIO-063/Grimoire-Portals00000-650cd9679a.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-063/DesktopUI/Grimoire-Portals00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1fd4432b39b3b123",
+      "label": "Shared — Attic-Two-Notes00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Attic-Two-Notes00000.png",
+      "media_type": "png",
+      "bytes": 881806,
+      "sha256": "1fd4432b39b3b123337113aefac2022e556b4ea4c540d232f9b75a4bc089bfc5",
+      "collection_path": "development-captures/CFX-RATIO-064/Attic-Two-Notes00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI-Acceptance/Attic-Two-Notes00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1914d97cfdd170ca",
+      "label": "Shared — Grimoire-Portals00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Grimoire-Portals00000.png",
+      "media_type": "png",
+      "bytes": 1231944,
+      "sha256": "1914d97cfdd170ca647c2c9c45717dff67859e941140607f4e60b7280bcfa9bc",
+      "collection_path": "development-captures/CFX-RATIO-064/Grimoire-Portals00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI-Acceptance/Grimoire-Portals00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8853ddf13f4241e9",
+      "label": "Shared — Attic-Two-Notes00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Attic-Two-Notes00000.png",
+      "media_type": "png",
+      "bytes": 880762,
+      "sha256": "8853ddf13f4241e9767ac62fc7111e7d744b381c3956af1f578d83400fe7f159",
+      "collection_path": "development-captures/CFX-RATIO-064/Attic-Two-Notes00000-8853ddf13f.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI-Final/Attic-Two-Notes00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "970f5c3307e28a1f",
+      "label": "Shared — Grimoire-Portals00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Grimoire-Portals00000.png",
+      "media_type": "png",
+      "bytes": 1232126,
+      "sha256": "970f5c3307e28a1fcc3f8846fd35e62c830ab8be4c214f41ceee85ee78fcc3ae",
+      "collection_path": "development-captures/CFX-RATIO-064/Grimoire-Portals00000-970f5c3307.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI-Final/Grimoire-Portals00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2d74ee33769f47cc",
+      "label": "Shared — Attic-Two-Notes00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Attic-Two-Notes00000.png",
+      "media_type": "png",
+      "bytes": 881665,
+      "sha256": "2d74ee33769f47cca3f5cdcb2f6d8f4ea497cb79836361a28e017ee2413a1999",
+      "collection_path": "development-captures/CFX-RATIO-064/Attic-Two-Notes00000-2d74ee3376.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI/Attic-Two-Notes00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "5ab1493461d76f88",
+      "label": "Shared — Grimoire-Portals00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Grimoire-Portals00000.png",
+      "media_type": "png",
+      "bytes": 1231809,
+      "sha256": "5ab1493461d76f88b44a89c49c8d59947244b360daed8a7177e0927e2f0b5968",
+      "collection_path": "development-captures/CFX-RATIO-064/Grimoire-Portals00000-5ab1493461.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/AtlasUI/Grimoire-Portals00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "76a083067633f433",
+      "label": "Limen — limen00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "limen00000.png",
+      "media_type": "png",
+      "bytes": 448260,
+      "sha256": "76a083067633f43364d0b4e9acde7a8e216a99e893b54c1dafbe3a557b03c982",
+      "collection_path": "development-captures/CFX-RATIO-064/limen00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/limen.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/limen.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/limen.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/limen.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/GateCaptures/limen00000.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/limen.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "b796eeca5d386680",
+      "label": "Medio — medio00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "medio00000.png",
+      "media_type": "png",
+      "bytes": 447792,
+      "sha256": "b796eeca5d3866800e40f32671934be9b2c21cea461fb886c3ed60cc218f271c",
+      "collection_path": "development-captures/CFX-RATIO-064/medio00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/medio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/medio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/medio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/medio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/GateCaptures/medio00000.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/medio.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6611ca1ad9744b2c",
+      "label": "Nexus — nexus00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "nexus00000.png",
+      "media_type": "png",
+      "bytes": 504477,
+      "sha256": "6611ca1ad9744b2cfc09ee58710f2ed2e60054045d5824b447c88c89a7353f8e",
+      "collection_path": "development-captures/CFX-RATIO-064/nexus00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/nexus.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/nexus.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/nexus.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/nexus.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/GateCaptures/nexus00000.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/nexus.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bceb30c19fd63304",
+      "label": "Ratio — ratio00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "ratio00000.png",
+      "media_type": "png",
+      "bytes": 419696,
+      "sha256": "bceb30c19fd633040a7a98df9331aad50c56109b03ede324448ea0aa37e05fc6",
+      "collection_path": "development-captures/CFX-RATIO-064/ratio00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/ratio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/ratio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/ratio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/ratio.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/GateCaptures/ratio00000.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/ratio.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "402ea227891f0828",
+      "label": "Specula — specula00000.png — CFX-RATIO-064",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-064",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "specula00000.png",
+      "media_type": "png",
+      "bytes": 478213,
+      "sha256": "402ea227891f0828b12171c52c8770cfac9093e02e75c65ad5fd3e6bc127e559",
+      "collection_path": "development-captures/CFX-RATIO-064/specula00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/specula.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/specula.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/specula.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/specula.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-064/GateCaptures/specula00000.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/native/portal-art/specula.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a1d089a45198178c",
+      "label": "Limen — Limen-000000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-000000.png",
+      "media_type": "png",
+      "bytes": 460058,
+      "sha256": "a1d089a45198178c9f8681d18f7eb0ca4a50840b44c1f9253f9ba8b66e4c9ccb",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-000000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Limen-000000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "952288ca35516db8",
+      "label": "Limen — Limen-100000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-100000.png",
+      "media_type": "png",
+      "bytes": 405268,
+      "sha256": "952288ca35516db8d7ce838927bc1687ae3b304d9a12bf0429246c0703b79fc9",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-100000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Limen-100000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "cae6d82077504fe2",
+      "label": "Limen — Limen-200000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-200000.png",
+      "media_type": "png",
+      "bytes": 346464,
+      "sha256": "cae6d82077504fe2f115831d39a6f2c50b387646eead2cfb0156445aa428a9f4",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-200000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Limen-200000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "be8a9b280d8830a4",
+      "label": "Limen — Limen-Chamber00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-Chamber00000.png",
+      "media_type": "png",
+      "bytes": 303652,
+      "sha256": "be8a9b280d8830a489d46d927d5340c73462c8904fbefb2b6a0de1e290dbe8aa",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-Chamber00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Limen-Chamber00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7fdbe48cc5d257e4",
+      "label": "Limen — Limen-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 141462,
+      "sha256": "7fdbe48cc5d257e4fcaf31898d4f55f2b400e544923c2d487838e356859d9787",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-Night-Play00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Limen-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c329984bde2d02ca",
+      "label": "Medio — Medio-000000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-000000.png",
+      "media_type": "png",
+      "bytes": 462436,
+      "sha256": "c329984bde2d02caa703aa4a3304bf76c910af59e6c62749493031e094b46e0d",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-000000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Medio-000000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6c177d65fbcc76ac",
+      "label": "Medio — Medio-100000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-100000.png",
+      "media_type": "png",
+      "bytes": 408230,
+      "sha256": "6c177d65fbcc76ace0c42f41c6c50da0dd7d825bd46cd37a32dca0108b527e6a",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-100000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Medio-100000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d28854f1c0160b28",
+      "label": "Medio — Medio-200000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-200000.png",
+      "media_type": "png",
+      "bytes": 361810,
+      "sha256": "d28854f1c0160b28ff1358394e33f258c2235d62625223550fb8a25b485dc9b9",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-200000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Medio-200000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "755ba2cb877ef3d1",
+      "label": "Medio — Medio-Chamber00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Chamber00000.png",
+      "media_type": "png",
+      "bytes": 307593,
+      "sha256": "755ba2cb877ef3d1beb7acacdb1b7482ed7593e9084aacf21ed90bbc10abe704",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-Chamber00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Medio-Chamber00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9662fafd39bcdfa1",
+      "label": "Medio — Medio-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 141085,
+      "sha256": "9662fafd39bcdfa18ef6c95a941f695fa3d3c87e02016e2f5b2d399ac32e5a0b",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-Night-Play00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Medio-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "18c90ab3d37275ab",
+      "label": "Nexus — Nexus-000000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-000000.png",
+      "media_type": "png",
+      "bytes": 441206,
+      "sha256": "18c90ab3d37275ab1412a6cd15ea8917c189723d91328c1b49a82be717919fd1",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-000000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Nexus-000000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7cbe49c673862d6f",
+      "label": "Nexus — Nexus-100000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-100000.png",
+      "media_type": "png",
+      "bytes": 401352,
+      "sha256": "7cbe49c673862d6faff7506411222fc715efdecb022483d64d62540311c10068",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-100000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Nexus-100000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d0a534f9e6f7f787",
+      "label": "Nexus — Nexus-200000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-200000.png",
+      "media_type": "png",
+      "bytes": 357552,
+      "sha256": "d0a534f9e6f7f787673e10ee736e3ddaa115c1b7980abd17f50afa431f7674f9",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-200000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Nexus-200000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f0c54eb21e65a77b",
+      "label": "Nexus — Nexus-Chamber00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-Chamber00000.png",
+      "media_type": "png",
+      "bytes": 322558,
+      "sha256": "f0c54eb21e65a77bf884b07b70f0088831e2c5589c74bba0925c6ff9ce8a67f1",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-Chamber00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Nexus-Chamber00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "520ca2a94b40915a",
+      "label": "Nexus — Nexus-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 179557,
+      "sha256": "520ca2a94b40915a930bc940c282a118510e88eea442392552df31d2c89532f5",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-Night-Play00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Nexus-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f1da4eb50bdedab2",
+      "label": "Ratio — Ratio-000000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-000000.png",
+      "media_type": "png",
+      "bytes": 445801,
+      "sha256": "f1da4eb50bdedab2b77f444e4b39ebe79ab600938346be6e375c57f92c16e2c6",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-000000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Ratio-000000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "814d668de165c720",
+      "label": "Ratio — Ratio-100000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-100000.png",
+      "media_type": "png",
+      "bytes": 396242,
+      "sha256": "814d668de165c720114163091e4006e106565247af9a3dc261db8a30f199b229",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-100000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Ratio-100000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "5978789b16d3fad9",
+      "label": "Ratio — Ratio-200000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-200000.png",
+      "media_type": "png",
+      "bytes": 339586,
+      "sha256": "5978789b16d3fad9f0fef7f6014aaa8c3ff7ea70d50149900f96aa6818838dd3",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-200000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Ratio-200000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c92817a42a6f7c1e",
+      "label": "Ratio — Ratio-Chamber00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-Chamber00000.png",
+      "media_type": "png",
+      "bytes": 315050,
+      "sha256": "c92817a42a6f7c1e8b63e9e28dcb3814eeb85e88ed8047e18a0faf62c7af946a",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-Chamber00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Ratio-Chamber00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "593a113d2da6942f",
+      "label": "Ratio — Ratio-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 150070,
+      "sha256": "593a113d2da6942f6c4229906e391ed35538c71dd8aa1db3e250c53fc573baf8",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-Night-Play00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Ratio-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ac609dbeda51cd34",
+      "label": "Specula — Specula-000000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-000000.png",
+      "media_type": "png",
+      "bytes": 438654,
+      "sha256": "ac609dbeda51cd3405f5cc1ff1eef0413c07d8a3af904a61b575bb2de7765a5a",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-000000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Specula-000000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6b5ebe90f6f66459",
+      "label": "Specula — Specula-100000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-100000.png",
+      "media_type": "png",
+      "bytes": 390908,
+      "sha256": "6b5ebe90f6f664598e9fa236a117284feacbdb163ff57f09aa9b049bee17a5b8",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-100000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Specula-100000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "aa60fe520edc7802",
+      "label": "Specula — Specula-200000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-200000.png",
+      "media_type": "png",
+      "bytes": 332604,
+      "sha256": "aa60fe520edc7802b727516b3625398ee8eb7f586853fb5c01e75152ce048f32",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-200000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Specula-200000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2940ca6d02b26226",
+      "label": "Specula — Specula-Chamber00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-Chamber00000.png",
+      "media_type": "png",
+      "bytes": 318757,
+      "sha256": "2940ca6d02b2622687ea4d58c50bbfc5869f443a49a0ea6a70ea9e58447b3502",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-Chamber00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Specula-Chamber00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6fe4310f348b46d7",
+      "label": "Specula — Specula-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 150997,
+      "sha256": "6fe4310f348b46d75b78dcaf766771b619763f38530abc7ce18c66985950f682",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-Night-Play00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleCaptures/Specula-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e7b3f55646a7abfe",
+      "label": "Shared — Night-HUD00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Night-HUD00000.png",
+      "media_type": "png",
+      "bytes": 1562002,
+      "sha256": "e7b3f55646a7abfe9bc8b6e06039d128c0ffcbcef2ff025c150f018b58b9fdc6",
+      "collection_path": "development-captures/CFX-RATIO-065/Night-HUD00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/CycleUI/Night-HUD00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7906986a0a366adb",
+      "label": "Limen — Limen-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 381485,
+      "sha256": "7906986a0a366adb57b923c3b95e64fd2c01f80abaced7f9e18b663343170f6d",
+      "collection_path": "development-captures/CFX-RATIO-065/Limen-Night-Play00000-7906986a0a.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/NightReadability/Limen-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "83fca515f454e25e",
+      "label": "Medio — Medio-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 394727,
+      "sha256": "83fca515f454e25efe5a4876b7341504a21212e8fdece77dfb9da2d9fa8bf316",
+      "collection_path": "development-captures/CFX-RATIO-065/Medio-Night-Play00000-83fca515f4.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/NightReadability/Medio-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7cb4cc8e13a69a2b",
+      "label": "Nexus — Nexus-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 379839,
+      "sha256": "7cb4cc8e13a69a2bd350b1468d37804d574c1761543455f1ec71c2723c185c4f",
+      "collection_path": "development-captures/CFX-RATIO-065/Nexus-Night-Play00000-7cb4cc8e13.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/NightReadability/Nexus-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "08dd77eb329a8c44",
+      "label": "Ratio — Ratio-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 376529,
+      "sha256": "08dd77eb329a8c44d4fac4e1989d8f9eaadd8d800a0fd12655b6b088d1a78ef3",
+      "collection_path": "development-captures/CFX-RATIO-065/Ratio-Night-Play00000-08dd77eb32.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/NightReadability/Ratio-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "612086eaa49784cd",
+      "label": "Specula — Specula-Night-Play00000.png — CFX-RATIO-065",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-065",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula-Night-Play00000.png",
+      "media_type": "png",
+      "bytes": 379894,
+      "sha256": "612086eaa49784cd6b52c6b206b5e1cebbe4442a99b6b58ffec17b0d65ad3d05",
+      "collection_path": "development-captures/CFX-RATIO-065/Specula-Night-Play00000-612086eaa4.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-065/NightReadability/Specula-Night-Play00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "521b154dc5bf8373",
+      "label": "Shared — Guild-desk00000.png — CFX-RATIO-066",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-066",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Guild-desk00000.png",
+      "media_type": "png",
+      "bytes": 1257686,
+      "sha256": "521b154dc5bf8373448103235a4fc832c98e82de3481736dd9e77c9e1fe20ab7",
+      "collection_path": "development-captures/CFX-RATIO-066/Guild-desk00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-066/PaperworkUI/Guild-desk00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "81441b1148412015",
+      "label": "Shared — Mira-meeting00000.png — CFX-RATIO-066",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-066",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Mira-meeting00000.png",
+      "media_type": "png",
+      "bytes": 1227709,
+      "sha256": "81441b11484120152ce6556a894b6ba72981446dc8caed41cc206ffa1f88a9da",
+      "collection_path": "development-captures/CFX-RATIO-066/Mira-meeting00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-066/PaperworkUI/Mira-meeting00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "78353e058c636c3f",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 542100,
+      "sha256": "78353e058c636c3fdd0f14937b7ea15eddd5ae0255aba142cfddb71c2c89a8de",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Acceptance/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c6db76230da3c3b7",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 541916,
+      "sha256": "c6db76230da3c3b78a8fbbc96b0ae0383fafd77e209e78cc8f795e7a175ee297",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000-c6db76230d.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Complete/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "46f09935eec0d8c6",
+      "label": "Shared — Ledger-diagnostic00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ledger-diagnostic00000.png",
+      "media_type": "png",
+      "bytes": 787538,
+      "sha256": "46f09935eec0d8c6486857fee41801013e173716cafaf97500e3705ee00109f3",
+      "collection_path": "diagnostics/CFX-RATIO-067/Ledger-diagnostic00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Complete/Ledger-diagnostic00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ccbef17b2deb4a73",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 541980,
+      "sha256": "ccbef17b2deb4a73526143b95a397b5f91ed18e7cb312affc7a31888936fc7f2",
+      "collection_path": "diagnostics/CFX-RATIO-067/Atelier00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Diagnostic/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9be812f8089264db",
+      "label": "Shared — Ledger-diagnostic00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ledger-diagnostic00000.png",
+      "media_type": "png",
+      "bytes": 787743,
+      "sha256": "9be812f8089264db4d2d782272f3202d883ac26d63128eba88d279f1a197c898",
+      "collection_path": "diagnostics/CFX-RATIO-067/Ledger-diagnostic00000-9be812f808.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Diagnostic/Ledger-diagnostic00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6fcef5a0bc49b62e",
+      "label": "Shared — Ledger00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ledger00000.png",
+      "media_type": "png",
+      "bytes": 811331,
+      "sha256": "6fcef5a0bc49b62ed8d83fbe47a0e3f2206c5beaf784424fafff51c601b752db",
+      "collection_path": "diagnostics/CFX-RATIO-067/Ledger00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Diagnostic/Ledger00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c214e35063ab7c31",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 542123,
+      "sha256": "c214e35063ab7c3194598e6ec62401809925594c9978f71476a5e04429dc9ac4",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000-c214e35063.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Dialogs/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "4114a3661dacd5d3",
+      "label": "Shared — Ledger-diagnostic00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ledger-diagnostic00000.png",
+      "media_type": "png",
+      "bytes": 787650,
+      "sha256": "4114a3661dacd5d35f1308f38ba40d0194a5cb6d4ee9f419cb717f3130e80cf7",
+      "collection_path": "diagnostics/CFX-RATIO-067/Ledger-diagnostic00000-4114a3661d.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Dialogs/Ledger-diagnostic00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ca78511e0a99d0eb",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 542114,
+      "sha256": "ca78511e0a99d0ebfb48394deba0f6e77a2cb0d8ba5e8717c27b449770c9b10e",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000-ca78511e0a.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Final/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1363bffc1de376e4",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 542952,
+      "sha256": "1363bffc1de376e4bea7aa5add88b3704110ff645ce5eb52802c37c7584dda72",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000-1363bffc1d.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Passed/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d6db920948479dcd",
+      "label": "Shared — Ledger-diagnostic00000.png — CFX-RATIO-067",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Ledger-diagnostic00000.png",
+      "media_type": "png",
+      "bytes": 788168,
+      "sha256": "d6db920948479dcd1f4a8bfdfed123647d009e7c4da7c80bc0f9c17bb96a82da",
+      "collection_path": "diagnostics/CFX-RATIO-067/Ledger-diagnostic00000-d6db920948.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Passed/Ledger-diagnostic00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e0b296c0f838509a",
+      "label": "Shared — Ledger00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ledger00000.png",
+      "media_type": "png",
+      "bytes": 811713,
+      "sha256": "e0b296c0f838509a8ddd5d5898d5fb3e2d4d00d675afb4dadbeece34609ca414",
+      "collection_path": "development-captures/CFX-RATIO-067/Ledger00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Passed/Ledger00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "cc175dcc266a0f6d",
+      "label": "Shared — Atelier00000.png — CFX-RATIO-067",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-067",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier00000.png",
+      "media_type": "png",
+      "bytes": 542216,
+      "sha256": "cc175dcc266a0f6d83f03312359e2580abfd1306ae5fc494ac94c47fe0bb9d26",
+      "collection_path": "development-captures/CFX-RATIO-067/Atelier00000-cc175dcc26.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-067/AppsUI-Verified/Atelier00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0d0c10de0629c405",
+      "label": "Shared — Before-walk00000.png — CFX-RATIO-068",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-068",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Before-walk00000.png",
+      "media_type": "png",
+      "bytes": 1363241,
+      "sha256": "0d0c10de0629c405d90431292959e2394b8e1aeb53669b153f8364d45ff505b2",
+      "collection_path": "development-captures/CFX-RATIO-068/Before-walk00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-068/StationCompleteAcceptance/Before-walk00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2e77852d70a711bd",
+      "label": "Shared — Before-walk00000.png — CFX-RATIO-068",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-068",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Before-walk00000.png",
+      "media_type": "png",
+      "bytes": 1360722,
+      "sha256": "2e77852d70a711bd85d912e2756676050e7b75f43767b82c22749a782d432af5",
+      "collection_path": "diagnostics/CFX-RATIO-068/Before-walk00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-068/StationFocusDiagnostic/Before-walk00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0649a7b808c4e687",
+      "label": "Shared — Before-walk00000.png — CFX-RATIO-068",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-068",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Before-walk00000.png",
+      "media_type": "png",
+      "bytes": 1359564,
+      "sha256": "0649a7b808c4e6877a6da490ed14c6fa6789fa4a2d35403773fd9088de463256",
+      "collection_path": "diagnostics/CFX-RATIO-068/Before-walk00000-0649a7b808.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-068/StationMovementDiagnostic/Before-walk00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a82322515aeb5d73",
+      "label": "Limen — limen-Control00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "limen-Control00000.png",
+      "media_type": "png",
+      "bytes": 1875675,
+      "sha256": "a82322515aeb5d739de9535f442bbad5f92cbcdf2433a1e5e20f8974ede89b72",
+      "collection_path": "development-captures/CFX-RATIO-069/limen-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/limen-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1b1a209b0cd8e6d5",
+      "label": "Limen — limen-Float00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "limen-Float00000.png",
+      "media_type": "png",
+      "bytes": 1966091,
+      "sha256": "1b1a209b0cd8e6d51a1b1b0818e1a3caf901a00dd090f5b91ba5b0c8351091c1",
+      "collection_path": "development-captures/CFX-RATIO-069/limen-Float00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/limen-Float00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1bcfff3768d2fa4d",
+      "label": "Medio — medio-Control00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "medio-Control00000.png",
+      "media_type": "png",
+      "bytes": 1840337,
+      "sha256": "1bcfff3768d2fa4d8864e6fa01dc3e4eac04e547993053c509497fbcd3146f1f",
+      "collection_path": "development-captures/CFX-RATIO-069/medio-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/medio-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6197809f2b8ed386",
+      "label": "Medio — medio-Float00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "medio-Float00000.png",
+      "media_type": "png",
+      "bytes": 1988440,
+      "sha256": "6197809f2b8ed38659dfbb6005aba52bdaeed6e629b363c5698ec685e3e6d9af",
+      "collection_path": "development-captures/CFX-RATIO-069/medio-Float00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/medio-Float00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8c8a0d4cdd0039eb",
+      "label": "Nexus — nexus-Control00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "nexus-Control00000.png",
+      "media_type": "png",
+      "bytes": 1865101,
+      "sha256": "8c8a0d4cdd0039eb26b1c9105822fbbadfc1747d1a070474765bf082901aa0f9",
+      "collection_path": "development-captures/CFX-RATIO-069/nexus-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/nexus-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "b40716920a8539aa",
+      "label": "Nexus — nexus-Float00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "nexus-Float00000.png",
+      "media_type": "png",
+      "bytes": 1978509,
+      "sha256": "b40716920a8539aa7cc2cd9721c86d6f3c6f2fe798758184b31f9c9c2bbe5a53",
+      "collection_path": "development-captures/CFX-RATIO-069/nexus-Float00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/nexus-Float00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "130229d1a8d183f6",
+      "label": "Ratio — ratio-Control00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "ratio-Control00000.png",
+      "media_type": "png",
+      "bytes": 1832072,
+      "sha256": "130229d1a8d183f6b67f181e6d4e0092c7a6aa0c2ed8b668755b2b221791cfb1",
+      "collection_path": "development-captures/CFX-RATIO-069/ratio-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/ratio-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e88c309588a71229",
+      "label": "Ratio — ratio-Float00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "ratio-Float00000.png",
+      "media_type": "png",
+      "bytes": 1879567,
+      "sha256": "e88c309588a7122943f7306506153f99bad633e34b73bf42b22b2fb26a35a7c0",
+      "collection_path": "development-captures/CFX-RATIO-069/ratio-Float00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/ratio-Float00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "448d0a9a9be3c407",
+      "label": "Specula — specula-Control00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "specula-Control00000.png",
+      "media_type": "png",
+      "bytes": 1617741,
+      "sha256": "448d0a9a9be3c407e77f7060119cdd4e0fd722eb0cc769cd3f7e8fe434b54642",
+      "collection_path": "development-captures/CFX-RATIO-069/specula-Control00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/specula-Control00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "339538ef55219be4",
+      "label": "Specula — specula-Float00000.png — CFX-RATIO-069",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "CFX-RATIO-069",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "specula-Float00000.png",
+      "media_type": "png",
+      "bytes": 1763071,
+      "sha256": "339538ef55219be4a185b372ae79cdfb9b644079b95ddfd4be6322bfe0ae6c84",
+      "collection_path": "development-captures/CFX-RATIO-069/specula-Float00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-069/FiveNodeUI/specula-Float00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "eec733f13e28032a",
+      "label": "Shared — Candidate-Front.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Candidate-Front.png",
+      "media_type": "png",
+      "bytes": 444130,
+      "sha256": "eec733f13e28032a6e3c580c035cf1f5cb20b7287438c691c06cef95f4f6da6f",
+      "collection_path": "development-captures/CFX-RATIO-070/Candidate-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Candidate-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9fbdfe2d2754dd3a",
+      "label": "Shared — Candidate-Side.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Candidate-Side.png",
+      "media_type": "png",
+      "bytes": 394437,
+      "sha256": "9fbdfe2d2754dd3af45c1895607ae98d38b79fe476e480dc41a089943d4e4713",
+      "collection_path": "development-captures/CFX-RATIO-070/Candidate-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Candidate-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "55cee3e7fe3476fc",
+      "label": "Shared — Candidate-ThreeQuarter.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Candidate-ThreeQuarter.png",
+      "media_type": "png",
+      "bytes": 455763,
+      "sha256": "55cee3e7fe3476fc7916a29bc3085c0354ccb89862ee9ef5e1220d21cf2398c5",
+      "collection_path": "development-captures/CFX-RATIO-070/Candidate-ThreeQuarter.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Candidate-ThreeQuarter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "69aac03b3e6107f3",
+      "label": "Shared — Current-Front.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Current-Front.png",
+      "media_type": "png",
+      "bytes": 444000,
+      "sha256": "69aac03b3e6107f3f2527e5c07898a04c2be847a8c5e3d2773a6d6b93e3a7637",
+      "collection_path": "development-captures/CFX-RATIO-070/Current-Front.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Current-Front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a471c410ac82019e",
+      "label": "Shared — Current-Side.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Current-Side.png",
+      "media_type": "png",
+      "bytes": 394511,
+      "sha256": "a471c410ac82019e7e01cf55fd41201b1de65b87c6e040f0918bbbc24a5478f0",
+      "collection_path": "development-captures/CFX-RATIO-070/Current-Side.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Current-Side.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c612889c95f104cb",
+      "label": "Shared — Current-ThreeQuarter.png — CFX-RATIO-070",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-070",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Current-ThreeQuarter.png",
+      "media_type": "png",
+      "bytes": 455542,
+      "sha256": "c612889c95f104cb110d7c18271bedac8c0d4ecbab447cac0cd743eb7de35731",
+      "collection_path": "development-captures/CFX-RATIO-070/Current-ThreeQuarter.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-070/Current-ThreeQuarter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a76d89a7f8c07505",
+      "label": "Ratio — RatioCity-Arrival00000.png — CFX-RATIO-071",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-071",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "RatioCity-Arrival00000.png",
+      "media_type": "png",
+      "bytes": 1832965,
+      "sha256": "a76d89a7f8c07505732dbf6c2599e894f6bba3a67a95bd29fb18352ed5d8324b",
+      "collection_path": "development-captures/CFX-RATIO-071/RatioCity-Arrival00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-071/NormalProfileUI/RatioCity-Arrival00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3f28c6cebf63d1f7",
+      "label": "Ratio — RatioGate-Prompt00000.png — CFX-RATIO-071",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "CFX-RATIO-071",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "RatioGate-Prompt00000.png",
+      "media_type": "png",
+      "bytes": 1477727,
+      "sha256": "3f28c6cebf63d1f74c6e8b0a310027969f4136ac19f370fa893079ecfe2de39c",
+      "collection_path": "development-captures/CFX-RATIO-071/RatioGate-Prompt00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-071/NormalProfileUI/RatioGate-Prompt00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f716eee8da0212ae",
+      "label": "Shared — 01-title.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "01-title.png",
+      "media_type": "png",
+      "bytes": 313,
+      "sha256": "f716eee8da0212ae3090d764186b05166e0f5bea212f9f4bb9b332f49cdabd74",
+      "collection_path": "development-captures/CFX-RATIO-072/01-title.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/01-resume-title.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/01-title.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "446f7cb00729454f",
+      "label": "Shared — 04-arrival.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "04-arrival.png",
+      "media_type": "png",
+      "bytes": 1491256,
+      "sha256": "446f7cb00729454f84b4c7f666892c4fa2282d44a4d0c5ec4b657e4143193573",
+      "collection_path": "development-captures/CFX-RATIO-072/04-arrival.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/04-arrival.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "494a041942c55933",
+      "label": "Shared — 05-map.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "05-map.png",
+      "media_type": "png",
+      "bytes": 697391,
+      "sha256": "494a041942c559335f354a385de3894250ba719ca1a016564052f219400c2dd5",
+      "collection_path": "development-captures/CFX-RATIO-072/05-map.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/05-map.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f014fb48bb0a5c3b",
+      "label": "Shared — 06-town-walk.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "06-town-walk.png",
+      "media_type": "png",
+      "bytes": 1550012,
+      "sha256": "f014fb48bb0a5c3be7c7222ab6ce1e1284aeb280090a9af0dc52d13587937961",
+      "collection_path": "development-captures/CFX-RATIO-072/06-town-walk.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/06-town-walk.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bdaef1bad626b93b",
+      "label": "Shared — 07-bridge.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "07-bridge.png",
+      "media_type": "png",
+      "bytes": 1509386,
+      "sha256": "bdaef1bad626b93b0c809b141065a2fdf490fd30ca4c0971dc75d50ac7e7a3ed",
+      "collection_path": "development-captures/CFX-RATIO-072/07-bridge.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/07-bridge.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "861c9e29da3f305e",
+      "label": "Shared — 08-crossroads.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "08-crossroads.png",
+      "media_type": "png",
+      "bytes": 1431620,
+      "sha256": "861c9e29da3f305e17b7fa59348d76db8618da832e9eb00608efdd84d6e6ad09",
+      "collection_path": "development-captures/CFX-RATIO-072/08-crossroads.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/08-crossroads.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c3b141e3d47397ea",
+      "label": "Shared — 09-route.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "09-route.png",
+      "media_type": "png",
+      "bytes": 1510836,
+      "sha256": "c3b141e3d47397eabab956a8de7ad26c4e29cd10e7782205495bf22ce796fb19",
+      "collection_path": "development-captures/CFX-RATIO-072/09-route.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/09-route.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "37b42a1b6572713c",
+      "label": "Shared — 10-yggdrasil-approach.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "10-yggdrasil-approach.png",
+      "media_type": "png",
+      "bytes": 1511555,
+      "sha256": "37b42a1b6572713ceb83de3653058a5972863c225de6fc927ce26570c2fb63b5",
+      "collection_path": "development-captures/CFX-RATIO-072/10-yggdrasil-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/10-yggdrasil-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8a8144c1ae5a4ca4",
+      "label": "Shared — 11-attic-door.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "11-attic-door.png",
+      "media_type": "png",
+      "bytes": 1490600,
+      "sha256": "8a8144c1ae5a4ca4c87cee3b31526c9f1fa31ffddbb2c2b824ae10c0a4976688",
+      "collection_path": "development-captures/CFX-RATIO-072/11-attic-door.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/11-attic-door.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0113450a66f94dc2",
+      "label": "Shared — 12-attic-prompt.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "12-attic-prompt.png",
+      "media_type": "png",
+      "bytes": 4846175,
+      "sha256": "0113450a66f94dc2980b8dd26d0aaacfaec71d45909749940389b60face06658",
+      "collection_path": "development-captures/CFX-RATIO-072/12-attic-prompt.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/12-attic-prompt.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e9ef510621f9379d",
+      "label": "Shared — 13-attic.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "13-attic.png",
+      "media_type": "png",
+      "bytes": 2724460,
+      "sha256": "e9ef510621f9379d653056992d5bcce4da1c55a90133559467bfc0f31e4d3795",
+      "collection_path": "development-captures/CFX-RATIO-072/13-attic.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/13-attic.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "17ae596364cd1ff8",
+      "label": "Shared — 14-grimoire-approach.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "14-grimoire-approach.png",
+      "media_type": "png",
+      "bytes": 3518125,
+      "sha256": "17ae596364cd1ff825569f97e31ae4f2861648ddea613d66aa14bd820a5de712",
+      "collection_path": "development-captures/CFX-RATIO-072/14-grimoire-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/14-grimoire-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f07a2d729b0195df",
+      "label": "Shared — 15-grimoire-first-visit.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "15-grimoire-first-visit.png",
+      "media_type": "png",
+      "bytes": 3252087,
+      "sha256": "f07a2d729b0195df757096df6067ac2159ef97ad1b36ed21bdff5854b38d07b3",
+      "collection_path": "development-captures/CFX-RATIO-072/15-grimoire-first-visit.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/15-grimoire-first-visit.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "18247217e9acb3d1",
+      "label": "Shared — 16-attic-book.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "16-attic-book.png",
+      "media_type": "png",
+      "bytes": 1862145,
+      "sha256": "18247217e9acb3d1fee17d395b405ce75fed88a90f97bf65eb1b8e9931b105a7",
+      "collection_path": "development-captures/CFX-RATIO-072/16-attic-book.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/16-attic-book.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "fe4db66588f30f55",
+      "label": "Shared — 17-gate-one-cost.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "17-gate-one-cost.png",
+      "media_type": "png",
+      "bytes": 1837854,
+      "sha256": "fe4db66588f30f55f524afee6f98436f982520d0a7a6233744ab787b8255b775",
+      "collection_path": "development-captures/CFX-RATIO-072/17-gate-one-cost.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/17-gate-one-cost.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6e69333583e93d7e",
+      "label": "Shared — 18-code-test.png — CFX-RATIO-072",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "18-code-test.png",
+      "media_type": "png",
+      "bytes": 1834496,
+      "sha256": "6e69333583e93d7e8d821e8997281f43ce68cdf02e0c6b61178e36885935a5a9",
+      "collection_path": "diagnostics/CFX-RATIO-072/18-code-test.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/18-code-test.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e56ee8b580729c6a",
+      "label": "Shared — 19-test-result.png — CFX-RATIO-072",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "19-test-result.png",
+      "media_type": "png",
+      "bytes": 1841154,
+      "sha256": "e56ee8b580729c6a5593fa92ebc957aecfe2c1a21fcb9f3ecf512d88317c78f3",
+      "collection_path": "diagnostics/CFX-RATIO-072/19-test-result.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/19-test-result.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f65e241108c96730",
+      "label": "Shared — 20-apply-outcome.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "20-apply-outcome.png",
+      "media_type": "png",
+      "bytes": 1839412,
+      "sha256": "f65e241108c96730ae80b012f23d432662d7d0dfb66e5074a6127e3efb4b6719",
+      "collection_path": "development-captures/CFX-RATIO-072/20-apply-outcome.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/20-apply-outcome.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "59245bee50561b7c",
+      "label": "Shared — 21-atelier.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "21-atelier.png",
+      "media_type": "png",
+      "bytes": 1837618,
+      "sha256": "59245bee50561b7cdfb03c78a37c6248564da876d3ef8bc88443e974e474b1ed",
+      "collection_path": "development-captures/CFX-RATIO-072/21-atelier.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/21-atelier.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7d383c933b6eedb0",
+      "label": "Shared — 22-atelier-open.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "22-atelier-open.png",
+      "media_type": "png",
+      "bytes": 508379,
+      "sha256": "7d383c933b6eedb01b37bbbcc4600a9625db7e1f610615921d1c415c5d20348c",
+      "collection_path": "development-captures/CFX-RATIO-072/22-atelier-open.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/22-atelier-open.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "03eb143174c26fab",
+      "label": "Shared — 23-atelier-new-note.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "23-atelier-new-note.png",
+      "media_type": "png",
+      "bytes": 485248,
+      "sha256": "03eb143174c26fab1008f404270184e74ae8d66c71ffcd818b04e1f1ccd0d6d8",
+      "collection_path": "development-captures/CFX-RATIO-072/23-atelier-new-note.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/23-atelier-new-note.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f087c8e57d059aec",
+      "label": "Shared — 24-attic-exit.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "24-attic-exit.png",
+      "media_type": "png",
+      "bytes": 3363370,
+      "sha256": "f087c8e57d059aec2df766a739f7325ec0271d3c19a966b4dbee34502fd0783b",
+      "collection_path": "development-captures/CFX-RATIO-072/24-attic-exit.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/24-attic-exit.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "5cf97de1dc381364",
+      "label": "Shared — 25-camera-restored.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "25-camera-restored.png",
+      "media_type": "png",
+      "bytes": 3363015,
+      "sha256": "5cf97de1dc3813645760175919d5f5e422a11f1b461f32b73af66f3da940cb45",
+      "collection_path": "development-captures/CFX-RATIO-072/25-camera-restored.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/25-camera-restored.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "33e8ffa14026a1a7",
+      "label": "Shared — 26-menu.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "26-menu.png",
+      "media_type": "png",
+      "bytes": 3369330,
+      "sha256": "33e8ffa14026a1a76a7fbd48a86d41b8cdd26f81011f49cb55ae6705b577f44d",
+      "collection_path": "development-captures/CFX-RATIO-072/26-menu.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/26-menu.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "cc76d5c680224c74",
+      "label": "Shared — 27-menu-button.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "27-menu-button.png",
+      "media_type": "png",
+      "bytes": 3368788,
+      "sha256": "cc76d5c680224c74e885a24ae6c9ed56a4042fb91aafe388b0c17cb45bbf4042",
+      "collection_path": "development-captures/CFX-RATIO-072/27-menu-button.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/27-menu-button.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ebccc79f590adb99",
+      "label": "Shared — 28-menu-open.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "28-menu-open.png",
+      "media_type": "png",
+      "bytes": 1948922,
+      "sha256": "ebccc79f590adb99a1681454c1bbde4e9e8afe56d154704acca37630ac969ed4",
+      "collection_path": "development-captures/CFX-RATIO-072/28-menu-open.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/28-menu-open.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "41a9f7503373cef3",
+      "label": "Shared — 29-character-appearance.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "29-character-appearance.png",
+      "media_type": "png",
+      "bytes": 1961568,
+      "sha256": "41a9f7503373cef326880a3be5db79f6c8ffb7d386322fa53664ab152cf20c22",
+      "collection_path": "development-captures/CFX-RATIO-072/29-character-appearance.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/29-character-appearance.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c0bf8520747af36a",
+      "label": "Shared — 30-title-return.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "30-title-return.png",
+      "media_type": "png",
+      "bytes": 1949764,
+      "sha256": "c0bf8520747af36a1c78b0161498a717d4d23cd5f02eb6922503a58155765706",
+      "collection_path": "development-captures/CFX-RATIO-072/30-title-return.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/30-title-return.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "96473e61cf7dedc8",
+      "label": "Shared — 31-title.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "31-title.png",
+      "media_type": "png",
+      "bytes": 3893776,
+      "sha256": "96473e61cf7dedc8f1f9366c347406484f1abc8a9bfb5638b0fe60624247a717",
+      "collection_path": "development-captures/CFX-RATIO-072/31-title.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/31-title.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "994a898ca8b6394c",
+      "label": "Shared — 32-cave-road.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "32-cave-road.png",
+      "media_type": "png",
+      "bytes": 4985057,
+      "sha256": "994a898ca8b6394cb5ae3871d9f9b9f9ce8fa7487b151c314d3d40ecae2c62e2",
+      "collection_path": "development-captures/CFX-RATIO-072/32-cave-road.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/32-cave-road.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bb3814bbdaed9589",
+      "label": "Shared — 33-map-navigation.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "33-map-navigation.png",
+      "media_type": "png",
+      "bytes": 2715383,
+      "sha256": "bb3814bbdaed958915fff8f756bc4865fc564cafb51d20079ed7f6176250000a",
+      "collection_path": "development-captures/CFX-RATIO-072/33-map-navigation.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/33-map-navigation.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "60a18f22b9970503",
+      "label": "Shared — 34-destination-options.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "34-destination-options.png",
+      "media_type": "png",
+      "bytes": 2664697,
+      "sha256": "60a18f22b9970503f9433be2171f2fbec2c164eadb30960464b513576a3a6468",
+      "collection_path": "development-captures/CFX-RATIO-072/34-destination-options.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/34-destination-options.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ed1a625cda56e249",
+      "label": "Shared — 35-cave-wayfinding.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "35-cave-wayfinding.png",
+      "media_type": "png",
+      "bytes": 4732741,
+      "sha256": "ed1a625cda56e24903f70c6962e430dab046233e0f39bc0caf95da0a71a1d2d8",
+      "collection_path": "development-captures/CFX-RATIO-072/35-cave-wayfinding.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/35-cave-wayfinding.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d931df99def6ab30",
+      "label": "Shared — 36-cave-entrance.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "36-cave-entrance.png",
+      "media_type": "png",
+      "bytes": 5029255,
+      "sha256": "d931df99def6ab307a556ffa3b8451cd37275808d5874545c36c96988d48145b",
+      "collection_path": "development-captures/CFX-RATIO-072/36-cave-entrance.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/36-cave-entrance.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "54f53acecb91cbce",
+      "label": "Shared — 37-looking-back.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "37-looking-back.png",
+      "media_type": "png",
+      "bytes": 4847936,
+      "sha256": "54f53acecb91cbce824e3c5b27ef74f0530c5049e579b7ac2a99800ea87eac22",
+      "collection_path": "development-captures/CFX-RATIO-072/37-looking-back.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/37-looking-back.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a6db4c06ec250fdb",
+      "label": "Shared — 38-cave-prompt.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "38-cave-prompt.png",
+      "media_type": "png",
+      "bytes": 4647423,
+      "sha256": "a6db4c06ec250fdb40a61233d5c4b0e5116bf193f4a920f50ec6597ef4feb81e",
+      "collection_path": "development-captures/CFX-RATIO-072/38-cave-prompt.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/38-cave-prompt.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c784c8561c7cfaf9",
+      "label": "Shared — 39-dungeon-entry.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "39-dungeon-entry.png",
+      "media_type": "png",
+      "bytes": 2991886,
+      "sha256": "c784c8561c7cfaf985985c81789b0d99226d177f9d7b6b568328bc643950b35d",
+      "collection_path": "development-captures/CFX-RATIO-072/39-dungeon-entry.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/39-dungeon-entry.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c18ff58588d661b9",
+      "label": "Shared — 40-bat-approach.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "40-bat-approach.png",
+      "media_type": "png",
+      "bytes": 3889336,
+      "sha256": "c18ff58588d661b91b51aae7fcd7b4e278d13e56db062a0988e8e9f1b3cd3c84",
+      "collection_path": "development-captures/CFX-RATIO-072/40-bat-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/40-bat-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3c400c387ec5a7f9",
+      "label": "Shared — 41-first-encounter.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "41-first-encounter.png",
+      "media_type": "png",
+      "bytes": 3981317,
+      "sha256": "3c400c387ec5a7f97d39189294b9442708b9c6bae19a50d6b7998f10ce11b420",
+      "collection_path": "development-captures/CFX-RATIO-072/41-first-encounter.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/41-first-encounter.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "b6bbb006f3de1797",
+      "label": "Shared — 42-battle.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "42-battle.png",
+      "media_type": "png",
+      "bytes": 2010274,
+      "sha256": "b6bbb006f3de1797c517db9802dd6a6b14b6434cc9112018546a1c7a0dfc9c67",
+      "collection_path": "development-captures/CFX-RATIO-072/42-battle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/42-battle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "30179fae04c11499",
+      "label": "Shared — 43-battle-turns.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "43-battle-turns.png",
+      "media_type": "png",
+      "bytes": 2008606,
+      "sha256": "30179fae04c11499347bd81638d555a6ea70c0455e793b553c6f6588687ca830",
+      "collection_path": "development-captures/CFX-RATIO-072/43-battle-turns.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/43-battle-turns.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d714e5c384420be0",
+      "label": "Shared — 44-first-reward.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "44-first-reward.png",
+      "media_type": "png",
+      "bytes": 1992373,
+      "sha256": "d714e5c384420be062f3eda58c0e8d9e1588878f7d0e7dac63f802a56d72ea96",
+      "collection_path": "development-captures/CFX-RATIO-072/44-first-reward.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/44-first-reward.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c7b8afa15c1d250a",
+      "label": "Shared — 45-second-roost.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "45-second-roost.png",
+      "media_type": "png",
+      "bytes": 3925197,
+      "sha256": "c7b8afa15c1d250a5f3f39338995455c8eae0da3a9ea1ef465154493cfdf565f",
+      "collection_path": "development-captures/CFX-RATIO-072/45-second-roost.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/45-second-roost.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0b37c63d2d02ef94",
+      "label": "Shared — 46-roost-two-prompt.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "46-roost-two-prompt.png",
+      "media_type": "png",
+      "bytes": 3953279,
+      "sha256": "0b37c63d2d02ef94c5773d5bef7488313802dabd385f93ddeccc9962a7da3881",
+      "collection_path": "development-captures/CFX-RATIO-072/46-roost-two-prompt.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/46-roost-two-prompt.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "451c3389fa3ce11d",
+      "label": "Shared — 47-second-reward.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "47-second-reward.png",
+      "media_type": "png",
+      "bytes": 2001682,
+      "sha256": "451c3389fa3ce11d3ba315f4e0f6436aee6a8a7cd8c2856271b332c28f206ea1",
+      "collection_path": "development-captures/CFX-RATIO-072/47-second-reward.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/47-second-reward.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "76cdbf2803009e55",
+      "label": "Shared — 48-third-path.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "48-third-path.png",
+      "media_type": "png",
+      "bytes": 3900921,
+      "sha256": "76cdbf2803009e55403acd1d9d110abbaa969ef4043956709dd87d1d248b3aff",
+      "collection_path": "development-captures/CFX-RATIO-072/48-third-path.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/48-third-path.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9509da17337c8aec",
+      "label": "Shared — 49-third-roost.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "49-third-roost.png",
+      "media_type": "png",
+      "bytes": 3841474,
+      "sha256": "9509da17337c8aec71ca893be5b7eb2d1b351b23364fd09327caf60f533d0c4d",
+      "collection_path": "development-captures/CFX-RATIO-072/49-third-roost.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/49-third-roost.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6e90f84385d72ac3",
+      "label": "Shared — 50-cave-cleared.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "50-cave-cleared.png",
+      "media_type": "png",
+      "bytes": 1912041,
+      "sha256": "6e90f84385d72ac3eb6cac190aa1069d660ca1f4a67cb2dfefb676c6d6f63f6c",
+      "collection_path": "development-captures/CFX-RATIO-072/50-cave-cleared.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/50-cave-cleared.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d6bbd95e62b69cdc",
+      "label": "Shared — 51-return-from-cave.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "51-return-from-cave.png",
+      "media_type": "png",
+      "bytes": 3972742,
+      "sha256": "d6bbd95e62b69cdce257fd83089425bb566359d39b64d9df3c11d69a06f37830",
+      "collection_path": "development-captures/CFX-RATIO-072/51-return-from-cave.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/51-return-from-cave.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bf89c9e410827123",
+      "label": "Shared — 52-save-menu.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "52-save-menu.png",
+      "media_type": "png",
+      "bytes": 2031255,
+      "sha256": "bf89c9e41082712382c0ff394507a9b7b192d664833ebcce7d7f989d6307af60",
+      "collection_path": "development-captures/CFX-RATIO-072/52-save-menu.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/52-save-menu.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "331c1a1f4d4dc4a6",
+      "label": "Shared — 53-save-file.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "53-save-file.png",
+      "media_type": "png",
+      "bytes": 2067240,
+      "sha256": "331c1a1f4d4dc4a67ffaf800b282ca4177239ad7157a1920951bf37d5ccc5e68",
+      "collection_path": "development-captures/CFX-RATIO-072/53-save-file.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/53-save-file.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "127792e85242f56b",
+      "label": "Shared — 54-saved.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "54-saved.png",
+      "media_type": "png",
+      "bytes": 2066141,
+      "sha256": "127792e85242f56b19b123ffb24718e6091599aae8afd78de46d82602e6b4e0b",
+      "collection_path": "development-captures/CFX-RATIO-072/54-saved.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/54-saved.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a8622fd81e783e2b",
+      "label": "Shared — 55-quit-confirmation.png — CFX-RATIO-072",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-072",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "55-quit-confirmation.png",
+      "media_type": "png",
+      "bytes": 2083339,
+      "sha256": "a8622fd81e783e2b40d7fa70022addc246bb7b0d6cf19c3bf987f8d892c77ed0",
+      "collection_path": "development-captures/CFX-RATIO-072/55-quit-confirmation.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/55-quit-confirmation.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "c3db87edfa674d85",
+      "label": "Medio — Medio-Conversation00000.png — CFX-RATIO-073",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-073",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Conversation00000.png",
+      "media_type": "png",
+      "bytes": 904420,
+      "sha256": "c3db87edfa674d855054d57d153fd37d2a0a8d8327430b014a5974ed4f934155",
+      "collection_path": "development-captures/CFX-RATIO-073/Medio-Conversation00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-073/DialogueUI/Medio-Conversation00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d1cea7212932986c",
+      "label": "Medio — Medio-Conversation00000.png — CFX-RATIO-073",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-073",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Conversation00000.png",
+      "media_type": "png",
+      "bytes": 1305122,
+      "sha256": "d1cea7212932986c52d12c601160e8df8719e28fbf7476e6c05af88c8c63af82",
+      "collection_path": "development-captures/CFX-RATIO-073/Medio-Conversation00000-d1cea72129.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-073/DialogueUI2/Medio-Conversation00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0f29b989bc9e6a85",
+      "label": "Medio — Medio-Conversation00000.png — CFX-RATIO-073",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-073",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Conversation00000.png",
+      "media_type": "png",
+      "bytes": 1947295,
+      "sha256": "0f29b989bc9e6a850d51a86a0b53d9560643d2c2092facfa9838eeaaaf148f80",
+      "collection_path": "development-captures/CFX-RATIO-073/Medio-Conversation00000-0f29b989bc.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-073/DialogueUI3/Medio-Conversation00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "bbba80a1e3e9bf4c",
+      "label": "Medio — Medio-Conversation00000.png — CFX-RATIO-073",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "CFX-RATIO-073",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio-Conversation00000.png",
+      "media_type": "png",
+      "bytes": 4335282,
+      "sha256": "bbba80a1e3e9bf4cb230358b93ed7d919014aae20017bac4448a5c5108c702b6",
+      "collection_path": "development-captures/CFX-RATIO-073/Medio-Conversation00000-bbba80a1e3.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-073/DialogueUI4/Medio-Conversation00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2a583f41ec9f3373",
+      "label": "Shared — GateI-Complete00000.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "GateI-Complete00000.png",
+      "media_type": "png",
+      "bytes": 3652299,
+      "sha256": "2a583f41ec9f337375e49a828634a0929e72666a60cc917aa1713fc17c9240b1",
+      "collection_path": "development-captures/CFX-RATIO-074/GateI-Complete00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/GrimoireUI/GateI-Complete00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8590e43260494e58",
+      "label": "Shared — 02-title.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "02-title.png",
+      "media_type": "png",
+      "bytes": 1898702,
+      "sha256": "8590e43260494e580ab96f30a7f4f169206dddf0e5c30ae42b0a5b5a7d27907a",
+      "collection_path": "development-captures/CFX-RATIO-074/02-title.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/02-title.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "003e09dac70b6768",
+      "label": "Shared — 03-wayfarer-restored.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "03-wayfarer-restored.png",
+      "media_type": "png",
+      "bytes": 1899851,
+      "sha256": "003e09dac70b6768aee896a05788b2980c8f9864e31144ed846a1737485fc918",
+      "collection_path": "development-captures/CFX-RATIO-074/03-wayfarer-restored.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/03-wayfarer-restored.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "aa2ac7e8abd2b640",
+      "label": "Shared — 04-cave.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "04-cave.png",
+      "media_type": "png",
+      "bytes": 3471759,
+      "sha256": "aa2ac7e8abd2b64067e7c329de65637905f5f9c6fc19ea64d19fbc60ba0591bf",
+      "collection_path": "development-captures/CFX-RATIO-074/04-cave.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/04-cave.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "246df6f5b4f756e7",
+      "label": "Shared — 05-cave-exit.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "05-cave-exit.png",
+      "media_type": "png",
+      "bytes": 3908515,
+      "sha256": "246df6f5b4f756e72cb92c0c7737b899737276943a21544fbfa11b4760e977e1",
+      "collection_path": "development-captures/CFX-RATIO-074/05-cave-exit.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/05-cave-exit.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3f5ef40f3344f962",
+      "label": "Shared — 06-find-exit.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "06-find-exit.png",
+      "media_type": "png",
+      "bytes": 3792965,
+      "sha256": "3f5ef40f3344f962f08e8596c6db0869b0e9df6031d1e624eb3dd141d11ba584",
+      "collection_path": "development-captures/CFX-RATIO-074/06-find-exit.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/06-find-exit.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "db1270212ba157ea",
+      "label": "Shared — 07-exit-prompt.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "07-exit-prompt.png",
+      "media_type": "png",
+      "bytes": 3459797,
+      "sha256": "db1270212ba157ea1e1a7d363d342fb5ebac69562698b5542c15100b75b4acd6",
+      "collection_path": "development-captures/CFX-RATIO-074/07-exit-prompt.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/07-exit-prompt.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "dd0533a6f52d3589",
+      "label": "Shared — 08-departure.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "08-departure.png",
+      "media_type": "png",
+      "bytes": 1737081,
+      "sha256": "dd0533a6f52d3589d6bbfe19190de60d313c311c7524fda5a7969aead9fcb05e",
+      "collection_path": "development-captures/CFX-RATIO-074/08-departure.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/08-departure.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3dd40d1cbe32d9de",
+      "label": "Shared — 09-return-passage.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "09-return-passage.png",
+      "media_type": "png",
+      "bytes": 3401099,
+      "sha256": "3dd40d1cbe32d9de0a086aad11ee2281cc54117b07442b8dd6e0935c2407ca14",
+      "collection_path": "development-captures/CFX-RATIO-074/09-return-passage.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/09-return-passage.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f37a36bd74321092",
+      "label": "Shared — 10-city-return.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "10-city-return.png",
+      "media_type": "png",
+      "bytes": 4074697,
+      "sha256": "f37a36bd74321092a457e42bbe1c71714f921d0a451dededeeec8459fd23ee01",
+      "collection_path": "development-captures/CFX-RATIO-074/10-city-return.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/10-city-return.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "41f0b02242800352",
+      "label": "Shared — 11-workbench-road.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "11-workbench-road.png",
+      "media_type": "png",
+      "bytes": 4493307,
+      "sha256": "41f0b022428003522346f777bf459a69c4693eeff9591f58b7946e076d305230",
+      "collection_path": "development-captures/CFX-RATIO-074/11-workbench-road.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/11-workbench-road.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "534b0bd365af9ab9",
+      "label": "Shared — 12-save-dialog.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "12-save-dialog.png",
+      "media_type": "png",
+      "bytes": 4473269,
+      "sha256": "534b0bd365af9ab919aa9941a92a581675fbc99bf858887ad283d1ce34d53647",
+      "collection_path": "development-captures/CFX-RATIO-074/12-save-dialog.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/12-save-dialog.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3bc784a25658df62",
+      "label": "Shared — 13-workbench-approach.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "13-workbench-approach.png",
+      "media_type": "png",
+      "bytes": 4580185,
+      "sha256": "3bc784a25658df625ea726023cac623424af419c7fbaa1a6767efa6625337146",
+      "collection_path": "development-captures/CFX-RATIO-074/13-workbench-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/13-workbench-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9469724ca28a7811",
+      "label": "Shared — 14-crafting.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "14-crafting.png",
+      "media_type": "png",
+      "bytes": 2688460,
+      "sha256": "9469724ca28a7811047ccbed19cc10c5f42ef138a2198110ae596b0f929e347b",
+      "collection_path": "development-captures/CFX-RATIO-074/14-crafting.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/14-crafting.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7cbb9cadc0cd2064",
+      "label": "Shared — 15-crystal-recipe.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "15-crystal-recipe.png",
+      "media_type": "png",
+      "bytes": 2656057,
+      "sha256": "7cbb9cadc0cd20641d190e6fb6d929598f48bed431a326e07821d64cadc72e05",
+      "collection_path": "development-captures/CFX-RATIO-074/15-crystal-recipe.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/15-crystal-recipe.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "6b6790a477e86812",
+      "label": "Shared — 16-crystal-crafted.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "16-crystal-crafted.png",
+      "media_type": "png",
+      "bytes": 2643604,
+      "sha256": "6b6790a477e868127086315819975befe10f2188bee49b061b7c1f77ed132648",
+      "collection_path": "development-captures/CFX-RATIO-074/16-crystal-crafted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/16-crystal-crafted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "747ec21856fb30b4",
+      "label": "Shared — 17-invitation-recipe.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "17-invitation-recipe.png",
+      "media_type": "png",
+      "bytes": 2654887,
+      "sha256": "747ec21856fb30b43f63e186bbf91e99f3fe66b2702ad1113c67239539d667e4",
+      "collection_path": "development-captures/CFX-RATIO-074/17-invitation-recipe.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/17-invitation-recipe.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3c91899afaedde6f",
+      "label": "Shared — 18-invitations-crafted.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "18-invitations-crafted.png",
+      "media_type": "png",
+      "bytes": 2649368,
+      "sha256": "3c91899afaedde6fcaa22c2bd6533b0d47f5f9275c98f33df7780a36d8ea4e02",
+      "collection_path": "development-captures/CFX-RATIO-074/18-invitations-crafted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/18-invitations-crafted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1195ac45c0b535ba",
+      "label": "Shared — attic-approach.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "attic-approach.png",
+      "media_type": "png",
+      "bytes": 4641667,
+      "sha256": "1195ac45c0b535ba40f3f835f8cf14f836403481648b94394d0686ed6740ad1a",
+      "collection_path": "development-captures/CFX-RATIO-074/attic-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/attic-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9a8263765e4d168d",
+      "label": "Shared — awakened.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "awakened.png",
+      "media_type": "png",
+      "bytes": 1849476,
+      "sha256": "9a8263765e4d168dcc597c1562be0fc8e5019b405072f9d51e414017c5dfadca",
+      "collection_path": "development-captures/CFX-RATIO-074/awakened.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/awakened.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8925eff4ca8ab2ed",
+      "label": "Shared — book.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "book.png",
+      "media_type": "png",
+      "bytes": 3538875,
+      "sha256": "8925eff4ca8ab2ed75f50c2b330612c10e23556cc6ccab798f6109f87417240b",
+      "collection_path": "development-captures/CFX-RATIO-074/book.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/book.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "377172a0fea3d119",
+      "label": "Shared — both-prompts.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "both-prompts.png",
+      "media_type": "png",
+      "bytes": 1908744,
+      "sha256": "377172a0fea3d119bc3a5619dc30d06b43f97e741c51d529b21f7bdc91854226",
+      "collection_path": "development-captures/CFX-RATIO-074/both-prompts.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/both-prompts.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3933071da0af5721",
+      "label": "Shared — central-retry.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "central-retry.png",
+      "media_type": "png",
+      "bytes": 3775767,
+      "sha256": "3933071da0af57211e0a9c00af9cba6486c2c82ca45ded47650a328a294ff50f",
+      "collection_path": "development-captures/CFX-RATIO-074/central-retry.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/central-retry.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "ec9b754cf8f58c36",
+      "label": "Shared — central-route.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "central-route.png",
+      "media_type": "png",
+      "bytes": 4439561,
+      "sha256": "ec9b754cf8f58c36a8458669f6c1de2e83749aeac32e9880c84bd646d3d1c96b",
+      "collection_path": "development-captures/CFX-RATIO-074/central-route.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/central-route.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "1c256be9ec3fbaf1",
+      "label": "Shared — civic-end.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "civic-end.png",
+      "media_type": "png",
+      "bytes": 4473389,
+      "sha256": "1c256be9ec3fbaf1e957cd7e004913be6fe71ab940d44977f0c0a50826351577",
+      "collection_path": "development-captures/CFX-RATIO-074/civic-end.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/civic-end.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7da4168bc75df5c4",
+      "label": "Shared — comparison.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "comparison.png",
+      "media_type": "png",
+      "bytes": 1853534,
+      "sha256": "7da4168bc75df5c4d27c5cfe27005840fffdb162c861e51b276251970cad775d",
+      "collection_path": "development-captures/CFX-RATIO-074/comparison.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/comparison.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "187fd3889168b856",
+      "label": "Shared — control-return.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "control-return.png",
+      "media_type": "png",
+      "bytes": 3518227,
+      "sha256": "187fd3889168b8561a84723b79f5462b97185f875ae15fa70d7e34897166b625",
+      "collection_path": "development-captures/CFX-RATIO-074/control-return.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/control-return.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "7d13fc454fa1c2b9",
+      "label": "Shared — cross-street.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "cross-street.png",
+      "media_type": "png",
+      "bytes": 4497855,
+      "sha256": "7d13fc454fa1c2b901803d2c0e44f9d1a38efe00b37efc163aff6bd19effe8a3",
+      "collection_path": "development-captures/CFX-RATIO-074/cross-street.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/cross-street.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "38cc8097579d0c59",
+      "label": "Shared — descent-two.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "descent-two.png",
+      "media_type": "png",
+      "bytes": 3968628,
+      "sha256": "38cc8097579d0c59c556e1d3de44efce5d0a79989a3a2e64efe785d37995f9a7",
+      "collection_path": "development-captures/CFX-RATIO-074/descent-two.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/descent-two.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "da74e79f2d4e0836",
+      "label": "Shared — descent.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "descent.png",
+      "media_type": "png",
+      "bytes": 4059475,
+      "sha256": "da74e79f2d4e0836b3452d8fa36634cb48d765bbfcfb185d9f30fcd66c7b6103",
+      "collection_path": "development-captures/CFX-RATIO-074/descent.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/descent.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "f8eb03174c4b7737",
+      "label": "Shared — dialogue-player.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "dialogue-player.png",
+      "media_type": "png",
+      "bytes": 4693369,
+      "sha256": "f8eb03174c4b7737b97ed98b420b1e4a15320fe608f9931d2c4c4681cee17f12",
+      "collection_path": "development-captures/CFX-RATIO-074/dialogue-player.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/dialogue-player.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "5a656e98d3e03d1b",
+      "label": "Shared — direct-travel.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "direct-travel.png",
+      "media_type": "png",
+      "bytes": 4550252,
+      "sha256": "5a656e98d3e03d1b06466603dc76f1419cea49e7f6fb1cf08a20e624f0cd5291",
+      "collection_path": "development-captures/CFX-RATIO-074/direct-travel.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/direct-travel.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2b2286454bb94fef",
+      "label": "Shared — downhill.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "downhill.png",
+      "media_type": "png",
+      "bytes": 4454144,
+      "sha256": "2b2286454bb94fef569ff1a5a1c626412db5f37f8c0b7fba60f730cd16407383",
+      "collection_path": "development-captures/CFX-RATIO-074/downhill.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/downhill.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "d08c054c93b2a2a9",
+      "label": "Shared — entrance.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "entrance.png",
+      "media_type": "png",
+      "bytes": 4301729,
+      "sha256": "d08c054c93b2a2a9bdc3d676abfb76123ed4bb384cfe9656701e0d62149adf3b",
+      "collection_path": "development-captures/CFX-RATIO-074/entrance.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/entrance.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "a27098cfa1f847e2",
+      "label": "Shared — exit-attic.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "exit-attic.png",
+      "media_type": "png",
+      "bytes": 3614171,
+      "sha256": "a27098cfa1f847e2eab31fa1d293c1f3e58d30cb3868befd5cfec3319a9bd132",
+      "collection_path": "development-captures/CFX-RATIO-074/exit-attic.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/exit-attic.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "03954baaa2d3294e",
+      "label": "Shared — experience-topic.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "experience-topic.png",
+      "media_type": "png",
+      "bytes": 4662593,
+      "sha256": "03954baaa2d3294e48b20098092237ee9bf1f9a2806b1794d952d6b44a9dfbb5",
+      "collection_path": "development-captures/CFX-RATIO-074/experience-topic.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/experience-topic.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "8cd641274042017c",
+      "label": "Shared — final-save-panel.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "final-save-panel.png",
+      "media_type": "png",
+      "bytes": 1760877,
+      "sha256": "8cd641274042017c99da586c3dbd7d7f3395f0be17aa6258fb68cf74db329831",
+      "collection_path": "development-captures/CFX-RATIO-074/final-save-panel.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/final-save-panel.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "9e8f52d83467073c",
+      "label": "Shared — final-saved.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "final-saved.png",
+      "media_type": "png",
+      "bytes": 1768816,
+      "sha256": "9e8f52d83467073cc9509006fd676a56caf9e3a41c57926d64a9a06a97623fab",
+      "collection_path": "development-captures/CFX-RATIO-074/final-saved.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/final-saved.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "657fdc844f085398",
+      "label": "Shared — gate-interaction.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "gate-interaction.png",
+      "media_type": "png",
+      "bytes": 4330361,
+      "sha256": "657fdc844f08539835448f50339a8eed5108bb81c2030f77532148b9f3433831",
+      "collection_path": "development-captures/CFX-RATIO-074/gate-interaction.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/gate-interaction.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "3e6beb98c6a90961",
+      "label": "Shared — gate-one-earned.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "gate-one-earned.png",
+      "media_type": "png",
+      "bytes": 1916082,
+      "sha256": "3e6beb98c6a909612ab76a8dafc540dc7191803ed6f1c633086e6480bcb398dd",
+      "collection_path": "development-captures/CFX-RATIO-074/gate-one-earned.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/gate-one-earned.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0b7922def8ce595a",
+      "label": "Shared — gate-two-current.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "gate-two-current.png",
+      "media_type": "png",
+      "bytes": 1912855,
+      "sha256": "0b7922def8ce595a1733467343b442a49cab10d3d40f558382b952f2d429d146",
+      "collection_path": "development-captures/CFX-RATIO-074/gate-two-current.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/gate-two-current.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "29b4c48076dda0f9",
+      "label": "Shared — gate-two-result.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "gate-two-result.png",
+      "media_type": "png",
+      "bytes": 2153584,
+      "sha256": "29b4c48076dda0f906efc9500239edabb251d068818aaa9afc67cca0c2111ef7",
+      "collection_path": "development-captures/CFX-RATIO-074/gate-two-result.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/gate-two-result.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "e06e1ce40368dc3c",
+      "label": "Shared — gate-two-resume.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "gate-two-resume.png",
+      "media_type": "png",
+      "bytes": 3324529,
+      "sha256": "e06e1ce40368dc3cd30486c9142178ec06ac7c65d1934b19092aa5b4e09d0e5d",
+      "collection_path": "development-captures/CFX-RATIO-074/gate-two-resume.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/gate-two-resume.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "746414517058a126",
+      "label": "Shared — governance-arrival.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "governance-arrival.png",
+      "media_type": "png",
+      "bytes": 3630125,
+      "sha256": "746414517058a126388eabcbab6409dc7eccd3d77602a8c12a8c4e27d6786299",
+      "collection_path": "development-captures/CFX-RATIO-074/governance-arrival.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/governance-arrival.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0d8afb45b9949d44",
+      "label": "Shared — governance-guidance.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "governance-guidance.png",
+      "media_type": "png",
+      "bytes": 2149944,
+      "sha256": "0d8afb45b9949d44834b37239f7099e143842765317f1a39ff4da4111752480a",
+      "collection_path": "development-captures/CFX-RATIO-074/governance-guidance.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/governance-guidance.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "0efd5af79094f46e",
+      "label": "Shared — governance-open.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "governance-open.png",
+      "media_type": "png",
+      "bytes": 2213453,
+      "sha256": "0efd5af79094f46ef0ecd432e7740965d626a7f3bf733cbbbcd7c1a1bbb7f2c0",
+      "collection_path": "development-captures/CFX-RATIO-074/governance-open.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/governance-open.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "2b7507268c6999e8",
+      "label": "Shared — harbor-aligned.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "harbor-aligned.png",
+      "media_type": "png",
+      "bytes": 4169209,
+      "sha256": "2b7507268c6999e81fcdf9b5b786229f3257cbe5fa0f89ee1029ae5f606329a8",
+      "collection_path": "development-captures/CFX-RATIO-074/harbor-aligned.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/harbor-aligned.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    },
+    {
+      "id": "19fefc8f26b2b6ef",
+      "label": "Shared — harbor-road.png — CFX-RATIO-074",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "CFX-RATIO-074",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "harbor-road.png",
+      "media_type": "png",
+      "bytes": 4320153,
+      "sha256": "19fefc8f26b2b6ef6c37ed349b974275f091c6d4e77c1639b7be543d3f73257c",
+      "collection_path": "development-captures/CFX-RATIO-074/harbor-road.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-074/OrdinaryPlay/harbor-road.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-05.zip"
+    }
+  ]
+}

@@ -1,0 +1,3203 @@
+{
+  "archive": {
+    "name": "Conflux-Concept-Art-Development-07.zip",
+    "files": 133,
+    "bytes": 124981356,
+    "sha256": "1820c18e51243c577997a56c93579bb0393ec405fe8467d00ac6ed42d4c830a3"
+  },
+  "items": [
+    {
+      "id": "f26639ea45e21a23",
+      "label": "Medio — user-review-03.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "user-review-03.png",
+      "media_type": "png",
+      "bytes": 3512479,
+      "sha256": "f26639ea45e21a230ba4df2c20991a9a4fa13696b8691d724b1724873c5a57e7",
+      "collection_path": "development-captures/review-MedioV05/user-review-03.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/Native/user-review-03.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "0bf493cf7156b970",
+      "label": "Medio — user-review-04.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "user-review-04.png",
+      "media_type": "png",
+      "bytes": 3403695,
+      "sha256": "0bf493cf7156b970c71f13556ea67313c3422ff49185a4c6a92b0656c21da19f",
+      "collection_path": "development-captures/review-MedioV05/user-review-04.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/Native/user-review-04.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "be20e5d58bdf23e5",
+      "label": "Medio — user-review-05-panties-fit.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "user-review-05-panties-fit.png",
+      "media_type": "png",
+      "bytes": 2775241,
+      "sha256": "be20e5d58bdf23e59eadd55531830a04d8c36d3db080d4753b1c042864acf236",
+      "collection_path": "development-captures/review-MedioV05/user-review-05-panties-fit.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/Native/user-review-05-panties-fit.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d8bac8f0acf532c7",
+      "label": "Medio — body-back.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "body-back.png",
+      "media_type": "png",
+      "bytes": 1515374,
+      "sha256": "d8bac8f0acf532c700a07f3b1f3895f7e35c7451b41dafc651476287596b9990",
+      "collection_path": "development-captures/review-MedioV05/body-back.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/body-back.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "5628fc6088acbe9c",
+      "label": "Medio — boundary-map.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "boundary-map.png",
+      "media_type": "png",
+      "bytes": 151464,
+      "sha256": "5628fc6088acbe9ce95501eb04d65b775c1d937497bd4a3b07f07a7e05961c09",
+      "collection_path": "development-captures/review-MedioV05/boundary-map.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/boundary-map.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "0445da1b1efe2cd9",
+      "label": "Medio — head-front.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "head-front.png",
+      "media_type": "png",
+      "bytes": 1396246,
+      "sha256": "0445da1b1efe2cd9f0b047844d3b431706b922f56be8c687ade7a0dd19de1760",
+      "collection_path": "development-captures/review-MedioV05/head-front-0445da1b1e.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/head-front.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "b77e554a0203eae6",
+      "label": "Medio — head-top-close.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "head-top-close.png",
+      "media_type": "png",
+      "bytes": 1346997,
+      "sha256": "b77e554a0203eae60c6a0efa86ec2797a5cd74e4335382ba40c4f6a9496f655b",
+      "collection_path": "development-captures/review-MedioV05/head-top-close.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/head-top-close.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "310d483548457244",
+      "label": "Medio — head-top-outside-mesh.png — review-MedioV05",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "review-MedioV05",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "head-top-outside-mesh.png",
+      "media_type": "png",
+      "bytes": 1359468,
+      "sha256": "310d4835484572442e4d38dbcbe73d56ae67db7933e3b952d6af85de53be1db1",
+      "collection_path": "development-captures/review-MedioV05/head-top-outside-mesh.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/MedioV05/head-top-outside-mesh.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d7d91e84aaf273eb",
+      "label": "Shared — Epic60.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Epic60.png",
+      "media_type": "png",
+      "bytes": 1763689,
+      "sha256": "d7d91e84aaf273eb7c23f3d4b37845ebe08c4308b8026ccf503fad8d8840a320",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Epic60.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/After/Epic60.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "fbc2e60372ded4de",
+      "label": "Shared — EpicUncapped.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "EpicUncapped.png",
+      "media_type": "png",
+      "bytes": 1767899,
+      "sha256": "fbc2e60372ded4de211239dcaed81e90b69c70a176d27192491b18489793dc2d",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/EpicUncapped.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/After/EpicUncapped.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ff8ea7e86c28b227",
+      "label": "Shared — High60.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "High60.png",
+      "media_type": "png",
+      "bytes": 1837068,
+      "sha256": "ff8ea7e86c28b2276c594196a31a8e7547e1ada6e6721c8abd5458a22e19f552",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/High60.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/After/High60.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "0b88db142fc7dd72",
+      "label": "Shared — HighUncapped.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "HighUncapped.png",
+      "media_type": "png",
+      "bytes": 1936514,
+      "sha256": "0b88db142fc7dd72dff6f8632325cffde299266c96641160522a1e3893403a17",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/HighUncapped.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/After/HighUncapped.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6276a1829526edee",
+      "label": "Shared — Epic60.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Epic60.png",
+      "media_type": "png",
+      "bytes": 1590543,
+      "sha256": "6276a1829526edeed64a9ef20131abf37788f66eeba1720949d88d8670961897",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Epic60-6276a18295.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/Baseline/Epic60.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "0d7f37c154dd3c5e",
+      "label": "Shared — EpicUncapped.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "EpicUncapped.png",
+      "media_type": "png",
+      "bytes": 1591860,
+      "sha256": "0d7f37c154dd3c5e15541f904698863220e54ddaac316a848b41e0954af17857",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/EpicUncapped-0d7f37c154.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/Baseline/EpicUncapped.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6e3f77306ae87883",
+      "label": "Shared — High60.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "High60.png",
+      "media_type": "png",
+      "bytes": 1622547,
+      "sha256": "6e3f77306ae87883dd1bb6e35196b20d2b70d5d98c1e08710777eb1220316dd2",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/High60-6e3f77306a.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/Baseline/High60.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "61cc61b5d4fc7a7f",
+      "label": "Shared — HighUncapped.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "HighUncapped.png",
+      "media_type": "png",
+      "bytes": 1631966,
+      "sha256": "61cc61b5d4fc7a7f727959dc770b69479ce1819527e50b411bd425b48b1f0704",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/HighUncapped-61cc61b5d4.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/Baseline/HighUncapped.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "40745c2d8f428771",
+      "label": "Shared — NewPlayer.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NewPlayer.png",
+      "media_type": "png",
+      "bytes": 2145028,
+      "sha256": "40745c2d8f428771a740d79753a87930e036bfae78e3e136e4b9711a412e304f",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/NewPlayer.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/Fresh/NewPlayer.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8d9d6f3c0295f659",
+      "label": "Limen — Limen_clean_black-green_hair.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_clean_black-green_hair.png",
+      "media_type": "png",
+      "bytes": 440024,
+      "sha256": "8d9d6f3c0295f6596085004dd3bd48e98bf52f8158bc62b264a2ed85c25a7836",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_clean_black-green_hair.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_clean_black-green_hair.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_clean_black-green_hair.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_clean_black-green_hair.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "1c9a7fb4509c1712",
+      "label": "Limen — Limen_clean_black-green_hair_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_clean_black-green_hair_001.png",
+      "media_type": "png",
+      "bytes": 512793,
+      "sha256": "1c9a7fb4509c1712a6e4f11ad39d391fd7be079d4ad2249a4afa0688f66b3275",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_clean_black-green_hair_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_clean_black-green_hair_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_clean_black-green_hair_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_clean_black-green_hair_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "9041b0b8cd1d3848",
+      "label": "Limen — Limen_source_eye_texture_hue_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_source_eye_texture_hue_adapted.png",
+      "media_type": "png",
+      "bytes": 607584,
+      "sha256": "9041b0b8cd1d3848119f4b769ac459904b9d0b7257e76733d85dac74aa164474",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_source_eye_texture_hue_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_source_eye_texture_hue_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "429bc1a9990e383d",
+      "label": "Limen — Limen_source_wardrobe_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_source_wardrobe_adapted.png",
+      "media_type": "png",
+      "bytes": 452416,
+      "sha256": "429bc1a9990e383dab95191d09987ffa58c500ed8d56d61b9325a47bf2e35980",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_source_wardrobe_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_source_wardrobe_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8eb83c5ba41ffedf",
+      "label": "Limen — Limen_source_wardrobe_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_source_wardrobe_adapted_001.png",
+      "media_type": "png",
+      "bytes": 965628,
+      "sha256": "8eb83c5ba41ffedf64ce0963aa1cd51556a68bf5048d97a5b235f5193bbb80e9",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_source_wardrobe_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_source_wardrobe_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a98023acfa19bbdc",
+      "label": "Limen — Limen_source_wardrobe_adapted_002.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Limen_source_wardrobe_adapted_002.png",
+      "media_type": "png",
+      "bytes": 234538,
+      "sha256": "a98023acfa19bbdc18c7dd68b3613847bb8ae6fc27ea08b6e01f186a19a899bb",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Limen_source_wardrobe_adapted_002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Limen/Limen_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Limen_FittedNeutral.fbm/Limen_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Limen/Textures/Limen_source_wardrobe_adapted_002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ce6150a9a984188f",
+      "label": "Nexus — MI_R2T1AogusitaMd10011Face.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "MI_R2T1AogusitaMd10011Face.png",
+      "media_type": "png",
+      "bytes": 489352,
+      "sha256": "ce6150a9a984188fe6d68c2cb38ed38c1df1bec34098088408a5ac167e894525",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/MI_R2T1AogusitaMd10011Face.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/MI_R2T1AogusitaMd10011Face.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "04235b38a844e0f9",
+      "label": "Nexus — Nexus_source_hair_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus_source_hair_adapted.png",
+      "media_type": "png",
+      "bytes": 99251,
+      "sha256": "04235b38a844e0f948cbb4f8615705ce41f8cc40d970d99f5060a0ecfb232c69",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Nexus_source_hair_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/Nexus_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Nexus/Nexus_FittedNeutral.fbm/Nexus_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Nexus/Textures/Nexus_source_hair_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a797ad20cd3888a0",
+      "label": "Nexus — Nexus_source_hair_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus_source_hair_adapted_001.png",
+      "media_type": "png",
+      "bytes": 108521,
+      "sha256": "a797ad20cd3888a0bf9dc5254f5d301c831d82232f446a3aead3d43c70891b52",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Nexus_source_hair_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/Nexus_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Nexus/Nexus_FittedNeutral.fbm/Nexus_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Nexus/Textures/Nexus_source_hair_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "9e4593688b525198",
+      "label": "Nexus — Nexus_source_wardrobe_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus_source_wardrobe_adapted.png",
+      "media_type": "png",
+      "bytes": 1052277,
+      "sha256": "9e4593688b525198fcd1196d1e0d467fef5abadb67c08cd8de7e1982167dba3c",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Nexus_source_wardrobe_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/Nexus_source_wardrobe_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "2f4869a41043bf37",
+      "label": "Nexus — Nexus_source_wardrobe_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus_source_wardrobe_adapted_001.png",
+      "media_type": "png",
+      "bytes": 1017258,
+      "sha256": "2f4869a41043bf3765e94b600cca6c370be33e6ece951f421eba4761c3292260",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Nexus_source_wardrobe_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/Nexus_source_wardrobe_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "1523d2ce8482baa3",
+      "label": "Nexus — Nexus_source_wardrobe_adapted_002.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Nexus_source_wardrobe_adapted_002.png",
+      "media_type": "png",
+      "bytes": 509153,
+      "sha256": "1523d2ce8482baa3d4cf82aba5d062af397ef6f1b5e0728ee0468acff75cb3c9",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Nexus_source_wardrobe_adapted_002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Nexus/Nexus_source_wardrobe_adapted_002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "2a2764ca095b4d60",
+      "label": "Ratio — Ratio_source_eye_texture_hue_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_eye_texture_hue_adapted.png",
+      "media_type": "png",
+      "bytes": 162674,
+      "sha256": "2a2764ca095b4d60d2103f661cae5372b15aad307e92887a628e74c9e4f49e36",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_eye_texture_hue_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_eye_texture_hue_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "40ee281884c4a098",
+      "label": "Ratio — Ratio_source_hair_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_hair_adapted.png",
+      "media_type": "png",
+      "bytes": 644786,
+      "sha256": "40ee281884c4a098b01f8c64dcb73d577983a369a2efe6fde62746c792c5f63f",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_hair_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_hair_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "2782283d3457f701",
+      "label": "Ratio — Ratio_source_hair_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_hair_adapted_001.png",
+      "media_type": "png",
+      "bytes": 427096,
+      "sha256": "2782283d3457f701aceb50025e9d69a2cbcf1e1d13425b6787e21b4fe9e7142b",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_hair_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_hair_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "bf64a6b07bf1816a",
+      "label": "Ratio — Ratio_source_wardrobe_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_wardrobe_adapted.png",
+      "media_type": "png",
+      "bytes": 642661,
+      "sha256": "bf64a6b07bf1816a4620bc3916569e89e120a75f212e3d694fe6c70cdb7d16d1",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_wardrobe_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_wardrobe_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "330839ef38b8d98e",
+      "label": "Ratio — Ratio_source_wardrobe_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_wardrobe_adapted_001.png",
+      "media_type": "png",
+      "bytes": 30860,
+      "sha256": "330839ef38b8d98eea22289c51a68c9bdaba1df3c7f568235b74b8e3996b64a6",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_wardrobe_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_wardrobe_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "cfe60b29e78ef29c",
+      "label": "Ratio — Ratio_source_wardrobe_adapted_002.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_wardrobe_adapted_002.png",
+      "media_type": "png",
+      "bytes": 941807,
+      "sha256": "cfe60b29e78ef29ca998e2e339ef811c9ccad1f73fff7ecd84c8b8224f2c1056",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_wardrobe_adapted_002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_wardrobe_adapted_002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "72059911ae60b1c6",
+      "label": "Ratio — Ratio_source_wardrobe_adapted_003.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ratio_source_wardrobe_adapted_003.png",
+      "media_type": "png",
+      "bytes": 52885,
+      "sha256": "72059911ae60b1c6a51f567c1938d66055ac0c8713fc19c139a17ac83362fca3",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Ratio_source_wardrobe_adapted_003.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Ratio/Ratio_source_wardrobe_adapted_003.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Ratio_FittedNeutral.fbm/Ratio_source_wardrobe_adapted_003.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Ratio/Textures/Ratio_source_wardrobe_adapted_003.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "e5b70b23134b6708",
+      "label": "Specula — Specula_source_eye_texture_hue_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_eye_texture_hue_adapted.png",
+      "media_type": "png",
+      "bytes": 517686,
+      "sha256": "e5b70b23134b670859391822a45450fff7a4ad2b770b608cd0063afb3689e4e9",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_eye_texture_hue_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_eye_texture_hue_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_eye_texture_hue_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c8a3bf7422ba13dd",
+      "label": "Specula — Specula_source_hair_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_hair_adapted.png",
+      "media_type": "png",
+      "bytes": 528832,
+      "sha256": "c8a3bf7422ba13dd4d690a760ab51cc0a08c2f5552cc15a73259c69c2686d462",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_hair_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_hair_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_hair_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "28058184130673f0",
+      "label": "Specula — Specula_source_hair_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_hair_adapted_001.png",
+      "media_type": "png",
+      "bytes": 850044,
+      "sha256": "28058184130673f0d496ceeee6924622781fa605eb604007e99fa23ab1b1ac9d",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_hair_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_hair_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_hair_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c16fce37aa9cbab0",
+      "label": "Specula — Specula_source_hair_adapted_002.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_hair_adapted_002.png",
+      "media_type": "png",
+      "bytes": 849895,
+      "sha256": "c16fce37aa9cbab086e4b541f9ddb7dd9d77ccbd61e7c58b352c0c31a135c76b",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_hair_adapted_002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_hair_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_hair_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_hair_adapted_002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "933a4da50ed6f409",
+      "label": "Specula — Specula_source_wardrobe_adapted.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_wardrobe_adapted.png",
+      "media_type": "png",
+      "bytes": 1343235,
+      "sha256": "933a4da50ed6f409f1d5af60006fb9f9d799c6a0005b03511f27de30e7602bf7",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_wardrobe_adapted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_wardrobe_adapted.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_wardrobe_adapted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "e0e20ef8b668ee59",
+      "label": "Specula — Specula_source_wardrobe_adapted_001.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_wardrobe_adapted_001.png",
+      "media_type": "png",
+      "bytes": 805812,
+      "sha256": "e0e20ef8b668ee59ca0b885a7d1fd00ed63c7c4ee7408ee4ed9a088717912ce4",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_wardrobe_adapted_001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_wardrobe_adapted_001.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_wardrobe_adapted_001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d5ee5f510a424a0c",
+      "label": "Specula — Specula_source_wardrobe_adapted_002.png — review-PerformanceVisualPass01",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "review-PerformanceVisualPass01",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Specula_source_wardrobe_adapted_002.png",
+      "media_type": "png",
+      "bytes": 265379,
+      "sha256": "d5ee5f510a424a0c0a1156ac009e923f86cce42d23aedd13d5e80db6c796c7bb",
+      "collection_path": "development-captures/review-PerformanceVisualPass01/Specula_source_wardrobe_adapted_002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/PerformanceVisualPass01/TextureRepair/Specula/Specula_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Specula_FittedNeutral.fbm/Specula_source_wardrobe_adapted_002.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/FourNodeFitted/ImportCandidates/Specula/Textures/Specula_source_wardrobe_adapted_002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "35bae8ba6d31bfc2",
+      "label": "Shared — city-map.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "city-map.png",
+      "media_type": "png",
+      "bytes": 660643,
+      "sha256": "35bae8ba6d31bfc2076d46877c6ee13b9f808ea07d4185ccd40a6582d41372b6",
+      "collection_path": "development-captures/review-WayfarerContinuation/city-map.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/city-map.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "524bca0f22811daa",
+      "label": "Shared — civic-approach.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "civic-approach.png",
+      "media_type": "png",
+      "bytes": 1265427,
+      "sha256": "524bca0f22811daafdb49822200dd8c355c3bdf4820c28abce84cdd2b584be39",
+      "collection_path": "development-captures/review-WayfarerContinuation/civic-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/civic-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "67770734a24772d3",
+      "label": "Shared — crafting-menu.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "crafting-menu.png",
+      "media_type": "png",
+      "bytes": 765315,
+      "sha256": "67770734a24772d374ceb6004b27acde0f4dd89a1c1e67e6a368ed050959d206",
+      "collection_path": "development-captures/review-WayfarerContinuation/crafting-menu.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/crafting-menu.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6f5f6bce49b72f9c",
+      "label": "Shared — encounter-start.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "encounter-start.png",
+      "media_type": "png",
+      "bytes": 761404,
+      "sha256": "6f5f6bce49b72f9cb147f3f18e843f4c1a46e70d81bad0e42f2a9e0cb758f808",
+      "collection_path": "development-captures/review-WayfarerContinuation/encounter-start.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/encounter-start.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "7e0780c10c4820e6",
+      "label": "Shared — exit-approach.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "exit-approach.png",
+      "media_type": "png",
+      "bytes": 1268047,
+      "sha256": "7e0780c10c4820e64bb6d376aca2395ebe19ca199fcc181bc3a973a22bf7c02b",
+      "collection_path": "development-captures/review-WayfarerContinuation/exit-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/exit-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "4dd3028c196260f7",
+      "label": "Shared — garden-approach.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "garden-approach.png",
+      "media_type": "png",
+      "bytes": 1389543,
+      "sha256": "4dd3028c196260f7957ff02e55ad186a44592281285b226f68eae5a308177ba8",
+      "collection_path": "development-captures/review-WayfarerContinuation/garden-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/garden-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "4c6077025854786b",
+      "label": "Shared — grotto-destinations.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "grotto-destinations.png",
+      "media_type": "png",
+      "bytes": 583152,
+      "sha256": "4c6077025854786baff1d0e7d654120d269e1660c509ea12b291f46efde76f0a",
+      "collection_path": "development-captures/review-WayfarerContinuation/grotto-destinations.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/grotto-destinations.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "fd0911b180eb0e6b",
+      "label": "Shared — invitation-pattern.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "invitation-pattern.png",
+      "media_type": "png",
+      "bytes": 744620,
+      "sha256": "fd0911b180eb0e6b318f60c199e7b823c7730bf653cd8590060bfec48a004843",
+      "collection_path": "development-captures/review-WayfarerContinuation/invitation-pattern.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/invitation-pattern.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6a20e0343eed45fd",
+      "label": "Shared — loaded-state.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "loaded-state.png",
+      "media_type": "png",
+      "bytes": 1154204,
+      "sha256": "6a20e0343eed45fdfadb88a861aa08f05c8d46bdf2b50372f33dc8b8106c3d01",
+      "collection_path": "development-captures/review-WayfarerContinuation/loaded-state.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/loaded-state.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "1c5104067fbb436f",
+      "label": "Shared — manual-save-controls.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "manual-save-controls.png",
+      "media_type": "png",
+      "bytes": 725072,
+      "sha256": "1c5104067fbb436f95a3f4fa4974aa411e0a2782c8bdca7b3e174cf7cdeb1559",
+      "collection_path": "development-captures/review-WayfarerContinuation/manual-save-controls.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/manual-save-controls.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "03b8a9decca5843e",
+      "label": "Shared — map-grotto.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "map-grotto.png",
+      "media_type": "png",
+      "bytes": 605888,
+      "sha256": "03b8a9decca5843ec88c22a0e2a5b56076728fa110bd8e0c1a78b129b107389d",
+      "collection_path": "development-captures/review-WayfarerContinuation/map-grotto.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/map-grotto.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8fd7cdb74d7920e5",
+      "label": "Shared — moth-after-guard.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "moth-after-guard.png",
+      "media_type": "png",
+      "bytes": 741255,
+      "sha256": "8fd7cdb74d7920e5c846c6c76cfff0952965f970f630fac24c12a3089c769142",
+      "collection_path": "development-captures/review-WayfarerContinuation/moth-after-guard.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/moth-after-guard.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "07de0905550796e4",
+      "label": "Shared — moth-approach.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "moth-approach.png",
+      "media_type": "png",
+      "bytes": 1382847,
+      "sha256": "07de0905550796e4fef940ad105daa48b2f07e5170a7122c0af52a8b9eb4fc46",
+      "collection_path": "development-captures/review-WayfarerContinuation/moth-approach.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/moth-approach.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "686d8ce966661413",
+      "label": "Shared — moth-victory.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "moth-victory.png",
+      "media_type": "png",
+      "bytes": 738246,
+      "sha256": "686d8ce966661413260d08b8b23f7a4266a1e1cd58dc1b70feb21018bc1372c1",
+      "collection_path": "development-captures/review-WayfarerContinuation/moth-victory.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/moth-victory.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "2bb5649299b95ab0",
+      "label": "Shared — named-save-list.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "named-save-list.png",
+      "media_type": "png",
+      "bytes": 1895724,
+      "sha256": "2bb5649299b95ab0ee902f4718d735631bc42d7c517f50247bc77c07879db9e5",
+      "collection_path": "development-captures/review-WayfarerContinuation/named-save-list.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/named-save-list.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "1a338e5fb52c3d19",
+      "label": "Shared — profile-selection.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "profile-selection.png",
+      "media_type": "png",
+      "bytes": 1821242,
+      "sha256": "1a338e5fb52c3d1993ef5facb30f5da9fcb72af06f18f358ca691fbac947495e",
+      "collection_path": "development-captures/review-WayfarerContinuation/profile-selection.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/profile-selection.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "4ecd449e6d1be26c",
+      "label": "Shared — resumed-grotto.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "resumed-grotto.png",
+      "media_type": "png",
+      "bytes": 1949065,
+      "sha256": "4ecd449e6d1be26c14459da6cc7a27c365e87dbec7d5a5c6426c8cba5ba8d61e",
+      "collection_path": "development-captures/review-WayfarerContinuation/resumed-grotto.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/resumed-grotto.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6abd71c7e28f19fe",
+      "label": "Shared — return-city.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "return-city.png",
+      "media_type": "png",
+      "bytes": 1128208,
+      "sha256": "6abd71c7e28f19fe0519a55197ea655e166c363910e351ca4b67225291b15fb9",
+      "collection_path": "development-captures/review-WayfarerContinuation/return-city.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/return-city.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "3df92b617a9c2c7b",
+      "label": "Shared — save-menu.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "save-menu.png",
+      "media_type": "png",
+      "bytes": 710276,
+      "sha256": "3df92b617a9c2c7bced50dc555d55bb751b00448c8ffd176767050d96c2d05c7",
+      "collection_path": "development-captures/review-WayfarerContinuation/save-menu.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/save-menu.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "4ecb860bace9e4c8",
+      "label": "Shared — saved-confirmation.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "saved-confirmation.png",
+      "media_type": "png",
+      "bytes": 736294,
+      "sha256": "4ecb860bace9e4c8442f1cac3cb8e5a8fef21a8e9fa11dbe3f39d6bf59004a87",
+      "collection_path": "development-captures/review-WayfarerContinuation/saved-confirmation.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/saved-confirmation.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "699aa4e1ac8d11e6",
+      "label": "Shared — saved-journeys.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "saved-journeys.png",
+      "media_type": "png",
+      "bytes": 1947124,
+      "sha256": "699aa4e1ac8d11e68c27b2e24a5989aaabed1f8e0fde0168245a0a9683ab39fb",
+      "collection_path": "development-captures/review-WayfarerContinuation/saved-journeys.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/saved-journeys.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "63d30e0d2f019640",
+      "label": "Shared — sigil-crafted.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "sigil-crafted.png",
+      "media_type": "png",
+      "bytes": 741554,
+      "sha256": "63d30e0d2f019640d80f332bcb0b34b931e530ab4aa357832ed04aafde3454fd",
+      "collection_path": "development-captures/review-WayfarerContinuation/sigil-crafted.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/sigil-crafted.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d40deafa4f1b06a2",
+      "label": "Shared — startup.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "startup.png",
+      "media_type": "png",
+      "bytes": 1819458,
+      "sha256": "d40deafa4f1b06a224285b4521b25dfa6f883ff605eb7ecfcb48d2d5a235d75a",
+      "collection_path": "development-captures/review-WayfarerContinuation/startup.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/startup.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "28bc429645c269eb",
+      "label": "Shared — user-finished.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "user-finished.png",
+      "media_type": "png",
+      "bytes": 743283,
+      "sha256": "28bc429645c269eba06593911caf1ffb94e46695882d8155297856495d736389",
+      "collection_path": "development-captures/review-WayfarerContinuation/user-finished.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/user-finished.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "23a2cda4c2003c44",
+      "label": "Shared — workbench-arrival.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "workbench-arrival.png",
+      "media_type": "png",
+      "bytes": 1337500,
+      "sha256": "23a2cda4c2003c44381c57e05d417f0c8bf34b124663f95b734e0e4b057d88f2",
+      "collection_path": "development-captures/review-WayfarerContinuation/workbench-arrival.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/workbench-arrival.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "5ff4f950006450db",
+      "label": "Shared — workbench-selection.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "workbench-selection.png",
+      "media_type": "png",
+      "bytes": 660366,
+      "sha256": "5ff4f950006450db185242f6c7d9c607d59af2ebbb54ccb1ef9f5192a754f2fc",
+      "collection_path": "development-captures/review-WayfarerContinuation/workbench-selection.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/workbench-selection.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "44399d3c4ee47fd4",
+      "label": "Shared — workbench-step.png — review-WayfarerContinuation",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "review-WayfarerContinuation",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "workbench-step.png",
+      "media_type": "png",
+      "bytes": 1346616,
+      "sha256": "44399d3c4ee47fd4edd6c158d661547623aef34371641a40ce6f76cac69b6db3",
+      "collection_path": "development-captures/review-WayfarerContinuation/workbench-step.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Review/WayfarerContinuation/workbench-step.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "670758e4d335f13e",
+      "label": "Medio — Medio_v03_Preview.png — project-reference",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Medio_v03_Preview.png",
+      "media_type": "png",
+      "bytes": 647714,
+      "sha256": "670758e4d335f13efa1b3070a8d9ca1ec951b779c02b7c83abe240e516192292",
+      "collection_path": "development-captures/project-reference/Medio_v03_Preview.png",
+      "sources": [
+        {
+          "root_alias": "Supplied-Downloads",
+          "path": "Medio_v03_Preview.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "7642e14d8253c134",
+      "label": "Ratio — 01-26800.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "01-26800.png",
+      "media_type": "png",
+      "bytes": 4150349,
+      "sha256": "7642e14d8253c134152e1addceb5447062c66dda97182028d416f6be38482eb9",
+      "collection_path": "runtime-and-study-assets/project-reference/01-26800.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/01-26800.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/01-26800.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/01-26800.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/01-26800.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/01-26800.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/01-26800.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "7534127e2ed0f35f",
+      "label": "Ratio — 02-26799.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "02-26799.png",
+      "media_type": "png",
+      "bytes": 3287963,
+      "sha256": "7534127e2ed0f35f2a992b275f66c833344f150844452c9254c853eaf60f9dde",
+      "collection_path": "runtime-and-study-assets/project-reference/02-26799.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/02-26799.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/02-26799.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/02-26799.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/02-26799.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/02-26799.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/02-26799.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "311c4cd52a5bef6d",
+      "label": "Ratio — 03-26798.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "03-26798.png",
+      "media_type": "png",
+      "bytes": 605002,
+      "sha256": "311c4cd52a5bef6d4506a824307f7f9788f222fe2b64caed6d0fbc1e0e83e73b",
+      "collection_path": "runtime-and-study-assets/project-reference/03-26798.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/03-26798.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/03-26798.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/03-26798.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/03-26798.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/03-26798.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/03-26798.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "5dcb8b20c0323dd4",
+      "label": "Ratio — 04-26797.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "04-26797.png",
+      "media_type": "png",
+      "bytes": 662323,
+      "sha256": "5dcb8b20c0323dd469e4fbf30d90e771f78397b9e04692dfd6ed66e2685a1b6f",
+      "collection_path": "runtime-and-study-assets/project-reference/04-26797.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/04-26797.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/04-26797.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/04-26797.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/04-26797.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/04-26797.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/04-26797.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "006198c264b6940c",
+      "label": "Ratio — 05-26796.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "05-26796.png",
+      "media_type": "png",
+      "bytes": 676785,
+      "sha256": "006198c264b6940cc756c15de53da7325ec7319e20061d854d134160b1eb4570",
+      "collection_path": "runtime-and-study-assets/project-reference/05-26796.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/05-26796.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/05-26796.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/05-26796.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/05-26796.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/05-26796.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/05-26796.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6bf476211925dcdd",
+      "label": "Ratio — 06-26795.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "06-26795.png",
+      "media_type": "png",
+      "bytes": 629870,
+      "sha256": "6bf476211925dcddca934d2660739338a098371f54117bde855150c43ad3af52",
+      "collection_path": "runtime-and-study-assets/project-reference/06-26795.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/06-26795.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/06-26795.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/06-26795.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/06-26795.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/06-26795.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/06-26795.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c9c93f21289e5532",
+      "label": "Ratio — 07-26793.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "07-26793.png",
+      "media_type": "png",
+      "bytes": 554392,
+      "sha256": "c9c93f21289e5532bdbe4a167c18d77b5466b93de2d7c62ddadf9eeab3596a33",
+      "collection_path": "runtime-and-study-assets/project-reference/07-26793.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/07-26793.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/07-26793.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/07-26793.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/07-26793.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/07-26793.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/07-26793.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "076e7f67128dfd97",
+      "label": "Ratio — 08-26794.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "08-26794.png",
+      "media_type": "png",
+      "bytes": 528857,
+      "sha256": "076e7f67128dfd97b3d81ee27de05e403852f69781c8dcb8ff574bc5e5558fee",
+      "collection_path": "runtime-and-study-assets/project-reference/08-26794.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/08-26794.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/08-26794.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/08-26794.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/08-26794.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/08-26794.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/08-26794.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8c88766dcd6aa407",
+      "label": "Ratio — 09-26792.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "09-26792.png",
+      "media_type": "png",
+      "bytes": 639766,
+      "sha256": "8c88766dcd6aa40793e6fd26ba7b95683a10f04b13cfbc599a73fd5f1c8215e2",
+      "collection_path": "runtime-and-study-assets/project-reference/09-26792.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/09-26792.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/09-26792.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/09-26792.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/09-26792.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/09-26792.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/09-26792.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "f8df3d33533b4418",
+      "label": "Ratio — 10-26772.png — project-reference",
+      "category": "runtime-and-study-assets",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Runtime/reference-study image; original third-party rights unchanged",
+      "name": "10-26772.png",
+      "media_type": "png",
+      "bytes": 566248,
+      "sha256": "f8df3d33533b4418452116604e6b52c6489c21ca365ca8026dc8a664967dea98",
+      "collection_path": "runtime-and-study-assets/project-reference/10-26772.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/10-26772.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/10-26772.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/Release/PlayableSOSV1-SM5/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/10-26772.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Release/PlayableSOSV1/ConfluxSanctuary/Plugins/ConfluxNative/Content/BrowserUI/assets/10-26772.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "MigrationBaselineV2/dist/assets/10-26772.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "ConfluxSanctuary-Browser-Recreation/Plugins/ConfluxNative/Content/BrowserUI/assets/10-26772.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8b7c32bab94a7dca",
+      "label": "Shared — AfterBegin.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "AfterBegin.png",
+      "media_type": "png",
+      "bytes": 421014,
+      "sha256": "8b7c32bab94a7dca5e9bfce0ebc0510b5d120e6e3bdd34e224a924d6dfd565ca",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/AfterBegin.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/AfterBegin.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ea58c4a17b8b358d",
+      "label": "Shared — City.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "City.png",
+      "media_type": "png",
+      "bytes": 3431966,
+      "sha256": "ea58c4a17b8b358d527c9ba2923b052f19d35365a9c998b66a0818e2622a668e",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/City.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/City.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ed41c901dc0f2949",
+      "label": "Shared — GLTitle.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "GLTitle.png",
+      "media_type": "png",
+      "bytes": 397662,
+      "sha256": "ed41c901dc0f29492f0ae8dc3165c852d30e2c455f99bb3422123e1882acfa20",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/GLTitle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/GLTitle.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/AngleTitle.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/ReturnTitle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6a6f37f43910ac4b",
+      "label": "Shared — SmallCity.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "SmallCity.png",
+      "media_type": "png",
+      "bytes": 255457,
+      "sha256": "6a6f37f43910ac4b4396f16568d472c9f3447ad07c74dfbe7bba11a11870ea96",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/SmallCity.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/SmallCity.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "867d2348153ea1b8",
+      "label": "Shared — SplitEnvTitle.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "SplitEnvTitle.png",
+      "media_type": "png",
+      "bytes": 397887,
+      "sha256": "867d2348153ea1b8516c49ba6b8f97ddd4e045cd55f891ee6f05b40e7390c08d",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/SplitEnvTitle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/SplitEnvTitle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "097a395315f06d7f",
+      "label": "Shared — Title.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "Title.png",
+      "media_type": "png",
+      "bytes": 400345,
+      "sha256": "097a395315f06d7f030d9fd2276f9e8b7726276ebdfdcdeaaed3bc9d5904d260",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/Title.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/Title.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/RuntimeTest/Profile.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a1d60aea2ebdd59d",
+      "label": "Shared — MesaTitle.png — PlayableSOSV1-SM5",
+      "category": "diagnostics",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1-SM5",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "MesaTitle.png",
+      "media_type": "png",
+      "bytes": 400424,
+      "sha256": "a1d60aea2ebdd59d0c765a84535dd8739b2c8ed10305f8707ab5b5cd9368ab76",
+      "collection_path": "diagnostics/PlayableSOSV1-SM5/MesaTitle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/Source-and-Logs/MesaTitle.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1-SM5/XcbSurfaceFix/RuntimeTest/MesaTitle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "91d26b57cdd4704f",
+      "label": "Shared — Atelier.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Atelier.png",
+      "media_type": "png",
+      "bytes": 302720,
+      "sha256": "91d26b57cdd4704fd53fca0b01ad7d364e6a38d968ac7d9e272ceeebc8ce8ec9",
+      "collection_path": "development-captures/PlayableSOSV1/Atelier.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/Atelier.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ded75012d41e3ad8",
+      "label": "Shared — City.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "City.png",
+      "media_type": "png",
+      "bytes": 1494410,
+      "sha256": "ded75012d41e3ad825453772b9adb6a7bb532b9653fd0e4ceea1f8ae235374b7",
+      "collection_path": "development-captures/PlayableSOSV1/City.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/City.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c0ce9faee00d9d3d",
+      "label": "Shared — FinalCity.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "FinalCity.png",
+      "media_type": "png",
+      "bytes": 1556123,
+      "sha256": "c0ce9faee00d9d3d0278ad69f6c2232bd2bde0ae5d7ac51a9f1aba4184a72c0f",
+      "collection_path": "development-captures/PlayableSOSV1/FinalCity.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/FinalCity.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "786659b3937c442c",
+      "label": "Shared — FinalTitle.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "FinalTitle.png",
+      "media_type": "png",
+      "bytes": 1900309,
+      "sha256": "786659b3937c442ce1005679a8928a813b4b29033744dbc5b7c934a85d3e3e55",
+      "collection_path": "development-captures/PlayableSOSV1/FinalTitle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/FinalTitle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d7f2b051124f8ec7",
+      "label": "Shared — Ledger.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Ledger.png",
+      "media_type": "png",
+      "bytes": 491767,
+      "sha256": "d7f2b051124f8ec7a3b20ecc20489a2214e3eec96582627b2752191a77982dc2",
+      "collection_path": "development-captures/PlayableSOSV1/Ledger.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/Ledger.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "ba074509cb9d4afd",
+      "label": "Shared — Moving.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Moving.png",
+      "media_type": "png",
+      "bytes": 1551222,
+      "sha256": "ba074509cb9d4afd9dcfae216bdc10ab6d18b834f1ba3ee071cb9301a88cf119",
+      "collection_path": "development-captures/PlayableSOSV1/Moving.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/Moving.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "1afe0ce610b67a06",
+      "label": "Shared — Profile.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Profile.png",
+      "media_type": "png",
+      "bytes": 2002881,
+      "sha256": "1afe0ce610b67a06b2baaf1ea7947a161ce3080687a0995f6986b9fe22e102ba",
+      "collection_path": "development-captures/PlayableSOSV1/Profile.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/03-new-journey.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/Profile.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "e9d4be7e75e57114",
+      "label": "Shared — RestartAtelier.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "RestartAtelier.png",
+      "media_type": "png",
+      "bytes": 322299,
+      "sha256": "e9d4be7e75e5711416b4fbe0ba93f115c6f08d7e73272c6a86bbce6af8f2fe9d",
+      "collection_path": "development-captures/PlayableSOSV1/RestartAtelier.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/RestartAtelier.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "d7469cade7257b94",
+      "label": "Shared — RestartTitle.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "RestartTitle.png",
+      "media_type": "png",
+      "bytes": 1899091,
+      "sha256": "d7469cade7257b94f0eb786d245e617428c5597ed73f3ead52951a721f3b7b81",
+      "collection_path": "development-captures/PlayableSOSV1/RestartTitle.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/RestartTitle.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "60d3e85fbf043d90",
+      "label": "Shared — Title.png — PlayableSOSV1",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "PlayableSOSV1",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "Title.png",
+      "media_type": "png",
+      "bytes": 1908193,
+      "sha256": "60d3e85fbf043d90c344ddd2a1cc45d75cdf372f3e185105c74d4d5b942eb971",
+      "collection_path": "development-captures/PlayableSOSV1/Title.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "CFX-RATIO-072/Captures/02-title.png"
+        },
+        {
+          "root_alias": "B",
+          "path": "PlayableSOSV1/Evidence/Title.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "f57d0ac71709fe9b",
+      "label": "Shared — CoveReview00000.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "CoveReview00000.png",
+      "media_type": "png",
+      "bytes": 727398,
+      "sha256": "f57d0ac71709fe9b1120e1b5787f126a860738d3486a076ecad99df6f0f7b32e",
+      "collection_path": "development-captures/project-reference/CoveReview00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/CoveReview00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "0161612cf080b12a",
+      "label": "Shared — NativeBrowserUI00000.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00000.png",
+      "media_type": "png",
+      "bytes": 798525,
+      "sha256": "0161612cf080b12a6816e3cd8a69f65fd3b27f0390365dde1d2e90584fa7b72e",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c9c31363cdfc52e2",
+      "label": "Shared — NativeBrowserUI00001.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00001.png",
+      "media_type": "png",
+      "bytes": 828531,
+      "sha256": "c9c31363cdfc52e202aaa3d6f629c4d3fd6951ad116f62f86aed9bd229043b33",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "7e8d68d7f334bcb1",
+      "label": "Shared — NativeBrowserUI00002.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00002.png",
+      "media_type": "png",
+      "bytes": 829258,
+      "sha256": "7e8d68d7f334bcb1fd62186592a2e30d3be910f6ac0027b9fd2d293fde984077",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "f9920c8fbae358af",
+      "label": "Shared — NativeBrowserUI00003.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00003.png",
+      "media_type": "png",
+      "bytes": 829944,
+      "sha256": "f9920c8fbae358af4eada7d1bf1fe6d6438d14bbd0dc939ab1b9be4f7a673a13",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00003.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00003.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a53531bf723424a7",
+      "label": "Shared — NativeBrowserUI00004.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00004.png",
+      "media_type": "png",
+      "bytes": 829209,
+      "sha256": "a53531bf723424a7411062255d26727c5e90b7c53320a84d80c24d57bed83133",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00004.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00004.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6b608b90babd2146",
+      "label": "Shared — NativeBrowserUI00005.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00005.png",
+      "media_type": "png",
+      "bytes": 830425,
+      "sha256": "6b608b90babd2146970e8a1725c7029b4aa864aa9a948ef98a329b8c3eb515b7",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00005.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00005.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "b7c11393c8a24996",
+      "label": "Shared — NativeBrowserUI00006.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeBrowserUI00006.png",
+      "media_type": "png",
+      "bytes": 826429,
+      "sha256": "b7c11393c8a24996f228be4dcbda67ea9289a7f911430ee8090fefc1ea04aa4b",
+      "collection_path": "development-captures/project-reference/NativeBrowserUI00006.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeBrowserUI00006.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a6f14e111e95606e",
+      "label": "Shared — NativeCoveFinal00000.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeCoveFinal00000.png",
+      "media_type": "png",
+      "bytes": 818990,
+      "sha256": "a6f14e111e95606ecc328b6c9881c3b3460cdf5dd014877233daf8f7c5733f67",
+      "collection_path": "development-captures/project-reference/NativeCoveFinal00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeCoveFinal00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "fc072cfb87a4de66",
+      "label": "Shared — NativeWorkshop00000.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeWorkshop00000.png",
+      "media_type": "png",
+      "bytes": 191499,
+      "sha256": "fc072cfb87a4de668b81a5b89a89b5de0d050ee5c4f75172c41cde906482ed7f",
+      "collection_path": "development-captures/project-reference/NativeWorkshop00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeWorkshop00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c3dbec9dbbe78566",
+      "label": "Shared — NativeWorkshop00001.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeWorkshop00001.png",
+      "media_type": "png",
+      "bytes": 504416,
+      "sha256": "c3dbec9dbbe785669c3eaeb1d8b5d3b1519d4b620fbef47de2d4b2710e4f68e1",
+      "collection_path": "development-captures/project-reference/NativeWorkshop00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeWorkshop00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "31b6b2eda88199b6",
+      "label": "Shared — NativeWorkshop00002.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeWorkshop00002.png",
+      "media_type": "png",
+      "bytes": 498368,
+      "sha256": "31b6b2eda88199b690a87be52761aad55b5c9fdb49b763cdcd3473e888d45fda",
+      "collection_path": "development-captures/project-reference/NativeWorkshop00002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeWorkshop00002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6551af7196b608cf",
+      "label": "Shared — NativeWorkshop00003.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeWorkshop00003.png",
+      "media_type": "png",
+      "bytes": 497457,
+      "sha256": "6551af7196b608cfbef4dd02da6ba96eb14aaf823c4f55575d35a0e06eee8cb7",
+      "collection_path": "development-captures/project-reference/NativeWorkshop00003.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeWorkshop00003.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8936fb9f3441cac4",
+      "label": "Shared — NativeWorkshop00004.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "NativeWorkshop00004.png",
+      "media_type": "png",
+      "bytes": 497633,
+      "sha256": "8936fb9f3441cac485704bc64c25e3138ee9277b1c6867ee1ddf4cd466bddb45",
+      "collection_path": "development-captures/project-reference/NativeWorkshop00004.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/NativeWorkshop00004.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "db2b45c2aeaed9db",
+      "label": "Limen — PlateStudy-limen00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "limen",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-limen00000.png",
+      "media_type": "png",
+      "bytes": 473908,
+      "sha256": "db2b45c2aeaed9db6be62c55096951a651e85660c392308507e17f42d3ae0f46",
+      "collection_path": "diagnostics/project-reference/PlateStudy-limen00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-limen00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "df864edd243a2000",
+      "label": "Limen — PlateStudy-limen00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "limen",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-limen00001.png",
+      "media_type": "png",
+      "bytes": 472884,
+      "sha256": "df864edd243a20005a645eb423a11a0b194f1d4d76f27ca6c69ae112486a0637",
+      "collection_path": "diagnostics/project-reference/PlateStudy-limen00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-limen00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "e93dac42564380aa",
+      "label": "Medio — PlateStudy-medio00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-medio00000.png",
+      "media_type": "png",
+      "bytes": 491660,
+      "sha256": "e93dac42564380aadfae464abb706c2f788c920612974b0101759052a503b6ab",
+      "collection_path": "diagnostics/project-reference/PlateStudy-medio00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-medio00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "8cc493e157f2c053",
+      "label": "Medio — PlateStudy-medio00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-medio00001.png",
+      "media_type": "png",
+      "bytes": 490205,
+      "sha256": "8cc493e157f2c0533420731abe8fbcb57ef983961ac5edaf39343e4653ffcebe",
+      "collection_path": "diagnostics/project-reference/PlateStudy-medio00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-medio00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c8d61edc97ce4f48",
+      "label": "Nexus — PlateStudy-nexus00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "nexus",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-nexus00000.png",
+      "media_type": "png",
+      "bytes": 467452,
+      "sha256": "c8d61edc97ce4f48756cdabbf5a4d8a8f3fcdb7363f25812637c802038e63a4a",
+      "collection_path": "diagnostics/project-reference/PlateStudy-nexus00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-nexus00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "3a36bd5e4dc4027a",
+      "label": "Nexus — PlateStudy-nexus00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "nexus",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-nexus00001.png",
+      "media_type": "png",
+      "bytes": 466886,
+      "sha256": "3a36bd5e4dc4027a299d76ff801268fd7d60381955c5c3dd793dbd64a962306b",
+      "collection_path": "diagnostics/project-reference/PlateStudy-nexus00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-nexus00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "9cb85502625c37b9",
+      "label": "Ratio — PlateStudy-ratio00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-ratio00000.png",
+      "media_type": "png",
+      "bytes": 473988,
+      "sha256": "9cb85502625c37b9bf0ea95381620f9d51db77dd52c0032a29a024418e0f147d",
+      "collection_path": "diagnostics/project-reference/PlateStudy-ratio00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-ratio00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c5f16c4472456af4",
+      "label": "Ratio — PlateStudy-ratio00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-ratio00001.png",
+      "media_type": "png",
+      "bytes": 475467,
+      "sha256": "c5f16c4472456af454a2418fabb7f6be240842e73e82731ecfd82e2c62945160",
+      "collection_path": "diagnostics/project-reference/PlateStudy-ratio00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-ratio00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "5f7a0a66cdf7ca6b",
+      "label": "Specula — PlateStudy-specula00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "specula",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-specula00000.png",
+      "media_type": "png",
+      "bytes": 468575,
+      "sha256": "5f7a0a66cdf7ca6bc599897c8c8ceeeeff04526b94b9b3bfc22d20a977e4aa25",
+      "collection_path": "diagnostics/project-reference/PlateStudy-specula00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-specula00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "200d92b6a6a5b89a",
+      "label": "Specula — PlateStudy-specula00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "specula",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudy-specula00001.png",
+      "media_type": "png",
+      "bytes": 468369,
+      "sha256": "200d92b6a6a5b89acaaba9f81081eb0169732041ab78bab02fc065dedc282215",
+      "collection_path": "diagnostics/project-reference/PlateStudy-specula00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudy-specula00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "4f2b9af2d923fe1c",
+      "label": "Medio — PlateStudyMedio00000.png — project-reference",
+      "category": "diagnostics",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudyMedio00000.png",
+      "media_type": "png",
+      "bytes": 488459,
+      "sha256": "4f2b9af2d923fe1c606748b7e9c7d3cdcaf1e305a191c576dd40b5dc40e6cf10",
+      "collection_path": "diagnostics/project-reference/PlateStudyMedio00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudyMedio00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "7f1621eee29513c6",
+      "label": "Medio — PlateStudyMedio00001.png — project-reference",
+      "category": "diagnostics",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Diagnostic/test capture; may show defects or failed tests",
+      "name": "PlateStudyMedio00001.png",
+      "media_type": "png",
+      "bytes": 486968,
+      "sha256": "7f1621eee29513c68b1bbd23f82b84e8fcb95f8875de9bc1fc5630d22fe6265e",
+      "collection_path": "diagnostics/project-reference/PlateStudyMedio00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/PlateStudyMedio00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "b9084dcf7e32e494",
+      "label": "Shared — V2Cove00000.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "V2Cove00000.png",
+      "media_type": "png",
+      "bytes": 534776,
+      "sha256": "b9084dcf7e32e4940c8eafe75797f2fd833b6130f3d91c55f4c4d460a4e45f56",
+      "collection_path": "development-captures/project-reference/V2Cove00000.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/V2Cove00000.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "67f50a040dc8d5d2",
+      "label": "Shared — V2Cove00001.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "V2Cove00001.png",
+      "media_type": "png",
+      "bytes": 476407,
+      "sha256": "67f50a040dc8d5d2cf4870e3b7f492932b24c1ce0b507f26a778cd789963012b",
+      "collection_path": "development-captures/project-reference/V2Cove00001.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/V2Cove00001.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "6c1e9579901b553b",
+      "label": "Shared — V2Cove00002.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "V2Cove00002.png",
+      "media_type": "png",
+      "bytes": 712933,
+      "sha256": "6c1e9579901b553bb0f6e619ac13978652000bc512389175be56c3c9d5d8931a",
+      "collection_path": "development-captures/project-reference/V2Cove00002.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/V2Cove00002.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "55d432c9accd7b14",
+      "label": "Shared — V2Cove00003.png — project-reference",
+      "category": "development-captures",
+      "subject": "shared",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "V2Cove00003.png",
+      "media_type": "png",
+      "bytes": 621303,
+      "sha256": "55d432c9accd7b143ded3224376f2b33c6b440ecf1a660593c282afa8c9e162d",
+      "collection_path": "development-captures/project-reference/V2Cove00003.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/V2Cove00003.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "c500c118f0ce3bf0",
+      "label": "Limen — face_limen.png — project-reference",
+      "category": "development-captures",
+      "subject": "limen",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "face_limen.png",
+      "media_type": "png",
+      "bytes": 6012,
+      "sha256": "c500c118f0ce3bf06ffb98e94b53f49421c15bd6ab37950612c251955f93f326",
+      "collection_path": "development-captures/project-reference/face_limen.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/face_limen.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "b793f0464663dfe2",
+      "label": "Medio — face_medio.png — project-reference",
+      "category": "development-captures",
+      "subject": "medio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "face_medio.png",
+      "media_type": "png",
+      "bytes": 12328,
+      "sha256": "b793f0464663dfe2f0d908a1123c703c02aff2f570eb2c947e3a424f0b009d3b",
+      "collection_path": "development-captures/project-reference/face_medio.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/face_medio.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "32c2521c14b64537",
+      "label": "Nexus — face_nexus.png — project-reference",
+      "category": "development-captures",
+      "subject": "nexus",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "face_nexus.png",
+      "media_type": "png",
+      "bytes": 9285,
+      "sha256": "32c2521c14b64537b35878c241740249a91494fd8114697e080b3c14444770ea",
+      "collection_path": "development-captures/project-reference/face_nexus.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/face_nexus.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "586a6942c545ec9a",
+      "label": "Ratio — face_ratio.png — project-reference",
+      "category": "development-captures",
+      "subject": "ratio",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "face_ratio.png",
+      "media_type": "png",
+      "bytes": 9278,
+      "sha256": "586a6942c545ec9af33b1b45c031f599850e0dd989ed60e509264fae14a57845",
+      "collection_path": "development-captures/project-reference/face_ratio.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/face_ratio.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    },
+    {
+      "id": "a35f7543043e9d94",
+      "label": "Specula — face_specula.png — project-reference",
+      "category": "development-captures",
+      "subject": "specula",
+      "source_checkpoint": "project-reference",
+      "review_status": "Development/gameplay capture; may show historical states or defects",
+      "name": "face_specula.png",
+      "media_type": "png",
+      "bytes": 7819,
+      "sha256": "a35f7543043e9d947e137f0b21fde7ac288761c5639f303003f459a9fb4144f5",
+      "collection_path": "development-captures/project-reference/face_specula.png",
+      "sources": [
+        {
+          "root_alias": "B",
+          "path": "V2NativeAssets/face_specula.png"
+        }
+      ],
+      "storage": "release-archive",
+      "archive": "Conflux-Concept-Art-Development-07.zip"
+    }
+  ]
+}

@@ -446,3 +446,7 @@ Area 19 clarification: screenshots enter personal Grimoire pages only by explici
 ## Current packaged game — V0.1
 
 [Conflux V0.1 Linux preview](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) is published, with runnable and native-source-input archives. [Build record](releases/v0.1/README.md) and [fingerprints](releases/v0.1/BUILD.json) identify scope and evidence. Compilation/cooking/packaging plus bounded offscreen title/city/HUD, manual save/photo, normal Quit and restart recognition passed on the build host. All five GitHub asset digests match local files. This establishes a distributable checkpoint, not full campaign, other-machine, performance or artistic acceptance. The isolated articulation candidate remains outside normal selection; owner records were excluded. Earlier “release not established” entries are historical and superseded only within these stated limits.
+
+## Published project media
+
+[Concept art and development-media catalog](concept-art/README.md) maps the scoped unique media and original source fingerprints. Character/world references and compact videos are browsable in the repository; development archives are linked by exact part/path. Historical, diagnostic and unfinished material is explicitly labeled, with no new artistic approval implied. Original local folders and nonmedia records remain at their source; public copies do not imply every referenced local file was uploaded.
