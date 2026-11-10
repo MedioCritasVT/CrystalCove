@@ -305,6 +305,13 @@ body[data-view="soundtrack"]{
  .music-feedback{grid-column:1/-1}
 }
 
+
+/* Music source controls remain secondary to the opt-in main toggle. */
+.music-choose{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.music-choose .music-file-label{display:inline-block;font-size:.77rem;padding:7px 9px;cursor:pointer}
+#music-install-status{font-size:.78rem;color:#b8dcd5}
+.music-dock .action.secondary{background:transparent;color:#e1f0f1;border:1px solid #718d97}
+.music-dock .action.secondary:hover{background:#2c4350}
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
@@ -313,11 +320,14 @@ body[data-view="soundtrack"]{
 <div class="music-dock" id="music-dock" aria-label="Conflux soundtrack player">
   <div class="music-dock-heading">
     <span class="music-glyph" aria-hidden="true">♫</span>
-    <div><strong>Conflux Soundtrack</strong><small>Off by default · plays local files only</small></div>
+    <div><strong>Conflux Soundtrack</strong><small>Off by default · tracks appear automatically</small></div>
   </div>
   <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">Music Off</button>
   <div class="music-choose"><label for="music-files" class="action secondary music-file-label">Choose MP3s…</label>
     <input id="music-files" type="file" accept=".mp3,.wav,.ogg,.m4a,.flac,audio/*" multiple hidden>
+    <label for="music-zip" class="action secondary music-file-label">Install soundtrack ZIP once…</label>
+    <input id="music-zip" type="file" accept=".zip,application/zip" hidden>
+    <button id="music-recheck" type="button" class="action secondary music-file-label">Refresh available music</button>
   </div>
   <div class="music-controls">
     <button type="button" id="music-prev" aria-label="Previous track" disabled>◂◂</button>
@@ -330,6 +340,7 @@ body[data-view="soundtrack"]{
     <select id="music-version" aria-label="Choose alternate version" disabled></select>
   </div>
   <div class="music-volume"><label for="music-volume">Volume</label><input id="music-volume" type="range" min="0" max="100" value="45" aria-label="Music volume"></div>
+  <div class="music-feedback" id="music-install-status" role="status" aria-live="polite">Published tracks will load automatically. For offline playback, install the soundtrack ZIP once.</div>
   <div class="music-feedback" id="music-status" role="status" aria-live="polite">Music is off. Choose tracks to begin.</div>
   <audio id="music-audio" preload="none"></audio>
 </div>
