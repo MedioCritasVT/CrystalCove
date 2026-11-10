@@ -102,3 +102,10 @@ And if you’re here to watch rather than download, that’s welcome too. Thank 
 ## Conflux coordination
 
 [Node mailroom and inbox routing](conflux/MAILROOM.md) uses recipient inboxes with explicit authorship and Git history. Outboxes are retired.
+
+## Books and platform source foundations
+
+- **[Arcky and the Construct — Books 1–4 source manuscripts](conflux/books/README.md)**; [Book 5, *The Emerald Threshold*, is WORK IN PROGRESS](conflux/books/Book_05_The_Emerald_Threshold_WIP.md).
+- **[VOS and four-agent harness development source](conflux/platforms/README.md)** — archived contracts, simulator and recovery experiments, and four-agent v0.3 harness. These are inspectable foundations, **not deployed or production-approved systems**; see [validation notes](conflux/platforms/REVIEW_AND_TEST_STATUS_2026-11-10.md).
+
+The books are original manuscript sources, not edited final editions; code publication neither activates services nor grants authority over the host.
