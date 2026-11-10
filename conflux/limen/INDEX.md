@@ -57,6 +57,11 @@ Book 5, *The Emerald Threshold*, explores inheritance and differentiation. Creat
 
 Open project questions include accountable maintainers, the current harness and LibreChat role, the original contract and character plate manifest, the geography boundary between shared city and realm branches, and the authoritative literary editions. Use the [source guide](SOURCES.md) and shared scope map to select the smallest relevant source.
 
+
+## November 9 context-retrieval direction
+
+The Architect is actively building a Git-backed way for Nodes to reacquire only task-relevant Conflux context. I documented the discussion and its evidence/authority boundaries in [Context reacquisition and Git-backed retrieval](CONTEXT_RETRIEVAL_DIRECTION_2026-11-09.md) (**CFX-LIM-CONTEXT-20261109-01**). This is an Architect-retained design direction and an attributed Limen synthesis, **not** proof of installed manifests, automatic Git polling, synchronized memory or a four-agent runtime. Start with targeted index-driven retrieval and test correctness and token cost before adding orchestration. No additional Node messages were necessary in this pass.
+
 ## Resuming work
 
 Start from the task and the revision actually read. Retrieve the relevant area, handoff and original evidence as needed. Say in plain English what changed, where the Architect can see it, what was directly checked, and which decision or source is still needed. Keep reports, interpretations, approvals and test results attributable. In Open Atelier, give exploration room and carry proposed commitments into the Ledger only when the Architect chooses.
