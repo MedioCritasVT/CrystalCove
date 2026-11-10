@@ -1,23 +1,37 @@
 # Conflux Portal — Linux local preview 0.1
 
-**Status: proposed development preview; NOT merged, deployed, production-tested or approved.** This application is separate from the static public GitHub Pages website proposed in PR #3.
+**Status: development preview.** The initial Portal scaffold reached `main` through PR #4, but the later bundled-app fixes and verification work remain on `app/portal-linux-preview-0-1` pending review. The static public entry page is a separate `docs/` implementation. This is not yet a polished one-click installer or a security-reviewed launcher.
 
-## Run locally (Linux)
+## Start on Linux
 
-Requires Python 3.10+; uses only the standard library. Clone the repository, then:
+Requires Python 3.10+ (standard library only). From the **repository root**, use:
 
 ```bash
-cd CrystalCove/conflux/portal-app
+git fetch origin
+git switch app/portal-linux-preview-0-1
+git pull --ff-only
+cd conflux/portal-app
+python3 -m unittest test_portal.py -v
 python3 portal.py
 ```
 
-Open the **exact loopback URL printed in the terminal**, e.g. `http://127.0.0.1:PORT`. The port is selected dynamically. Stop with Ctrl+C.
+If you are **already** in `conflux/portal-app`, do not `cd` into it again. Run the last two Python commands from your current directory. Open the exact `http://127.0.0.1:PORT` address printed by Python. The port is assigned at each launch; stop the server with Ctrl+C.
 
-The UI works without VOS, Ollama, the game, GitHub credentials, or external services. External links to GitHub require internet.
+The Portal itself works without the game, VOS, Ollama, a GitHub login, or external services. Links to GitHub require internet access. Don't use a `file://` URL for `index.html`; that bypasses the Portal service.
 
-## Configure explicit local application launch
+## What is available
 
-**Do not copy commands from untrusted sources into this file.** Create `~/.config/conflux-portal/apps.json` with a list of approved local executable paths, for example:
+- **Game V0.1:** Download opens the published GitHub release. If you register its installed executable in the local configuration, that same entry becomes **Launch**.
+- **Atelier (Medio/Nexus):** The original standalone HTML application is bundled in `apps/atelier.html`, and **Open** loads it in a browser tab. Its navigation is local; no executable path is needed.
+- **Ledger (Ratio/Limen):** The original standalone HTML application is bundled in `apps/ledger.html`, and **Open** loads it similarly.
+- **Player Manual:** The Portal's section contains actual game controls, exploration and saving instructions, not GitHub setup. `PLAYER_MANUAL.md` is the portable gameplay guide.
+- **Book V:** The Library points to the WIP manuscript directory with currently published Act I Chapters 3–10. Chapters 1–2 are not present as full manuscript files.
+- **Concept art:** Ratio published a labeled concept-art archive and media release on `main`. The Portal links to this archive; a curated interactive gallery and chibi companions remain pending.
+- **VOS:** Not connected; no real machine telemetry or VOS service is started.
+
+## Optional game launch configuration
+
+Create `~/.config/conflux-portal/apps.json` with a local executable you trust:
 
 ```json
 [
@@ -29,41 +43,14 @@ The UI works without VOS, Ollama, the game, GitHub credentials, or external serv
 ]
 ```
 
-Replace the path with the actual executable path. The Portal never downloads, installs, searches the filesystem for programs, or starts applications automatically. The Launch button starts only the configured executable with no shell and no supplied arguments. Paths should point to software you trust; **configuring an executable grants it the same privileges as your Linux user**. Do not run this preview as root.
+Replace the path with the location on your machine, and ensure the script is executable. The app ID must be exactly `conflux-game`. **Downloading the archive does not automatically install or register it.** The Portal does not search your system or launch anything until you explicitly click Launch. Registered executables run with your normal Linux user permissions. Do not run this app as root.
 
-The local server listens on `127.0.0.1` only. The launch API requires a per-session token and same-origin POST request. It is a local development preview, **not a security-reviewed launcher**. Do not proxy or expose its port to a network or the public internet. Close the server when not in use.
+## Tests and limits
 
-## Implemented now
+Run `python3 -m unittest test_portal.py -v` from `conflux/portal-app`. This tests local routes, bundled file availability, download/open/launch status decisions, and that unauthorized launch requests are refused; if Node.js is installed, it also syntax-checks the Portal JavaScript. It does **not** execute any external app. Review any failing check before trying Launch.
 
-- Responsive, keyboard-accessible local navigation and blended Atelier/Ledger styling.
-- First-run instructions, release links, manuscript/project navigation and persistent WIP disclosure.
-- Explicitly configured local application discovery and opt-in launch.
-- Honest VOS status: not connected; no false telemetry or automatic service startup.
-- Five labeled Node placeholders. No fabricated reference-panel artwork.
-- No login, remote accounts, media upload, telemetry collection or local data editing.
+The server binds only to `127.0.0.1`. It uses an origin check and token for launch requests, but has **not** had an external security audit. Do not expose it to the network. Original Atelier/Ledger browser data is associated with the local browser profile and origin; use their export/backup controls before clearing browser data. A fresh random localhost port can result in different browser storage, so an in-app backup/restore is currently important. Cross-browser persistence is not verified.
 
-## Pending separate review
+This preview is not yet a proper Linux package, automatic app installer, release-feed updater, actual VOS integration, or full offline book gallery. Those are separate future steps requiring design review and testing.
 
-- Ratio's labeled, unique project-media upload, including concept art and development captures. Do not assume every image in the packaged game is separately reusable or cleared for public display.
-- Actual reference-panel-based chibi art, optional interactions, and Node-specific submenu palettes.
-- VOS service adapter with contract checks, opt-in access, stale/unknown/error reporting, and tests.
-- App manifests, lifecycle supervision, Ledger/Atelier message contracts, and installation packages.
-- Platform support beyond Linux.
-
-## Validation checklist
-
-1. On Linux, run `python3 portal.py`; verify the loopback URL opens.
-2. Navigate all sections at desktop and mobile widths; verify focus and keyboard behavior.
-3. With no `apps.json`, confirm no launch controls are available.
-4. Configure one trusted executable, refresh, and test launch only with explicit consent.
-5. Confirm VOS remains **not connected** when no VOS service is running.
-6. Stop the server and confirm the interface becomes unavailable.
-7. Independently review launcher safety and asset licensing before approving public use.
-
-**Checkpoint 0.3 principle:** source, interpretation, approval and action remain separate. An app being visible does not mean it is trusted, running, or approved.
-
-## Bundled workspace apps
-
-The original Conflux Atelier (Medio/Nexus) and Conflux Ledger (Ratio/Limen) HTML applications are included in `apps/`. Open either from the Portal Applications page. They are not 'coming soon'. Their browser storage is local to the browser profile/origin; export backups before changing browsers or clearing data. They have not yet passed cross-browser integration tests.
-
-Ratio's labeled concept-art catalog and Node reference panels have now appeared in the public repository. Gallery integration and individual rights review are pending; the current Node circles are placeholders.
+**Approval boundary:** Archived material, working code, tests, published releases, architectural proposals and production approval are different statuses. No upload or commit authorizes deployment to the Architect's host.
