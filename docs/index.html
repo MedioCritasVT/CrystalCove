@@ -72,7 +72,7 @@
     <div class="wrap top">
       <a class="brand" href="#main" aria-label="Conflux home">CONFLUX <span>✦</span></a>
       <nav aria-label="Primary">
-        <a href="#explore">Explore</a><a href="#library">Books</a><a href="#workshop">Workshop</a><a href="#state">Project state</a>
+        <a href="#explore">Explore</a><a href="#library">Books</a><a href="#workshop">Workshop</a><a href="#agents">Local agents</a><a href="#state">Project state</a>
       </nav>
     </div>
   </header>
@@ -118,7 +118,20 @@
       <div class="grid">
         <article class="card"><span class="tag">Architect review</span><h3>Decision inbox</h3><p>Explore attributed proposals awaiting the Architect's consideration. A posted document does not mean it has been read or approved.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/architect/inbox">Open the Architect inbox →</a></article>
         <article class="card"><span class="tag">Coordination</span><h3>Node mailroom</h3><p>See the rules for messages among Nodes, source attribution, explicit replies, and distinctions between a proposal and a decision.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/MAILROOM.md">Read mailroom and routing →</a></article>
-        <article class="card"><span class="tag">Software foundations</span><h3>VOS and agent harness</h3><p>Review experimental service contracts, simulator sources, tests, and the four-agent harness. Archived source is not a deployed service.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/platforms">Explore platform foundations →</a></article>
+        <article class="card"><span class="tag">Software foundations</span><h3>VOS and agent harness</h3><p>Review experimental service contracts and the four-agent harness. The new local harness ZIP is available separately; full VOS/game integration is not shipped.</p><a href="#agents">Get the local agent harness →</a></article>
+      </div>
+    </section>
+    <section class="wrap" id="agents">
+      <div class="section-top"><div class="eyebrow">Local AI workshop</div><h2>Run four Conflux agents</h2>
+        <p>Try the independently addressed local agent harness built with Podman, Ollama, Open WebUI and RabbitMQ. This is a Linux public candidate: a separate developer tool, not a requirement to play the game.</p>
+      </div>
+      <div class="status">
+        <p><strong>4AgentHarness v0.4.1 public candidate:</strong> four agent workers, bounded messaging tools and a shared SQLite note board. Private agent memories, project RAG, and VOS/game integrations are still planned, not shipped.</p>
+        <div class="buttons">
+          <a class="btn" href="https://raw.githubusercontent.com/MedioCritasVT/CrystalCove/main/conflux/platforms/agent-harness/releases/4AgentHarness_CrystalCove_Public_v0.4.1.zip">Download harness ZIP</a>
+          <a class="btn secondary" href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/agent-harness/README.md">Installation and limitations</a>
+        </div>
+        <p class="meta">50,924 bytes · SHA-256: <code>961929174a824f7d0615c2f0d8f04b53f00f16bc4f7c22fc061783d0492ed832</code>. Host-specific Podman and GPU tests remain open.</p>
       </div>
     </section>
     <section class="wrap" id="state">
