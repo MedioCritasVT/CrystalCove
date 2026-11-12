@@ -22,8 +22,21 @@ jobs:
         working-directory: conflux/platforms/portal-deployment
         run: |
           docker compose config --quiet
-          docker compose config > /tmp/conflux-portal-resolved-compose.yml
-          grep -q '127.0.0.1:8088' /tmp/conflux-portal-resolved-compose.yml
+          docker compose config --format json > /tmp/conflux-portal-resolved-compose.json
+          python3 - <<'PY'
+          import json
+          with open("/tmp/conflux-portal-resolved-compose.json", encoding="utf-8") as fh:
+              services = json.load(fh)["services"]
+          assert set(services) == {"portal-public"}, services.keys()
+          ports = services["portal-public"]["ports"]
+          assert any(
+              p.get("host_ip") == "127.0.0.1"
+              and int(p.get("published", -1)) == 8088
+              and int(p.get("target", -1)) == 8080
+              for p in ports
+          ), ports
+          print("Only the public Portal service is configured; preview binds to localhost:8088")
+          PY
 
       - name: Start isolated localhost Portal preview
         working-directory: conflux/platforms/portal-deployment
