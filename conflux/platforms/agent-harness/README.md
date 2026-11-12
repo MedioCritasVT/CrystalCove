@@ -1,6 +1,26 @@
 # Four-agent harness — local distribution and archive
 
-## Download the public candidate (v0.4.1)
+## Download v0.4.2 — 9B primary, 4B support agents
+
+**[Download the updated four-agent harness ZIP](releases/4AgentHarness_CrystalCove_Public_v0.4.2.zip)** · [Import MedioCritas 9B through the VOS Pipe](MedioCritas_VOS_9B_import.json)
+
+The v0.4.2 candidate defaults to **Node 1: qwen3.5:9b** and **Nodes 2–4: qwen3.5:4b**, sharing a single Ollama service. The Pipe exposes three bounded tools: `post_note`, `read_notes`, and `ask_node` through the existing SQLite/RabbitMQ controller.
+
+**Existing v0.4/v0.4.1 installation:** do not re-run the new installer. Extract the ZIP elsewhere, then preview and apply the bundled upgrade script with the path to your **existing** project:
+
+```bash
+./upgrade-model-routing.sh --target /path/to/existing/4AgentHarness
+./upgrade-model-routing.sh --target /path/to/existing/4AgentHarness --apply
+```
+
+The second command backs up the existing agent `.env` files and recreates only workers whose model assignment changes. It does not remove named Podman volumes, SQL data, RabbitMQ state, or Open WebUI accounts. The importable VOS model JSON uses a **new model ID**, so a direct Qwen 9B MedioCritas persona need not be overwritten.
+
+**Validation:** local mock tests and packaging checks, not an AtticOS deployment test or production certification. Confirm real worker environment values, successful inference, and actual tool receipts after applying the update. Private per-agent memories, live RAG, VOS services, and the Unreal bridge remain future integration work. An explicit project software license remains unresolved.
+
+---
+
+
+## Previous download (v0.4.1) — retained for compatibility
 
 **[Download the complete v0.4.1 ZIP](https://raw.githubusercontent.com/MedioCritasVT/CrystalCove/main/conflux/platforms/agent-harness/releases/4AgentHarness_CrystalCove_Public_v0.4.1.zip)**
 
