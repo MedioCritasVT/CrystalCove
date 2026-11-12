@@ -48,7 +48,7 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
 ### Open the local Portal preview
 
-3. For a Git clone, enter:
+1. For a Git clone, enter:
 
    ```bash
    cd "$HOME/Conflux/CrystalCove/conflux/portal-app"
@@ -58,9 +58,9 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
    If you used **Download ZIP**, open a terminal in the extracted folder's `conflux/portal-app` directory in Dolphin instead, and run just the last two Python commands.
 
-4. In a browser on that **same computer**, visit `http://127.0.0.1:8765`. Open **Atelier**, **Ledger**, or the **Player Manual** first. Try an experience that doesn't require the native game. Later, if you want, open the **Get the Game** room to find the Linux release.
+2. In a browser on that **same computer**, visit `http://127.0.0.1:8765`. Open **Atelier**, **Ledger**, or the **Player Manual** first. Try an experience that doesn't require the native game. Later, if you want, open the **Get the Game** room to find the Linux release.
 
-5. After the local preview works, **Updates & Setup → Add to Applications Menu** can add a desktop entry for supported Linux desktops. It is optional. Follow the [local Portal instructions](../conflux/portal-app/README.md) for its limits and updater behavior.
+3. After the local preview works, **Updates & Setup → Add to Applications Menu** can add a desktop entry for supported Linux desktops. It is optional. Follow the [local Portal instructions](../conflux/portal-app/README.md) for its limits and updater behavior.
 
 **Expected result:** A locally running Portal in your browser, with useful rooms available **without** `PlayConflux.sh`. The local Python Portal is experimental and listens only on your own computer; it is **not** the future public CachyOS site or the private Architect's Sanctum. Do not expose this local Python service through a public proxy.
 
