@@ -1,11 +1,11 @@
 # Four-Agent Harness — v0.4.1 Public Release Candidate
 
-**Status: review candidate; NOT a published download or merged feature.**
-**Proposed home:** `conflux/platforms/agent-harness/v0.4-public/`; preserve historical `v0.3/` files.
+**Status: downloadable public candidate; package is published, but live host validation and licensing review remain outstanding.**
+**Published archive:** [`releases/4AgentHarness_CrystalCove_Public_v0.4.1.zip`](releases/4AgentHarness_CrystalCove_Public_v0.4.1.zip). Historical `v0.3/` files remain preserved.
 **Package:** `4AgentHarness_CrystalCove_Public_v0.4.1.zip` (50,924 bytes)
 **SHA-256:** `961929174a824f7d0615c2f0d8f04b53f00f16bc4f7c22fc061783d0492ed832`
 
-The candidate ZIP has been prepared separately and requires publication to an actual repository directory or release asset before anyone can download it from GitHub. This file **is not** a claim that the package has been uploaded to GitHub.
+The ZIP is now present on `main` as a downloadable repository file. GitHub's tree lists a 50,924-byte blob matching the package's locally verified Git SHA-1 and SHA-256. This confirms byte-for-byte publication, **not** a successful installation on a new machine.
 
 ## What's packaged
 
@@ -29,7 +29,7 @@ The candidate ZIP has been prepared separately and requires publication to an ac
 - Packaging-level checks: 16 local mocked/SQL tests passed; Python and shell syntax checked; ZIP integrity checked.
 - Still required: live Podman/Ollama/Open WebUI/RabbitMQ/GPU acceptance testing on a target computer, review of code/licensing and reproducibility.
 - The current CrystalCove repo had no root LICENSE file when inspected. Select a license and review the dependencies before inviting broad redistribution.
-- Do not merge this planning note as proof the installer is hosted. Attach/upload the candidate ZIP and source first, confirm checksum and working links, then update the public platform index and portal.
+- The downloadable ZIP is published and linked from the root README and portal source. Further public-release gates are license selection, deployment checks, dependency review and independent testing on target Linux systems.
 
 ## Integration references
 
