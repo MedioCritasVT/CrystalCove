@@ -10,7 +10,7 @@ The **Conflux Portal** brings the playable preview, preserved book manuscripts, 
 
 - **[Browse the Conflux Portal source](docs/index.html)** — the static HTML is published in this repository; the separate GitHub Pages address has not been confirmed live, so it is not presented as a working entrance.
 - **[View the portal source](docs/index.html)** — static website source (already part of the merged project).
-- **[Portal publication notes](docs/README.md)** — setup, scope, and verification steps.
+- **[Portal publication notes](docs/README.md)** — setup, scope, and verification steps. **[Front-page link audit](docs/LINK_AUDIT_2026-11-12.md)** documents the verified paths and remaining deployment checks.
 - **[Start here: Local Conflux Portal (Linux)](conflux/portal-app/README.md)** — a separate development preview with Atelier and Ledger, the gameplay manual, a dedicated game download page and an opt-in **Already Cloned?** game-folder finder. **Not yet a one-click installer or independently approved public release.**
 - **[Conflux Soundtrack — working register](conflux/soundtrack/CATALOG.md)** — five supplied recordings inventoried, two *Sacrament of Oath* versions awaiting files, and a local browser music player under review. **Audio is not publicly distributed pending licensing confirmation.**
 
