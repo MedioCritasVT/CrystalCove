@@ -2,6 +2,8 @@
 
 This is a **static, read-only portal** originally prepared for Architect review. PR #3 was subsequently merged into `main`; GitHub Pages deployment itself has not been verified in this review. It links to the project’s already published game release, books, source records, Node routing, and platform foundations.
 
+For a clean, first-time Linux/Bazzite experience, use the [first-time setup walkthrough](FIRST_TIME_SETUP.md). It explains both the **game download (no Git required)** and the **optional Git clone/local Portal preview**, without confusing either with hosting the public site.
+
 ## Publication boundary
 
 - These files are present on `main` after the merged PR #3. Their presence does **not** establish that GitHub Pages has been enabled or that a service has been deployed; it grants no authority to a Node.
