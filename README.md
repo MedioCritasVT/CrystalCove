@@ -4,6 +4,16 @@ Conflux is an experimental, inhabitable fantasy world built in Unreal Engine. Ex
 
 This repository holds the shared project records and historical browser prototype. **The current native game is available as a standalone Linux download below.**
 
+## New to Conflux? Start here
+
+**[First-time Linux/Bazzite walkthrough: game download or optional GitHub clone](docs/FIRST_TIME_SETUP.md)** — step-by-step, starting from an empty `~/Conflux` folder, without moving older installations.
+
+- **Just want to play?** Use the [Conflux V0.1 release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) and download the **Linux x86_64 game archive** from **Assets**. Extract it and run `PlayConflux.sh`. You do **not** need Git, the repository ZIP, the Portal app, or the Unreal Editor.
+- **Want to explore GitHub or try the local Portal?** Follow the *optional* clone instructions in the walkthrough. The source repository is **not** the game download; the experimental local Python Portal is separate from the public static website.
+- **Want to host the public Portal on CachyOS?** The [GitHub-backed deployment configuration](conflux/platforms/portal-deployment/README.md) has a passed isolated GitHub Actions smoke check, but it has **not** been deployed or validated on the actual CachyOS server. This is an operator task, **not** a player-installation requirement.
+
+These routes are deliberately separate so a first-time user can follow one without needing to learn all of Conflux's development tools.
+
 ## Conflux Portal — public entrance
 
 The **Conflux Portal** brings the playable preview, preserved book manuscripts, Node collaboration records, and VOS/platform foundations into one visitor-friendly place.
