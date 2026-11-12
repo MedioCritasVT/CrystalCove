@@ -1,0 +1,12 @@
+# EXAMPLE ONLY — do not activate without Architect review, a real domain,
+# verified DNS/firewall/TLS, and confirmation that this proxy runs on the HOST.
+# If the proxy runs inside a container, 127.0.0.1 means that container,
+# NOT the CachyOS host; use an intentionally configured container network.
+#
+# This public route must NEVER proxy the local Python portal-app, Sanctum,
+# Tailscale admin interface, Immich, Jellyfin, Kavita, Navidrome, SearXNG,
+# VOS, agent tools, SQLite, Podman sockets, or internal administration.
+portal.example.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8088
+}

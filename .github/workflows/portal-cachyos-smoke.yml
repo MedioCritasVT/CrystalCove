@@ -1,0 +1,61 @@
+name: Public Portal CachyOS configuration smoke check
+
+on:
+  pull_request:
+    paths:
+      - 'conflux/platforms/portal-deployment/**'
+      - 'docs/**'
+      - '.github/workflows/portal-cachyos-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portal-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Compose syntax and environment defaults
+        working-directory: conflux/platforms/portal-deployment
+        run: |
+          docker compose config --quiet
+          docker compose config --format json > /tmp/conflux-portal-resolved-compose.json
+          python3 - <<'PY'
+          import json
+          with open("/tmp/conflux-portal-resolved-compose.json", encoding="utf-8") as fh:
+              services = json.load(fh)["services"]
+          assert set(services) == {"portal-public"}, services.keys()
+          ports = services["portal-public"]["ports"]
+          assert any(
+              p.get("host_ip") == "127.0.0.1"
+              and int(p.get("published", -1)) == 8088
+              and int(p.get("target", -1)) == 8080
+              for p in ports
+          ), ports
+          print("Only the public Portal service is configured; preview binds to localhost:8088")
+          PY
+
+      - name: Start isolated localhost Portal preview
+        working-directory: conflux/platforms/portal-deployment
+        run: docker compose up -d --wait
+
+      - name: Verify site and security boundary
+        run: |
+          set -eu
+          curl --fail --silent --show-error --retry 12 --retry-delay 2 --retry-connrefused http://127.0.0.1:8088/ -o /tmp/conflux-portal-home.html
+          grep -q 'Conflux' /tmp/conflux-portal-home.html
+          grep -q 'Get the game preview' /tmp/conflux-portal-home.html
+          curl -fsSI http://127.0.0.1:8088/ | grep -qi 'x-content-type-options: nosniff'
+          # Private Python launcher's entry point must never be served by the static preview.
+          status="$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8088/portal.py)"
+          test "$status" = "404"
+
+      - name: Stop preview and display logs on failure
+        if: always()
+        working-directory: conflux/platforms/portal-deployment
+        run: |
+          docker compose logs --no-color || true
+          docker compose down --remove-orphans || true

@@ -1,0 +1,21 @@
+# Conflux Portal — static public site preview only.
+# This does NOT run the local Python portal-app or any private services.
+# Published ONLY on host loopback. An approved reverse proxy may be added later.
+services:
+  portal-public:
+    image: docker.io/library/caddy:2.11.9-alpine
+    ports:
+      - "${PORTAL_BIND:-127.0.0.1}:${PORTAL_PORT:-8088}:8080"
+    volumes:
+      - ../../../docs:/srv:ro
+      - ./caddy:/etc/caddy:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /data
+      - /config
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
