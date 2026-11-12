@@ -6,8 +6,8 @@
 
 | Surface | Link references | Unique targets | Local fragment failures |
 | --- | ---: | ---: | ---: |
-| `README.md` | 24 | 23 | N/A |
-| `docs/index.html` | 27 | 23 | 0 |
+| `README.md` | 25 | 24 | N/A |
+| `docs/index.html` | 28 | 24 | 0 |
 
 ## Confirmed problems and corrections
 
