@@ -4,15 +4,17 @@ Conflux is an experimental, inhabitable fantasy world built in Unreal Engine. Ex
 
 This repository holds the shared project records and historical browser prototype. **The current native game is available as a standalone Linux download below.**
 
-## New to Conflux? Start here
+## New to Conflux? Start with Portal
 
-**[First-time Linux/Bazzite walkthrough: game download or optional GitHub clone](docs/FIRST_TIME_SETUP.md)** — step-by-step, starting from an empty `~/Conflux` folder, without moving older installations.
+**Welcome to a work in project.** Conflux is a world you can visit, read about, and create alongside even before you install its game. **Conflux Portal is the intended first experience**, and downloading the game is a choice—not a requirement for exploring the rest of Conflux.
 
-- **Just want to play?** Use the [Conflux V0.1 release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) and download the **Linux x86_64 game archive** from **Assets**. Extract it and run `PlayConflux.sh`. You do **not** need Git, the repository ZIP, the Portal app, or the Unreal Editor.
-- **Want to explore GitHub or try the local Portal?** Follow the *optional* clone instructions in the walkthrough. The source repository is **not** the game download; the experimental local Python Portal is separate from the public static website.
-- **Want to host the public Portal on CachyOS?** The [GitHub-backed deployment configuration](conflux/platforms/portal-deployment/README.md) has a passed isolated GitHub Actions smoke check, but it has **not** been deployed or validated on the actual CachyOS server. This is an operator task, **not** a player-installation requirement.
+**[First-time Linux/Bazzite walkthrough — Portal first, game when you want it](docs/FIRST_TIME_SETUP.md)** explains how to start from a fresh `~/Conflux` folder without disturbing older installations.
 
-These routes are deliberately separate so a first-time user can follow one without needing to learn all of Conflux's development tools.
+1. **Begin with [Conflux Portal (current local Linux preview)](conflux/portal-app/README.md).** Today it runs from a GitHub repository clone **or extracted repository ZIP** using Python 3.10+, not yet from a one-click player installer. The Git-based updater requires a real clone. You can explore **Atelier, Ledger, the player manual, project materials, and the Portal's other rooms** without installing or launching the game. The Portal's opening **Get the Game** button is an invitation, not a prerequisite.
+2. **Download Conflux V0.1 if you want to play.** Use Portal's **Get the Game** section or the [official Linux release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1). Download the game archive from **Assets**, extract it, and launch `PlayConflux.sh`. A standalone game download remains possible for those who prefer to skip Portal.
+3. **Explore the public website or the project source.** The [static Portal source](docs/index.html) is already in GitHub, but its separate live public site has **not been verified**. The local Python Portal, public website, and native Unreal game are **different applications/entry points**.
+
+**Coming later:** a simpler downloadable Portal package and approved public website hosting. The [CachyOS hosting configuration](conflux/platforms/portal-deployment/README.md) passed a bounded GitHub Actions preview test, **not a live server deployment**. Tailscale is planned for private remote access (especially future Sanctum); it will **not** be a requirement for public players. Conflux remains a **work in project**, with each step subject to testing and the Architect's approval.
 
 ## Conflux Portal — public entrance
 

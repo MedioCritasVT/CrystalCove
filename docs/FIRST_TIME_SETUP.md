@@ -1,10 +1,10 @@
 # Conflux first-time setup — Linux / Bazzite
 
-**Status (November 12, 2026): beginner instructions proposed for review and a real clean-folder test.** This guide is not evidence that a fresh installation has been completed on a player's machine.
+**Conflux is a work in project.** Welcome to its world, stories, creative tools, and experiments. **Portal is the intended first experience; the native game is an optional next step.** You can enjoy the Portal without installing or playing the game.
 
-**Start here:** You do **not** need Git, the Unreal Editor, an AI model, a server, or the local Portal app just to play Conflux V0.1. Do not download GitHub's green **Code → Download ZIP** expecting a playable game. The game is a separate **Release** download.
+**Current availability (November 12, 2026):** The local Conflux Portal is a **Python 3.10+ preview inside the public CrystalCove GitHub repository**, not yet a one-click executable installer. The separate public-facing website's source is in `docs/index.html`, but a live public domain has not been verified. This guide describes a real clean-folder test, not an installation already validated on a new user's Bazzite PC.
 
-This guide describes two routes. Try **Route A** as a new player first. Use **Route B** only if you also want to inspect the GitHub project and try the optional local Portal application.
+**Start with Route A** for the Portal. When you want the native Linux game, choose Route B. Someone who only wants the game may still skip Route A, but players do **not** have to download the game to experience the Portal. GitHub knowledge, Unreal Editor, AI models, a personal server, and Tailscale are **not** game prerequisites.
 
 ## Before you start — keep existing work safe
 
@@ -15,7 +15,58 @@ On Bazzite / KDE Plasma, open **Dolphin** (the file manager), choose **Home**, t
 - If `~/Conflux` already contains something important, do not overwrite it. Use a different empty test folder.
 - Keep the native game archive and extracted game separate from the GitHub source repository. The two are not interchangeable.
 
-## Route A — play the game, no Git commands required
+## Route A — start with the Portal (game not required)
+
+The local Portal includes **Atelier and Ledger**, a **player manual**, **library/project rooms**, Node-themed pages, and optional game-download/launch controls. Its **Get the Game** button is an invitation, not a requirement: you can browse its other rooms without a game install. Some features are experimental, and publication of source files does not establish a completed, standalone public release.
+
+### Choose how to get the Portal preview
+
+**Option 1 — Git clone (recommended for updates):**
+
+1. In Bazzite, open **Konsole**. Check whether the required programs are already available:
+
+   ```bash
+   git --version
+   python3 --version
+   ```
+
+   Python must be **3.10 or newer**. If Git or Python is missing, stop and get instructions for your specific Bazzite system rather than guessing an installation command.
+2. In the empty `~/Conflux` folder, run:
+
+   ```bash
+   cd "$HOME/Conflux"
+   git clone https://github.com/MedioCritasVT/CrystalCove.git CrystalCove
+   ```
+
+   Git is making a **copy of the public project** under `~/Conflux/CrystalCove/`, not moving your other project files. If that destination already exists, stop rather than overwriting it.
+
+**Option 2 — GitHub's Download ZIP (no Git command, but still requires Python):**
+
+1. Open the [CrystalCove GitHub repository](https://github.com/MedioCritasVT/CrystalCove).
+2. Select the green **Code** button, then **Download ZIP**. Extract the ZIP in Dolphin under `~/Conflux/` without replacing existing files.
+3. You should now have an extracted repository folder (typically `CrystalCove-main`). Find the actual folder name in Dolphin. **This is the repository source archive, not a standalone Portal installer or native Unreal game archive.** GitHub ZIP copies cannot use the local Portal's Git-based self-updater.
+
+### Open the local Portal preview
+
+1. For a Git clone, enter:
+
+   ```bash
+   cd "$HOME/Conflux/CrystalCove/conflux/portal-app"
+   python3 -m unittest discover -p 'test_*.py' -v
+   python3 portal.py
+   ```
+
+   If you used **Download ZIP**, open a terminal in the extracted folder's `conflux/portal-app` directory in Dolphin instead, and run just the last two Python commands.
+
+2. In a browser on that **same computer**, visit `http://127.0.0.1:8765`. Open **Atelier**, **Ledger**, or the **Player Manual** first. Try an experience that doesn't require the native game. Later, if you want, open the **Get the Game** room to find the Linux release.
+
+3. After the local preview works, **Updates & Setup → Add to Applications Menu** can add a desktop entry for supported Linux desktops. It is optional. Follow the [local Portal instructions](../conflux/portal-app/README.md) for its limits and updater behavior.
+
+**Expected result:** A locally running Portal in your browser, with useful rooms available **without** `PlayConflux.sh`. The local Python Portal is experimental and listens only on your own computer; it is **not** the future public CachyOS site or the private Architect's Sanctum. Do not expose this local Python service through a public proxy.
+
+**If something goes wrong:** Save the exact command/error and the step number. Do not move the old Portal installation, wipe game saves, or reinstall Unreal to fix this test.
+
+## Route B — optionally download and play Conflux V0.1
 
 1. In your browser, open **[Conflux V0.1 GitHub Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1)**.
 2. Under **Assets**, download **`Conflux-V0.1-Linux-x86_64.tar.gz`**. Do not choose `Source code (zip)`, `Source code (tar.gz)`, or `Conflux-V0.1-Source.tar.gz` if your goal is to play.
@@ -31,70 +82,26 @@ On Bazzite / KDE Plasma, open **Dolphin** (the file manager), choose **Home**, t
    If Linux reports **Permission denied**, first check the script's executable permission in Dolphin's **Properties → Permissions**. Change only the downloaded game's own script, and only if you trust the GitHub release. Then retry.
 7. On the title screen, choose **Begin a new journey**. Try creating a character and saving. The game saves separately under `~/.local/share/Conflux/V0.1/` by default; it does not save its profile inside the extracted game folder.
 
-**Expected result:** The native Conflux V0.1 Linux preview starts. It is an early development build, not a complete game. Other Linux distributions, graphics drivers, and GPUs are not all certified. The browser Portal is **not** required for this route.
+**Expected result:** The native Conflux V0.1 Linux preview starts. It is an early development build, not a complete game. Other Linux distributions, graphics drivers, and GPUs are not all certified. The native game also works **without** the local Portal: both experiences are independent.
 
 **If something fails:** Record which numbered step, the exact error text, whether `PlayConflux.sh` exists, and your Linux/GPU details. Do not delete another installation to troubleshoot this test.
 
-## Route B — explore GitHub and try the optional local Portal
-
-This route is for someone who wants the project files and developer/local Portal preview. **Cloning the repository does not download or install the native Unreal game.** It also does not grant access to private Sanctum or server administration.
-
-### What the GitHub buttons mean
-
-- **Releases** — packaged downloads intended for players (Route A).
-- **Code** — the repository's source and project records; not the native game installer.
-- **Pull requests** — proposed changes. Merged changes land on the repository's main branch.
-- **README** — the repository's front-page instructions.
-- **Clone** — make a local working copy of the repository, which can fetch later updates.
-
-### Set up a clean Git clone
-
-1. In a terminal, check that Git and Python are available:
-
-   ```bash
-   git --version
-   python3 --version
-   ```
-
-   The local Portal needs Python 3.10 or newer. If either command is not found, **stop and ask for installation guidance for your actual Bazzite setup** rather than guessing a package command.
-2. From your new project folder, create a separate repository copy:
-
-   ```bash
-   cd "$HOME/Conflux"
-   git clone https://github.com/MedioCritasVT/CrystalCove.git CrystalCove
-   ```
-
-   This creates `~/Conflux/CrystalCove/`. It does not move, replace, or modify your older project directories.
-3. To see the public website's source in Dolphin, open `~/Conflux/CrystalCove/docs/index.html`. It is a **static public preview**, not the locally installed Python Portal, not a deployed public domain, and not the game.
-4. To try the **separate, experimental local Portal**, run:
-
-   ```bash
-   cd "$HOME/Conflux/CrystalCove/conflux/portal-app"
-   python3 -m unittest discover -p 'test_*.py' -v
-   python3 portal.py
-   ```
-
-   In a browser on **that same computer**, open `http://127.0.0.1:8765`. This local application includes Atelier, Ledger, and game-launcher features. It is not a production public website and must not be exposed through a public proxy.
-5. The local Portal has an optional **Updates & Setup → Add to Applications Menu** step. Its built-in updater works with a valid Git checkout; the repository **ZIP** does not provide the same updater functionality. Do not run the updater on a working branch with edits you want to preserve without checking its instructions.
-
-**Expected result:** You have a separate `CrystalCove` source directory inside `~/Conflux`, and the optional local Portal can be tested independently of the native game.
-
-**If `~/Conflux/CrystalCove` already exists:** Do not run `git clone` into it again or overwrite anything. Inspect the existing folder before deciding how to update it.
-
 ## For server operators — not part of player setup
 
-The public, read-only **CachyOS deployment configuration** is documented under [`conflux/platforms/portal-deployment/`](../conflux/platforms/portal-deployment/README.md). Its GitHub Actions smoke test passed, but **that is not a test on the real CachyOS machine**, and no domain/public HTTPS deployment is implied. The private **Conflux Sanctum** is a separate future Architect interface. Neither belongs in a new player's normal setup.
+The public, read-only **CachyOS deployment configuration** is documented under [`conflux/platforms/portal-deployment/`](../conflux/platforms/portal-deployment/README.md). Its GitHub Actions smoke test passed, but **that is not a test on the real CachyOS machine**, and no domain/public HTTPS deployment is implied. The private **Conflux Sanctum** is a separate future Architect interface. Neither belongs in a new player's normal setup. **Tailscale is a planned private-access layer for the server and future Sanctum, not a required player download or a public Portal login.**
 
 ## First-user test record — fill this out during the real walkthrough
 
 | Check | Result |
 | --- | --- |
-| Clean `~/Conflux` test folder | Not independently verified |
-| Player can find the correct GitHub Release asset | Not yet tested with the Architect |
-| Download and extraction understood | Not yet tested |
-| `PlayConflux.sh` launched on fresh setup | Not yet tested |
-| Optional clone created without disturbing old files | Not yet tested |
-| Optional `portal.py` works from the fresh clone | Not yet tested |
-| Confusing steps and proposed documentation fixes | To record during the walkthrough |
+| New `~/Conflux` folder on Bazzite | User reports created; contents not independently inspected |
+| User can find Portal-first starting instructions on GitHub | Not yet tested |
+| First-time user obtains the repository by Git clone or ZIP | Not yet tested |
+| Python Portal starts from the clean folder | Not yet tested |
+| Atelier, Ledger, or another Portal experience works without the game | Not yet tested |
+| Optional game release found through Portal | Not yet tested |
+| Optional game download, extraction, and `PlayConflux.sh` launch | Not yet tested |
+| Confusing steps and improvements | To record during the walkthrough |
 
-Keep the distinction clear: **GitHub CI passed a bounded static-website container test; it did not prove any of the steps above on Bazzite.**
+The GitHub Actions check passed a **bounded static public website container preview**, not these interactive Bazzite steps. This guide and the services it references remain a **work in project**.
+
