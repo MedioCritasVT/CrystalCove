@@ -1,4 +1,18 @@
-# Four-agent harness — v0.3 archival source
+# Four-agent harness — local distribution and archive
+
+## Download the public candidate (v0.4.1)
+
+**[Download the complete v0.4.1 ZIP](https://raw.githubusercontent.com/MedioCritasVT/CrystalCove/main/conflux/platforms/agent-harness/releases/4AgentHarness_CrystalCove_Public_v0.4.1.zip)**
+
+- **50,924 bytes** · SHA-256 `961929174a824f7d0615c2f0d8f04b53f00f16bc4f7c22fc061783d0492ed832`
+- Designed for Linux + Podman + Ollama + Open WebUI + RabbitMQ, with four agent containers and a shared SQLite note board.
+- Operator-only read-only SQL inspection and example model parameters are included. Private agent memories, live RAG, VOS service integration, and Unreal-game integration **are not part of the deployed feature set**.
+- Setup notes and executable scripts are inside the ZIP. Preserve existing volumes and back up user configuration before changing a running installation.
+- **Validation:** local mocked tests/packaging checks, not a cross-machine production certification. An explicit public software license is still needed before broad redistribution.
+
+[Publication record and limitations](PUBLIC_RELEASE_CANDIDATE_v0.4.1.md) · [VOS/game integration planning](../vos/VOS_Harness_Integration_Plan_2026-10-30.md)
+
+## Preserved historical source (v0.3)
 
 **Status: preserved local prototype, not currently deployed or independently accepted by this publication.**
 
