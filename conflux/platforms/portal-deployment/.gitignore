@@ -1,0 +1,10 @@
+# Local deployment values and generated material must not be committed.
+.env
+.env.*
+!.env.example
+secrets/
+certificates/
+data/
+*.sqlite
+*.sqlite3
+*.db
