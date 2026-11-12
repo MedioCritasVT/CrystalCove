@@ -375,9 +375,9 @@ details{margin-top:12px}
     </div>
     <div class="status-pill" id="storage-indicator">Checking local storage…</div>
     <div class="actions-bar">
-      <button id="export-md">↓ Conflux.md</button>
-      <button id="export-json">↓ Backup JSON</button>
-      <button id="import-json">↑ Restore backup</button>
+      <button id="export-md" type="button" title="Download one readable Conflux.md file containing all committed entries" aria-describedby="export-help">↓ Download readable Ledger (.md)</button>
+      <button id="export-json" type="button" title="Download all committed entries as a JSON backup that Ledger can restore" aria-describedby="export-help">↓ Download restorable backup (.json)</button>
+      <button id="import-json" type="button" title="Choose a JSON backup to restore; you will confirm before replacing local entries" aria-describedby="export-help">↑ Restore from backup</button>
       <input type="file" id="backup-file" class="file" accept=".json,application/json">
     </div>
   </div>
@@ -390,6 +390,7 @@ details{margin-top:12px}
         <span class="eyebrow">Welcome back, Architect</span>
         <h2>A calmer place to keep the record.</h2>
         <p>This ledger is for text you intentionally preserve. Importing a file does not make it canon. Summaries remain separate from sources. Nothing becomes part of the record until <b>you</b> commit it.</p>
+        <p class="tiny" id="export-help"><b>Downloading your work:</b> <b>Readable Ledger (.md)</b> saves <b>all committed entries together</b> in one Conflux.md document for reading in a text editor. <b>Restorable backup (.json)</b> saves those records in a format Ledger can import later. Both are snapshots: new entries need a new download. Neither button uploads data or changes the entries stored in this browser. <b>Restore</b> asks for confirmation before replacing local entries.</p>
         <div class="hero-actions">
           <button class="primary" onclick="document.getElementById('raw').focus()">Begin a new entry</button>
           <button class="subtle" onclick="document.getElementById('search').focus()">Search the ledger</button>
@@ -597,7 +598,7 @@ details{margin-top:12px}
       <div class="actions" id="detail-actions"></div>
       <details>
         <summary>Storage and portability</summary>
-        <p class="tiny">Records are saved only in this browser's localStorage. Export a JSON backup regularly: browser clearing, private mode, or switching browsers can erase local data. Exported Markdown is a readable snapshot, not a live synced document. No data is sent to any server.</p>
+        <p class="tiny">Committed entries are saved only in this browser's localStorage. <b>Download readable Ledger (.md)</b> exports one human-readable Conflux.md file containing all committed entries. <b>Download restorable backup (.json)</b> saves all committed entries for future import using <b>Restore from backup</b>. Neither export automatically updates later; download new snapshots after new commits. Browser clearing, private mode, or switching browsers can erase local data, so keep a JSON backup somewhere safe. Restoring a backup replaces current local entries only after your confirmation. No data is sent to a server by these controls.</p>
       </details>
     </div>
   </section>

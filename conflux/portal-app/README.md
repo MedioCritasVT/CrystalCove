@@ -55,6 +55,16 @@ For advanced users, manual registration via `~/.config/conflux-portal/apps.json`
 
 The folder finder writes the game entry to that file, preserves any unrelated entries, and creates new configuration files with user-only permissions. An invalid existing config is never silently overwritten.
 
+## Ledger downloads — what each button does
+
+The Ledger is a local-first record keeper, not a GitHub sync service. A committed entry is saved in your current browser's local storage at the Portal address.
+
+- **Download readable Ledger (.md)** creates one file named `Conflux.md` containing **all committed entries** in a format you can open in Kate or another text editor. Approved records are in their own section, and the other statuses are preserved separately. It does **not** edit the original source files or automatically update itself.
+- **Download restorable backup (.json)** creates `Conflux-ledger-backup.json` containing **all committed entries** as structured data you can restore into Ledger. Keep this backup somewhere safe.
+- **Restore from backup** lets you select that JSON file and **asks for confirmation before replacing** the browser's current local Ledger entries. Back up current work before restoring.
+
+Both download buttons create **point-in-time snapshots**, not continuously synchronized files. Commit new entries? Download fresh copies. These actions do not upload records to a server or to GitHub.
+
 ## Other ready applications
 
 **Conflux Atelier (Medio/Nexus)** and **Conflux Ledger (Ratio/Limen)** are bundled original HTML apps. Their **Open** buttons work with no installation or executable registration. Export backups regularly, especially before clearing browser data or switching browsers.
