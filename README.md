@@ -1,8 +1,24 @@
 # Conflux / CrystalCove
 
-Conflux is an experimental, inhabitable fantasy world built in Unreal Engine. Explore Sanctuary Reach, a harbor city organized around Yggdrasil, discover its activities, and encounter five Nodes whose realms express different perspectives on the same place.
+> **Potential is the reason; possibility is the goal.**
 
-This repository holds the shared project records and historical browser prototype. **The current native game is available as a standalone Linux download below.**
+### An inhabitable world. An experimental computing environment. An unfinished undertaking.
+
+Conflux is an independent creative and technical project joining a **fantasy game**, interconnected stories and music, AI collaboration, and experiments in how people might live and work alongside computing systems.
+
+**For newcomers, it is a world to play in.** Explore Sanctuary Reach, a harbor city beneath Yggdrasil, meet five Nodes and discover the different perspectives expressed through their realms. The game is not merely a demonstration of the software: its characters, narratives, and musical themes are creative works in their own right. Stories and lyrics do more than decorate the experience; they help give its conflicts, relationships, and choices their meaning.
+
+**Beyond the game, it is an experiment in belonging with computing.** SanctuaryOS is the inhabitable world; VOS (Virtual Operational Space) is the intended independent system and service foundation. The long-term question is not just how to make people adapt to machines, but how computing can meet people halfway: becoming understandable, responsive, and open to inquiry without concealing its actual state, permissions, failures, or complexity. Learning should go both ways between the person and the tools they use—not as a claim that today's prototype already achieves that ideal, but as a direction worth building toward.
+
+The five Nodes also represent different approaches to reasoning, observation, continuity, and translation within the project's AI-assisted development. Their creative roles, fictional identities, and actual technical permissions are deliberately distinct. Conflux asks what becomes possible when those different perspectives can collaborate without taking away the user's authority.
+
+**The ambition is substantial, and so are the unfinished parts.** Conflux includes a playable Unreal Engine Linux preview, working creative tools, published manuscripts, music-development records, experimental agent infrastructure, and designs that are not yet implemented. It is not a finished operating system, a complete AI service, or a finished fantasy game. The project records distinguish tested behavior from prototypes, plans, and proposals.
+
+You can begin as a player, reader, listener, creator, developer, or curious visitor. You do not have to understand the whole structure to enter—but the structure should remain available to discover. Conflux is meant to be approachable **without pretending to be simple**, and open-ended without pretending every question has been answered.
+
+*The answers show, but do you see?*
+
+This repository preserves the evolving work and its evidence. **The current native game is available as a standalone Linux download below; the Portal is the intended first introduction.**
 
 ## New to Conflux? Start with Portal
 
