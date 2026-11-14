@@ -581,14 +581,15 @@ body{padding-bottom:76px}
   <div class="music-volume"><label for="music-volume">Volume</label><input id="music-volume" type="range" min="0" max="100" value="45" aria-label="Music volume"></div>
   <p class="music-mini-status" id="music-status" role="status" aria-live="polite">Music off</p>
   <details class="music-advanced"><summary>Music options</summary><div class="music-advanced-panel">
-    <div class="music-choose"><label for="music-files" class="action secondary music-file-label">Choose audio files…</label>
+    <div class="music-choose"><button id="music-install-public" type="button" class="action music-file-label">Install all 11 tracks from GitHub</button>
+      <label for="music-files" class="action secondary music-file-label">Choose audio files…</label>
       <input id="music-files" type="file" accept=".mp3,.wav,.ogg,.m4a,.flac,audio/*" multiple hidden>
       <label for="music-zip" class="action secondary music-file-label">Install soundtrack ZIP once…</label>
       <input id="music-zip" type="file" accept=".zip,application/zip" hidden>
       <button id="music-recheck" type="button" class="action secondary music-file-label">Refresh music library</button>
     </div>
     <p class="music-feedback" id="music-install-status" role="status" aria-live="polite">Published tracks load automatically; install verified local files for offline playback.</p>
-    <p class="music-file-help">File-picker trouble? Select the complete soundtrack ZIP from a normal readable Downloads folder, not inside Trash. No extraction or administrator access is needed.</p>
+    <p class="music-file-help">**No file-picker required:** choose <strong>Install all 11 tracks from GitHub</strong> to download the official release directly into this Portal's local soundtrack library. This is an optional, one-time action, not automatic. For offline ZIP import, select a readable copy from Downloads; no administrator access or extraction is needed.</p>
   </div></details>
   <audio id="music-audio" preload="none"></audio>
 </div>
