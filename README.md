@@ -12,18 +12,27 @@ The native game, local Portal, books, music and development records are at diffe
 
 *The answers show, but do you see?*
 
-## Watch Conflux before you download — four short clips
+## A first look at Conflux — the Portal in motion
 
-The Portal is a welcome, not an installation requirement. If you're curious about what awaits, these **four short videos** open directly from GitHub Releases. No game installation, Git clone, or GitHub account is needed.
+Four **tiny looping previews**, taken from Arch's early Portal recording, show what a newcomer or developer can encounter. These are examples of a modular, local-first interface—not promises of a finished campaign. Each has a link to the complete short MP4, and nothing needs installing just to explore the documentation.
 
-| A glimpse of… | Watch | Duration |
-| --- | --- | ---: |
-| **Threshold — A Place to Begin** | [Watch the welcome](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4) | 13 seconds |
-| **Ledger — Keeping the Record** | [Watch the workspace](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4) | 13 seconds |
-| **SanctuaryOS — First Launch** | [Watch the playable preview](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4) | 16 seconds |
-| **Meet the Node Familiars** | [Watch the chibis](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4) | 11 seconds |
+| A welcome, not an obligation | Creative work, with a record |
+| --- | --- |
+| ![Loop showing the Conflux Threshold welcome and optional starting rooms](docs/previews/01-threshold-preview.gif) | ![Loop of the Conflux creative workspace with in-browser tools](docs/previews/02-creative-workspace-preview.gif) |
+| **Threshold:** a player can enter, read, or choose a next step without activating the whole system. [Watch 13-second welcome](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4). | **Atelier and Ledger:** creative questions, notes and accountable records can exist alongside the game. [Watch 13-second workspace clip](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4). |
 
-These are excerpts of an early Portal walkthrough, not a finished-game demonstration. You can also [browse all four on their GitHub Release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-portal-tour-v0.1). The Portal and public website offer a separate **Video Tour**; the Player Manual remains text-first, without embedded autoplaying videos.
+| From Portal to playable preview | A library beyond a game launcher |
+| --- | --- |
+| ![Loop showing the Portal opening an early SanctuaryOS game build](docs/previews/03-gameplay-preview.gif) | ![Loop showing the Portal's Library and Art room](docs/previews/04-library-music-preview.gif) |
+| **SanctuaryOS:** the game is a separate optional download and launch, not the Portal itself. [Watch 16-second game-launch clip](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4). | **Library and music:** source records, artwork, reading and listening can remain individually accessible. [Watch 11-second library clip](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4). |
+
+### Meet the five Node companions
+
+![Screenshot of the Conflux Portal Node Companions page, showing Medio, Ratio, Nexus, Specula, and Limen as distinctly styled chibis](docs/previews/05-node-companions.png)
+
+**Medio, Ratio, Nexus, Specula and Limen** each have her own face, palette, costume motifs and creative role. The Portal links each chibi back to her reference character panel. These are symbolic interface companions, not a claim that live AI agents are automatically connected.
+
+[View the original four-video release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-portal-tour-v0.1) · [How the GIFs and Node screenshot were generated](docs/previews/README.md)
 
 ## Start here — choose your experience
 
