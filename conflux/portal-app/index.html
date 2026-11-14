@@ -306,9 +306,33 @@ body{padding-bottom:76px}
 }
 .music-file-help{font-size:.75rem;color:#e2d3bf;margin:10px 0 0;line-height:1.5}
 #portal-source-path{overflow-wrap:anywhere;margin-top:9px}
+
+/* Consistent external-navigation entry and accessible tab/window choice. */
+nav .nav-external{
+ display:block;margin-top:11px;padding:11px 12px;
+ border:1px solid #727e94;border-radius:10px;color:#d9eafa;
+ text-decoration:none;font-size:.89rem;background:#242d3e;
+}
+nav .nav-external:hover,nav .nav-external:focus-visible{
+ color:#fff;background:#324053;border-color:#9ebde1;
+}
+#open-choice-dialog{
+ color:#f2edf6;background:linear-gradient(135deg,#293146,#202937);
+ border:1px solid #a6b2c5;border-radius:17px;
+ padding:24px;max-width:min(92vw,520px);width:480px;
+ box-shadow:0 16px 65px #070916dc;
+}
+#open-choice-dialog::backdrop{background:#090d18b8;backdrop-filter:blur(3px)}
+#open-choice-dialog h3{margin:0 0 6px;color:#d9ebfd}
+#open-choice-dialog p{color:#dbd7e6;overflow-wrap:anywhere}
+#open-choice-dialog .row-actions{margin:22px 0 4px}
+#open-choice-dialog button{min-height:44px}
+#open-choice-dialog .choice-cancel{background:transparent;color:#edf0f3;border:1px solid #8894aa;border-radius:10px;padding:8px 13px}
+@media(max-width:740px){nav .nav-external{margin-top:0;grid-column:1/-1;text-align:center}}
 </style><link rel="stylesheet" href="/familiars.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Work in progress — long-term development.</strong> This is a Linux-only preview. Some features are demonstrations or placeholders. More platforms, art, services and interactions are planned; please return for future updates.</div>
 <div class="music-dock" id="music-dock" aria-label="Conflux soundtrack player">
@@ -434,7 +458,6 @@ body{padding-bottom:76px}
 <p>Medio introduces balance and readable combat rhythm. Ratio suggests precision, Nexus coordination, Specula observation, and Limen transitions. These are guiding designs: <strong>not all realm mechanics are complete in V0.1.</strong></p>
 <h3>What to expect</h3>
 <p>The world, characters and menus are evolving. Some locations and progression systems are prototypes, and the current game is Linux-only. If something breaks, note the game version, Linux distribution, graphics card, location in the game, and steps that led to the problem.</p>
-<p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/portal-app/PLAYER_MANUAL.md" target="_blank" rel="noopener noreferrer">View the portable Markdown Player Manual</a></p>
 </section>
 
 <section class="panel" id="updates" hidden>
@@ -468,4 +491,16 @@ body{padding-bottom:76px}
   <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
 </div>
 </section>
-<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script></body></html>
+<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
+<dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
+  <h3 id="open-choice-title">Open this link</h3>
+  <p id="open-choice-description">Where would you like to open it?</p>
+  <p id="open-choice-destination" class="theme-note"></p>
+  <div class="row-actions">
+    <button type="button" id="open-choice-tab" class="action">New tab</button>
+    <button type="button" id="open-choice-window" class="action secondary">New window</button>
+    <button type="button" id="open-choice-cancel" class="choice-cancel">Cancel</button>
+  </div>
+  <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
+</dialog>
+<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script></body></html>
