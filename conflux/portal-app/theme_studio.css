@@ -1,0 +1,24 @@
+/* Conflux personal color palettes. The original room accents still retain meaning. */
+body.theme-personal .side{
+  background:linear-gradient(155deg,color-mix(in srgb,var(--violet) 18%,var(--side)),var(--side) 65%,var(--bg));
+}
+body.theme-personal .card{
+  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),color-mix(in srgb,var(--echo) 5%,var(--surface)));
+  border-color:color-mix(in srgb,var(--line) 65%,var(--accent));
+}
+body.theme-personal .notice{
+  color:var(--ink);background:var(--surface);border-color:var(--line);
+}
+body.theme-personal .side .subtitle{color:var(--muted)}
+body.theme-personal .threshold-postscript{border-color:var(--line)}
+#studio .studio-colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin:14px 0}
+#studio .studio-color{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:9px;padding:7px 9px}
+#studio .studio-color input{width:45px;height:34px;border:0;padding:0;background:none}
+#studio label{display:block;margin-top:12px;margin-bottom:6px}
+#studio input[type="text"],#studio select,#studio textarea{max-width:100%;width:100%;padding:10px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+#studio textarea{min-height:105px;resize:vertical}
+#studio .studio-preview{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow-y:auto;border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--surface);color:var(--ink)}
+#studio .studio-status[data-error="true"]{color:#ffacb8}
+#studio .studio-actions{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}
+#studio .studio-actions button{max-width:100%}
+#studio .studio-details{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
