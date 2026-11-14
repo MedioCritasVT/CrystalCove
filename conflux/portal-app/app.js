@@ -110,6 +110,8 @@ const browse = document.querySelector("#game-browse");
 const find = document.querySelector("#game-find");
 const pathInput = document.querySelector("#game-folder-input");
 const quickLaunch = document.querySelector("#game-launch");
+const homeGameAction = document.querySelector("#home-game-action");
+const homeGameStatus = document.querySelector("#home-game-status");
 
 function notice(message, isError = false) {
   feedback.textContent = message;
@@ -200,6 +202,10 @@ async function refresh() {
       "Game folder linked. You can launch it here or in Applications." :
       "Game not linked yet. You can download V0.1 or locate an extracted copy below.";
     quickLaunch.hidden = !registered;
+    homeGameAction.textContent = registered ? "Launch Game" : "Get the Game";
+    homeGameStatus.textContent = registered ?
+      "Your extracted game is linked on this computer and ready to launch." :
+      "The playable Linux game is separate from Portal. Download or link it when you want to play.";
   } catch {
     target.textContent = "The local Portal service is unavailable. Restart Python.";
     notice("Could not read local app status.", true);
@@ -279,6 +285,10 @@ pathInput.addEventListener("keydown", event => {
   if (event.key === "Enter") { event.preventDefault(); find.click(); }
 });
 quickLaunch.addEventListener("click", () => launchGame(feedback, quickLaunch));
+homeGameAction.addEventListener("click", () => {
+  if (registered) void launchGame(homeGameStatus, homeGameAction);
+  else show("downloads");
+});
 
 // Updates are opt-in: no network check or source mutation occurs at startup.
 const updatesCheck = document.querySelector("#updates-check");
