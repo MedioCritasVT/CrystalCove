@@ -77,6 +77,7 @@ The build/package and bounded save checks passed; complete campaign coverage, ev
 | --- | --- |
 | **Portal and player tools** | [Portal README](conflux/portal-app/README.md) · [First-use walkthrough](docs/FIRST_TIME_SETUP.md) · [Public website source](docs/index.html) |
 | **Books** | [*Arcky and the Construct*, Books 1–4](conflux/books/README.md) · [Book 5: *The Emerald Threshold* (WIP)](conflux/books/Book_05_The_Emerald_Threshold_WIP.md) |
+| **Video Tour** | [Four short walkthrough examples and publication guide](conflux/video-tour/README.md) · Open clips separately from the Portal’s **Video Tour** room; no video is embedded in the README |
 | **Music** | [Download full 11-recording soundtrack ZIP](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-soundtrack-v0.1/Conflux_Soundtrack_11_Recordings_Release_Ready.zip) · [Catalog and checksums](conflux/soundtrack/CATALOG.md) · [Native realm music checkpoint](conflux/releases/realm-music-01/README.md) |
 | **Concept art and development media** | [Catalog of labeled materials](conflux/concept-art/README.md) · [Editable Source Files layout](sources/README.md) |
 | **VOS and four-agent experiments** | [Platform index](conflux/platforms/README.md) · [Four-agent harness v0.4.2 public candidate](conflux/platforms/agent-harness/README.md) |
