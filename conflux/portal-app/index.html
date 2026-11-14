@@ -334,6 +334,17 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
 .soundtrack-register summary{cursor:pointer;color:#f0d1a4;font-weight:700;font-size:1.08rem}
 .soundtrack-register[open] summary{margin-bottom:14px}
 .soundtrack-register summary:focus-visible{outline:2px solid #f4d0a7;outline-offset:5px;border-radius:4px}
+/* A warm, low-pressure way to find the extensive public project records. */
+.threshold-postscript{
+ margin:24px 0 6px;padding:14px 20px 4px;
+ border-top:1px solid #a594aa80;border-left:3px solid #d5a8be;
+ border-radius:0 0 12px 2px;
+ background:linear-gradient(110deg,#29283a66,transparent);
+}
+.threshold-postscript p{line-height:1.65;margin:4px 0 12px}
+.threshold-postscript a{color:#c5e9e8;text-underline-offset:3px}
+.threshold-postscript .arch-love{font-family:Georgia,serif;font-style:italic;color:#f5c8d6}
+.threshold-postscript .arch-love span{font-weight:600}
 </style><link rel="stylesheet" href="/familiars.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
@@ -369,7 +380,11 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
   <audio id="music-audio" preload="none"></audio>
 </div>
 <section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Every journey begins differently. Wander through the stories and music, meet the Nodes, try Atelier or Ledger, or enter the game when you feel ready. Nothing launches or connects without your choice.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
-<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
+<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div>
+<div class="threshold-postscript" aria-label="A note from Arch">
+  <p><strong>There's a whole library behind the Threshold.</strong> Substantial documentation, player guides, design records, and development history are freely available on <a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove's GitHub</a>. <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/PROJECT_INDEX.md" target="_blank" rel="noopener noreferrer">Browse the project map</a> whenever you're curious. None of it is required to start exploring.</p>
+  <p class="arch-love">A little note from Arch: <span>Arch &lt;3's you xoxo</span> <span aria-hidden="true">♥</span></p>
+</div></section>
 
 <section class="panel" id="downloads" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Playable release · Linux</div><h2>Get Conflux V0.1</h2>
