@@ -137,6 +137,42 @@ class SoundtrackLibraryTests(unittest.TestCase):
                             for t in data["tracks"] for i in t["variants"]))
         self.assertIsNone(data["album_download_url"])
 
+    def test_explicit_remote_install_uses_only_verified_album_and_hash_installer(self):
+        payload = self.make_zip()
+        class Reply:
+            def __enter__(self): return self
+            def __exit__(self, *_): return None
+            def read(self, limit):
+                self.read_limit = limit
+                return payload
+        reader = Reply()
+        with mock.patch.object(music_library, "public_release_assets",
+            return_value=({music_library.ALBUM_ASSET:
+                           music_library.RELEASE_PREFIX + music_library.ALBUM_ASSET}, None)) as listing:
+            with mock.patch.object(music_library.urllib.request, "urlopen",
+                                   return_value=reader) as download:
+                result = music_library.install_from_public_release()
+        listing.assert_called_once_with(refresh=True)
+        download.assert_called_once()
+        self.assertEqual(reader.read_limit, music_library.MAX_ZIP_BYTES + 1)
+        self.assertEqual(result["installed"], 2)
+        self.assertEqual((self.directory / "Conflux-A.mp3").read_bytes(), self.a)
+
+    def test_remote_install_refuses_missing_or_untrusted_album(self):
+        with mock.patch.object(music_library, "public_release_assets",
+                               return_value=({}, "release-not-public")):
+            with mock.patch.object(music_library.urllib.request, "urlopen") as download:
+                with self.assertRaisesRegex(music_library.MusicError, "unavailable"):
+                    music_library.install_from_public_release()
+                download.assert_not_called()
+        with mock.patch.object(music_library, "public_release_assets",
+                               return_value=({music_library.ALBUM_ASSET:
+                                              "https://untrusted.invalid/album.zip"}, None)):
+            with mock.patch.object(music_library.urllib.request, "urlopen") as download:
+                with self.assertRaisesRegex(music_library.MusicError, "unexpected album URL"):
+                    music_library.install_from_public_release()
+                download.assert_not_called()
+
     def test_release_asset_urls_are_validated(self):
         fake_response = {
             "tag_name":music_library.RELEASE_TAG, "draft":False,

@@ -76,10 +76,10 @@ def local_asset(name):
     return path
 
 
-def public_release_assets():
+def public_release_assets(refresh=False):
     global _cached_assets, _cached_at, _cached_error
     with _cache_lock:
-        if _cached_assets is not None and time.monotonic() - _cached_at < REMOTE_CACHE_SECONDS:
+        if not refresh and _cached_assets is not None and time.monotonic() - _cached_at < REMOTE_CACHE_SECONDS:
             return _cached_assets, _cached_error
     request = urllib.request.Request(
         API, headers={"Accept": "application/vnd.github+json",
@@ -135,6 +135,39 @@ def library():
             "published": remote, "remote_status": remote_error,
             "release_url": RELEASE_URL, "album_download_url": public.get(ALBUM_ASSET),
             "music_off_by_default": True}
+
+
+
+def install_from_public_release():
+    """Opt-in download of the fixed, verified album ZIP; no local file picker.
+
+    The only download target is a filename explicitly confirmed by the official
+    GitHub release API. Neither a client URL nor a local path is accepted.
+    Final installation still validates every MP3 against repository hashes.
+    """
+    public, error = public_release_assets(refresh=True)
+    url = public.get(ALBUM_ASSET)
+    if url and url != RELEASE_PREFIX + ALBUM_ASSET:
+        raise MusicError("The public release returned an unexpected album URL.")
+    if not url:
+        raise MusicError(
+            "The official GitHub soundtrack ZIP is unavailable right now "
+            "(" + str(error or "album-not-published") + "). Retry after refreshing the release.")
+    request = urllib.request.Request(
+        url, headers={"User-Agent": "Conflux-Portal/0.1",
+                      "Accept": "application/octet-stream"})
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            # Never consume unbounded bytes from a redirect/download response.
+            payload = response.read(MAX_ZIP_BYTES + 1)
+    except (urllib.error.HTTPError, urllib.error.URLError, OSError,
+            ValueError, TimeoutError) as exc:
+        raise MusicError(
+            "The official soundtrack download failed. Check your internet "
+            "connection or GitHub Release availability, then retry.") from exc
+    if len(payload) > MAX_ZIP_BYTES:
+        raise MusicError("The official soundtrack ZIP exceeds the 70 MB safety limit.")
+    return install_release_zip(payload)
 
 
 def install_release_zip(payload):

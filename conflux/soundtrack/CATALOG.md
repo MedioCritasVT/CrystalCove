@@ -2,7 +2,7 @@
 
 **Status (2026-11-14):** **Eleven supplied MP3 recordings across ten distinct compositions** have been verified by exact SHA-256 checksum. Seven match the [original manifest](RELEASE_SHA256SUMS.txt) byte-for-byte; the four further recordings (three from the first Architect EP and *Silicon Saints*) now appear in the [complete eleven-recording manifest](RELEASE_SHA256SUMS_FULL.txt). Both *Sacrament of Oath* takes remain independent versions.
 
-**Audio is not yet published as individual GitHub Release assets.** The Portal and static website now show the full catalog but only activate direct MP3 downloads when GitHub reports an actual corresponding asset. Uploading an asset is a separate publication step, not implied by catalog inclusion.
+**Public album is live:** [Download all 11 recordings in one ZIP](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-soundtrack-v0.1/Conflux_Soundtrack_11_Recordings_Release_Ready.zip). The complete asset was verified present in the official [GitHub Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-soundtrack-v0.1) on November 14, 2026. **Individual MP3s remain unpublished**, so streaming individual tracks remotely still requires those separate uploads. The Portal can now directly install the verified public album on explicit click, without a local ZIP picker.
 
 | Composition | Recording(s) | Approx. duration | Source status |
 | --- | --- | ---: | --- |
@@ -19,14 +19,9 @@
 
 [Machine-readable catalog](catalog.json) gives stable ASCII release filenames, exact full hashes, durations, and version labels.
 
-## Publish the complete soundtrack in one upload
+## Published complete soundtrack and optional individual-track release
 
-The fastest public distribution is the single verified album archive **`Conflux_Soundtrack_11_Recordings_Release_Ready.zip`** (57,270,992 bytes / roughly 55 MiB). The user already has a local copy in their `SourceFiles/Songs` working collection. This public asset should be uploaded to a **GitHub Release**, not committed into the Git clone.
-
-1. In the [CrystalCove Releases page](https://github.com/MedioCritasVT/CrystalCove/releases), choose **Draft a new release**.
-2. Choose **Create new tag** `conflux-soundtrack-v0.1` targeting `main`. Use the title **Conflux Soundtrack — 11 Recordings**.
-3. Attach the existing complete ZIP from the local computer. Keep its filename exactly `Conflux_Soundtrack_11_Recordings_Release_Ready.zip`. Add credits and the conditions under which the Architect authorizes distribution. Publish the release.
-4. Verify that the ZIP appears as an asset on the published Release page. Both the Portal and the static website will then discover the public ZIP and offer **Download the complete 11-recording soundtrack ZIP** automatically, without Git or an account. **Do not claim publication before the asset is visible.**
+The complete archive `Conflux_Soundtrack_11_Recordings_Release_Ready.zip` (57,270,992 bytes) is publicly downloadable from the official GitHub Release. This asset lives outside the Git tree and is available without a Git account, Git clone, or Portal. The local Portal optionally installs it via **Music options → Install all 11 tracks from GitHub**, verifying the source and per-recording hashes. Existing source files and local private originals remain separate.
 
 An album ZIP upload is **sufficient for public album downloading**, but the current Portal player cannot stream MP3s directly out of a remote ZIP. For browser playback, also attach the **eleven individual MP3 files** under their expected release asset filenames. This can be a later, separate upload; album downloads do not need to wait for it.
 

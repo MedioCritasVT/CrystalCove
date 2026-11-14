@@ -7,7 +7,7 @@ const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const script = fs.readFileSync("music.js", "utf8");
 for (const id of ["music-toggle","music-zip","music-install-status",
-                  "music-recheck","music-audio","soundtrack-downloads","music-album-download"]) {
+                  "music-recheck","music-audio","soundtrack-downloads","music-album-download","music-install-public"]) {
   assert(html.includes('id="' + id + '"'), "missing UI element: " + id);
 }
 class Element {
@@ -40,7 +40,7 @@ const ids = [
   "music-audio","music-toggle","music-files","music-select","music-version",
   "music-prev","music-play","music-next","music-volume","music-status",
   "soundtrack-versions","music-library-status","music-catalog",
-  "music-zip","music-recheck","music-install-status","soundtrack-downloads","music-album-download"
+  "music-zip","music-recheck","music-install-status","soundtrack-downloads","music-album-download","music-install-public"
 ];
 const nodes = Object.fromEntries(ids.map(id => [id, new Element(id)]));
 nodes["music-volume"].value = "45";
@@ -81,6 +81,13 @@ const fakeFetch = async (url, options) => {
     return {ok:true,json:async()=>library()};
   if (url === "/api/status")
     return {ok:true,json:async()=>({launch_token:"local-test-token"})};
+  if (url === "/api/music/install-public") {
+    assert.equal(options.method,"POST");
+    assert.equal(options.headers["X-Conflux-Token"],"local-test-token");
+    assert.equal(options.body,undefined,"direct installer must not read local files");
+    installed = true;
+    return {ok:true,json:async()=>({installed:11})};
+  }
   if (url === "/api/music/install") {
     assert.equal(options.method, "POST");
     assert.equal(options.headers["X-Conflux-Token"], "local-test-token");
@@ -161,6 +168,15 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert(nodes["music-install-status"].textContent.includes("Downloads folder"));
   assert.equal(nodes["music-zip"].disabled,false);
 
+
+  // Explicit GitHub install bypasses file picker and loads checksum-verified music.
+  nodes["music-zip"].files=[];
+  await nodes["music-install-public"].click();
+  assert(nodes["music-install-status"].textContent.includes("11 recordings"));
+  const remoteInstall = calls.filter(c=>c.url==="/api/music/install-public");
+  assert.equal(remoteInstall.length,1);
+  assert.equal(remoteInstall[0].options.body,undefined);
+  assert.equal(nodes["music-install-public"].disabled,false);
 
   // Old manual file selection still works as an optional fallback.
   const files=nodes["music-files"];
