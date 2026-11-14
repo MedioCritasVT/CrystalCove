@@ -10,6 +10,8 @@ Conflux combines a fantasy game, original stories and music, creative tools, and
 
 The native game, local Portal, books, music and development records are at different stages of completion. **This is a work in project.** You can enter as a player, reader, listener, creator or developer without adopting every part of the project.
 
+**Read the purpose behind the Portal:** [The Circle of Inquiry](docs/philosophy.html) · [About Arch](docs/about-arch.html). The first describes attunement, translation, and accountable participation; the second tells how the project grew from curiosity into a broader invitation.
+
 *The answers show, but do you see?*
 
 ## A first look at Conflux — the Portal in motion

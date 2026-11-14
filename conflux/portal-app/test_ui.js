@@ -10,7 +10,7 @@ const petCss = fs.readFileSync("familiars.css","utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","guide","updates"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","updates"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
@@ -22,6 +22,8 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
+assert(html.includes("The Circle of Inquiry") && html.includes("About Arch"), "new reading rooms missing");
+assert(html.includes("An exploratory proposal is not an approved feature."), "philosophy evidence boundary missing");
 assert(html.includes('class="threshold-postscript"'), "Threshold documentation invitation missing");
 assert(html.includes("Substantial documentation"), "GitHub documentation must be discoverable");
 assert(html.includes("Arch &lt;3's you xoxo"), "Arch's welcome note missing");
