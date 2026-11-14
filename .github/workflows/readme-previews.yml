@@ -1,11 +1,6 @@
 name: Generate README GIFs and Node screenshot
 
 on:
-  push:
-    branches:
-      - fix/video-tour-readme-public-links-2026-11-14
-    paths:
-      - '.github/workflows/readme-previews.yml'
   workflow_dispatch:
 
 permissions:
