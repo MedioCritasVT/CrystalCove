@@ -44,7 +44,21 @@ function makePet(name) {
   eyeLeft.className = "pet-eye left";
   const eyeRight = document.createElement("span");
   eyeRight.className = "pet-eye right";
-  face.append(eyeLeft, eyeRight);
+  // Friendly chibi proportions: expressive eyes, blush, fringe and tiny paws.
+  const bangs = document.createElement("span");
+  bangs.className = "pet-bangs";
+  const blushL = document.createElement("span");
+  blushL.className = "pet-blush left";
+  const blushR = document.createElement("span");
+  blushR.className = "pet-blush right";
+  const smile = document.createElement("span");
+  smile.className = "pet-smile";
+  face.append(bangs, eyeLeft, eyeRight, blushL, blushR, smile);
+  for (const side of ["left", "right"]) {
+    const paw = document.createElement("span");
+    paw.className = "pet-paw " + side;
+    body.append(paw);
+  }
   const mark = document.createElement("span");
   mark.className = "pet-mark";
   mark.textContent = petSymbols[id] || "✧";
@@ -52,7 +66,7 @@ function makePet(name) {
   return mascot;
 }
 
-// The familiar pairs are symbolic UI guides, not live AI presence or final chibi art.
+// Chibi-style concept familiars are symbolic UI guides, not live AI presence or approved character art.
 const roomFamiliar = {
   home: {who:["Medio","Nexus"], message:"Medio welcomes you; Nexus keeps the doors connected."},
   apps: {who:["Nexus","Ratio"], message:"Nexus gathers the tools; Ratio helps make them usable."},
@@ -78,7 +92,7 @@ for (const [room, detail] of Object.entries(roomFamiliar)) {
   note.textContent = detail.message;
   const caveat = document.createElement("small");
   caveat.className = "pet-disclaimer";
-  caveat.textContent = "Symbolic familiars · chibi artwork pending";
+  caveat.textContent = "Chibi-style concept familiars · final art pending";
   dock.append(crew, names, note, caveat);
 }
 
