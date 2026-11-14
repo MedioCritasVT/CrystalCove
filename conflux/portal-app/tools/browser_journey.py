@@ -93,11 +93,11 @@ def main():
                 assert rows >= 10, f"expected ten music compositions, got {rows}"
                 observations.append("Official 11-track GitHub Release installs into an isolated user library")
 
+                # Music On itself starts playback. Do not immediately click
+                # Play a second time: it becomes Pause once audio is playing.
                 page.locator("#music-toggle").click()
-                # A click is an actual browser user gesture; the player is
-                # exercised with a real Conflux MP3, not a generated sine wave.
-                page.locator("#music-play").click()
-                page.wait_for_timeout(4300)
+                page.wait_for_function("() => {const a=document.querySelector('#music-audio');return !a.paused && a.currentTime>0.8;}", timeout=18000)
+                page.wait_for_timeout(1400)
                 media = page.locator("#music-audio").evaluate(
                     "(e) => ({paused:e.paused,time:e.currentTime,ready:e.readyState,"
                     "source:e.currentSrc,error:e.error?.message || null})")
