@@ -175,6 +175,8 @@ class Handler(BaseHTTPRequestHandler):
         route = urlsplit(self.path).path
         if route in ("/", "/downloads"):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
+        if route == "/familiars.css":
+            return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
         if route == "/readme.js":
