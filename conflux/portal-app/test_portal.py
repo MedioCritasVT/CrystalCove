@@ -447,6 +447,71 @@ class PortalSmokeTest(unittest.TestCase):
             installer.assert_called_once_with(
                 "test-plan", "INSTALL NEW BAZZITE MIRROR")
 
+    def test_existing_service_storage_preview_never_mutates(self):
+        plan = {"will_change":True, "plan_token":"mock-token",
+                "service":"jellyfin", "destination":"/media"}
+        with mock.patch.object(portal.MEDIA_MOUNTS, "plan", return_value=plan) as method:
+            status, data = self.post("/api/services/storage/plan", {
+                "service":"jellyfin", "destination":"/media",
+                "host_folder":"/run/media/architect/External/Videos"
+            })
+        self.assertEqual(status, 200)
+        self.assertEqual(data["plan_token"], "mock-token")
+        method.assert_called_once_with(
+            "jellyfin", "/media", "/run/media/architect/External/Videos")
+
+    def test_storage_apply_needs_approval_and_desktop_dialog(self):
+        with mock.patch.object(portal.MEDIA_MOUNTS, "apply") as apply:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/services/storage/apply", {
+                    "plan_token":"mock-token", "explicit_confirmation":"yes"
+                })
+            self.assertEqual(err.exception.code, 400)
+            apply.assert_not_called()
+        pending = {"info":{"service":"jellyfin","destination":"/media",
+                           "new_host_folder":"/external/media"}}
+        with mock.patch.dict(portal.MEDIA_MOUNTS.PLANS, {"mock-token":pending}, clear=True), \
+             mock.patch.object(portal, "confirm_mirror_storage_on_host",
+                               return_value=False), \
+             mock.patch.object(portal.MEDIA_MOUNTS, "apply") as apply:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/services/storage/apply", {
+                    "plan_token":"mock-token",
+                    "explicit_confirmation":"APPLY READ-ONLY MEDIA MOUNT"
+                })
+            self.assertEqual(err.exception.code, 409)
+            apply.assert_not_called()
+
+    def test_storage_approved_path_calls_reviewed_manager(self):
+        pending = {"info":{"service":"navidrome","destination":"/music",
+                           "new_host_folder":"/external/music"}}
+        with mock.patch.dict(portal.MEDIA_MOUNTS.PLANS, {"mock-token":pending}, clear=True), \
+             mock.patch.object(portal, "confirm_mirror_storage_on_host",
+                               return_value=True) as confirm, \
+             mock.patch.object(portal.MEDIA_MOUNTS, "apply",
+                               return_value={"updated":True}) as apply:
+            status, data = self.post("/api/services/storage/apply", {
+                "plan_token":"mock-token",
+                "explicit_confirmation":"APPLY READ-ONLY MEDIA MOUNT"
+            })
+            self.assertEqual(status, 200)
+            self.assertTrue(data["updated"])
+            confirm.assert_called_once_with("navidrome", "/music", "/external/music")
+            apply.assert_called_once_with("mock-token")
+
+    def test_storage_folder_picker_is_local_only_and_cancellable(self):
+        with mock.patch.object(portal, "choose_mirror_media_folder",
+                               return_value={"cancelled":True}):
+            status, data = self.post("/api/services/storage/browse", {})
+            self.assertEqual(status, 200)
+            self.assertTrue(data["cancelled"])
+        unauthorized = Request(self.base + "/api/services/storage/apply",
+                               data=b'{}', method="POST",
+                               headers={"Content-Type":"application/json"})
+        with self.assertRaises(HTTPError) as err:
+            urlopen(unauthorized, timeout=3)
+        self.assertEqual(err.exception.code, 403)
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js"):
