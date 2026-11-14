@@ -403,6 +403,146 @@ body{padding-bottom:76px}
 @media(prefers-reduced-motion:no-preference){
  .room-companions .pet-token:hover{translate:0 -5px;transition:translate .2s ease}
 }
+/* Node palette/wardrobe reference pass: different hair and clothes, not tint overlays.
+   These are lightweight CSS studies pending comparison with source panels. */
+.pet-token{
+  --pet-hair:#f0d8a4;--pet-hair-shadow:#af875e;
+  --pet-outfit:#543248;--pet-lining:#eed8b3;--pet-trim:#edc987;
+  --pet-skin:#f7e2d8;--pet-irises:#6e4a59;
+}
+.pet-token[data-node="medio"]{
+  --pet-hair:#f4d2a0;--pet-hair-shadow:#b98a52;
+  --pet-outfit:#542b41;--pet-lining:#e6c7a4;--pet-trim:#f6d796;
+  --pet-skin:#f8e5da;--pet-irises:#80545e;
+}
+.pet-token[data-node="ratio"]{
+  --pet-hair:#b8d9f8;--pet-hair-shadow:#577bad;
+  --pet-outfit:#203e64;--pet-lining:#7ea8d9;--pet-trim:#d5e9ff;
+  --pet-skin:#e7d8d9;--pet-irises:#244b75;
+}
+.pet-token[data-node="nexus"]{
+  --pet-hair:#bd97dc;--pet-hair-shadow:#74518e;
+  --pet-outfit:#5b3b83;--pet-lining:#f3c7e4;--pet-trim:#dab3f8;
+  --pet-skin:#f3ddd9;--pet-irises:#5a3c84;
+}
+.pet-token[data-node="specula"]{
+  --pet-hair:#a5b2c5;--pet-hair-shadow:#566579;
+  --pet-outfit:#26384f;--pet-lining:#8d9eb3;--pet-trim:#cde2ea;
+  --pet-skin:#eadcd4;--pet-irises:#263345;
+}
+.pet-token[data-node="limen"]{
+  --pet-hair:#95d4b8;--pet-hair-shadow:#477b6e;
+  --pet-outfit:#24574e;--pet-lining:#bfe5c9;--pet-trim:#e5d99d;
+  --pet-skin:#f2ddd4;--pet-irises:#386954;
+}
+.pet-token .pet-hair-back{
+  position:absolute;top:14px;left:10px;width:75px;height:74px;z-index:2;
+  background:linear-gradient(130deg,var(--pet-hair),var(--pet-hair-shadow));
+  border-radius:45% 44% 27% 28%;box-shadow:0 2px 0 #151c2b50;
+}
+.pet-token .pet-body{
+  background:linear-gradient(125deg,var(--pet-outfit),var(--pet-lining));
+  border-color:var(--pet-trim);overflow:visible;
+}
+.pet-token .pet-bodice{
+  position:absolute;left:5px;right:5px;top:2px;bottom:0;
+  border-radius:45% 45% 38% 38%;background:var(--pet-outfit);
+  border:1px solid var(--pet-trim);
+}
+.pet-token .pet-collar{
+  position:absolute;top:0;left:9px;right:9px;height:13px;z-index:2;
+  border:3px solid var(--pet-lining);border-top:none;border-radius:0 0 60% 60%;
+}
+.pet-token .pet-sash{
+  position:absolute;bottom:4px;left:17px;width:7px;height:14px;z-index:2;
+  background:var(--pet-trim);border-radius:50% 50% 4px 4px;
+}
+.pet-token .pet-face{
+  background:linear-gradient(135deg,var(--pet-skin),color-mix(in srgb,var(--pet-skin) 84%,var(--pet-hair)));
+}
+.pet-token .pet-bangs,.pet-token[data-node="nexus"] .pet-bangs,
+.pet-token[data-node="specula"] .pet-bangs,.pet-token[data-node="limen"] .pet-bangs{
+  background:linear-gradient(105deg,var(--pet-hair),var(--pet-hair-shadow));
+}
+.pet-token .pet-bangs::after{background:var(--pet-hair)}
+.pet-token .pet-hair-lock{
+  position:absolute;top:13px;left:-5px;width:17px;height:46px;z-index:3;
+  background:linear-gradient(90deg,var(--pet-hair-shadow),var(--pet-hair));
+  border-radius:55% 45% 50% 48%;transform:rotate(11deg);
+}
+.pet-token .pet-eye{background:var(--pet-irises)}
+.pet-token .pet-ear{background:var(--pet-hair)!important;border-color:var(--pet-hair-shadow)}
+.pet-token .pet-paw{background:var(--pet-outfit);border-color:var(--pet-trim)}
+.pet-token .pet-mark{background:var(--pet-outfit);border-color:var(--pet-trim);color:var(--pet-lining)}
+/* Distinct silhouettes; the metal/halo/cape/keyhole motifs point to named sheets. */
+.pet-token[data-node="medio"] .pet-crest{
+  top:1px;left:27px;width:43px;height:15px;border:3px solid #f5dfa9;border-radius:50%;
+  box-shadow:0 0 12px #ffe8b88a;transform:rotate(-7deg);z-index:5
+}
+.pet-token[data-node="medio"] .pet-bangs{border-radius:70% 45% 24% 50%;transform:rotate(-7deg)}
+.pet-token[data-node="medio"] .pet-hair-back{border-radius:42% 42% 24% 24%;height:78px}
+.pet-token[data-node="medio"] .pet-collar{border-radius:8px;border-color:#ead6bf}
+.pet-token[data-node="medio"] .pet-sash{background:#e5b58e}
+.pet-token[data-node="ratio"] .pet-hair-back{
+  top:12px;left:12px;width:71px;height:70px;
+  clip-path:polygon(8% 21%,34% 0,73% 0,97% 20%,92% 84%,7% 91%)
+}
+.pet-token[data-node="ratio"] .pet-bangs{
+  clip-path:polygon(0 0,100% 0,91% 85%,64% 56%,44% 99%,25% 56%,0 77%);
+  border-radius:7px;transform:rotate(0)
+}
+.pet-token[data-node="ratio"] .pet-crest{
+  border:2px solid #b9e1ff;top:7px;width:44px;left:26px;height:12px;
+  transform:none;border-radius:3px;box-shadow:0 0 6px #9ed8ff
+}
+.pet-token[data-node="ratio"] .pet-collar{
+  width:25px;left:5px;right:auto;border:3px solid #92bde5;transform:rotate(25deg);height:14px
+}
+.pet-token[data-node="ratio"] .pet-sash{width:18px;height:4px;left:9px;bottom:9px;background:#b2ddff}
+.pet-token[data-node="nexus"] .pet-hair-back{
+  height:85px;top:10px;left:5px;width:85px;border-radius:48% 50% 20% 20%
+}
+.pet-token[data-node="nexus"] .pet-hair-lock{
+  top:11px;left:65px;width:19px;height:55px;transform:rotate(-10deg)
+}
+.pet-token[data-node="nexus"] .pet-crest{
+  border:3px solid #dbb4f1;top:2px;left:27px;width:45px;height:21px;
+  transform:rotate(10deg);border-radius:60% 5% 65% 10%;z-index:4
+}
+.pet-token[data-node="nexus"] .pet-collar{border-color:#eac0ed}
+.pet-token[data-node="nexus"] .pet-sash{height:14px;background:#eac0ed}
+.pet-token[data-node="specula"] .pet-hair-back{height:74px;border-radius:18% 20% 25% 25%}
+.pet-token[data-node="specula"] .pet-bangs{
+  border-radius:8px 9px 18px 7px;transform:rotate(1deg)
+}
+.pet-token[data-node="specula"] .pet-crest{
+  top:12px;left:8px;width:82px;height:61px;border:5px solid #8e9bb1;
+  border-bottom-color:transparent;z-index:5;opacity:.95;border-radius:35% 35% 48% 48%;
+  box-shadow:none
+}
+.pet-token[data-node="specula"] .pet-collar{
+  left:3px;right:3px;width:auto;height:17px;border:4px solid #98a9bc;
+  border-top-color:transparent;border-radius:4px 4px 16px 16px
+}
+.pet-token[data-node="limen"] .pet-hair-back{
+  height:83px;left:11px;width:75px;border-radius:50% 35% 28% 19%
+}
+.pet-token[data-node="limen"] .pet-hair-lock{
+  top:5px;left:-9px;width:22px;height:62px;transform:rotate(13deg)
+}
+.pet-token[data-node="limen"] .pet-bangs{border-radius:60% 29% 48% 18%;transform:rotate(-12deg)}
+.pet-token[data-node="limen"] .pet-crest{
+  left:36px;top:4px;width:27px;height:29px;z-index:5;
+  border:3px solid #e5e3a7;border-radius:45% 45% 7px 7px
+}
+.pet-token[data-node="limen"] .pet-crest::after{
+  content:"";position:absolute;top:10px;left:9px;width:5px;height:8px;
+  border-radius:50% 50% 20% 20%;background:#e5e3a7
+}
+.pet-token[data-node="limen"] .pet-sash{
+  height:18px;bottom:0;border-radius:5px;background:#d3e8b2
+}
+.pet-reference-link{display:inline-block;font-size:.76rem;margin-top:4px}
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
@@ -471,8 +611,8 @@ body{padding-bottom:76px}
 </section>
 <section class="panel" id="apps" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Local launch desk</div><h2>Applications</h2><p class="lead">Choose Download to see the game release and locate an existing installation; Launch appears when you register an extracted executable. Bundled apps open directly in the browser. Nothing is installed or started on its own.</p></div><aside class="room-companions" id="room-companion-apps" data-room="apps" aria-label="Node companions for this section"></aside></div><div id="app-list" class="cards" aria-live="polite"></div><p>The game folder finder can update <code>~/.config/conflux-portal/apps.json</code> for you. Open Atelier and Ledger directly—no setup required.</p></section>
 <section class="panel" id="vos" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Independent services</div><h2>VOS Instruments</h2><p class="lead">Instruments show what has been observed, what remains unknown, and where interpretation must stop. Nothing here claims live machine access.</p></div><aside class="room-companions" id="room-companion-vos" data-room="vos" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Service status</h3><p id="vos-status">Not connected. No VOS service is queried or started.</p><span class="pill">Unverified</span></article><article class="card"><h3>Machine Weather</h3><p>Clear, mist, fog and storm remain conceptual. No synthetic observation is presented as real hardware telemetry.</p><span class="pill">Concept</span></article></div></section>
-<section class="panel" id="library" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Source and provenance</div><h2>Library & Art</h2><p class="lead">Ratio has uploaded the labeled development-media catalog, reference art and captures. These are project records, not automatically approved final artwork.</p></div><aside class="room-companions" id="room-companion-library" data-room="library" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Books I–IV</h3><p>Original manuscripts; not edited final editions.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books">Open archive</a></article><article class="card"><h3>Book V · The Emerald Threshold</h3><p>Work in progress. Read the published Act I chapters (currently Chapters 3–10), or explore the manuscript index. Unpublished chapters are not implied to be complete.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/Act_I_Newfoundland" target="_blank" rel="noopener noreferrer">Read available chapters</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/README.md" target="_blank" rel="noopener noreferrer">Chapter status register</a> <span class="pill">WIP</span></article><article class="card"><h3>Art archive</h3><p>Original labeled references and development captures are now published. A curated in-app gallery and chibi companions are still in development.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/concept-art" target="_blank" rel="noopener noreferrer">Browse project media</a></article></div></section>
-<section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">These are playful chibi-style CSS familiar previews, not the final approved character art. Their accessories and personalities can develop further.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
+<section class="panel" id="library" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Source and provenance</div><h2>Library & Art</h2><p class="lead">Ratio has uploaded the labeled development-media catalog, reference art and captures. These are project records, not automatically approved final artwork.</p></div><aside class="room-companions" id="room-companion-library" data-room="library" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Books I–IV</h3><p>Original manuscripts; not edited final editions.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books">Open archive</a></article><article class="card"><h3>Book V · The Emerald Threshold</h3><p>Work in progress. Read the published Act I chapters (currently Chapters 3–10), or explore the manuscript index. Unpublished chapters are not implied to be complete.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/Act_I_Newfoundland" target="_blank" rel="noopener noreferrer">Read available chapters</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/README.md" target="_blank" rel="noopener noreferrer">Chapter status register</a> <span class="pill">WIP</span></article><article class="card"><h3>Art archive</h3><p>Original labeled references and development captures are now published. A curated in-app gallery and character-reference-linked chibi familiars are under development.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/concept-art" target="_blank" rel="noopener noreferrer">Browse project media</a></article><article class="card"><h3>Source Files · for creators</h3><p>Editable code, original music, art, character panels, private working sources and their distribution boundaries. Browse the public structure; keep private originals local.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/sources/README.md" target="_blank" rel="noopener noreferrer">View the Sources layout</a></article></div></section>
+<section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">Five distinct chibi-style CSS previews now use separate hair and wardrobe palettes, with direct links to the publicly indexed character panels for comparison. These are concept studies, not final approved character art.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
 
 
 <section class="panel" id="soundtrack" hidden>
@@ -493,9 +633,9 @@ body{padding-bottom:76px}
   </div>
   <div class="finder">
     <h3>Conflux soundtrack register</h3>
-    <p>Ten inventoried recordings across nine compositions, including the three recently supplied titles. The new titles are listed while their actual audio files and release eligibility await verification. A catalog entry is not a published MP3.</p>
+    <p>Eleven verified recordings across ten compositions, including the three recent EP tracks, Silicon Saints, and both Sacrament of Oath takes. Every source hash is now recorded, but audio still needs a separate public GitHub Release upload.</p>
     <ul id="music-catalog"><li>Loading working catalog…</li></ul>
-    <p class="theme-note">Both distinct <em>Sacrament of Oath</em> takes are included in the original seven-file checksum manifest. No public audio release is claimed until actual assets are uploaded.</p>
+    <p class="theme-note">Both <em>Sacrament of Oath</em> takes remain separate. The ZIP installer accepts either a verified complete seven-track legacy set or the full eleven-track collection; no public audio release is claimed until its actual assets are uploaded.</p>
   </div>
   <div class="download-panel"><h3>Download Conflux recordings</h3>
     <p>Individual <strong>Download MP3</strong> links appear only for real, published GitHub Release audio assets. No Git clone is required. Until the upload is complete, each missing recording is labeled as not released.</p>

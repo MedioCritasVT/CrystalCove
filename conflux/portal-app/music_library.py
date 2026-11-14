@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CATALOG_PATH = ROOT.parent / "soundtrack" / "catalog.json"
 CHECKSUMS_PATH = ROOT.parent / "soundtrack" / "RELEASE_SHA256SUMS.txt"
+FULL_CHECKSUMS_PATH = ROOT.parent / "soundtrack" / "RELEASE_SHA256SUMS_FULL.txt"
 RELEASE_TAG = "conflux-soundtrack-v0.1"
 API = "https://api.github.com/repos/MedioCritasVT/CrystalCove/releases/tags/" + RELEASE_TAG
 RELEASE_URL = "https://github.com/MedioCritasVT/CrystalCove/releases/tag/" + RELEASE_TAG
@@ -46,9 +47,9 @@ def metadata():
     return json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 
 
-def checksums():
+def checksums(path=CHECKSUMS_PATH):
     result = {}
-    for line in CHECKSUMS_PATH.read_text(encoding="utf-8").splitlines():
+    for line in path.read_text(encoding="utf-8").splitlines():
         sha, name = line.split("  ", 1)
         if not re.fullmatch(r"[a-f0-9]{64}", sha):
             raise MusicError("Invalid official checksum manifest.")
@@ -137,14 +138,28 @@ def library():
 def install_release_zip(payload):
     if not isinstance(payload, (bytes, bytearray)) or len(payload) > MAX_ZIP_BYTES or not payload:
         raise MusicError("Choose the Conflux soundtrack ZIP (70 MB maximum).")
-    allowed = checksums()
-    expected = set(allowed)  # The original seven SHA-verified ZIP recordings.
-    if not expected or not expected.issubset(expected_assets()):
-        raise MusicError("The soundtrack release checksum list is invalid.")
+    legacy = checksums()
+    complete = checksums(FULL_CHECKSUMS_PATH)
+    known = set(complete)
+    if (not legacy or not known or not set(legacy).issubset(known)
+            or known != expected_assets()
+            or any(complete[name] != digest for name, digest in legacy.items())):
+        raise MusicError("The soundtrack release checksum lists disagree with the catalog.")
     try:
         archive = zipfile.ZipFile(io.BytesIO(payload))
     except (zipfile.BadZipFile, ValueError) as exc:
         raise MusicError("This isn't a valid soundtrack ZIP.") from exc
+    # Accept either complete verified edition: original seven or expanded eleven.
+    # ZIPs with partial, mixed, or extra recognized recordings are rejected.
+    present = {entry.filename for entry in archive.infolist() if entry.filename in known}
+    if present == set(complete):
+        allowed = complete
+    elif present == set(legacy):
+        allowed = legacy
+    else:
+        archive.close()
+        raise MusicError("The soundtrack ZIP is incomplete: expected exactly 7 or 11 verified MP3s.")
+    expected = set(allowed)
     data_dir = music_directory()
     data_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
     staged = []
@@ -177,7 +192,7 @@ def install_release_zip(payload):
             staged.append((destination, data_dir / name))
         if not staged:
             raise MusicError("The selected ZIP contains no recognized Conflux soundtrack MP3s.")
-        if len(staged) != len(expected):
+        if names != expected:
             raise MusicError("The archive is incomplete; expected all %d verified recordings." % len(expected))
         for src, dst in staged:
             if dst.is_symlink():

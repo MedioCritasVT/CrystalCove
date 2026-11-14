@@ -24,6 +24,15 @@ const nodes = [
   ["Limen", "Transitions · interpretation", "#9cdec0"]
 ];
 const petSymbols = {medio:"✦",ratio:"▦",nexus:"∞",specula:"◉",limen:"◇"};
+// Each Node keeps a distinct source panel, not just a shared, recolored mascot.
+const nodePanels = {
+  medio: "medio/ApprovedTurnaround.png",
+  ratio: "ratio/Ratio_front_side_back_reference.png",
+  nexus: "nexus/Nexus_ Violet Holographic Character Sheet.png",
+  specula: "specula/SPECULA_ Cyberpunk Observer Character Sheet.png",
+  limen: "limen/Limen_Corrected_Keyhole_Tassels.png"
+};
+const referenceBase = "https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/concept-art/reference-art/";
 function makePet(name) {
   const id = name.toLowerCase();
   const mascot = document.createElement("span");
@@ -36,8 +45,17 @@ function makePet(name) {
   earLeft.className = "pet-ear left";
   const earRight = document.createElement("span");
   earRight.className = "pet-ear right";
+  const hairBack = document.createElement("span");
+  hairBack.className = "pet-hair-back";
   const body = document.createElement("span");
   body.className = "pet-body";
+  const bodice = document.createElement("span");
+  bodice.className = "pet-bodice";
+  const collar = document.createElement("span");
+  collar.className = "pet-collar";
+  const sash = document.createElement("span");
+  sash.className = "pet-sash";
+  body.append(bodice, collar, sash);
   const face = document.createElement("span");
   face.className = "pet-face";
   const eyeLeft = document.createElement("span");
@@ -47,13 +65,15 @@ function makePet(name) {
   // Friendly chibi proportions: expressive eyes, blush, fringe and tiny paws.
   const bangs = document.createElement("span");
   bangs.className = "pet-bangs";
+  const hairLock = document.createElement("span");
+  hairLock.className = "pet-hair-lock";
   const blushL = document.createElement("span");
   blushL.className = "pet-blush left";
   const blushR = document.createElement("span");
   blushR.className = "pet-blush right";
   const smile = document.createElement("span");
   smile.className = "pet-smile";
-  face.append(bangs, eyeLeft, eyeRight, blushL, blushR, smile);
+  face.append(bangs, hairLock, eyeLeft, eyeRight, blushL, blushR, smile);
   for (const side of ["left", "right"]) {
     const paw = document.createElement("span");
     paw.className = "pet-paw " + side;
@@ -62,7 +82,7 @@ function makePet(name) {
   const mark = document.createElement("span");
   mark.className = "pet-mark";
   mark.textContent = petSymbols[id] || "✧";
-  mascot.append(crest, earLeft, earRight, body, face, mark);
+  mascot.append(crest, earLeft, earRight, hairBack, body, face, mark);
   return mascot;
 }
 
@@ -109,8 +129,15 @@ for (const [name, role, color] of nodes) {
   const title = document.createElement("strong");
   title.textContent = name;
   const detail = document.createElement("small");
-  detail.textContent = role + " · symbolic familiar; chibi art pending";
-  words.append(title, detail);
+  detail.textContent = role + " · provisional chibi study; compare source panel";
+  const reference = document.createElement("a");
+  const node = name.toLowerCase();
+  reference.href = referenceBase + nodePanels[node].split("/").map(encodeURIComponent).join("/");
+  reference.target = "_blank";
+  reference.rel = "noopener noreferrer";
+  reference.textContent = "View character panel";
+  reference.className = "pet-reference-link";
+  words.append(title, detail, reference);
   wrap.append(petFigure, words);
   card.append(wrap);
   document.querySelector("#node-list").append(card);

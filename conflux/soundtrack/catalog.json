@@ -1,8 +1,8 @@
 {
   "schema": "conflux.soundtrack.catalog.v0.1",
-  "status": "seven_original_assets_staged_three_additional_titles_pending_audio_verification",
+  "status": "eleven_recordings_sha256_verified_release_upload_pending",
   "maintained_by": "Architect approval required",
-  "guidance": "Ten user-supplied recording titles across nine compositions are inventoried (including two distinct Sacrament of Oath takes). Original seven have staged checksums; three later recordings are cataloged by title only, not SHA-verified or publicly uploaded. No MP3 binaries are available here, and this manifest does not claim an audio release has shipped.",
+  "guidance": "Eleven user-supplied MP3 recordings, ten compositions, with full SHA-256 checksums verified on 2026-11-14 (the original seven match their pre-existing hash manifest exactly). Both Sacrament of Oath takes remain distinct; Silicon Saints added. The eleven-track staged ZIP exists outside GitHub for upload; no public individual MP3 release assets have been verified. Audio publication is separate from source catalog publication.",
   "tracks": [
     {
       "id": "awareness-transcends",
@@ -12,14 +12,17 @@
         {
           "id": "file-2",
           "filename": "Awareness transcends that which it is aw (2).mp3",
-          "duration_seconds": 215,
+          "duration_seconds": 214.992,
           "sha256_prefix": "4a192f58ec6e8c63",
           "rights": "architect_confirmed_distribution_eligibility",
           "source": "MP3 supplied to Conflux conversation",
           "release_asset_filename": "Conflux-Awareness-Transcends.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "4a192f58ec6e8c636f98c5b382b3fa47c49af5c9e52e89f1a9fdaf8e1aeab51c",
+          "size_bytes": 4808976,
+          "source_filename_verified": "Awareness transcends that which it is aw (2)(1).mp3"
         }
       ]
     },
@@ -30,7 +33,7 @@
         {
           "id": "provided",
           "filename": "Call Me Through the Mountain.mp3",
-          "duration_seconds": 242.8,
+          "duration_seconds": 242.832,
           "sha256_prefix": "54bf99f79366f665",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
@@ -38,7 +41,10 @@
           "release_asset_filename": "Conflux-Call-Me-Through-the-Mountain.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "54bf99f79366f665d339c14411b2ec3a838bbf353a77a4950c0132e305710487",
+          "size_bytes": 5542773,
+          "source_filename_verified": "Call Me Through the Mountain(1).mp3"
         }
       ]
     },
@@ -49,14 +55,17 @@
         {
           "id": "provided",
           "filename": "Ghost in the Circuit Chapel.mp3",
-          "duration_seconds": 236.2,
+          "duration_seconds": 236.184,
           "sha256_prefix": "3a5c591f3fa0bae5",
           "creator_tag": "mediocritasvt",
           "rights": "architect_confirmed_distribution_eligibility",
           "release_asset_filename": "Conflux-Ghost-in-the-Circuit-Chapel.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "3a5c591f3fa0bae5c3a407394e418ec651950e24a1329cfa002764837e9f6162",
+          "size_bytes": 5625551,
+          "source_filename_verified": "Ghost in the Circuit Chapel(1).mp3"
         }
       ]
     },
@@ -67,14 +76,17 @@
         {
           "id": "provided",
           "filename": "Ritual in the Circuit.mp3",
-          "duration_seconds": 203.6,
+          "duration_seconds": 203.64,
           "sha256_prefix": "704d8e7126674c75",
           "creator_tag": "mediocritasvt",
           "rights": "architect_confirmed_distribution_eligibility",
           "release_asset_filename": "Conflux-Ritual-in-the-Circuit.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "704d8e7126674c75cd92632f13b65ce56b7a1eff66360cff6aabf2ae754d9b3e",
+          "size_bytes": 4926395,
+          "source_filename_verified": "Ritual in the Circuit(1).mp3"
         }
       ]
     },
@@ -85,7 +97,7 @@
         {
           "id": "provided",
           "filename": "The Weight of the World.mp3",
-          "duration_seconds": 179.6,
+          "duration_seconds": 179.592,
           "sha256_prefix": "e06c7a48a528c216",
           "creator_tag": "mediocritasvt",
           "generator_metadata": "Suno",
@@ -93,7 +105,10 @@
           "release_asset_filename": "Conflux-The-Weight-of-the-World.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "e06c7a48a528c21615bc758ba60f3c26935d46d0c5312c042b7063b4a1467099",
+          "size_bytes": 4165785,
+          "source_filename_verified": "The Weight of the World(1).mp3"
         }
       ]
     },
@@ -114,7 +129,10 @@
           "release_asset_filename": "Conflux-Sacrament-of-Oath-Take-1.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "16cb8c9317640a41d8243b5904dbee4b89ea5b77ecb403a2941c53320a65a4ec",
+          "size_bytes": 3342675,
+          "source_filename_verified": "Sacrament of Oath(2).mp3"
         },
         {
           "id": "take-2",
@@ -128,61 +146,113 @@
           "release_asset_filename": "Conflux-Sacrament-of-Oath-Take-2.mp3",
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "staged_pending_upload"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "580a10cc218718417ec35f31b4266953ac5d009c062726b7993387c2754afb58",
+          "size_bytes": 3393571,
+          "source_filename_verified": "Sacrament of Oath (1)(2).mp3"
         }
       ]
     },
     {
       "id": "who-gave-you-the-crown",
       "title": "Who Gave You the Crown?",
-      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "source_note": "Recording supplied in conversation November 13 and re-uploaded November 14, 2026; matching metadata and full SHA-256 verified from attached audio. GitHub release asset not yet uploaded.",
       "variants": [
         {
           "id": "architect-supplied",
           "filename": "Who Gave You the Crown_.mp3",
           "release_asset_filename": "Conflux-Who-Gave-You-the-Crown.mp3",
-          "duration_seconds": null,
-          "sha256_prefix": null,
-          "rights": "architect_publication_review_pending",
+          "duration_seconds": 263.64,
+          "sha256_prefix": "1d539089b2c30e10",
+          "rights": "architect_publication_requested_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "metadata_only_pending_file_verification"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "1d539089b2c30e1038c466f4eb73bff00b49922bc9f57dd40e604ca6bce86ae9",
+          "size_bytes": 5951865,
+          "source_filename_verified": "Who Gave You the Crown_(2).mp3",
+          "created_utc": "2026-11-11T20:28:54Z",
+          "generator_metadata": "Suno (from supplied MP3 tags)",
+          "creator_tag": "mediocritasvt",
+          "license_validation": "distribution_request_from_architect_no_independent_rights_audit"
         }
       ]
     },
     {
       "id": "little-adventurer",
       "title": "Little Adventurer",
-      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "source_note": "Recording supplied in conversation November 13 and re-uploaded November 14, 2026; matching metadata and full SHA-256 verified from attached audio. GitHub release asset not yet uploaded.",
       "variants": [
         {
           "id": "architect-supplied",
           "filename": "Little Adventurer.mp3",
           "release_asset_filename": "Conflux-Little-Adventurer.mp3",
-          "duration_seconds": null,
-          "sha256_prefix": null,
-          "rights": "architect_publication_review_pending",
+          "duration_seconds": 326.064,
+          "sha256_prefix": "6043cf34e96b535b",
+          "rights": "architect_publication_requested_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "metadata_only_pending_file_verification"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "6043cf34e96b535b9fdb607a6ceb493a8295edada1ef5ec17e25f17a88cd5c44",
+          "size_bytes": 7421134,
+          "source_filename_verified": "Little Adventurer(2).mp3",
+          "created_utc": "2026-11-11T20:51:46Z",
+          "generator_metadata": "Suno (from supplied MP3 tags)",
+          "creator_tag": "mediocritasvt",
+          "license_validation": "distribution_request_from_architect_no_independent_rights_audit"
         }
       ]
     },
     {
       "id": "little-gods-in-white-gloves",
       "title": "LITTLE GODS IN WHITE GLOVES",
-      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "source_note": "Recording supplied in conversation November 13 and re-uploaded November 14, 2026; matching metadata and full SHA-256 verified from attached audio. GitHub release asset not yet uploaded.",
       "variants": [
         {
           "id": "architect-supplied",
           "filename": "LITTLE GODS IN WHITE GLOVES.mp3",
           "release_asset_filename": "Conflux-Little-Gods-in-White-Gloves.mp3",
-          "duration_seconds": null,
-          "sha256_prefix": null,
-          "rights": "architect_publication_review_pending",
+          "duration_seconds": 343.392,
+          "sha256_prefix": "ec0a83204b6308cb",
+          "rights": "architect_publication_requested_not_independently_audited",
           "public_audio_url": null,
-          "publication_status": "metadata_only_pending_file_verification"
+          "publication_status": "sha256_verified_staged_pending_upload",
+          "sha256": "ec0a83204b6308cb80c35e3eb7d6d76e82cba5812ad75311946aeab958a09a53",
+          "size_bytes": 8102193,
+          "source_filename_verified": "LITTLE GODS IN WHITE GLOVES(4).mp3",
+          "created_utc": "2026-11-11T21:25:24Z",
+          "generator_metadata": "Suno (from supplied MP3 tags)",
+          "creator_tag": "mediocritasvt",
+          "license_validation": "distribution_request_from_architect_no_independent_rights_audit"
+        }
+      ]
+    },
+    {
+      "id": "silicon-saints",
+      "title": "Silicon Saints",
+      "source_note": "Recording supplied November 14, 2026. Previously used in native game music inventory; first addition to the public Portal soundtrack register. Presence in game does not prove public audio publication.",
+      "variants": [
+        {
+          "id": "provided",
+          "filename": "Silicon Saints (1)(1).mp3",
+          "source_filename_verified": "Silicon Saints (1)(1).mp3",
+          "release_asset_filename": "Conflux-Silicon-Saints.mp3",
+          "duration_seconds": 169.272,
+          "size_bytes": 3985130,
+          "sha256": "31baf1f8c9fa595776bd2d4982650f0d132902a2d2975bbd44a8e26127d67143",
+          "sha256_prefix": "31baf1f8c9fa5957",
+          "creator_tag": "mediocritasvt",
+          "generator_metadata": "Suno (from supplied MP3 tags)",
+          "created_utc": "2026-02-18T18:39:45.229Z",
+          "rights": "architect_publication_requested_not_independently_audited",
+          "license_validation": "distribution_request_from_architect_no_independent_rights_audit",
+          "public_audio_url": null,
+          "publication_status": "sha256_verified_staged_pending_upload"
         }
       ]
     }
   ],
-  "proposed_release_tag": "conflux-soundtrack-v0.1"
+  "proposed_release_tag": "conflux-soundtrack-v0.1",
+  "verified_recording_count": 11,
+  "composition_count": 10,
+  "full_checksum_manifest": "RELEASE_SHA256SUMS_FULL.txt",
+  "legacy_checksum_manifest": "RELEASE_SHA256SUMS.txt"
 }
