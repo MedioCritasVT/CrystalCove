@@ -19,6 +19,19 @@
 
 [Machine-readable catalog](catalog.json) gives stable ASCII release filenames, exact full hashes, durations, and version labels.
 
+## Publish the complete soundtrack in one upload
+
+The fastest public distribution is the single verified album archive **`Conflux_Soundtrack_11_Recordings_Release_Ready.zip`** (57,270,992 bytes / roughly 55 MiB). The user already has a local copy in their `SourceFiles/Songs` working collection. This public asset should be uploaded to a **GitHub Release**, not committed into the Git clone.
+
+1. In the [CrystalCove Releases page](https://github.com/MedioCritasVT/CrystalCove/releases), choose **Draft a new release**.
+2. Choose **Create new tag** `conflux-soundtrack-v0.1` targeting `main`. Use the title **Conflux Soundtrack — 11 Recordings**.
+3. Attach the existing complete ZIP from the local computer. Keep its filename exactly `Conflux_Soundtrack_11_Recordings_Release_Ready.zip`. Add credits and the conditions under which the Architect authorizes distribution. Publish the release.
+4. Verify that the ZIP appears as an asset on the published Release page. Both the Portal and the static website will then discover the public ZIP and offer **Download the complete 11-recording soundtrack ZIP** automatically, without Git or an account. **Do not claim publication before the asset is visible.**
+
+An album ZIP upload is **sufficient for public album downloading**, but the current Portal player cannot stream MP3s directly out of a remote ZIP. For browser playback, also attach the **eleven individual MP3 files** under their expected release asset filenames. This can be a later, separate upload; album downloads do not need to wait for it.
+
+If the local ZIP has become unreadable, restore or copy a readable ZIP into Downloads before uploading. Do not upload just the `SHA256SUMS` manifest, a folder shortcut, or a ZIP whose files failed verification. Owners should review any third-party generation/service distribution terms before publishing.
+
 ## Releases versus sources
 
 - **Editable/original music and artwork sources** belong in a user-controlled working-source collection; see [Sources](../../sources/README.md). A Git clone should not inherit tens of megabytes of raw audio or proprietary session files by default.
