@@ -156,6 +156,29 @@ def confirm_mirror_storage_on_host(service, target, folder):
         return False
 
 
+def choose_mirror_media_folder():
+    """Optional native folder picker; never creates or writes the selection."""
+    if shutil.which("kdialog"):
+        argv = ["kdialog", "--getexistingdirectory", str(Path.home()),
+                "--title", "Choose a mounted external media folder"]
+    elif shutil.which("zenity"):
+        argv = ["zenity", "--file-selection", "--directory",
+                "--title=Choose a mounted external media folder"]
+    else:
+        return {"cancelled": True, "detail": "No native picker; paste an absolute path from Dolphin."}
+    try:
+        result = subprocess.run(argv, capture_output=True, text=True,
+                                timeout=100, check=False)
+    except (OSError, subprocess.TimeoutExpired):
+        return {"cancelled": True}
+    if result.returncode != 0:
+        return {"cancelled": True}
+    selected = result.stdout.strip()
+    # Selection alone is not validation. The subsequent Plan operation
+    # independently verifies a separate mounted filesystem.
+    return {"cancelled": not bool(selected), "folder": selected}
+
+
 class Handler(BaseHTTPRequestHandler):
     def respond(self, status, payload):
         body = json.dumps(payload).encode("utf-8")
@@ -303,7 +326,8 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/updates/check", "/api/updates/apply",
                          "/api/updates/relaunch", "/api/desktop/install",
                          "/api/services/check", "/api/services/install",
-                         "/api/services/storage/plan", "/api/services/storage/apply"):
+                         "/api/services/storage/plan", "/api/services/storage/apply",
+                         "/api/services/storage/browse"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -335,7 +359,8 @@ class Handler(BaseHTTPRequestHandler):
         # Privileged service changes are desktop-local; the remote Tailscale
         # website may be viewed but cannot run host installer actions.
         if route in ("/api/services/check", "/api/services/install",
-                      "/api/services/storage/plan", "/api/services/storage/apply"):
+                      "/api/services/storage/plan", "/api/services/storage/apply",
+                         "/api/services/storage/browse"):
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Bazzite Portal at 127.0.0.1 to manage services."})
             if MEDIA_MIRROR is None:
@@ -345,6 +370,8 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 if route == "/api/services/check":
                     return self.respond(200, MEDIA_MIRROR.issue_plan())
+                if route == "/api/services/storage/browse":
+                    return self.respond(200, choose_mirror_media_folder())
                 if route == "/api/services/storage/plan":
                     if MEDIA_MOUNTS is None:
                         return self.respond(501, {"error": "Storage manager unavailable."})
