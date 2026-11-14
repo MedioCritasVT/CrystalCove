@@ -594,6 +594,28 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
     <p>If it still won't proceed, inspect <code>systemctl --user status conflux-media-jellyfin.service --no-pager</code> and <code>journalctl --user -u conflux-media-jellyfin.service -n 60 --no-pager</code>, then check the exact error before changing anything. <strong>Do not delete Jellyfin's configuration or database.</strong></p>
     <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Detailed first-run, Jellyfin recovery and backup instructions ↗</a></p>
   </div>
+  <div class="download-panel" id="mirror-storage-manager">
+    <h3>Use an external drive — update existing services</h3>
+    <p><strong>No reinstall and no media copying.</strong> This is a separate update action for a service you've already installed. It replaces only the selected read-only media mount in its existing Quadlet, preserves config/database mounts, backs up the old Quadlet, and restarts only that service if it was running. The external drive must already be mounted.</p>
+    <div class="mirror-storage-form">
+      <label for="mirror-storage-service">Existing service</label>
+      <select id="mirror-storage-service"><option value="jellyfin">Jellyfin · 8096</option><option value="kavita">Kavita · 5000</option><option value="navidrome">Navidrome · 4533</option></select>
+      <label for="mirror-storage-target">Container library path</label>
+      <select id="mirror-storage-target"><option value="/media">/media · Jellyfin videos</option></select>
+      <label for="mirror-storage-folder">Mounted external folder on Bazzite</label>
+      <div class="row-actions">
+        <input id="mirror-storage-folder" type="text" placeholder="/run/media/your-user/MediaDrive/Movies" autocomplete="off" spellcheck="false" aria-describedby="mirror-storage-help">
+        <button id="mirror-storage-browse" class="action secondary" type="button">Choose folder…</button>
+      </div>
+      <p class="theme-note" id="mirror-storage-help">Use a mounted USB/internal drive or verified network filesystem, not an unmounted empty directory. You can also paste the absolute path from Dolphin. Paths containing spaces or colons are not yet supported.</p>
+      <button class="action" id="mirror-storage-plan" type="button">1 · Preview mount update</button>
+      <div id="mirror-storage-preview" class="mirror-report" aria-live="polite"></div>
+      <label class="mirror-confirm"><input id="mirror-storage-approve" type="checkbox"><span>I have reviewed the current path, new path, and possible selected-service restart. Preserve all application state and existing media.</span></label>
+      <button class="action secondary" id="mirror-storage-apply" type="button" disabled>2 · Apply to existing service</button>
+      <p id="mirror-storage-status" class="status-line" role="status" aria-live="polite">No change scheduled. Choose a mounted folder and preview it on your local Bazzite desktop.</p>
+    </div>
+    <p class="theme-note"><strong>Storage safety:</strong> only the selected media `Volume=` is changed; the old source folder is not deleted. The update uses a read-only mount without recursive SELinux relabeling; on some external filesystems SELinux or permissions may still prevent container access. Check a sample file before considering the update successful. The update does not make media redundant or migrate the container's cache/state off your nearly full internal disk.</p>
+  </div>
   <h3>Tailscale access — separate opt-in</h3>
   <p>After completing each service's local account setup, optionally enable private access using Tailscale Serve. These example commands are <strong>never run by this installer</strong>:</p>
   <pre class="mirror-code"><code>tailscale serve --bg --https=8443 8096    # Jellyfin
