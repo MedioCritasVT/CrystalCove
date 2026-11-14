@@ -135,6 +135,86 @@
 #nodes .node-card .node > div:last-child strong{font-family:Georgia,serif;font-size:1.2rem}
 #nodes .node-card .node small{font-size:.82rem;margin:2px 0 5px}
 #nodes .node-card .pet-reference-link{font-size:.87rem}
+/* Pass 2 — recognizable eyes, hair framing, expression and face coverings. */
+.pet-token .pet-hair-lock.right{left:auto;right:-6px;transform:rotate(-10deg);height:51px}
+.pet-token .pet-brow{
+ position:absolute;top:27px;width:13px;height:5px;border-top:2px solid #6b4d61;
+ border-radius:50%;z-index:6;
+}
+.pet-token .pet-brow.left{left:18px;transform:rotate(-9deg)}
+.pet-token .pet-brow.right{right:18px;transform:rotate(9deg)}
+.pet-token .pet-nose{position:absolute;top:49px;left:36px;width:5px;height:3px;z-index:6;border-bottom:1px solid #ae8b8b;border-radius:50%}
+.pet-token .pet-eye::after{
+ content:"";position:absolute;inset:-2px -2px auto;
+ height:5px;border-top:2px solid #45394f;border-radius:52%;
+}
+.pet-token .pet-face-emblem{position:absolute;display:none;z-index:7}
+.pet-token .pet-face-mask{display:none;position:absolute;z-index:7}
+.pet-token[data-node="medio"] .pet-eye{height:12px;width:10px;border-radius:55% 55% 42% 42%;box-shadow:0 -2px 0 #2a1724}
+.pet-token[data-node="medio"] .pet-brow{border-color:#4b2831;transform:rotate(6deg)}
+.pet-token[data-node="medio"] .pet-smile{border-color:#ae4158}
+.pet-token[data-node="medio"] .pet-face-emblem{
+ display:block;top:43px;right:6px;width:4px;height:14px;
+ background:linear-gradient(#ca394c,#6e1d2d);border-radius:50% 20% 70% 30%;
+ transform:rotate(15deg);opacity:.82;
+}
+.pet-token[data-node="medio"] .pet-hair-lock.left{height:62px;left:-9px}
+.pet-token[data-node="medio"] .pet-hair-lock.right{height:65px;right:-10px}
+.pet-token[data-node="ratio"] .pet-eye{
+ width:12px;height:12px;border-radius:45% 43% 55% 45%;
+ background:linear-gradient(#84c6ff 15%,#2463c8 60%,#132b67);
+}
+.pet-token[data-node="ratio"] .pet-brow{border-color:#736987}
+.pet-token[data-node="ratio"] .pet-smile{border-color:#755d72;top:54px;height:4px}
+.pet-token[data-node="ratio"] .pet-face-emblem{
+ display:block;top:17px;left:36px;width:7px;height:9px;
+ transform:rotate(45deg);background:linear-gradient(#f1d49e,#589bf3);
+ border:1px solid #c9ad79;box-shadow:0 0 5px #76acff;
+}
+.pet-token[data-node="ratio"] .pet-hair-lock{height:57px}
+.pet-token[data-node="nexus"] .pet-eye{
+ background:linear-gradient(#d8a5ff,#8142c3);
+ width:12px;height:15px;border-color:#7d548c;
+}
+.pet-token[data-node="nexus"] .pet-brow{border-color:#b08aba;top:26px}
+.pet-token[data-node="nexus"] .pet-smile{border-color:#a66c93;transform:rotate(-7deg)}
+.pet-token[data-node="nexus"] .pet-face-emblem{
+ display:block;top:18px;left:34px;width:10px;height:9px;
+ border-radius:50%;border:2px solid #d5b0ff;
+ box-shadow:0 0 7px #dcb2ff;transform:rotate(-25deg);
+}
+.pet-token[data-node="nexus"] .pet-hair-lock{height:65px;width:22px}
+.pet-token[data-node="specula"] .pet-eye{
+ height:12px;border-radius:55% 35% 55% 45%;
+ background:linear-gradient(#d8bbff,#8358bc);
+}
+.pet-token[data-node="specula"] .pet-smile{width:8px;left:36px;top:54px;height:4px}
+.pet-token[data-node="specula"] .pet-face-emblem{
+ display:block;top:17px;right:28px;width:13px;height:11px;
+ background:repeating-linear-gradient(90deg,#262b46 0 2px,transparent 2px 4px);
+ opacity:.8;transform:rotate(5deg);
+}
+.pet-token[data-node="limen"] .pet-eye{
+ width:12px;height:11px;border-radius:58% 35% 50% 45%;
+ background:linear-gradient(#7fe7b6,#30895c);
+}
+.pet-token[data-node="limen"] .pet-brow{border-color:#3b302e}
+.pet-token[data-node="limen"] .pet-smile,
+.pet-token[data-node="limen"] .pet-blush,
+.pet-token[data-node="limen"] .pet-nose{display:none}
+.pet-token[data-node="limen"] .pet-face-mask{
+ display:block;top:45px;left:12px;width:53px;height:19px;
+ border:1px solid #d3b77c;border-top:2px solid #d3b77c;
+ border-radius:13% 13% 48% 48%;
+ background:linear-gradient(145deg,#29352c,#131c1a);
+ box-shadow:inset 0 -3px 0 #29593f;
+}
+.pet-token[data-node="limen"] .pet-face-mask::after{
+ content:"";position:absolute;left:20px;top:5px;width:13px;height:8px;
+ border:2px solid #75d6a0;border-top:0;border-radius:0 0 60% 60%;
+}
+.pet-token[data-node="limen"] .pet-hair-lock{height:58px}
+
 @media(prefers-reduced-motion:no-preference){
  .room-companions .pet-token:first-child{animation:pet-bob 4s ease-in-out infinite}
  .room-companions .pet-token:nth-child(2){animation:pet-bob 4.5s ease-in-out -1s infinite}
