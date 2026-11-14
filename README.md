@@ -36,6 +36,10 @@ Four **tiny looping previews**, taken from Arch's early Portal recording, show w
 
 [View the original four-video release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-portal-tour-v0.1) · [How the GIFs and Node screenshot were generated](docs/previews/README.md)
 
+### Optional services on Bazzite
+
+The **local Portal** also has a **Media Mirror Setup** room for a proposed second media-service installation on Bazzite. It checks prerequisites and shows local/Tailscale ports before offering a separate explicit installation, without touching existing CachyOS libraries. This candidate is **not** a required step for players, not part of the static public website, and not yet tested on a real Bazzite host. See the [installer, backup and updates README](conflux/platforms/bazzite-service-bundle/README.md).
+
 ## Start here — choose your experience
 
 **The Portal is the intended welcome. The game is optional.** These are different downloads; a GitHub repository ZIP is **not** the playable Unreal game archive.

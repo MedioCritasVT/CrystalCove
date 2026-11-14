@@ -4,6 +4,12 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
+## Bazzite Media Mirror Setup (first candidate)
+
+The local Portal sidebar includes **Media Mirror Setup**. On a Bazzite desktop, it offers a read-only prerequisite/port check and a single explicit **Install new services** action after a reviewed plan, approval checkbox, and native desktop confirmation. It creates fresh, empty, rootless localhost services for **Jellyfin (8096), Kavita (5000) and Navidrome (4533)**. Suggested **optional** Tailscale HTTPS listeners are **8443, 8444 and 8445**. The installer does not activate Tailscale Serve, copy media, set up recurring backups, install Immich, or modify CachyOS.
+
+**Read the full [Bazzite mirror installer/backup README](../platforms/bazzite-service-bundle/README.md) before installation.** This is source/CI-verified but not yet acceptance-tested on a live Bazzite host. Service management is available only when browsing the desktop's `http://127.0.0.1:8765`; remote Tailscale Portal views cannot invoke the installer. Updating the Portal code does not update container images or operating-system packages.
+
 ## Run locally
 
 Python 3.10 or later is required. From the cloned **CrystalCove repository root**:

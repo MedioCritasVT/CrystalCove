@@ -8,6 +8,8 @@
 
 - [**CachyOS dependency preflight**](cachyos-dependencies/README.md): standard-library, read-only host inventory for the public Portal, the local Portal, and a future media-services foundation. No automatic installs, service startup, or migration.
 
+- [**Bazzite Media Mirror installer candidate**](bazzite-service-bundle/README.md): an opt-in, rootless Quadlet installer available through the **local** Portal, with Jellyfin/Kavita/Navidrome port mapping, native desktop approval, stop-first state backup instructions, and optional manual Tailscale Serve routing. Immich and SearXNG are not in this first candidate; no migration or live-host test has occurred.
+
 **Publishing source is not deploying a service.** No machine credentials, live model containers, automatic watchers, host modifications, game integration or blanket tool permissions were added. Never infer actual OS authorization from fictional roles or model claims. The Architect retains acceptance and deployment authority.
 
 The v0.3 archive remains a development reference. The downloadable v0.4.1 candidate includes installation scripts but **is not yet a reviewed secure production installer**. Its license, dependency supply chain and target-host behavior require review before broad redistribution.
