@@ -27,6 +27,13 @@ assert(html.includes("8443") && html.includes("8444") && html.includes("8445"), 
 assert(html.includes("First run: add media without entering a container"), "container mount onboarding missing");
 for (const mount of ["/media", "/music", "/books", "/comics", "/manga"]) assert(html.includes("<code>" + mount + "</code>"), "missing media mount " + mount);
 assert(html.includes('src="/service-setup.js"'), "service UI script missing");
+for (const id of ["mirror-storage-manager","mirror-storage-service","mirror-storage-target",
+                   "mirror-storage-folder","mirror-storage-browse","mirror-storage-plan",
+                   "mirror-storage-preview","mirror-storage-approve","mirror-storage-apply"]) {
+  assert(html.includes('id="' + id + '"'), "missing external mount control: " + id);
+}
+assert(html.includes("No reinstall and no media copying"), "storage update must explain data preservation");
+
 assert(html.includes("The Circle of Inquiry") && html.includes("About Arch"), "new reading rooms missing");
 assert(html.includes("An exploratory proposal is not an approved feature."), "philosophy evidence boundary missing");
 assert(html.includes("Worked example: from uncertainty to the Portal Threshold"), "practical method walkthrough missing");
