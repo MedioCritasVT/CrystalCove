@@ -224,13 +224,24 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         route = urlsplit(self.path).path
-        if route not in ("/api/music/install", "/api/launch", "/api/game/browse",
+        if route not in ("/api/music/install", "/api/music/install-public", "/api/launch", "/api/game/browse",
                          "/api/game/find", "/api/game/register",
                          "/api/updates/check", "/api/updates/apply",
                          "/api/updates/relaunch", "/api/desktop/install"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
+        if route == "/api/music/install-public":
+            # Explicitly authenticated user gesture. The backend selects one
+            # known GitHub Release asset; caller cannot supply arbitrary URLs.
+            if self.headers.get("Content-Length") not in (None, "", "0"):
+                return self.respond(400, {"error": "No request body expected."})
+            try:
+                return self.respond(200, music_library.install_from_public_release())
+            except music_library.MusicError as exc:
+                return self.respond(400, {"error": str(exc)})
+            except (OSError, ValueError):
+                return self.respond(400, {"error": "Could not install soundtrack into local music storage."})
         if route == "/api/music/install":
             try:
                 size = int(self.headers.get("Content-Length", "0"))
