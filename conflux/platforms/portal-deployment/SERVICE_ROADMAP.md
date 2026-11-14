@@ -2,6 +2,10 @@
 
 **Source:** Architect's November 12, 2026 voice design. These are **requested or proposed services**, not claims of a functioning installation.
 
+## Non-mutating CachyOS prerequisite check
+
+Before any local server rehearsal, run the [CachyOS dependency preflight](../cachyos-dependencies/README.md) on the target host. It inventories packages and displays a proposed plan for missing required dependencies **without installing, starting, or migrating anything**. The Bazzite desktop Portal and existing Tailscale environment are separate and should not be reconfigured as part of this check.
+
 ## First milestone — public Portal
 
 - Serve the existing static `docs/` Portal, linking only to approved public GitHub resources.
