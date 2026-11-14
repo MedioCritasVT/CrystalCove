@@ -67,6 +67,15 @@ The Ledger is a local-first record keeper, not a GitHub sync service. A committe
 
 Both download buttons create **point-in-time snapshots**, not continuously synchronized files. Commit new entries? Download fresh copies. These actions do not upload records to a server or to GitHub.
 
+## Reading rooms: attention, origin, and public inquiry
+
+The Portal now includes two first-class, offline-readable sections under its navigation:
+
+- **Circle of Inquiry** — an enduring explanation of attunement, the ritual circle as a bounded technology of attention, interrogation, simulation, translation, participatory governance, and the distinction between a meaningful experience and a verified factual claim.
+- **About Arch** — the human origin of Conflux, from open-ended writing and interdisciplinary curiosity to the shared creative world, and an invitation to question systems with others instead of deferring to one creator.
+
+The public website source offers corresponding standalone reading pages in [`docs/attunement.html`](../../docs/attunement.html) and [`docs/about-arch.html`](../../docs/about-arch.html). The local Portal versions remain available without accessing GitHub or enabling GitHub Pages, after explicitly updating the Portal checkout. These texts make no claim that the AI characters are independently conscious or that a symbolic ritual proves supernatural causation. Project decisions and approvals remain human responsibilities.
+
 ## Other ready applications
 
 **Conflux Atelier (Medio/Nexus)** and **Conflux Ledger (Ratio/Limen)** are bundled original HTML apps. Their **Open** buttons work with no installation or executable registration. Export backups regularly, especially before clearing browser data or switching browsers.
@@ -88,6 +97,8 @@ The room palettes are derived from the original Atelier (Medio amber `#e9bf84` a
 | Library & Art | Nexus + Specula | Violet archival atmosphere, warm margins, provenance |
 | Node Companions | All five | Shared space with five distinct identities |
 | Player Manual | Medio + Limen | Gentle amber/green first-steps guidance |
+| Circle of Inquiry | Specula + Limen | Reflective green/violet space for observation, interpretation, and revision |
+| About Arch | Medio + Nexus | Welcoming amber/green account of the origin and wider invitation |
 
 The little CSS-drawn familiars are **new, provisional interface motifs**, deliberately labeled as such; they are **not the final chibi character designs**, not copies of the reference sheets, and not claims that any AI Node is running or independently acting inside the Portal. The character sheets and Ratio's media catalog remain in the project archive, pending a separate visual-art review before replacing them.
 
