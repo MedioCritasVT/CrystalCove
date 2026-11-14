@@ -135,6 +135,28 @@
 #nodes .node-card .node > div:last-child strong{font-family:Georgia,serif;font-size:1.2rem}
 #nodes .node-card .node small{font-size:.82rem;margin:2px 0 5px}
 #nodes .node-card .pet-reference-link{font-size:.87rem}
+/* Screenshot review adjustment: the other four are humanoid Nodes, not
+   floppy-eared pets. Reserve real triangular cat ears for Specula's headset.
+   Long side hair frames the other four faces like their reference sheets. */
+.pet-token:not([data-node="specula"]) .pet-ear{
+ top:28px;width:19px;height:55px;z-index:3;
+ border:0;border-radius:24% 50% 55% 23%;
+ background:linear-gradient(90deg,var(--pet-hair-shadow),var(--pet-hair-light));
+}
+.pet-token:not([data-node="specula"]) .pet-ear.left{
+ left:4px;transform:rotate(9deg);border-radius:55% 24% 40% 30%;
+}
+.pet-token:not([data-node="specula"]) .pet-ear.right{
+ right:4px;transform:rotate(-9deg);border-radius:24% 55% 30% 40%;
+}
+.pet-token[data-node="medio"] .pet-ear{height:67px}
+.pet-token[data-node="ratio"] .pet-ear{height:62px}
+.pet-token[data-node="nexus"] .pet-ear{height:68px}
+.pet-token[data-node="limen"] .pet-ear{height:64px}
+#node-list{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+@media(max-width:1080px){#node-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#node-list{grid-template-columns:1fr}}
+
 /* Pass 2 — recognizable eyes, hair framing, expression and face coverings. */
 .pet-token .pet-hair-lock.right{left:auto;right:-6px;transform:rotate(-10deg);height:51px}
 .pet-token .pet-brow{
