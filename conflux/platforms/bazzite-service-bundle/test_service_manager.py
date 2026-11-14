@@ -70,6 +70,43 @@ class ServiceManagerTests(unittest.TestCase):
              mock.patch.object(sm,"port_free",return_value=False):
             self.assertNotIn("plan_token",sm.issue_plan())
 
+    def test_tailscale_mapping_is_only_advice(self):
+        plan = self.ready()
+        self.assertTrue(plan["ready"])
+        self.assertEqual(plan["services"]["jellyfin"]["port"], 8096)
+        self.assertEqual(plan["services"]["jellyfin"]["optional_tailscale_https_port"], 8443)
+        self.assertEqual(plan["services"]["kavita"]["optional_tailscale_https_port"], 8444)
+        self.assertEqual(plan["services"]["navidrome"]["optional_tailscale_https_port"], 8445)
+        self.assertNotIn("tailscale", sm.unit_for("jellyfin"))
+
+    def test_no_native_dialog_is_not_ready(self):
+        with mock.patch.object(sm, "read_os_release",
+                               return_value={"ID": "bazzite"}), \
+             mock.patch.object(sm, "command_available",
+                               side_effect=lambda name: name in {"podman", "systemctl"}), \
+             mock.patch.object(sm, "run_readonly",
+                               return_value=(True, "true")), \
+             mock.patch.object(sm, "port_free", return_value=True):
+            report = sm.issue_plan()
+        self.assertFalse(report["checks"]["native_desktop_confirmation"])
+        self.assertNotIn("plan_token", report)
+
+    def test_existing_mirror_root_blocks_install(self):
+        sm.ROOT.mkdir(parents=True)
+        report = self.ready()
+        self.assertTrue(report["mirror_root_conflict"])
+        self.assertFalse(report["ready"])
+
+    def test_failed_reload_rolls_back_own_new_files(self):
+        plan = self.ready()
+        with mock.patch.object(sm, "summarize", return_value={"ready": True}), \
+             mock.patch.object(sm, "run_readonly", return_value=(False, "simulated reload failure")):
+            with self.assertRaises(RuntimeError):
+                sm.install(plan["plan_token"], "INSTALL NEW BAZZITE MIRROR")
+        self.assertFalse(sm.ROOT.exists())
+        for name in sm.SUPPORTED:
+            self.assertFalse(sm.file_for(name).exists())
+
     def test_unit_file_conflict_prevents_plan(self):
         sm.UNITS.mkdir(parents=True)
         sm.file_for("kavita").write_text("owned by someone else")
