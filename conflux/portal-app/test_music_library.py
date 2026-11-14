@@ -57,6 +57,33 @@ class SoundtrackLibraryTests(unittest.TestCase):
                          self.directory / "Conflux-A.mp3")
         self.assertIsNone(music_library.local_asset("../sensitive.txt"))
 
+    def test_eleven_track_zip_and_legacy_zip_both_supported(self):
+        extra_name = "Conflux-C.mp3"
+        extra_audio = b"ID3 fresh verified recording"
+        expanded = {"tracks": [*self.catalog["tracks"], {
+            "id": "new-recording", "title": "Silicon Saints",
+            "variants": [{"id": "provided", "duration_seconds": 7,
+                          "release_asset_filename": extra_name}]
+        }]}
+        full_hashes = {**self.hashes,
+                       extra_name: hashlib.sha256(extra_audio).hexdigest()}
+        def manifests(path=music_library.CHECKSUMS_PATH):
+            return full_hashes if path == music_library.FULL_CHECKSUMS_PATH else self.hashes
+        with mock.patch.object(music_library, "metadata", return_value=expanded):
+            with mock.patch.object(music_library, "checksums", side_effect=manifests):
+                old = music_library.install_release_zip(self.make_zip())
+                self.assertEqual(old["installed"], 2)
+                self.assertFalse((self.directory / extra_name).exists())
+                complete = music_library.install_release_zip(
+                    self.make_zip({**self.assets, extra_name: extra_audio}))
+                self.assertEqual(complete["installed"], 3)
+                self.assertEqual((self.directory / extra_name).read_bytes(), extra_audio)
+                with self.assertRaisesRegex(music_library.MusicError, "incomplete"):
+                    music_library.install_release_zip(
+                        self.make_zip({"Conflux-A.mp3": self.a,
+                                       extra_name: extra_audio}))
+                self.assertEqual((self.directory / "Conflux-B.mp3").read_bytes(), self.b)
+
     def test_tampered_file_is_rejected_before_writing(self):
         bad = dict(self.assets)
         bad["Conflux-B.mp3"] = b"modified bytes"
