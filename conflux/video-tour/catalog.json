@@ -1,0 +1,51 @@
+{
+  "schema": "conflux.portal.video-tour.v0.1",
+  "release_tag": "conflux-portal-tour-v0.1",
+  "status": "four_short_clips_prepared_release_assets_pending",
+  "description": "Four small 720p excerpts from the Architect's 2026-11-14 recorded local Portal walkthrough. The clips are optional viewing links, not bundled into the player's Portal download.",
+  "original_recording": "2026-11-14 02-38-32.mp4",
+  "source_range_policy": "Source ranges recorded as seconds into the Architect-supplied video; original footage and any media audio are not AI-generated replacements.",
+  "items": [
+    {
+      "id": "threshold",
+      "title": "Threshold — A Place to Begin",
+      "filename": "01-threshold-welcome.mp4",
+      "seconds": 13,
+      "source_start_seconds": 7,
+      "description": "A gentle welcome, optional game and creative rooms, and the first choices a newcomer sees.",
+      "sha256": "d08efb4e6df209f1f16064ad2c13790549df762a84a264281dcaa7039ad5e20d",
+      "bytes": 240663
+    },
+    {
+      "id": "ledger",
+      "title": "Ledger — Keeping the Record",
+      "filename": "02-ledger-workspace.mp4",
+      "seconds": 13,
+      "source_start_seconds": 29,
+      "description": "The Ledger workspace for accountable notes, records, and decisions beyond the game.",
+      "sha256": "d03f317d368074ac502e0757c76560f50927a7b8a270e5db1bcd42115837bb45",
+      "bytes": 395632
+    },
+    {
+      "id": "game",
+      "title": "SanctuaryOS — First Launch",
+      "filename": "03-game-first-launch.mp4",
+      "seconds": 16,
+      "source_start_seconds": 40,
+      "description": "An early Linux game preview, from the starting profile screen into Sanctuary Reach.",
+      "sha256": "d4d0727d1162230683b7036c35a9e46698542258cf305cc295dcda3228f858fe",
+      "bytes": 1316105
+    },
+    {
+      "id": "nodes",
+      "title": "Meet the Node Familiars",
+      "filename": "04-node-companions.mp4",
+      "seconds": 11,
+      "source_start_seconds": 67,
+      "description": "A brief glimpse of the five chibi companions and their character-specific appearances.",
+      "sha256": "163e1a326e4f70644344387769e9101cdeaa5849e19e72a2b0891d166562f2b9",
+      "bytes": 427714
+    }
+  ],
+  "notes": "Hashes and sizes describe the exact four clips prepared in this review. Re-encoding from the source on another system may produce new checksums. Browser links are shown only for published assets with exact expected names on the official public release."
+}
