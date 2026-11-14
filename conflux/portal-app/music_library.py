@@ -137,6 +137,37 @@ def library():
             "music_off_by_default": True}
 
 
+
+def install_from_public_release():
+    """Opt-in download of the fixed, verified album ZIP; no local file picker.
+
+    The only download target is a filename explicitly confirmed by the official
+    GitHub release API. Neither a client URL nor a local path is accepted.
+    Final installation still validates every MP3 against repository hashes.
+    """
+    public, error = public_release_assets()
+    url = public.get(ALBUM_ASSET)
+    if not url:
+        raise MusicError(
+            "The official GitHub soundtrack ZIP is unavailable right now "
+            "(" + str(error or "album-not-published") + "). Retry after refreshing the release.")
+    request = urllib.request.Request(
+        url, headers={"User-Agent": "Conflux-Portal/0.1",
+                      "Accept": "application/octet-stream"})
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            # Never consume unbounded bytes from a redirect/download response.
+            payload = response.read(MAX_ZIP_BYTES + 1)
+    except (urllib.error.HTTPError, urllib.error.URLError, OSError,
+            ValueError, TimeoutError) as exc:
+        raise MusicError(
+            "The official soundtrack download failed. Check your internet "
+            "connection or GitHub Release availability, then retry.") from exc
+    if len(payload) > MAX_ZIP_BYTES:
+        raise MusicError("The official soundtrack ZIP exceeds the 70 MB safety limit.")
+    return install_release_zip(payload)
+
+
 def install_release_zip(payload):
     if not isinstance(payload, (bytes, bytearray)) or len(payload) > MAX_ZIP_BYTES or not payload:
         raise MusicError("Choose the Conflux soundtrack ZIP (70 MB maximum).")
