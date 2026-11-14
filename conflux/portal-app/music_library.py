@@ -61,7 +61,7 @@ def expected_assets():
         version["release_asset_filename"]
         for track in metadata()["tracks"]
         for version in track["variants"]
-        if version.get("publication_status") == "staged_pending_upload"
+        if version.get("release_asset_filename")
     }
 
 
@@ -138,9 +138,9 @@ def install_release_zip(payload):
     if not isinstance(payload, (bytes, bytearray)) or len(payload) > MAX_ZIP_BYTES or not payload:
         raise MusicError("Choose the Conflux soundtrack ZIP (70 MB maximum).")
     allowed = checksums()
-    expected = expected_assets()
-    if set(allowed) != expected:
-        raise MusicError("The soundtrack release checksum list is incomplete.")
+    expected = set(allowed)  # The original seven SHA-verified ZIP recordings.
+    if not expected or not expected.issubset(expected_assets()):
+        raise MusicError("The soundtrack release checksum list is invalid.")
     try:
         archive = zipfile.ZipFile(io.BytesIO(payload))
     except (zipfile.BadZipFile, ValueError) as exc:
