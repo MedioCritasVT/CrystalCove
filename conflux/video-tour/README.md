@@ -1,6 +1,6 @@
 # Four short video windows into Conflux
 
-**Source:** Architect-supplied desktop recording, `2026-11-14 02-38-32.mp4` (89.33 seconds, 1920×1080, 60 fps). **Status:** Four 720p/30 fps MP4 excerpts have been prepared and locally checked; binary release publication remains separate from this GitHub source commit.
+**Source:** Architect-supplied desktop recording, `2026-11-14 02-38-32.mp4` (89.33 seconds, 1920×1080, 60 fps). **Status:** All four 720p/30 fps MP4 clips are now published on the [public Conflux Portal Video Tour Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-portal-tour-v0.1), verified November 14, 2026. The video files are separate GitHub Release assets, not committed into the source tree.
 
 This is not a replacement for the source recording, the playable Linux game, the README or the Player Manual. Videos are **optional**, and the Portal shows their links on a dedicated **Video Tour** page. The text-first README remains readable without opening them.
 
@@ -13,41 +13,21 @@ This is not a replacement for the source recording, the playable Linux game, the
 
 The [machine-readable catalog](catalog.json) contains filenames, current known checksums of the prepared clips, durations, and descriptions. Re-encoding on another FFmpeg version can produce **different bytes/checksums** even when the excerpt looks equivalent; confirm provenance against the original recording.
 
-## Publish as optional GitHub Release assets
+## Watch the four published clips
 
-The GitHub source editing connection does **not** include a binary Release-upload action. Do not silently put MP4s into the Git clone: they're more useful as separate GitHub Release assets. The owner can create and upload them with their already configured `gh` login.
+- [Threshold — A Place to Begin](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4)
+- [Ledger — Keeping the Record](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4)
+- [SanctuaryOS — First Launch](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4)
+- [Meet the Node Familiars](https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4)
 
-**Path A: From the original recording**
+These same direct links are now on the [GitHub repository's front-page README](../../README.md), the local Portal's **Video Tour**, and the static website's video section. The links work without a GitHub login, Git clone, or Portal installation. Browser playback and download behavior depends on the visitor's browser.
 
-Run the [opt-in publication script](publish_from_recording.sh) in a terminal from the root of the Git checkout, specifying the actual recording location:
-
-```bash
-bash conflux/video-tour/publish_from_recording.sh "/path/to/2026-11-14 02-38-32.mp4"
-```
-
-This script checks for `ffmpeg`, `ffprobe`, and `gh`; produces all four small MP4s in `~/Conflux/SourceFiles/Videos/PortalTour/`; then **asks explicitly** before publishing. It refuses to overwrite existing clips. Review them for privacy or sensitive data before accepting. The script uploads only the four files, not the original 89-second recording.
-
-**Path B: If you already have the four prepared clips**
-
-Extract the four-video ZIP to a folder on your computer, open a terminal in that folder, and run:
-
-```bash
-gh release create conflux-portal-tour-v0.1 \
-  01-threshold-welcome.mp4 02-ledger-workspace.mp4 \
-  03-game-first-launch.mp4 04-node-companions.mp4 \
-  --repo MedioCritasVT/CrystalCove --target main \
-  --title "Conflux Portal — Four Short Tour Clips" \
-  --notes "Four optional clips from Arch's original Conflux Portal walkthrough."
-```
-
-For an already-created release, use `gh release upload conflux-portal-tour-v0.1 *.mp4 --repo MedioCritasVT/CrystalCove` (without `--clobber`).
-
-The [release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/conflux-portal-tour-v0.1) should then show all four MP4s. Once they are **actually present and public**, both the Portal's **Video Tour** room and the public website will display their individual links. The Portal's existing tab/window choice applies to these links.
+The [publication/re-encoding script](publish_from_recording.sh) is retained for future independently reviewed versions. **Do not run it to republish these already uploaded clips.** A future replacement needs an explicit version/release decision, review for sensitive information, and corresponding catalog updates.
 
 ## Player-first presentation boundaries
 
 - No clips are embedded in the Portal's locally rendered README, and no video starts automatically.
 - A user can visit the Portal, game, or README without any clips being downloaded.
-- The public website checks Release asset availability, not the presence of files in the source tree.
+- The public website and local Portal use explicitly verified Release links recorded in the catalog, even if a live GitHub API lookup temporarily fails.
 - The four examples represent an early preview, not a guarantee that every game feature is complete.
 - Source recordings, private experiments and full-resolution masters stay outside the public Git checkout unless the Architect deliberately releases them.

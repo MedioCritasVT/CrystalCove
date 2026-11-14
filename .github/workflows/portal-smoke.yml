@@ -46,6 +46,7 @@ jobs:
           node test_music.js
           node test_soundstage.js
           node test_video_tour.js
+          node test_video_tour_published.js
       - name: Video publishing script syntax (no upload)
         run: bash -n conflux/video-tour/publish_from_recording.sh
       - name: Browser-flow DOM smoke check (no browser packages)

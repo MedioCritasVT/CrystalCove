@@ -1,0 +1,57 @@
+name: Generate README GIFs and Node screenshot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out working branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - name: Install browser and self-contained media renderer
+        run: |
+          python3 -m pip install --user playwright Pillow imageio-ffmpeg
+          mkdir -p "$HOME/.local/bin"
+          ln -sf "$(python3 -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')" "$HOME/.local/bin/ffmpeg"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/ffmpeg" -version | head -n 1
+      - name: Render four GIFs and real Node Companions screenshot
+        run: bash docs/previews/render_previews.sh
+      - name: Validate expected media
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          directory=Path('docs/previews')
+          names=['01-threshold-preview.gif','02-creative-workspace-preview.gif',
+                 '03-gameplay-preview.gif','04-library-music-preview.gif',
+                 '05-node-companions.png']
+          for name in names:
+              p=directory/name
+              assert p.exists() and p.stat().st_size>8000, f'Missing or empty: {name}'
+              with Image.open(p) as im:
+                  im.verify()
+              print(f'{name}: {p.stat().st_size} bytes')
+          PY
+      - name: Commit reproducible small media into preview branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/previews/01-threshold-preview.gif
+          git add docs/previews/02-creative-workspace-preview.gif
+          git add docs/previews/03-gameplay-preview.gif
+          git add docs/previews/04-library-music-preview.gif
+          git add docs/previews/05-node-companions.png
+          if git diff --cached --quiet; then
+            echo "The five README previews are already current."
+          else
+            git commit -m "media: render four lightweight Portal loops and five-Node page screenshot"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
