@@ -16,6 +16,7 @@
   const stage = $("#soundtrack-versions");
   const libraryStatus = $("#music-library-status");
   const catalog = $("#music-catalog");
+  const downloads = $("#soundtrack-downloads");
   const zipInput = $("#music-zip");
   const reload = $("#music-recheck");
   const installStatus = $("#music-install-status");
@@ -141,12 +142,46 @@
         " file(s). Nothing was uploaded." :
       "No local files selected yet. The public catalog is metadata only.";
   }
+  function renderDownloads(tracks) {
+    downloads.replaceChildren();
+    for (const track of tracks) {
+      const card = document.createElement("article");
+      card.className = "card soundtrack-download-card";
+      const title = document.createElement("h3");
+      title.textContent = track.title;
+      card.append(title);
+      for (const variant of track.variants || []) {
+        const line = document.createElement("p");
+        const label = document.createElement("strong");
+        label.textContent = variant.id.replace(/[-_]/g, " ") + " · ";
+        line.append(label);
+        if (variant.download_url) {
+          // Only GitHub release assets confirmed by the Portal server are linked.
+          const link = document.createElement("a");
+          link.href = variant.download_url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "Download MP3";
+          line.append(link);
+        } else {
+          const note = document.createElement("span");
+          note.textContent = variant.source === "local" ?
+            "Available on this computer · public download pending" :
+            "Not publicly released yet";
+          line.append(note);
+        }
+        card.append(line);
+      }
+      downloads.append(card);
+    }
+  }
   async function loadAutomaticLibrary() {
     installStatus.textContent = "Checking available Conflux soundtrack recordings…";
     try {
       const response = await fetch("/api/music/library", {cache:"no-store"});
       if (!response.ok) throw Error("soundtrack status request failed");
       const data = await response.json();
+      renderDownloads(data.tracks || []);
       // Don't replace an actively playing manual file selection during a refresh.
       if (enabled && groups.size) stop();
       audio.removeAttribute("src");
@@ -272,7 +307,10 @@
         title.textContent = composition.title;
         const versions = composition.variants || [];
         const detail = document.createElement("span");
-        detail.textContent = " · " + versions.length + " supplied file(s); Architect confirms distribution rights · public audio upload pending";
+        detail.textContent = " · " + versions.length + " inventoried version(s); " +
+          (versions.some(v => v.publication_status === "metadata_only_pending_file_verification") ?
+            "new recording metadata pending verification" :
+            "public audio availability is shown below");
         item.append(title, detail);
         catalog.append(item);
       }
