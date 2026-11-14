@@ -83,6 +83,47 @@ Media folders are **empty** at installation. Media mounts are read-only **inside
 
 This is **not** a replica of CachyOS yet. To obtain redundant access to a media collection, you would still need a separately designed, verified transfer or synchronization plan, chosen media sources, and independent backup/restore tests. Never blindly map a production media folder or run destructive `rsync --delete` commands.
 
+## Updating installed services to use an external drive (no reinstall)
+
+**This is a separate feature from the first-time Install button.** The Portal's **Media Mirror Setup → Use an external drive — update existing services** section can update a *previously installed* Jellyfin, Navidrome, or Kavita Quadlet. This is particularly useful when your Bazzite internal drive is almost full and a large media library is already stored on another mounted device.
+
+**What Portal Update does:** `Updates & Setup → Check for Updates → Update → Relaunch` fetches updated Conflux source/UI through Git. It does **not** reinstall containers, delete user data, replace local Quadlet files, update Jellyfin/Kavita/Navidrome images, or automatically change volumes. The existing service configurations live under your user profile, **outside the Git checkout**. A **second, explicit media-mount update** in Media Mirror Setup changes exactly one selected Quadlet media mapping after inspection, approval, and native Bazzite dialog confirmation.
+
+### Steps from the Portal
+
+1. **Mount the external USB, secondary internal disk, or NAS share on Bazzite first.** In Dolphin, open the actual folder containing media. Test that you can list the files as your current desktop user. Do not format, erase, remount, or move an entire media collection as part of the Portal update.
+2. In the local Portal at `http://127.0.0.1:8765`, open **Media Mirror Setup → Use an external drive**. A Portal accessed over Tailscale remains view-only for installer actions.
+3. Choose **Jellyfin → /media**, **Navidrome → /music**, or the individual **Kavita → /books, /comics or /manga** mapping. Kavita's three folders can be configured in separate passes.
+4. Select **Choose folder…**, or copy the absolute mounted directory path from Dolphin and paste it into the field. **This initial candidate does not support mount paths with spaces or colons**; it will explicitly reject them rather than guess systemd escaping. If necessary, arrange a reviewed stable mountpoint without spaces *outside* this feature.
+5. Select **Preview mount update**. It verifies an existing separate mounted filesystem with `findmnt`, a recognized Conflux Quadlet, and the one read-only media mapping. It displays the current source, proposed new source, destination and mount point. It does **not** install, create folders, copy media, or restart anything.
+6. Check the approval box and choose **Apply to existing service**. The independent **native desktop confirmation** repeats the exact source and destination. Cancel safely if anything looks wrong.
+7. The tool saves a **private timestamped copy of the original Quadlet** under `~/.local/state/conflux-portal/quadlet-backups/`. It changes **only that media `Volume=` line** via atomic replacement, reloads user systemd, and restarts only the chosen service **if that service was already active**. Stopped services remain stopped.
+8. Open the selected app, select its known container library path, and verify you can browse and play one test file. If restart fails, the updater attempts to restore the original Quadlet and reload/restart the original service. Read the on-screen result before doing anything else.
+
+**Example** (replace with an actual verified mount; never paste this unverified path into Apply):
+
+```ini
+# Before: files on Bazzite's internal drive
+Volume=/var/home/architect/.local/share/conflux-media-mirror/media/video:/media:ro,z
+
+# After: media remains on an already-mounted secondary device
+Volume=/run/media/architect/EXTERNAL_DISK/Movies:/media:ro,nocreate
+```
+
+Only the `/media` source changes. Existing Jellyfin config and cache mappings (and its setup-wizard state) remain untouched. Kavita's `/kavita/config` and Navidrome's `/data` similarly remain untouched. The old media folder is **not deleted**. `ro` prevents writes through that media mount, and `nocreate` instructs Podman not to manufacture a missing source volume. Missing/disconnected external devices may prevent service startup; see the mount and systemd status before changing anything. Podman may add mount dependencies to Quadlet-generated services.
+
+**SELinux and permissions:** this feature never performs `:z`/`:Z` recursive relabeling on existing external media, `chmod`, `chown`, or weakens SELinux. That avoids unexpectedly modifying a whole external media collection, but a filesystem with incompatible labels, mount permissions or user mapping may be blocked by the container. The tool verifies *host* readability, **not** that every file is visible inside the container. If access fails, capture the exact service log and review the filesystem/SELinux strategy separately; do not run `chmod -R 777` or `chcon -R` on your production drive.
+
+**Drive availability:** if the desktop auto-mounts an external drive after you log in, the service might attempt to start before the device is mounted. Use a consistent mount location and verify `findmnt --target /your/real/path` and `systemctl --user status conflux-media-SERVICE.service` on restart. The update checks mounting at preview and again before Apply, but cannot promise it will remain mounted after a reboot.
+
+**Storage reality:** external media avoids duplicating bulky videos onto the Bazzite system disk, but each service's **database, metadata, thumbnails, transcoding cache and pulled images** may still consume internal space. With roughly 11 GB free, do not trigger large image pulls, thumbnail generation or transcoding without checking available disk space. **No container image updates, database migrations, media sync or automatic failover are part of this update.** A second server reading the same external disk/NAS is redundant access, **not a second independent backup**.
+
+### If you need to undo a mount update
+
+The backup path is reported after a successful Apply. Before any manual rollback, stop the affected service and inspect both the current Quadlet and the backup, then restore that one Quadlet file and run `systemctl --user daemon-reload`; restart the selected user service and check its logs. **Do not overwrite live configuration without first comparing its contents**—there may have been later edits. A failed Apply attempts rollback automatically; it does not delete media or databases. If this needs manual recovery, bring the on-screen message and the saved `.container.bak` path for review.
+
+**This is not an automatic upgrade of installed media applications.** Full image-version updates require a separate staged process with enough disk headroom, release-note review, state backups, and restore testing.
+
 ## First-run guide: adding media to the new containers
 
 **You do not copy files *into* a container.** The Bazzite installer already binds new host folders to fixed paths *inside* each app. The folders start **empty**. Open them with Dolphin and copy a small sample there, then choose the container-side path in the application's library settings.
