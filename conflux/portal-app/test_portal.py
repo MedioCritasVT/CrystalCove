@@ -387,9 +387,67 @@ class PortalSmokeTest(unittest.TestCase):
             urlopen(unexpected_body, timeout=3)
         self.assertEqual(err.exception.code, 400)
 
+    def test_service_mirror_script_is_served_and_port_map_visible(self):
+        _, html = self.get("/")
+        for name in ("mirror-check", "mirror-install", "mirror-approve"):
+            self.assertIn('id="' + name + '"', html)
+        for port in ("8096", "5000", "4533", "8443", "8444", "8445"):
+            self.assertIn(port, html)
+        status, script = self.get("/service-setup.js")
+        self.assertEqual(status, 200)
+        self.assertIn("/api/services/install", script)
+
+    def test_mirror_install_needs_authenticated_local_approval(self):
+        unauthorized = Request(self.base + "/api/services/install",
+                               data=b'{}', method="POST",
+                               headers={"Content-Type": "application/json"})
+        with self.assertRaises(HTTPError) as err:
+            urlopen(unauthorized, timeout=3)
+        self.assertEqual(err.exception.code, 403)
+
+        status, _ = self.post("/api/services/check", {})
+        self.assertEqual(status, 200)
+        request = {"plan_token": "bad", "explicit_confirmation": "not approved"}
+        with mock.patch.object(portal, "confirm_mirror_install_on_host") as confirm:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/services/install", request)
+            self.assertEqual(err.exception.code, 400)
+            confirm.assert_not_called()
+
+    def test_mirror_approval_dialog_cancellation_blocks_mutation(self):
+        with mock.patch.object(portal.MEDIA_MIRROR, "issue_plan",
+                               return_value={"ready": True, "plan_token": "test-plan"}):
+            _, report = self.post("/api/services/check", {})
+            self.assertEqual(report["plan_token"], "test-plan")
+        with mock.patch.object(portal, "confirm_mirror_install_on_host",
+                               return_value=False), \
+             mock.patch.object(portal.MEDIA_MIRROR, "install") as install:
+            with self.assertRaises(HTTPError) as err:
+                self.post("/api/services/install", {
+                    "plan_token": "test-plan",
+                    "explicit_confirmation": "INSTALL NEW BAZZITE MIRROR"
+                })
+            self.assertEqual(err.exception.code, 409)
+            install.assert_not_called()
+
+    def test_mirror_explicit_approval_calls_manager_without_real_install(self):
+        result = {"all_started": True, "services": {}, "installed_files": []}
+        with mock.patch.object(portal, "confirm_mirror_install_on_host",
+                               return_value=True), \
+             mock.patch.object(portal.MEDIA_MIRROR, "install",
+                               return_value=result) as installer:
+            status, data = self.post("/api/services/install", {
+                "plan_token": "test-plan",
+                "explicit_confirmation": "INSTALL NEW BAZZITE MIRROR"
+            })
+            self.assertEqual(status, 200)
+            self.assertTrue(data["all_started"])
+            installer.assert_called_once_with(
+                "test-plan", "INSTALL NEW BAZZITE MIRROR")
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)
