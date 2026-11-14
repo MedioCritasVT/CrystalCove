@@ -63,6 +63,10 @@
     footer a{color:var(--mint)}
     @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:300px;max-height:520px}.books{grid-template-columns:repeat(3,minmax(0,1fr))}}
     @media(max-width:630px){.wrap{width:min(var(--max),calc(100% - 1.7rem))}.grid,.books{grid-template-columns:1fr}.hero{gap:1.5rem;padding-block:2.4rem}.hero-art{min-height:290px;border-radius:130px 130px 12px 12px}.card,.books .card{min-height:0}.top{align-items:flex-start}nav{gap:.5rem 1.1rem}section{padding-block:2rem}}
+    .soundtrack-track{min-height:160px}
+    .soundtrack-track h3{font-size:1.2rem}
+    .soundtrack-track p{font-size:.87rem;margin:.3rem 0}
+    .soundtrack-track strong{color:var(--gold)}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
@@ -72,7 +76,7 @@
     <div class="wrap top">
       <a class="brand" href="#main" aria-label="Conflux home">CONFLUX <span>✦</span></a>
       <nav aria-label="Primary">
-        <a href="#explore">Explore</a><a href="#library">Books</a><a href="#workshop">Workshop</a><a href="#agents">Local agents</a><a href="#state">Project state</a>
+        <a href="#explore">Explore</a><a href="#soundtrack">Soundtrack</a><a href="#library">Books</a><a href="#workshop">Workshop</a><a href="#agents">Local agents</a><a href="#state">Project state</a>
       </nav>
     </div>
   </header>
@@ -101,6 +105,26 @@
         <article class="card"><span class="tag">Historical study</span><h3>The browser sanctuary</h3><p>A separate HTML/WebGL experiment with a small 3D world, conversations, crafting, and a bounded gate puzzle. It is not the current native game.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/downloads">Get the offline browser study →</a></article>
         <article class="card"><span class="tag">Orientation</span><h3>World and project map</h3><p>Discover what has been built, what is still proposed, and how Conflux, SanctuaryOS, and the independent VOS experiments relate.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/PROJECT_INDEX.md">Read the project scope map →</a></article>
       </div>
+    </section>
+    <section class="wrap" id="soundtrack">
+      <div class="section-top">
+        <div class="eyebrow">Music of Conflux · Architect's first EP</div>
+        <h2>Conflux Soundtrack</h2>
+        <p>Explore nine inventoried compositions and ten recordings, including both <em>Sacrament of Oath</em> takes and three newly supplied tracks. Songs are listed even when their audio has not yet been published. MP3 download links appear only after real GitHub Release assets are verified.</p>
+      </div>
+      <p id="public-soundtrack-status" class="meta" role="status" aria-live="polite">Checking public release availability. Songs cannot be downloaded until their audio assets are published.</p>
+      <div id="public-soundtrack-list" class="grid" aria-label="Conflux recordings">
+        <article class="card"><h3>Awareness transcends that which it is aw…</h3><p>Original recording · release pending</p></article>
+        <article class="card"><h3>Call Me Through the Mountain</h3><p>Release pending</p></article>
+        <article class="card"><h3>Ghost in the Circuit Chapel</h3><p>Release pending</p></article>
+        <article class="card"><h3>Ritual in the Circuit</h3><p>Release pending</p></article>
+        <article class="card"><h3>The Weight of the World</h3><p>Release pending</p></article>
+        <article class="card"><h3>Sacrament of Oath</h3><p>Two distinct recordings · release pending</p></article>
+        <article class="card"><h3>Who Gave You the Crown?</h3><p>New · awaiting release file verification</p></article>
+        <article class="card"><h3>Little Adventurer</h3><p>New · awaiting release file verification</p></article>
+        <article class="card"><h3>LITTLE GODS IN WHITE GLOVES</h3><p>New · awaiting release file verification</p></article>
+      </div>
+      <p class="meta"><a href="https://github.com/MedioCritasVT/CrystalCove/releases">Browse public GitHub releases</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/soundtrack/CATALOG.md">Provenance, versions and publication status</a>. No Git account, Git clone or local agent services are needed to download publicly released songs.</p>
     </section>
     <section class="wrap" id="library">
       <div class="section-top"><div class="eyebrow">The library</div><h2>Arcky and the Construct</h2><p>Original manuscript files are preserved for reading and historical reference. These are not newly copyedited editions; volume five remains unfinished.</p></div>
@@ -146,5 +170,6 @@
     </section>
   </main>
   <footer><div class="wrap">Conflux / CrystalCove · A world in development · Public, read-only portal draft. All official game, story, and software approvals remain with the Architect.</div></footer>
+<script src="soundtrack.js" defer></script>
 </body>
 </html>
