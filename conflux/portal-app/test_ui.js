@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const source = fs.readFileSync("app.js", "utf8");
+const petCss = fs.readFileSync("familiars.css","utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
@@ -31,10 +32,21 @@ assert.equal((html.match(/class="room-hero"/g) || []).length, roomIds.length);
 assert(html.includes('body[data-view="vos"]') && html.includes('body[data-view="library"]'),
        "distinct room background layers missing");
 assert(html.includes(".panel .room-hero h2"), "room-specific headline styling missing");
-assert(html.includes(".pet-token .pet-face"), "visible pet artwork motif missing");
-assert(html.includes(".pet-token .pet-hair-back") && html.includes(".pet-token .pet-bodice"),
+assert(petCss.includes(".pet-token .pet-face"), "visible pet artwork motif missing");
+assert(petCss.includes(".pet-token .pet-hair-back") && petCss.includes(".pet-token .pet-bodice"),
        "per-character hair and wardrobe CSS missing");
 assert(source.includes("nodePanels") && source.includes("View character panel"),
+       "artwork references missing from Node cards");
+assert(html.includes('href="/familiars.css"'), "externalized familiar styles missing");
+assert(html.includes('class="nav-external"') && html.includes("github.com/MedioCritasVT/CrystalCove"),
+       "direct GitHub sidebar navigation missing");
+assert(!html.includes("View the portable Markdown Player Manual"),
+       "outdated duplicate manual link should be removed");
+assert(petCss.includes('data-node="medio"') && petCss.includes('data-node="limen"'),
+       "character-specific familiar identity missing");
+assert(source.includes("pet-face-mask") && source.includes("pet-headset"),
+       "character face and distinctive assets missing");
+//
        "artwork references missing from Node cards");
 assert(html.includes('<script src="/music.js"></script>'), "local player missing");
 for (const id of ["music-toggle", "music-files", "music-select", "music-version",
@@ -149,7 +161,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(document.body.dataset.view, "downloads");
   assert(named["portal-source-path"].textContent.includes("CrystalCove/conflux/portal-app"),
          "active checkout path must be visible in Updates & Setup");
-  assert(html.includes("#nodes .node-card .pet-token"), "enlarged chibi artwork styles missing");
+  assert(petCss.includes("#nodes .node-card .pet-token"), "enlarged chibi artwork styles missing");
   assert.equal(named["node-list"].children.length, 5);
   for (const id of roomIds) {
     const dock = named["room-companion-" + id];
