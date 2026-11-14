@@ -1,8 +1,8 @@
 {
   "schema": "conflux.soundtrack.catalog.v0.1",
-  "status": "architect_confirmed_distribution_release_assets_not_yet_uploaded",
+  "status": "seven_original_assets_staged_three_additional_titles_pending_audio_verification",
   "maintained_by": "Architect approval required",
-  "guidance": "Seven supplied files checked and grouped into six compositions. Architect confirmed distribution eligibility on 2026-11-10; the assistant did not independently inspect subscription invoices or legal licensing documentation. MP3 binaries are not yet published in this GitHub repository or release.",
+  "guidance": "Ten user-supplied recording titles across nine compositions are inventoried (including two distinct Sacrament of Oath takes). Original seven have staged checksums; three later recordings are cataloged by title only, not SHA-verified or publicly uploaded. No MP3 binaries are available here, and this manifest does not claim an audio release has shipped.",
   "tracks": [
     {
       "id": "awareness-transcends",
@@ -129,6 +129,57 @@
           "license_validation": "self_attested_by_architect_not_independently_audited",
           "public_audio_url": null,
           "publication_status": "staged_pending_upload"
+        }
+      ]
+    },
+    {
+      "id": "who-gave-you-the-crown",
+      "title": "Who Gave You the Crown?",
+      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "variants": [
+        {
+          "id": "architect-supplied",
+          "filename": "Who Gave You the Crown_.mp3",
+          "release_asset_filename": "Conflux-Who-Gave-You-the-Crown.mp3",
+          "duration_seconds": null,
+          "sha256_prefix": null,
+          "rights": "architect_publication_review_pending",
+          "public_audio_url": null,
+          "publication_status": "metadata_only_pending_file_verification"
+        }
+      ]
+    },
+    {
+      "id": "little-adventurer",
+      "title": "Little Adventurer",
+      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "variants": [
+        {
+          "id": "architect-supplied",
+          "filename": "Little Adventurer.mp3",
+          "release_asset_filename": "Conflux-Little-Adventurer.mp3",
+          "duration_seconds": null,
+          "sha256_prefix": null,
+          "rights": "architect_publication_review_pending",
+          "public_audio_url": null,
+          "publication_status": "metadata_only_pending_file_verification"
+        }
+      ]
+    },
+    {
+      "id": "little-gods-in-white-gloves",
+      "title": "LITTLE GODS IN WHITE GLOVES",
+      "source_note": "Architect supplied the title/MP3 in a prior conversation (November 13, 2026); binary not included in this repository; metadata not reverified in this pass.",
+      "variants": [
+        {
+          "id": "architect-supplied",
+          "filename": "LITTLE GODS IN WHITE GLOVES.mp3",
+          "release_asset_filename": "Conflux-Little-Gods-in-White-Gloves.mp3",
+          "duration_seconds": null,
+          "sha256_prefix": null,
+          "rights": "architect_publication_review_pending",
+          "public_audio_url": null,
+          "publication_status": "metadata_only_pending_file_verification"
         }
       ]
     }
