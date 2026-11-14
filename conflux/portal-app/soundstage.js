@@ -135,6 +135,11 @@
   }
   visualButton.addEventListener("click", () => showPanel(panel.hidden));
   visualClose.addEventListener("click", () => showPanel(false));
+  if (typeof document.querySelectorAll === "function") {
+    for (const button of document.querySelectorAll("nav button[data-page]")) {
+      button.addEventListener("click", () => { if (!panel.hidden) showPanel(false); });
+    }
+  }
   audio.addEventListener("playing", () => {if (!panel.hidden) void connect();});
   audio.addEventListener("pause", stopDrawing);
   audio.addEventListener("emptied", () => {
