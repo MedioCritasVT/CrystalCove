@@ -76,10 +76,10 @@ def local_asset(name):
     return path
 
 
-def public_release_assets():
+def public_release_assets(refresh=False):
     global _cached_assets, _cached_at, _cached_error
     with _cache_lock:
-        if _cached_assets is not None and time.monotonic() - _cached_at < REMOTE_CACHE_SECONDS:
+        if not refresh and _cached_assets is not None and time.monotonic() - _cached_at < REMOTE_CACHE_SECONDS:
             return _cached_assets, _cached_error
     request = urllib.request.Request(
         API, headers={"Accept": "application/vnd.github+json",
@@ -145,8 +145,10 @@ def install_from_public_release():
     GitHub release API. Neither a client URL nor a local path is accepted.
     Final installation still validates every MP3 against repository hashes.
     """
-    public, error = public_release_assets()
+    public, error = public_release_assets(refresh=True)
     url = public.get(ALBUM_ASSET)
+    if url and url != RELEASE_PREFIX + ALBUM_ASSET:
+        raise MusicError("The public release returned an unexpected album URL.")
     if not url:
         raise MusicError(
             "The official GitHub soundtrack ZIP is unavailable right now "
