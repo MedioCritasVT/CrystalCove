@@ -26,8 +26,10 @@ SERVICE_BUNDLE = ROOT.parent / "platforms" / "bazzite-service-bundle"
 if SERVICE_BUNDLE.is_dir():
     sys.path.insert(0, str(SERVICE_BUNDLE))
     import service_manager as MEDIA_MIRROR
+    import media_mounts as MEDIA_MOUNTS
 else:
     MEDIA_MIRROR = None
+    MEDIA_MOUNTS = None
 MIRROR_LOCK = threading.Lock()
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
@@ -126,6 +128,30 @@ def confirm_mirror_install_on_host():
     try:
         return subprocess.run(cmd, capture_output=True, check=False,
                               timeout=90).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
+def confirm_mirror_storage_on_host(service, target, folder):
+    """Explicit physical-desktop approval for a reviewed existing-service edit."""
+    message = (
+        f"Change ONLY the {service} media mount {target} to:\n{folder}\n\n"
+        "The source must remain mounted. The selected service may restart. "
+        "No media files, databases or application state will be moved or erased. "
+        "The original Quadlet will be backed up. Proceed?"
+    )
+    program = shutil.which("kdialog")
+    if program:
+        cmd = [program, "--warningyesno", message, "--title",
+               "Conflux existing media mount update"]
+    else:
+        program = shutil.which("zenity")
+        if not program:
+            return False
+        cmd = [program, "--question", "--title=Conflux existing media mount update",
+               "--text=" + message]
+    try:
+        return subprocess.run(cmd, capture_output=True, check=False, timeout=90).returncode == 0
     except (OSError, subprocess.TimeoutExpired):
         return False
 
@@ -276,7 +302,8 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/game/find", "/api/game/register",
                          "/api/updates/check", "/api/updates/apply",
                          "/api/updates/relaunch", "/api/desktop/install",
-                         "/api/services/check", "/api/services/install"):
+                         "/api/services/check", "/api/services/install",
+                         "/api/services/storage/plan", "/api/services/storage/apply"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -307,7 +334,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.respond(400, {"error": "invalid-request"})
         # Privileged service changes are desktop-local; the remote Tailscale
         # website may be viewed but cannot run host installer actions.
-        if route in ("/api/services/check", "/api/services/install"):
+        if route in ("/api/services/check", "/api/services/install",
+                      "/api/services/storage/plan", "/api/services/storage/apply"):
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Bazzite Portal at 127.0.0.1 to manage services."})
             if MEDIA_MIRROR is None:
@@ -317,6 +345,27 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 if route == "/api/services/check":
                     return self.respond(200, MEDIA_MIRROR.issue_plan())
+                if route == "/api/services/storage/plan":
+                    if MEDIA_MOUNTS is None:
+                        return self.respond(501, {"error": "Storage manager unavailable."})
+                    return self.respond(200, MEDIA_MOUNTS.plan(
+                        body.get("service"), body.get("destination"),
+                        body.get("host_folder")))
+                if route == "/api/services/storage/apply":
+                    if MEDIA_MOUNTS is None:
+                        return self.respond(501, {"error": "Storage manager unavailable."})
+                    token = body.get("plan_token")
+                    if (not isinstance(token, str)
+                            or body.get("explicit_confirmation") != "APPLY READ-ONLY MEDIA MOUNT"):
+                        return self.respond(400, {"error": "Review a current storage plan and approve it."})
+                    pending = MEDIA_MOUNTS.PLANS.get(token)
+                    if not pending:
+                        return self.respond(409, {"error": "Storage plan missing or expired; inspect again."})
+                    info = pending["info"]
+                    if not confirm_mirror_storage_on_host(
+                            info["service"], info["destination"], info["new_host_folder"]):
+                        return self.respond(409, {"error": "Physical-desktop approval was declined."})
+                    return self.respond(200, MEDIA_MOUNTS.apply(token))
                 # A direct install call without a fresh token and explicit
                 # user approval cannot proceed. Local dialog is an additional
                 # safeguard against remote/proxied manipulation.
