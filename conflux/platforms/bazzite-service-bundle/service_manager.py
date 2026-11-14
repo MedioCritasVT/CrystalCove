@@ -30,6 +30,9 @@ SERVICES = {
                    ("media/manga", "/manga", "ro,z")]},
 }
 SUPPORTED = tuple(SERVICES)
+# Separate HTTPS listener ports for opt-in Tailscale Serve, NOT opened by install.
+# The Tailscale target stays at the localhost port in SERVICES.
+TAILSCALE_HTTPS_PORTS = {"jellyfin": 8443, "kavita": 8444, "navidrome": 8445}
 PLAN_WINDOW = 300
 _issued = {}
 
@@ -102,8 +105,9 @@ def summarize():
         "rootless_user": os.geteuid() != 0,
     }
     if checks["podman"]:
-        checks["podman_rootless"] = run_readonly(
-            ["podman", "info", "--format", "{{.Host.Security.Rootless}}"])[0]
+        ok, output = run_readonly(
+            ["podman", "info", "--format", "{{.Host.Security.Rootless}}"])
+        checks["podman_rootless"] = ok and output.lower().strip() == "true"
     else:
         checks["podman_rootless"] = False
     if checks["systemctl"]:
@@ -117,6 +121,11 @@ def summarize():
         # Never overwrite even a partial previous installation.
         services[name] = {
             "port": spec["port"], "image": spec["image"],
+            "local_url": "http://127.0.0.1:%d" % spec["port"],
+            "optional_tailscale_https_port": TAILSCALE_HTTPS_PORTS[name],
+            "tailscale_serve_example_NOT_EXECUTED":
+                "tailscale serve --bg --https=%d %d" %
+                (TAILSCALE_HTTPS_PORTS[name], spec["port"]),
             "unit_conflict": path.exists() or path.is_symlink(),
             "port_free": port_free(spec["port"]),
             "state_conflict": (ROOT / "state" / name).exists(),
@@ -130,7 +139,11 @@ def summarize():
             "existing_data_untouched": True,
             "immich": "Not included: official Immich requires a separately reviewed Docker Compose/database deployment.",
             "searxng": "Not included in the first installer: its private configuration and update model need a separate review.",
-            "scope": "New isolated localhost-only services; no existing library imports, no sudo, no package layering, no automatic updates."}
+            "scope": "New isolated localhost-only services; no existing library imports, no sudo, no package layering, no automatic updates.",
+            "service_ports": {name: {"local_http": SERVICES[name]["port"],
+                                    "optional_tailscale_https": TAILSCALE_HTTPS_PORTS[name]}
+                              for name in SUPPORTED},
+            "release_status": "First Bazzite candidate; no real-host acceptance test yet."}
 
 def issue_plan():
     report = summarize()
@@ -177,8 +190,13 @@ def install(plan_token, explicit_confirmation):
     except Exception:
         for file in reversed(created_files):
             file.unlink(missing_ok=True)
-        # Preserve any potential service data after the first successful reload.
-        # Empty new directories may be left for manual inspection.
+        # Before any service is started, roll back only directories we made
+        # and only when still empty. Never touch pre-existing paths or data.
+        for directory in sorted(created_dirs, key=lambda p: len(p.parts), reverse=True):
+            try:
+                directory.rmdir()
+            except OSError:
+                pass
         raise
     results = {}
     for name in SUPPORTED:
@@ -191,6 +209,9 @@ def install(plan_token, explicit_confirmation):
                          "url": "http://127.0.0.1:%d" % SERVICES[name]["port"]}
     return {"installed_files": [str(f) for f in created_files],
             "services": results, "all_started": all(x["started"] for x in results.values()),
+            "port_map": {name: {"local_http": SERVICES[name]["port"],
+                                "optional_tailscale_https": TAILSCALE_HTTPS_PORTS[name]}
+                         for name in SUPPORTED},
             "warning": "New empty libraries only. Verify every service locally; no backups, media imports or remote access were configured."}
 
 if __name__ == "__main__":
