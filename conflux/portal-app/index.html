@@ -23,13 +23,13 @@ button,input{font:inherit}button{cursor:pointer}
 .motif span:nth-child(2){background:var(--violet)}.motif span:nth-child(3){background:var(--blue)}.motif span:nth-child(4){background:var(--green)}
 nav{display:grid;gap:6px;margin-top:24px}
 nav button{--nav-accent:var(--amber);background:transparent;border:1px solid transparent;color:var(--ink);text-align:left;padding:11px 12px;border-radius:10px}
-nav button[data-page="philosophy"]{--nav-accent:var(--green)}nav button[data-page="about-arch"]{--nav-accent:var(--violet)}nav button[data-page="home"]{--nav-accent:var(--amber)}nav button[data-page="apps"]{--nav-accent:var(--violet)}nav button[data-page="downloads"]{--nav-accent:var(--amber)}nav button[data-page="vos"]{--nav-accent:var(--blue)}nav button[data-page="library"]{--nav-accent:var(--violet)}nav button[data-page="nodes"]{--nav-accent:var(--green)}nav button[data-page="guide"]{--nav-accent:var(--amber)}
+nav button[data-page="philosophy"]{--nav-accent:var(--green)}nav button[data-page="about-arch"]{--nav-accent:var(--violet)}nav button[data-page="home"]{--nav-accent:var(--amber)}nav button[data-page="apps"]{--nav-accent:var(--violet)}nav button[data-page="downloads"]{--nav-accent:var(--amber)}nav button[data-page="vos"]{--nav-accent:var(--blue)}nav button[data-page="library"]{--nav-accent:var(--violet)}nav button[data-page="nodes"]{--nav-accent:var(--green)}nav button[data-page="service-setup"]{--nav-accent:var(--blue)}nav button[data-page="guide"]{--nav-accent:var(--amber)}
 nav button:hover,nav button[aria-current="page"]{background:color-mix(in srgb,var(--nav-accent) 13%,#1d2533);border-color:color-mix(in srgb,var(--nav-accent) 55%,#252c37)}
 nav button[aria-current="page"]{box-shadow:inset 4px 0 0 var(--nav-accent);font-weight:700}
 main{width:100%;max-width:1200px;margin:0 auto;padding:35px clamp(18px,4.8vw,56px)}
 .notice{border:1px solid #89744f;background:#30291f;padding:12px 16px;border-radius:11px;margin:0 0 28px;color:#eee0c8}
 .panel{--accent:var(--amber);--echo:var(--violet)}
-#philosophy{--accent:var(--green);--echo:var(--violet)}#about-arch{--accent:var(--violet);--echo:var(--amber)}#home{--accent:var(--amber);--echo:var(--violet)}#apps{--accent:var(--violet);--echo:var(--green)}#downloads{--accent:var(--amber);--echo:var(--blue)}#vos{--accent:var(--blue);--echo:var(--green)}#library{--accent:var(--violet);--echo:var(--amber)}#nodes{--accent:var(--green);--echo:var(--violet)}#guide{--accent:var(--amber);--echo:var(--green)}
+#philosophy{--accent:var(--green);--echo:var(--violet)}#about-arch{--accent:var(--violet);--echo:var(--amber)}#home{--accent:var(--amber);--echo:var(--violet)}#apps{--accent:var(--violet);--echo:var(--green)}#downloads{--accent:var(--amber);--echo:var(--blue)}#vos{--accent:var(--blue);--echo:var(--green)}#library{--accent:var(--violet);--echo:var(--amber)}#nodes{--accent:var(--green);--echo:var(--violet)}#service-setup{--accent:var(--blue);--echo:var(--green)}#guide{--accent:var(--amber);--echo:var(--green)}
 .panel[hidden]{display:none}
 .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--accent);font-weight:700}
 h2{font:normal clamp(2rem,4.8vw,3.2rem)/1.15 Georgia,serif;margin:11px 0 14px}h3{font:normal 1.4rem/1.32 Georgia,serif;margin:0 0 12px;color:var(--ink)}
@@ -172,6 +172,7 @@ nav button[aria-current="page"]{border-left:3px solid #e6d6d0;padding-left:10px}
 
 
 /* Safe updates: Ratio precision and Limen's explicit transition boundary. */
+body[data-view="service-setup"]{--ambient:var(--blue);--ambient2:var(--green);--room-sky:#203748;--room-mid:#223143;--room-floor:#142530;--room-fog:rgba(132,191,243,.19);--room-fog-alt:rgba(156,222,192,.15)}
 body[data-view="updates"]{
  --ambient:var(--blue);--ambient2:var(--green);
  --room-sky:#1d3d49;--room-mid:#1c3344;--room-floor:#122534;
@@ -354,9 +355,10 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card a{display:inline-block;margin-top:12px}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
-.comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"></head><body>
+.comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
-<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="updates">Updates & Setup</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -556,6 +558,36 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <p>The world, characters and menus are evolving. Some locations and progression systems are prototypes, and the current game is Linux-only. If something breaks, note the game version, Linux distribution, graphics card, location in the game, and steps that led to the problem.</p>
 </section>
 
+<section class="panel" id="service-setup" hidden>
+  <div class="room-hero"><div class="room-words"><div class="eyebrow">Bazzite · Private media mirror</div><h2>Media Mirror Setup</h2><p class="lead">Install three separate, rootless media services on Bazzite after a prerequisite check and your approval. This does not migrate the CachyOS server, import libraries, or expose anything to the internet.</p></div><aside class="room-companions" id="room-companion-service-setup" data-room="service-setup" aria-label="Node companions for service setup"></aside></div>
+  <p class="status-line"><strong>First candidate:</strong> Jellyfin, Kavita, and Navidrome only. This creates fresh empty local media and state folders; installation may pull container images and start three services. Immich and SearXNG require separate review. No automatic backup, media copy, Tailscale routing, or image updating is performed.</p>
+  <h3>Service ports</h3>
+  <p>These are loopback-only local ports. The optional Tailscale HTTPS ports are suggested for later manual private routing.</p>
+  <div class="mirror-table-wrap"><table><thead><tr><th>Service</th><th>Local URL</th><th>Optional Tailscale HTTPS</th></tr></thead><tbody>
+    <tr><td>Jellyfin</td><td><code>http://127.0.0.1:8096</code></td><td><code>8443</code></td></tr>
+    <tr><td>Kavita</td><td><code>http://127.0.0.1:5000</code></td><td><code>8444</code></td></tr>
+    <tr><td>Navidrome</td><td><code>http://127.0.0.1:4533</code></td><td><code>8445</code></td></tr>
+  </tbody></table></div>
+  <div class="download-panel">
+    <h3>Inspect, review, install</h3>
+    <p>Start with a read-only Bazzite check. The install button stays disabled until the requirements pass and you review the plan.</p>
+    <button class="action" id="mirror-check" type="button">1 · Check Bazzite dependencies</button>
+    <div id="mirror-report" class="mirror-report" aria-live="polite"></div>
+    <label class="mirror-confirm"><input id="mirror-approve" type="checkbox"><span>I approve a fresh, separate mirror installation, without changing or copying existing libraries.</span></label>
+    <p><button class="action secondary" id="mirror-install" type="button" disabled>2 · Install new services</button></p>
+    <p id="mirror-status" class="status-line" role="status" aria-live="polite">Not checked. Installer controls require the Bazzite desktop Portal at http://127.0.0.1:8765, not a Tailscale browser session.</p>
+  </div>
+  <h3>Tailscale access — separate opt-in</h3>
+  <p>After completing each service's local account setup, optionally enable private access using Tailscale Serve. These example commands are <strong>never run by this installer</strong>:</p>
+  <pre class="mirror-code"><code>tailscale serve --bg --https=8443 8096    # Jellyfin
+tailscale serve --bg --https=8444 5000    # Kavita
+tailscale serve --bg --https=8445 4533    # Navidrome
+tailscale serve status                      # Inspect routes</code></pre>
+  <p class="theme-note">From a device in your tailnet, use the actual Serve URLs shown by Tailscale, e.g. <code>https://BAZZITE-DEVICE.TAILNET.ts.net:8443</code>. Confirm HTTPS certificates and tailnet access rules; do not use Funnel.</p>
+  <h3>Backups and updates</h3>
+  <p>The bundle includes a manual, stop-first tool to archive its new application state into a private backup folder. It does not back up media, copy existing CachyOS records, or create redundant media automatically. Updating the Portal, Bazzite, or individual container images are three distinct operations.</p>
+  <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Read the complete Bazzite installer and backup README ↗</a></p>
+</section>
 <section class="panel" id="updates" hidden>
 <div class="room-hero">
   <div class="room-words">
@@ -599,4 +631,4 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script></body></html>
+<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
