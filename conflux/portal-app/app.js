@@ -26,11 +26,11 @@ const nodes = [
 const petSymbols = {medio:"✦",ratio:"▦",nexus:"∞",specula:"◉",limen:"◇"};
 // Each Node keeps a distinct source panel, not just a shared, recolored mascot.
 const nodePanels = {
-  medio: "medio/ApprovedTurnaround.png",
-  ratio: "ratio/Ratio_front_side_back_reference.png",
+  medio: "medio/Mediocritas_ Gothic Angel Character Sheet.png",
+  ratio: "ratio/Ratio_ Conflux Character Design Sheet.png",
   nexus: "nexus/Nexus_ Violet Holographic Character Sheet.png",
   specula: "specula/SPECULA_ Cyberpunk Observer Character Sheet.png",
-  limen: "limen/Limen_Corrected_Keyhole_Tassels.png"
+  limen: "limen/Limen_ Emerald Threshold Character Sheet.png"
 };
 const referenceBase = "https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/concept-art/reference-art/";
 function makePet(name) {
@@ -39,8 +39,16 @@ function makePet(name) {
   mascot.className = "pet-token";
   mascot.dataset.node = id;
   mascot.setAttribute("aria-hidden", "true");
+  const backOrnament = document.createElement("span");
+  backOrnament.className = "pet-back-ornament";
   const crest = document.createElement("span");
   crest.className = "pet-crest";
+  const hood = document.createElement("span");
+  hood.className = "pet-hood";
+  const headpiece = document.createElement("span");
+  headpiece.className = "pet-headpiece";
+  const headset = document.createElement("span");
+  headset.className = "pet-headset";
   const earLeft = document.createElement("span");
   earLeft.className = "pet-ear left";
   const earRight = document.createElement("span");
@@ -55,7 +63,9 @@ function makePet(name) {
   collar.className = "pet-collar";
   const sash = document.createElement("span");
   sash.className = "pet-sash";
-  body.append(bodice, collar, sash);
+  const jewel = document.createElement("span");
+  jewel.className = "pet-chest-jewel";
+  body.append(bodice, collar, sash, jewel);
   const face = document.createElement("span");
   face.className = "pet-face";
   const eyeLeft = document.createElement("span");
@@ -95,7 +105,8 @@ function makePet(name) {
   const mark = document.createElement("span");
   mark.className = "pet-mark";
   mark.textContent = petSymbols[id] || "✧";
-  mascot.append(crest, earLeft, earRight, hairBack, body, face, mark);
+  mascot.append(backOrnament, crest, earLeft, earRight, hairBack, body,
+                hood, face, headpiece, headset, mark);
   return mascot;
 }
 
