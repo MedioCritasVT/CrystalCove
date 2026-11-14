@@ -103,6 +103,7 @@ def summarize():
         "systemctl": command_available("systemctl"),
         "python": sys.version_info >= (3, 10),
         "rootless_user": os.geteuid() != 0,
+        "native_desktop_confirmation": command_available("kdialog") or command_available("zenity"),
     }
     if checks["podman"]:
         ok, output = run_readonly(
@@ -131,12 +132,14 @@ def summarize():
             "state_conflict": (ROOT / "state" / name).exists(),
         }
     checks["all_requirements"] = all(checks.values())
-    ready = checks["all_requirements"] and all(
+    root_conflict = ROOT.exists() or ROOT.is_symlink()
+    ready = checks["all_requirements"] and not root_conflict and all(
         not value["unit_conflict"] and value["port_free"] and
         not value["state_conflict"] for value in services.values())
     return {"host": info.get("PRETTY_NAME", info.get("ID", "unknown")),
             "checks": checks, "services": services, "ready": ready,
             "existing_data_untouched": True,
+            "mirror_root_conflict": root_conflict,
             "immich": "Not included: official Immich requires a separately reviewed Docker Compose/database deployment.",
             "searxng": "Not included in the first installer: its private configuration and update model need a separate review.",
             "scope": "New isolated localhost-only services; no existing library imports, no sudo, no package layering, no automatic updates.",
@@ -170,13 +173,27 @@ def install(plan_token, explicit_confirmation):
     created_files = []
     created_dirs = []
     try:
+        # Isolate private credentials and metadata from other host users.
+        # The root path must be entirely new; never adopt existing folders.
+        ROOT.mkdir(parents=True, exist_ok=False, mode=0o700)
+        created_dirs.append(ROOT)
+        for parent in (ROOT / "state", ROOT / "media"):
+            parent.mkdir(mode=0o700, exist_ok=False)
+            created_dirs.append(parent)
         dirs = sorted({ROOT / rel for spec in SERVICES.values()
                        for rel, _, _ in spec["mounts"]}, key=lambda p: len(p.parts))
         for directory in dirs:
             if directory.exists() or directory.is_symlink():
                 raise ValueError("Data destination already exists: " + str(directory))
-            directory.mkdir(parents=True, exist_ok=False)
-            created_dirs.append(directory)
+            # Build nested directories explicitly for reliable rollback.
+            missing = []
+            node = directory
+            while node != ROOT and not node.exists():
+                missing.append(node)
+                node = node.parent
+            for piece in reversed(missing):
+                piece.mkdir(mode=0o700, exist_ok=False)
+                created_dirs.append(piece)
         UNITS.mkdir(parents=True, exist_ok=True)
         for name in SUPPORTED:
             target = file_for(name)
