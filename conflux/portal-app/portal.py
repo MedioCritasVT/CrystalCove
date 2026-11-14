@@ -177,6 +177,14 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
         if route == "/familiars.css":
             return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
+        if route == "/soundstage.css":
+            return self.serve_file(ROOT / "soundstage.css", "text/css; charset=utf-8")
+        if route == "/soundstage.js":
+            return self.serve_file(ROOT / "soundstage.js", "text/javascript; charset=utf-8")
+        if route == "/video_tour.js":
+            return self.serve_file(ROOT.parents[1] / "docs" / "video_tour.js", "text/javascript; charset=utf-8")
+        if route == "/video-tour/catalog.json":
+            return self.serve_file(ROOT.parent / "video-tour" / "catalog.json", "application/json; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
         if route == "/readme.js":
