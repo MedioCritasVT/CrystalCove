@@ -46,8 +46,6 @@ assert(petCss.includes('data-node="medio"') && petCss.includes('data-node="limen
        "character-specific familiar identity missing");
 assert(source.includes("pet-face-mask") && source.includes("pet-headset"),
        "character face and distinctive assets missing");
-//
-       "artwork references missing from Node cards");
 assert(html.includes('<script src="/music.js"></script>'), "local player missing");
 for (const id of ["music-toggle", "music-files", "music-select", "music-version",
                   "music-play", "music-prev", "music-next", "music-volume",
