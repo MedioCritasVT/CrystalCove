@@ -40,7 +40,7 @@ The current `conflux/portal-app/app_updater.py` validates a real checkout whose 
 
 Existing automated tests use disposable local Git repositories, with GitHub fetch overridden to a **local bare repository**. They cover an up-to-date check, unrelated modified Obsidian data, conflicting tracked changes, branch switching, origin restrictions, divergence and explicit prior approval.
 
-**Additional tests proposed in the accompanying test branch:**
+**Additional automated tests merged in [PR #18](https://github.com/MedioCritasVT/CrystalCove/pull/18); GitHub Portal smoke workflow passed (2026-11-13):**
 - Multi-area update of Portal code, `docs/` and `conflux/platforms/` in one consented fast-forward, preserving a private untracked file.
 - Failed update check in a source ZIP extraction: no `.git`, no file changes; does **not** claim a functional ZIP updater.
 - Unreachable remote: no file changes and no unchecked apply.
@@ -54,7 +54,7 @@ python3 -m unittest discover -p 'test_*.py' -v
 node test_ui.js
 ```
 
-These tests must pass in the [Portal smoke workflow](../.github/workflows/portal-smoke.yml) before treating the new cases as verified. Ubuntu CI is not a physical Bazzite/KDE or native Unreal-game test.
+The [Portal smoke workflow](../.github/workflows/portal-smoke.yml) passed the Python tests, Python compilation, JavaScript syntax, music checks and browser-flow DOM smoke tests on GitHub's Ubuntu runner (PR #18). This verifies the **simulated/local Git** scenarios, not a physical Bazzite/KDE install or native Unreal-game launch.
 
 ## Next player acceptance pass (pending)
 
