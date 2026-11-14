@@ -46,7 +46,7 @@ Open `http://127.0.0.1:8765`. In **Updates & Setup**, choose **Check for Updates
 
 **Keep your work safe:** Portal Atelier/Ledger work is stored in the browser profile under its local address and port, while game saves live separately. Before replacing an installation or changing browsers, export Ledger's **Download restorable backup (.json)** and any other important workspace data. A Markdown Ledger download is a readable snapshot, **not** a restore backup. Keep the same browser profile and `127.0.0.1:8765` address when reopening, but do not treat browser storage as a backup.
 
-More detail: [Bazzite/KDE first-use guide](docs/FIRST_TIME_SETUP.md) · [Portal operation, limitations and troubleshooting](conflux/portal-app/README.md) · [Approach-system test observations](docs/APPROACH_SYSTEM_2026-11-12.md).
+More detail: [Bazzite/KDE first-use guide](docs/FIRST_TIME_SETUP.md) · [Portal operation, limitations and troubleshooting](conflux/portal-app/README.md) · [Approach-system observations](docs/APPROACH_SYSTEM_2026-11-12.md) · [Current ZIP/Git/game test status](docs/PLAYER_FIRST_RUN_TEST_STATUS_2026-11-13.md).
 
 ## Play the standalone Conflux V0.1 Linux preview
 
