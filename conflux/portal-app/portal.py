@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Conflux Portal: a Linux localhost-only launcher and project entrance."""
 import json
+import shutil
 import time
 import webbrowser
 import os
@@ -20,6 +21,14 @@ from app_updater import UpdateManager, UpdateError
 from install_desktop_launcher import install_desktop_launcher
 
 ROOT = Path(__file__).resolve().parent
+# Bundled, reviewable local service installer: never fetched from the network.
+SERVICE_BUNDLE = ROOT.parent / "platforms" / "bazzite-service-bundle"
+if SERVICE_BUNDLE.is_dir():
+    sys.path.insert(0, str(SERVICE_BUNDLE))
+    import service_manager as MEDIA_MIRROR
+else:
+    MEDIA_MIRROR = None
+MIRROR_LOCK = threading.Lock()
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
@@ -95,6 +104,30 @@ def register_game(path):
     finally:
         if temp_path is not None:
             temp_path.unlink(missing_ok=True)
+
+
+def confirm_mirror_install_on_host():
+    """Independent physical-desktop confirmation: no remote-only installs."""
+    message = (
+        "Create NEW, separate Jellyfin, Kavita and Navidrome services on this "
+        "Bazzite machine? This can download images and start containers. "
+        "Existing media will NOT be copied, backed up or changed. "
+        "Services will listen on localhost only."
+    )
+    program = shutil.which("kdialog")
+    if program:
+        cmd = [program, "--warningyesno", message, "--title", "Conflux service installer"]
+    else:
+        program = shutil.which("zenity")
+        if not program:
+            return False
+        cmd = [program, "--question", "--title=Conflux service installer",
+               "--text=" + message]
+    try:
+        return subprocess.run(cmd, capture_output=True, check=False,
+                              timeout=90).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -209,6 +242,9 @@ class Handler(BaseHTTPRequestHandler):
         if route in ("/apps/atelier", "/apps/ledger"):
             file = "atelier.html" if route == "/apps/atelier" else "ledger.html"
             return self.serve_file(ROOT / "apps" / file, "text/html; charset=utf-8")
+        if route == "/service-setup.js":
+            return self.serve_file(ROOT / "service_setup.js",
+                                   "text/javascript; charset=utf-8")
         if route == "/api/status":
             return self.respond(200, {
                 "platform": sys.platform, "mode": "local-preview",
@@ -239,7 +275,8 @@ class Handler(BaseHTTPRequestHandler):
         if route not in ("/api/music/install", "/api/music/install-public", "/api/launch", "/api/game/browse",
                          "/api/game/find", "/api/game/register",
                          "/api/updates/check", "/api/updates/apply",
-                         "/api/updates/relaunch", "/api/desktop/install"):
+                         "/api/updates/relaunch", "/api/desktop/install",
+                         "/api/services/check", "/api/services/install"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -268,6 +305,34 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        # Privileged service changes are desktop-local; the remote Tailscale
+        # website may be viewed but cannot run host installer actions.
+        if route in ("/api/services/check", "/api/services/install"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use the local Bazzite Portal at 127.0.0.1 to manage services."})
+            if MEDIA_MIRROR is None:
+                return self.respond(501, {"error": "Bazzite bundle missing from this Portal checkout."})
+            if not MIRROR_LOCK.acquire(blocking=False):
+                return self.respond(409, {"error": "A service check or installation is already running."})
+            try:
+                if route == "/api/services/check":
+                    return self.respond(200, MEDIA_MIRROR.issue_plan())
+                # A direct install call without a fresh token and explicit
+                # user approval cannot proceed. Local dialog is an additional
+                # safeguard against remote/proxied manipulation.
+                plan_token = body.get("plan_token")
+                confirmation = body.get("explicit_confirmation")
+                if not isinstance(plan_token, str) or not isinstance(confirmation, str):
+                    return self.respond(400, {"error": "A fresh plan and explicit confirmation are required."})
+                if confirmation != "INSTALL NEW BAZZITE MIRROR":
+                    return self.respond(400, {"error": "Confirmation was not accepted."})
+                if not confirm_mirror_install_on_host():
+                    return self.respond(409, {"error": "Installation was cancelled or no local confirmation dialog is available."})
+                return self.respond(200, MEDIA_MIRROR.install(plan_token, confirmation))
+            except (ValueError, RuntimeError, OSError) as error:
+                return self.respond(409, {"error": str(error)[:400]})
+            finally:
+                MIRROR_LOCK.release()
         try:
             if route == "/api/updates/check":
                 return self.respond(200, UPDATES.check())
