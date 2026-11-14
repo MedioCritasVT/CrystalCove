@@ -215,6 +215,174 @@
 }
 .pet-token[data-node="limen"] .pet-hair-lock{height:58px}
 
+/* Pass 3 — signature character assets: crowns, wings, gold filigree, jewels,
+   holographic rings, cat-ear surveillance headset and emerald threshold hood. */
+.pet-token .pet-back-ornament{position:absolute;inset:0;z-index:0;pointer-events:none}
+.pet-token .pet-back-ornament::before,.pet-token .pet-back-ornament::after{
+ content:"";position:absolute;top:23px;width:30px;height:53px;opacity:.9;
+ border:1px solid var(--pet-trim);
+ background:linear-gradient(135deg,color-mix(in srgb,var(--pet-glow) 35%,transparent),transparent);
+}
+.pet-token .pet-back-ornament::before{left:-1px;transform:rotate(-19deg);border-radius:100% 8% 90% 5%}
+.pet-token .pet-back-ornament::after{right:-1px;transform:rotate(19deg);border-radius:8% 100% 5% 90%}
+.pet-token .pet-chest-jewel{
+ position:absolute;left:14px;bottom:7px;width:9px;height:11px;z-index:5;
+ transform:rotate(45deg);background:var(--pet-glow);border:1px solid var(--pet-trim);
+ box-shadow:0 0 5px var(--pet-glow);
+}
+.pet-token .pet-headpiece,.pet-token .pet-headset,.pet-token .pet-hood{
+ display:none;position:absolute;pointer-events:none;
+}
+.pet-token[data-node="medio"] .pet-crest{
+ left:26px;top:0;width:46px;height:13px;opacity:1;
+ border:3px solid #e64c4c;box-shadow:0 0 5px #f33b5c,0 0 10px #cb263b9c;
+ background:transparent;transform:rotate(-3deg);border-radius:50%;z-index:9;
+}
+.pet-token[data-node="medio"] .pet-headpiece{
+ display:block;z-index:9;left:27px;top:18px;width:45px;height:16px;
+ border-top:5px solid #d7b264;border-bottom:2px solid #b28a3a;
+ background:linear-gradient(90deg,#cba45b,#f8df9b 44%,#bd914d);
+ clip-path:polygon(0 0,14% 0,25% 45%,46% 0,70% 45%,83% 0,100% 0,90% 100%,8% 100%);
+}
+.pet-token[data-node="medio"] .pet-headpiece::after{
+ content:"";position:absolute;left:20px;top:5px;width:8px;height:8px;
+ border:1px solid #f2e5c7;background:#17151d;transform:rotate(45deg);
+}
+.pet-token[data-node="medio"] .pet-chest-jewel{
+ width:11px;height:13px;left:12px;bottom:7px;
+ border:2px solid #e3a747;background:radial-gradient(#f7abff,#7924ad 70%);
+ border-radius:35% 40% 50% 45%;
+}
+.pet-token[data-node="medio"] .pet-back-ornament::before{
+ background:linear-gradient(110deg,#6a4a41cc,#211e26bd);border-color:#c7ae8b;
+ clip-path:polygon(100% 0,15% 25%,0 100%,95% 69%);
+}
+.pet-token[data-node="medio"] .pet-back-ornament::after{
+ background:linear-gradient(50deg,#4e4541bf,#211b23);border-color:#b19a8c;
+ clip-path:polygon(0 0,95% 28%,100% 100%,10% 72%);
+}
+.pet-token[data-node="medio"] .pet-bodice{
+ background:linear-gradient(110deg,#fff0c6,#ddba73);
+ border-color:#b9955e;
+}
+.pet-token[data-node="medio"] .pet-sash{background:#f3dfbb}
+.pet-token[data-node="ratio"] .pet-headpiece{
+ display:block;z-index:9;left:29px;top:4px;width:39px;height:25px;
+ border:2px solid #d2b675;border-radius:50%;transform:rotate(-14deg);
+ box-shadow:0 0 7px #5b96fd;
+}
+.pet-token[data-node="ratio"] .pet-headpiece::after{
+ content:"✦";position:absolute;top:-6px;left:13px;font-size:17px;
+ color:#7cc2ff;text-shadow:0 0 4px #4d95ff;
+}
+.pet-token[data-node="ratio"] .pet-crest{
+ top:1px;left:25px;width:49px;height:24px;border:1px solid #d8bb7b;opacity:.7;
+ box-shadow:none;transform:rotate(20deg);z-index:2;
+}
+.pet-token[data-node="ratio"] .pet-back-ornament::before,
+.pet-token[data-node="ratio"] .pet-back-ornament::after{
+ background:linear-gradient(145deg,#528afa70,#87c7ff12);
+ border:2px solid #70bbff;
+ clip-path:polygon(50% 0,100% 28%,55% 54%,100% 100%,5% 72%,0 20%);
+ box-shadow:0 0 8px #3b80ffad;
+}
+.pet-token[data-node="ratio"] .pet-chest-jewel{
+ width:12px;height:12px;left:12px;bottom:9px;
+ border-radius:50%;border:2px solid #d5b871;
+ background:radial-gradient(#efffff,#64b5ff 48%,#2446b0);
+}
+.pet-token[data-node="ratio"] .pet-bodice{
+ background:linear-gradient(115deg,#101324 30%,#283c83 50%,#12131f 65%);
+ border-color:#cfb575;
+}
+.pet-token[data-node="nexus"] .pet-crest{
+ top:0;left:20px;width:60px;height:27px;z-index:9;
+ border:2px solid #e1b7ff;transform:rotate(20deg);opacity:.84;
+ box-shadow:0 0 10px #d69eff;
+}
+.pet-token[data-node="nexus"] .pet-headpiece{
+ display:block;top:5px;left:36px;width:32px;height:23px;z-index:9;
+ border:2px solid #c993ff;border-radius:50%;
+ transform:rotate(-18deg);box-shadow:0 0 6px #e2a5ff;
+}
+.pet-token[data-node="nexus"] .pet-back-ornament::before,
+.pet-token[data-node="nexus"] .pet-back-ornament::after{
+ top:27px;width:23px;height:35px;
+ border:2px solid #d78cff;border-radius:50%;
+ background:linear-gradient(#c47dff50,transparent);box-shadow:0 0 8px #be7cef;
+}
+.pet-token[data-node="nexus"] .pet-chest-jewel{
+ width:12px;height:12px;left:11px;bottom:9px;
+ background:linear-gradient(#f4cdff,#9a48d5);border-color:#f4ddff;
+}
+.pet-token[data-node="nexus"] .pet-bodice{background:linear-gradient(100deg,#f3e5f3,#bda1d9);border-color:#a979d0}
+.pet-token[data-node="specula"] .pet-ear{
+ z-index:8;width:27px;height:34px;top:5px;
+ clip-path:polygon(0 100%,45% 0,100% 100%);
+ background:linear-gradient(155deg,#141526,#70599e);
+ border:2px solid #a675fb;
+}
+.pet-token[data-node="specula"] .pet-crest{display:none}
+.pet-token[data-node="specula"] .pet-headset{
+ display:block;left:7px;top:31px;width:78px;height:40px;z-index:8;
+ border:6px solid #242136;border-bottom-color:transparent;
+ border-radius:38% 38% 20% 20%;
+}
+.pet-token[data-node="specula"] .pet-headset::after{
+ content:"◉";position:absolute;right:-12px;top:-6px;width:22px;height:22px;
+ background:#19172b;border:2px solid #a96afb;
+ border-radius:50%;color:#bd8aff;text-align:center;line-height:18px;font-size:17px;
+ box-shadow:0 0 8px #905cff;
+}
+.pet-token[data-node="specula"] .pet-back-ornament::before,
+.pet-token[data-node="specula"] .pet-back-ornament::after{
+ background:linear-gradient(120deg,#8a76d570,#a5a3df40);
+ border-color:#b7abff;clip-path:polygon(0 0,100% 12%,82% 90%,0 100%);
+}
+.pet-token[data-node="specula"] .pet-chest-jewel{
+ left:6px;bottom:7px;width:24px;height:12px;
+ border-radius:3px;transform:none;border:2px solid #b58bff;
+ background:linear-gradient(#130e22,#241d3b);
+}
+.pet-token[data-node="specula"] .pet-chest-jewel::after{
+ content:"⌃ᴗ⌃";color:#c99aff;position:absolute;top:-5px;left:1px;
+ font-size:8px;white-space:nowrap;
+}
+.pet-token[data-node="limen"] .pet-hood{
+ display:block;z-index:5;top:4px;left:3px;width:91px;height:80px;
+ border:7px solid #1c2e27;border-bottom-color:transparent;
+ border-radius:54% 54% 23% 23%;
+ box-shadow:inset 0 8px 0 #2d624a;
+}
+.pet-token[data-node="limen"] .pet-hood::before{
+ content:"";position:absolute;top:-5px;left:22px;width:38px;height:10px;
+ border-bottom:2px solid #d0b478;border-radius:50%;
+}
+.pet-token[data-node="limen"] .pet-crest{
+ left:37px;top:7px;width:25px;height:27px;z-index:9;
+ border:2px solid #dfcb81;border-radius:45% 45% 5px 5px;
+ box-shadow:0 0 7px #67d69a;
+}
+.pet-token[data-node="limen"] .pet-crest::after{
+ content:"";position:absolute;left:8px;top:10px;width:5px;height:9px;
+ border-radius:50% 50% 20% 20%;background:#63d59d;
+}
+.pet-token[data-node="limen"] .pet-back-ornament::before,
+.pet-token[data-node="limen"] .pet-back-ornament::after{
+ border-color:#c5ac6c;
+ background:linear-gradient(130deg,#1d2d25,#277657ab);
+ border-radius:8px 60% 12px 60%;
+}
+.pet-token[data-node="limen"] .pet-chest-jewel{
+ background:radial-gradient(#a6f5bb,#277952);border:2px solid #d3b86f;
+ width:10px;height:15px;left:13px;bottom:8px;
+}
+.pet-token[data-node="limen"] .pet-sash::after{
+ content:"";position:absolute;top:8px;left:1px;width:5px;height:11px;
+ border:1px solid #c8ae6f;background:#61d19e;
+ border-radius:0 0 60% 60%;
+}
+
 @media(prefers-reduced-motion:no-preference){
  .room-companions .pet-token:first-child{animation:pet-bob 4s ease-in-out infinite}
  .room-companions .pet-token:nth-child(2){animation:pet-bob 4.5s ease-in-out -1s infinite}
