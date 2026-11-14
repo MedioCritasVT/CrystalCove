@@ -52,11 +52,10 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
    ```bash
    cd "$HOME/Conflux/CrystalCove/conflux/portal-app"
-   python3 -m unittest discover -p 'test_*.py' -v
    python3 portal.py
    ```
 
-   If you used **Download ZIP**, open a terminal in the extracted folder's `conflux/portal-app` directory in Dolphin instead, and run just the last two Python commands.
+   If you used **Download ZIP**, open the extracted folder's `conflux/portal-app` directory in Dolphin, press **F4** to open its terminal, and run **only** `python3 portal.py`. The test suite is **not** an installation prerequisite; developers may separately run `python3 -m unittest discover -p 'test_*.py' -v` to validate source.
 
 2. In a browser on that **same computer**, visit `http://127.0.0.1:8765`. Open **Atelier**, **Ledger**, or the **Player Manual** first. Try an experience that doesn't require the native game. Later, if you want, open the **Get the Game** room to find the Linux release.
 
