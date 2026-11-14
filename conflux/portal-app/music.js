@@ -19,6 +19,7 @@
   const downloads = $("#soundtrack-downloads");
   const albumDownload = $("#music-album-download");
   const zipInput = $("#music-zip");
+  const installPublic = $("#music-install-public");
   const reload = $("#music-recheck");
   const installStatus = $("#music-install-status");
   const accepted = /\.(mp3|wav|ogg|m4a|flac)$/i;
@@ -230,6 +231,30 @@
       installStatus.textContent = "Could not load the music library: " + error.message;
     }
   }
+
+  installPublic.addEventListener("click", async () => {
+    if (installPublic.disabled) return;
+    installPublic.disabled = true;
+    installStatus.textContent = "Downloading the verified soundtrack directly from GitHub (no local ZIP needed)…";
+    try {
+      const statusRes = await fetch("/api/status", {cache:"no-store"});
+      if (!statusRes.ok) throw Error("The local Portal is unavailable.");
+      const statusData = await statusRes.json();
+      const response = await fetch("/api/music/install-public", {
+        method:"POST",
+        headers:{"X-Conflux-Token":statusData.launch_token}
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error || "Could not install the public soundtrack.");
+      await loadAutomaticLibrary();
+      installStatus.textContent = "Downloaded and checksum-verified " + data.installed +
+        " recordings directly from GitHub. They are now available offline.";
+    } catch (error) {
+      installStatus.textContent = "Could not install soundtrack from GitHub: " + error.message;
+    } finally {
+      installPublic.disabled = false;
+    }
+  });
 
   zipInput.addEventListener("change", async () => {
     const zip = zipInput.files?.[0];
