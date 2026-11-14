@@ -1,0 +1,11 @@
+# Local/private material is never part of a public checkout by default.
+/private/
+/local/
+/developer/scratch/
+/artwork/originals/
+/music/masters/
+/exports/
+*.secret
+*.secret.*
+*.key
+*.pem
