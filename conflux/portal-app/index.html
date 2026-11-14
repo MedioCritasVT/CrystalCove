@@ -577,6 +577,23 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
     <p><button class="action secondary" id="mirror-install" type="button" disabled>2 · Install new services</button></p>
     <p id="mirror-status" class="status-line" role="status" aria-live="polite">Not checked. Installer controls require the Bazzite desktop Portal at http://127.0.0.1:8765, not a Tailscale browser session.</p>
   </div>
+<div class="download-panel" aria-label="First-run guide to media library folders">
+    <h3>First run: add media without entering a container</h3>
+    <p>The installer creates empty folders on Bazzite and mounts them into the services. Open <strong>Dolphin</strong>, press <code>Ctrl+L</code>, paste the host folder shown below, then <strong>copy</strong> a few files there. In the service's library picker, choose the shorter path that the container sees.</p>
+    <div class="mirror-table-wrap"><table><thead><tr><th>Application</th><th>Folder on Bazzite</th><th>Inside container</th></tr></thead><tbody>
+      <tr><td>Jellyfin</td><td><code>~/.local/share/conflux-media-mirror/media/video</code></td><td><code>/media</code></td></tr>
+      <tr><td>Navidrome</td><td><code>~/.local/share/conflux-media-mirror/media/music</code></td><td><code>/music</code></td></tr>
+      <tr><td>Kavita · Books</td><td><code>~/.local/share/conflux-media-mirror/media/books</code></td><td><code>/books</code></td></tr>
+      <tr><td>Kavita · Comics</td><td><code>~/.local/share/conflux-media-mirror/media/comics</code></td><td><code>/comics</code></td></tr>
+      <tr><td>Kavita · Manga</td><td><code>~/.local/share/conflux-media-mirror/media/manga</code></td><td><code>/manga</code></td></tr>
+    </tbody></table></div>
+    <p>For separate Jellyfin libraries, create <code>Movies</code> and <code>Shows</code> under the Bazzite <code>media/video</code> folder. In Jellyfin select <code>/media/Movies</code> or <code>/media/Shows</code>. Navidrome scans <code>/music</code>; in Kavita, use <strong>Admin → Libraries → Add Library</strong> and select <code>/books</code>, <code>/comics</code> or <code>/manga</code>.</p>
+    <p class="theme-note">Do not use <code>sudo</code>, <code>podman cp</code>, or broad permissions like <code>chmod 777</code>. Copy a small test file first. These read-only media mounts protect the source files, but <strong>they are not automatic backups</strong>.</p>
+    <h3>Jellyfin account wizard interrupted?</h3>
+    <p>Open <code>http://127.0.0.1:8096/web/</code> on Bazzite, use <code>Ctrl+Shift+R</code>, then either sign in with the account already created or finish the remaining wizard steps. Try a Firefox private window if the screen stays stuck. The library step can be skipped and completed later.</p>
+    <p>If it still won't proceed, inspect <code>systemctl --user status conflux-media-jellyfin.service --no-pager</code> and <code>journalctl --user -u conflux-media-jellyfin.service -n 60 --no-pager</code>, then check the exact error before changing anything. <strong>Do not delete Jellyfin's configuration or database.</strong></p>
+    <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Detailed first-run, Jellyfin recovery and backup instructions ↗</a></p>
+  </div>
   <h3>Tailscale access — separate opt-in</h3>
   <p>After completing each service's local account setup, optionally enable private access using Tailscale Serve. These example commands are <strong>never run by this installer</strong>:</p>
   <pre class="mirror-code"><code>tailscale serve --bg --https=8443 8096    # Jellyfin

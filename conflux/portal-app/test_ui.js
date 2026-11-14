@@ -24,6 +24,8 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
 assert(html.includes("id=\"mirror-check\"") && html.includes("id=\"mirror-install\""), "service controls missing");
 assert(html.includes("8443") && html.includes("8444") && html.includes("8445"), "optional Tailscale port map missing");
+assert(html.includes("First run: add media without entering a container"), "container mount onboarding missing");
+for (const mount of ["/media", "/music", "/books", "/comics", "/manga"]) assert(html.includes("<code>" + mount + "</code>"), "missing media mount " + mount);
 assert(html.includes('src="/service-setup.js"'), "service UI script missing");
 assert(html.includes("The Circle of Inquiry") && html.includes("About Arch"), "new reading rooms missing");
 assert(html.includes("An exploratory proposal is not an approved feature."), "philosophy evidence boundary missing");

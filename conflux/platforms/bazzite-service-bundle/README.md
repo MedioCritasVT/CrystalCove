@@ -83,6 +83,55 @@ Media folders are **empty** at installation. Media mounts are read-only **inside
 
 This is **not** a replica of CachyOS yet. To obtain redundant access to a media collection, you would still need a separately designed, verified transfer or synchronization plan, chosen media sources, and independent backup/restore tests. Never blindly map a production media folder or run destructive `rsync --delete` commands.
 
+## First-run guide: adding media to the new containers
+
+**You do not copy files *into* a container.** The Bazzite installer already binds new host folders to fixed paths *inside* each app. The folders start **empty**. Open them with Dolphin and copy a small sample there, then choose the container-side path in the application's library settings.
+
+### One folder, two names
+
+These are the **exact paths for this Conflux Bazzite candidate**, not general paths for every Jellyfin/Kavita/Navidrome installation.
+
+| Application | Folder on Bazzite (Dolphin) | Path to choose inside app |
+| --- | --- | --- |
+| Jellyfin | `~/.local/share/conflux-media-mirror/media/video/` | `/media` |
+| Jellyfin movies (optional subfolder) | `~/.local/share/conflux-media-mirror/media/video/Movies/` | `/media/Movies` |
+| Jellyfin shows (optional subfolder) | `~/.local/share/conflux-media-mirror/media/video/Shows/` | `/media/Shows` |
+| Navidrome | `~/.local/share/conflux-media-mirror/media/music/` | `/music` |
+| Kavita books | `~/.local/share/conflux-media-mirror/media/books/` | `/books` |
+| Kavita comics | `~/.local/share/conflux-media-mirror/media/comics/` | `/comics` |
+| Kavita manga | `~/.local/share/conflux-media-mirror/media/manga/` | `/manga` |
+
+**Try a small copy first:**
+
+1. On Bazzite, open **Dolphin** and press **Ctrl+L**. Paste the appropriate Bazzite path from the table. The folder is under hidden `.local`; entering the full path avoids needing to reveal hidden folders.
+2. Copy (do not move) one movie, one album, or one supported ebook/comic into the corresponding host folder. For separate movies and series, make `Movies` and `Shows` subfolders under `media/video`. Do not overwrite files with the same name without checking.
+3. In **Jellyfin**, open `http://127.0.0.1:8096/web/`. During the wizard, choose **Add Media Library**, then browse or type `/media/Movies` (movies) or `/media/Shows` (shows). Once setup is complete, libraries can also be managed via **Admin → Dashboard → Libraries**.
+4. In **Navidrome**, open `http://127.0.0.1:4533`. Its container's music folder is `/music`. Wait for the music scan or use its library scan controls. It must have read access to those files.
+5. In **Kavita**, open `http://127.0.0.1:5000`, go to the admin **Libraries** settings and choose **Add Library**. Pick the correct library type and container directory (`/books`, `/comics` or `/manga`). In the folder picker, check the filesystem root `/` if the mount doesn't immediately appear.
+6. Once a sample works, add more content. The container-side media mounts are **read-only**, protecting originals from app writes; the app state/database mounts remain writable.
+
+**Permissions:** if a copied file doesn't appear, first confirm it exists under the correct Bazzite folder and is readable by the Bazzite user. Do not run `chmod -R 777`, `sudo chown -R`, or delete your service state to experiment with permissions. Some external drives and network mounts need their own carefully reviewed mapping.
+
+### Jellyfin: wizard interrupted after creating an account
+
+Creating an admin user does **not** finish Jellyfin's initial wizard. If you refreshed after creating the user, the server may be healthy even if the browser is at an unexpected screen.
+
+1. Return to `http://127.0.0.1:8096/web/` on Bazzite, without going through the Portal or Tailscale.
+2. Try **Ctrl+Shift+R**. If it offers login, try the administrator credentials you created; if the wizard resumes, proceed. The media-library step is optional and can be completed later.
+3. Try the address in a **Firefox private window** to distinguish a stale browser session from server-side setup.
+4. If it remains blocked, inspect status and logs **without resetting the service**:
+
+   ```bash
+   systemctl --user status conflux-media-jellyfin.service --no-pager
+   journalctl --user -u conflux-media-jellyfin.service -n 60 --no-pager
+   ```
+
+5. Record the **exact screen or error text** and the relevant log messages, with passwords, authentication tokens, IPs and other private details removed. Do not erase `state/jellyfin/config`, edit its database, recreate the admin account, or change container images before understanding the cause.
+
+Jellyfin's [official setup wizard](https://jellyfin.org/docs/general/post-install/setup-wizard/) and [library paths](https://jellyfin.org/docs/general/server/libraries/) explain the app-side steps. Navidrome's [Docker mount documentation](https://navidrome.org/docs/installation/docker/) and Kavita's [library guidance](https://wiki.kavitareader.com/guides/admin-settings/libraries/index.html) explain their container-side path selection.
+
+**Backup reminder:** copying files into the new Bazzite media folders does not make them redundant unless another independent, restorable copy exists. The included `backup.py` saves the new services' **state/configuration**, not these media folders. Plan a separate media-file backup and test its restoration.
+
 ## Manage services on the Bazzite desktop
 
 After a successful installation:
