@@ -140,7 +140,7 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert.equal(audio.paused,true);
 
   // A ZIP is chosen only once. After installation the automatic library refreshes.
-  nodes["music-zip"].files=[{name:"Conflux_Soundtrack_Release_v0_1.zip",size:30000000}];
+  nodes["music-zip"].files=[{name:"Conflux_Soundtrack_Release_v0_1.zip",size:30000000,\n    arrayBuffer:async()=>new ArrayBuffer(16)}];
   await nodes["music-zip"].handlers.change();
   await tick();
   assert(installed);
@@ -149,6 +149,15 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert.equal(toggle.textContent,"Music Off");
   assert(calls.some(c=>c.url==="/api/music/install"));
   assert(calls.filter(c=>c.url==="/api/music/library").length>=2);
+  // A restored/unreadable file fails before upload, with usable instructions.
+  const uploadsBefore = calls.filter(c=>c.url==="/api/music/install").length;
+  nodes["music-zip"].files=[{name:"restored.zip",size:30000000,
+    arrayBuffer:async()=>{throw Error("NotReadableError");}}];
+  await nodes["music-zip"].handlers.change();
+  assert.equal(calls.filter(c=>c.url==="/api/music/install").length,uploadsBefore);
+  assert(nodes["music-install-status"].textContent.includes("Downloads folder"));
+  assert.equal(nodes["music-zip"].disabled,false);
+
 
   // Old manual file selection still works as an optional fallback.
   const files=nodes["music-files"];
