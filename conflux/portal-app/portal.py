@@ -181,6 +181,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
         if route == "/readme.js":
             return self.serve_file(ROOT / "readme.js", "text/javascript; charset=utf-8")
+        if route == "/link_choice.js":
+            return self.serve_file(ROOT / "link_choice.js", "text/javascript; charset=utf-8")
         if route == "/project/README.md":
             # Bundled README reflects the *installed* checkout, including
             # content updated through the explicit Git updater.
