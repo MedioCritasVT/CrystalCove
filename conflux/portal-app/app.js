@@ -4,6 +4,9 @@ const panels = [...document.querySelectorAll(".panel")];
 const known = new Set(panels.map(p => p.id));
 function show(id) {
   if (!known.has(id)) id = "home";
+  // Advanced music settings are contextual, not a persistent screen-covering
+  // popover. Close them on room changes while the audio itself keeps playing.
+  document.querySelectorAll(".music-advanced[open]").forEach(item => item.removeAttribute("open"));
   panels.forEach(p => { p.hidden = p.id !== id; });
   document.body.dataset.view = id;
   document.querySelectorAll("nav button").forEach(b => {
