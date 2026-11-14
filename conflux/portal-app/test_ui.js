@@ -22,6 +22,9 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
+assert(html.includes('class="threshold-postscript"'), "Threshold documentation invitation missing");
+assert(html.includes("Substantial documentation"), "GitHub documentation must be discoverable");
+assert(html.includes("Arch &lt;3's you xoxo"), "Arch's welcome note missing");
 assert(html.includes("#e9bf84") && html.includes("#c2a4f3"));
 assert(html.includes("#84bff3") && html.includes("#9cdec0"));
 
