@@ -33,6 +33,7 @@ jobs:
           node --check conflux/portal-app/app.js
           node --check conflux/portal-app/music.js
           node --check conflux/portal-app/readme.js
+          node --check conflux/portal-app/link_choice.js
           node --check docs/soundtrack.js
       - name: Local music player parse and no-autoplay smoke check
         working-directory: conflux/portal-app
@@ -42,3 +43,19 @@ jobs:
       - name: Browser-flow DOM smoke check (no browser packages)
         working-directory: conflux/portal-app
         run: node test_ui.js
+      - name: External link tab/window/cancel choice smoke
+        working-directory: conflux/portal-app
+        run: node test_link_choice.js
+      - name: Browser journey in real Chromium with the published Conflux soundtrack
+        if: github.event_name == 'pull_request'
+        working-directory: conflux/portal-app
+        run: |
+          python3 -m pip install --user playwright
+          python3 tools/browser_journey.py
+      - name: Preserve browser screenshots and review notes
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: conflux-portal-browser-journey
+          path: conflux/portal-app/browser-proof/
+          if-no-files-found: ignore

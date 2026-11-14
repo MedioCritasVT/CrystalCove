@@ -1,0 +1,413 @@
+/* Conflux chibi familiars — source-refined prototype. Not final character art.
+   Separate stylesheet prevents multi-pass overrides from accumulating in index.html.
+   Pass 1: silhouette, proportions, hair/skin/iris and clothing palettes.
+   Reference sheets: Gothic Angel Medio, Ratio Design, Nexus Violet,
+   Specula Cyberpunk Observer, Limen Emerald Threshold. */
+.pet-token{
+  --pet-hair:#2a2230;--pet-hair-shadow:#0d0d17;--pet-hair-light:#5c4951;
+  --pet-skin:#f2dfd9;--pet-irises:#a63c45;--pet-outfit:#51402c;
+  --pet-lining:#ebdbad;--pet-trim:#d2a95f;--pet-glow:#d8a566;
+  display:inline-block;position:relative;width:94px;height:102px;flex:none;
+  filter:drop-shadow(0 8px 11px #070c1aaf);
+}
+.pet-token[data-node="medio"]{
+  --pet-hair:#302832;--pet-hair-shadow:#101016;--pet-hair-light:#65505c;
+  --pet-skin:#f3e7e1;--pet-irises:#b32734;--pet-outfit:#d9b56a;
+  --pet-lining:#f9e6bd;--pet-trim:#b32a3f;--pet-glow:#f0565d;
+}
+.pet-token[data-node="ratio"]{
+  --pet-hair:#bdaccd;--pet-hair-shadow:#635c89;--pet-hair-light:#eee4f0;
+  --pet-skin:#f2ddd9;--pet-irises:#3279d8;--pet-outfit:#17152e;
+  --pet-lining:#3852aa;--pet-trim:#d8b778;--pet-glow:#58a2fc;
+}
+.pet-token[data-node="nexus"]{
+  --pet-hair:#ded0ef;--pet-hair-shadow:#9c8cbb;--pet-hair-light:#f6e6fc;
+  --pet-skin:#f4ddd8;--pet-irises:#aa6ae4;--pet-outfit:#f0dff2;
+  --pet-lining:#6d488e;--pet-trim:#ac74db;--pet-glow:#d5a0ff;
+}
+.pet-token[data-node="specula"]{
+  --pet-hair:#bcc1d6;--pet-hair-shadow:#81879c;--pet-hair-light:#e9e7f2;
+  --pet-skin:#f1deda;--pet-irises:#9778dc;--pet-outfit:#252033;
+  --pet-lining:#9b9dbc;--pet-trim:#8962d5;--pet-glow:#a45aff;
+}
+.pet-token[data-node="limen"]{
+  --pet-hair:#3a3232;--pet-hair-shadow:#181a1a;--pet-hair-light:#745c50;
+  --pet-skin:#eed8c7;--pet-irises:#55aa79;--pet-outfit:#171f1a;
+  --pet-lining:#277254;--pet-trim:#d7ba73;--pet-glow:#66d89b;
+}
+.pet-token .pet-hair-back{
+  position:absolute;top:13px;left:8px;width:79px;height:80px;z-index:2;
+  border-radius:49% 47% 26% 25%;
+  background:linear-gradient(115deg,var(--pet-hair-light),var(--pet-hair) 44%,var(--pet-hair-shadow));
+  box-shadow:inset -5px 0 7px #0809102b,0 2px 0 #090d1788;
+}
+.pet-token .pet-ear{
+  position:absolute;top:10px;width:23px;height:35px;z-index:1;
+  border:2px solid var(--pet-trim);background:var(--pet-hair);
+  border-radius:65% 65% 19% 19%;
+}
+.pet-token .pet-ear.left{left:9px;transform:rotate(-31deg)}
+.pet-token .pet-ear.right{right:9px;transform:rotate(31deg)}
+.pet-token .pet-body{
+  position:absolute;left:29px;bottom:1px;width:39px;height:38px;z-index:2;
+  border:2px solid var(--pet-trim);border-radius:49% 49% 42% 42%;
+  background:linear-gradient(140deg,var(--pet-lining),var(--pet-outfit));
+}
+.pet-token .pet-bodice{
+  position:absolute;inset:2px 4px 0;border:1px solid var(--pet-trim);
+  background:var(--pet-outfit);border-radius:48% 48% 36% 36%;
+}
+.pet-token .pet-collar{
+  position:absolute;top:0;left:8px;right:8px;height:12px;z-index:3;
+  border:2px solid var(--pet-lining);border-top:0;border-radius:0 0 60% 60%;
+}
+.pet-token .pet-sash{
+  position:absolute;bottom:3px;left:15px;width:7px;height:14px;z-index:3;
+  background:var(--pet-trim);border-radius:45% 45% 4px 4px;
+}
+.pet-token .pet-paw{
+  position:absolute;top:9px;width:14px;height:15px;border-radius:50%;
+  border:1px solid var(--pet-trim);background:var(--pet-outfit);
+}
+.pet-token .pet-paw.left{left:-11px}.pet-token .pet-paw.right{right:-11px}
+.pet-token .pet-face{
+  position:absolute;top:15px;left:8px;width:80px;height:73px;z-index:4;
+  border:2px solid color-mix(in srgb,var(--pet-lining) 65%,white);
+  border-radius:48% 48% 45% 45%;
+  background:linear-gradient(145deg,#fff8f1,var(--pet-skin) 54%,color-mix(in srgb,var(--pet-skin) 85%,var(--pet-hair)));
+  box-shadow:inset -6px -8px 11px #45364e25,0 1px 1px #ffffff60;
+}
+.pet-token .pet-bangs{
+  position:absolute;top:-4px;left:6px;width:67px;height:24px;z-index:5;
+  border-radius:54% 50% 43% 33%;transform:rotate(-3deg);
+  background:linear-gradient(115deg,var(--pet-hair-light),var(--pet-hair-shadow));
+  box-shadow:0 2px 0 #ffffff22;
+}
+.pet-token .pet-bangs::after{
+  content:"";position:absolute;top:10px;left:19px;width:24px;height:19px;
+  border-radius:10% 10% 90% 25%;transform:rotate(-18deg);
+  background:var(--pet-hair);
+}
+.pet-token .pet-hair-lock{
+  position:absolute;top:11px;left:-6px;width:18px;height:49px;z-index:5;
+  border-radius:54% 35% 60% 40%;transform:rotate(10deg);
+  background:linear-gradient(95deg,var(--pet-hair-shadow),var(--pet-hair-light));
+}
+.pet-token .pet-eye{
+  position:absolute;top:31px;width:11px;height:14px;border-radius:48% 48% 50% 50%;
+  background:var(--pet-irises);border:1px solid #2821399e;
+  box-shadow:0 -2px 0 #433c4e88;z-index:6;
+}
+.pet-token .pet-eye.left{left:19px}.pet-token .pet-eye.right{right:19px}
+.pet-token .pet-eye::before{
+  content:"";position:absolute;left:2px;top:1px;width:4px;height:5px;
+  border-radius:50%;background:#fff;
+}
+.pet-token .pet-blush{
+  position:absolute;top:49px;width:12px;height:5px;border-radius:50%;
+  background:#e88c9d60;filter:blur(.4px);z-index:5;
+}
+.pet-token .pet-blush.left{left:10px}.pet-token .pet-blush.right{right:10px}
+.pet-token .pet-smile{
+  position:absolute;top:53px;left:35px;width:10px;height:6px;
+  border:2px solid #794c59;border-top:0;border-radius:0 0 10px 10px;z-index:6;
+}
+.pet-token .pet-crest{
+  position:absolute;top:2px;left:25px;width:46px;height:18px;z-index:7;
+  border:3px solid var(--pet-trim);border-radius:50%;
+  box-shadow:0 0 10px color-mix(in srgb,var(--pet-glow) 65%,transparent);
+}
+.pet-token .pet-mark{
+  position:absolute;z-index:6;bottom:0;left:38px;width:20px;height:20px;
+  border:1px solid var(--pet-trim);border-radius:50%;
+  background:var(--pet-outfit);color:var(--pet-lining);
+  text-align:center;line-height:18px;font-size:12px;
+}
+.pet-reference-link{display:inline-block;font-size:.85rem;margin-top:5px}
+#nodes .node-card{padding:15px 16px 18px;min-height:270px}
+#nodes .node-card .node{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+#nodes .node-card .pet-figure{
+  display:flex;align-items:center;justify-content:center;
+  width:145px;height:151px;flex:none;margin:0 auto 2px;
+}
+#nodes .node-card .pet-token{transform:scale(1.35);transform-origin:center;margin:0}
+#nodes .node-card .node > div:last-child{display:flex;flex-direction:column;align-items:center}
+#nodes .node-card .node > div:last-child strong{font-family:Georgia,serif;font-size:1.2rem}
+#nodes .node-card .node small{font-size:.82rem;margin:2px 0 5px}
+#nodes .node-card .pet-reference-link{font-size:.87rem}
+/* Screenshot review adjustment: the other four are humanoid Nodes, not
+   floppy-eared pets. Reserve real triangular cat ears for Specula's headset.
+   Long side hair frames the other four faces like their reference sheets. */
+.pet-token:not([data-node="specula"]) .pet-ear{
+ top:28px;width:19px;height:55px;z-index:3;
+ border:0;border-radius:24% 50% 55% 23%;
+ background:linear-gradient(90deg,var(--pet-hair-shadow),var(--pet-hair-light));
+}
+.pet-token:not([data-node="specula"]) .pet-ear.left{
+ left:4px;transform:rotate(9deg);border-radius:55% 24% 40% 30%;
+}
+.pet-token:not([data-node="specula"]) .pet-ear.right{
+ right:4px;transform:rotate(-9deg);border-radius:24% 55% 30% 40%;
+}
+.pet-token[data-node="medio"] .pet-ear{height:67px}
+.pet-token[data-node="ratio"] .pet-ear{height:62px}
+.pet-token[data-node="nexus"] .pet-ear{height:68px}
+.pet-token[data-node="limen"] .pet-ear{height:64px}
+#node-list{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+@media(max-width:1080px){#node-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#node-list{grid-template-columns:1fr}}
+
+/* Pass 2 — recognizable eyes, hair framing, expression and face coverings. */
+.pet-token .pet-hair-lock.right{left:auto;right:-6px;transform:rotate(-10deg);height:51px}
+.pet-token .pet-brow{
+ position:absolute;top:27px;width:13px;height:5px;border-top:2px solid #6b4d61;
+ border-radius:50%;z-index:6;
+}
+.pet-token .pet-brow.left{left:18px;transform:rotate(-9deg)}
+.pet-token .pet-brow.right{right:18px;transform:rotate(9deg)}
+.pet-token .pet-nose{position:absolute;top:49px;left:36px;width:5px;height:3px;z-index:6;border-bottom:1px solid #ae8b8b;border-radius:50%}
+.pet-token .pet-eye::after{
+ content:"";position:absolute;inset:-2px -2px auto;
+ height:5px;border-top:2px solid #45394f;border-radius:52%;
+}
+.pet-token .pet-face-emblem{position:absolute;display:none;z-index:7}
+.pet-token .pet-face-mask{display:none;position:absolute;z-index:7}
+.pet-token[data-node="medio"] .pet-eye{height:12px;width:10px;border-radius:55% 55% 42% 42%;box-shadow:0 -2px 0 #2a1724}
+.pet-token[data-node="medio"] .pet-brow{border-color:#4b2831;transform:rotate(6deg)}
+.pet-token[data-node="medio"] .pet-smile{border-color:#ae4158}
+.pet-token[data-node="medio"] .pet-face-emblem{
+ display:block;top:43px;right:6px;width:4px;height:14px;
+ background:linear-gradient(#ca394c,#6e1d2d);border-radius:50% 20% 70% 30%;
+ transform:rotate(15deg);opacity:.82;
+}
+.pet-token[data-node="medio"] .pet-hair-lock.left{height:62px;left:-9px}
+.pet-token[data-node="medio"] .pet-hair-lock.right{height:65px;right:-10px}
+.pet-token[data-node="ratio"] .pet-eye{
+ width:12px;height:12px;border-radius:45% 43% 55% 45%;
+ background:linear-gradient(#84c6ff 15%,#2463c8 60%,#132b67);
+}
+.pet-token[data-node="ratio"] .pet-brow{border-color:#736987}
+.pet-token[data-node="ratio"] .pet-smile{border-color:#755d72;top:54px;height:4px}
+.pet-token[data-node="ratio"] .pet-face-emblem{
+ display:block;top:17px;left:36px;width:7px;height:9px;
+ transform:rotate(45deg);background:linear-gradient(#f1d49e,#589bf3);
+ border:1px solid #c9ad79;box-shadow:0 0 5px #76acff;
+}
+.pet-token[data-node="ratio"] .pet-hair-lock{height:57px}
+.pet-token[data-node="nexus"] .pet-eye{
+ background:linear-gradient(#d8a5ff,#8142c3);
+ width:12px;height:15px;border-color:#7d548c;
+}
+.pet-token[data-node="nexus"] .pet-brow{border-color:#b08aba;top:26px}
+.pet-token[data-node="nexus"] .pet-smile{border-color:#a66c93;transform:rotate(-7deg)}
+.pet-token[data-node="nexus"] .pet-face-emblem{
+ display:block;top:18px;left:34px;width:10px;height:9px;
+ border-radius:50%;border:2px solid #d5b0ff;
+ box-shadow:0 0 7px #dcb2ff;transform:rotate(-25deg);
+}
+.pet-token[data-node="nexus"] .pet-hair-lock{height:65px;width:22px}
+.pet-token[data-node="specula"] .pet-eye{
+ height:12px;border-radius:55% 35% 55% 45%;
+ background:linear-gradient(#d8bbff,#8358bc);
+}
+.pet-token[data-node="specula"] .pet-smile{width:8px;left:36px;top:54px;height:4px}
+.pet-token[data-node="specula"] .pet-face-emblem{
+ display:block;top:17px;right:28px;width:13px;height:11px;
+ background:repeating-linear-gradient(90deg,#262b46 0 2px,transparent 2px 4px);
+ opacity:.8;transform:rotate(5deg);
+}
+.pet-token[data-node="limen"] .pet-eye{
+ width:12px;height:11px;border-radius:58% 35% 50% 45%;
+ background:linear-gradient(#7fe7b6,#30895c);
+}
+.pet-token[data-node="limen"] .pet-brow{border-color:#3b302e}
+.pet-token[data-node="limen"] .pet-smile,
+.pet-token[data-node="limen"] .pet-blush,
+.pet-token[data-node="limen"] .pet-nose{display:none}
+.pet-token[data-node="limen"] .pet-face-mask{
+ display:block;top:45px;left:12px;width:53px;height:19px;
+ border:1px solid #d3b77c;border-top:2px solid #d3b77c;
+ border-radius:13% 13% 48% 48%;
+ background:linear-gradient(145deg,#29352c,#131c1a);
+ box-shadow:inset 0 -3px 0 #29593f;
+}
+.pet-token[data-node="limen"] .pet-face-mask::after{
+ content:"";position:absolute;left:20px;top:5px;width:13px;height:8px;
+ border:2px solid #75d6a0;border-top:0;border-radius:0 0 60% 60%;
+}
+.pet-token[data-node="limen"] .pet-hair-lock{height:58px}
+
+/* Pass 3 — signature character assets: crowns, wings, gold filigree, jewels,
+   holographic rings, cat-ear surveillance headset and emerald threshold hood. */
+.pet-token .pet-back-ornament{position:absolute;inset:0;z-index:0;pointer-events:none}
+.pet-token .pet-back-ornament::before,.pet-token .pet-back-ornament::after{
+ content:"";position:absolute;top:23px;width:30px;height:53px;opacity:.9;
+ border:1px solid var(--pet-trim);
+ background:linear-gradient(135deg,color-mix(in srgb,var(--pet-glow) 35%,transparent),transparent);
+}
+.pet-token .pet-back-ornament::before{left:-1px;transform:rotate(-19deg);border-radius:100% 8% 90% 5%}
+.pet-token .pet-back-ornament::after{right:-1px;transform:rotate(19deg);border-radius:8% 100% 5% 90%}
+.pet-token .pet-chest-jewel{
+ position:absolute;left:14px;bottom:7px;width:9px;height:11px;z-index:5;
+ transform:rotate(45deg);background:var(--pet-glow);border:1px solid var(--pet-trim);
+ box-shadow:0 0 5px var(--pet-glow);
+}
+.pet-token .pet-headpiece,.pet-token .pet-headset,.pet-token .pet-hood{
+ display:none;position:absolute;pointer-events:none;
+}
+.pet-token[data-node="medio"] .pet-crest{
+ left:26px;top:0;width:46px;height:13px;opacity:1;
+ border:3px solid #e64c4c;box-shadow:0 0 5px #f33b5c,0 0 10px #cb263b9c;
+ background:transparent;transform:rotate(-3deg);border-radius:50%;z-index:9;
+}
+.pet-token[data-node="medio"] .pet-headpiece{
+ display:block;z-index:9;left:27px;top:18px;width:45px;height:16px;
+ border-top:5px solid #d7b264;border-bottom:2px solid #b28a3a;
+ background:linear-gradient(90deg,#cba45b,#f8df9b 44%,#bd914d);
+ clip-path:polygon(0 0,14% 0,25% 45%,46% 0,70% 45%,83% 0,100% 0,90% 100%,8% 100%);
+}
+.pet-token[data-node="medio"] .pet-headpiece::after{
+ content:"";position:absolute;left:20px;top:5px;width:8px;height:8px;
+ border:1px solid #f2e5c7;background:#17151d;transform:rotate(45deg);
+}
+.pet-token[data-node="medio"] .pet-chest-jewel{
+ width:11px;height:13px;left:12px;bottom:7px;
+ border:2px solid #e3a747;background:radial-gradient(#f7abff,#7924ad 70%);
+ border-radius:35% 40% 50% 45%;
+}
+.pet-token[data-node="medio"] .pet-back-ornament::before{
+ background:linear-gradient(110deg,#6a4a41cc,#211e26bd);border-color:#c7ae8b;
+ clip-path:polygon(100% 0,15% 25%,0 100%,95% 69%);
+}
+.pet-token[data-node="medio"] .pet-back-ornament::after{
+ background:linear-gradient(50deg,#4e4541bf,#211b23);border-color:#b19a8c;
+ clip-path:polygon(0 0,95% 28%,100% 100%,10% 72%);
+}
+.pet-token[data-node="medio"] .pet-bodice{
+ background:linear-gradient(110deg,#fff0c6,#ddba73);
+ border-color:#b9955e;
+}
+.pet-token[data-node="medio"] .pet-sash{background:#f3dfbb}
+.pet-token[data-node="ratio"] .pet-headpiece{
+ display:block;z-index:9;left:29px;top:4px;width:39px;height:25px;
+ border:2px solid #d2b675;border-radius:50%;transform:rotate(-14deg);
+ box-shadow:0 0 7px #5b96fd;
+}
+.pet-token[data-node="ratio"] .pet-headpiece::after{
+ content:"✦";position:absolute;top:-6px;left:13px;font-size:17px;
+ color:#7cc2ff;text-shadow:0 0 4px #4d95ff;
+}
+.pet-token[data-node="ratio"] .pet-crest{
+ top:1px;left:25px;width:49px;height:24px;border:1px solid #d8bb7b;opacity:.7;
+ box-shadow:none;transform:rotate(20deg);z-index:2;
+}
+.pet-token[data-node="ratio"] .pet-back-ornament::before,
+.pet-token[data-node="ratio"] .pet-back-ornament::after{
+ background:linear-gradient(145deg,#528afa70,#87c7ff12);
+ border:2px solid #70bbff;
+ clip-path:polygon(50% 0,100% 28%,55% 54%,100% 100%,5% 72%,0 20%);
+ box-shadow:0 0 8px #3b80ffad;
+}
+.pet-token[data-node="ratio"] .pet-chest-jewel{
+ width:12px;height:12px;left:12px;bottom:9px;
+ border-radius:50%;border:2px solid #d5b871;
+ background:radial-gradient(#efffff,#64b5ff 48%,#2446b0);
+}
+.pet-token[data-node="ratio"] .pet-bodice{
+ background:linear-gradient(115deg,#101324 30%,#283c83 50%,#12131f 65%);
+ border-color:#cfb575;
+}
+.pet-token[data-node="nexus"] .pet-crest{
+ top:0;left:20px;width:60px;height:27px;z-index:9;
+ border:2px solid #e1b7ff;transform:rotate(20deg);opacity:.84;
+ box-shadow:0 0 10px #d69eff;
+}
+.pet-token[data-node="nexus"] .pet-headpiece{
+ display:block;top:5px;left:36px;width:32px;height:23px;z-index:9;
+ border:2px solid #c993ff;border-radius:50%;
+ transform:rotate(-18deg);box-shadow:0 0 6px #e2a5ff;
+}
+.pet-token[data-node="nexus"] .pet-back-ornament::before,
+.pet-token[data-node="nexus"] .pet-back-ornament::after{
+ top:27px;width:23px;height:35px;
+ border:2px solid #d78cff;border-radius:50%;
+ background:linear-gradient(#c47dff50,transparent);box-shadow:0 0 8px #be7cef;
+}
+.pet-token[data-node="nexus"] .pet-chest-jewel{
+ width:12px;height:12px;left:11px;bottom:9px;
+ background:linear-gradient(#f4cdff,#9a48d5);border-color:#f4ddff;
+}
+.pet-token[data-node="nexus"] .pet-bodice{background:linear-gradient(100deg,#f3e5f3,#bda1d9);border-color:#a979d0}
+.pet-token[data-node="specula"] .pet-ear{
+ z-index:8;width:27px;height:34px;top:5px;
+ clip-path:polygon(0 100%,45% 0,100% 100%);
+ background:linear-gradient(155deg,#141526,#70599e);
+ border:2px solid #a675fb;
+}
+.pet-token[data-node="specula"] .pet-crest{display:none}
+.pet-token[data-node="specula"] .pet-headset{
+ display:block;left:7px;top:31px;width:78px;height:40px;z-index:8;
+ border:6px solid #242136;border-bottom-color:transparent;
+ border-radius:38% 38% 20% 20%;
+}
+.pet-token[data-node="specula"] .pet-headset::after{
+ content:"◉";position:absolute;right:-12px;top:-6px;width:22px;height:22px;
+ background:#19172b;border:2px solid #a96afb;
+ border-radius:50%;color:#bd8aff;text-align:center;line-height:18px;font-size:17px;
+ box-shadow:0 0 8px #905cff;
+}
+.pet-token[data-node="specula"] .pet-back-ornament::before,
+.pet-token[data-node="specula"] .pet-back-ornament::after{
+ background:linear-gradient(120deg,#8a76d570,#a5a3df40);
+ border-color:#b7abff;clip-path:polygon(0 0,100% 12%,82% 90%,0 100%);
+}
+.pet-token[data-node="specula"] .pet-chest-jewel{
+ left:6px;bottom:7px;width:24px;height:12px;
+ border-radius:3px;transform:none;border:2px solid #b58bff;
+ background:linear-gradient(#130e22,#241d3b);
+}
+.pet-token[data-node="specula"] .pet-chest-jewel::after{
+ content:"⌃ᴗ⌃";color:#c99aff;position:absolute;top:-5px;left:1px;
+ font-size:8px;white-space:nowrap;
+}
+.pet-token[data-node="limen"] .pet-hood{
+ display:block;z-index:5;top:4px;left:3px;width:91px;height:80px;
+ border:7px solid #1c2e27;border-bottom-color:transparent;
+ border-radius:54% 54% 23% 23%;
+ box-shadow:inset 0 8px 0 #2d624a;
+}
+.pet-token[data-node="limen"] .pet-hood::before{
+ content:"";position:absolute;top:-5px;left:22px;width:38px;height:10px;
+ border-bottom:2px solid #d0b478;border-radius:50%;
+}
+.pet-token[data-node="limen"] .pet-crest{
+ left:37px;top:7px;width:25px;height:27px;z-index:9;
+ border:2px solid #dfcb81;border-radius:45% 45% 5px 5px;
+ box-shadow:0 0 7px #67d69a;
+}
+.pet-token[data-node="limen"] .pet-crest::after{
+ content:"";position:absolute;left:8px;top:10px;width:5px;height:9px;
+ border-radius:50% 50% 20% 20%;background:#63d59d;
+}
+.pet-token[data-node="limen"] .pet-back-ornament::before,
+.pet-token[data-node="limen"] .pet-back-ornament::after{
+ border-color:#c5ac6c;
+ background:linear-gradient(130deg,#1d2d25,#277657ab);
+ border-radius:8px 60% 12px 60%;
+}
+.pet-token[data-node="limen"] .pet-chest-jewel{
+ background:radial-gradient(#a6f5bb,#277952);border:2px solid #d3b86f;
+ width:10px;height:15px;left:13px;bottom:8px;
+}
+.pet-token[data-node="limen"] .pet-sash::after{
+ content:"";position:absolute;top:8px;left:1px;width:5px;height:11px;
+ border:1px solid #c8ae6f;background:#61d19e;
+ border-radius:0 0 60% 60%;
+}
+
+@media(prefers-reduced-motion:no-preference){
+ .room-companions .pet-token:first-child{animation:pet-bob 4s ease-in-out infinite}
+ .room-companions .pet-token:nth-child(2){animation:pet-bob 4.5s ease-in-out -1s infinite}
+ .room-companions .pet-token:hover{translate:0 -5px;transition:translate .2s ease}
+ @keyframes pet-bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+}

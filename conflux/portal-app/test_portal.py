@@ -62,6 +62,18 @@ class PortalSmokeTest(unittest.TestCase):
         status, renderer = self.get("/readme.js")
         self.assertEqual(status, 200)
         self.assertIn("document.createDocumentFragment()", renderer)
+        status, css = self.get("/familiars.css")
+        self.assertEqual(status, 200)
+        for marker in ('data-node="medio"', 'data-node="ratio"',
+                       'data-node="nexus"', 'data-node="specula"',
+                       'data-node="limen"', '.pet-hood', '.pet-face-mask'):
+            self.assertIn(marker, css)
+        status, choice = self.get("/link_choice.js")
+        self.assertEqual(status, 200)
+        self.assertIn('dialog.showModal()', choice)
+        self.assertIn('id="open-choice-dialog"', html)
+        self.assertIn('class="nav-external"', html)
+        self.assertNotIn('View the portable Markdown Player Manual', html)
 
     def test_bundled_apps_open(self):
         for route, expected in (("/apps/atelier", "Conflux · The Atelier"),
@@ -357,7 +369,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)

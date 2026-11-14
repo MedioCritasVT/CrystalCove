@@ -4,6 +4,9 @@ const panels = [...document.querySelectorAll(".panel")];
 const known = new Set(panels.map(p => p.id));
 function show(id) {
   if (!known.has(id)) id = "home";
+  // Advanced music settings are contextual, not a persistent screen-covering
+  // popover. Close them on room changes while the audio itself keeps playing.
+  document.querySelectorAll(".music-advanced[open]").forEach(item => item.removeAttribute("open"));
   panels.forEach(p => { p.hidden = p.id !== id; });
   document.body.dataset.view = id;
   document.querySelectorAll("nav button").forEach(b => {
@@ -26,11 +29,11 @@ const nodes = [
 const petSymbols = {medio:"✦",ratio:"▦",nexus:"∞",specula:"◉",limen:"◇"};
 // Each Node keeps a distinct source panel, not just a shared, recolored mascot.
 const nodePanels = {
-  medio: "medio/ApprovedTurnaround.png",
-  ratio: "ratio/Ratio_front_side_back_reference.png",
+  medio: "medio/Mediocritas_ Gothic Angel Character Sheet.png",
+  ratio: "ratio/Ratio_ Conflux Character Design Sheet.png",
   nexus: "nexus/Nexus_ Violet Holographic Character Sheet.png",
   specula: "specula/SPECULA_ Cyberpunk Observer Character Sheet.png",
-  limen: "limen/Limen_Corrected_Keyhole_Tassels.png"
+  limen: "limen/Limen_ Emerald Threshold Character Sheet.png"
 };
 const referenceBase = "https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/concept-art/reference-art/";
 function makePet(name) {
@@ -39,8 +42,16 @@ function makePet(name) {
   mascot.className = "pet-token";
   mascot.dataset.node = id;
   mascot.setAttribute("aria-hidden", "true");
+  const backOrnament = document.createElement("span");
+  backOrnament.className = "pet-back-ornament";
   const crest = document.createElement("span");
   crest.className = "pet-crest";
+  const hood = document.createElement("span");
+  hood.className = "pet-hood";
+  const headpiece = document.createElement("span");
+  headpiece.className = "pet-headpiece";
+  const headset = document.createElement("span");
+  headset.className = "pet-headset";
   const earLeft = document.createElement("span");
   earLeft.className = "pet-ear left";
   const earRight = document.createElement("span");
@@ -55,7 +66,9 @@ function makePet(name) {
   collar.className = "pet-collar";
   const sash = document.createElement("span");
   sash.className = "pet-sash";
-  body.append(bodice, collar, sash);
+  const jewel = document.createElement("span");
+  jewel.className = "pet-chest-jewel";
+  body.append(bodice, collar, sash, jewel);
   const face = document.createElement("span");
   face.className = "pet-face";
   const eyeLeft = document.createElement("span");
@@ -66,14 +79,27 @@ function makePet(name) {
   const bangs = document.createElement("span");
   bangs.className = "pet-bangs";
   const hairLock = document.createElement("span");
-  hairLock.className = "pet-hair-lock";
+  hairLock.className = "pet-hair-lock left";
+  const hairLockRight = document.createElement("span");
+  hairLockRight.className = "pet-hair-lock right";
+  const browLeft = document.createElement("span");
+  browLeft.className = "pet-brow left";
+  const browRight = document.createElement("span");
+  browRight.className = "pet-brow right";
+  const nose = document.createElement("span");
+  nose.className = "pet-nose";
+  const faceEmblem = document.createElement("span");
+  faceEmblem.className = "pet-face-emblem";
+  const faceMask = document.createElement("span");
+  faceMask.className = "pet-face-mask";
   const blushL = document.createElement("span");
   blushL.className = "pet-blush left";
   const blushR = document.createElement("span");
   blushR.className = "pet-blush right";
   const smile = document.createElement("span");
   smile.className = "pet-smile";
-  face.append(bangs, hairLock, eyeLeft, eyeRight, blushL, blushR, smile);
+  face.append(bangs, hairLock, hairLockRight, browLeft, browRight, eyeLeft, eyeRight,
+              blushL, blushR, nose, smile, faceEmblem, faceMask);
   for (const side of ["left", "right"]) {
     const paw = document.createElement("span");
     paw.className = "pet-paw " + side;
@@ -82,7 +108,8 @@ function makePet(name) {
   const mark = document.createElement("span");
   mark.className = "pet-mark";
   mark.textContent = petSymbols[id] || "✧";
-  mascot.append(crest, earLeft, earRight, hairBack, body, face, mark);
+  mascot.append(backOrnament, crest, earLeft, earRight, hairBack, body,
+                hood, face, headpiece, headset, mark);
   return mascot;
 }
 

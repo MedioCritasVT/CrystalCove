@@ -149,62 +149,6 @@ nav button[aria-current="page"]{border-left:3px solid #e6d6d0;padding-left:10px}
 .room-companions .pet-names{font-family:Georgia,serif;font-size:1.1rem;line-height:1.3;color:var(--accent);font-weight:650}
 .room-companions .pet-purpose{font-size:.79rem;color:#e9dfeb;line-height:1.45;max-width:230px;margin:6px 0 5px}
 .room-companions .pet-disclaimer{font-size:.68rem;letter-spacing:.04em;color:#bdb5c6;line-height:1.35}
-.pet-token{
-  --pet-a:#e9bf84;--pet-b:#c2a4f3;
-  display:inline-block;width:94px;height:102px;position:relative;flex:none;
-  filter:drop-shadow(0 9px 12px #080e1a9c);
-}
-.pet-token[data-node="medio"]{--pet-a:#e9bf84;--pet-b:#f4d7a5}
-.pet-token[data-node="ratio"]{--pet-a:#84bff3;--pet-b:#b5d8fb}
-.pet-token[data-node="nexus"]{--pet-a:#c2a4f3;--pet-b:#f0c4e9}
-.pet-token[data-node="specula"]{--pet-a:#cdd2e0;--pet-b:#96aabd}
-.pet-token[data-node="limen"]{--pet-a:#9cdec0;--pet-b:#d0f3df}
-.pet-token .pet-crest{
-  position:absolute;top:3px;left:28px;width:40px;height:22px;
-  border:3px solid var(--pet-a);border-radius:70% 70% 30% 30%;opacity:.8;
-  box-shadow:0 0 13px color-mix(in srgb,var(--pet-a) 47%,transparent)
-}
-.pet-token .pet-ear{
-  position:absolute;top:24px;width:24px;height:32px;z-index:0;
-  background:var(--pet-b);border:2px solid #e7e6f1a1;border-radius:60% 60% 18% 18%;
-}
-.pet-token .pet-ear.left{left:13px;transform:rotate(-30deg)}
-.pet-token .pet-ear.right{right:13px;transform:rotate(30deg)}
-.pet-token .pet-body{
-  position:absolute;bottom:4px;left:25px;width:46px;height:34px;border-radius:23px 23px 18px 18px;
-  background:linear-gradient(155deg,var(--pet-a),color-mix(in srgb,var(--pet-b) 52%,#34314e));
-  border:2px solid #f6ecf080;z-index:1;
-}
-.pet-token .pet-face{
-  position:absolute;top:27px;left:18px;width:61px;height:58px;border-radius:45% 45% 42% 42%;
-  background:linear-gradient(145deg,color-mix(in srgb,var(--pet-a) 68%,#edf1fa),var(--pet-b));
-  border:2px solid #fff8efaf;box-shadow:inset -7px -8px 13px #26304735;z-index:2;
-}
-.pet-token .pet-eye{
-  position:absolute;top:24px;width:7px;height:10px;border-radius:70%;
-  background:#1b263b;box-shadow:1px 1px 0 #ffffff66;
-}
-.pet-token .pet-eye.left{left:15px}.pet-token .pet-eye.right{right:15px}
-.pet-token .pet-mark{
-  position:absolute;z-index:3;bottom:5px;left:38px;width:20px;height:20px;
-  border-radius:50%;background:#25354dd9;border:1px solid #fff7ed99;
-  color:#fff6f4;text-align:center;line-height:18px;font-size:12px
-}
-.pet-token[data-node="medio"] .pet-ear{border-radius:90% 20% 80% 10%;background:linear-gradient(45deg,#e9bf84,#faf2d9)}
-.pet-token[data-node="ratio"] .pet-ear{border-radius:5px 12px 3px 3px;background:linear-gradient(#b9deff,#627fba)}
-.pet-token[data-node="ratio"] .pet-face{border-radius:22% 22% 38% 38%}
-.pet-token[data-node="ratio"] .pet-crest{border-radius:4px;height:10px;top:12px}
-.pet-token[data-node="nexus"] .pet-crest{transform:rotate(-15deg);border-radius:30%}
-.pet-token[data-node="nexus"] .pet-ear{border-radius:100% 0 100% 0}
-.pet-token[data-node="specula"] .pet-face{background:linear-gradient(145deg,#708296,#cdd2e0)}
-.pet-token[data-node="specula"] .pet-crest{left:12px;top:16px;width:72px;height:66px;border:7px solid #7589a4;border-bottom-color:transparent;border-radius:55% 55% 30% 30%;z-index:2;pointer-events:none}
-.pet-token[data-node="specula"] .pet-eye{background:#182231}
-.pet-token[data-node="limen"] .pet-crest{width:28px;left:34px;height:30px;border-radius:50% 50% 7px 7px}
-.pet-token[data-node="limen"] .pet-ear{border-radius:7px 85% 12px 70%}
-.node-card .pet-token{transform:scale(.88);margin:-10px -5px -12px -12px}
-.node-card .pet-figure{flex:none;width:90px}
-.node-card .node{align-items:center}
-.node-card .pet-token[data-node="specula"] .pet-crest{z-index:2}
 @media(max-width:970px){
   .panel .room-hero{grid-template-columns:minmax(0,1fr) 205px;padding:19px}
   .room-companions{padding-left:12px}
@@ -360,211 +304,42 @@ body{padding-bottom:76px}
  .music-dock .music-options select{width:90px}
  .music-advanced-panel{right:0}
 }
-/* Prototype chibi familiars: oversized heads, expressive eyes, tiny arms and feet. */
-.pet-token{filter:drop-shadow(0 7px 10px #060c189f)}
-.pet-token .pet-body{
-  bottom:1px;left:29px;width:39px;height:38px;border-radius:50% 50% 43% 43%;
-  background:linear-gradient(140deg,var(--pet-b),var(--pet-a));z-index:1
-}
-.pet-token .pet-face{
-  top:15px;left:8px;width:80px;height:73px;
-  border-radius:49% 49% 46% 46%;z-index:3;
-  background:linear-gradient(140deg,color-mix(in srgb,var(--pet-a) 64%,#fffdfc),var(--pet-b));
-  box-shadow:inset -7px -8px 12px #23304730,0 2px 0 #e1d6df80
-}
-.pet-token .pet-ear{top:8px;width:25px;height:36px;z-index:1}
-.pet-token .pet-ear.left{left:9px}.pet-token .pet-ear.right{right:9px}
-.pet-token .pet-crest{z-index:2;top:0;left:22px;width:52px;height:22px}
-.pet-token .pet-bangs{
-  position:absolute;top:-3px;left:7px;width:65px;height:21px;
-  background:linear-gradient(135deg,var(--pet-b),var(--pet-a));
-  border-radius:65% 60% 48% 47%;transform:rotate(-4deg);z-index:4;
-  box-shadow:0 2px 0 #ffffff6e
-}
-.pet-token .pet-bangs::after{
-  content:"";position:absolute;width:24px;height:19px;left:17px;top:8px;
-  background:var(--pet-b);border-radius:10% 10% 90% 15%;transform:rotate(-18deg)
-}
-.pet-token .pet-eye{top:31px;width:10px;height:14px;border-radius:55% 55% 48% 48%;background:#20253a;box-shadow:0 2px 0 #2b243d44}
-.pet-token .pet-eye.left{left:19px}.pet-token .pet-eye.right{right:19px}
-.pet-token .pet-eye::before{content:"";position:absolute;top:2px;left:2px;width:4px;height:5px;background:#fff;border-radius:50%}
-.pet-token .pet-blush{position:absolute;top:49px;width:14px;height:7px;background:#e992a788;border-radius:50%;filter:blur(.6px)}
-.pet-token .pet-blush.left{left:10px}.pet-token .pet-blush.right{right:10px}
-.pet-token .pet-smile{position:absolute;top:53px;left:35px;width:10px;height:6px;border:2px solid #684e64;border-top:0;border-radius:0 0 12px 12px}
-.pet-token .pet-paw{position:absolute;top:8px;width:15px;height:15px;border-radius:50%;background:var(--pet-a);border:1px solid #fffaefb0}
-.pet-token .pet-paw.left{left:-11px}.pet-token .pet-paw.right{right:-11px}
-.pet-token .pet-mark{z-index:4;bottom:0;left:38px;width:20px;height:20px;line-height:18px}
-.pet-token[data-node="ratio"] .pet-face{border-radius:44% 44% 43% 43%}
-.pet-token[data-node="ratio"] .pet-bangs{border-radius:8px 12px 45% 45%}
-.pet-token[data-node="nexus"] .pet-bangs{background:linear-gradient(90deg,#dfadf5,#a59de9)}
-.pet-token[data-node="specula"] .pet-bangs{background:linear-gradient(90deg,#c4d1e5,#889cae)}
-.pet-token[data-node="specula"] .pet-crest{z-index:2;pointer-events:none}
-.pet-token[data-node="limen"] .pet-bangs{background:linear-gradient(90deg,#b5eacc,#93cda8)}
-@media(prefers-reduced-motion:no-preference){
- .room-companions .pet-token:hover{translate:0 -5px;transition:translate .2s ease}
-}
-/* Node palette/wardrobe reference pass: different hair and clothes, not tint overlays.
-   These are lightweight CSS studies pending comparison with source panels. */
-.pet-token{
-  --pet-hair:#f0d8a4;--pet-hair-shadow:#af875e;
-  --pet-outfit:#543248;--pet-lining:#eed8b3;--pet-trim:#edc987;
-  --pet-skin:#f7e2d8;--pet-irises:#6e4a59;
-}
-.pet-token[data-node="medio"]{
-  --pet-hair:#f4d2a0;--pet-hair-shadow:#b98a52;
-  --pet-outfit:#542b41;--pet-lining:#e6c7a4;--pet-trim:#f6d796;
-  --pet-skin:#f8e5da;--pet-irises:#80545e;
-}
-.pet-token[data-node="ratio"]{
-  --pet-hair:#b8d9f8;--pet-hair-shadow:#577bad;
-  --pet-outfit:#203e64;--pet-lining:#7ea8d9;--pet-trim:#d5e9ff;
-  --pet-skin:#e7d8d9;--pet-irises:#244b75;
-}
-.pet-token[data-node="nexus"]{
-  --pet-hair:#bd97dc;--pet-hair-shadow:#74518e;
-  --pet-outfit:#5b3b83;--pet-lining:#f3c7e4;--pet-trim:#dab3f8;
-  --pet-skin:#f3ddd9;--pet-irises:#5a3c84;
-}
-.pet-token[data-node="specula"]{
-  --pet-hair:#a5b2c5;--pet-hair-shadow:#566579;
-  --pet-outfit:#26384f;--pet-lining:#8d9eb3;--pet-trim:#cde2ea;
-  --pet-skin:#eadcd4;--pet-irises:#263345;
-}
-.pet-token[data-node="limen"]{
-  --pet-hair:#95d4b8;--pet-hair-shadow:#477b6e;
-  --pet-outfit:#24574e;--pet-lining:#bfe5c9;--pet-trim:#e5d99d;
-  --pet-skin:#f2ddd4;--pet-irises:#386954;
-}
-.pet-token .pet-hair-back{
-  position:absolute;top:14px;left:10px;width:75px;height:74px;z-index:2;
-  background:linear-gradient(130deg,var(--pet-hair),var(--pet-hair-shadow));
-  border-radius:45% 44% 27% 28%;box-shadow:0 2px 0 #151c2b50;
-}
-.pet-token .pet-body{
-  background:linear-gradient(125deg,var(--pet-outfit),var(--pet-lining));
-  border-color:var(--pet-trim);overflow:visible;
-}
-.pet-token .pet-bodice{
-  position:absolute;left:5px;right:5px;top:2px;bottom:0;
-  border-radius:45% 45% 38% 38%;background:var(--pet-outfit);
-  border:1px solid var(--pet-trim);
-}
-.pet-token .pet-collar{
-  position:absolute;top:0;left:9px;right:9px;height:13px;z-index:2;
-  border:3px solid var(--pet-lining);border-top:none;border-radius:0 0 60% 60%;
-}
-.pet-token .pet-sash{
-  position:absolute;bottom:4px;left:17px;width:7px;height:14px;z-index:2;
-  background:var(--pet-trim);border-radius:50% 50% 4px 4px;
-}
-.pet-token .pet-face{
-  background:linear-gradient(135deg,var(--pet-skin),color-mix(in srgb,var(--pet-skin) 84%,var(--pet-hair)));
-}
-.pet-token .pet-bangs,.pet-token[data-node="nexus"] .pet-bangs,
-.pet-token[data-node="specula"] .pet-bangs,.pet-token[data-node="limen"] .pet-bangs{
-  background:linear-gradient(105deg,var(--pet-hair),var(--pet-hair-shadow));
-}
-.pet-token .pet-bangs::after{background:var(--pet-hair)}
-.pet-token .pet-hair-lock{
-  position:absolute;top:13px;left:-5px;width:17px;height:46px;z-index:3;
-  background:linear-gradient(90deg,var(--pet-hair-shadow),var(--pet-hair));
-  border-radius:55% 45% 50% 48%;transform:rotate(11deg);
-}
-.pet-token .pet-eye{background:var(--pet-irises)}
-.pet-token .pet-ear{background:var(--pet-hair)!important;border-color:var(--pet-hair-shadow)}
-.pet-token .pet-paw{background:var(--pet-outfit);border-color:var(--pet-trim)}
-.pet-token .pet-mark{background:var(--pet-outfit);border-color:var(--pet-trim);color:var(--pet-lining)}
-/* Distinct silhouettes; the metal/halo/cape/keyhole motifs point to named sheets. */
-.pet-token[data-node="medio"] .pet-crest{
-  top:1px;left:27px;width:43px;height:15px;border:3px solid #f5dfa9;border-radius:50%;
-  box-shadow:0 0 12px #ffe8b88a;transform:rotate(-7deg);z-index:5
-}
-.pet-token[data-node="medio"] .pet-bangs{border-radius:70% 45% 24% 50%;transform:rotate(-7deg)}
-.pet-token[data-node="medio"] .pet-hair-back{border-radius:42% 42% 24% 24%;height:78px}
-.pet-token[data-node="medio"] .pet-collar{border-radius:8px;border-color:#ead6bf}
-.pet-token[data-node="medio"] .pet-sash{background:#e5b58e}
-.pet-token[data-node="ratio"] .pet-hair-back{
-  top:12px;left:12px;width:71px;height:70px;
-  clip-path:polygon(8% 21%,34% 0,73% 0,97% 20%,92% 84%,7% 91%)
-}
-.pet-token[data-node="ratio"] .pet-bangs{
-  clip-path:polygon(0 0,100% 0,91% 85%,64% 56%,44% 99%,25% 56%,0 77%);
-  border-radius:7px;transform:rotate(0)
-}
-.pet-token[data-node="ratio"] .pet-crest{
-  border:2px solid #b9e1ff;top:7px;width:44px;left:26px;height:12px;
-  transform:none;border-radius:3px;box-shadow:0 0 6px #9ed8ff
-}
-.pet-token[data-node="ratio"] .pet-collar{
-  width:25px;left:5px;right:auto;border:3px solid #92bde5;transform:rotate(25deg);height:14px
-}
-.pet-token[data-node="ratio"] .pet-sash{width:18px;height:4px;left:9px;bottom:9px;background:#b2ddff}
-.pet-token[data-node="nexus"] .pet-hair-back{
-  height:85px;top:10px;left:5px;width:85px;border-radius:48% 50% 20% 20%
-}
-.pet-token[data-node="nexus"] .pet-hair-lock{
-  top:11px;left:65px;width:19px;height:55px;transform:rotate(-10deg)
-}
-.pet-token[data-node="nexus"] .pet-crest{
-  border:3px solid #dbb4f1;top:2px;left:27px;width:45px;height:21px;
-  transform:rotate(10deg);border-radius:60% 5% 65% 10%;z-index:4
-}
-.pet-token[data-node="nexus"] .pet-collar{border-color:#eac0ed}
-.pet-token[data-node="nexus"] .pet-sash{height:14px;background:#eac0ed}
-.pet-token[data-node="specula"] .pet-hair-back{height:74px;border-radius:18% 20% 25% 25%}
-.pet-token[data-node="specula"] .pet-bangs{
-  border-radius:8px 9px 18px 7px;transform:rotate(1deg)
-}
-.pet-token[data-node="specula"] .pet-crest{
-  top:12px;left:8px;width:82px;height:61px;border:5px solid #8e9bb1;
-  border-bottom-color:transparent;z-index:5;opacity:.95;border-radius:35% 35% 48% 48%;
-  box-shadow:none
-}
-.pet-token[data-node="specula"] .pet-collar{
-  left:3px;right:3px;width:auto;height:17px;border:4px solid #98a9bc;
-  border-top-color:transparent;border-radius:4px 4px 16px 16px
-}
-.pet-token[data-node="limen"] .pet-hair-back{
-  height:83px;left:11px;width:75px;border-radius:50% 35% 28% 19%
-}
-.pet-token[data-node="limen"] .pet-hair-lock{
-  top:5px;left:-9px;width:22px;height:62px;transform:rotate(13deg)
-}
-.pet-token[data-node="limen"] .pet-bangs{border-radius:60% 29% 48% 18%;transform:rotate(-12deg)}
-.pet-token[data-node="limen"] .pet-crest{
-  left:36px;top:4px;width:27px;height:29px;z-index:5;
-  border:3px solid #e5e3a7;border-radius:45% 45% 7px 7px
-}
-.pet-token[data-node="limen"] .pet-crest::after{
-  content:"";position:absolute;top:10px;left:9px;width:5px;height:8px;
-  border-radius:50% 50% 20% 20%;background:#e5e3a7
-}
-.pet-token[data-node="limen"] .pet-sash{
-  height:18px;bottom:0;border-radius:5px;background:#d3e8b2
-}
-.pet-reference-link{display:inline-block;font-size:.76rem;margin-top:4px}
-
-/* Visibility pass: make the reference-linked character designs clearly legible. */
-#nodes .node-card{padding:15px 16px 18px;min-height:270px}
-#nodes .node-card .node{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-#nodes .node-card .pet-figure{
-  display:flex;align-items:center;justify-content:center;
-  width:145px;height:151px;flex:none;margin:0 auto 2px;
-}
-#nodes .node-card .pet-token{
-  transform:scale(1.35);transform-origin:50% 50%;margin:0;
-}
-#nodes .node-card .node > div:last-child{display:flex;flex-direction:column;align-items:center}
-#nodes .node-card .node > div:last-child strong{font-family:Georgia,serif;font-size:1.2rem}
-#nodes .node-card .node small{font-size:.82rem;margin:2px 0 5px}
-#nodes .node-card .pet-reference-link{font-size:.87rem}
 .music-file-help{font-size:.75rem;color:#e2d3bf;margin:10px 0 0;line-height:1.5}
 #portal-source-path{overflow-wrap:anywhere;margin-top:9px}
-</style></head><body>
+
+/* Consistent external-navigation entry and accessible tab/window choice. */
+nav .nav-external{
+ display:block;margin-top:11px;padding:11px 12px;
+ border:1px solid #727e94;border-radius:10px;color:#d9eafa;
+ text-decoration:none;font-size:.89rem;background:#242d3e;
+}
+nav .nav-external:hover,nav .nav-external:focus-visible{
+ color:#fff;background:#324053;border-color:#9ebde1;
+}
+#open-choice-dialog{
+ color:#f2edf6;background:linear-gradient(135deg,#293146,#202937);
+ border:1px solid #a6b2c5;border-radius:17px;
+ padding:24px;max-width:min(92vw,520px);width:480px;
+ box-shadow:0 16px 65px #070916dc;
+}
+#open-choice-dialog::backdrop{background:#090d18b8;backdrop-filter:blur(3px)}
+#open-choice-dialog h3{margin:0 0 6px;color:#d9ebfd}
+#open-choice-dialog p{color:#dbd7e6;overflow-wrap:anywhere}
+#open-choice-dialog .row-actions{margin:22px 0 4px}
+#open-choice-dialog button{min-height:44px}
+#open-choice-dialog .choice-cancel{background:transparent;color:#edf0f3;border:1px solid #8894aa;border-radius:10px;padding:8px 13px}
+@media(max-width:740px){nav .nav-external{margin-top:0;grid-column:1/-1;text-align:center}}
+/* A first visit should lead with welcome and the listening action, not a long record table. */
+.soundtrack-register{padding:18px 22px}
+.soundtrack-register summary{cursor:pointer;color:#f0d1a4;font-weight:700;font-size:1.08rem}
+.soundtrack-register[open] summary{margin-bottom:14px}
+.soundtrack-register summary:focus-visible{outline:2px solid #f4d0a7;outline-offset:5px;border-radius:4px}
+</style><link rel="stylesheet" href="/familiars.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
-<div class="notice"><strong>Work in progress — long-term development.</strong> This is a Linux-only preview. Some features are demonstrations or placeholders. More platforms, art, services and interactions are planned; please return for future updates.</div>
+<div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
 <div class="music-dock" id="music-dock" aria-label="Conflux soundtrack player">
   <div class="music-dock-heading"><span class="music-glyph" aria-hidden="true">♫</span><strong>Conflux music</strong></div>
   <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">Music Off</button>
@@ -593,7 +368,7 @@ body{padding-bottom:76px}
   </div></details>
   <audio id="music-audio" preload="none"></audio>
 </div>
-<section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Play the available game, open Atelier and Ledger right here, and discover the books and creative work. No VOS service starts automatically.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
+<section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Every journey begins differently. Wander through the stories and music, meet the Nodes, try Atelier or Ledger, or enter the game when you feel ready. Nothing launches or connects without your choice.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
 <div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
 
 <section class="panel" id="downloads" hidden>
@@ -646,19 +421,19 @@ body{padding-bottom:76px}
   <div class="download-panel">
     <h3>Listen on this computer</h3>
     <p>Use the bottom music toolbar to select tracks, takes and volume. Expand <strong>Music options</strong> for local audio and ZIP import. The soundtrack keeps playing between Portal rooms, but never autoplays.</p>
-    <p id="music-library-status" class="status-line" aria-live="polite">No local files selected yet.</p>
+    <p id="music-library-status" class="status-line" aria-live="polite">Checking which recordings are ready to play…</p>
     <div id="soundtrack-versions" class="cards" aria-label="Locally selected soundtrack versions"></div>
-    <p class="theme-note">The compact music toolbar stays at the bottom. Expand <strong>Music options</strong> to choose local recordings or install a verified soundtrack ZIP; files you pick manually are not uploaded. Music stays off until you start it.</p>
+    <p class="theme-note">The music toolbar stays with you as you explore. Open <strong>Music options</strong> to install the public album once or choose local files. Listening is always your choice.</p>
   </div>
-  <div class="finder">
-    <h3>Conflux soundtrack register</h3>
-    <p>Eleven verified recordings across ten compositions, including the three recent EP tracks, Silicon Saints, and both Sacrament of Oath takes. Every source hash is now recorded, but audio still needs a separate public GitHub Release upload.</p>
-    <ul id="music-catalog"><li>Loading working catalog…</li></ul>
-    <p class="theme-note">Both <em>Sacrament of Oath</em> takes remain separate. The ZIP installer accepts either a verified complete seven-track legacy set or the full eleven-track collection; no public audio release is claimed until its actual assets are uploaded.</p>
-  </div>
+  <details class="finder soundtrack-register">
+    <summary>Explore all 11 recordings · source and versions</summary>
+    <p>The verified album is publicly downloadable. Ten compositions include both distinct <em>Sacrament of Oath</em> takes; individual streaming downloads remain separate from the complete album ZIP.</p>
+    <ul id="music-catalog"><li>Loading recording catalog…</li></ul>
+    <p class="theme-note">You can install the published album with <strong>Music options → Install all 11 tracks from GitHub</strong>, or import either verified seven- or eleven-track ZIP locally.</p>
+  </details>
   <div class="download-panel"><h3>Download Conflux recordings</h3>
     <p id="music-album-download" role="status" aria-live="polite">Checking the public album release…</p>
-    <p>Individual <strong>Download MP3</strong> links appear for separately published tracks. The full album ZIP can be offered independently once uploaded. No Git clone is required.</p>
+    <p>The <strong>full album ZIP is already public</strong>, with no Git account or clone required. Individual MP3 downloads will appear separately as those release assets are published.</p>
     <div id="soundtrack-downloads" class="cards" aria-live="polite"><p>Checking public audio availability…</p></div>
     <p><a href="https://github.com/MedioCritasVT/CrystalCove/releases" target="_blank" rel="noopener noreferrer">Browse Conflux GitHub releases</a></p>
   </div>
@@ -688,7 +463,6 @@ body{padding-bottom:76px}
 <p>Medio introduces balance and readable combat rhythm. Ratio suggests precision, Nexus coordination, Specula observation, and Limen transitions. These are guiding designs: <strong>not all realm mechanics are complete in V0.1.</strong></p>
 <h3>What to expect</h3>
 <p>The world, characters and menus are evolving. Some locations and progression systems are prototypes, and the current game is Linux-only. If something breaks, note the game version, Linux distribution, graphics card, location in the game, and steps that led to the problem.</p>
-<p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/portal-app/PLAYER_MANUAL.md" target="_blank" rel="noopener noreferrer">View the portable Markdown Player Manual</a></p>
 </section>
 
 <section class="panel" id="updates" hidden>
@@ -722,4 +496,16 @@ body{padding-bottom:76px}
   <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
 </div>
 </section>
-<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script></body></html>
+<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
+<dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
+  <h3 id="open-choice-title">Open this link</h3>
+  <p id="open-choice-description">Where would you like to open it?</p>
+  <p id="open-choice-destination" class="theme-note"></p>
+  <div class="row-actions">
+    <button type="button" id="open-choice-tab" class="action">New tab</button>
+    <button type="button" id="open-choice-window" class="action secondary">New window</button>
+    <button type="button" id="open-choice-cancel" class="choice-cancel">Cancel</button>
+  </div>
+  <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
+</dialog>
+<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script></body></html>
