@@ -2,6 +2,8 @@
 
 **Status: configuration proposal only. Not approved, deployed, internet-exposed, or tested on CachyOS.**
 
+**Latest handoff:** [CachyOS build checkpoint (paused; no deployment)](CACHYOS_BUILD_HANDOFF_2026-11-14.md). It records the Bazzite/Tailscale mobile visual check, current source state, and safe continuation steps without private addresses or configurations.
+
 This package offers a reproducible, **loopback-only preview** of the existing public static website at [`docs/index.html`](../../../docs/index.html). It deliberately reuses the already published Portal design instead of replacing it or launching a different application.
 
 ## Boundary
