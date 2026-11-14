@@ -55,7 +55,7 @@
         } else {
           const msg = document.createElement("span");
           msg.textContent = variant.publication_status === "metadata_only_pending_file_verification" ?
-            "Recently supplied · release file not verified" : "Public audio upload pending";
+            "Source received · release file not published" : "SHA-verified source · public audio upload pending";
           detail.append(msg);
         }
         card.append(detail);
