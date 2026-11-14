@@ -30,12 +30,12 @@ EXPIRES_SECONDS = 300
 BACKUP_DIR = Path.home() / ".local" / "state" / "conflux-portal" / "quadlet-backups"
 
 
-def _call(argv, timeout=25):
+def _call(argv, timeout=25, max_chars=500):
     try:
         p = subprocess.run(argv, capture_output=True, text=True, timeout=timeout, check=False)
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise RuntimeError("System command unavailable or timed out") from exc
-    return p.returncode, (p.stdout or p.stderr).strip()[:500]
+    return p.returncode, (p.stdout or p.stderr).strip()[:max_chars]
 
 
 def _ensure_safe_source(value: str) -> tuple[Path, dict]:
@@ -55,7 +55,7 @@ def _ensure_safe_source(value: str) -> tuple[Path, dict]:
     if not shutil.which("findmnt"):
         raise RuntimeError("findmnt is required to verify an existing external mount")
     rc, output = _call(["findmnt", "--json", "--target", str(source),
-                         "--output", "TARGET,SOURCE,FSTYPE,OPTIONS"], timeout=10)
+                         "--output", "TARGET,SOURCE,FSTYPE,OPTIONS"], timeout=10, max_chars=16000)
     if rc != 0:
         raise ValueError("Could not confirm a mounted filesystem at this path")
     try:
