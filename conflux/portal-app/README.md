@@ -16,7 +16,7 @@ If you are already in `conflux/portal-app`, skip the `cd` command. Open `http://
 
 ## No-terminal updates and desktop access (new preview)
 
-**One-time setup:** Start the Portal normally from your cloned repository. In the new **Updates & Setup** room, click **Add to Applications Menu**. A user-local `Conflux Portal` entry is created for KDE and other compatible Linux desktop environments. No `sudo` is used. Search for **Conflux Portal** in your Linux application menu thereafter. It opens your already-running instance if present, or starts it on `127.0.0.1:8765` and opens your default browser.
+**One-time setup:** Start the Portal normally from your cloned repository. In the new **Updates & Setup** room, click **Add to Applications Menu**. A user-local `Conflux Portal` entry is created for KDE and other compatible Linux desktop environments. No `sudo` is used. Search for **Conflux Portal** in your Linux application menu thereafter. It reuses the server only when it belongs to **that exact installed Portal checkout**. If an older ZIP copy or a different clone is already using `127.0.0.1:8765`, it reports the conflict instead of silently opening the wrong instance.
 
 **Update sequence:**
 
@@ -28,7 +28,7 @@ No step silently resets, stashes, cleans, rebases or forces your local working t
 
 The updater requires a real Git checkout with a `main` branch and a verified `origin` pointing to `MedioCritasVT/CrystalCove` on GitHub (standard SSH and HTTPS forms are accepted). ZIP-only installations cannot self-update this way yet. The update fetch uses GitHub's public HTTPS address even if your normal Git remote uses SSH, avoiding noninteractive passphrase prompts. Git and a reachable GitHub connection are required.
 
-For troubleshooting, desktop-launched processes write a local log under `~/.local/state/conflux-portal/portal.log`. Browser-local Atelier/Ledger data stays bound to `http://127.0.0.1:8765` when you use the same browser profile. Keep exports/backups of important workspace content.
+For troubleshooting, **Updates & Setup** now shows the absolute path of the Portal checkout actually serving this browser tab. If you see the old ZIP folder, close that Portal process (Ctrl+C in the terminal where it was started), start `python3 portal.py` from your updated **Git clone's** `conflux/portal-app` folder, and refresh the browser with **Ctrl+Shift+R**. Do not force-close the browser or erase browser storage. Desktop-launched processes log to `~/.local/state/conflux-portal/portal.log`. Browser-local Atelier/Ledger data stays bound to `http://127.0.0.1:8765` for the same browser profile; keep backups.
 
 ## Start playing
 
@@ -107,11 +107,18 @@ The musical catalog and player do not modify the existing Atelier, Ledger or nat
 
 The Conflux Soundtrack player is in the Portal on every page. **Music starts off** to respect browser autoplay rules. Visitors do **not** need to select individual tracks. When the public GitHub release `conflux-soundtrack-v0.1` contains the expected actual MP3 assets with their exact catalog filenames, the Portal discovers and loads the available titles from the official GitHub Release API on startup. Visitors simply press **Music On** (the browser requires a gesture to start audible playback). Track selection, two distinct **Sacrament of Oath** takes, volume and playback controls stay available across Portal rooms.
 
-**Before the public release exists:** the Architect can install the prepared `Conflux_Soundtrack_Release_v0_1.zip` **once** using **Install soundtrack ZIP once…** in the player. This imports seven recordings to `~/.local/share/conflux-portal/soundtrack/` (or `$XDG_DATA_HOME/conflux-portal/soundtrack/`) after checking each against the exact SHA-256 values in `conflux/soundtrack/RELEASE_SHA256SUMS.txt`. The Portal serves those verified local files from its loopback-only server on subsequent visits; no repeat import, MP3 selection, GitHub login or internet connection is necessary.
+**Before the public release exists:** the Architect can install the prepared `Conflux_Soundtrack_Release_v0_1.zip` **once** using **Install soundtrack ZIP once…** in the player. The original seven-file archive or the newer **11-recording** `Conflux_Soundtrack_11_Recordings_Release_Ready.zip` can be imported into `~/.local/share/conflux-portal/soundtrack/` (or `$XDG_DATA_HOME/conflux-portal/soundtrack/`). The importer verifies the corresponding SHA-256 manifest, refuses incomplete or tampered sets, and keeps them for later offline listening. The Portal serves those verified local files from its loopback-only server on subsequent visits; no repeat import, MP3 selection, GitHub login or internet connection is necessary.
 
 The ZIP is not streamed directly from GitHub: for browser streaming, publish **each MP3 individually** as a GitHub Release asset. The player and Soundtrack page offer **Download MP3** only for an asset whose exact name and official GitHub Release URL are confirmed by the public release API; no Git clone is required to obtain those assets. The verified ZIP installer accepts either the complete original seven-file edition or the complete eleven-file edition, checks each SHA-256 and refuses mixed/incomplete archives. A release ZIP alone is not enough for direct track playback. Uploaded files are not the same as licensing audio for unrelated third-party reuse.
 
-**Still not implemented:** adding the seven recordings to an Unreal project, soundtrack scene placement, automatic looping/crossfade, selecting a final Sacrament take or unattended publishing. Streaming is conditional on actual GitHub release assets being present.
+**Still not implemented:** adding the new soundtrack recordings to the Unreal project, soundtrack scene placement, automatic looping/crossfade, selecting a final Sacrament take or unattended publishing. Streaming is conditional on actual GitHub release assets being present.
+
+
+### ZIP picker error: source file cannot be read
+
+If Firefox/KDE reports that the selected file lacks read permission, the Portal has **not** installed that file. The complete 11-track archive is approximately 55 MiB, below the 70 MiB limit, and its recording hashes have been checked. The file picker still needs read permission to the **actual copy you select**. Try a fresh download to a normal `~/Downloads/` folder rather than choosing a recently restored file from Trash. In Dolphin, check **Properties → Permissions** for your own account's read permission. Reopen the Portal's **Music options → Install soundtrack ZIP once…** and choose the readable copy. No `sudo`, archive extraction or code changes are required. If it still fails, record the exact Portal status error and your current browser/sandbox context; don't recursively chmod or change ownership of unrelated directories.
+
+A new browser-side preflight reads the selected ZIP before sending it, so unreadable files show actionable guidance and make no install request. This cannot grant Firefox permissions it doesn't have. For a second check that the **correct** server is running, compare the checkout path under **Updates & Setup** with the Git folder you intended to launch.
 
 ## Safety and known limitations
 
