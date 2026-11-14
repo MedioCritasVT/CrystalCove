@@ -200,6 +200,7 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/api/status":
             return self.respond(200, {
                 "platform": sys.platform, "mode": "local-preview",
+                "portal_root": str(ROOT),
                 "vos": "not-connected", "apps": apps_public(),
                 "picker_available": game_locator.picker_program() is not None,
                 "launch_token": TOKEN,

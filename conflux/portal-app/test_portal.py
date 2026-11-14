@@ -78,6 +78,7 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(by_id["conflux-atelier"]["action"], "open")
         self.assertEqual(by_id["conflux-ledger"]["action"], "open")
         self.assertEqual(data["vos"], "not-connected")
+        self.assertEqual(data["portal_root"], str(portal.ROOT))
 
     def test_configured_game_is_launchable_but_not_started_by_test(self):
         executable = Path(self.tmp.name) / "mock-game.sh"

@@ -188,6 +188,11 @@ async function refresh() {
     if (!response.ok) throw Error("status");
     const data = await response.json();
     token = data.launch_token;
+    // Show the actual serving checkout; multiple ZIP/clone installations can
+    // otherwise look identical while sharing the same localhost URL.
+    document.querySelector("#portal-source-path").textContent =
+      data.portal_root ? "Portal serving this page: " + data.portal_root :
+      "This Portal process is an older build with no checkout identity. Close it and start the updated Git clone.";
     target.replaceChildren();
     browse.disabled = !data.picker_available;
     browse.title = data.picker_available ?

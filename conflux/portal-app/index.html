@@ -543,6 +543,23 @@ body{padding-bottom:76px}
   height:18px;bottom:0;border-radius:5px;background:#d3e8b2
 }
 .pet-reference-link{display:inline-block;font-size:.76rem;margin-top:4px}
+
+/* Visibility pass: make the reference-linked character designs clearly legible. */
+#nodes .node-card{padding:15px 16px 18px;min-height:270px}
+#nodes .node-card .node{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+#nodes .node-card .pet-figure{
+  display:flex;align-items:center;justify-content:center;
+  width:145px;height:151px;flex:none;margin:0 auto 2px;
+}
+#nodes .node-card .pet-token{
+  transform:scale(1.35);transform-origin:50% 50%;margin:0;
+}
+#nodes .node-card .node > div:last-child{display:flex;flex-direction:column;align-items:center}
+#nodes .node-card .node > div:last-child strong{font-family:Georgia,serif;font-size:1.2rem}
+#nodes .node-card .node small{font-size:.82rem;margin:2px 0 5px}
+#nodes .node-card .pet-reference-link{font-size:.87rem}
+.music-file-help{font-size:.75rem;color:#e2d3bf;margin:10px 0 0;line-height:1.5}
+#portal-source-path{overflow-wrap:anywhere;margin-top:9px}
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
@@ -571,6 +588,7 @@ body{padding-bottom:76px}
       <button id="music-recheck" type="button" class="action secondary music-file-label">Refresh music library</button>
     </div>
     <p class="music-feedback" id="music-install-status" role="status" aria-live="polite">Published tracks load automatically; install verified local files for offline playback.</p>
+    <p class="music-file-help">File-picker trouble? Select the complete soundtrack ZIP from a normal readable Downloads folder, not inside Trash. No extraction or administrator access is needed.</p>
   </div></details>
   <audio id="music-audio" preload="none"></audio>
 </div>
@@ -612,7 +630,7 @@ body{padding-bottom:76px}
 <section class="panel" id="apps" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Local launch desk</div><h2>Applications</h2><p class="lead">Choose Download to see the game release and locate an existing installation; Launch appears when you register an extracted executable. Bundled apps open directly in the browser. Nothing is installed or started on its own.</p></div><aside class="room-companions" id="room-companion-apps" data-room="apps" aria-label="Node companions for this section"></aside></div><div id="app-list" class="cards" aria-live="polite"></div><p>The game folder finder can update <code>~/.config/conflux-portal/apps.json</code> for you. Open Atelier and Ledger directly—no setup required.</p></section>
 <section class="panel" id="vos" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Independent services</div><h2>VOS Instruments</h2><p class="lead">Instruments show what has been observed, what remains unknown, and where interpretation must stop. Nothing here claims live machine access.</p></div><aside class="room-companions" id="room-companion-vos" data-room="vos" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Service status</h3><p id="vos-status">Not connected. No VOS service is queried or started.</p><span class="pill">Unverified</span></article><article class="card"><h3>Machine Weather</h3><p>Clear, mist, fog and storm remain conceptual. No synthetic observation is presented as real hardware telemetry.</p><span class="pill">Concept</span></article></div></section>
 <section class="panel" id="library" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Source and provenance</div><h2>Library & Art</h2><p class="lead">Ratio has uploaded the labeled development-media catalog, reference art and captures. These are project records, not automatically approved final artwork.</p></div><aside class="room-companions" id="room-companion-library" data-room="library" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Books I–IV</h3><p>Original manuscripts; not edited final editions.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books">Open archive</a></article><article class="card"><h3>Book V · The Emerald Threshold</h3><p>Work in progress. Read the published Act I chapters (currently Chapters 3–10), or explore the manuscript index. Unpublished chapters are not implied to be complete.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/Act_I_Newfoundland" target="_blank" rel="noopener noreferrer">Read available chapters</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/README.md" target="_blank" rel="noopener noreferrer">Chapter status register</a> <span class="pill">WIP</span></article><article class="card"><h3>Art archive</h3><p>Original labeled references and development captures are now published. A curated in-app gallery and character-reference-linked chibi familiars are under development.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/concept-art" target="_blank" rel="noopener noreferrer">Browse project media</a></article><article class="card"><h3>Source Files · for creators</h3><p>Editable code, original music, art, character panels, private working sources and their distribution boundaries. Browse the public structure; keep private originals local.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/sources/README.md" target="_blank" rel="noopener noreferrer">View the Sources layout</a></article></div></section>
-<section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">Five distinct chibi-style CSS previews now use separate hair and wardrobe palettes, with direct links to the publicly indexed character panels for comparison. These are concept studies, not final approved character art.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
+<section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">Updated wardrobe studies: five larger chibis with different hair shapes, outfit colors, insignia and links to each Node’s character panel. These remain reviewable concept designs, not final character art.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
 
 
 <section class="panel" id="soundtrack" hidden>
@@ -689,6 +707,7 @@ body{padding-bottom:76px}
     <button class="action secondary" id="updates-relaunch" type="button" disabled>3 · Relaunch</button>
   </div>
   <p id="updates-status" class="status-line" role="status" aria-live="polite">No update check has been run yet.</p>
+  <p id="portal-source-path" class="theme-note">Identifying the Portal checkout currently serving this page…</p>
   <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
   <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
 </div>

@@ -16,7 +16,7 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-launch", "game-linked-state", "game-picker-availability",
                    "home-game-action", "home-game-status",
                   "updates-check", "updates-apply", "updates-relaunch",
-                  "updates-status", "updates-details", "desktop-install", "desktop-status",
+                  "updates-status", "updates-details", "portal-source-path", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)]) {
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
@@ -74,7 +74,7 @@ const named = Object.fromEntries(
                   "game-launch", "game-linked-state", "game-picker-availability",
                    "home-game-action", "home-game-status",
                   "updates-check", "updates-apply", "updates-relaunch",
-                  "updates-status", "updates-details", "desktop-install", "desktop-status",
+                  "updates-status", "updates-details", "portal-source-path", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)])
         .map(id => [id, new Element("div", id)])
 );
@@ -109,6 +109,7 @@ const fakeFetch = async (url, opts = {}) => {
   if (url === "/api/status") {
     result = {
       launch_token: "test-only-token", picker_available: true,
+       portal_root: "/home/architect/Conflux/CrystalCove/conflux/portal-app",
       apps: [
         {id:"conflux-game",name:"Conflux Game V0.1",action:installed?"launch":"download"},
         {id:"conflux-atelier",name:"Conflux Atelier",action:"open",open_url:"/apps/atelier"},
@@ -146,6 +147,9 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(named.downloads.hidden, false, "direct /downloads must show download page");
   assert.equal(named.home.hidden, true);
   assert.equal(document.body.dataset.view, "downloads");
+  assert(named["portal-source-path"].textContent.includes("CrystalCove/conflux/portal-app"),
+         "active checkout path must be visible in Updates & Setup");
+  assert(html.includes("#nodes .node-card .pet-token"), "enlarged chibi artwork styles missing");
   assert.equal(named["node-list"].children.length, 5);
   for (const id of roomIds) {
     const dock = named["room-companion-" + id];

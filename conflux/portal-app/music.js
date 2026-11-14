@@ -223,16 +223,33 @@
     const zip = zipInput.files?.[0];
     if (!zip) return;
     zipInput.disabled = true;
-    installStatus.textContent = "Verifying and installing the soundtrack…";
+    installStatus.textContent = "Checking that your browser can read the soundtrack ZIP…";
     try {
+      if (!/\.zip$/i.test(zip.name) || !zip.size || zip.size > 70 * 1024 * 1024)
+        throw Error("Choose a readable Conflux soundtrack ZIP under 70 MB.");
+      let payload;
+      try {
+        // Reading first gives a useful local-file error (KDE/Firefox/Trash)
+        // instead of an opaque network failure after trying to POST a File.
+        // The verified archive is about 55 MB, within the current upload limit.
+        payload = await zip.arrayBuffer();
+      } catch {
+        throw Error("Firefox cannot read the selected ZIP. Copy or download it into your ordinary Downloads folder, ensure your user has read permission, then select that copy. A file restored from Trash may have lost file-picker access. Nothing was installed.");
+      }
+      installStatus.textContent = "Verifying soundtrack checksums and installing…";
       const statusRes = await fetch("/api/status", {cache:"no-store"});
       if (!statusRes.ok) throw Error("Portal service unavailable");
       const statusData = await statusRes.json();
-      const response = await fetch("/api/music/install", {
-        method:"POST",
-        headers:{"Content-Type":"application/zip", "X-Conflux-Token":statusData.launch_token},
-        body:zip
-      });
+      let response;
+      try {
+        response = await fetch("/api/music/install", {
+          method:"POST",
+          headers:{"Content-Type":"application/zip", "X-Conflux-Token":statusData.launch_token},
+          body:payload
+        });
+      } catch {
+        throw Error("The browser could not send the selected ZIP to your local Portal. Copy it to a normal readable folder and try again; check that the Portal is still running.");
+      }
       const data = await response.json();
       if (!response.ok) throw Error(data.error || "ZIP installation failed");
       await loadAutomaticLibrary();
