@@ -17,6 +17,7 @@
   const libraryStatus = $("#music-library-status");
   const catalog = $("#music-catalog");
   const downloads = $("#soundtrack-downloads");
+  const albumDownload = $("#music-album-download");
   const zipInput = $("#music-zip");
   const reload = $("#music-recheck");
   const installStatus = $("#music-install-status");
@@ -182,6 +183,17 @@
       if (!response.ok) throw Error("soundtrack status request failed");
       const data = await response.json();
       renderDownloads(data.tracks || []);
+      albumDownload.replaceChildren();
+      if (data.album_download_url) {
+        const link = document.createElement("a");
+        link.href = data.album_download_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Download the complete 11-recording soundtrack ZIP";
+        albumDownload.append(link);
+      } else {
+        albumDownload.textContent = "Complete soundtrack download pending publication on GitHub Releases.";
+      }
       // Don't replace an actively playing manual file selection during a refresh.
       if (enabled && groups.size) stop();
       audio.removeAttribute("src");
