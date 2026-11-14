@@ -121,6 +121,8 @@ const roomFamiliar = {
   vos: {who:["Specula","Limen"], message:"Specula watches the evidence; Limen protects its meaning."},
   library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
   nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},
+  attunement: {who:["Specula","Limen"], message:"Specula questions the evidence; Limen holds the interpretive threshold."},
+  "about-arch": {who:["Medio","Nexus"], message:"Medio welcomes each beginning; Nexus helps connect what it may become."},
   guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."},
   tour: {who:["Medio","Specula"], message:"Medio offers a look inside; Specula helps you notice what is shown."},
   soundtrack: {who:["Nexus","Medio"], message:"Nexus preserves the voices; Medio welcomes the music."},
