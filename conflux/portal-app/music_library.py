@@ -61,6 +61,7 @@ def expected_assets():
         version["release_asset_filename"]
         for track in metadata()["tracks"]
         for version in track["variants"]
+        if version.get("publication_status") == "staged_pending_upload"
     }
 
 
@@ -122,7 +123,7 @@ def library():
                 local += int(installed)
                 remote += int(not installed)
             variants.append({
-                "id": v["id"], "filename": name, "duration_seconds": v["duration_seconds"],
+                "id": v["id"], "filename": name, "duration_seconds": v.get("duration_seconds"),
                 "source": source, "url": url,
             })
         tracks.append({"id": track["id"], "title": track["title"],
@@ -176,7 +177,7 @@ def install_release_zip(payload):
         if not staged:
             raise MusicError("The selected ZIP contains no recognized Conflux soundtrack MP3s.")
         if len(staged) != len(expected):
-            raise MusicError("The archive is incomplete; expected all seven recordings.")
+            raise MusicError("The archive is incomplete; expected all %d verified recordings." % len(expected))
         for src, dst in staged:
             if dst.is_symlink():
                 raise MusicError("A soundtrack destination is a symlink. Installation stopped.")
