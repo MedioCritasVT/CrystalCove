@@ -13,7 +13,7 @@ class Element {
     this.textContent="";this.value="0";this.disabled=true;this.hidden=false;
     this.duration=NaN;this.currentTime=0;this.paused=true;
   }
-  addEventListener(evt,fn){this.handlers[evt]=fn;}
+  addEventListener(evt,fn){const previous=this.handlers[evt];this.handlers[evt]=(event)=>{if(previous)previous(event);return fn(event);};}
   setAttribute(name,value){this.attrs[name]=value;}
   click(){return this.handlers.click?.();}
 }
