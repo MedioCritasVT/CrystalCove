@@ -65,7 +65,8 @@ def _ensure_safe_source(value: str) -> tuple[Path, dict]:
         fs_type = str(mount.get("fstype", ""))
     except (OSError, KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError) as exc:
         raise ValueError("Unrecognized mount information; no changes made") from exc
-    if (point == Path("/") or not source.is_relative_to(point)
+    if (str(point) in {"/", "/var", "/home", "/var/home", "/run", "/run/media"}
+            or not source.is_relative_to(point)
             or fs_type.lower() in {"overlay", "tmpfs", "devtmpfs", "proc", "sysfs",
                                     "cgroup2", "squashfs", "autofs"}):
         raise ValueError("This folder is not verified as a separate mounted media filesystem")
