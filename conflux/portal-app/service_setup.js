@@ -83,3 +83,135 @@
     finally { check.disabled = false; }
   });
 })();
+
+/* Existing service media storage updater. Independent of the new installer:
+ * a Git update never touches user Quadlets, and this section requires its own
+ * explicit preview, checkbox and native confirmation. */
+(() => {
+  const get = id => document.getElementById(id);
+  const service = get("mirror-storage-service"), target = get("mirror-storage-target");
+  const folder = get("mirror-storage-folder"), browse = get("mirror-storage-browse");
+  const preview = get("mirror-storage-preview"), review = get("mirror-storage-plan");
+  const approve = get("mirror-storage-approve"), apply = get("mirror-storage-apply");
+  const status = get("mirror-storage-status");
+  if (![service,target,folder,browse,preview,review,approve,apply,status].every(Boolean)) return;
+  const local = window.location.hostname === "127.0.0.1";
+  const choices = {
+    jellyfin: [["/media","/media · videos"]],
+    kavita: [["/books","/books · books"],["/comics","/comics · comics"],
+             ["/manga","/manga · manga"]],
+    navidrome: [["/music","/music · music"]]
+  };
+  let planToken = "";
+  const say = message => { status.textContent = message; };
+  const row = (parent, tag, message) => {
+    const el = document.createElement(tag);
+    el.textContent = String(message);
+    parent.append(el);
+    return el;
+  };
+  const reset = () => {
+    planToken = "";
+    approve.checked = false;
+    apply.disabled = true;
+    preview.replaceChildren();
+  };
+  const updateDestinations = () => {
+    target.replaceChildren();
+    for (const [value,label] of choices[service.value] || []) {
+      const opt = document.createElement("option");
+      opt.value = value;
+      opt.textContent = label;
+      target.append(opt);
+    }
+    reset();
+  };
+  async function request(route, payload) {
+    const r = await fetch("/api/status", {cache:"no-store"});
+    if (!r.ok) throw Error("Portal session unavailable");
+    const token = (await r.json()).launch_token;
+    const result = await fetch(route, {
+      method:"POST",
+      headers:{"Content-Type":"application/json","X-Conflux-Token":token},
+      body:JSON.stringify(payload)
+    });
+    const data = await result.json();
+    if (!result.ok) throw Error(data.error || "Storage action declined");
+    return data;
+  }
+  service.addEventListener("change", updateDestinations);
+  target.addEventListener("change", reset);
+  folder.addEventListener("input", reset);
+  updateDestinations();
+  if (!local) {
+    for (const control of [service,target,folder,browse,review,approve,apply]) {
+      control.disabled = true;
+    }
+    say("Storage changes are available only at http://127.0.0.1:8765 on the Bazzite desktop.");
+    return;
+  }
+  browse.addEventListener("click", async () => {
+    reset();
+    browse.disabled = true;
+    say("Choose a directory in the native Bazzite folder picker...");
+    try {
+      const data = await request("/api/services/storage/browse", {});
+      if (!data.cancelled && data.folder) {
+        folder.value = data.folder;
+        say("Folder selected. Preview it to verify that the external drive is mounted.");
+      } else {
+        say(data.detail || "No folder selected. You can paste its absolute path from Dolphin.");
+      }
+    } catch (err) {
+      say("Folder selection failed: " + err.message);
+    } finally { browse.disabled = false; }
+  });
+  review.addEventListener("click", async () => {
+    reset();
+    if (!folder.value.trim()) { say("Choose or enter a mounted media folder first."); return; }
+    review.disabled = true;
+    say("Inspecting the existing Quadlet, source filesystem, and proposed mount line...");
+    try {
+      const data = await request("/api/services/storage/plan", {
+        service:service.value, destination:target.value, host_folder:folder.value.trim()
+      });
+      row(preview, "h3", "Proposed update for " + data.service);
+      row(preview, "p", "Current media source: " + data.current_host_folder);
+      row(preview, "p", "New media source: " + data.new_host_folder);
+      row(preview, "p", "Mounted at: " + data.mount.mount_point +
+          " (" + data.mount.filesystem + ")");
+      row(preview, "p", "Will write: " + data.preview);
+      row(preview, "p", "Existing account, cache, databases, and other Quadlet settings stay in place.");
+      row(preview, "p", "A backup of the old Quadlet is saved before updating. If running, only this service is restarted.");
+      planToken = data.will_change ? (data.plan_token || "") : "";
+      say(data.will_change ? "Review the proposal, then approve the selected-service change below." :
+          "This media source is already configured. Nothing needs changing.");
+    } catch (err) { say("Preview blocked: " + err.message); }
+    finally { review.disabled = false; }
+  });
+  approve.addEventListener("change", () => {
+    apply.disabled = !planToken || !approve.checked;
+  });
+  apply.addEventListener("click", async () => {
+    if (!planToken || !approve.checked) return;
+    const selected = planToken;
+    reset();
+    review.disabled = true;
+    say("Confirm this exact mount change in the native Bazzite desktop dialog.");
+    try {
+      const result = await request("/api/services/storage/apply", {
+        plan_token:selected, explicit_confirmation:"APPLY READ-ONLY MEDIA MOUNT"
+      });
+      row(preview, "h3", "Mount update applied");
+      row(preview, "p", result.service + ": " + result.host_folder +
+          " → " + result.destination);
+      row(preview, "p", "Original Quadlet backup: " + result.unit_backup);
+      row(preview, "p", result.restarted ?
+          "The selected service was restarted; check the library in its browser UI." :
+          "The service was stopped and remains stopped. Its updated mount will be used at next start.");
+      say("Configuration updated without reinstalling the app or moving media. Test a sample file.");
+    } catch (err) {
+      say("Update stopped: " + err.message + " Check logs and try a fresh preview.");
+    } finally { review.disabled = false; }
+  });
+})();
