@@ -360,6 +360,49 @@ body{padding-bottom:76px}
  .music-dock .music-options select{width:90px}
  .music-advanced-panel{right:0}
 }
+/* Prototype chibi familiars: oversized heads, expressive eyes, tiny arms and feet. */
+.pet-token{filter:drop-shadow(0 7px 10px #060c189f)}
+.pet-token .pet-body{
+  bottom:1px;left:29px;width:39px;height:38px;border-radius:50% 50% 43% 43%;
+  background:linear-gradient(140deg,var(--pet-b),var(--pet-a));z-index:1
+}
+.pet-token .pet-face{
+  top:15px;left:8px;width:80px;height:73px;
+  border-radius:49% 49% 46% 46%;z-index:3;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--pet-a) 64%,#fffdfc),var(--pet-b));
+  box-shadow:inset -7px -8px 12px #23304730,0 2px 0 #e1d6df80
+}
+.pet-token .pet-ear{top:8px;width:25px;height:36px;z-index:1}
+.pet-token .pet-ear.left{left:9px}.pet-token .pet-ear.right{right:9px}
+.pet-token .pet-crest{z-index:2;top:0;left:22px;width:52px;height:22px}
+.pet-token .pet-bangs{
+  position:absolute;top:-3px;left:7px;width:65px;height:21px;
+  background:linear-gradient(135deg,var(--pet-b),var(--pet-a));
+  border-radius:65% 60% 48% 47%;transform:rotate(-4deg);z-index:4;
+  box-shadow:0 2px 0 #ffffff6e
+}
+.pet-token .pet-bangs::after{
+  content:"";position:absolute;width:24px;height:19px;left:17px;top:8px;
+  background:var(--pet-b);border-radius:10% 10% 90% 15%;transform:rotate(-18deg)
+}
+.pet-token .pet-eye{top:31px;width:10px;height:14px;border-radius:55% 55% 48% 48%;background:#20253a;box-shadow:0 2px 0 #2b243d44}
+.pet-token .pet-eye.left{left:19px}.pet-token .pet-eye.right{right:19px}
+.pet-token .pet-eye::before{content:"";position:absolute;top:2px;left:2px;width:4px;height:5px;background:#fff;border-radius:50%}
+.pet-token .pet-blush{position:absolute;top:49px;width:14px;height:7px;background:#e992a788;border-radius:50%;filter:blur(.6px)}
+.pet-token .pet-blush.left{left:10px}.pet-token .pet-blush.right{right:10px}
+.pet-token .pet-smile{position:absolute;top:53px;left:35px;width:10px;height:6px;border:2px solid #684e64;border-top:0;border-radius:0 0 12px 12px}
+.pet-token .pet-paw{position:absolute;top:8px;width:15px;height:15px;border-radius:50%;background:var(--pet-a);border:1px solid #fffaefb0}
+.pet-token .pet-paw.left{left:-11px}.pet-token .pet-paw.right{right:-11px}
+.pet-token .pet-mark{z-index:4;bottom:0;left:38px;width:20px;height:20px;line-height:18px}
+.pet-token[data-node="ratio"] .pet-face{border-radius:44% 44% 43% 43%}
+.pet-token[data-node="ratio"] .pet-bangs{border-radius:8px 12px 45% 45%}
+.pet-token[data-node="nexus"] .pet-bangs{background:linear-gradient(90deg,#dfadf5,#a59de9)}
+.pet-token[data-node="specula"] .pet-bangs{background:linear-gradient(90deg,#c4d1e5,#889cae)}
+.pet-token[data-node="specula"] .pet-crest{z-index:2;pointer-events:none}
+.pet-token[data-node="limen"] .pet-bangs{background:linear-gradient(90deg,#b5eacc,#93cda8)}
+@media(prefers-reduced-motion:no-preference){
+ .room-companions .pet-token:hover{translate:0 -5px;transition:translate .2s ease}
+}
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
