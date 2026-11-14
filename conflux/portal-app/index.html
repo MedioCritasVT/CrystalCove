@@ -345,9 +345,15 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
 .threshold-postscript a{color:#c5e9e8;text-underline-offset:3px}
 .threshold-postscript .arch-love{font-family:Georgia,serif;font-style:italic;color:#f5c8d6}
 .threshold-postscript .arch-love span{font-weight:600}
-</style><link rel="stylesheet" href="/familiars.css"></head><body>
+/* The video room is a welcoming choice, never an auto-playing theatre. */
+body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
+#tour .tour-card{min-height:175px}
+#tour .tour-card h3{font-size:1.24rem}
+#tour .tour-card a{display:inline-block;margin-top:12px}
+#tour .tour-card .theme-note{font-size:.74rem}
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
-<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -363,6 +369,14 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
     <select id="music-select" aria-label="Choose composition" disabled></select>
     <label for="music-version">Take</label>
     <select id="music-version" aria-label="Choose alternate version" disabled></select>
+  </div>
+  <div class="music-timeline"><output id="music-elapsed" for="music-seek">0:00</output><label for="music-seek">Seek within soundtrack</label><input type="range" id="music-seek" min="0" max="1000" step="1" value="0" disabled aria-label="Seek within current track"><output id="music-duration" for="music-seek">--:--</output></div>
+  <div class="music-visual-wrap"><button type="button" id="music-visual-toggle" aria-expanded="false" aria-controls="music-visual-panel">Spectrum ▥</button>
+    <div id="music-visual-panel" hidden role="region" aria-label="Soundtrack live spectrum">
+      <div class="music-visual-header"><strong>Soundstage · live frequencies</strong><button type="button" id="music-visual-close" aria-label="Close visualizer">×</button></div>
+      <canvas id="music-spectrum" width="350" height="112" role="img" aria-label="Live frequency bars from the playing soundtrack"></canvas>
+      <p id="music-visual-status" role="status" aria-live="polite">Press Music On to see the spectrum.</p>
+    </div>
   </div>
   <div class="music-volume"><label for="music-volume">Volume</label><input id="music-volume" type="range" min="0" max="100" value="45" aria-label="Music volume"></div>
   <p class="music-mini-status" id="music-status" role="status" aria-live="polite">Music off</p>
@@ -424,6 +438,20 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
 <section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">Updated wardrobe studies: five larger chibis with different hair shapes, outfit colors, insignia and links to each Node’s character panel. These remain reviewable concept designs, not final character art.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
 
 
+<section class="panel" id="tour" hidden>
+  <div class="room-hero"><div class="room-words"><div class="eyebrow">Watch first · no game installation required</div><h2>A few glimpses of Conflux</h2>
+    <p class="lead">Four short clips from Arch's Portal walkthrough: an invitation, the record room, a game launch, and the Node familiars. Open a video in a <strong>new tab or window</strong>; your Player Manual remains text-first.</p>
+    <p class="theme-note">Clips are distributed as optional GitHub Release assets, not bundled into your Portal download. Only verified public uploads appear as video links.</p></div>
+    <aside class="room-companions" id="room-companion-tour" data-room="tour" aria-label="Node companions for Video Tour"></aside>
+  </div>
+  <p id="video-tour-status" role="status" aria-live="polite">Select Video Tour to check which clips are available.</p>
+  <div id="video-tour-list" data-catalog-url="/video-tour/catalog.json" data-autoload="false" class="cards" aria-label="Short Conflux video clips">
+    <article class="card"><h3>Threshold · A place to begin</h3><p>Welcome without requiring the game.</p></article>
+    <article class="card"><h3>Ledger · Keeping the record</h3><p>What the creative workspace offers.</p></article>
+    <article class="card"><h3>SanctuaryOS · First launch</h3><p>A look at the early game preview.</p></article>
+    <article class="card"><h3>Meet the Node familiars</h3><p>Five miniature companions and their different roles.</p></article>
+  </div>
+</section>
 <section class="panel" id="soundtrack" hidden>
   <div class="room-hero">
     <div class="room-words">
@@ -523,4 +551,4 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script></body></html>
+<script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script></body></html>

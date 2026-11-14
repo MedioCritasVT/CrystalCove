@@ -91,6 +91,18 @@ The little CSS-drawn familiars are **new, provisional interface motifs**, delibe
 
 The UI test `node test_ui.js` checks every room's companion slot, assigned pet count, distinct page atmospheres, functioning navigation, and the existing download/launch flow. This supplements `python3 -m unittest test_portal.py -v`. Both are run by the PR GitHub workflow.
 
+## Optional Video Tour (separate from the Player Manual)
+
+The Portal now has a **Video Tour** room showing four small excerpts from the Architect's screen-recorded walkthrough: Threshold, Ledger, a first SanctuaryOS launch, and the Node companions. Links appear only for actual public [GitHub video Release assets](../video-tour/README.md). Clicking an available clip offers the existing **New tab / New window / Cancel** choice. No video embeds into the README, no autoplay, and no requirement to download a clip merely to visit the Portal.
+
+The static GitHub website source contains the same four-link gallery. The four actual MP4 binaries are **not part of the Git checkout**; until published, the gallery labels the release as pending. The [video tour source and upload guide](../video-tour/README.md) includes exact cut times, the catalog, and an explicit `gh` release script for the owner's local machine.
+
+## Soundstage: timeline and optional live spectrum
+
+The bottom music toolbar now also has an accessible **elapsed/duration time display and draggable seek bar**. Seeking operates on the actual playing audio, works with verified local tracks, and is disabled when no usable duration is available. It does not alter the audio source files.
+
+Select **Spectrum ▥** to open a compact, CAVA-like 32-bar frequency visualization. It uses the browser's own audio-capture/Web Audio APIs if supported, **never a microphone or external streaming service**. Unsupported browsers show a clear message and continue audio normally; no fake music-reactive bars are shown. The pop-out closes when changing rooms, and music itself keeps playing. The Portal still starts with music **off** until the listener explicitly enables it. Reduced-motion and limited hardware remain important acceptance checks.
+
 ## Soundtrack (local-only preview)
 
 The Portal has a global **Music Off / Music On** switch and a **Soundtrack** page. Music is **off by default** and never plays merely because you open the Portal or choose files. Its controls now live in a slim **bottom toolbar** on every page; expand **Music options** for file selection and ZIP import.

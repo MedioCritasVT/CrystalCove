@@ -1,0 +1,37 @@
+/* Optional soundstage layer: never blocks the Portal or starts music. */
+.music-timeline{
+  display:flex;align-items:center;gap:5px;min-width:160px;flex:0 1 220px;
+  color:#eadfeb;font-size:.7rem;font-variant-numeric:tabular-nums;
+}
+.music-timeline label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.music-timeline output{min-width:31px;text-align:center;white-space:nowrap}
+#music-seek{flex:1;min-width:70px;width:100%;accent-color:#b9a9ef;cursor:pointer;touch-action:pan-y}
+#music-seek:disabled{opacity:.4;cursor:not-allowed}
+.music-visual-wrap{position:relative}
+#music-visual-toggle{
+  border:1px solid #8f88b3;background:#293149;color:#e6dcf4;
+  border-radius:9px;padding:5px 8px;white-space:nowrap;font-size:.76rem;
+}
+#music-visual-toggle[aria-expanded="true"]{background:#473852;border-color:#b6a6db}
+#music-visual-panel{
+  position:absolute;right:0;bottom:calc(100% + 18px);width:min(380px,calc(100vw - 32px));
+  border:1px solid #9a8cb0;border-radius:13px;padding:12px 13px;
+  background:linear-gradient(135deg,#222942,#253a40);box-shadow:0 10px 32px #09101acf;z-index:98;
+}
+#music-visual-panel[hidden]{display:none}
+.music-visual-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.music-visual-header strong{font:normal 1rem Georgia,serif;color:#e7d1f0}
+#music-visual-close{background:transparent;border:1px solid #9994b0;color:#f6f1f8;border-radius:8px;padding:2px 8px}
+#music-spectrum{display:block;width:100%;height:112px;margin-top:8px;background:#121c32;border-radius:7px}
+#music-visual-status{margin:6px 0 0;color:#cfcdd9;font-size:.7rem;line-height:1.4}
+@media(max-width:1150px){
+ .music-timeline{flex-basis:170px;min-width:125px}
+}
+@media(max-width:740px){
+ body{padding-bottom:168px}
+ .music-timeline{min-width:150px;max-width:190px;flex:1 1 160px}
+ #music-visual-panel{right:-12px}
+}
+@media(prefers-reduced-motion:reduce){
+ #music-spectrum{outline:1px solid #9f99b7}
+}

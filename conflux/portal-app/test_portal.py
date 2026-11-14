@@ -77,6 +77,23 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertIn('id="open-choice-dialog"', html)
         self.assertIn('class="nav-external"', html)
         self.assertNotIn('View the portable Markdown Player Manual', html)
+        self.assertIn('id="music-seek"', html)
+        self.assertIn('id="music-visual-toggle"', html)
+        self.assertIn('data-page="tour"', html)
+        self.assertIn('id="video-tour-list"', html)
+        for route, marker in (
+            ("/soundstage.css", ".music-timeline"),
+            ("/soundstage.js", "createMediaStreamSource"),
+            ("/video_tour.js", "conflux.portal.video-tour.v0.1"),
+        ):
+            status, body = self.get(route)
+            self.assertEqual(status, 200)
+            self.assertIn(marker, body)
+        status, body = self.get("/video-tour/catalog.json")
+        self.assertEqual(status, 200)
+        tour = json.loads(body)
+        self.assertEqual(len(tour["items"]), 4)
+        self.assertEqual(tour["release_tag"], "conflux-portal-tour-v0.1")
 
     def test_bundled_apps_open(self):
         for route, expected in (("/apps/atelier", "Conflux · The Atelier"),
@@ -372,7 +389,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)

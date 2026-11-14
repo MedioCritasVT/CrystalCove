@@ -82,6 +82,13 @@ def main():
                 assert len(context.pages) == 1, "cancel must not navigate"
                 observations.append("New tab/window/cancel choice prompts; cancel leaves Portal intact")
 
+                page.locator('button[data-page="tour"]').click()
+                page.locator("#video-tour-list .tour-card").first.wait_for(timeout=18000)
+                assert page.locator("#video-tour-list .tour-card").count() == 4
+                assert page.locator("#project-readme video").count() == 0
+                page.screenshot(path=str(proof / "04-video-tour.png"), full_page=True)
+                observations.append("Four optional tour clips live separately from the README; no automatic video playback")
+
                 page.locator('button[data-page="soundtrack"]').click()
                 page.screenshot(path=str(proof / "04-soundtrack-catalog.png"), full_page=True)
                 assert page.locator("#music-toggle").get_attribute("aria-pressed") == "false"
@@ -105,7 +112,20 @@ def main():
                     "(e) => ({paused:e.paused,time:e.currentTime,ready:e.readyState,"
                     "source:e.currentSrc,error:e.error?.message || null})")
                 assert media["time"] > 0.8 and not media["paused"], f"real MP3 playback failed: {media}"
+                assert page.locator("#music-seek").is_enabled(), "seek must activate after metadata loads"
+                assert page.locator("#music-duration").text_content() != "--:--", "song duration should display"
+                page.locator("#music-seek").evaluate(
+                    "(e) => {e.value='500'; e.dispatchEvent(new Event('input',{bubbles:true}));"
+                    "e.dispatchEvent(new Event('change',{bubbles:true}));}")
+                page.wait_for_function("() => document.querySelector('#music-audio').currentTime>20", timeout=15000)
+                observations.append("Time display and scrubbing update the position in the real MP3")
+                page.locator("#music-visual-toggle").click()
+                assert page.locator("#music-visual-panel").is_visible()
+                visual_state = page.locator("#music-visual-status").text_content()
                 page.screenshot(path=str(proof / "05-music-while-exploring.png"), full_page=True)
+                page.locator("#music-visual-close").click()
+                assert not page.locator("#music-visual-panel").is_visible()
+                observations.append("Optional spectrum panel opens and closes without starting or stopping music: " + visual_state)
                 page.locator('button[data-page="home"]').click()
                 assert not page.locator(".music-advanced").evaluate("(e) => e.open"), (
                     "music options should close when navigating to a new room")

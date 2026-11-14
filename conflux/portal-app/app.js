@@ -122,6 +122,7 @@ const roomFamiliar = {
   library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
   nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},
   guide: {who:["Medio","Limen"], message:"Medio teaches the first rhythm; Limen guides the next step."},
+  tour: {who:["Medio","Specula"], message:"Medio offers a look inside; Specula helps you notice what is shown."},
   soundtrack: {who:["Nexus","Medio"], message:"Nexus preserves the voices; Medio welcomes the music."},
   updates: {who:["Ratio","Limen"], message:"Ratio verifies the version; Limen makes the transition explicit."}
 };
