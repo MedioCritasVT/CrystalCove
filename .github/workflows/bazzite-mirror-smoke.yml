@@ -1,0 +1,49 @@
+name: Conflux Bazzite media mirror offline checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'conflux/platforms/bazzite-service-bundle/**'
+      - 'conflux/portal-app/**'
+      - '.github/workflows/bazzite-mirror-smoke.yml'
+  pull_request:
+    paths:
+      - 'conflux/platforms/bazzite-service-bundle/**'
+      - 'conflux/portal-app/**'
+      - '.github/workflows/bazzite-mirror-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile service and backup modules
+        run: python3 -m compileall -q conflux/platforms/bazzite-service-bundle
+      - name: Run isolated unit tests (mocked Bazzite host; no containers)
+        working-directory: conflux/platforms/bazzite-service-bundle
+        run: python3 -m unittest discover -p "test_*.py" -v
+      - name: Verify package boundaries and port documentation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path("conflux/platforms/bazzite-service-bundle")
+          manager = (root/"service_manager.py").read_text()
+          readme = (root/"README.md").read_text()
+          script = Path("conflux/portal-app/service_setup.js").read_text()
+          portal = Path("conflux/portal-app/index.html").read_text()
+          for local, tailnet in (("8096","8443"),("5000","8444"),("4533","8445")):
+              assert local in manager and tailnet in manager
+              assert local in readme and tailnet in readme
+              assert local in portal and tailnet in portal
+          assert "tailnet" in readme.lower()
+          assert "INSTALL NEW BAZZITE MIRROR" in manager
+          assert 'window.location.hostname === "127.0.0.1"' in script
+          assert "AutoUpdate=registry" not in manager
+          print("Port maps and opt-in boundaries verified statically.")
+          PY
