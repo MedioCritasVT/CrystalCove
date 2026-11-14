@@ -333,6 +333,28 @@ class PortalSmokeTest(unittest.TestCase):
                 self.assertEqual(json.load(response)["installed"], 7)
             install.assert_called_once_with(b"ZIP")
 
+    def test_direct_github_soundtrack_install_requires_explicit_authenticated_post(self):
+        route = self.base + "/api/music/install-public"
+        unauthorized = Request(route, data=b"", method="POST")
+        with self.assertRaises(HTTPError) as err:
+            urlopen(unauthorized, timeout=3)
+        self.assertEqual(err.exception.code, 403)
+        request = Request(route, data=b"", method="POST",
+                          headers={"Origin": self.base,
+                                   "X-Conflux-Token": portal.TOKEN})
+        with mock.patch.object(portal.music_library, "install_from_public_release",
+                               return_value={"installed": 11}) as installer:
+            with urlopen(request, timeout=3) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(json.load(response)["installed"], 11)
+            installer.assert_called_once_with()
+        unexpected_body = Request(route, data=b"{}", method="POST",
+                                   headers={"Origin": self.base,
+                                            "X-Conflux-Token": portal.TOKEN})
+        with self.assertRaises(HTTPError) as err:
+            urlopen(unexpected_body, timeout=3)
+        self.assertEqual(err.exception.code, 400)
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
         for script_name in ("app.js", "readme.js", "music.js"):
