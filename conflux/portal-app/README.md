@@ -10,6 +10,14 @@ The local Portal sidebar includes **Media Mirror Setup**. On a Bazzite desktop, 
 
 **Read the full [Bazzite mirror installer/backup README](../platforms/bazzite-service-bundle/README.md) before installation.** This is source/CI-verified but not yet acceptance-tested on a live Bazzite host. Service management is available only when browsing the desktop's `http://127.0.0.1:8765`; remote Tailscale Portal views cannot invoke the installer. Updating the Portal code does not update container images or operating-system packages.
 
+## Updating existing Bazzite media mounts without reinstalling
+
+After `Updates & Setup → Check for Updates → Update → Relaunch`, the **Media Mirror Setup** room also offers **Use an external drive — update existing services**. This is a separate opt-in step for users who have already installed the Jellyfin, Kavita or Navidrome Quadlets.
+
+The new flow lets you choose a recognized media destination, select a directory on an already-mounted external filesystem, preview the exact read-only `Volume=` change, and apply it only after a checkbox plus Bazzite desktop-native confirmation. It preserves existing state/config/database mounts, the other installed service Quadlets, user accounts and source media; backs up the original one-service Quadlet; and restarts only that service if it is currently active. Invalid, disconnected or root-filesystem paths are rejected. The first version rejects source paths with spaces or colons and does not automatically change external filesystem permissions or SELinux labels.
+
+**Git checkout updates do not automatically alter installed Quadlet files.** The user must explicitly apply any mount change. Updating the service mount does **not** update the container image, change Bazzite packages, copy/backup external media, restore Jellyfin's unfinished setup wizard, or move app cache/database storage off the internal disk. Read [the mount update walkthrough and recovery guidance](../platforms/bazzite-service-bundle/README.md#updating-installed-services-to-use-an-external-drive-no-reinstall) before using it.
+
 ## Run locally
 
 Python 3.10 or later is required. From the cloned **CrystalCove repository root**:
