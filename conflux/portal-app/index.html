@@ -345,7 +345,7 @@ body[data-view="soundtrack"]{
   <audio id="music-audio" preload="none"></audio>
 </div>
 <section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Play the available game, open Atelier and Ledger right here, and discover the books and creative work. No VOS service starts automatically.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
-<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p>The playable Linux game is distributed separately from this portal.</p><button class="action" data-go="downloads">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
+<div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
 
 <section class="panel" id="downloads" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Playable release · Linux</div><h2>Get Conflux V0.1</h2>
@@ -374,7 +374,7 @@ body[data-view="soundtrack"]{
 <p id="game-picker-availability" class="theme-note">Checking for a native Linux folder picker…</p><label for="game-folder-input">Or paste a folder path from your Linux file manager</label>
 <input id="game-folder-input" type="text" autocomplete="off" spellcheck="false" placeholder="/home/you/Games/Conflux-V0.1" />
 <p><button id="game-find" class="action secondary">Search this folder</button></p>
-<p id="game-feedback" role="status" aria-live="polite">Choose a folder to begin.</p>
+<p id="game-feedback" role="status" aria-live="polite">Choose a folder, then click <strong>Use this game</strong> on the result to link it. Finding a file alone does not register it.</p>
 <div id="game-results" aria-live="polite"></div>
 <p><small>Privacy: folder selection and launch registration happen on your computer only, after you choose them. There is no automatic scan of your home directory. Your local apps configuration is preserved.</small></p>
 </div>
