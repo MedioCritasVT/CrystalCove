@@ -24,6 +24,9 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
 assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
 assert(html.includes("The Circle of Inquiry") && html.includes("About Arch"), "new reading rooms missing");
 assert(html.includes("An exploratory proposal is not an approved feature."), "philosophy evidence boundary missing");
+assert(html.includes("Worked example: from uncertainty to the Portal Threshold"), "practical method walkthrough missing");
+assert(html.includes("Side by side: the ritual and the workspace"), "ritual comparison missing");
+assert(html.includes("What this page is for"), "visitor explanation missing");
 assert(html.includes('class="threshold-postscript"'), "Threshold documentation invitation missing");
 assert(html.includes("Substantial documentation"), "GitHub documentation must be discoverable");
 assert(html.includes("Arch &lt;3's you xoxo"), "Arch's welcome note missing");
