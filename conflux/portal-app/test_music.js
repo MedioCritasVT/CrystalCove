@@ -140,7 +140,8 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert.equal(audio.paused,true);
 
   // A ZIP is chosen only once. After installation the automatic library refreshes.
-  nodes["music-zip"].files=[{name:"Conflux_Soundtrack_Release_v0_1.zip",size:30000000,\n    arrayBuffer:async()=>new ArrayBuffer(16)}];
+  nodes["music-zip"].files=[{name:"Conflux_Soundtrack_Release_v0_1.zip",size:30000000,
+    arrayBuffer:async()=>new ArrayBuffer(16)}];
   await nodes["music-zip"].handlers.change();
   await tick();
   assert(installed);
