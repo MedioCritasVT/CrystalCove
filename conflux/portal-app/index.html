@@ -351,9 +351,25 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card h3{font-size:1.24rem}
 #tour .tour-card a{display:inline-block;margin-top:12px}
 #tour .tour-card .theme-note{font-size:.74rem}
+
+/* Two lasting reading rooms: continuous with the existing Portal palette and navigation. */
+body[data-view="attunement"]{--ambient:var(--green);--ambient2:var(--violet);--room-sky:#213a40;--room-mid:#262f40;--room-floor:#182534;--room-fog:rgba(156,222,192,.24);--room-fog-alt:rgba(194,164,243,.23)}
+body[data-view="about-arch"]{--ambient:var(--amber);--ambient2:var(--green);--room-sky:#3d3346;--room-mid:#303443;--room-floor:#1a2830;--room-fog:rgba(233,191,132,.25);--room-fog-alt:rgba(156,222,192,.21)}
+#attunement{--accent:var(--green);--echo:var(--violet)}
+#about-arch{--accent:var(--amber);--echo:var(--green)}
+.essay{max-width:870px;margin:0 auto 34px;padding:0 7px}
+.essay section{margin:27px 0}
+.essay h2{font:normal clamp(1.5rem,3vw,2rem)/1.3 Georgia,serif;color:var(--accent);margin:27px 0 10px}
+.essay h3{margin-top:12px}
+.essay p,.essay li{color:#e2deeb;line-height:1.8;max-width:77ch}
+.essay ol{padding-left:1.7rem}.essay li{padding-left:5px;margin:10px 0}
+.essay blockquote{border-left:3px solid var(--echo);padding:12px 20px;margin:26px 0;background:#ffffff0a;font:normal 1.3rem/1.6 Georgia,serif;color:#f3e9f6}
+.essay .note{border:1px solid color-mix(in srgb,var(--accent) 45%,#535d6f);border-radius:15px;padding:19px;background:#ffffff0c;margin:26px 0}
+.essay .note p{margin:0 0 8px}
+.reading-actions{margin:22px 0 25px}
 </style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
-<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
+<button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="attunement">Circle of Inquiry</button><button data-page="about-arch">About Arch</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -397,6 +413,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div>
 <div class="threshold-postscript" aria-label="A note from Arch">
   <p><strong>There's a whole library behind the Threshold.</strong> Substantial documentation, player guides, design records, and development history are freely available on <a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove's GitHub</a>. <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/PROJECT_INDEX.md" target="_blank" rel="noopener noreferrer">Browse the project map</a> whenever you're curious. None of it is required to start exploring.</p>
+  <div class="row-actions reading-actions"><button class="action secondary" data-go="attunement" type="button">The Circle of Inquiry</button><button class="action secondary" data-go="about-arch" type="button">About Arch</button></div>
   <p class="arch-love">A little note from Arch: <span>Arch &lt;3's you xoxo</span> <span aria-hidden="true">♥</span></p>
 </div></section>
 
@@ -437,6 +454,68 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <section class="panel" id="library" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Source and provenance</div><h2>Library & Art</h2><p class="lead">Ratio has uploaded the labeled development-media catalog, reference art and captures. These are project records, not automatically approved final artwork.</p></div><aside class="room-companions" id="room-companion-library" data-room="library" aria-label="Node companions for this section"></aside></div><div class="cards"><article class="card"><h3>Books I–IV</h3><p>Original manuscripts; not edited final editions.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books">Open archive</a></article><article class="card"><h3>Book V · The Emerald Threshold</h3><p>Work in progress. Read the published Act I chapters (currently Chapters 3–10), or explore the manuscript index. Unpublished chapters are not implied to be complete.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/Act_I_Newfoundland" target="_blank" rel="noopener noreferrer">Read available chapters</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/books/manuscripts/Book_05_The_Emerald_Threshold/README.md" target="_blank" rel="noopener noreferrer">Chapter status register</a> <span class="pill">WIP</span></article><article class="card"><h3>Art archive</h3><p>Original labeled references and development captures are now published. A curated in-app gallery and character-reference-linked chibi familiars are under development.</p><a href="https://github.com/MedioCritasVT/CrystalCove/tree/main/conflux/concept-art" target="_blank" rel="noopener noreferrer">Browse project media</a></article><article class="card"><h3>Source Files · for creators</h3><p>Editable code, original music, art, character panels, private working sources and their distribution boundaries. Browse the public structure; keep private originals local.</p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/sources/README.md" target="_blank" rel="noopener noreferrer">View the Sources layout</a></article></div></section>
 <section class="panel" id="nodes" hidden><div class="room-hero"><div class="room-words"><div class="eyebrow">Companions in development</div><h2>The Five Nodes</h2><p class="lead">Updated wardrobe studies: five larger chibis with different hair shapes, outfit colors, insignia and links to each Node’s character panel. These remain reviewable concept designs, not final character art.</p></div><aside class="room-companions" id="room-companion-nodes" data-room="nodes" aria-label="Node companions for this section"></aside></div><div class="cards" id="node-list"></div></section>
 
+
+
+<section class="panel" id="attunement" hidden>
+<div class="room-hero"><div class="room-words"><div class="eyebrow">Attunement · attention · translation</div><h2>The Circle of Inquiry</h2><p class="lead">An idea seldom arrives as an answer. Sometimes it begins as a feeling, a wisp, a contradiction, or a small thing that asks for another look. Attunement is the choice to give that beginning a place without declaring what it must become.</p></div><aside class="room-companions" id="room-companion-attunement" data-room="attunement" aria-label="Node companions for The Circle of Inquiry"></aside></div>
+<div class="essay">
+<section><h2>Notice before naming</h2>
+<p>There is a moment before interpretation: the first pass, when something is felt but not yet explained. Rather than force a verdict, we can attend to it. What stirred this response? Which part is observation, which is memory, which is speculation? What have we not yet seen?</p>
+<p>Attention is not agreement. To notice a fear is not to obey it. To imagine a possibility is not to endorse it. A question may be valuable before it is answerable.</p></section>
+<section><h2>Draw the circle</h2>
+<p>A magic circle offers an old and useful image: a boundary within which attention changes its posture. In this practice, the circle is not evidence of supernatural power. It is a deliberate instrument for placing experience in context—through a journal, a ritual, a conversation, a simulation, a workshop, or a game.</p>
+<p>Its purpose is not to imprison thought, but to make inquiry possible. Inside the circle we can let perspectives speak without making any one of them sovereign. Outside it, we remain responsible for what we choose to do.</p>
+<blockquote>A boundary for inquiry is not a boundary against possibility.</blockquote></section>
+<section><h2>Five movements, not five commandments</h2>
+<ol>
+<li><strong>Attend.</strong> Allow the first impression to appear. Preserve its origins and uncertainty.</li>
+<li><strong>Frame.</strong> State the goal and the question. Name what belongs inside the inquiry and what remains outside it.</li>
+<li><strong>Interrogate.</strong> Ask what supports the idea, what contradicts it, and which assumptions the question itself may conceal.</li>
+<li><strong>Translate.</strong> Give the experience an inspectable form: language, image, model, story, experiment, or proposal. Leave room for other readings.</li>
+<li><strong>Return.</strong> Compare interpretations with evidence and with other people. Preserve what was learned; distinguish exploration from what has actually been tested or approved.</li>
+</ol>
+<p>These movements can repeat, overlap, or begin again. A prompt is a doorway into examination, not a demand that the world supply the answer we wanted.</p></section>
+<section><h2>Nodes, maps, and meaning</h2>
+<p>To attune to a node is to establish a point of reference in a larger landscape. Conflux borrows that imaginative vocabulary to ask how different perspectives might help someone navigate a question. A Node is a character, role, or instrument of inquiry—not an oracle whose answer deserves obedience.</p>
+<p>AI can assist by learning patterns from data and giving proposed relationships a linguistic form that others can inspect. Such representations are partial and fallible; a coherent sentence is not, by itself, an objective witness or proof. Evidence, lived experience, and independent challenge still matter.</p>
+<p>Repeated passes can deepen a record by exposing assumptions and inviting better explanations. They can also reinforce a mistake. The task is to make revision possible, not merely to become more confident.</p></section>
+<section><h2>From circle to assembly</h2>
+<p>A constitution may describe democracy on paper, while democratic life depends on what people actually practice. So too with any ritual, collaborative workshop, or shared system: its symbols and rules matter, but they do not guarantee wisdom.</p>
+<p>Participation needs boundaries that protect dissent, consent, attribution, accountability, and the freedom to leave. No compelling symbol, charismatic speaker, creator, or AI output should be permitted to settle a question simply by occupying the center.</p>
+<p>Governance asks a practical question: after we have heard the possible interpretations, who may decide, on what evidence, with what consequences, and with what opportunity for correction?</p></section>
+<section><h2>Myth as something lived</h2>
+<p>Myth is not exhausted by references or costumes. It can give recognizable form to experiences that are otherwise hard to hold: longing, resistance, responsibility, discovery, belonging. The experience may be real even when its imagery is fictional; the feeling does not make every literal claim attached to that imagery true.</p>
+<p>A ritual may restructure attention. A story may change a life. A game may let us rehearse difficult choices. Their value is discovered in the quality of the encounter and what we responsibly carry back from it.</p></section>
+<div class="note"><h3>Enter with a question</h3>
+<p>What first caught your attention? What would change your mind? Which perspectives have not been invited? What could you test without imposing the experiment on someone else? And when you leave this circle, what will you choose to carry forward?</p></div>
+<p><strong>This is an invitation, not a doctrine.</strong> The circle should make it easier to question a system—including the circle itself.</p>
+<div class="row-actions reading-actions"><button class="action secondary" type="button" data-go="about-arch">Why Arch began Conflux</button><button class="action secondary" type="button" data-go="home">Return to the Threshold</button></div>
+</div></section>
+ 
+
+<section class="panel" id="about-arch" hidden>
+<div class="room-hero"><div class="room-words"><div class="eyebrow">The person behind the threshold</div><h2>About Arch</h2><p class="lead">Conflux began with a habit of wondering how things work—and what else they might become. Arch is its human creator and steward, but its invitation is not to think like one person. It is to make room for more people to question, imagine, and build responsibly.</p></div><aside class="room-companions" id="room-companion-about-arch" data-room="about-arch" aria-label="Node companions for About Arch"></aside></div>
+<div class="essay">
+<section><h2>Before there was a world</h2>
+<p>Long before the name Conflux, Arch followed questions across whatever subjects caught his attention: words and poetry, drawing, computers, games, flight, artificial intelligence, and the small mechanisms beneath everyday phenomena. Sometimes the most ordinary discovery opened the largest field of possibility.</p>
+<p>As a student, he made a practice called <em>Unfiltered Thoughts</em>: writing freely after finishing his work, allowing ideas and nonsense to mingle, then returning to look for little golden nuggets. Sketches and notes became a way to preserve what appeared before he could fully explain it.</p>
+<p>The interests did not always stay in one place, and not every experiment worked. But curiosity remained. The important change was learning that each interest did not need a separate destination.</p></section>
+<section><h2>How Conflux took shape</h2>
+<p>An early experiment resembled a terminal and paperwork simulator. Stories followed; so did characters, questions about institutions and authority, and the beginnings of a playable world. Music, visual art, software, books, and game design gradually found a common surface on which to inform one another.</p>
+<p>Conflux became more than a container for projects. It became a method: notice something, give it a place, form a question, invite interpretation, test what can be tested, and only then decide what deserves construction.</p>
+<p>The five Nodes—Medio, Ratio, Nexus, Specula, and Limen—belong to that imaginative and collaborative architecture. Their distinct roles make perspectives easier to encounter, compare, and challenge. Neither fictional office nor AI-generated language confers authority over a reader or proves a system correct.</p></section>
+<section><h2>Why the door stays open</h2>
+<p>Systems are made by people, maintained through habits, and often treated as though they were inevitable. They are not beyond question. A rule that works for one person may exclude another. A beautiful design may conceal a harmful assumption. A useful tool may become an authority no one remembers choosing.</p>
+<p>Conflux asks what happens when we can see those structures clearly enough to reconsider them. Its fiction provides situations to explore; its workshop records proposals and disagreements; its tools aim to help people articulate, compare, and preserve what they learn. The purpose is not to replace one unquestionable system with another.</p>
+<blockquote>Potential is the reason. Possibility is the goal.</blockquote>
+<p>A better future for all cannot be declared into existence by one creator. It requires people whose experiences differ, whose objections are allowed to matter, and whose proposed improvements can be examined against consequences. The invitation is wider than Arch, wider than the Nodes, and wider than the project itself.</p></section>
+<section><h2>Your place in the inquiry</h2>
+<p>You do not have to agree with the Architect, adopt a mythology, or master the project's terminology to enter. Bring a question. Find an overlooked assumption. Try a story, a sketch, or a small experiment. Ask who benefits, who bears the cost, and what room remains for someone else to choose differently.</p>
+<p>This is an evolving creative project, not a promise that every suggestion is implemented or that its systems have already achieved their aspirations. Public project decisions remain the responsibility of their human stewards; interpretations and proposals should remain distinguishable from approvals and verified results.</p>
+<p>What matters most is the possibility of participation without surrendering your judgment. A world becomes more inhabitable when the people within it have room to shape it.</p></section>
+<div class="note"><h3>A note on authorship</h3><p>Arch founded this project, but the future it invites readers to imagine is not his possession. Conflux can offer a place to practice inquiry; what people learn, challenge, and create beyond it belongs to their own lives and communities.</p></div>
+<div class="row-actions reading-actions"><button class="action secondary" type="button" data-go="attunement">Explore the Circle of Inquiry</button><button class="action secondary" type="button" data-go="home">Return to the Threshold</button></div>
+</div></section>
 
 <section class="panel" id="tour" hidden>
   <div class="room-hero"><div class="room-words"><div class="eyebrow">Watch first · no game installation required</div><h2>A few glimpses of Conflux</h2>
