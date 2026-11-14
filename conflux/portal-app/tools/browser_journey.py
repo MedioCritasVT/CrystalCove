@@ -62,6 +62,9 @@ def main():
                 limen_hair = page.locator('#node-list .pet-token[data-node="limen"]').evaluate(
                     "(e) => getComputedStyle(e).getPropertyValue('--pet-hair').trim()")
                 assert medio_hair != limen_hair, "independent character palettes"
+                columns = page.locator("#node-list").evaluate(
+                    "(e) => getComputedStyle(e).gridTemplateColumns.split(' ').filter(Boolean).length")
+                assert columns == 3, f"five cards should balance 3+2, got {columns} columns"
                 page.screenshot(path=str(proof / "02-node-companions.png"), full_page=True)
                 observations.append("Five source-linked chibis have distinct hair, face and costume layers")
 
@@ -104,6 +107,8 @@ def main():
                 assert media["time"] > 0.8 and not media["paused"], f"real MP3 playback failed: {media}"
                 page.screenshot(path=str(proof / "05-music-while-exploring.png"), full_page=True)
                 page.locator('button[data-page="home"]').click()
+                assert not page.locator(".music-advanced").evaluate("(e) => e.open"), (
+                    "music options should close when navigating to a new room")
                 page.wait_for_timeout(1200)
                 after = page.locator("#music-audio").evaluate(
                     "(e) => ({paused:e.paused,time:e.currentTime})")
