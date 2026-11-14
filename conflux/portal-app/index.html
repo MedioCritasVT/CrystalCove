@@ -312,6 +312,16 @@ body[data-view="soundtrack"]{
 #music-install-status{font-size:.78rem;color:#b8dcd5}
 .music-dock .action.secondary{background:transparent;color:#e1f0f1;border:1px solid #718d97}
 .music-dock .action.secondary:hover{background:#2c4350}
+/* Source-derived manual: Markdown is converted to text-only safe DOM. */
+.readme-details{border:1px solid #6e8b7e;border-radius:14px;background:#142d2c;padding:14px 20px;margin:22px 0 30px}
+.readme-details summary{cursor:pointer;font-weight:750;color:#c4ead7;padding:4px 0}
+.readme-body{font-size:.94rem;line-height:1.7;overflow-wrap:anywhere;max-height:640px;overflow:auto;padding:0 8px}
+.readme-body h2,.readme-body h3,.readme-body h4{font-size:1.25rem;margin:21px 0 8px;color:#f1d9ae}
+.readme-body p{margin:9px 0}.readme-body a{color:#b9e4cf}
+.readme-body pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101c2b;padding:12px;border-radius:10px}
+.readme-body code{background:#17283c;padding:1px 3px}
+.readme-body blockquote{border-left:3px solid #e9bf84;padding-left:14px;color:#d6cfdd}
+.readme-body table{font-size:.84rem}.readme-body th,.readme-body td{padding:6px 8px;vertical-align:top}
 </style></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
@@ -409,8 +419,12 @@ body[data-view="soundtrack"]{
   </div>
 </section>
 <section class="panel" id="guide" hidden>
-<div class="room-hero"><div class="room-words"><div class="eyebrow">Conflux V0.1 · Gameplay reference</div><h2>Player Manual</h2>
-<p class="lead">Welcome to Sanctuary Reach. This manual covers starting a journey, moving through the world, interacting with its systems, and saving your progress. No developer knowledge is needed.</p></div><aside class="room-companions" id="room-companion-guide" data-room="guide" aria-label="Node companions for this section"></aside></div>
+<div class="room-hero"><div class="room-words"><div class="eyebrow">Conflux · Player introduction and gameplay</div><h2>Player Manual</h2>
+<p class="lead">Read the project's actual README, then use the gameplay quick reference below. The README is taken from this installed CrystalCove checkout, not an outdated duplicate.</p></div><aside class="room-companions" id="room-companion-guide" data-room="guide" aria-label="Node companions for this section"></aside></div>
+<details class="readme-details" open><summary>Project README · updated with your installed Git checkout</summary>
+<p id="readme-source-status" class="theme-note" role="status" aria-live="polite">Loading installed README…</p>
+<div id="project-readme" class="readme-body"></div></details>
+<h3>Gameplay quick reference</h3>
 <div class="cards">
 <article class="card"><h3>Begin your journey</h3><p>Download and extract the Linux game, run <code>PlayConflux.sh</code>, choose <strong>Begin a new journey</strong>, and create a local profile as the Unwritten.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1" target="_blank" rel="noopener noreferrer">Download V0.1</a></article>
 <article class="card"><h3>Explore</h3><p>Discover Sanctuary Reach, meet its residents, gather materials, try the Duskwing Grotto encounters, and investigate Sapphire Grimoire puzzles. The experience remains a development preview.</p></article>
@@ -462,4 +476,4 @@ body[data-view="soundtrack"]{
   <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
 </div>
 </section>
-<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script><script src="/music.js"></script></body></html>
+<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div><script src="/app.js"></script><script src="/music.js"></script><script src="/readme.js"></script></body></html>
