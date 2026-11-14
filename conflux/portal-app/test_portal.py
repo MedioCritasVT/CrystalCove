@@ -405,7 +405,9 @@ class PortalSmokeTest(unittest.TestCase):
             urlopen(unauthorized, timeout=3)
         self.assertEqual(err.exception.code, 403)
 
-        status, _ = self.post("/api/services/check", {})
+        with mock.patch.object(portal.MEDIA_MIRROR, "issue_plan",
+                               return_value={"ready": False, "checks": {}}):
+            status, _ = self.post("/api/services/check", {})
         self.assertEqual(status, 200)
         request = {"plan_token": "bad", "explicit_confirmation": "not approved"}
         with mock.patch.object(portal, "confirm_mirror_install_on_host") as confirm:
