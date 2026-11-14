@@ -135,11 +135,14 @@ class SoundtrackLibraryTests(unittest.TestCase):
         self.assertEqual(data["available"], 0)
         self.assertTrue(all(i["url"] is None
                             for t in data["tracks"] for i in t["variants"]))
+        self.assertIsNone(data["album_download_url"])
 
     def test_release_asset_urls_are_validated(self):
         fake_response = {
             "tag_name":music_library.RELEASE_TAG, "draft":False,
-            "assets":[{"name":"Conflux-A.mp3","size":200,
+            "assets":[{"name":music_library.ALBUM_ASSET,"size":57270992,
+                       "browser_download_url":music_library.RELEASE_PREFIX+music_library.ALBUM_ASSET},
+                      {"name":"Conflux-A.mp3","size":200,
                        "browser_download_url":music_library.RELEASE_PREFIX+"Conflux-A.mp3"},
                       {"name":"Conflux-B.mp3","size":300,
                        "browser_download_url":"https://untrusted.invalid/music.mp3"}]
@@ -151,7 +154,7 @@ class SoundtrackLibraryTests(unittest.TestCase):
         with mock.patch("music_library.urllib.request.urlopen",return_value=Reply()):
             music_library._cached_assets = None
             result, error = music_library.public_release_assets()
-        self.assertEqual(set(result), {"Conflux-A.mp3"})
+        self.assertEqual(set(result), {"Conflux-A.mp3",music_library.ALBUM_ASSET})
         self.assertIsNone(error)
 
 

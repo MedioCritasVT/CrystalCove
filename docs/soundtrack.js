@@ -3,11 +3,13 @@
 (() => {
   const root = document.querySelector("#public-soundtrack-list");
   const state = document.querySelector("#public-soundtrack-status");
-  if (!root || !state) return;
+  const album = document.querySelector("#public-soundtrack-album");
+  if (!root || !state || !album) return;
   const repo = "https://raw.githubusercontent.com/MedioCritasVT/CrystalCove/main/";
   const tag = "conflux-soundtrack-v0.1";
   const api = "https://api.github.com/repos/MedioCritasVT/CrystalCove/releases/tags/" + tag;
   const prefix = "https://github.com/MedioCritasVT/CrystalCove/releases/download/" + tag + "/";
+  const albumName = "Conflux_Soundtrack_11_Recordings_Release_Ready.zip";
   async function load() {
     let catalog;
     try {
@@ -20,6 +22,7 @@
     }
     const allowed = new Set(catalog.tracks.flatMap(
       track => (track.variants || []).map(v => v.release_asset_filename)));
+    allowed.add(albumName);
     const available = new Set();
     try {
       const response = await fetch(api, {cache:"no-store",headers:{"Accept":"application/vnd.github+json"}});
@@ -33,6 +36,16 @@
         }
       }
     } catch { /* Offline/blocked API means no unverified downloads are shown. */ }
+    album.replaceChildren();
+    if (available.has(albumName)) {
+      const link = document.createElement("a");
+      link.href = prefix + albumName;
+      link.textContent = "Download the complete 11-recording soundtrack ZIP";
+      link.rel = "noopener noreferrer";
+      album.append(link);
+    } else {
+      album.textContent = "Complete soundtrack ZIP not publicly uploaded yet.";
+    }
     const fragment = document.createDocumentFragment();
     for (const track of catalog.tracks || []) {
       const card = document.createElement("article");

@@ -50,6 +50,7 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertIn('id="home-game-action"', html)
         self.assertIn('id="readme-source-status"', html)
         self.assertIn('id="soundtrack-downloads"', html)
+        self.assertIn('id="music-album-download"', html)
         self.assertIn('id="guide"', html)
         self.assertIn("Journey progress is not automatically saved", html)
         status, js = self.get("/app.js")

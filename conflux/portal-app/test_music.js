@@ -7,7 +7,7 @@ const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const script = fs.readFileSync("music.js", "utf8");
 for (const id of ["music-toggle","music-zip","music-install-status",
-                  "music-recheck","music-audio","soundtrack-downloads"]) {
+                  "music-recheck","music-audio","soundtrack-downloads","music-album-download"]) {
   assert(html.includes('id="' + id + '"'), "missing UI element: " + id);
 }
 class Element {
@@ -40,7 +40,7 @@ const ids = [
   "music-audio","music-toggle","music-files","music-select","music-version",
   "music-prev","music-play","music-next","music-volume","music-status",
   "soundtrack-versions","music-library-status","music-catalog",
-  "music-zip","music-recheck","music-install-status","soundtrack-downloads"
+  "music-zip","music-recheck","music-install-status","soundtrack-downloads","music-album-download"
 ];
 const nodes = Object.fromEntries(ids.map(id => [id, new Element(id)]));
 nodes["music-volume"].value = "45";
@@ -70,7 +70,8 @@ function library() {
          url:remote+"Conflux-Sacrament-of-Oath-Take-1.mp3",source:"published"},
         {id:"take-2",filename:"Conflux-Sacrament-of-Oath-Take-2.mp3",
          url:remote+"Conflux-Sacrament-of-Oath-Take-2.mp3",source:"published"}]}
-    ], available:3, local: installed ? 1:0, published: installed ? 2:3
+    ], available:3, local: installed ? 1:0, published: installed ? 2:3,
+      album_download_url: remote + "Conflux_Soundtrack_11_Recordings_Release_Ready.zip"
   };
   return sound;
 }
@@ -116,6 +117,7 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
   assert(nodes["music-install-status"].textContent.includes("ready automatically"));
   assert.equal(nodes["music-catalog"].children.length,2);
   assert.equal(nodes["soundtrack-downloads"].children.length,2);
+  assert(nodes["music-album-download"].children[0].href.endsWith("Conflux_Soundtrack_11_Recordings_Release_Ready.zip"));
   const firstDownload = nodes["soundtrack-downloads"].children[0].children[1].children[1];
   assert.equal(firstDownload.textContent, "Download MP3");
   assert(firstDownload.href.startsWith(remote));

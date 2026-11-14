@@ -24,6 +24,7 @@ RELEASE_TAG = "conflux-soundtrack-v0.1"
 API = "https://api.github.com/repos/MedioCritasVT/CrystalCove/releases/tags/" + RELEASE_TAG
 RELEASE_URL = "https://github.com/MedioCritasVT/CrystalCove/releases/tag/" + RELEASE_TAG
 RELEASE_PREFIX = "https://github.com/MedioCritasVT/CrystalCove/releases/download/" + RELEASE_TAG + "/"
+ALBUM_ASSET = "Conflux_Soundtrack_11_Recordings_Release_Ready.zip"
 MAX_ZIP_BYTES = 70 * 1024 * 1024
 MAX_MP3_BYTES = 18 * 1024 * 1024
 REMOTE_CACHE_SECONDS = 240
@@ -93,7 +94,7 @@ def public_release_assets():
         else:
             for asset in obj.get("assets", []):
                 name, url = asset.get("name"), asset.get("browser_download_url")
-                if (name in expected_assets() and isinstance(url, str) and
+                if (name in expected_assets() | {ALBUM_ASSET} and isinstance(url, str) and
                         url == RELEASE_PREFIX + name and asset.get("size", 0) > 0):
                     found[name] = url
             if not found:
@@ -132,7 +133,8 @@ def library():
                        "variants": variants})
     return {"tracks": tracks, "available": available, "local": local,
             "published": remote, "remote_status": remote_error,
-            "release_url": RELEASE_URL, "music_off_by_default": True}
+            "release_url": RELEASE_URL, "album_download_url": public.get(ALBUM_ASSET),
+            "music_off_by_default": True}
 
 
 def install_release_zip(payload):
