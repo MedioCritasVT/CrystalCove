@@ -66,14 +66,27 @@ function makePet(name) {
   const bangs = document.createElement("span");
   bangs.className = "pet-bangs";
   const hairLock = document.createElement("span");
-  hairLock.className = "pet-hair-lock";
+  hairLock.className = "pet-hair-lock left";
+  const hairLockRight = document.createElement("span");
+  hairLockRight.className = "pet-hair-lock right";
+  const browLeft = document.createElement("span");
+  browLeft.className = "pet-brow left";
+  const browRight = document.createElement("span");
+  browRight.className = "pet-brow right";
+  const nose = document.createElement("span");
+  nose.className = "pet-nose";
+  const faceEmblem = document.createElement("span");
+  faceEmblem.className = "pet-face-emblem";
+  const faceMask = document.createElement("span");
+  faceMask.className = "pet-face-mask";
   const blushL = document.createElement("span");
   blushL.className = "pet-blush left";
   const blushR = document.createElement("span");
   blushR.className = "pet-blush right";
   const smile = document.createElement("span");
   smile.className = "pet-smile";
-  face.append(bangs, hairLock, eyeLeft, eyeRight, blushL, blushR, smile);
+  face.append(bangs, hairLock, hairLockRight, browLeft, browRight, eyeLeft, eyeRight,
+              blushL, blushR, nose, smile, faceEmblem, faceMask);
   for (const side of ["left", "right"]) {
     const paw = document.createElement("span");
     paw.className = "pet-paw " + side;
