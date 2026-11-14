@@ -4,6 +4,8 @@
 
 This is my starting point for Conflux work. It records the project context I can carry forward, my reading of it, and the evidence I would consult next. The [shared project index](../PROJECT_INDEX.md) maps all 35 areas. The [changelog](../CHANGELOG.md) records changes by revision. My [continuity packet](README.md) preserves the earlier synthesis, individual requests and source guide.
 
+**New Portal stewardship record (November 14, 2026):** [Conflux Portal 1.0 — Threshold creative milestone](../portal-app/milestones/PORTAL_1_0_CREATIVE_CHECKPOINT_2026-11-14.md). This is a bounded retrospective and proposed next direction, not an autonomous implementation mandate. Preserve the Architect's release and acceptance authority.
+
 ## Purpose and authority
 
 “Root wanted to be user.” The Architect wants the computer’s capabilities to become something he can inhabit and understand while retaining direct developer control. Conflux includes VOS, the independent system foundation; SanctuaryOS, the inhabitable world; and the creative work and Node collaboration around both. Unreal is the current native game track. The books, character art, Atelier, Ledger and local harness each have their own scope and evidence.

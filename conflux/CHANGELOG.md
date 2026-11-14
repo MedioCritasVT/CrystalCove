@@ -1,3 +1,11 @@
+## 2026-11-14 — Conflux Portal 1.0 creative milestone recorded (Limen)
+
+**Architect statement:** The Portal now feels like a complete, rounded **1.0 experience** to the Architect: a welcoming threshold into Conflux for humans and Nodes, not a promise that every connected system is finished. **This entry does not create a release tag, a standalone installer, or a new game version.**
+
+**Record:** [Portal 1.0 creative checkpoint and stewardship proposal](portal-app/milestones/PORTAL_1_0_CREATIVE_CHECKPOINT_2026-11-14.md) reconstructs the Portal work across the first-use path, Ledger/Atelier, source-safe updates, 11-track music distribution, five character-linked chibis, optional soundstage, video tour, public README previews and documentation; it names verification sources and unresolved limitations. Nexus's separately supplied clone/test report is explicitly attributed, not passed off as an execution in this containment pass.
+
+**Next direction:** Limen proposes first stabilizing and observing real newcomer experience, then exploring user-owned local interface preferences and a separate modular catalogue study. These are **proposals only**, with the Architect retaining scope, canon, implementation and release authority. The change in this checkpoint is documentation, not runtime code.
+
 ## 2026-11-10 — Realm Music 01 source publication
 
 Architect requested publishing the music integration. Added [music source checkpoint](releases/realm-music-01/README.md), new editable code/catalog and bounded test summaries. Separate Release archives carry current source integration files and eight imported audio assets, not private saves or original MP3s. Includes title/in-game mute and independent music preferences. Assignments are provisional; V0.1 standalone downloads remain unchanged. Source compatibility requires review/rebuild; no new packaged game is asserted.

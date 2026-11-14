@@ -1,5 +1,7 @@
 # Conflux Portal — Linux local preview
 
+**Milestone record:** [Portal 1.0 creative checkpoint — progress, evidence, limitations, and Limen's proposed next direction](milestones/PORTAL_1_0_CREATIVE_CHECKPOINT_2026-11-14.md). This is the Architect's experiential 1.0 designation, **not** a technical release tag, installer claim or authorization to deploy the proposals.
+
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
 ## Run locally
