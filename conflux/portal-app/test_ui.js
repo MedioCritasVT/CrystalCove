@@ -32,6 +32,10 @@ assert(html.includes('body[data-view="vos"]') && html.includes('body[data-view="
        "distinct room background layers missing");
 assert(html.includes(".panel .room-hero h2"), "room-specific headline styling missing");
 assert(html.includes(".pet-token .pet-face"), "visible pet artwork motif missing");
+assert(html.includes(".pet-token .pet-hair-back") && html.includes(".pet-token .pet-bodice"),
+       "per-character hair and wardrobe CSS missing");
+assert(source.includes("nodePanels") && source.includes("View character panel"),
+       "artwork references missing from Node cards");
 assert(html.includes('<script src="/music.js"></script>'), "local player missing");
 for (const id of ["music-toggle", "music-files", "music-select", "music-version",
                   "music-play", "music-prev", "music-next", "music-volume",
@@ -152,6 +156,8 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
     assert(dock.children[1].textContent.length > 0, "unlabeled page companion");
   }
   const memberCards = named["node-list"].children;
+  assert(memberCards.every(c => c.children[0].children[1].children.some(x => x.className === "pet-reference-link")),
+          "every Node must link her source character panel");
   assert(memberCards.every(c => c.children[0].children[0].children[0].className === "pet-token"),
          "Node profiles should show the same familiar character motif");
 
