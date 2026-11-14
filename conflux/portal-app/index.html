@@ -329,12 +329,17 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
 #open-choice-dialog button{min-height:44px}
 #open-choice-dialog .choice-cancel{background:transparent;color:#edf0f3;border:1px solid #8894aa;border-radius:10px;padding:8px 13px}
 @media(max-width:740px){nav .nav-external{margin-top:0;grid-column:1/-1;text-align:center}}
+/* A first visit should lead with welcome and the listening action, not a long record table. */
+.soundtrack-register{padding:18px 22px}
+.soundtrack-register summary{cursor:pointer;color:#f0d1a4;font-weight:700;font-size:1.08rem}
+.soundtrack-register[open] summary{margin-bottom:14px}
+.soundtrack-register summary:focus-visible{outline:2px solid #f4d0a7;outline-offset:5px;border-radius:4px}
 </style><link rel="stylesheet" href="/familiars.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="soundtrack">Soundtrack</button><button data-page="guide">Player Manual</button><button data-page="updates">Updates & Setup</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
-<div class="notice"><strong>Work in progress — long-term development.</strong> This is a Linux-only preview. Some features are demonstrations or placeholders. More platforms, art, services and interactions are planned; please return for future updates.</div>
+<div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
 <div class="music-dock" id="music-dock" aria-label="Conflux soundtrack player">
   <div class="music-dock-heading"><span class="music-glyph" aria-hidden="true">♫</span><strong>Conflux music</strong></div>
   <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">Music Off</button>
@@ -363,7 +368,7 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
   </div></details>
   <audio id="music-audio" preload="none"></audio>
 </div>
-<section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Play the available game, open Atelier and Ledger right here, and discover the books and creative work. No VOS service starts automatically.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
+<section class="panel" id="home"><div class="room-hero"><div class="room-words"><div class="eyebrow">Welcome to the threshold</div><h2>A place to begin.</h2><p class="lead">Every journey begins differently. Wander through the stories and music, meet the Nodes, try Atelier or Ledger, or enter the game when you feel ready. Nothing launches or connects without your choice.</p></div><aside class="room-companions" id="room-companion-home" data-room="home" aria-label="Node companions for this section"></aside></div>
 <div class="cards"><article class="card"><h3>Sanctuary Reach</h3><p id="home-game-status">The playable Linux game is distributed separately from this Portal.</p><button class="action" id="home-game-action" type="button">Get the Game</button></article><article class="card"><h3>Architect's Atelier</h3><p>A workspace for questions and proposals. Local app integration is optional.</p><a class="action" href="/apps/atelier" target="_blank" rel="noopener noreferrer">Open Atelier</a></article><article class="card"><h3>Ledger</h3><p>Evidence, approvals and records are not the same as suggestions.</p><a class="action" href="/apps/ledger" target="_blank" rel="noopener noreferrer">Open Ledger</a></article><article class="card"><h3>Stay Current</h3><p>Check for a new Conflux version without typing Git commands.</p><button class="action" data-go="updates">Check for Updates</button></article></div></section>
 
 <section class="panel" id="downloads" hidden>
@@ -416,19 +421,19 @@ nav .nav-external:hover,nav .nav-external:focus-visible{
   <div class="download-panel">
     <h3>Listen on this computer</h3>
     <p>Use the bottom music toolbar to select tracks, takes and volume. Expand <strong>Music options</strong> for local audio and ZIP import. The soundtrack keeps playing between Portal rooms, but never autoplays.</p>
-    <p id="music-library-status" class="status-line" aria-live="polite">No local files selected yet.</p>
+    <p id="music-library-status" class="status-line" aria-live="polite">Checking which recordings are ready to play…</p>
     <div id="soundtrack-versions" class="cards" aria-label="Locally selected soundtrack versions"></div>
-    <p class="theme-note">The compact music toolbar stays at the bottom. Expand <strong>Music options</strong> to choose local recordings or install a verified soundtrack ZIP; files you pick manually are not uploaded. Music stays off until you start it.</p>
+    <p class="theme-note">The music toolbar stays with you as you explore. Open <strong>Music options</strong> to install the public album once or choose local files. Listening is always your choice.</p>
   </div>
-  <div class="finder">
-    <h3>Conflux soundtrack register</h3>
-    <p>Eleven verified recordings across ten compositions, including the three recent EP tracks, Silicon Saints, and both Sacrament of Oath takes. Every source hash is now recorded, but audio still needs a separate public GitHub Release upload.</p>
-    <ul id="music-catalog"><li>Loading working catalog…</li></ul>
-    <p class="theme-note">Both <em>Sacrament of Oath</em> takes remain separate. The ZIP installer accepts either a verified complete seven-track legacy set or the full eleven-track collection; no public audio release is claimed until its actual assets are uploaded.</p>
-  </div>
+  <details class="finder soundtrack-register">
+    <summary>Explore all 11 recordings · source and versions</summary>
+    <p>The verified album is publicly downloadable. Ten compositions include both distinct <em>Sacrament of Oath</em> takes; individual streaming downloads remain separate from the complete album ZIP.</p>
+    <ul id="music-catalog"><li>Loading recording catalog…</li></ul>
+    <p class="theme-note">You can install the published album with <strong>Music options → Install all 11 tracks from GitHub</strong>, or import either verified seven- or eleven-track ZIP locally.</p>
+  </details>
   <div class="download-panel"><h3>Download Conflux recordings</h3>
     <p id="music-album-download" role="status" aria-live="polite">Checking the public album release…</p>
-    <p>Individual <strong>Download MP3</strong> links appear for separately published tracks. The full album ZIP can be offered independently once uploaded. No Git clone is required.</p>
+    <p>The <strong>full album ZIP is already public</strong>, with no Git account or clone required. Individual MP3 downloads will appear separately as those release assets are published.</p>
     <div id="soundtrack-downloads" class="cards" aria-live="polite"><p>Checking public audio availability…</p></div>
     <p><a href="https://github.com/MedioCritasVT/CrystalCove/releases" target="_blank" rel="noopener noreferrer">Browse Conflux GitHub releases</a></p>
   </div>
