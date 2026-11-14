@@ -47,11 +47,20 @@ class PortalSmokeTest(unittest.TestCase):
         status, html = self.get("/")
         self.assertEqual(status, 200)
         self.assertIn('id="home"', html)
+        self.assertIn('id="home-game-action"', html)
+        self.assertIn('id="readme-source-status"', html)
+        self.assertIn('id="soundtrack-downloads"', html)
         self.assertIn('id="guide"', html)
         self.assertIn("Journey progress is not automatically saved", html)
         status, js = self.get("/app.js")
         self.assertEqual(status, 200)
         self.assertIn('b.dataset.page', js)
+        status, readme = self.get("/project/README.md")
+        self.assertEqual(status, 200)
+        self.assertIn("# Conflux / CrystalCove", readme)
+        status, renderer = self.get("/readme.js")
+        self.assertEqual(status, 200)
+        self.assertIn("document.createDocumentFragment()", renderer)
 
     def test_bundled_apps_open(self):
         for route, expected in (("/apps/atelier", "Conflux · The Atelier"),
@@ -270,7 +279,9 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(status, 200)
         manifest = json.loads(body)
         self.assertEqual(manifest["schema"], "conflux.soundtrack.catalog.v0.1")
-        self.assertEqual(len(manifest["tracks"]), 6)
+        self.assertEqual(len(manifest["tracks"]), 9)
+        self.assertEqual(sum(len(t["variants"]) for t in manifest["tracks"]), 10)
+        self.assertTrue(any(t["title"] == "Little Adventurer" for t in manifest["tracks"]))
         oath = next(item for item in manifest["tracks"]
                     if item["title"] == "Sacrament of Oath")
         self.assertIn("two_distinct_versions", oath["status"])
@@ -320,10 +331,11 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        script = Path(__file__).with_name("app.js")
-        result = subprocess.run(["node", "--check", str(script)],
-                                text=True, capture_output=True, timeout=10)
-        self.assertEqual(result.returncode, 0, result.stderr)
+        for script_name in ("app.js", "readme.js", "music.js"):
+            script = Path(__file__).with_name(script_name)
+            result = subprocess.run(["node", "--check", str(script)],
+                                    text=True, capture_output=True, timeout=10)
+            self.assertEqual(result.returncode, 0, result.stderr)
 
 
 if __name__ == "__main__":

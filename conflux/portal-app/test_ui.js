@@ -14,6 +14,7 @@ assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
                   "game-launch", "game-linked-state", "game-picker-availability",
+                   "home-game-action", "home-game-status",
                   "updates-check", "updates-apply", "updates-relaunch",
                   "updates-status", "updates-details", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)]) {
@@ -67,6 +68,7 @@ const named = Object.fromEntries(
   panels.concat(["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
                   "game-launch", "game-linked-state", "game-picker-availability",
+                   "home-game-action", "home-game-status",
                   "updates-check", "updates-apply", "updates-relaunch",
                   "updates-status", "updates-details", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)])
@@ -153,6 +155,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   assert(memberCards.every(c => c.children[0].children[0].children[0].className === "pet-token"),
          "Node profiles should show the same familiar character motif");
 
+  assert.equal(named["home-game-action"].textContent, "Get the Game");
   assert.equal(named["app-list"].children.length, 3);
   const cards = named["app-list"].children;
   assert.equal(cards[0].children[2].href, "/downloads");
@@ -174,6 +177,9 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   await tick();
   assert.equal(installed, true);
   assert.equal(named["game-launch"].hidden, false);
+  assert.equal(named["home-game-action"].textContent, "Launch Game");
+  assert(named["home-game-status"].textContent.includes("ready to launch"));
+  await named["home-game-action"].click();
   assert.equal(named["app-list"].children[0].children[2].textContent, "Launch");
   await named["game-launch"].click();
   await tick();

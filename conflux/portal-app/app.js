@@ -44,7 +44,21 @@ function makePet(name) {
   eyeLeft.className = "pet-eye left";
   const eyeRight = document.createElement("span");
   eyeRight.className = "pet-eye right";
-  face.append(eyeLeft, eyeRight);
+  // Friendly chibi proportions: expressive eyes, blush, fringe and tiny paws.
+  const bangs = document.createElement("span");
+  bangs.className = "pet-bangs";
+  const blushL = document.createElement("span");
+  blushL.className = "pet-blush left";
+  const blushR = document.createElement("span");
+  blushR.className = "pet-blush right";
+  const smile = document.createElement("span");
+  smile.className = "pet-smile";
+  face.append(bangs, eyeLeft, eyeRight, blushL, blushR, smile);
+  for (const side of ["left", "right"]) {
+    const paw = document.createElement("span");
+    paw.className = "pet-paw " + side;
+    body.append(paw);
+  }
   const mark = document.createElement("span");
   mark.className = "pet-mark";
   mark.textContent = petSymbols[id] || "✧";
@@ -52,7 +66,7 @@ function makePet(name) {
   return mascot;
 }
 
-// The familiar pairs are symbolic UI guides, not live AI presence or final chibi art.
+// Chibi-style concept familiars are symbolic UI guides, not live AI presence or approved character art.
 const roomFamiliar = {
   home: {who:["Medio","Nexus"], message:"Medio welcomes you; Nexus keeps the doors connected."},
   apps: {who:["Nexus","Ratio"], message:"Nexus gathers the tools; Ratio helps make them usable."},
@@ -78,7 +92,7 @@ for (const [room, detail] of Object.entries(roomFamiliar)) {
   note.textContent = detail.message;
   const caveat = document.createElement("small");
   caveat.className = "pet-disclaimer";
-  caveat.textContent = "Symbolic familiars · chibi artwork pending";
+  caveat.textContent = "Chibi-style concept familiars · final art pending";
   dock.append(crew, names, note, caveat);
 }
 
@@ -110,6 +124,8 @@ const browse = document.querySelector("#game-browse");
 const find = document.querySelector("#game-find");
 const pathInput = document.querySelector("#game-folder-input");
 const quickLaunch = document.querySelector("#game-launch");
+const homeGameAction = document.querySelector("#home-game-action");
+const homeGameStatus = document.querySelector("#home-game-status");
 
 function notice(message, isError = false) {
   feedback.textContent = message;
@@ -200,6 +216,10 @@ async function refresh() {
       "Game folder linked. You can launch it here or in Applications." :
       "Game not linked yet. You can download V0.1 or locate an extracted copy below.";
     quickLaunch.hidden = !registered;
+    homeGameAction.textContent = registered ? "Launch Game" : "Get the Game";
+    homeGameStatus.textContent = registered ?
+      "Your extracted game is linked on this computer and ready to launch." :
+      "The playable Linux game is separate from Portal. Download or link it when you want to play.";
   } catch {
     target.textContent = "The local Portal service is unavailable. Restart Python.";
     notice("Could not read local app status.", true);
@@ -279,6 +299,10 @@ pathInput.addEventListener("keydown", event => {
   if (event.key === "Enter") { event.preventDefault(); find.click(); }
 });
 quickLaunch.addEventListener("click", () => launchGame(feedback, quickLaunch));
+homeGameAction.addEventListener("click", () => {
+  if (registered) void launchGame(homeGameStatus, homeGameAction);
+  else show("downloads");
+});
 
 // Updates are opt-in: no network check or source mutation occurs at startup.
 const updatesCheck = document.querySelector("#updates-check");

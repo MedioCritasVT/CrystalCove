@@ -4,11 +4,15 @@ on:
   pull_request:
     paths:
       - 'conflux/portal-app/**'
+      - 'conflux/soundtrack/**'
+      - 'docs/**'
       - '.github/workflows/portal-smoke.yml'
   push:
     branches: [main]
     paths:
       - 'conflux/portal-app/**'
+      - 'conflux/soundtrack/**'
+      - 'docs/**'
 
 permissions:
   contents: read
@@ -25,7 +29,11 @@ jobs:
         working-directory: conflux/portal-app
         run: python3 -m compileall -q portal.py app_updater.py portal_desktop.py install_desktop_launcher.py game_locator.py
       - name: JavaScript parse check
-        run: node --check conflux/portal-app/app.js
+        run: |
+          node --check conflux/portal-app/app.js
+          node --check conflux/portal-app/music.js
+          node --check conflux/portal-app/readme.js
+          node --check docs/soundtrack.js
       - name: Local music player parse and no-autoplay smoke check
         working-directory: conflux/portal-app
         run: |

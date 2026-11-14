@@ -177,6 +177,13 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
+        if route == "/readme.js":
+            return self.serve_file(ROOT / "readme.js", "text/javascript; charset=utf-8")
+        if route == "/project/README.md":
+            # Bundled README reflects the *installed* checkout, including
+            # content updated through the explicit Git updater.
+            return self.serve_file(ROOT.parents[1] / "README.md",
+                                   "text/markdown; charset=utf-8")
         if route == "/music.js":
             return self.serve_file(ROOT / "music.js", "text/javascript; charset=utf-8")
         if route == "/soundtrack/catalog.json":

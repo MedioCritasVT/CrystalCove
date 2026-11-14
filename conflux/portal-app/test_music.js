@@ -7,7 +7,7 @@ const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const script = fs.readFileSync("music.js", "utf8");
 for (const id of ["music-toggle","music-zip","music-install-status",
-                  "music-recheck","music-audio"]) {
+                  "music-recheck","music-audio","soundtrack-downloads"]) {
   assert(html.includes('id="' + id + '"'), "missing UI element: " + id);
 }
 class Element {
@@ -40,7 +40,7 @@ const ids = [
   "music-audio","music-toggle","music-files","music-select","music-version",
   "music-prev","music-play","music-next","music-volume","music-status",
   "soundtrack-versions","music-library-status","music-catalog",
-  "music-zip","music-recheck","music-install-status"
+  "music-zip","music-recheck","music-install-status","soundtrack-downloads"
 ];
 const nodes = Object.fromEntries(ids.map(id => [id, new Element(id)]));
 nodes["music-volume"].value = "45";
@@ -63,7 +63,8 @@ function library() {
       {id:"ritual",title:"Ritual in the Circuit",variants:[
         {id:"provided",filename:"Conflux-Ritual-in-the-Circuit.mp3",url: installed ?
           "/music/audio/Conflux-Ritual-in-the-Circuit.mp3" :
-          remote+"Conflux-Ritual-in-the-Circuit.mp3",source:installed?"local":"published"}]},
+          remote+"Conflux-Ritual-in-the-Circuit.mp3",source:installed?"local":"published",
+           download_url:remote+"Conflux-Ritual-in-the-Circuit.mp3"}]},
       {id:"sacrament",title:"Sacrament of Oath",variants:[
         {id:"take-1",filename:"Conflux-Sacrament-of-Oath-Take-1.mp3",
          url:remote+"Conflux-Sacrament-of-Oath-Take-1.mp3",source:"published"},
@@ -114,6 +115,10 @@ const tick = () => new Promise(resolve=>setTimeout(resolve,0));
          "published audio URL must be preselected");
   assert(nodes["music-install-status"].textContent.includes("ready automatically"));
   assert.equal(nodes["music-catalog"].children.length,2);
+  assert.equal(nodes["soundtrack-downloads"].children.length,2);
+  const firstDownload = nodes["soundtrack-downloads"].children[0].children[1].children[1];
+  assert.equal(firstDownload.textContent, "Download MP3");
+  assert(firstDownload.href.startsWith(remote));
   assert.equal(calls.filter(c=>c.url==="/api/music/library").length,1);
   assert(!calls.some(c=>c.url==="/api/music/install"),"no implicit upload or install");
 

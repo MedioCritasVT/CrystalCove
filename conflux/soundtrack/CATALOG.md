@@ -1,8 +1,8 @@
 # Conflux Soundtrack — working release catalog
 
-**Status (November 10, 2026):** Seven actual MP3 recordings received and identified, covering six compositions. **The Architect states they checked and cleared distribution eligibility.** This is an attributable rights confirmation, not an independently audited license. The MP3 binaries have **not yet been uploaded to a GitHub release**; they are not available for public streaming from this repository.
+**Status (November 14, 2026):** Ten recordings are inventoried across nine compositions. Seven original recordings across six compositions have full verified fingerprints and a staging package; the Architect subsequently supplied three additional recordings on November 13, 2026. Their titles and original filenames are recorded here, but their MP3 bytes were not accessible for hashing or release preparation in this pass. The Architect previously confirmed distribution eligibility for the original seven, but all publication still requires a real audio upload; the three new titles await their own verification. **A catalog entry is not a public download.**
 
-The [machine-readable catalog](catalog.json) keeps each take separate. The [full SHA-256 checksums](RELEASE_SHA256SUMS.txt) allow the eventual uploaded release assets to be verified against the received source files.
+The [machine-readable catalog](catalog.json) keeps all ten recordings separate. The [seven-track SHA-256 manifest](RELEASE_SHA256SUMS.txt) applies to the original staged audio only and must **not** be presented as verification of the three later recordings.
 
 | Composition | Received version(s) | Duration | Public file status |
 | --- | --- | ---: | --- |
@@ -12,6 +12,9 @@ The [machine-readable catalog](catalog.json) keeps each take separate. The [full
 | Ritual in the Circuit | Provided take | 3:24 | Staged for upload |
 | The Weight of the World | Provided take | 3:00 | Staged for upload |
 | **Sacrament of Oath** | **Take 1** / **Take 2** | **2:25 / 2:26** | **Both staged separately** |
+| Who Gave You the Crown? | `Who Gave You the Crown_.mp3` | Not verified here | Cataloged; MP3 upload pending |
+| Little Adventurer | `Little Adventurer.mp3` | Not verified here | Cataloged; MP3 upload pending |
+| LITTLE GODS IN WHITE GLOVES | `LITTLE GODS IN WHITE GLOVES.mp3` | Not verified here | Cataloged; MP3 upload pending |
 
 ## Credits and provenance
 
@@ -21,11 +24,11 @@ Suggested public credit: **MedioCritasVT / Conflux — music created with Suno**
 
 ## Publication steps
 
-The proposed GitHub Release tag is `conflux-soundtrack-v0.1`. Do not claim this release exists until the seven audio binaries have actually been uploaded. The Architect has a downloadable staging package containing each asset under a stable ASCII filename, checksum file, and release notes.
+The proposed GitHub Release tag is `conflux-soundtrack-v0.1`. Do not claim a release or any individual audio file exists publicly until its binary has been uploaded and verified. The Architect has a downloadable staging package containing each asset under a stable ASCII filename, checksum file, and release notes.
 
-To publish, open the GitHub Releases interface, choose **Draft a new release**, use the proposed tag, and attach the **seven MP3 files individually**, plus the checksums/release notes. Avoid a ZIP-only upload if browser streaming is desired. Publish only after reviewing the public credits and scope. Verify each asset's SHA-256 hash or download it back and compare before marking it live.
+To publish, open the GitHub Releases interface, choose **Draft a new release**, use the proposed tag, and attach the **verified MP3 files individually**, plus the appropriate checksums/release notes. The three later tracks require new hashes and separate approval before being labeled verified. Avoid a ZIP-only upload if browser streaming is desired. Publish only after reviewing the public credits and scope. Verify each asset's SHA-256 hash or download it back and compare before marking it live.
 
-The Portal now discovers **publicly released** MP3 asset URLs automatically using the official GitHub Release API; no manual catalog URL copy is required. Each asset must match the expected filename and release tag. Visitors press **Music On** to play. The Architect may also use **Install soundtrack ZIP once…** for permanent playback on their own machine before GitHub release publication. These steps do not silently upload audio or start playback on page load.
+Both the local Portal and the static website can discover **publicly released** MP3 asset URLs automatically using the official GitHub Release API; no manual catalog URL copy is required. Each asset must match the expected filename and release tag. Visitors press **Music On** to play. The Architect may also use **Install soundtrack ZIP once…** for permanent playback on their own machine before GitHub release publication. These steps do not silently upload audio or start playback on page load.
 
 ## Version and game boundaries
 
