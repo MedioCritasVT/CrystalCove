@@ -128,6 +128,66 @@ class GitSafetyTests(unittest.TestCase):
             self.manager.apply()
 
 
+    def test_update_moves_whole_clone_not_only_portal(self):
+        # A newcomer/developer must receive new documentation and platform
+        # sources as well as Portal code: the update applies to the Git root.
+        self.write(self.writer, "conflux/portal-app/portal.py", "# v2\n")
+        self.write(self.writer, "docs/PLAYER_FIRST_RUN.md", "Welcome v2\n")
+        self.write(self.writer, "conflux/platforms/vos/README.md", "VOS records v2\n")
+        git("-C", self.writer, "add", ".")
+        git("-C", self.writer, "commit", "-m", "Update several repository areas")
+        git("-C", self.writer, "push", "origin", "main")
+
+        personal = self.write(self.client, "personal-untracked.txt", "keep this\n")
+        status = self.manager.check()
+        self.assertEqual(status["status"], "available")
+        self.assertEqual(status["changed_files"], 3)
+        self.assertFalse((self.client / "docs/PLAYER_FIRST_RUN.md").exists())
+        self.assertEqual(personal.read_text(), "keep this\n")
+
+        result = self.manager.apply()
+        self.assertTrue(result["updated"])
+        self.assertTrue(result["relaunch"])
+        self.assertEqual(
+            (self.client / "conflux/portal-app/portal.py").read_text(), "# v2\n")
+        self.assertEqual(
+            (self.client / "docs/PLAYER_FIRST_RUN.md").read_text(), "Welcome v2\n")
+        self.assertEqual(
+            (self.client / "conflux/platforms/vos/README.md").read_text(), "VOS records v2\n")
+        self.assertEqual(personal.read_text(), "keep this\n")
+        self.assertEqual(
+            git("-C", self.client, "rev-parse", "HEAD"),
+            git("-C", self.writer, "rev-parse", "HEAD"))
+
+    def test_repository_zip_extraction_cannot_use_git_updater(self):
+        # A GitHub source ZIP has no .git metadata. A failed check must leave
+        # its contents untouched; this is NOT a test of a future ZIP updater.
+        zip_root = self.root / "CrystalCove-main"
+        startup = self.write(
+            zip_root, "conflux/portal-app/portal.py", "# local ZIP preview\n")
+        readme = self.write(zip_root, "README.md", "ZIP first\n")
+        manager = UpdateManager(zip_root)
+        with self.assertRaises(UpdateError):
+            manager.check()
+        self.assertEqual(startup.read_text(), "# local ZIP preview\n")
+        self.assertEqual(readme.read_text(), "ZIP first\n")
+        self.assertFalse((zip_root / ".git").exists())
+
+    def test_failed_network_fetch_does_not_change_clone(self):
+        self.write(self.client, "personal-untracked.txt", "leave untouched\n")
+        original_head = git("-C", self.client, "rev-parse", "HEAD")
+        with patch.object(app_updater, "REPOSITORY",
+                          str(self.root / "missing-remote.git")):
+            with self.assertRaises(UpdateError):
+                self.manager.check()
+        self.assertEqual(git("-C", self.client, "rev-parse", "HEAD"),
+                         original_head)
+        self.assertEqual(
+            (self.client / "personal-untracked.txt").read_text(), "leave untouched\n")
+        with self.assertRaisesRegex(UpdateError, "Check for Updates"):
+            self.manager.apply()
+
+
 class DesktopEntryTests(unittest.TestCase):
     def test_user_only_desktop_entry(self):
         with tempfile.TemporaryDirectory() as temp:

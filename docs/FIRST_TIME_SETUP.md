@@ -2,7 +2,7 @@
 
 **Conflux is a work in project.** Welcome to its world, stories, creative tools, and experiments. **Portal is the intended first experience; the native game is an optional next step.** You can enjoy the Portal without installing or playing the game.
 
-**Current availability (November 12, 2026):** The local Conflux Portal is a **Python 3.10+ preview inside the public CrystalCove GitHub repository**, not yet a one-click executable installer. The separate public-facing website's source is in `docs/index.html`, but a live public domain has not been verified. This guide describes a real clean-folder test, not an installation already validated on a new user's Bazzite PC.
+**Current availability (reviewed November 13, 2026):** The local Conflux Portal is a **Python 3.10+ preview inside the public CrystalCove GitHub repository**, not yet a one-click executable installer. The separate public-facing website's source is in `docs/index.html`, but a live public domain has not been verified. This guide describes a real clean-folder test, not an installation already validated on a new user's Bazzite PC.
 
 **Start with Route A** for the Portal. When you want the native Linux game, choose Route B. Someone who only wants the game may still skip Route A, but players do **not** have to download the game to experience the Portal. GitHub knowledge, Unreal Editor, AI models, a personal server, and Tailscale are **not** game prerequisites.
 
@@ -52,11 +52,10 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
    ```bash
    cd "$HOME/Conflux/CrystalCove/conflux/portal-app"
-   python3 -m unittest discover -p 'test_*.py' -v
    python3 portal.py
    ```
 
-   If you used **Download ZIP**, open a terminal in the extracted folder's `conflux/portal-app` directory in Dolphin instead, and run just the last two Python commands.
+   If you used **Download ZIP**, open the extracted folder's `conflux/portal-app` directory in Dolphin, press **F4** to open its terminal, and run **only** `python3 portal.py`. The test suite is **not** an installation prerequisite; developers may separately run `python3 -m unittest discover -p 'test_*.py' -v` to validate source.
 
 2. In a browser on that **same computer**, visit `http://127.0.0.1:8765`. Open **Atelier**, **Ledger**, or the **Player Manual** first. Try an experience that doesn't require the native game. Later, if you want, open the **Get the Game** room to find the Linux release.
 
@@ -90,18 +89,22 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
 The public, read-only **CachyOS deployment configuration** is documented under [`conflux/platforms/portal-deployment/`](../conflux/platforms/portal-deployment/README.md). Its GitHub Actions smoke test passed, but **that is not a test on the real CachyOS machine**, and no domain/public HTTPS deployment is implied. The private **Conflux Sanctum** is a separate future Architect interface. Neither belongs in a new player's normal setup. **Tailscale is a planned private-access layer for the server and future Sanctum, not a required player download or a public Portal login.**
 
-## First-user test record — fill this out during the real walkthrough
+## First-user test record — current evidence (November 13, 2026)
 
-| Check | Result |
+These are **Architect-reported guided Bazzite/KDE observations**, not an independently observed unassisted new-user test. See the [separate ZIP, Git and game test matrix](PLAYER_FIRST_RUN_TEST_STATUS_2026-11-13.md).
+
+| Check | Current result |
 | --- | --- |
-| New `~/Conflux` folder on Bazzite | User reports created; contents not independently inspected |
-| User can find Portal-first starting instructions on GitHub | Not yet tested |
-| First-time user obtains the repository by Git clone or ZIP | Not yet tested |
-| Python Portal starts from the clean folder | Not yet tested |
-| Atelier, Ledger, or another Portal experience works without the game | Not yet tested |
-| Optional game release found through Portal | Not yet tested |
-| Optional game download, extraction, and `PlayConflux.sh` launch | Not yet tested |
-| Confusing steps and improvements | To record during the walkthrough |
+| Fresh `~/Conflux` folder; older installs left alone | **Reported passed** |
+| Download and extract GitHub source ZIP | **Reported passed** |
+| Launch local Portal from extracted `conflux/portal-app` | **Reported passed** using `python3 portal.py`, without `sudo` |
+| Atelier save/reopen and Ledger commit/refresh/Inspect | **Reported passed**, no native game required |
+| Ledger readable Markdown snapshot, JSON same-data restore | **Reported passed**; no clean-profile recovery claim |
+| Extract newer ZIP separately and reopen Portal | **Reported passed**; new labels seen and browser record retained |
+| Portal updater from source ZIP | **Known limitation:** existing Git-only updater rejects ZIP without `.git` |
+| Actual Git clone → Portal → opt-in full-checkout update on Bazzite | **Still pending real-machine test** |
+| Optional native game download, extract, launch, save on a new profile | **Still pending fresh-install test** |
+| Unassisted first-time navigation, ZIP self-update, rollback | **Not yet verified / not shipped** |
 
-The GitHub Actions check passed a **bounded static public website container preview**, not these interactive Bazzite steps. This guide and the services it references remain a **work in project**.
+Previous automated smoke tests do **not** establish these remaining interactive Bazzite steps. Preserve the user's existing installations and export Ledger backup JSON before any replacement test. This guide remains a **work in project**.
 
