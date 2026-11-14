@@ -132,33 +132,109 @@ Jellyfin's [official setup wizard](https://jellyfin.org/docs/general/post-instal
 
 **Backup reminder:** copying files into the new Bazzite media folders does not make them redundant unless another independent, restorable copy exists. The included `backup.py` saves the new services' **state/configuration**, not these media folders. Plan a separate media-file backup and test its restoration.
 
-## Manage services on the Bazzite desktop
+## Start, stop, and restart each service (copy/paste into Konsole)
 
-After a successful installation:
+These commands work with the **new Conflux Bazzite mirror Quadlets only**. Run them as your normal desktop user on Bazzite (AtticOS); **do not use `sudo`**. They control a media-service container, **not the entire computer**. They do not delete libraries, account settings, or database files.
 
+### Jellyfin — http://127.0.0.1:8096
+
+**Stop Jellyfin:**
 ```bash
-systemctl --user status conflux-media-jellyfin.service
-systemctl --user status conflux-media-kavita.service
-systemctl --user status conflux-media-navidrome.service
-
-journalctl --user -u conflux-media-jellyfin.service -n 80 --no-pager
-journalctl --user -u conflux-media-kavita.service -n 80 --no-pager
-journalctl --user -u conflux-media-navidrome.service -n 80 --no-pager
+systemctl --user stop conflux-media-jellyfin.service
 ```
 
-To stop the new services before maintenance or a consistent backup:
+**Start Jellyfin:**
+```bash
+systemctl --user start conflux-media-jellyfin.service
+```
 
+**Restart Jellyfin** (only when needed, e.g. after a verified configuration change):
+```bash
+systemctl --user restart conflux-media-jellyfin.service
+```
+
+**Check status and last 60 log lines:**
+```bash
+systemctl --user status conflux-media-jellyfin.service --no-pager -l
+journalctl --user -u conflux-media-jellyfin.service -n 60 --no-pager -l
+```
+
+### Kavita — http://127.0.0.1:5000
+
+**Stop Kavita:**
+```bash
+systemctl --user stop conflux-media-kavita.service
+```
+
+**Start Kavita:**
+```bash
+systemctl --user start conflux-media-kavita.service
+```
+
+**Restart Kavita:**
+```bash
+systemctl --user restart conflux-media-kavita.service
+```
+
+**Check status and last 60 log lines:**
+```bash
+systemctl --user status conflux-media-kavita.service --no-pager -l
+journalctl --user -u conflux-media-kavita.service -n 60 --no-pager -l
+```
+
+### Navidrome — http://127.0.0.1:4533
+
+**Stop Navidrome:**
+```bash
+systemctl --user stop conflux-media-navidrome.service
+```
+
+**Start Navidrome:**
+```bash
+systemctl --user start conflux-media-navidrome.service
+```
+
+**Restart Navidrome:**
+```bash
+systemctl --user restart conflux-media-navidrome.service
+```
+
+**Check status and last 60 log lines:**
+```bash
+systemctl --user status conflux-media-navidrome.service --no-pager -l
+journalctl --user -u conflux-media-navidrome.service -n 60 --no-pager -l
+```
+
+### All three — one command per operation
+
+**Stop all three** (recommended before a consistent state/database backup):
 ```bash
 systemctl --user stop conflux-media-jellyfin.service conflux-media-kavita.service conflux-media-navidrome.service
 ```
 
-To start those same units again:
-
+**Start all three:**
 ```bash
 systemctl --user start conflux-media-jellyfin.service conflux-media-kavita.service conflux-media-navidrome.service
 ```
 
-Bazzite's user Quadlet documentation explains systemd user units and optional login persistence. **Do not enable user lingering** or modify startup policy without deciding whether background services should continue when you log out. The generated Quadlets include `WantedBy=default.target` and may start in later user sessions. A present Quadlet file is not proof that its container is healthy.
+**Restart all three** (interrupts active sessions):
+```bash
+systemctl --user restart conflux-media-jellyfin.service conflux-media-kavita.service conflux-media-navidrome.service
+```
+
+**Check all three:**
+```bash
+systemctl --user status conflux-media-jellyfin.service conflux-media-kavita.service conflux-media-navidrome.service --no-pager -l
+```
+
+### What these operations mean
+
+- **Stop** gracefully requests systemd to stop a container. Media and application state remain in the bind-mounted Bazzite folders. Do not use `podman rm -v`, delete state folders, or reinstall the mirror to perform an ordinary stop.
+- **Start** asks systemd to start the existing user Quadlet; it does not reinstall an app or re-run the Portal installer. Use `status` and the app's browser URL to confirm readiness.
+- **Restart** is effectively stop followed by start. It can interrupt streaming or active database activity. It does **not** repair an incomplete Jellyfin account wizard by itself; inspect that issue first.
+- **Backup sequence:** stop all three, run the separate `backup.py` in this README, verify the archive, then start the services again. That helper backs up application **state/configuration only**, not the `media/` folders.
+- **After logging out or rebooting:** these are systemd **user** services. They are generated from Quadlet files with `WantedBy=default.target` and may start with your user session. Starting them immediately with `systemctl --user start` does **not** by itself enable unattended system-wide startup. Do not enable user lingering or change auto-start policy until you decide whether that is wanted.
+- **Existing CachyOS server:** none of these commands act on it, even if you happen to access it through Tailscale. Run on Bazzite as the user who installed this mirror. Avoid pasting private credentials or token-bearing logs into public issues.
 
 ## Private Tailscale viewing (manual; never part of Install)
 
