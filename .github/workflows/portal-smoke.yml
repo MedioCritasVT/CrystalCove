@@ -5,6 +5,7 @@ on:
     paths:
       - 'conflux/portal-app/**'
       - 'conflux/soundtrack/**'
+      - 'conflux/video-tour/**'
       - 'docs/**'
       - '.github/workflows/portal-smoke.yml'
   push:
@@ -12,6 +13,7 @@ on:
     paths:
       - 'conflux/portal-app/**'
       - 'conflux/soundtrack/**'
+      - 'conflux/video-tour/**'
       - 'docs/**'
 
 permissions:
@@ -34,12 +36,18 @@ jobs:
           node --check conflux/portal-app/music.js
           node --check conflux/portal-app/readme.js
           node --check conflux/portal-app/link_choice.js
+          node --check conflux/portal-app/soundstage.js
+          node --check docs/video_tour.js
           node --check docs/soundtrack.js
       - name: Local music player parse and no-autoplay smoke check
         working-directory: conflux/portal-app
         run: |
           node --check music.js
           node test_music.js
+          node test_soundstage.js
+          node test_video_tour.js
+      - name: Video publishing script syntax (no upload)
+        run: bash -n conflux/video-tour/publish_from_recording.sh
       - name: Browser-flow DOM smoke check (no browser packages)
         working-directory: conflux/portal-app
         run: node test_ui.js
