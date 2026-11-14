@@ -125,6 +125,7 @@ def library():
             variants.append({
                 "id": v["id"], "filename": name, "duration_seconds": v.get("duration_seconds"),
                 "source": source, "url": url,
+                "download_url": public.get(name),
             })
         tracks.append({"id": track["id"], "title": track["title"],
                        "variants": variants})
