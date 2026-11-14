@@ -23,7 +23,15 @@
       if (manifest.schema !== "conflux.portal.video-tour.v0.1" || manifest.release_tag !== tag ||
           !Array.isArray(manifest.items)) throw Error("unknown tour catalog");
       const allowed = new Set(manifest.items.map(item => item.filename));
-      const available = new Set();
+      // The four assets were independently verified on the public Release.
+      // Use their explicitly published, canonical catalog links even when
+      // github.com API calls are rate-limited, blocked, or temporarily offline.
+      // Never promote merely inventoried/unpublished entries into links.
+      const available = new Set(manifest.items.filter(entry =>
+        entry.publication_status === "published" &&
+        entry.published_url === prefix + entry.filename &&
+        Number.isSafeInteger(entry.bytes) && entry.bytes > 0
+      ).map(entry => entry.filename));
       try {
         const response = await fetch(api, {cache:"no-store",headers:{"Accept":"application/vnd.github+json"}});
         if (response.ok) {
@@ -53,7 +61,7 @@
         card.append(title, description, duration);
         if (available.has(entry.filename)) {
           const link = document.createElement("a");
-          link.href = prefix + entry.filename;
+          link.href = prefix + entry.filename; // fixed official GitHub Release path
           link.target = "_blank";
           link.rel = "noopener noreferrer";
           link.textContent = "Open video ↗";
@@ -72,7 +80,7 @@
         "All four short clips are publicly available. Open any one in a separate tab or window." :
         available.size ?
         available.size + " of " + manifest.items.length + " clips published so far." :
-        "The four clips are prepared but not yet published as GitHub video assets. Nothing needs to be installed to browse the Portal.";
+        "No published video links are currently confirmed in this catalog. The Portal itself remains available.";
     } catch (err) {
       status.textContent = "The video tour catalog could not load: " + err.message +
         ". Other Portal rooms remain available.";
