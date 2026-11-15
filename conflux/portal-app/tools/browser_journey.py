@@ -70,9 +70,11 @@ def main():
                 assert page.locator("#studio-texture").input_value() == "constellation"
                 page.locator("#assistant-open-nav").click()
                 assert page.locator("#assistant-dock").is_visible()
-                page.locator("#assistant-agent").select_option("specula")
-                # A safe browser-mocked response exercises the real text dock
-                # without reaching any external AI service or Git integration.
+                frame = page.frame_locator("#assistant-iframe")
+                frame.locator("#assistant-agent").select_option("specula")
+                frame.locator("#assistant-provider").select_option("ollama")
+                frame.locator("#connect-chatgpt").wait_for(state="visible")
+
                 def fake_assistant(route):
                     packet = route.request.post_data_json
                     assert packet["agent"] == "specula"
@@ -81,22 +83,43 @@ def main():
                         body=json.dumps({"reply":"The texture belongs to the current theme.",
                                          "provider":"ollama","agent":"specula","read_only":True}))
                 page.route("**/api/assistant/chat", fake_assistant)
-                page.locator("#assistant-message").fill("Where should this texture be saved?")
-                page.locator("#assistant-send").click()
-                page.get_by_text("The texture belongs to the current theme.",exact=True).wait_for(timeout=10000)
-                assert page.locator("#assistant-log .assistant-user").count() == 1
-                assert page.locator("#assistant-log .assistant-assistant").count() == 1
+                frame.locator("#assistant-message").fill("Where should this texture be saved?")
+                frame.locator("#assistant-send").click()
+                frame.get_by_text("The texture belongs to the current theme.",exact=True).wait_for(timeout=10000)
+                assert frame.locator("#assistant-log .bubble.user").count() == 1
+                assert frame.locator("#assistant-log .bubble.assistant").count() == 1
                 page.unroute("**/api/assistant/chat", fake_assistant)
+
+                frame.locator("#assistant-edit-details summary").click()
+                frame.locator("#assistant-message").fill("Make the assistant dock padding more compact.")
+                frame.locator("#change-file").select_option("conflux/portal-app/portal_chat.css")
+                frame.locator("#change-share").check()
+                def fake_edit(route):
+                    packet = route.request.post_data_json
+                    assert packet["approve_share"] is True
+                    assert packet["file"] == "conflux/portal-app/portal_chat.css"
+                    route.fulfill(status=200, content_type="application/json",
+                        body=json.dumps({
+                            "ticket":"test", "repository":"example/repo", "base":"a1b2c3",
+                            "file":packet["file"], "agent":"specula",
+                            "diff":"--- a/dock.css\\n+++ b/dock.css\\n@@ -1 +1 @@\\n-padding: 12px\\n+padding: 8px",
+                            "applied":False}))
+                page.route("**/api/changes/propose", fake_edit)
+                frame.locator("#change-propose").click()
+                frame.get_by_text("Diff prepared in chat.", exact=False).wait_for(timeout=10000)
+                assert "padding: 8px" in frame.locator("#change-diff").inner_text()
+                page.unroute("**/api/changes/propose", fake_edit)
+                frame.locator("#assistant-close").count()
                 page.locator("#assistant-close").click()
                 assert not page.locator("#assistant-dock").is_visible()
                 page.locator('button[data-page="updates"]').click()
-                page.locator("#studio-propose").click()
-                page.get_by_text("Review ready: colors, texture and contrast validated", exact=False).wait_for(timeout=10000)
-                assert page.locator("#studio-commit").is_enabled()
-                assert "specula" in page.locator("#studio-preview").inner_text()
-                assert "constellation" in page.locator("#studio-preview").inner_text()
+                assert page.locator("#updates-check").count() == 1
+                assert page.locator("#updates-apply").count() == 1
+                assert page.locator("#updates-relaunch").count() == 1
+                assert page.locator("#pull-desk").count() == 1
+                assert page.locator("#studio-commit").count() == 0
                 page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
-                observations.append("Background texture persists; assistant opens independently; Git review is in Setup")
+                observations.append("Theme persists; nested chat proposes a review diff; Setup retains updates and PR desk")
 
                 page.locator('button[data-page="nodes"]').click()
                 page.locator("#nodes h2").wait_for(state="visible")
