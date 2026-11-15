@@ -283,6 +283,19 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "assistant_frame.js", "text/javascript; charset=utf-8")
         if route == "/assistant_frame.css":
             return self.serve_file(ROOT / "assistant_frame.css", "text/css; charset=utf-8")
+        # Small, pinned OFL typefaces bundled in the checkout; no Google
+        # Fonts or network fetch at runtime. Only these names are served.
+        font_assets = {
+            "/fonts/Marcellus-Latin.woff2": "Marcellus-Latin.woff2",
+            "/fonts/SourceSans3-Latin.woff2": "SourceSans3-Latin.woff2",
+            "/fonts/JetBrainsMono-Latin.woff2": "JetBrainsMono-Latin.woff2",
+        }
+        if route in font_assets:
+            return self.serve_file(ROOT / "fonts" / font_assets[route], "font/woff2")
+        if route == "/portal_typography.css":
+            return self.serve_file(ROOT / "portal_typography.css", "text/css; charset=utf-8")
+        if route == "/portal_optical.css":
+            return self.serve_file(ROOT / "portal_optical.css", "text/css; charset=utf-8")
         if route == "/portal_symbols.css":
             return self.serve_file(ROOT / "portal_symbols.css", "text/css; charset=utf-8")
         if route == "/portal_finish.css":
