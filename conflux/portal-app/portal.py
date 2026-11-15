@@ -19,6 +19,7 @@ import game_locator
 import music_library
 from app_updater import UpdateManager, UpdateError
 from theme_studio import ThemeStudio, StudioError
+from portal_chat import ChatError, chat as assistant_chat, status as assistant_status
 from install_desktop_launcher import install_desktop_launcher
 
 ROOT = Path(__file__).resolve().parent
@@ -263,6 +264,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
         if route == "/theme_studio.css":
             return self.serve_file(ROOT / "theme_studio.css", "text/css; charset=utf-8")
+        if route == "/portal_chat.css":
+            return self.serve_file(ROOT / "portal_chat.css", "text/css; charset=utf-8")
+        if route == "/portal_chat.js":
+            return self.serve_file(ROOT / "portal_chat.js", "text/javascript; charset=utf-8")
         if route == "/theme_studio.js":
             return self.serve_file(ROOT / "theme_studio.js", "text/javascript; charset=utf-8")
         if route == "/soundstage.css":
@@ -300,6 +305,10 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/service-setup.js":
             return self.serve_file(ROOT / "service_setup.js",
                                    "text/javascript; charset=utf-8")
+        if route == "/api/assistant/status":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use the local Portal to access the assistant."})
+            return self.respond(200, assistant_status())
         if route == "/api/studio/status":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Portal to inspect Studio."})
@@ -348,7 +357,8 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/services/storage/plan", "/api/services/storage/apply",
                          "/api/services/storage/browse",
                          "/api/studio/propose", "/api/studio/publish",
-                         "/api/studio/preview", "/api/studio/main"):
+                         "/api/studio/preview", "/api/studio/main",
+                         "/api/assistant/chat"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -377,6 +387,13 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route == "/api/assistant/chat":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use the local Portal to chat."})
+            try:
+                return self.respond(200, assistant_chat(body))
+            except ChatError as error:
+                return self.respond(400, {"error": str(error)[:400]})
         if route.startswith("/api/studio/"):
             # Studio never permits remote/Tailscale callers to mutate local Git.
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):

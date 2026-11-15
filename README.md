@@ -40,15 +40,17 @@ Four **tiny looping previews**, taken from Arch's early Portal recording, show w
 
 The **local Portal** also has a **Media Mirror Setup** room for a proposed second media-service installation on Bazzite. It checks prerequisites and shows local/Tailscale ports before offering a separate explicit installation, without touching existing CachyOS libraries. This candidate is **not** a required step for players, not part of the static public website, and not yet tested on a real Bazzite host. See the [installer, backup and updates README](conflux/platforms/bazzite-service-bundle/README.md).
 
-## Personal Studio (experimental)
+## Personal Studio and assistant dock (experimental)
 
-The local Portal now includes **My Studio & Themes** for opt-in per-browser
-color palettes, JSON backup/import, and a bounded agent-assisted theme proposal.
-Reviewed themes can be committed to a new branch of the user's existing GitHub
-checkout with explicit consent, then safely previewed, relaunched and verified.
-This is not unrestricted agent code editing and does not yet provide
-GitHub/ChatGPT browser OAuth or automatic fork creation. See the
-[Studio workflow and limits](conflux/portal-app/README.md#personal-studio--first-bounded-implementation-review-branch).
+The local Portal includes individual color themes and subtle **background
+textures**, saved in each visitor's browser profile (with JSON export/import).
+An optional, compact **Assistant** text window is accessible from the sidebar
+or bottom corner across Portal rooms, connecting to a locally running Ollama
+model or a configured OpenAI API. **Updates & Setup** contains the separate
+Git theme-review controls: validate, approve, push a review branch, preview,
+relaunch and verify. This does not yet implement ChatGPT/GitHub OAuth,
+general-purpose code editing from chat, or automatic forks/merges.
+See [full setup and privacy boundaries](conflux/portal-app/README.md#personal-themes-background-textures-and-conversational-dock).
 
 ## Start here — choose your experience
 

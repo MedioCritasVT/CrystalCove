@@ -356,9 +356,10 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="studio">My Studio & Themes</button><button data-page="updates">Updates & Setup</button>
+<button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Assistant · open chat</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -630,7 +631,7 @@ tailscale serve status                      # Inspect routes</code></pre>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>
 <h2>Personal Studio</h2>
-<p class="lead">Customize your Portal, consult a selected Node for a bounded theme proposal, review the result, and—if you approve—publish it to a new Git review branch. Nothing is pushed or installed merely by selecting an agent.</p>
+<p class="lead">Make the Portal feel like your own: choose a palette and background texture, preview it immediately, and save it locally. Git review belongs in Updates & Setup; AI conversation is available from the assistant dock.</p>
 </div><aside class="room-companions" id="room-companion-studio" data-room="studio" aria-label="Node companions for the Studio"></aside></div>
 <div class="download-panel">
 <h3>Your own visual identity</h3>
@@ -650,36 +651,18 @@ tailscale serve status                      # Inspect routes</code></pre>
 <p class="theme-note">Browser preferences stay in this browser profile until exported or published. A fork or Git clone does not automatically contain your private data.</p>
 </div>
 <div class="download-panel">
-<h3>Invite a Node to design a theme</h3>
-<p>Choose one documented design perspective and an available provider. This first capability is deliberately restricted to color palettes—not arbitrary source code, shell access or unattended Git edits.</p>
-<label for="studio-agent">Selected Node perspective</label>
-<select id="studio-agent"><option value="limen">Limen · transitions</option><option value="medio">Medio · welcoming</option><option value="ratio">Ratio · precision</option><option value="specula">Specula · observation</option><option value="nexus">Nexus · continuity</option></select>
-<label for="studio-provider">AI / harness connection</label>
-<select id="studio-provider"><option value="manual">Manual · no model needed</option><option value="ollama">Local Ollama · model on this machine</option><option value="openai">OpenAI Responses API · host-provided API key</option></select>
-<label for="studio-instruction">What would you like to change?</label>
-<textarea id="studio-instruction" maxlength="1200" placeholder="For example: A quiet teal-and-gold appearance for the Portal that preserves readable contrast."></textarea>
-<div class="studio-actions"><button class="action" type="button" id="studio-propose">Prepare reviewed proposal</button></div>
-<pre class="studio-preview" id="studio-preview">No agent proposal prepared. Preview a theme locally first.</pre>
-<p class="theme-note">An API-backed Node is a configured design lens, not automatic continuity with past ChatGPT conversations. Remote AI prompts go to the provider you choose; manual and local theme editing stay on your device.</p>
-</div>
-<div class="download-panel">
-<h3>Git review → preview → refresh → test</h3>
-<p id="studio-git-status" class="theme-note">Inspecting the active checkout…</p>
-<p>Only after approval, the Portal creates an isolated local Git worktree, commits the validated theme as a data file, and pushes a <strong>new review branch</strong> to this checkout's GitHub <code>origin</code>. Your current branch and unsaved changes are preserved during publication. Your existing Git credential configuration must already authorize that repository.</p>
-<p class="theme-note">New-tab account authorization and per-user repository selection are the next integration. This first implementation does <strong>not</strong> offer ChatGPT OAuth, GitHub OAuth, automatic PR merging, or general-purpose agent code editing. To use a personal fork, open the Portal from that fork's own Git clone.</p>
-<div class="studio-actions">
-<button class="action" id="studio-commit" type="button" disabled>Approve & push review branch</button>
-<a id="studio-review-link" class="action secondary" href="https://github.com/" target="_blank" rel="noopener noreferrer" hidden>Review changes on GitHub</a>
-<button class="action secondary" id="studio-checkout" type="button" disabled>Preview reviewed branch locally</button>
-<button class="action secondary" id="studio-main" type="button">Return to local main</button>
-<button class="action secondary" data-go="updates" type="button">Relaunch in Updates & Setup</button>
-</div>
-<div class="studio-details">
-<label for="studio-verify-slug">Verify a committed theme by its file name (slug)</label>
-<input id="studio-verify-slug" type="text" placeholder="my-wayfarer-theme" maxlength="40" spellcheck="false"/>
-<div class="studio-actions"><button class="action secondary" type="button" id="studio-verify">Check active checkout & preview theme</button></div>
-</div>
-<p id="studio-status" class="studio-status" role="status" aria-live="polite">No theme has been published or tested. Local preview is available now.</p>
+<h3>Background textures</h3>
+<p>Choose a subtle pattern independently from the color palette. These are local CSS textures, not downloaded artwork or AI-generated instructions.</p>
+<label for="studio-texture">Portal background texture</label>
+<select id="studio-texture">
+<option value="none">Smooth · original ambient gradient</option>
+<option value="parchment">Parchment · soft fiber</option>
+<option value="constellation">Constellation · star points</option>
+<option value="grid">Grid · technical lines</option>
+<option value="weave">Weave · fine crosshatch</option>
+</select>
+<p class="theme-note">The texture is previewed immediately and saved with your personal theme. Restore original look removes it.</p>
+<p id="studio-theme-status" role="status" aria-live="polite">Theme changes are not yet saved.</p>
 </div>
 </section>
 <section class="panel" id="updates" hidden>
@@ -704,6 +687,28 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
   <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
 </div>
+<div class="download-panel">
+<h3>Personal theme → Git review → relaunch → test</h3>
+<p>This separate review area handles Git work. Use the small <strong>Assistant</strong> dock on any Portal page for ordinary model conversations; it never auto-commits code. This review currently publishes only a verified palette and texture data file.</p>
+<button class="action secondary" type="button" id="studio-propose">Prepare current theme for Git review</button>
+<pre class="studio-preview" id="studio-preview">No personal theme is prepared for review.</pre>
+<p id="studio-git-status" class="theme-note">Inspecting the active checkout…</p>
+<p>Only after approval, the Portal creates an isolated local Git worktree, commits the validated palette and background texture as a data file, and pushes a <strong>new review branch</strong> to this checkout's GitHub <code>origin</code>. Your current branch and unsaved changes are preserved during publication. Your existing Git credential configuration must already authorize that repository.</p>
+<p class="theme-note">New-tab account authorization and per-user repository selection are the next integration. This first implementation does <strong>not</strong> offer ChatGPT OAuth, GitHub OAuth, automatic PR merging, or general-purpose agent code editing. To use a personal fork, open the Portal from that fork's own Git clone.</p>
+<div class="studio-actions">
+<button class="action" id="studio-commit" type="button" disabled>Approve & push review branch</button>
+<a id="studio-review-link" class="action secondary" href="https://github.com/" target="_blank" rel="noopener noreferrer" hidden>Review changes on GitHub</a>
+<button class="action secondary" id="studio-checkout" type="button" disabled>Preview reviewed branch locally</button>
+<button class="action secondary" id="studio-main" type="button">Return to local main</button>
+<button class="action secondary" data-go="updates" type="button">Relaunch in Updates & Setup</button>
+</div>
+<div class="studio-details">
+<label for="studio-verify-slug">Verify a committed theme by its file name (slug)</label>
+<input id="studio-verify-slug" type="text" placeholder="my-wayfarer-theme" maxlength="40" spellcheck="false"/>
+<div class="studio-actions"><button class="action secondary" type="button" id="studio-verify">Check active checkout & preview theme</button></div>
+</div>
+<p id="studio-status" class="studio-status" role="status" aria-live="polite">No theme has been published or tested. Local preview is available now.</p>
+</div>
 <div class="finder">
   <div class="eyebrow">One-time setup · Linux</div>
   <h3>Open Conflux from your Applications menu</h3>
@@ -714,6 +719,26 @@ tailscale serve status                      # Inspect routes</code></pre>
 </div>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
+<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Assistant</button>
+<section id="assistant-dock" hidden aria-label="Conflux assistant conversation">
+  <div class="assistant-dock-head"><strong>Conflux Assistant</strong>
+    <button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
+  <div class="assistant-dock-controls">
+    <label for="assistant-provider">Connection
+      <select id="assistant-provider"><option value="ollama">Local Ollama</option><option value="openai">OpenAI API</option></select>
+    </label>
+    <label for="assistant-agent">Perspective
+      <select id="assistant-agent"><option value="limen">Limen</option><option value="medio">Medio</option><option value="ratio">Ratio</option><option value="specula">Specula</option><option value="nexus">Nexus</option></select>
+    </label>
+  </div>
+  <p id="assistant-connection" role="status" aria-live="polite">Connecting is optional.</p>
+  <div id="assistant-log" role="log" aria-label="Conversation" aria-live="polite"></div>
+  <form id="assistant-form">
+    <label for="assistant-message" class="sr-only">Message to the assistant</label>
+    <textarea id="assistant-message" maxlength="1500" placeholder="Ask about your project… (Enter to send)" aria-label="Your message to the assistant"></textarea>
+    <div class="assistant-dock-actions"><button id="assistant-clear" type="button">Clear</button><button id="assistant-send" type="submit">Send</button></div>
+  </form>
+</section>
 <dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
   <h3 id="open-choice-title">Open this link</h3>
   <p id="open-choice-description">Where would you like to open it?</p>
@@ -725,4 +750,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>

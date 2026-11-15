@@ -23,6 +23,20 @@ class ThemeValidationTest(unittest.TestCase):
         self.assertEqual(set(colors), set(DEFAULT))
         self.assertGreaterEqual(contrast(colors["ink"], colors["surface"]), 4.5)
 
+    def test_textures_preserve_schema_and_refuse_unknown_values(self):
+        with tempfile.TemporaryDirectory() as folder:
+            studio = ThemeStudio(folder)
+            result = studio.propose({
+                "name": "Starfield", "agent": "specula", "provider": "manual",
+                "palette": DEFAULT, "texture": "constellation",
+            })
+            self.assertEqual(result["texture"], "constellation")
+            with self.assertRaises(StudioError):
+                studio.propose({
+                    "name": "Bad", "agent": "specula", "provider": "manual",
+                    "palette": DEFAULT, "texture": "url(https://invalid)"
+                })
+
     def test_invalid_values_fail_closed(self):
         for change in ({"ink": "red"}, {"ink": "url(javascript:alert(1))"},
                        {"ink": "#111522"}, {"muted": "#111522"},

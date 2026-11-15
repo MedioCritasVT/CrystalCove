@@ -62,14 +62,41 @@ def main():
                 page.reload(wait_until="domcontentloaded")
                 page.locator('button[data-page="studio"]').click()
                 assert page.locator("#studio-color-violet").input_value() == "#a5b3c7"
-                page.locator("#studio-provider").select_option("manual")
-                page.locator("#studio-agent").select_option("specula")
+                page.locator("#studio-texture").select_option("constellation")
+                assert page.locator("body").get_attribute("data-texture") == "constellation"
+                page.locator("#studio-save").click()
+                page.reload(wait_until="domcontentloaded")
+                page.locator('button[data-page="studio"]').click()
+                assert page.locator("#studio-texture").input_value() == "constellation"
+                page.locator("#assistant-open-nav").click()
+                assert page.locator("#assistant-dock").is_visible()
+                page.locator("#assistant-agent").select_option("specula")
+                # A safe browser-mocked response exercises the real text dock
+                # without reaching any external AI service or Git integration.
+                def fake_assistant(route):
+                    packet = route.request.post_data_json
+                    assert packet["agent"] == "specula"
+                    assert packet["room"] == "studio"
+                    route.fulfill(status=200, content_type="application/json",
+                        body=json.dumps({"reply":"The texture belongs to the current theme.",
+                                         "provider":"ollama","agent":"specula","read_only":True}))
+                page.route("**/api/assistant/chat", fake_assistant)
+                page.locator("#assistant-message").fill("Where should this texture be saved?")
+                page.locator("#assistant-send").click()
+                page.get_by_text("The texture belongs to the current theme.",exact=True).wait_for(timeout=10000)
+                assert page.locator("#assistant-log .assistant-user").count() == 1
+                assert page.locator("#assistant-log .assistant-assistant").count() == 1
+                page.unroute("**/api/assistant/chat", fake_assistant)
+                page.locator("#assistant-close").click()
+                assert not page.locator("#assistant-dock").is_visible()
+                page.locator('button[data-page="updates"]').click()
                 page.locator("#studio-propose").click()
-                page.get_by_text("Preview ready: colors and contrast validated", exact=False).wait_for(timeout=10000)
+                page.get_by_text("Review ready: colors, texture and contrast validated", exact=False).wait_for(timeout=10000)
                 assert page.locator("#studio-commit").is_enabled()
                 assert "specula" in page.locator("#studio-preview").inner_text()
+                assert "constellation" in page.locator("#studio-preview").inner_text()
                 page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
-                observations.append("Personal themes survive reload; manual Node palette can be reviewed without writing Git")
+                observations.append("Background texture persists; assistant opens independently; Git review is in Setup")
 
                 page.locator('button[data-page="nodes"]').click()
                 page.locator("#nodes h2").wait_for(state="visible")
