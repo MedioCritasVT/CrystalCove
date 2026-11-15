@@ -18,6 +18,7 @@ from urllib.parse import urlsplit
 import game_locator
 import music_library
 from app_updater import UpdateManager, UpdateError
+from theme_studio import ThemeStudio, StudioError
 from install_desktop_launcher import install_desktop_launcher
 
 ROOT = Path(__file__).resolve().parent
@@ -35,6 +36,7 @@ CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
 UPDATES = UpdateManager(ROOT.parents[1])
+STUDIO = ThemeStudio(ROOT.parents[1])
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -259,6 +261,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
         if route == "/familiars.css":
             return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
+        if route == "/theme_studio.css":
+            return self.serve_file(ROOT / "theme_studio.css", "text/css; charset=utf-8")
+        if route == "/theme_studio.js":
+            return self.serve_file(ROOT / "theme_studio.js", "text/javascript; charset=utf-8")
         if route == "/soundstage.css":
             return self.serve_file(ROOT / "soundstage.css", "text/css; charset=utf-8")
         if route == "/soundstage.js":
@@ -294,6 +300,19 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/service-setup.js":
             return self.serve_file(ROOT / "service_setup.js",
                                    "text/javascript; charset=utf-8")
+        if route == "/api/studio/status":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use the local Portal to inspect Studio."})
+            return self.respond(200, STUDIO.status())
+        if route == "/api/studio/theme":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use the local Portal to inspect themes."})
+            try:
+                from urllib.parse import parse_qs
+                slug = parse_qs(urlsplit(self.path).query).get("slug", [""])[0]
+                return self.respond(200, STUDIO.inspect_theme(slug))
+            except StudioError as error:
+                return self.respond(404, {"error": str(error)[:400]})
         if route == "/api/status":
             return self.respond(200, {
                 "platform": sys.platform, "mode": "local-preview",
@@ -327,7 +346,9 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/updates/relaunch", "/api/desktop/install",
                          "/api/services/check", "/api/services/install",
                          "/api/services/storage/plan", "/api/services/storage/apply",
-                         "/api/services/storage/browse"):
+                         "/api/services/storage/browse",
+                         "/api/studio/propose", "/api/studio/publish",
+                         "/api/studio/preview", "/api/studio/main"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -356,6 +377,24 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route.startswith("/api/studio/"):
+            # Studio never permits remote/Tailscale callers to mutate local Git.
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Use 127.0.0.1 to manage your Studio."})
+            try:
+                if route == "/api/studio/propose":
+                    return self.respond(200, STUDIO.propose(body))
+                if route == "/api/studio/publish":
+                    return self.respond(200, STUDIO.publish(body))
+                if route == "/api/studio/preview":
+                    result = STUDIO.preview(body)
+                else:
+                    result = STUDIO.return_to_main(body)
+                UPDATES.pending = None
+                UPDATES.restart_needed = True
+                return self.respond(200, result)
+            except StudioError as error:
+                return self.respond(409, {"error": str(error)[:400]})
         # Privileged service changes are desktop-local; the remote Tailscale
         # website may be viewed but cannot run host installer actions.
         if route in ("/api/services/check", "/api/services/install",
