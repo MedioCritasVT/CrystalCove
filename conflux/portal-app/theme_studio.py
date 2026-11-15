@@ -201,7 +201,7 @@ class ThemeStudio:
             else:
                 raise StudioError("Choose Manual, Ollama, or OpenAI API.")
             texture = body.get("texture", "none")
-            if texture not in TEXTURES:
+            if not isinstance(texture, str) or texture not in TEXTURES:
                 raise StudioError("Unrecognized Portal background texture.")
             ticket = secrets.token_urlsafe(22)
             self.pending = {"ticket": ticket, "name": name, "slug": slug,
