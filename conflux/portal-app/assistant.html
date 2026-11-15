@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conflux · Assistant</title>
+<link rel="stylesheet" href="/assistant_frame.css">
+</head>
+<body>
+<header class="top">
+  <div><strong>Conflux Assistant</strong><small>Optional · local-first connections</small></div>
+  <span id="room-label">Your Portal</span>
+</header>
+<main>
+  <section class="connections" aria-labelledby="connect-title">
+    <div class="line-heading"><h1 id="connect-title">Connections</h1><button type="button" id="connections-toggle" aria-expanded="true" aria-controls="connection-list">Hide</button></div>
+    <div id="connection-list">
+      <div class="connection" id="chatgpt-card">
+        <div class="connection-title"><strong>ChatGPT</strong><span id="chatgpt-state" class="state">Not connected</span></div>
+        <div class="connection-actions">
+          <button id="connect-chatgpt" type="button" class="primary" data-oai-siwc-button>Continue with ChatGPT</button>
+          <button id="disconnect-chatgpt" type="button" hidden>Disconnect</button>
+        </div>
+        <small id="chatgpt-details">Use your eligible ChatGPT plan, with permission. No API key.</small>
+      </div>
+      <div class="connection" id="github-card">
+        <div class="connection-title"><strong>GitHub</strong><span id="github-state" class="state">Not connected</span></div>
+        <div class="connection-actions">
+          <button id="connect-github" type="button">Connect GitHub</button>
+          <button id="disconnect-github" type="button" hidden>Disconnect</button>
+        </div>
+        <small id="github-details">Separate authorization for a GitHub App. No repository changes from chat.</small>
+      </div>
+      <div id="connection-help" class="helper" role="status" aria-live="polite">Nothing connects automatically.</div>
+    </div>
+  </section>
+  <section class="conversation" aria-labelledby="chat-title">
+    <div class="line-heading"><h2 id="chat-title">Conversation</h2><button type="button" id="assistant-clear">Clear</button></div>
+    <div class="pickers">
+      <label>Via
+        <select id="assistant-provider">
+          <option value="chatgpt">ChatGPT account</option>
+          <option value="ollama">Local Ollama</option>
+          <option value="openai">OpenAI API key (advanced)</option>
+        </select>
+      </label>
+      <label>Perspective
+        <select id="assistant-agent">
+          <option value="limen">Limen</option>
+          <option value="medio">Medio</option>
+          <option value="ratio">Ratio</option>
+          <option value="specula">Specula</option>
+          <option value="nexus">Nexus</option>
+        </select>
+      </label>
+    </div>
+    <p id="assistant-connection" class="subtle" role="status" aria-live="polite">Choose a provider to start.</p>
+    <div id="assistant-log" role="log" aria-label="Assistant conversation" aria-live="polite"></div>
+    <form id="assistant-form">
+      <label for="assistant-message" class="sr-only">Message</label>
+      <textarea id="assistant-message" maxlength="1500" placeholder="Ask a question about this part of Conflux…" rows="2" aria-label="Type a message"></textarea>
+      <div class="send-row"><span>Enter to send · Shift+Enter for newline</span><button id="assistant-send" type="submit" class="primary">Send</button></div>
+    </form>
+    <details class="change-tools" id="assistant-edit-details">
+      <summary>Propose a Portal change</summary>
+      <p class="privacy">Describe the change in the message box above. Choose the CSS file to share with the selected model. A reviewable diff is prepared first; nothing is changed until you approve the Git push.</p>
+      <label class="change-label" for="change-file">File to edit
+        <select id="change-file" aria-label="Portal CSS file to edit"><option value="">Loading supported files…</option></select>
+      </label>
+      <label class="share-confirm"><input id="change-share" type="checkbox"/> I approve sending this selected file's contents to the chosen AI provider.</label>
+      <div class="change-row"><button type="button" id="change-propose">Propose edit using my message</button></div>
+      <section id="change-review" hidden aria-label="Agent-proposed change">
+        <p id="change-target" class="privacy"></p>
+        <pre id="change-diff" tabindex="0" aria-label="Proposed code diff"></pre>
+        <div class="change-row">
+          <button type="button" id="change-publish" class="primary">Review & push branch</button>
+          <a id="change-review-link" hidden target="_blank" rel="noopener noreferrer">Open review</a>
+        </div>
+      </section>
+      <p id="change-status" class="privacy" role="status" aria-live="polite">Only selected CSS files can be edited in this first version.</p>
+    </details>
+    <p class="privacy">Conversation is read-only by default. Only a deliberately selected CSS file is shared in edit mode. Agent edits are proposals, not automatically applied changes.</p>
+  </section>
+</main>
+<script src="/assistant_frame.js"></script>
+</body>
+</html>

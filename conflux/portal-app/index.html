@@ -356,7 +356,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="studio">My Studio & Themes</button><button data-page="updates">Updates & Setup</button>
 <button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Assistant · open chat</button>
@@ -670,7 +670,7 @@ tailscale serve status                      # Inspect routes</code></pre>
   <div class="room-words">
     <div class="eyebrow">Ratio × Limen · trusted transitions</div>
     <h2>Updates & Setup</h2>
-    <p class="lead">Keep your Conflux workspace current, without Git commands. Check first, choose whether to update, then relaunch the Portal when you're ready.</p>
+    <p class="lead">Check, update and relaunch Conflux as before. Separately, inspect and merge pull requests prepared through your assistant workspace.</p>
   </div>
   <aside class="room-companions" id="room-companion-updates" data-room="updates" aria-label="Node companions for updates"></aside>
 </div>
@@ -687,28 +687,37 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
   <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
 </div>
-<div class="download-panel">
-<h3>Personal theme → Git review → relaunch → test</h3>
-<p>This separate review area handles Git work. Use the small <strong>Assistant</strong> dock on any Portal page for ordinary model conversations; it never auto-commits code. This review currently publishes only a verified palette and texture data file.</p>
-<button class="action secondary" type="button" id="studio-propose">Prepare current theme for Git review</button>
-<pre class="studio-preview" id="studio-preview">No personal theme is prepared for review.</pre>
-<p id="studio-git-status" class="theme-note">Inspecting the active checkout…</p>
-<p>Only after approval, the Portal creates an isolated local Git worktree, commits the validated palette and background texture as a data file, and pushes a <strong>new review branch</strong> to this checkout's GitHub <code>origin</code>. Your current branch and unsaved changes are preserved during publication. Your existing Git credential configuration must already authorize that repository.</p>
-<p class="theme-note">New-tab account authorization and per-user repository selection are the next integration. This first implementation does <strong>not</strong> offer ChatGPT OAuth, GitHub OAuth, automatic PR merging, or general-purpose agent code editing. To use a personal fork, open the Portal from that fork's own Git clone.</p>
-<div class="studio-actions">
-<button class="action" id="studio-commit" type="button" disabled>Approve & push review branch</button>
-<a id="studio-review-link" class="action secondary" href="https://github.com/" target="_blank" rel="noopener noreferrer" hidden>Review changes on GitHub</a>
-<button class="action secondary" id="studio-checkout" type="button" disabled>Preview reviewed branch locally</button>
-<button class="action secondary" id="studio-main" type="button">Return to local main</button>
-<button class="action secondary" data-go="updates" type="button">Relaunch in Updates & Setup</button>
-</div>
-<div class="studio-details">
-<label for="studio-verify-slug">Verify a committed theme by its file name (slug)</label>
-<input id="studio-verify-slug" type="text" placeholder="my-wayfarer-theme" maxlength="40" spellcheck="false"/>
-<div class="studio-actions"><button class="action secondary" type="button" id="studio-verify">Check active checkout & preview theme</button></div>
-</div>
-<p id="studio-status" class="studio-status" role="status" aria-live="polite">No theme has been published or tested. Local preview is available now.</p>
-</div>
+<section class="download-panel" id="pull-desk" aria-labelledby="pull-title">
+  <h3 id="pull-title">GitHub pull requests · inspect & merge</h3>
+  <p>Review pull requests for the GitHub <strong>origin of this Portal checkout</strong>. Public requests can be viewed without signing in. Merging requires a separately authorized GitHub App, GitHub's required permissions and an explicit confirmation.</p>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-refresh">Find open pull requests</button>
+    <button class="action secondary" type="button" id="pull-connect">Connect GitHub in Assistant</button>
+  </div>
+  <p id="pull-repository" class="theme-note">No pull requests loaded.</p>
+  <label for="pull-list">Choose a pull request</label>
+  <select id="pull-list" disabled><option value="">Choose Find open pull requests first</option></select>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-inspect" disabled>Inspect selected PR</button>
+    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="action secondary" id="pull-open" hidden>View full changes on GitHub</a>
+  </div>
+  <div id="pull-review" hidden>
+    <h4 id="pull-heading"></h4>
+    <p id="pull-meta" class="theme-note"></p>
+    <p id="pull-description" class="pull-description"></p>
+    <div id="pull-files" class="pull-files" aria-label="Changed file summary"></div>
+    <p id="pull-warnings" class="theme-note"></p>
+    <label for="pull-method">Merge strategy</label>
+    <select id="pull-method">
+      <option value="merge">Merge commit</option>
+      <option value="squash">Squash and merge</option>
+      <option value="rebase">Rebase and merge</option>
+    </select>
+    <label class="pull-approval"><input type="checkbox" id="pull-reviewed"/> I reviewed the displayed diff, understand the affected repository and branch, and want to authorize a merge.</label>
+    <div class="studio-actions"><button class="action" type="button" id="pull-merge" disabled>Merge reviewed PR</button></div>
+  </div>
+  <p id="pull-status" role="status" aria-live="polite" class="studio-status">The Portal never merges on its own. GitHub still enforces branch protections and required reviews.</p>
+</section>
 <div class="finder">
   <div class="eyebrow">One-time setup · Linux</div>
   <h3>Open Conflux from your Applications menu</h3>
@@ -720,25 +729,10 @@ tailscale serve status                      # Inspect routes</code></pre>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
 <button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Assistant</button>
-<section id="assistant-dock" hidden aria-label="Conflux assistant conversation">
-  <div class="assistant-dock-head"><strong>Conflux Assistant</strong>
-    <button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
-  <div class="assistant-dock-controls">
-    <label for="assistant-provider">Connection
-      <select id="assistant-provider"><option value="ollama">Local Ollama</option><option value="openai">OpenAI API</option></select>
-    </label>
-    <label for="assistant-agent">Perspective
-      <select id="assistant-agent"><option value="limen">Limen</option><option value="medio">Medio</option><option value="ratio">Ratio</option><option value="specula">Specula</option><option value="nexus">Nexus</option></select>
-    </label>
-  </div>
-  <p id="assistant-connection" role="status" aria-live="polite">Connecting is optional.</p>
-  <div id="assistant-log" role="log" aria-label="Conversation" aria-live="polite"></div>
-  <form id="assistant-form">
-    <label for="assistant-message" class="sr-only">Message to the assistant</label>
-    <textarea id="assistant-message" maxlength="1500" placeholder="Ask about your project… (Enter to send)" aria-label="Your message to the assistant"></textarea>
-    <div class="assistant-dock-actions"><button id="assistant-clear" type="button">Clear</button><button id="assistant-send" type="submit">Send</button></div>
-  </form>
-</section>
+<aside id="assistant-dock" hidden aria-label="Nested assistant interface">
+  <div class="assistant-dock-head"><strong>Portal Assistant</strong><button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
+  <iframe id="assistant-iframe" src="/assistant" title="Conflux Assistant and account connections" loading="lazy"></iframe>
+</aside>
 <dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
   <h3 id="open-choice-title">Open this link</h3>
   <p id="open-choice-description">Where would you like to open it?</p>
@@ -750,4 +744,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>

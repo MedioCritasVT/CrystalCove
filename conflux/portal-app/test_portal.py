@@ -157,7 +157,12 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn('id="assistant-dock-toggle"', html)
         self.assertIn('id="assistant-open-nav"', html)
-        self.assertIn('id="assistant-log"', html)
+        self.assertIn('id="assistant-iframe"', html)
+        status, nested = self.get("/assistant")
+        self.assertEqual(status, 200)
+        self.assertIn('id="assistant-log"', nested)
+        self.assertIn('id="change-propose"', nested)
+        self.assertIn('id="connect-chatgpt"', nested)
         self.assertEqual(self.get("/portal_chat.js")[0], 200)
         self.assertEqual(self.get("/portal_chat.css")[0], 200)
         status, result = self.get("/api/assistant/status")
@@ -183,8 +188,9 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertIn('id="studio"', page)
         self.assertIn('id="studio-texture"', page)
         self.assertIn('id="assistant-dock"', page)
-        self.assertIn('id="assistant-provider"', page)
-        self.assertIn('id="studio-commit"', page)
+        self.assertIn('id="pull-desk"', page)
+        self.assertIn('id="pull-refresh"', page)
+        self.assertNotIn('id="studio-commit"', page)
         self.assertEqual(self.get("/theme_studio.js")[0], 200)
         self.assertEqual(self.get("/theme_studio.css")[0], 200)
         status, raw = self.get("/api/studio/status")
@@ -211,6 +217,29 @@ class PortalSmokeTest(unittest.TestCase):
         with self.assertRaises(HTTPError) as forbidden:
             urlopen(request, timeout=3)
         self.assertEqual(forbidden.exception.code, 403)
+
+    def test_agent_edit_and_pr_routes_are_local_and_authenticated(self):
+        self.assertEqual(self.get("/assistant_frame.js")[0], 200)
+        self.assertEqual(self.get("/assistant_frame.css")[0], 200)
+        self.assertEqual(self.get("/pull_desk.js")[0], 200)
+        self.assertEqual(self.get("/pull_desk.css")[0], 200)
+        status, data = self.get("/api/changes/files")
+        self.assertEqual(status, 200)
+        self.assertIn("conflux/portal-app/theme_studio.css",
+                      [x["path"] for x in json.loads(data)["files"]])
+        with mock.patch.object(portal, "PULLS") as prs:
+            prs.list.return_value = {"repository": "example/repo", "pulls": []}
+            status, raw = self.get("/api/pulls/list")
+            self.assertEqual(status, 200)
+            self.assertEqual(json.loads(raw)["repository"], "example/repo")
+        for path in ("/api/changes/propose", "/api/changes/publish",
+                     "/api/pulls/merge", "/api/connections/start"):
+            request = Request(self.base + path, data=b"{}",
+                              headers={"Content-Type": "application/json"},
+                              method="POST")
+            with self.assertRaises(HTTPError) as error:
+                urlopen(request, timeout=3)
+            self.assertEqual(error.exception.code, 403)
 
     def test_download_page_and_palettes(self):
         status, html = self.get("/downloads")

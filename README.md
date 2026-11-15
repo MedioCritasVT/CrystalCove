@@ -40,17 +40,19 @@ Four **tiny looping previews**, taken from Arch's early Portal recording, show w
 
 The **local Portal** also has a **Media Mirror Setup** room for a proposed second media-service installation on Bazzite. It checks prerequisites and shows local/Tailscale ports before offering a separate explicit installation, without touching existing CachyOS libraries. This candidate is **not** a required step for players, not part of the static public website, and not yet tested on a real Bazzite host. See the [installer, backup and updates README](conflux/platforms/bazzite-service-bundle/README.md).
 
-## Personal Studio and assistant dock (experimental)
+## Personal Studio and agent-assisted Git review (experimental)
 
-The local Portal includes individual color themes and subtle **background
-textures**, saved in each visitor's browser profile (with JSON export/import).
-An optional, compact **Assistant** text window is accessible from the sidebar
-or bottom corner across Portal rooms, connecting to a locally running Ollama
-model or a configured OpenAI API. **Updates & Setup** contains the separate
-Git theme-review controls: validate, approve, push a review branch, preview,
-relaunch and verify. This does not yet implement ChatGPT/GitHub OAuth,
-general-purpose code editing from chat, or automatic forks/merges.
-See [full setup and privacy boundaries](conflux/portal-app/README.md#personal-themes-background-textures-and-conversational-dock).
+The local Portal provides per-browser color and background textures with
+backup/export. An optional **Assistant** opens its own compact nested HTML
+panel with local Ollama, OpenAI API or a **Continue with ChatGPT** sign-in
+candidate. The user can deliberately share a chosen CSS file, request a
+style change through conversation, review a generated diff, and explicitly
+push a Git branch (and, when authorized, a draft PR). **Updates & Setup**
+still contains the original Check → Update → Relaunch controls, along with
+a separate desk to inspect and manually merge GitHub pull requests.
+This source-code preview is CSS-scoped, not unrestricted agent coding or
+a completed multi-user OAuth/fork management system.
+See [the connection, consent and test requirements](conflux/portal-app/README.md#personal-themes-assistant-and-owned-git-review).
 
 ## Start here — choose your experience
 
