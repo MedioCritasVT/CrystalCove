@@ -67,6 +67,14 @@ def main():
                     assert page.locator(f'button[data-page="{destination}"]').get_attribute("aria-current") == "page"
                 page.locator('button[data-page="nodes"]').click()
                 assert page.locator("#node-list .node-portal-duty").count() == 5
+                detail = page.locator('#node-list .pet-token[data-node="ratio"]')
+                assert detail.evaluate("(e)=>getComputedStyle(e,'::after').content") != "none"
+                jewel = page.locator('#node-list .pet-token[data-node="nexus"] .pet-chest-jewel')
+                assert jewel.evaluate("(e)=>getComputedStyle(e,'::before').content") != "none"
+                page.emulate_media(reduced_motion="reduce")
+                assert page.locator('#room-companion-nodes .pet-token').first.evaluate(
+                    "(e)=>getComputedStyle(e,'::after').animationName") == "none"
+                page.emulate_media(reduced_motion="no-preference")
                 page.emulate_media(reduced_motion="reduce")
                 assert page.locator("#nodes .room-hero").evaluate(
                     "(el) => getComputedStyle(el).animationName") == "none"
@@ -105,6 +113,45 @@ def main():
                 page.reload(wait_until="domcontentloaded")
                 page.locator('button[data-page="studio"]').click()
                 assert page.locator("#studio-texture").input_value() == "constellation"
+                # A complete four-color theme sits above the original
+                # ten-color editor. All existing saved themes still load.
+                assert page.locator("#studio-colors input[type=color]").count() == 10
+                assert page.locator(".studio-harmony-grid input[type=color]").count() == 4
+                assert page.locator("#studio-preset option").count() == 11  # ten presets + custom
+                page.locator("#studio-preset").select_option("Sapphire Nocturne")
+                assert page.locator("#studio-harmony-blue").input_value() == "#7ab8f9"
+                assert page.locator("#studio-preset-preview .studio-preset-chip").count() == 4
+                page.screenshot(path=str(proof / "01-palette-sapphire.png"), full_page=True)
+                page.locator("#studio-texture").select_option("constellation")
+                colored_sky = page.locator("body").evaluate(
+                    "(e) => getComputedStyle(e).backgroundImage")
+                page.locator("#studio-preset").select_option("Jade Aether")
+                jade_sky = page.locator("body").evaluate(
+                    "(e) => getComputedStyle(e).backgroundImage")
+                assert colored_sky != jade_sky, "texture should react to different accent palettes"
+                page.locator("#studio-texture").select_option("weave")
+                assert page.locator("body").get_attribute("data-texture") == "weave"
+                page.screenshot(path=str(proof / "01-palette-jade.png"), full_page=True)
+                page.locator("#studio-link-complement").check()
+                before_blue = page.locator("#studio-harmony-blue").input_value()
+                page.locator("#studio-harmony-amber").fill("#f2ac62")
+                after_blue = page.locator("#studio-harmony-blue").input_value()
+                assert after_blue != before_blue, "blue should follow the changed gold hue"
+                assert after_blue == page.locator("#studio-color-blue").input_value()
+                assert page.locator("#studio-link-complement").is_checked()
+                page.locator("#studio-harmony-blue").fill("#83c5ea")
+                assert not page.locator("#studio-link-complement").is_checked(), (
+                    "manual blue override must release the complement link")
+                assert page.locator("#studio-color-blue").input_value() == "#83c5ea"
+                page.screenshot(path=str(proof / "01-palette-harmony.png"), full_page=True)
+                page.locator("#studio-save").click()
+                page.reload(wait_until="domcontentloaded")
+                page.locator('button[data-page="studio"]').click()
+                assert page.locator("#studio-harmony-amber").input_value() == "#f2ac62"
+                assert page.locator("#studio-harmony-blue").input_value() == "#83c5ea"
+                assert page.locator("#studio-texture").input_value() == "weave"
+                assert page.locator("#studio-preset").input_value() == "custom"
+                observations.append("Ten curated palettes, four accent controls, complementary linking, texture color response and v1 persistence passed")
                 # Codex renders in the panel; no nested external site or
                 # login provider is contacted by this smoke test.
                 page.route("**/api/codex/status", lambda route: route.fulfill(
