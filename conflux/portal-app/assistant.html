@@ -61,7 +61,25 @@
       <textarea id="assistant-message" maxlength="1500" placeholder="Ask a question about this part of Conflux…" rows="2" aria-label="Type a message"></textarea>
       <div class="send-row"><span>Enter to send · Shift+Enter for newline</span><button id="assistant-send" type="submit" class="primary">Send</button></div>
     </form>
-    <p class="privacy">Read-only. Only messages you send, limited chat history and the room name reach your selected model. No source files or Git permissions are shared with the assistant.</p>
+    <details class="change-tools" id="assistant-edit-details">
+      <summary>Propose a Portal change</summary>
+      <p class="privacy">Describe the change in the message box above. Choose the CSS file to share with the selected model. A reviewable diff is prepared first; nothing is changed until you approve the Git push.</p>
+      <label class="change-label" for="change-file">File to edit
+        <select id="change-file" aria-label="Portal CSS file to edit"><option value="">Loading supported files…</option></select>
+      </label>
+      <label class="share-confirm"><input id="change-share" type="checkbox"/> I approve sending this selected file's contents to the chosen AI provider.</label>
+      <div class="change-row"><button type="button" id="change-propose">Propose edit using my message</button></div>
+      <section id="change-review" hidden aria-label="Agent-proposed change">
+        <p id="change-target" class="privacy"></p>
+        <pre id="change-diff" tabindex="0" aria-label="Proposed code diff"></pre>
+        <div class="change-row">
+          <button type="button" id="change-publish" class="primary">Review & push branch</button>
+          <a id="change-review-link" hidden target="_blank" rel="noopener noreferrer">Open review</a>
+        </div>
+      </section>
+      <p id="change-status" class="privacy" role="status" aria-live="polite">Only selected CSS files can be edited in this first version.</p>
+    </details>
+    <p class="privacy">Conversation is read-only by default. Only a deliberately selected CSS file is shared in edit mode. Agent edits are proposals, not automatically applied changes.</p>
   </section>
 </main>
 <script src="/assistant_frame.js"></script>
