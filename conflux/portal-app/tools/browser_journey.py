@@ -71,6 +71,22 @@ def main():
                 page.locator("#assistant-open-nav").click()
                 assert page.locator("#assistant-dock").is_visible()
                 page.locator("#assistant-agent").select_option("specula")
+                # A safe browser-mocked response exercises the real text dock
+                # without reaching any external AI service or Git integration.
+                def fake_assistant(route):
+                    packet = route.request.post_data_json
+                    assert packet["agent"] == "specula"
+                    assert packet["room"] == "studio"
+                    route.fulfill(status=200, content_type="application/json",
+                        body=json.dumps({"reply":"The texture belongs to the current theme.",
+                                         "provider":"ollama","agent":"specula","read_only":True}))
+                page.route("**/api/assistant/chat", fake_assistant)
+                page.locator("#assistant-message").fill("Where should this texture be saved?")
+                page.locator("#assistant-send").click()
+                page.get_by_text("The texture belongs to the current theme.",exact=True).wait_for(timeout=10000)
+                assert page.locator("#assistant-log .assistant-user").count() == 1
+                assert page.locator("#assistant-log .assistant-assistant").count() == 1
+                page.unroute("**/api/assistant/chat", fake_assistant)
                 page.locator("#assistant-close").click()
                 assert not page.locator("#assistant-dock").is_visible()
                 page.locator('button[data-page="updates"]').click()
