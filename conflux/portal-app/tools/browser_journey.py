@@ -100,7 +100,10 @@ def main():
                 page.locator("#studio h2").wait_for(state="visible")
                 assert page.locator("#studio-colors input[type=color]").count() == 10
                 page.locator("#studio-name").fill("Wayfarer CI")
+                page.locator("#studio-advanced-colors summary").click()
+                assert page.locator("#studio-color-violet").is_visible()
                 page.locator("#studio-color-violet").fill("#a5b3c7")
+                page.locator("#studio-advanced-colors summary").click()
                 page.locator("#studio-save").click()
                 page.wait_for_function(
                     "() => document.documentElement.style.getPropertyValue('--violet') === '#a5b3c7'")
