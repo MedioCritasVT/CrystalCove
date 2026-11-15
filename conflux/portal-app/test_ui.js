@@ -17,6 +17,8 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-launch", "game-linked-state", "game-picker-availability",
                    "home-game-action", "home-game-status",
                   "updates-check", "updates-apply", "updates-relaunch",
+                  "development-setup", "bridge-repository", "bridge-handoff",
+                  "codex-transcript", "codex-message", "codex-start", "codex-edits",
                   "updates-status", "updates-details", "portal-source-path", "desktop-install", "desktop-status",
                   ...roomIds.map(id => "room-companion-" + id)]) {
   assert(html.includes('id="' + id + '"'), "missing control " + id);
