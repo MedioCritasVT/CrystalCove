@@ -11,6 +11,7 @@ const themeJs = fs.readFileSync("theme_studio.js","utf8");
 const themeCss = fs.readFileSync("theme_studio.css","utf8");
 const polishCss = fs.readFileSync("portal_polish.css", "utf8");
 const finishCss = fs.readFileSync("portal_finish.css", "utf8");
+const symbolCss = fs.readFileSync("portal_symbols.css", "utf8");
 const stageJs = fs.readFileSync("soundstage.js", "utf8");
 
 
@@ -26,6 +27,22 @@ assert(html.includes('class="nav-stewards"'), "stewardship must be optional");
 assert(html.includes("A Node offers a perspective, never a required path."), "a Node must not gate room access");
 assert(html.includes('href="/portal_polish.css"'), "room polish stylesheet is required");
 assert(html.includes('href="/portal_finish.css"'), "final Portal layer must load");
+assert(html.includes('href="/portal_symbols.css"'), "symbol contrast layer must be included");
+assert.equal((html.match(/class="nav-symbol"/g)||[]).length, 14, "each sidebar room needs a glyph");
+assert(html.includes('class="brand-symbol"'), "Portal brand mark needs consistent sizing");
+assert(html.includes('class="codex-glyph"'), "Codex shortcut mark should be legible");
+assert(html.includes('class="utility-symbol"'), "developer shortcut must be styled");
+assert((html.match(/class="external-glyph"/g)||[]).length >= 15, "external links need consistent symbols");
+for (const [id,label] of [["music-prev","Previous track"],["music-next","Next track"],
+                          ["music-visual-close","Close visualizer"]]) {
+  const tag=html.match(new RegExp("<button[^>]*id=\""+id+"\"[^>]*>[^<]*<span class="))[0];
+  assert(tag.includes('aria-label="'+label+'"'), "icon-only button must retain its accessible name: "+id);
+}
+assert(symbolCss.includes("button .nav-symbol") && symbolCss.includes("29px"), "navigation symbols need strong consistent tiles");
+assert(symbolCss.includes(".pet-token .pet-mark"), "the five chibi emblems need a legible size");
+assert(symbolCss.includes(".transport-glyph") && symbolCss.includes(".spectrum-glyph"), "player symbols need dedicated contrast");
+assert(symbolCss.includes("prefers-reduced-motion:reduce"), "symbol affordances must respect reduced motion");
+
 assert(html.includes('id="music-spectrum" width="800" height="166"'), "wide spectrum initial size missing");
 assert(finishCss.includes('grid-template-areas:') && finishCss.includes('"timeline timeline timeline visual volume"'), "music dock must keep an intentional row layout");
 assert(finishCss.includes('border:1px solid var(--dock-edge)'), "dock needs legible edge");
