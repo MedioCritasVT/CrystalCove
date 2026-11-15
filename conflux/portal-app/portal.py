@@ -402,7 +402,6 @@ class Handler(BaseHTTPRequestHandler):
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Portal to inspect themes."})
             try:
-                from urllib.parse import parse_qs
                 slug = parse_qs(urlsplit(self.path).query).get("slug", [""])[0]
                 return self.respond(200, STUDIO.inspect_theme(slug))
             except StudioError as error:
