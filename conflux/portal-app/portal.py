@@ -281,6 +281,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "assistant_frame.js", "text/javascript; charset=utf-8")
         if route == "/assistant_frame.css":
             return self.serve_file(ROOT / "assistant_frame.css", "text/css; charset=utf-8")
+        if route == "/portal_bridge.css":
+            return self.serve_file(ROOT / "portal_bridge.css", "text/css; charset=utf-8")
+        if route == "/portal_bridge.js":
+            return self.serve_file(ROOT / "portal_bridge.js", "text/javascript; charset=utf-8")
         if route == "/portal_chat.css":
             return self.serve_file(ROOT / "portal_chat.css", "text/css; charset=utf-8")
         if route == "/portal_chat.js":
