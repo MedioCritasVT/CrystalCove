@@ -30,6 +30,28 @@ routes and visitor-authored identities are **exploratory only**;
 visitors should remain free to replace or omit Node presentations
 without losing functional tools. The Architect approves further scope.
 
+## Chroma and familiar polish
+
+The Personal Studio now offers **ten curated starting palettes** (the original
+four plus Amethyst Observatory, Rose Circuit, Sapphire Nocturne, Copper Atlas,
+Jade Aether, and Opal Twilight), each with a visible **four-accent signature**:
+gold, violet, blue, and green. The native ten-color advanced editor remains
+available for fully custom backgrounds, text, borders and accents.
+
+An **optional complement link** derives blue as the 180-degree opposite of
+gold's hue, softened into a luminous Conflux tint. It is a drafting convenience,
+not a required Node identity or a change to permissions; manually choosing blue
+unlinks it. Saving still writes the exact ten hex colors into the existing
+local theme v1 record, so older browser preferences, JSON imports/exports, and
+reviewed agent proposals remain compatible. The link itself does not persist
+as a hidden automation: only the explicit chosen colors are saved.
+
+Parchment, Constellation, Grid, and Weave now use the current palette's accents
+to build richer, locally rendered CSS atmospheres. The Node familiars receive
+small face, fabric, jewel, and distinctive accessory details, rather than new
+art files or new independent animation systems. All optional movement respects
+reduced-motion preferences. Nothing auto-opens, downloads or starts a model.
+
 ## Codex panel and Development Setup
 
 The previously separate development-link panel is now **Codex**, an embedded

@@ -25,17 +25,140 @@ body.theme-personal .threshold-postscript{border-color:var(--line)}
 
 #studio [hidden],#updates [hidden]{display:none!important}
 
-/* Background textures are presentational CSS only; no remote images. */
+/* Textures now inherit four chosen accents instead of monochrome overlays.
+   All patterns are generated locally in CSS; no downloads, animation, or
+   changes to the persisted theme v1 format. */
 body[data-texture="parchment"]{
-  background-image:repeating-linear-gradient(117deg,transparent 0 9px,#e5d0a208 10px 11px,transparent 12px 21px),radial-gradient(ellipse at 80% 7%,color-mix(in srgb,var(--amber) 13%,transparent),transparent 55%),radial-gradient(ellipse at 9% 90%,color-mix(in srgb,var(--violet) 9%,transparent),transparent 50%)}
+  background-image:
+    repeating-linear-gradient(117deg,transparent 0 11px,
+      color-mix(in srgb,var(--amber) 13%,transparent) 12px 13px,
+      transparent 14px 22px),
+    radial-gradient(ellipse 55% 58% at 80% 9%,
+      color-mix(in srgb,var(--amber) 32%,transparent),transparent 92%),
+    radial-gradient(ellipse 55% 65% at 8% 88%,
+      color-mix(in srgb,var(--violet) 29%,transparent),transparent 90%),
+    radial-gradient(ellipse 44% 50% at 54% 44%,
+      color-mix(in srgb,var(--green) 10%,transparent),transparent 96%),
+    linear-gradient(125deg,color-mix(in srgb,var(--bg) 85%,var(--amber)),
+      var(--bg) 56%,color-mix(in srgb,var(--bg) 89%,var(--violet)));
+}
 body[data-texture="constellation"]{
-  background-image:radial-gradient(circle,#c2b4f54d 1px,transparent 1.8px),radial-gradient(circle,#d5e7ff38 1px,transparent 1.5px),radial-gradient(ellipse at 83% 0%,color-mix(in srgb,var(--blue) 16%,transparent),transparent 55%);
-  background-size:86px 82px,123px 121px,auto;
-  background-position:7px 14px,35px 51px,0 0}
+  background-image:
+    radial-gradient(circle,color-mix(in srgb,var(--violet) 62%,transparent) 1.2px,transparent 2px),
+    radial-gradient(circle,color-mix(in srgb,var(--blue) 54%,transparent) 1.1px,transparent 1.9px),
+    radial-gradient(ellipse 65% 55% at 84% 4%,
+      color-mix(in srgb,var(--blue) 31%,transparent),transparent 90%),
+    radial-gradient(ellipse 67% 67% at 12% 91%,
+      color-mix(in srgb,var(--violet) 30%,transparent),transparent 91%),
+    radial-gradient(ellipse 50% 50% at 40% 42%,
+      color-mix(in srgb,var(--green) 13%,transparent),transparent 95%),
+    linear-gradient(120deg,var(--bg),color-mix(in srgb,var(--bg) 91%,var(--violet)));
+  background-size:86px 82px,129px 127px,auto,auto,auto,auto;
+  background-position:8px 14px,35px 50px,0 0,0 0,0 0,0 0;
+}
 body[data-texture="grid"]{
-  background-image:linear-gradient(to right,#a7c8f112 1px,transparent 1px),linear-gradient(to bottom,#a7c8f112 1px,transparent 1px),radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--blue) 12%,transparent),transparent 65%);
-  background-size:32px 32px,32px 32px,auto}
+  background-image:
+    linear-gradient(to right,color-mix(in srgb,var(--blue) 18%,transparent) 1px,transparent 1px),
+    linear-gradient(to bottom,color-mix(in srgb,var(--green) 14%,transparent) 1px,transparent 1px),
+    radial-gradient(ellipse 70% 65% at 87% 10%,
+      color-mix(in srgb,var(--blue) 32%,transparent),transparent 92%),
+    radial-gradient(ellipse 63% 55% at 10% 88%,
+      color-mix(in srgb,var(--violet) 23%,transparent),transparent 92%),
+    linear-gradient(135deg,var(--bg),color-mix(in srgb,var(--bg) 90%,var(--green)));
+  background-size:34px 34px,34px 34px,auto,auto,auto;
+}
 body[data-texture="weave"]{
-  background-image:repeating-linear-gradient(0deg,transparent 0 4px,#d2e5f10d 4px 5px),repeating-linear-gradient(90deg,transparent 0 4px,#d2e5f10d 4px 5px),radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--green) 12%,transparent),transparent 65%)}
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 5px,
+      color-mix(in srgb,var(--green) 15%,transparent) 5px 6px),
+    repeating-linear-gradient(90deg,transparent 0 5px,
+      color-mix(in srgb,var(--violet) 14%,transparent) 5px 6px),
+    radial-gradient(ellipse 63% 68% at 84% 9%,
+      color-mix(in srgb,var(--green) 28%,transparent),transparent 91%),
+    radial-gradient(ellipse 62% 61% at 6% 91%,
+      color-mix(in srgb,var(--amber) 24%,transparent),transparent 90%),
+    linear-gradient(135deg,var(--bg),color-mix(in srgb,var(--bg) 88%,var(--violet)));
+}
 #studio #studio-theme-status{color:var(--muted);font-size:.86rem}
 #studio .studio-actions button:focus-visible,#assistant-dock button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* Four-color studio: clear, compact harmony controls with the ten-field
+   editor intact below. Preset swatches always reflect actual hex values. */
+#studio .studio-preset-preview{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;
+  margin:10px 0 18px;
+}
+#studio .studio-preset-chip{
+  display:flex;flex-direction:column;align-items:stretch;
+  gap:5px;min-width:0;padding:6px;border-radius:10px;
+  border:1px solid var(--line);background:var(--side);
+}
+#studio .studio-preset-spot{
+  height:22px;min-height:22px;border-radius:6px;
+  border:1px solid #ffffff6b;box-shadow:inset 0 1px 0 #ffffff55;
+}
+#studio .studio-preset-chip small{
+  display:block;min-width:0;overflow-wrap:anywhere;
+  color:var(--ink);font-size:.68rem;line-height:1.3;text-align:center;
+}
+#studio .studio-harmony{
+  min-width:0;border:1px solid color-mix(in srgb,var(--violet) 44%,var(--line));
+  border-radius:16px;padding:14px 16px;margin:18px 0 14px;
+  background:linear-gradient(126deg,
+    color-mix(in srgb,var(--violet) 11%,var(--surface)),
+    color-mix(in srgb,var(--green) 8%,var(--surface)));
+}
+#studio .studio-harmony legend{
+  padding:0 8px;font:650 1rem/1.4 Georgia,serif;color:var(--ink);
+}
+#studio .studio-harmony .theme-note{
+  margin:4px 0 12px;max-width:62ch;line-height:1.55;
+}
+#studio .studio-harmony-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;
+}
+#studio .studio-harmony-grid label{
+  display:flex;align-items:center;gap:9px;min-width:0;
+  margin:0;padding:10px 8px;border:1px solid var(--line);
+  border-radius:11px;background:color-mix(in srgb,var(--bg) 65%,var(--surface));
+  cursor:pointer;
+}
+#studio .studio-harmony-grid input[type="color"]{
+  flex:none;width:44px;height:45px;border:0;padding:0;
+  background:none;cursor:pointer;
+}
+#studio .studio-harmony-grid label span{display:grid;gap:1px;min-width:0}
+#studio .studio-harmony-grid label strong{color:var(--ink);font-size:.9rem}
+#studio .studio-harmony-grid label small{color:var(--muted);font-size:.68rem;line-height:1.3}
+#studio .studio-link-row{
+  display:flex;align-items:center;gap:9px;
+  width:fit-content;max-width:100%;margin:14px 0 5px;
+  font-size:.88rem;color:var(--ink);cursor:pointer;
+}
+#studio .studio-link-row input{width:18px;height:18px;flex:none;accent-color:var(--blue)}
+#studio .studio-link-hint{
+  color:var(--muted);font-size:.78rem;line-height:1.5;margin:2px 0 0;
+}
+#studio .studio-advanced-colors{
+  margin:8px 0 18px;padding:11px 14px;border:1px solid var(--line);
+  border-radius:11px;background:var(--side);
+}
+#studio .studio-advanced-colors summary{
+  color:var(--ink);font-size:.88rem;font-weight:650;cursor:pointer;
+}
+#studio .studio-advanced-colors[open] summary{margin-bottom:10px}
+#studio .studio-advanced-colors .studio-colors{margin:12px 0 7px}
+#studio .studio-harmony-grid :focus-visible,
+#studio .studio-link-row input:focus-visible,
+#studio .studio-advanced-colors summary:focus-visible,
+#studio #studio-preset:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+@media(max-width:1030px){
+  #studio .studio-harmony-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:490px){
+  #studio .studio-harmony{padding:11px}
+  #studio .studio-harmony-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #studio .studio-harmony-grid label{padding:7px 6px}
+  #studio .studio-harmony-grid input[type="color"]{width:35px;height:38px}
+  #studio .studio-preset-chip small{font-size:.6rem}
+}

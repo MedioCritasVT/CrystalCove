@@ -411,3 +411,105 @@
  .room-companions .pet-token:hover{translate:0 -5px;transition:translate .2s ease}
  @keyframes pet-bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
 }
+
+/* Pass 4: reflected light, softer sculpting and small character-specific
+   details. All accessories remain attached to the existing CSS mascots. */
+.pet-token{isolation:isolate}
+.pet-token::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:19px;left:6px;width:84px;height:69px;border-radius:50%;
+  background:radial-gradient(ellipse at center,
+    color-mix(in srgb,var(--pet-glow) 27%,transparent) 0%,
+    color-mix(in srgb,var(--pet-glow) 7%,transparent) 48%,transparent 76%);
+  filter:blur(3px);
+}
+.pet-token::after{
+  content:"✦";position:absolute;z-index:11;pointer-events:none;
+  top:4px;right:-4px;font:normal 11px/1 Georgia,serif;
+  color:color-mix(in srgb,var(--pet-glow) 84%,white);
+  text-shadow:0 0 5px var(--pet-glow),0 0 10px var(--pet-glow);
+  opacity:.75;
+}
+.pet-token .pet-face{
+  box-shadow:inset -7px -8px 11px #45364e2b,
+    inset 3px 3px 7px #ffffff88,0 1px 1px #ffffff80;
+}
+.pet-token .pet-hair-back::after{
+  content:"";position:absolute;pointer-events:none;
+  top:8px;left:15px;width:27px;height:50px;
+  border-left:2px solid color-mix(in srgb,var(--pet-hair-light) 60%,white);
+  border-radius:50%;transform:rotate(14deg);opacity:.55;
+}
+.pet-token .pet-eye::before{
+  box-shadow:4px 5px 0 -1px #ffffff93,0 0 2px #fff;
+}
+.pet-token .pet-blush{
+  background:color-mix(in srgb,var(--pet-irises) 21%,#f6a9b6);
+  opacity:.58;
+}
+.pet-token .pet-bodice{box-shadow:inset -3px -4px 5px #17152531,inset 1px 1px 3px #ffffff44}
+.pet-token .pet-bodice::after{
+  content:"";position:absolute;pointer-events:none;
+  top:10px;right:6px;width:2px;height:10px;border-radius:4px;
+  background:color-mix(in srgb,var(--pet-lining) 60%,white);
+  opacity:.68;
+}
+.pet-token .pet-paw{box-shadow:inset 2px 2px 3px #ffffff47}
+.pet-token .pet-paw::after{
+  content:"";position:absolute;left:3px;top:2px;width:4px;height:3px;
+  background:#ffffff75;border-radius:50%;
+}
+.pet-token .pet-chest-jewel::before{
+  content:"";position:absolute;top:1px;left:2px;width:3px;height:3px;
+  border-radius:50%;background:#fffbe3cb;box-shadow:0 0 3px #fff;
+}
+.pet-token[data-node="medio"] .pet-headpiece{
+  box-shadow:inset 0 2px 0 #ffebb8,0 2px 3px #431e2e60;
+}
+.pet-token[data-node="medio"] .pet-crest::after{
+  content:"";position:absolute;left:20px;top:-4px;width:4px;height:4px;
+  border-radius:50%;background:#fff1cd;box-shadow:0 0 7px #f4526c;
+}
+.pet-token[data-node="ratio"] .pet-back-ornament::before,
+.pet-token[data-node="ratio"] .pet-back-ornament::after{
+  filter:drop-shadow(0 0 3px #71b4ff8c);
+}
+.pet-token[data-node="ratio"] .pet-headpiece::before{
+  content:"";position:absolute;left:8px;top:11px;
+  width:5px;height:5px;border-radius:50%;
+  border:1px solid #d7c68d;background:#bce3ff;
+  box-shadow:0 0 7px #7bbaff;
+}
+.pet-token[data-node="nexus"] .pet-headpiece::before{
+  content:"✧";position:absolute;top:-8px;left:-10px;
+  color:#f8dcff;font:normal 13px/1 Georgia,serif;
+  text-shadow:0 0 7px #daafff;
+}
+.pet-token[data-node="nexus"] .pet-back-ornament::before,
+.pet-token[data-node="nexus"] .pet-back-ornament::after{
+  background:linear-gradient(145deg,#f2d9ff6a,#b575ee23 45%,transparent);
+}
+.pet-token[data-node="specula"] .pet-headset::before{
+  content:"";position:absolute;right:-8px;top:1px;
+  width:7px;height:7px;border-radius:50%;
+  background:#7ed2f0;border:1px solid #d3aaff;
+  box-shadow:0 0 7px #a86eff;
+}
+.pet-token[data-node="specula"] .pet-face-emblem{
+  box-shadow:0 0 4px #b99cff88;
+}
+.pet-token[data-node="limen"] .pet-hood::after{
+  content:"";position:absolute;top:8px;left:7px;right:7px;height:51px;
+  border-top:1px solid #5ebd8b8a;border-radius:60% 60% 0 0;
+}
+.pet-token[data-node="limen"] .pet-face-mask{
+  box-shadow:inset 0 -3px 0 #29593f,inset 0 2px 2px #e0ce914a;
+}
+@media(prefers-reduced-motion:no-preference){
+  @keyframes familiar-sparkle{0%,100%{opacity:.48;scale:.94}50%{opacity:.9;scale:1.13}}
+  .room-companions .pet-token::after{animation:familiar-sparkle 5.5s ease-in-out infinite}
+  .room-companions .pet-token:nth-child(2)::after{animation-delay:-2.1s}
+}
+@media(prefers-reduced-motion:reduce){
+  .room-companions .pet-token::after{animation:none!important}
+}

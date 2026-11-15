@@ -7,6 +7,8 @@ const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const source = fs.readFileSync("app.js", "utf8");
 const petCss = fs.readFileSync("familiars.css","utf8");
+const themeJs = fs.readFileSync("theme_studio.js","utf8");
+const themeCss = fs.readFileSync("theme_studio.css","utf8");
 const polishCss = fs.readFileSync("portal_polish.css", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
@@ -72,6 +74,25 @@ assert(petCss.includes(".pet-token .pet-hair-back") && petCss.includes(".pet-tok
 assert(source.includes("nodePanels") && source.includes("View character panel"),
        "artwork references missing from Node cards");
 assert(html.includes('href="/familiars.css"'), "externalized familiar styles missing");
+assert(html.includes('id="studio-harmony-amber"') &&
+       html.includes('id="studio-harmony-violet"') &&
+       html.includes('id="studio-harmony-blue"') &&
+       html.includes('id="studio-harmony-green"'), "four creative accent controls missing");
+assert(html.includes('id="studio-link-complement"'), "optional opposite-hue link missing");
+assert(html.includes('id="studio-advanced-colors"'), "ten-color editor must remain accessible");
+assert(html.includes('id="studio-preset-preview"'), "curated palette must show its four colors");
+for (const name of ["Amethyst Observatory","Rose Circuit","Sapphire Nocturne",
+                    "Copper Atlas","Jade Aether","Opal Twilight"]) {
+  assert(themeJs.includes(name), "new Conflux palette missing: " + name);
+}
+assert(themeJs.includes("hue + 180"), "harmony must track a real opposite hue");
+assert(!themeJs.includes("proposal = null"), "theme import cannot write to an undeclared variable");
+assert(themeCss.includes('color-mix(in srgb,var(--violet) 30%') &&
+       themeCss.includes('color-mix(in srgb,var(--green) 28%'),
+       "background textures should respond to palette colors");
+assert(petCss.includes(".pet-chest-jewel::before") &&
+       petCss.includes(".pet-headset::before") &&
+       petCss.includes(".pet-hood::after"), "familiar polish should retain distinctive accessories");
 assert(html.includes('class="nav-external"') && html.includes("github.com/MedioCritasVT/CrystalCove"),
        "direct GitHub sidebar navigation missing");
 assert(!html.includes("View the portable Markdown Player Manual"),
