@@ -117,6 +117,96 @@
   $("assistant-message").addEventListener("keydown",event=>{
     if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();$("assistant-form").requestSubmit();}
   });
+  // The only editing action available to a model is a *proposal*.
+  // A human sees the complete bounded CSS diff and separately authorizes Git.
+  let pendingChange=null,editing=false;
+  const editStatus=$("change-status");
+  function editNote(text){editStatus.textContent=text}
+  function clearProposal(){
+    pendingChange=null;
+    $("change-review").hidden=true;
+    $("change-publish").disabled=true;
+    $("change-review-link").hidden=true;
+  }
+  $("change-file").addEventListener("change",clearProposal);
+  provider.addEventListener("change",clearProposal);
+  agent.addEventListener("change",clearProposal);
+  $("change-share").addEventListener("change",clearProposal);
+  $("change-propose").addEventListener("click",async()=>{
+    if(busy||editing)return;
+    const instruction=$("assistant-message").value.trim();
+    if(instruction.length<5){
+      editNote("Describe the change in the message field first.");
+      return;
+    }
+    if(!$("change-share").checked){
+      editNote("Explicitly approve sharing the chosen CSS source before proceeding.");
+      return;
+    }
+    const selected=$("change-file").value;
+    if(!selected){editNote("Select a supported CSS file.");return;}
+    editing=true;clearProposal();
+    $("change-propose").disabled=true;
+    editNote("Asking "+provider.value+" to propose one bounded CSS replacement…");
+    try{
+      const result=await post("/api/changes/propose",{
+        instruction,file:selected,provider:provider.value,agent:agent.value,
+        approve_share:true
+      });
+      pendingChange=result;
+      $("change-target").textContent=result.repository+" · "+result.file+
+        " · HEAD "+result.base+" · proposed by "+result.agent;
+      $("change-diff").textContent=result.diff;
+      $("change-review").hidden=false;
+      $("change-publish").disabled=false;
+      editNote("Diff prepared in chat. No files changed or pushed. Read it before approval.");
+      bubble("system","Proposed a CSS edit for "+result.file+
+        ". Open the edit section to inspect the diff before any Git operation.");
+    }catch(e){editNote("No change prepared: "+e.message);}
+    finally{editing=false;$("change-propose").disabled=false;}
+  });
+  $("change-publish").addEventListener("click",async()=>{
+    if(!pendingChange||editing)return;
+    const expected="PUSH REVIEW TO "+pendingChange.repository;
+    const confirmText=window.prompt("After reviewing the diff, type the EXACT text below to push a new Git review branch (not merge):\n"+expected,"");
+    if(confirmText!==expected){editNote("Publication cancelled. No Git changes made.");return;}
+    editing=true;$("change-publish").disabled=true;
+    editNote("Creating an isolated Git review branch and pushing the approved edit…");
+    try{
+      const result=await post("/api/changes/publish",{
+        ticket:pendingChange.ticket,confirmation:confirmText
+      });
+      pendingChange=null;
+      const url=result.pr_url||result.compare_url;
+      const link=$("change-review-link");
+      link.href=url;
+      link.textContent=result.pr_created?"Open draft pull request":"Open Git compare and create PR";
+      link.hidden=false;
+      editNote(result.pr_created?
+        "A draft PR was created. Review its tests and merge via Updates & Setup when ready.":
+        "A review branch was pushed; open the compare link to create a PR. "+
+        (result.pr_note||""));
+      bubble("system","Git review branch pushed: "+result.repository+" / "+result.branch+
+        ". No merge or update performed.");
+    }catch(e){editNote("Git publication stopped: "+e.message);}
+    finally{editing=false;}
+  });
+  async function loadEditableFiles(){
+    try{
+      const res=await fetch("/api/changes/files",{cache:"no-store"});
+      if(!res.ok)throw Error("File list unavailable.");
+      const data=await res.json();
+      const select=$("change-file");
+      select.replaceChildren();
+      for(const f of data.files){
+        const option=document.createElement("option");
+        option.value=f.path;
+        option.textContent=f.label+" · "+f.path.split("/").pop();
+        select.append(option);
+      }
+      editNote("CSS-only pilot. Other Portal code changes require a later sandboxed editor.");
+    }catch(e){editNote(e.message);}
+  }
   window.addEventListener("message",event=>{
     if(event.origin!==location.origin)return;
     if(event.data?.type==="conflux-room"&&rooms.has(event.data.room)){
@@ -128,7 +218,7 @@
       const r=await fetch("/api/status",{cache:"no-store"});
       token=(await r.json()).launch_token||"";
     }catch{notify("Local Portal session unavailable.");}
-    clear();await refresh();
+    clear();await refresh();await loadEditableFiles();
     if(window.parent!==window)window.parent.postMessage({type:"conflux-assistant-ready"},location.origin);
   })();
 })();
