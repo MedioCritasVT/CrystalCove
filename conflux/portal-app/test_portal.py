@@ -514,7 +514,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)
