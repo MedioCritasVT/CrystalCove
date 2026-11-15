@@ -269,7 +269,8 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(html.count('class="nav-group"'), 4)
         self.assertEqual(html.count('class="nav-stewards"'), 1)
-        self.assertEqual(html.count('data-page='), 14)
+        sidebar_nav = html.split('<nav class="portal-nav"', 1)[1].split('</nav>', 1)[0]
+        self.assertEqual(sidebar_nav.count('<button data-page='), 14)
         self.assertIn('id="nav-group-create"', html)
         self.assertIn('id="nav-group-maintain"', html)
         self.assertIn('href="/portal_polish.css"', html)
