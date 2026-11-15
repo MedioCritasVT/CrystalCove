@@ -35,6 +35,7 @@ jobs:
           node --check conflux/portal-app/app.js
           node --check conflux/portal-app/theme_studio.js
           node --check conflux/portal-app/portal_chat.js
+          node --check conflux/portal-app/portal_bridge.js
           node --check conflux/portal-app/assistant_frame.js
           node --check conflux/portal-app/pull_desk.js
           node --check conflux/portal-app/music.js
