@@ -25,8 +25,6 @@
   const $ = id => document.getElementById(id);
   const colors = $("studio-colors");
   if (!colors) return;
-  let proposal = null;
-  let published = null;
 
   function valid(palette) {
     return palette && typeof palette === "object" &&
@@ -40,11 +38,6 @@
   }
   function paletteFromInputs() {
     return Object.fromEntries(fields.map(k => [k, $("studio-color-" + k).value]));
-  }
-  function reviewNotice(message, error = false) {
-    const el = $("studio-status");
-    el.textContent = message;
-    el.dataset.error = error ? "true" : "false";
   }
   function putInputs(p) {
     for (const k of fields) $("studio-color-" + k).value = p[k];
@@ -102,20 +95,14 @@
   preset.addEventListener("change", () => {
     putInputs(palettes[preset.value]);
     applyPalette(paletteFromInputs());
-    proposal = null;
-    $("studio-commit").disabled = true;
     show("Palette previewed. Save locally, or prepare a new reviewed proposal.");
   });
   $("studio-texture").addEventListener("change", () => {
     texture($("studio-texture").value);
-    proposal = null;
-    $("studio-commit").disabled = true;
     show("Background texture previewed. Save your theme to retain it.");
   });
   colors.addEventListener("input", () => {
     applyPalette(paletteFromInputs());
-    proposal = null;
-    $("studio-commit").disabled = true;
     show("Palette previewed but not saved or committed.");
   });
   $("studio-save").addEventListener("click", () => {
@@ -126,8 +113,6 @@
     putInputs(baseline);
     $("studio-texture").value = "none";
     localStorage.removeItem(storageKey);
-    proposal = null;
-    $("studio-commit").disabled = true;
     show("Default colors restored on this browser. Git records were not changed.");
   });
   $("studio-export").addEventListener("click", () => {
@@ -158,94 +143,4 @@
     } catch (e) { show("Import refused: " + e.message,true); }
     event.target.value = "";
   });
-  async function refreshGit() {
-    try {
-      const response = await fetch("/api/studio/status",{cache:"no-store"});
-      const info = await response.json();
-      $("studio-git-status").textContent = info.git_ready ?
-        "Local checkout: "+info.repository+" · branch: "+info.branch :
-        "Git push requires an existing clone with a GitHub origin and working Git authentication.";
-    } catch {
-      $("studio-git-status").textContent = "Studio backend unavailable.";
-    }
-  }
-  $("studio-propose").addEventListener("click", async () => {
-    const button = $("studio-propose");
-    button.disabled = true;
-    $("studio-commit").disabled = true;
-    proposal = null;
-    reviewNotice("Preparing the current theme data for review…");
-    try {
-      const data = await post("/api/studio/propose",{
-        name:$("studio-name").value.trim(),
-        agent:$("studio-review-agent").value,
-        provider:"manual", instruction:"",
-        texture:$("studio-texture").value, palette:paletteFromInputs()
-      });
-      proposal = data;
-      putInputs(data.palette);
-      applyPalette(data.palette);
-      texture(data.texture || "none");
-      $("studio-preview").textContent = JSON.stringify({
-        name:data.name,agent:data.agent,provider:data.provider,
-        palette:data.palette,texture:data.texture,checks:data.tests},null,2);
-      $("studio-commit").disabled = false;
-      reviewNotice("Review ready: colors, texture and contrast validated. Nothing has been pushed.");
-    } catch (e) { reviewNotice("Review preparation failed: "+e.message,true); }
-    finally { button.disabled = false; }
-  });
-  $("studio-commit").addEventListener("click", async () => {
-    if (!proposal || !confirm("Publish this exact palette on a NEW Git review branch? The Portal will not merge it into main.")) return;
-    $("studio-commit").disabled = true;
-    reviewNotice("Creating isolated Git worktree, committing reviewed palette and pushing a review branch…");
-    try {
-      published = await post("/api/studio/publish",{
-        ticket:proposal.ticket,confirmation:"PUBLISH REVIEWED THEME"});
-      const link = $("studio-review-link");
-      link.href = published.review_url;
-      link.hidden = false;
-      $("studio-checkout").disabled = false;
-      reviewNotice("Published "+published.branch+" at "+published.commit+
-        ". Your main branch and existing unsaved files were not modified.");
-      await refreshGit();
-    } catch (e) {
-      reviewNotice("Publish stopped: "+e.message,true);
-      $("studio-commit").disabled = false;
-    }
-  });
-  $("studio-checkout").addEventListener("click", async () => {
-    if (!published || !confirm("Switch this local Portal checkout to the reviewed theme branch? Git will refuse conflicting local edits.")) return;
-    try {
-      const response = await post("/api/studio/preview",{
-        branch:published.branch,confirmation:"PREVIEW REVIEW BRANCH"});
-      reviewNotice(response.detail+" Use Updates & Setup → Relaunch to load and test it.");
-      $("updates-relaunch").disabled = false;
-      await refreshGit();
-    } catch (e) { reviewNotice("Preview stopped: "+e.message,true); }
-  });
-  $("studio-main").addEventListener("click", async () => {
-    if (!confirm("Return this checkout to its existing local main branch? No reset or force will run.")) return;
-    try {
-      const response = await post("/api/studio/main",{confirmation:"RETURN TO MAIN"});
-      $("updates-relaunch").disabled = false;
-      reviewNotice(response.detail+" Use Updates & Setup → Relaunch.");
-      await refreshGit();
-    } catch (e) { reviewNotice("Return stopped: "+e.message,true); }
-  });
-  $("studio-verify").addEventListener("click", async () => {
-    const name = $("studio-verify-slug").value.trim();
-    if (!name) return reviewNotice("Enter the saved theme slug.",true);
-    try {
-      const res = await fetch("/api/studio/theme?slug="+encodeURIComponent(name),{cache:"no-store"});
-      const data = await res.json();
-      if (!res.ok) throw Error(data.error || "Theme not found.");
-      putInputs(data.palette);
-      applyPalette(data.palette);
-      $("studio-texture").value = textureTypes.has(data.texture) ? data.texture : "none";
-      texture($("studio-texture").value);
-      $("studio-preview").textContent = JSON.stringify(data,null,2);
-      reviewNotice("Passed: theme exists in active checkout, schema and contrast verified. Preview applied.");
-    } catch (e) { reviewNotice("Theme verification failed: "+e.message,true); }
-  });
-  refreshGit();
 })();
