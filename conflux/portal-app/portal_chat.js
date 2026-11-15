@@ -63,7 +63,7 @@
     if (busy) return;
     const message = input.value.trim();
     if (!message || message.length > 1500) return;
-    const previous = history.slice(-8);
+    const previous = history.slice(-4);
     bubble("user", message);
     input.value = "";
     busy = true;
@@ -76,8 +76,8 @@
         message, history:previous
       });
       bubble("assistant", result.reply);
-      history.push({role:"user",content:message},{role:"assistant",content:result.reply.slice(0,2000)});
-      history = history.slice(-8);
+      history.push({role:"user",content:message},{role:"assistant",content:result.reply.slice(0,900)});
+      history = history.slice(-4);
       note("Read-only reply from " + agent.selectedOptions[0].textContent + ".");
     } catch (error) {
       bubble("system", "The assistant could not reply: " + error.message);
