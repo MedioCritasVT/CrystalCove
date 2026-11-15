@@ -716,4 +716,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         pass
     finally:
+        # The optional Codex child must not outlive the Portal process.
+        CODEX.stop()
         server.server_close()
