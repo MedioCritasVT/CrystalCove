@@ -356,7 +356,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="studio">My Studio & Themes</button><button data-page="updates">Updates & Setup</button>
 <button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Assistant · open chat</button>
@@ -711,6 +711,36 @@ tailscale serve status                      # Inspect routes</code></pre>
 </div>
 <p id="studio-status" class="studio-status" role="status" aria-live="polite">No theme has been published or tested. Local preview is available now.</p>
 </div>
+<section class="download-panel" id="pull-desk" aria-labelledby="pull-title">
+  <h3 id="pull-title">GitHub pull requests · inspect & merge</h3>
+  <p>Review pull requests for the GitHub <strong>origin of this Portal checkout</strong>. Public requests can be viewed without signing in. Merging requires a separately authorized GitHub App, GitHub's required permissions and an explicit confirmation.</p>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-refresh">Find open pull requests</button>
+    <button class="action secondary" type="button" id="pull-connect">Connect GitHub in Assistant</button>
+  </div>
+  <p id="pull-repository" class="theme-note">No pull requests loaded.</p>
+  <label for="pull-list">Choose a pull request</label>
+  <select id="pull-list" disabled><option value="">Choose Find open pull requests first</option></select>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-inspect" disabled>Inspect selected PR</button>
+    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="action secondary" id="pull-open" hidden>View full changes on GitHub</a>
+  </div>
+  <div id="pull-review" hidden>
+    <h4 id="pull-heading"></h4>
+    <p id="pull-meta" class="theme-note"></p>
+    <p id="pull-description" class="pull-description"></p>
+    <div id="pull-files" class="pull-files" aria-label="Changed file summary"></div>
+    <p id="pull-warnings" class="theme-note"></p>
+    <label for="pull-method">Merge strategy</label>
+    <select id="pull-method">
+      <option value="merge">Merge commit</option>
+      <option value="squash">Squash and merge</option>
+      <option value="rebase">Rebase and merge</option>
+    </select>
+    <div class="studio-actions"><button class="action" type="button" id="pull-merge" disabled>Merge reviewed PR</button></div>
+  </div>
+  <p id="pull-status" role="status" aria-live="polite" class="studio-status">The Portal never merges on its own. GitHub still enforces branch protections and required reviews.</p>
+</section>
 <div class="finder">
   <div class="eyebrow">One-time setup · Linux</div>
   <h3>Open Conflux from your Applications menu</h3>
@@ -737,4 +767,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
