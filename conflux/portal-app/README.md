@@ -4,66 +4,76 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
-## Real ChatGPT, Codex and GitHub development bridge
+## Codex panel and Development Setup
 
-The Portal's **Develop with ChatGPT / Codex** sidebar control (and bottom
-**Develop** button) is a small local development hub—not a clone of ChatGPT.
-The bridge presents verified external links to:
+The previously separate development-link panel is now **Codex**, an embedded
+local coding conversation powered by the official
+[Codex app-server](https://learn.chatgpt.com/docs/app-server) stdio protocol.
+There are no provider/fork dropdowns, external launcher cards, or fake
+ChatGPT web embeds in this panel.
 
-- **ChatGPT:** `https://chatgpt.com/`, where the participant signs in to
-  their own existing ChatGPT account.
-- **Codex Cloud:** `https://chatgpt.com/codex/`, where eligible users can
-  connect their own GitHub repository, request actual code edits, inspect
-  test results and prepare a branch or pull request.
-- **GitHub:** A participant-chosen `owner/repo` (usually their fork),
-  including its pull requests and branch comparisons. New users can open
-  the public CrystalCove repository and use GitHub's built-in **Fork**
-  control to create their own copy.
-- **Optional other harness:** An explicitly entered HTTPS URL or a local
-  loopback HTTP interface, opened in its own tab. No automatic harness
-  installation or credential storage.
+### Embedded Codex panel
 
-**How to work:** Choose your repository, save the local browser preference,
-type a request, select **Copy handoff**, then open the real ChatGPT/Codex tab
-and paste the instructions. The handoff includes the chosen repository URL,
-public upstream, active Portal room, desired change, test/review expectations
-and an explicit prohibition on changing upstream or auto-merging. A Codex
-task must be bound to the user's own authorized repository/environment in
-the real Codex interface; copying a URL alone does not grant access.
-Changes happen in genuine tools, not inside the Portal. No prompt is
-transmitted merely by typing or opening the bridge. ChatGPT's normal
-GitHub app provides supported repository read access; use Codex for
-source changes and pushing code.
+- Detects the locally installed `codex` executable without launching it
+  automatically; `Start Codex` launches one local `codex app-server`
+  process on demand (no extra clone or service container).
+- The **Sign in with ChatGPT** button invokes Codex's own supported browser
+  authorization. That one-time login opens the genuine provider page in
+  a tab; afterward, messages, Codex responses, and approval prompts
+  remain inside the Portal panel. No OpenAI API key is required for eligible
+  ChatGPT plan users and no credentials are passed through the Portal UI.
+- Starts/resumes a Codex thread in the **existing Portal checkout**,
+  streams agent text and tool activity, provides a new-conversation
+  action and interruption, and remembers the Codex thread ID in local
+  browser storage. Codex maintains its own conversation history.
+- Starts **read-only**. Only an explicit in-panel confirmation enables
+  sandboxed workspace-write operations. Elevated command/file-change
+  requests require a per-request user decision. The bridge does not grant
+  unattended full filesystem/network access, automatically push Git
+  branches, or merge pull requests.
+- The Codex account and session are **separate** from an existing private
+  ChatGPT conversation or any named Conflux Node's personal context;
+  it does not impersonate Limen, import ChatGPT memories, or promise
+  historical project continuity. The user can provide handoff context
+  deliberately from Setup.
 
-**What the bridge does NOT do:** It cannot frame/chat inside the genuine
-`chatgpt.com` website, impersonate an authenticated user, read their
-ChatGPT conversations, import personal memories or start Codex tasks by
-an unsupported deep link. It does not ask for API keys, GitHub tokens,
-passwords, or OAuth authorization inside Conflux. Authentication is
-handled by the real external websites; the Portal stores only local
-`owner/repo`, task text and optional harness URL. The earlier custom
-assistant/OAuth proof-of-concept is not used by this visible workflow.
-Legacy experimental code should not be mistaken for supported sign-in.
+**Requirements:** This local, single-user preview requires a compatible
+[Codex CLI installed independently](https://github.com/openai/codex),
+an eligible account/plan (or separately configured provider credentials),
+and a local Linux Python Portal. There is no automatic install or repository
+duplication. Codex's managed app-server auth is intended for local/open-source
+clients, not multi-tenant remote/hosted services. Remote/Tailscale viewers
+cannot start or control the agent; the Portal only permits privileged requests
+from the local `127.0.0.1` origin with its launch token. Do not expose the
+Portal as a shared-user agent service.
 
-**Updates & Setup is preserved:** The original
-**Check for Updates → Update → Relaunch** sequence still tracks the official
-CrystalCove checkout. The existing pull-request desk is scoped to the
-**active Git checkout's GitHub origin**, not automatically to the repository
-selected in the external development bridge. Users can follow the bridge's
-GitHub Pull Requests link to inspect PRs on their selected fork. Merging
-or updating requires separately authorized Git permissions and is never
-performed by simply opening ChatGPT or Codex.
+### Updates & Setup: external development choices
 
-**Personal Studio** still supports local color themes, five background
-textures, and JSON theme export/import. No account is necessary to explore
-or personalize.
+Everything that formerly occupied the **Develop** panel now lives in
+**Updates & Setup → Development connections & personal workspace**:
 
-**Security and usability:** This integration links genuine platforms rather
-than reproducing their web login. All provider links open a new tab with
-`rel="noopener noreferrer"`; the task handoff is explicit and user-copied.
-Never paste secrets into the handoff. If a repository is private, the Portal
-cannot verify access itself; connect it using Codex/GitHub's own authorization
-screens. Real-user acceptance testing remains separate from CI.
+- Choose an existing GitHub `owner/repo` or open the upstream project's
+  Fork action; inspect the chosen repository and compare its branches.
+- Open genuine `chatgpt.com` or Codex Cloud in separate authenticated tabs.
+- Prepare and copy a portable request/handoff with the chosen fork,
+  current Portal room, review/test boundaries and user request.
+- Store an optional HTTPS or loopback-local harness URL in browser
+  preferences and open it in its own tab.
+- Review pull requests with the existing GitHub PR desk. A GitHub App
+  authorization flow, when separately configured by the repository owner,
+  belongs in this Setup area, not the Codex conversation panel.
+
+The **Check for Updates → Update → Relaunch** sequence is unchanged
+and still targets the official repository's main branch. The *selected fork
+in Setup* is a preference for handoffs, **not** an automatic rewrite of
+the Portal's local Git origin or Codex checkout. This distinction prevents
+accidental upstream modifications.
+
+**Evidence boundary:** Automated tests exercise the app-server JSONL
+handshake, streaming, read-only default, explicit approvals, localhost
+access rules and UI layout using a fake local Codex protocol peer.
+These tests do not demonstrate sign-in on an actual ChatGPT account or
+real-agent file edits on Bazzite; user acceptance testing remains needed.
 
 ## Bazzite Media Mirror Setup (first candidate)
 

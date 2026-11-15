@@ -356,10 +356,10 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/portal_codex.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="studio">My Studio & Themes</button><button data-page="updates">Updates & Setup</button>
-<button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Develop with ChatGPT / Codex</button>
+<button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Codex · embedded workspace</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -631,7 +631,7 @@ tailscale serve status                      # Inspect routes</code></pre>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>
 <h2>Personal Studio</h2>
-<p class="lead">Make the Portal feel like your own: choose a palette and background texture, preview it immediately, and save it locally. Code work opens through the real ChatGPT, Codex and GitHub services in the development bridge. Updates remain in Updates & Setup.</p>
+<p class="lead">Make the Portal feel like your own: choose a palette and background texture, preview it immediately, and save it locally. Local Codex coding opens in its own embedded panel; ChatGPT, fork and harness links live under Updates & Setup.</p>
 </div><aside class="room-companions" id="room-companion-studio" data-room="studio" aria-label="Node companions for the Studio"></aside></div>
 <div class="download-panel">
 <h3>Your own visual identity</h3>
@@ -670,7 +670,7 @@ tailscale serve status                      # Inspect routes</code></pre>
   <div class="room-words">
     <div class="eyebrow">Ratio × Limen · trusted transitions</div>
     <h2>Updates & Setup</h2>
-    <p class="lead">Check, update and relaunch Conflux as before. Work in your own GitHub repository using the real Codex or ChatGPT sites; inspect pull requests separately below.</p>
+    <p class="lead">Check, update and relaunch as before. External developer tools, personal forks, and pull-request review are below; coding with Codex remains in the embedded panel.</p>
   </div>
   <aside class="room-companions" id="room-companion-updates" data-room="updates" aria-label="Node companions for updates"></aside>
 </div>
@@ -687,52 +687,12 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
   <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
 </div>
-<section class="download-panel" id="pull-desk" aria-labelledby="pull-title">
-  <h3 id="pull-title">GitHub pull requests · inspect & merge</h3>
-  <p>Review pull requests for the GitHub <strong>origin of this Portal checkout</strong>. Public requests can be viewed without signing in. Merging requires a separately authorized GitHub App, GitHub's required permissions and an explicit confirmation.</p>
-  <div class="studio-actions">
-    <button class="action secondary" type="button" id="pull-refresh">Find open pull requests</button>
-    <button class="action secondary" type="button" id="pull-connect">Connect GitHub in Assistant</button>
-  </div>
-  <p id="pull-repository" class="theme-note">No pull requests loaded.</p>
-  <label for="pull-list">Choose a pull request</label>
-  <select id="pull-list" disabled><option value="">Choose Find open pull requests first</option></select>
-  <div class="studio-actions">
-    <button class="action secondary" type="button" id="pull-inspect" disabled>Inspect selected PR</button>
-    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="action secondary" id="pull-open" hidden>View full changes on GitHub</a>
-  </div>
-  <div id="pull-review" hidden>
-    <h4 id="pull-heading"></h4>
-    <p id="pull-meta" class="theme-note"></p>
-    <p id="pull-description" class="pull-description"></p>
-    <div id="pull-files" class="pull-files" aria-label="Changed file summary"></div>
-    <p id="pull-warnings" class="theme-note"></p>
-    <label for="pull-method">Merge strategy</label>
-    <select id="pull-method">
-      <option value="merge">Merge commit</option>
-      <option value="squash">Squash and merge</option>
-      <option value="rebase">Rebase and merge</option>
-    </select>
-    <label class="pull-approval"><input type="checkbox" id="pull-reviewed"/> I reviewed the displayed diff, understand the affected repository and branch, and want to authorize a merge.</label>
-    <div class="studio-actions"><button class="action" type="button" id="pull-merge" disabled>Merge reviewed PR</button></div>
-  </div>
-  <p id="pull-status" role="status" aria-live="polite" class="studio-status">The Portal never merges on its own. GitHub still enforces branch protections and required reviews.</p>
-</section>
-<div class="finder">
-  <div class="eyebrow">One-time setup · Linux</div>
-  <h3>Open Conflux from your Applications menu</h3>
-  <p>Install a shortcut for your current Linux user. Afterward, use your desktop's app search to open Conflux Portal. It starts the local service or reuses the one already running, then opens Firefox or your default browser.</p>
-  <button class="action" id="desktop-install" type="button">Add to Applications Menu</button>
-  <p id="desktop-status" role="status" aria-live="polite">No system-wide install, administrator password, or root permissions needed.</p>
-  <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
-</div>
-</section>
-<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
-<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">↗ Develop</button>
-<aside id="assistant-dock" hidden aria-label="Open genuine developer tools">
-  <div class="assistant-dock-head"><strong>Develop your Conflux</strong><button type="button" id="assistant-close" aria-label="Close development bridge">Close</button></div>
-  <div class="bridge-scroll">
-    <p class="bridge-intro">Your own account. Your own repository. These links open the <strong>real ChatGPT, Codex and GitHub</strong> in new tabs—not copies of their interfaces.</p>
+<section class="download-panel" id="development-setup" aria-labelledby="development-setup-title">
+<h3 id="development-setup-title">Development connections &amp; personal workspace</h3>
+<p>Genuine ChatGPT, Codex Cloud, your own GitHub fork and optional harness connections. These tools open on their own websites. The Codex panel is a separate embedded local coding session, so nothing here is a duplicate chat interface.</p>
+<p class="theme-note">To use embedded Codex, first install the <a href="https://github.com/openai/codex" target="_blank" rel="noopener noreferrer">official Codex CLI</a> on this desktop, then start it from the Codex panel. The Portal does not install or clone anything automatically.</p>
+<div class="development-setup-inner">
+
     <section class="bridge-section" aria-labelledby="bridge-repo-title">
       <h3 class="bridge-heading" id="bridge-repo-title">1 · Choose your repository</h3>
       <label for="bridge-repository">Your GitHub fork or project
@@ -774,12 +734,12 @@ tailscale serve status                      # Inspect routes</code></pre>
       <p class="bridge-tip">The Portal cannot inject a message into an authenticated ChatGPT tab. Copy the handoff, open the real site, and paste it there. Nothing is transmitted by this form.</p>
     </section>
     <section class="bridge-section" aria-labelledby="bridge-return-title">
-      <h3 class="bridge-heading" id="bridge-return-title">4 · Review your work and return</h3>
+      <h3 class="bridge-heading" id="bridge-return-title">4 · Review your work</h3>
       <div class="bridge-buttons">
-        <button id="bridge-review-local" type="button">Open Updates &amp; Setup</button>
+        
         <a id="bridge-github-settings" href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub app access ↗</a>
       </div>
-      <p class="bridge-tip">Review changes in Codex or GitHub, then use the Portal's existing Check for Updates → Update → Relaunch workflow for its active checkout. A fork selected above does not automatically replace the local Git origin.</p>
+      <p class="bridge-tip">Review changes in Codex or GitHub, use the Check for Updates → Update → Relaunch controls above for the active checkout. A fork selected above does not automatically replace the local Git origin.</p>
     </section>
     <section class="bridge-section">
       <details>
@@ -792,7 +752,80 @@ tailscale serve status                      # Inspect routes</code></pre>
       </details>
       <p id="bridge-status" role="status" aria-live="polite">Nothing has been connected, uploaded or edited by the Portal.</p>
     </section>
+
+</div>
+</section>
+<section class="download-panel" id="pull-desk" aria-labelledby="pull-title">
+  <h3 id="pull-title">GitHub pull requests · inspect & merge</h3>
+  <p>Review pull requests for the GitHub <strong>origin of this Portal checkout</strong>. Public requests can be viewed without signing in. Merging requires a separately authorized GitHub App, GitHub's required permissions and an explicit confirmation.</p>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-refresh">Find open pull requests</button>
+    <button class="action secondary" type="button" id="pull-connect">Connect GitHub App</button>
   </div>
+  <p id="pull-repository" class="theme-note">No pull requests loaded.</p>
+  <label for="pull-list">Choose a pull request</label>
+  <select id="pull-list" disabled><option value="">Choose Find open pull requests first</option></select>
+  <div class="studio-actions">
+    <button class="action secondary" type="button" id="pull-inspect" disabled>Inspect selected PR</button>
+    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="action secondary" id="pull-open" hidden>View full changes on GitHub</a>
+  </div>
+  <div id="pull-review" hidden>
+    <h4 id="pull-heading"></h4>
+    <p id="pull-meta" class="theme-note"></p>
+    <p id="pull-description" class="pull-description"></p>
+    <div id="pull-files" class="pull-files" aria-label="Changed file summary"></div>
+    <p id="pull-warnings" class="theme-note"></p>
+    <label for="pull-method">Merge strategy</label>
+    <select id="pull-method">
+      <option value="merge">Merge commit</option>
+      <option value="squash">Squash and merge</option>
+      <option value="rebase">Rebase and merge</option>
+    </select>
+    <label class="pull-approval"><input type="checkbox" id="pull-reviewed"/> I reviewed the displayed diff, understand the affected repository and branch, and want to authorize a merge.</label>
+    <div class="studio-actions"><button class="action" type="button" id="pull-merge" disabled>Merge reviewed PR</button></div>
+  </div>
+  <p id="pull-status" role="status" aria-live="polite" class="studio-status">The Portal never merges on its own. GitHub still enforces branch protections and required reviews.</p>
+</section>
+<div class="finder">
+  <div class="eyebrow">One-time setup · Linux</div>
+  <h3>Open Conflux from your Applications menu</h3>
+  <p>Install a shortcut for your current Linux user. Afterward, use your desktop's app search to open Conflux Portal. It starts the local service or reuses the one already running, then opens Firefox or your default browser.</p>
+  <button class="action" id="desktop-install" type="button">Add to Applications Menu</button>
+  <p id="desktop-status" role="status" aria-live="polite">No system-wide install, administrator password, or root permissions needed.</p>
+  <p class="theme-note">This development version updates its existing Git checkout. It does not install or update the separately distributed Unreal game archives.</p>
+</div>
+</section>
+<footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
+<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Codex</button>
+<aside id="assistant-dock" hidden aria-label="Embedded Codex coding workspace">
+  <div class="assistant-dock-head">
+    <strong>Codex <span class="codex-caption">local workspace</span></strong>
+    <button type="button" id="assistant-close" aria-label="Close Codex panel">Close</button>
+  </div>
+  <div class="codex-status-bar"><span id="codex-indicator">Codex not started</span><span class="codex-scope">This checkout only</span></div>
+  <div class="codex-transcript" id="codex-transcript" role="log" aria-label="Codex conversation" aria-live="polite">
+    <p class="codex-welcome">A genuine local Codex session, using the Codex CLI installed on this computer. No model runs until you press Start. This is a separate agent, not the original Limen conversation.</p>
+  </div>
+  <div id="codex-approval" class="codex-approval" hidden>
+    <strong>Codex requests permission</strong><p id="codex-approval-message"></p>
+    <div class="codex-actions">
+      <button id="codex-approve" type="button">Approve once</button>
+      <button id="codex-decline" type="button">Decline</button>
+    </div>
+  </div>
+  <form id="codex-form">
+    <label class="sr-only" for="codex-message">Message to Codex</label>
+    <textarea id="codex-message" maxlength="2000" rows="2" placeholder="Ask Codex to inspect or improve this checkout…" disabled></textarea>
+    <div class="codex-actions">
+      <button type="button" id="codex-start">Start Codex</button>
+      <button type="button" id="codex-login" hidden>Sign in with ChatGPT</button>
+      <button type="button" id="codex-new" hidden>New conversation</button>
+      <button type="button" id="codex-edits" hidden>Enable edits</button>
+      <button type="button" id="codex-interrupt" hidden>Stop reply</button>
+      <button type="submit" id="codex-send" disabled>Send</button>
+    </div>
+  </form>
+  <p id="codex-status" class="codex-footer" role="status" aria-live="polite">The Portal won't install Codex or clone a repository automatically. Find the optional installation guide under Updates &amp; Setup.</p>
 </aside>
 <dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
   <h3 id="open-choice-title">Open this link</h3>
@@ -805,4 +838,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_bridge.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_bridge.js"></script><script src="/portal_codex.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>

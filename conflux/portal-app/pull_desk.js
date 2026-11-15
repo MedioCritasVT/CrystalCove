@@ -22,6 +22,16 @@
     if(!response.ok)throw Error(data.error||"Could not load GitHub data.");
     return data;
   }
+  async function post(path,body){
+    const session=await read("/api/status");
+    if(!session.launch_token)throw Error("Local Portal authorization unavailable.");
+    const response=await fetch(path,{method:"POST",headers:{
+      "Content-Type":"application/json","X-Conflux-Token":session.launch_token},
+      body:JSON.stringify(body)});
+    const result=await response.json();
+    if(!response.ok)throw Error(result.error||"GitHub request failed.");
+    return result;
+  }
   $("pull-refresh").addEventListener("click",async()=>{
     const button=$("pull-refresh");
     button.disabled=true;
@@ -102,9 +112,24 @@
     $("pull-merge").disabled=!($("pull-reviewed").checked &&
       detail?.merge_available && detail?.review_complete);
   });
-  $("pull-connect").addEventListener("click",()=>{
-    document.getElementById("assistant-open-nav")?.click();
-    notice("Use the GitHub connection in the assistant panel. A GitHub App must be configured first.");
+  $("pull-connect").addEventListener("click",async()=>{
+    const tab=window.open("about:blank","_blank");
+    try{
+      const status=await read("/api/connections/status");
+      if(!status.github?.configured)throw Error(
+        "A GitHub App must be registered and its client ID/secret configured privately on this Portal host first.");
+      const grant=await post("/api/connections/start",{provider:"github"});
+      if(!/^https:\/\/github\.com\//.test(grant.url||""))
+        throw Error("Unrecognized GitHub authorization destination.");
+      if(tab)tab.location.href=grant.url;
+      else {
+        const link=document.createElement("a");
+        link.href=grant.url;link.target="_blank";link.rel="noopener noreferrer";
+        link.textContent="Open GitHub authorization";
+        $("pull-status").replaceChildren(link);
+      }
+      notice("Authorize the GitHub App in its own tab, then refresh the PR list.");
+    }catch(error){if(tab&&!tab.closed)tab.close();notice(error.message,true);}
   });
   $("pull-merge").addEventListener("click",async()=>{
     if(!detail?.merge_available || !detail?.review_complete || !$("pull-reviewed").checked)

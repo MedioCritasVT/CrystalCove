@@ -68,42 +68,65 @@ def main():
                 page.reload(wait_until="domcontentloaded")
                 page.locator('button[data-page="studio"]').click()
                 assert page.locator("#studio-texture").input_value() == "constellation"
-                # Genuine provider links and a personally owned fork handoff.
-                # Browser tests intentionally never sign in or send private data.
+                # Codex renders in the panel; no nested external site or
+                # login provider is contacted by this smoke test.
+                page.route("**/api/codex/status", lambda route: route.fulfill(
+                    status=200,content_type="application/json",
+                    body=json.dumps({"installed":True,"running":False,"busy":False,
+                                     "editing":False,"thread":None,"sequence":0})))
+                page.route("**/api/codex/events?since=*", lambda route: route.fulfill(
+                    status=200,content_type="application/json",
+                    body=json.dumps({"events":[],"latest":0,"running":True,"busy":False,
+                                     "editing":False,"thread":"thr_mock_1234"})))
+                page.route("**/api/codex/start", lambda route: route.fulfill(
+                    status=200,content_type="application/json",
+                    body=json.dumps({"installed":True,"running":True,"authenticated":True,
+                                     "editing":False,"busy":False,"thread":"thr_mock_1234",
+                                     "account_type":"chatgpt","plan":"plus"})))
+                observed_codex=[]
+                def fake_codex_message(route):
+                    packet=route.request.post_data_json
+                    observed_codex.append(packet)
+                    route.fulfill(status=200,content_type="application/json",
+                        body=json.dumps({"accepted":True,"thread":"thr_mock_1234","editing":False}))
+                page.route("**/api/codex/message",fake_codex_message)
                 page.locator("#assistant-open-nav").click()
                 assert page.locator("#assistant-dock").is_visible()
-                assert page.locator("#assistant-iframe").count() == 0
-                assert page.locator("#bridge-chatgpt").get_attribute("href") == "https://chatgpt.com/"
-                assert page.locator("#bridge-codex").get_attribute("href") == "https://chatgpt.com/codex/"
-                assert page.locator("#bridge-chatgpt").get_attribute("target") == "_blank"
-                assert page.locator("#bridge-codex").get_attribute("rel") == "noopener noreferrer"
-                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
-                page.locator("#bridge-task").fill("Adjust Portal spacing and run its existing tests.")
-                page.locator("#bridge-save").click()
-                assert page.locator("#bridge-open-repo").get_attribute("href") == "https://github.com/wayfarer/CrystalCove"
-                assert page.locator("#bridge-open-prs").get_attribute("href") == "https://github.com/wayfarer/CrystalCove/pulls"
-                assert "Adjust Portal spacing" in page.locator("#bridge-handoff").input_value()
-                assert "do not push to the upstream project" in page.locator("#bridge-handoff").input_value()
-                # No website should silently authorize ChatGPT, fork, or run a model.
-                page.locator("#bridge-repository").fill("javascript:bad")
-                page.locator("#bridge-save").click()
-                assert page.locator("#bridge-status").get_attribute("data-error") == "true"
-                assert page.locator("#bridge-open-repo").get_attribute("href") == "https://github.com/wayfarer/CrystalCove"
-                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
-                page.locator("#bridge-save").click()
+                assert page.locator("#assistant-dock select").count() == 0
+                assert page.locator("#bridge-repository").is_hidden()
+                page.locator("#codex-start").click()
+                page.wait_for_function(
+                    "() => document.querySelector('#codex-message')?.disabled === false",
+                    timeout=10000)
+                assert page.locator("#codex-message").is_enabled()
+                page.locator("#codex-message").fill("Inspect Portal styles and report issues.")
+                page.locator("#codex-send").click()
+                page.get_by_text("Inspect Portal styles and report issues.",exact=True).wait_for(timeout=10000)
+                page.wait_for_function("() => document.querySelector('#codex-transcript .codex-message.user') !== null")
+                assert observed_codex and observed_codex[-1]["message"] == "Inspect Portal styles and report issues."
+                assert page.locator("#codex-login").is_hidden()
                 page.locator("#assistant-close").click()
                 assert not page.locator("#assistant-dock").is_visible()
-                page.reload(wait_until="domcontentloaded")
-                page.locator("#assistant-open-nav").click()
-                assert page.locator("#bridge-repository").input_value() == "wayfarer/CrystalCove"
-                assert "Adjust Portal spacing" in page.locator("#bridge-task").input_value()
-                page.locator("#assistant-close").click()
                 page.locator('button[data-page="updates"]').click()
+                assert page.locator("#development-setup").is_visible()
                 assert page.locator("#updates-check").count() == 1
                 assert page.locator("#updates-apply").count() == 1
                 assert page.locator("#updates-relaunch").count() == 1
                 assert page.locator("#pull-desk").count() == 1
                 assert page.locator("#studio-commit").count() == 0
+                assert page.locator("#bridge-chatgpt").get_attribute("href") == "https://chatgpt.com/"
+                assert page.locator("#bridge-codex").get_attribute("href") == "https://chatgpt.com/codex/"
+                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
+                page.locator("#bridge-task").fill("Adjust Portal spacing and run tests.")
+                page.locator("#bridge-save").click()
+                assert page.locator("#bridge-open-prs").get_attribute("href") == "https://github.com/wayfarer/CrystalCove/pulls"
+                assert "Adjust Portal spacing" in page.locator("#bridge-handoff").input_value()
+                page.locator("#bridge-repository").fill("javascript:bad")
+                page.locator("#bridge-save").click()
+                assert page.locator("#bridge-status").get_attribute("data-error") == "true"
+                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
+                page.locator("#bridge-save").click()
+                assert page.locator("#bridge-open-repo").get_attribute("href") == "https://github.com/wayfarer/CrystalCove"
                 def fake_pr_list(route):
                     route.fulfill(status=200,content_type="application/json",
                         body=json.dumps({
@@ -137,7 +160,7 @@ def main():
                 page.unroute("**/api/pulls/list",fake_pr_list)
                 page.unroute("**/api/pulls/detail?number=11",fake_pr_detail)
                 page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
-                observations.append("Real ChatGPT/Codex links, owner-specific fork handoff, local persistence and unchanged updater passed")
+                observations.append("Embedded Codex chat and migrated external tools/fork handoff passed; original updater retained")
 
                 page.locator('button[data-page="nodes"]').click()
                 page.locator("#nodes h2").wait_for(state="visible")
