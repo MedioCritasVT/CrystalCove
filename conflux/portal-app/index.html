@@ -670,7 +670,7 @@ tailscale serve status                      # Inspect routes</code></pre>
   <div class="room-words">
     <div class="eyebrow">Ratio × Limen · trusted transitions</div>
     <h2>Updates & Setup</h2>
-    <p class="lead">Keep your Conflux workspace current, without Git commands. Check first, choose whether to update, then relaunch the Portal when you're ready.</p>
+    <p class="lead">Check, update and relaunch Conflux as before. Separately, inspect and merge pull requests prepared through your assistant workspace.</p>
   </div>
   <aside class="room-companions" id="room-companion-updates" data-room="updates" aria-label="Node companions for updates"></aside>
 </div>
@@ -686,30 +686,6 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p id="portal-source-path" class="theme-note">Identifying the Portal checkout currently serving this page…</p>
   <p id="updates-details" class="theme-note">Your local notes and other uncommitted work are never reset, stashed, or deleted. Git will refuse any update that would overwrite them.</p>
   <p class="theme-note">If you're previewing a development branch, Update can safely switch to main first. If Git cannot switch without affecting your edits, it stops and tells you why.</p>
-</div>
-<div class="download-panel">
-<h3>Personal theme → Git review → relaunch → test</h3>
-<p>This separate review area handles Git work. Use the small <strong>Assistant</strong> dock on any Portal page for ordinary model conversations; it never auto-commits code. This review currently publishes only a verified palette and texture data file.</p>
-<label for="studio-review-agent">Attribution lens for this theme</label>
-<select id="studio-review-agent"><option value="limen">Limen</option><option value="medio">Medio</option><option value="ratio">Ratio</option><option value="specula">Specula</option><option value="nexus">Nexus</option></select>
-<button class="action secondary" type="button" id="studio-propose">Prepare current theme for Git review</button>
-<pre class="studio-preview" id="studio-preview">No personal theme is prepared for review.</pre>
-<p id="studio-git-status" class="theme-note">Inspecting the active checkout…</p>
-<p>Only after approval, the Portal creates an isolated local Git worktree, commits the validated palette and background texture as a data file, and pushes a <strong>new review branch</strong> to this checkout's GitHub <code>origin</code>. Your current branch and unsaved changes are preserved during publication. Your existing Git credential configuration must already authorize that repository.</p>
-<p class="theme-note">New-tab account authorization and per-user repository selection are the next integration. This first implementation does <strong>not</strong> offer ChatGPT OAuth, GitHub OAuth, automatic PR merging, or general-purpose agent code editing. To use a personal fork, open the Portal from that fork's own Git clone.</p>
-<div class="studio-actions">
-<button class="action" id="studio-commit" type="button" disabled>Approve & push review branch</button>
-<a id="studio-review-link" class="action secondary" href="https://github.com/" target="_blank" rel="noopener noreferrer" hidden>Review changes on GitHub</a>
-<button class="action secondary" id="studio-checkout" type="button" disabled>Preview reviewed branch locally</button>
-<button class="action secondary" id="studio-main" type="button">Return to local main</button>
-<button class="action secondary" data-go="updates" type="button">Relaunch in Updates & Setup</button>
-</div>
-<div class="studio-details">
-<label for="studio-verify-slug">Verify a committed theme by its file name (slug)</label>
-<input id="studio-verify-slug" type="text" placeholder="my-wayfarer-theme" maxlength="40" spellcheck="false"/>
-<div class="studio-actions"><button class="action secondary" type="button" id="studio-verify">Check active checkout & preview theme</button></div>
-</div>
-<p id="studio-status" class="studio-status" role="status" aria-live="polite">No theme has been published or tested. Local preview is available now.</p>
 </div>
 <section class="download-panel" id="pull-desk" aria-labelledby="pull-title">
   <h3 id="pull-title">GitHub pull requests · inspect & merge</h3>
