@@ -273,6 +273,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "theme_studio.css", "text/css; charset=utf-8")
         if route in ("/assistant", "/assistant/"):
             return self.serve_file(ROOT / "assistant.html", "text/html; charset=utf-8")
+        if route == "/pull_desk.js":
+            return self.serve_file(ROOT / "pull_desk.js", "text/javascript; charset=utf-8")
+        if route == "/pull_desk.css":
+            return self.serve_file(ROOT / "pull_desk.css", "text/css; charset=utf-8")
         if route == "/assistant_frame.js":
             return self.serve_file(ROOT / "assistant_frame.js", "text/javascript; charset=utf-8")
         if route == "/assistant_frame.css":
