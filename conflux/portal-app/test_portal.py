@@ -84,6 +84,8 @@ class PortalSmokeTest(unittest.TestCase):
         for route, marker in (
             ("/soundstage.css", ".music-timeline"),
             ("/soundstage.js", "createMediaStreamSource"),
+            ("/portal_finish.css", "grid-template-areas"),
+
             ("/video_tour.js", "conflux.portal.video-tour.v0.1"),
         ):
             status, body = self.get(route)

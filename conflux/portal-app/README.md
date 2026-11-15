@@ -30,6 +30,30 @@ routes and visitor-authored identities are **exploratory only**;
 visitors should remain free to replace or omit Node presentations
 without losing functional tools. The Architect approves further scope.
 
+## Music dock, soundstage and interface finish
+
+A **presentation-only** pass gives the persistent soundtrack dock a more
+deliberate two-row layout, clearer transport controls, stronger focus and
+active states, and palette-coordinated border lighting. The current live
+spectrum panel opens across the content width above the dock (also on narrow
+screens), rather than inside a cramped 380px popup. It renders **actual
+HTMLAudioElement frequency data** from the opted-in audio capture, not a
+simulated soundtrack or microphone. The analyzer adapts bar count and
+colors to the resized canvas and selected Studio palette.
+
+A single final stylesheet strengthens container outlines, soft shadows,
+and color-conscious highlights on room titles, headings, important actions
+and notice bubbles. Long-form reading text remains quiet and legible. The
+dock's actual height is observed for bottom padding and spectrum placement
+when it wraps or browser zoom changes. Reduced-motion preferences remain
+respected; music never starts automatically.
+
+**No source list, playback logic, music download flow, game launch, updater,
+Codex, storage schema, or permission was changed.** The spectrum remains
+opt-in and is unavailable if the browser cannot capture the playing audio.
+Review desktop and mobile Chromium screenshots in the workflow artifact before
+shipping; a visual mockup is not evidence of implemented behavior.
+
 ## Chroma and familiar polish
 
 The Personal Studio now offers **ten curated starting palettes** (the original

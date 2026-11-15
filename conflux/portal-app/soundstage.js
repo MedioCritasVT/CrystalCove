@@ -16,6 +16,19 @@
   if (![audio,seek,elapsed,total,visualButton,panel,visualClose,visualStatus,canvas].every(Boolean)) return;
 
   const STEPS = 1000;
+  const musicDock = $("#music-dock");
+  // Keep the wide panel above the actual dock height, including wrapped
+  // layouts and browser zoom. This also prevents hiding page content below it.
+  function measureDock() {
+    if (!musicDock) return;
+    const height = Math.ceil(musicDock.getBoundingClientRect().height);
+    if (height > 0) document.documentElement.style.setProperty("--music-dock-rise",height+"px");
+  }
+  measureDock();
+  window.addEventListener("resize",measureDock,{passive:true});
+  if (musicDock && typeof ResizeObserver === "function") {
+    new ResizeObserver(measureDock).observe(musicDock);
+  }
   let seeking = false;
   let context = null;
   let analyser = null;
@@ -79,7 +92,7 @@
     analyser.getByteFrequencyData(freqData);
     const dpi = Math.min(window.devicePixelRatio || 1, 2);
     const width = Math.max(180, canvas.clientWidth || 300);
-    const height = 112;
+    const height = Math.max(100, Math.round(canvas.clientHeight || 166));
     if (canvas.width !== Math.floor(width*dpi) || canvas.height !== Math.floor(height*dpi)) {
       canvas.width = Math.floor(width*dpi);
       canvas.height = Math.floor(height*dpi);
@@ -88,11 +101,20 @@
     if (!ctx) return;
     ctx.setTransform(dpi,0,0,dpi,0,0);
     ctx.clearRect(0,0,width,height);
-    const bars = 32, gap = 3, cell = width/bars, barWidth = Math.max(2,cell-gap);
+    const bars = Math.max(32,Math.min(80,Math.floor(width/9)));
+    const gap = Math.max(2,Math.min(4,width/240));
+    const cell = width/bars, barWidth = Math.max(2,cell-gap);
+    // Real audio analysis, with the four current Conflux palette accents.
+    const palette = getComputedStyle(document.documentElement);
+    const green = palette.getPropertyValue("--green").trim() || "#9cdec0";
+    const blue = palette.getPropertyValue("--blue").trim() || "#84bff3";
+    const violet = palette.getPropertyValue("--violet").trim() || "#c2a4f3";
+    const amber = palette.getPropertyValue("--amber").trim() || "#e9bf84";
     const gradient = ctx.createLinearGradient(0,height,0,0);
-    gradient.addColorStop(0,"#80d6bd");
-    gradient.addColorStop(0.65,"#b9a9ef");
-    gradient.addColorStop(1,"#e9bf84");
+    gradient.addColorStop(0,green);
+    gradient.addColorStop(.35,blue);
+    gradient.addColorStop(.72,violet);
+    gradient.addColorStop(1,amber);
     ctx.fillStyle = gradient;
     for(let i=0;i<bars;i++) {
       // Gentle log-like mapping emphasizes bass without hiding higher notes.
@@ -101,6 +123,12 @@
       const h = Math.max(2,value*(height-10));
       ctx.fillRect(i*cell+gap/2,height-h,barWidth,h);
     }
+    // A faint baseline keeps the wide stage legible at quiet passages,
+    // without inventing frequency data or drawing a pretend waveform.
+    ctx.fillStyle = palette.getPropertyValue("--blue").trim() || "#84bff3";
+    ctx.globalAlpha = .24;
+    ctx.fillRect(0,height-1,width,1);
+    ctx.globalAlpha = 1;
   }
   async function connect() {
     if (panel.hidden || audio.paused) return;

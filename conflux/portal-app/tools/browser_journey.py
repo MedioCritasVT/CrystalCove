@@ -89,7 +89,36 @@ def main():
                 small.locator('button[data-page="studio"]').click()
                 assert small.locator("#studio").is_visible()
                 small.screenshot(path=str(proof / "01-wayfinding-mobile.png"),full_page=True)
+                small.locator("#music-visual-toggle").click()
+                assert small.locator("#music-visual-panel").is_visible()
+                md = small.locator("#music-dock").bounding_box()
+                mp = small.locator("#music-visual-panel").bounding_box()
+                assert md and mp and mp["x"] >= 0
+                assert mp["x"]+mp["width"] <= 390 + 2, "music stage clipped on phone"
+                assert mp["y"]+mp["height"] <= md["y"]+5, "stage overlaps mobile controls"
+                small.screenshot(path=str(proof / "01-music-mobile.png"),full_page=False)
+                small.locator("#music-visual-close").click()
                 small.close()
+                # Match the Architect's 876px desktop screenshot: check the
+                # mid-width dock while music is off and the spectrum is opt-in.
+                medium=context.new_page()
+                medium.set_viewport_size({"width":876,"height":900})
+                medium.goto(base,wait_until="domcontentloaded")
+                medium.locator("#music-visual-toggle").click()
+                assert medium.locator("#music-visual-panel").is_visible()
+                middle_dock=medium.locator("#music-dock").bounding_box()
+                middle_stage=medium.locator("#music-visual-panel").bounding_box()
+                assert middle_dock and middle_stage
+                assert middle_stage["width"]>=middle_dock["width"]*.80
+                assert middle_stage["y"]+middle_stage["height"]<=middle_dock["y"]+5
+                for cid in ("music-toggle","music-prev","music-play","music-next",
+                            "music-select","music-version","music-visual-toggle"):
+                    b=medium.locator("#"+cid).bounding_box()
+                    assert b and b["x"]>=middle_dock["x"]-2 and (
+                        b["x"]+b["width"]<=middle_dock["x"]+middle_dock["width"]+2), (
+                        f"mid-width music control clipped: {cid}: {b}")
+                medium.screenshot(path=str(proof / "01-music-medium.png"),full_page=False)
+                medium.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
                 observations.append("Four grouped nav areas, 14 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
 
@@ -302,6 +331,9 @@ def main():
                 rows = page.locator("#music-select option").count()
                 assert rows >= 10, f"expected ten music compositions, got {rows}"
                 observations.append("Official 11-track GitHub Release installs into an isolated user library")
+                page.locator(".music-advanced summary").click()
+                assert not page.locator(".music-advanced").evaluate("(e) => e.open"), (
+                    "options should close before showing the wide spectrum")
 
                 # Music On itself starts playback. Do not immediately click
                 # Play a second time: it becomes Pause once audio is playing.
@@ -322,7 +354,24 @@ def main():
                 page.locator("#music-visual-toggle").click()
                 assert page.locator("#music-visual-panel").is_visible()
                 visual_state = page.locator("#music-visual-status").text_content()
+                dock_box = page.locator("#music-dock").bounding_box()
+                stage_box = page.locator("#music-visual-panel").bounding_box()
+                canvas_box = page.locator("#music-spectrum").bounding_box()
+                assert stage_box and dock_box and canvas_box
+                assert stage_box["width"] >= dock_box["width"] * .78, (
+                    f"soundstage needs to span the music dock: {stage_box} vs {dock_box}")
+                assert canvas_box["width"] >= stage_box["width"] - 50, (
+                    f"real spectrum canvas did not grow: {canvas_box}")
+                assert stage_box["y"] + stage_box["height"] <= dock_box["y"] + 5, (
+                    "wide soundstage should remain above the music controls")
+                assert page.locator("#music-dock").evaluate(
+                    "(e)=>getComputedStyle(e).display") == "grid"
+                assert page.locator("#home .room-hero").evaluate(
+                    "(e)=>getComputedStyle(e).boxShadow") != "none"
+                assert page.locator("main > .notice").evaluate(
+                    "(e)=>getComputedStyle(e).boxShadow") != "none"
                 page.screenshot(path=str(proof / "05-music-while-exploring.png"), full_page=True)
+                page.screenshot(path=str(proof / "05-wide-soundstage.png"), full_page=False)
                 page.locator("#music-visual-close").click()
                 assert not page.locator("#music-visual-panel").is_visible()
                 observations.append("Optional spectrum panel opens and closes without starting or stopping music: " + visual_state)
