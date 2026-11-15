@@ -23,6 +23,7 @@ from portal_chat import ChatError, chat as assistant_chat, status as assistant_s
 from portal_auth import AuthError, PortalConnections
 from portal_prs import PullDesk, PullError
 from portal_changes import ChatEdits, EditError
+from portal_codex import CodexBridge, CodexError
 from urllib.parse import parse_qs
 from install_desktop_launcher import install_desktop_launcher
 
@@ -45,6 +46,7 @@ STUDIO = ThemeStudio(ROOT.parents[1])
 CONNECTIONS = PortalConnections()
 PULLS = PullDesk(STUDIO.repository, CONNECTIONS)
 CHANGES = ChatEdits(ROOT.parents[1], CONNECTIONS, PULLS)
+CODEX = CodexBridge(ROOT.parents[1])
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -281,6 +283,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "assistant_frame.js", "text/javascript; charset=utf-8")
         if route == "/assistant_frame.css":
             return self.serve_file(ROOT / "assistant_frame.css", "text/css; charset=utf-8")
+        if route == "/portal_codex.css":
+            return self.serve_file(ROOT / "portal_codex.css", "text/css; charset=utf-8")
+        if route == "/portal_codex.js":
+            return self.serve_file(ROOT / "portal_codex.js", "text/javascript; charset=utf-8")
         if route == "/portal_bridge.css":
             return self.serve_file(ROOT / "portal_bridge.css", "text/css; charset=utf-8")
         if route == "/portal_bridge.js":
@@ -365,6 +371,17 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(200, PULLS.detail(num))
             except PullError as error:
                 return self.respond(409, {"error": str(error)[:350]})
+        if route in ("/api/codex/status", "/api/codex/events"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Codex is local desktop only."})
+            try:
+                if route.endswith("/status"):
+                    return self.respond(200, CODEX.snapshot())
+                query = parse_qs(urlsplit(self.path).query)
+                since = int(query.get("since", ["0"])[0])
+                return self.respond(200, CODEX.poll(since))
+            except (CodexError, ValueError, TypeError) as error:
+                return self.respond(400, {"error": str(error)[:250]})
         if route == "/api/changes/files":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local agent editing only."})
@@ -428,7 +445,10 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/studio/preview", "/api/studio/main",
                          "/api/assistant/chat",
                          "/api/connections/start", "/api/connections/sign-out",
-                         "/api/pulls/merge", "/api/changes/propose", "/api/changes/publish"):
+                         "/api/pulls/merge", "/api/changes/propose", "/api/changes/publish",
+                         "/api/codex/start", "/api/codex/login", "/api/codex/message",
+                         "/api/codex/new", "/api/codex/edits", "/api/codex/approval",
+                         "/api/codex/interrupt", "/api/codex/stop"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -457,6 +477,31 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route.startswith("/api/codex/"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Codex only runs on the local desktop."})
+            try:
+                if route.endswith("/start"):
+                    result = CODEX.start(resume=body.get("resume"))
+                elif route.endswith("/login"):
+                    result = CODEX.login()
+                elif route.endswith("/message"):
+                    result = CODEX.send(body.get("message"))
+                elif route.endswith("/new"):
+                    result = CODEX.start_thread()
+                elif route.endswith("/edits"):
+                    result = CODEX.edits(body.get("enabled"))
+                elif route.endswith("/approval"):
+                    result = CODEX.decide(body.get("request_id"), body.get("decision"))
+                elif route.endswith("/interrupt"):
+                    result = CODEX.interrupt()
+                elif route.endswith("/stop"):
+                    result = CODEX.stop()
+                else:
+                    return self.respond(404, {"error": "not-found"})
+                return self.respond(200, result)
+            except CodexError as error:
+                return self.respond(409, {"error": str(error)[:350]})
         if route in ("/api/changes/propose", "/api/changes/publish"):
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local agent editing only."})
