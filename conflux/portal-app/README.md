@@ -30,6 +30,22 @@ routes and visitor-authored identities are **exploratory only**;
 visitors should remain free to replace or omit Node presentations
 without losing functional tools. The Architect approves further scope.
 
+## Symbol legibility finish
+
+The original small room symbols now share a consistent high-contrast glyph
+treatment: standardized engraved tiles for all fourteen navigation rooms,
+clearer section numbers and developer shortcuts, and recognizable external-link
+arrows. Music transport, spectrum and close symbols have independent sizing
+and contrast without replacing their existing accessible control names.
+The five established CSS chibi emblems are slightly easier to read while
+preserving their original shapes and responsibility labels.
+
+This is **presentation only**: no external icon font, new download, third-party
+dependency, new navigation destination, playback change or Node authority.
+Every functional room still has a textual label, and icon-only music buttons
+retain their screen-reader labels. Reduced-motion preferences still apply.
+Browser review covers desktop, the Architect's medium-width layout and mobile.
+
 ## Music dock, soundstage and interface finish
 
 A **presentation-only** pass gives the persistent soundtrack dock a more

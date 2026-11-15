@@ -356,8 +356,8 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/portal_codex.css"><link rel="stylesheet" href="/pull_desk.css"><link rel="stylesheet" href="/portal_polish.css"><link rel="stylesheet" href="/portal_finish.css"></head><body>
-<div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav class="portal-nav" aria-label="Portal rooms">
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/portal_codex.css"><link rel="stylesheet" href="/pull_desk.css"><link rel="stylesheet" href="/portal_polish.css"><link rel="stylesheet" href="/portal_finish.css"><link rel="stylesheet" href="/portal_symbols.css"></head><body>
+<div class="shell"><aside class="side"><h1><span class="brand-symbol" aria-hidden="true">✦</span> Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav class="portal-nav" aria-label="Portal rooms">
   <div class="nav-group" data-group="begin" role="group" aria-labelledby="nav-group-begin">
     <p class="nav-group-label" id="nav-group-begin"><span aria-hidden="true">01</span> Begin</p>
     <button data-page="home" type="button" aria-current="page"><span class="nav-symbol" aria-hidden="true">✦</span><span class="nav-label">Threshold</span></button>
@@ -386,8 +386,8 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
   </div>
   <div class="nav-utilities" aria-label="Developer tools">
     <span class="nav-utilities-label">Your workspace</span>
-    <button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false"><span aria-hidden="true">⌘</span> Codex workspace</button>
-    <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub <span aria-hidden="true">↗</span></a>
+    <button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false"><span class="utility-symbol" aria-hidden="true">⌘</span> Codex workspace</button>
+    <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub <span class="external-glyph" aria-hidden="true">↗</span></a>
   </div>
   <details class="nav-stewards">
     <summary>Who cares for these rooms?</summary>
@@ -406,9 +406,9 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
   <div class="music-dock-heading"><span class="music-glyph" aria-hidden="true">♫</span><strong>Conflux music</strong></div>
   <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false">Music Off</button>
   <div class="music-controls">
-    <button type="button" id="music-prev" aria-label="Previous track" disabled>◂◂</button>
+    <button type="button" id="music-prev" aria-label="Previous track" disabled><span class="transport-glyph" aria-hidden="true">◀◀</span></button>
     <button type="button" id="music-play" aria-label="Play selected track" disabled>Play</button>
-    <button type="button" id="music-next" aria-label="Next track" disabled>▸▸</button>
+    <button type="button" id="music-next" aria-label="Next track" disabled><span class="transport-glyph" aria-hidden="true">▶▶</span></button>
   </div>
   <div class="music-options"><label for="music-select">Track</label>
     <select id="music-select" aria-label="Choose composition" disabled></select>
@@ -416,9 +416,9 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
     <select id="music-version" aria-label="Choose alternate version" disabled></select>
   </div>
   <div class="music-timeline"><output id="music-elapsed" for="music-seek">0:00</output><label for="music-seek">Seek within soundtrack</label><input type="range" id="music-seek" min="0" max="1000" step="1" value="0" disabled aria-label="Seek within current track"><output id="music-duration" for="music-seek">--:--</output></div>
-  <div class="music-visual-wrap"><button type="button" id="music-visual-toggle" aria-expanded="false" aria-controls="music-visual-panel">Spectrum ▥</button>
+  <div class="music-visual-wrap"><button type="button" id="music-visual-toggle" aria-expanded="false" aria-controls="music-visual-panel">Spectrum <span class="spectrum-glyph" aria-hidden="true">▥</span></button>
     <div id="music-visual-panel" hidden role="region" aria-label="Soundtrack live spectrum">
-      <div class="music-visual-header"><strong>Soundstage · live frequencies</strong><button type="button" id="music-visual-close" aria-label="Close visualizer">×</button></div>
+      <div class="music-visual-header"><strong>Soundstage · live frequencies</strong><button type="button" id="music-visual-close" aria-label="Close visualizer"><span class="close-glyph" aria-hidden="true">×</span></button></div>
       <canvas id="music-spectrum" width="800" height="166" role="img" aria-label="Live frequency bars from the playing soundtrack"></canvas>
       <p id="music-visual-status" role="status" aria-live="polite">Press Music On to see the spectrum.</p>
     </div>
@@ -443,7 +443,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <div class="cards"><article class="card"><h3>The Circle of Inquiry</h3><p>See how a magic-circle analogy becomes a practical method for making new Conflux workspaces, with a step-by-step Portal example.</p><button type="button" class="action secondary" data-go="philosophy">Read the philosophy</button></article><article class="card"><h3>About Arch</h3><p>How one lifelong practice of curiosity grew into an invitation for others.</p><button type="button" class="action secondary" data-go="about-arch">Meet the creator</button></article></div>
 <div class="threshold-postscript" aria-label="A note from Arch">
   <p><strong>There's a whole library behind the Threshold.</strong> Substantial documentation, player guides, design records, and development history are freely available on <a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove's GitHub</a>. <a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/PROJECT_INDEX.md" target="_blank" rel="noopener noreferrer">Browse the project map</a> whenever you're curious. None of it is required to start exploring.</p>
-  <p class="arch-love">A little note from Arch: <span>Arch &lt;3's you xoxo</span> <span aria-hidden="true">♥</span></p>
+  <p class="arch-love">A little note from Arch: <span>Arch &lt;3's you xoxo</span> <span class="heart-glyph" aria-hidden="true">♥</span></p>
 </div></section>
 
 <section class="panel" id="downloads" hidden>
@@ -492,10 +492,10 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
   </div>
   <p id="video-tour-status" role="status" aria-live="polite">All four short videos are published on GitHub. Open a clip in a separate tab or window.</p>
   <div id="video-tour-list" data-catalog-url="/video-tour/catalog.json" data-autoload="false" class="cards" aria-label="Short Conflux video clips">
-        <article class="card tour-card"><h3>Threshold — A Place to Begin</h3><p>Welcome without requiring the game.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4" target="_blank" rel="noopener noreferrer">Watch short clip ↗</a></article>
-        <article class="card tour-card"><h3>Ledger — Keeping the Record</h3><p>What the creative workspace offers.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4" target="_blank" rel="noopener noreferrer">Watch short clip ↗</a></article>
-        <article class="card tour-card"><h3>SanctuaryOS — First Launch</h3><p>A look at the early game preview.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4" target="_blank" rel="noopener noreferrer">Watch short clip ↗</a></article>
-        <article class="card tour-card"><h3>Meet the Node Familiars</h3><p>Five miniature companions and their different roles.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4" target="_blank" rel="noopener noreferrer">Watch short clip ↗</a></article>
+        <article class="card tour-card"><h3>Threshold — A Place to Begin</h3><p>Welcome without requiring the game.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
+        <article class="card tour-card"><h3>Ledger — Keeping the Record</h3><p>What the creative workspace offers.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
+        <article class="card tour-card"><h3>SanctuaryOS — First Launch</h3><p>A look at the early game preview.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
+        <article class="card tour-card"><h3>Meet the Node Familiars</h3><p>Five miniature companions and their different roles.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
       </div>
 </section>
 <section class="panel" id="soundtrack" hidden>
@@ -553,7 +553,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <section class="essay-section"><h3>The invitation</h3><p>Conflux begins with the freedom to ask what the existing system overlooks. Its larger purpose is to make room for people to test possibilities, disagree, and imagine improvements that benefit others—not only the person who began the project.</p>
 <p>Potential is the reason; possibility is the goal.</p></section></article>
   <p class="status-line">This is an interpretive comparison and a design walkthrough, not an occult history lesson or a claim that every proposed Conflux capability is implemented. The Portal example reconstructs a useful design process; it is not a transcript of one particular meeting.</p>
-  <div class="row-actions"><button type="button" class="action secondary" data-go="about-arch">About Arch</button><a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Explore project records ↗</a></div>
+  <div class="row-actions"><button type="button" class="action secondary" data-go="about-arch">About Arch</button><a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Explore project records <span class="external-glyph" aria-hidden="true">↗</span></a></div>
 </section>
 <section class="panel" id="about-arch" hidden>
   <div class="room-hero"><div class="room-words"><div class="eyebrow">The person behind the threshold</div><h2>About Arch</h2><p class="lead">Conflux began with a person's habit of asking what lies beneath a familiar thing—and grew into a place where other people can ask their own questions.</p></div><aside class="room-companions" id="room-companion-about-arch" data-room="about-arch" aria-label="Node companions for this section"></aside></div>
@@ -569,7 +569,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <p>A better future for all cannot be declared by one author or proved by a beautiful interface. It has to be questioned, tried, revised, and judged by its consequences for people. Conflux offers a workshop for that aspiration, not a claim that it has already been achieved.</p></section>
 <section class="essay-section"><h3>An open question</h3><p>What do you notice that the present system overlooks? What could you help make more intelligible, more humane, or more possible for somebody else? Those questions matter more than becoming a copy of the person who first asked them.</p></section></article>
   <p class="status-line">Public editorial synthesis of Arch's account and the project's origins; not a transcript or exhaustive biography. Official project decisions remain with the Architect, and visitors retain their own judgment.</p>
-  <div class="row-actions"><button type="button" class="action secondary" data-go="philosophy">The Circle of Inquiry</button><a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Explore project records ↗</a></div>
+  <div class="row-actions"><button type="button" class="action secondary" data-go="philosophy">The Circle of Inquiry</button><a href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Explore project records <span class="external-glyph" aria-hidden="true">↗</span></a></div>
 </section>
 <section class="panel" id="guide" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Conflux · Player introduction and gameplay</div><h2>Player Manual</h2>
@@ -632,7 +632,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
     <h3>Jellyfin account wizard interrupted?</h3>
     <p>Open <code>http://127.0.0.1:8096/web/</code> on Bazzite, use <code>Ctrl+Shift+R</code>, then either sign in with the account already created or finish the remaining wizard steps. Try a Firefox private window if the screen stays stuck. The library step can be skipped and completed later.</p>
     <p>If it still won't proceed, inspect <code>systemctl --user status conflux-media-jellyfin.service --no-pager</code> and <code>journalctl --user -u conflux-media-jellyfin.service -n 60 --no-pager</code>, then check the exact error before changing anything. <strong>Do not delete Jellyfin's configuration or database.</strong></p>
-    <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Detailed first-run, Jellyfin recovery and backup instructions ↗</a></p>
+    <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Detailed first-run, Jellyfin recovery and backup instructions <span class="external-glyph" aria-hidden="true">↗</span></a></p>
   </div>
   <div class="download-panel" id="mirror-storage-manager">
     <h3>Use an external drive — update existing services</h3>
@@ -665,7 +665,7 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p class="theme-note">From a device in your tailnet, use the actual Serve URLs shown by Tailscale, e.g. <code>https://BAZZITE-DEVICE.TAILNET.ts.net:8443</code>. Confirm HTTPS certificates and tailnet access rules; do not use Funnel.</p>
   <h3>Backups and updates</h3>
   <p>The bundle includes a manual, stop-first tool to archive its new application state into a private backup folder. It does not back up media, copy existing CachyOS records, or create redundant media automatically. Updating the Portal, Bazzite, or individual container images are three distinct operations.</p>
-  <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Read the complete Bazzite installer and backup README ↗</a></p>
+  <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Read the complete Bazzite installer and backup README <span class="external-glyph" aria-hidden="true">↗</span></a></p>
 </section>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>
@@ -756,22 +756,22 @@ tailscale serve status                      # Inspect routes</code></pre>
       </label>
       <div class="bridge-buttons">
         <button type="button" class="bridge-primary" id="bridge-save">Use this workspace</button>
-        <a id="bridge-fork" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Fork CrystalCove ↗</a>
+        <a id="bridge-fork" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Fork CrystalCove <span class="external-glyph" aria-hidden="true">↗</span></a>
         <button type="button" id="bridge-checkout-use" hidden>Use my local checkout</button>
       </div>
       <p id="bridge-local-checkout" class="bridge-tip">Checking which repository this Portal is running from…</p>
       <div class="bridge-info">Selected workspace: <span id="bridge-current-repo">MedioCritasVT/CrystalCove</span>. This is a local preference, not GitHub authentication.</div>
       <div class="bridge-buttons">
-        <a id="bridge-open-repo" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Open repository ↗</a>
-        <a id="bridge-open-prs" href="https://github.com/MedioCritasVT/CrystalCove/pulls" target="_blank" rel="noopener noreferrer">Pull requests ↗</a>
-        <a id="bridge-open-compare" href="https://github.com/MedioCritasVT/CrystalCove/compare" target="_blank" rel="noopener noreferrer">Compare branches ↗</a>
+        <a id="bridge-open-repo" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Open repository <span class="external-glyph" aria-hidden="true">↗</span></a>
+        <a id="bridge-open-prs" href="https://github.com/MedioCritasVT/CrystalCove/pulls" target="_blank" rel="noopener noreferrer">Pull requests <span class="external-glyph" aria-hidden="true">↗</span></a>
+        <a id="bridge-open-compare" href="https://github.com/MedioCritasVT/CrystalCove/compare" target="_blank" rel="noopener noreferrer">Compare branches <span class="external-glyph" aria-hidden="true">↗</span></a>
       </div>
     </section>
     <section class="bridge-section" aria-labelledby="bridge-open-title">
       <h3 class="bridge-heading" id="bridge-open-title">2 · Open your genuine AI workspace</h3>
       <div class="bridge-buttons">
-        <a id="bridge-chatgpt" class="bridge-primary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
-        <a id="bridge-codex" class="bridge-primary" href="https://chatgpt.com/codex/" target="_blank" rel="noopener noreferrer">Open Codex Cloud ↗</a>
+        <a id="bridge-chatgpt" class="bridge-primary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT <span class="external-glyph" aria-hidden="true">↗</span></a>
+        <a id="bridge-codex" class="bridge-primary" href="https://chatgpt.com/codex/" target="_blank" rel="noopener noreferrer">Open Codex Cloud <span class="external-glyph" aria-hidden="true">↗</span></a>
       </div>
       <p class="bridge-tip">Sign in there with your own ChatGPT account. To make code changes, use Codex and connect/select your repository in its environment. ChatGPT's GitHub reading access does not by itself grant write access. Availability depends on the user's plan and workspace.</p>
     </section>
@@ -793,7 +793,7 @@ tailscale serve status                      # Inspect routes</code></pre>
       <h3 class="bridge-heading" id="bridge-return-title">4 · Review your work</h3>
       <div class="bridge-buttons">
         
-        <a id="bridge-github-settings" href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub app access ↗</a>
+        <a id="bridge-github-settings" href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub app access <span class="external-glyph" aria-hidden="true">↗</span></a>
       </div>
       <p class="bridge-tip">Review changes in Codex or GitHub, use the Check for Updates → Update → Relaunch controls above for the active checkout. A fork selected above does not automatically replace the local Git origin.</p>
     </section>
@@ -803,7 +803,7 @@ tailscale serve status                      # Inspect routes</code></pre>
         <label for="bridge-harness">Your existing harness or agent interface URL
           <input id="bridge-harness" type="url" autocomplete="off" spellcheck="false" placeholder="http://127.0.0.1:3000/"/>
         </label>
-        <div class="bridge-buttons"><a id="bridge-open-harness" href="https://example.com/" target="_blank" rel="noopener noreferrer" hidden>Open my harness ↗</a></div>
+        <div class="bridge-buttons"><a id="bridge-open-harness" href="https://example.com/" target="_blank" rel="noopener noreferrer" hidden>Open my harness <span class="external-glyph" aria-hidden="true">↗</span></a></div>
         <p class="bridge-tip">Save its URL with the workspace above. Only HTTPS or local-loopback HTTP is accepted. Your external harness handles its own sign-in.</p>
       </details>
       <p id="bridge-status" role="status" aria-live="polite">Nothing has been connected, uploaded or edited by the Portal.</p>
@@ -852,7 +852,7 @@ tailscale serve status                      # Inspect routes</code></pre>
 </div>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
-<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Codex</button>
+<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false"><span class="codex-glyph" aria-hidden="true">✦</span> Codex</button>
 <aside id="assistant-dock" hidden aria-label="Embedded Codex coding workspace">
   <div class="assistant-dock-head">
     <strong>Codex <span class="codex-caption">local workspace</span></strong>
