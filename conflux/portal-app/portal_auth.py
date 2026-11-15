@@ -329,6 +329,33 @@ class PortalConnections:
             self._write("chatgpt", data)
             return data["access_token"]
 
+    def github_token(self):
+        """Return a GitHub App user access token with bounded refresh handling."""
+        with self.lock:
+            data = self._read("github")
+            if not data or not data.get("access_token"):
+                raise AuthError("Connect GitHub before requesting a merge.")
+            expires = float(data.get("expires_at", 0))
+            if expires <= 0 or time.time() < expires - 120:
+                return data["access_token"]
+            refresh = data.get("refresh_token")
+            client_id = os.getenv("CONFLUX_GITHUB_CLIENT_ID")
+            client_secret = os.getenv("CONFLUX_GITHUB_CLIENT_SECRET")
+            if not refresh or not client_id or not client_secret:
+                raise AuthError("GitHub session expired. Reconnect your GitHub App.")
+            result = _form(GITHUB_TOKEN, {
+                "client_id": client_id, "client_secret": client_secret,
+                "grant_type": "refresh_token", "refresh_token": refresh,
+            })
+            token = result.get("access_token")
+            if not isinstance(token, str) or not token:
+                raise AuthError("GitHub session refresh failed; reconnect.")
+            data["access_token"] = token
+            data["refresh_token"] = result.get("refresh_token", refresh)
+            data["expires_at"] = time.time() + int(result.get("expires_in", 28800))
+            self._write("github", data)
+            return token
+
     def sign_out(self, kind):
         with self.lock:
             if kind not in ("chatgpt", "github"):
