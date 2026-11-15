@@ -17,10 +17,25 @@ body.theme-personal .threshold-postscript{border-color:var(--line)}
 #studio label{display:block;margin-top:12px;margin-bottom:6px}
 #studio input[type="text"],#studio select,#studio textarea{max-width:100%;width:100%;padding:10px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
 #studio textarea{min-height:105px;resize:vertical}
-#studio .studio-preview{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow-y:auto;border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--surface);color:var(--ink)}
-#studio .studio-status[data-error="true"]{color:#ffacb8}
-#studio .studio-actions{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}
+#updates .studio-preview{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow-y:auto;border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--surface);color:var(--ink)}
+#updates .studio-status[data-error="true"]{color:#ffacb8}
+#studio .studio-actions,#updates .studio-actions{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}
 #studio .studio-actions button{max-width:100%}
-#studio .studio-details{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+#updates .studio-details{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
 
-#studio [hidden]{display:none!important}
+#studio [hidden],#updates [hidden]{display:none!important}
+
+/* Background textures are presentational CSS only; no remote images. */
+body[data-texture="parchment"]{
+  background-image:repeating-linear-gradient(117deg,transparent 0 9px,#e5d0a208 10px 11px,transparent 12px 21px),radial-gradient(ellipse at 80% 7%,color-mix(in srgb,var(--amber) 13%,transparent),transparent 55%),radial-gradient(ellipse at 9% 90%,color-mix(in srgb,var(--violet) 9%,transparent),transparent 50%)}
+body[data-texture="constellation"]{
+  background-image:radial-gradient(circle,#c2b4f54d 1px,transparent 1.8px),radial-gradient(circle,#d5e7ff38 1px,transparent 1.5px),radial-gradient(ellipse at 83% 0%,color-mix(in srgb,var(--blue) 16%,transparent),transparent 55%);
+  background-size:86px 82px,123px 121px,auto;
+  background-position:7px 14px,35px 51px,0 0}
+body[data-texture="grid"]{
+  background-image:linear-gradient(to right,#a7c8f112 1px,transparent 1px),linear-gradient(to bottom,#a7c8f112 1px,transparent 1px),radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--blue) 12%,transparent),transparent 65%);
+  background-size:32px 32px,32px 32px,auto}
+body[data-texture="weave"]{
+  background-image:repeating-linear-gradient(0deg,transparent 0 4px,#d2e5f10d 4px 5px),repeating-linear-gradient(90deg,transparent 0 4px,#d2e5f10d 4px 5px),radial-gradient(ellipse at 80% 0%,color-mix(in srgb,var(--green) 12%,transparent),transparent 65%)}
+#studio #studio-theme-status{color:var(--muted);font-size:.86rem}
+#studio .studio-actions button:focus-visible,#assistant-dock button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
