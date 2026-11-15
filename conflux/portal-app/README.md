@@ -4,69 +4,66 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
-## Personal themes, assistant and owned Git review
+## Real ChatGPT, Codex and GitHub development bridge
 
-**Personal Studio** changes only appearance: color palette, CSS background
-textures (Smooth, Parchment, Constellation, Grid and Weave), local save, and
-JSON import/export. It requires no login.
+The Portal's **Develop with ChatGPT / Codex** sidebar control (and bottom
+**Develop** button) is a small local development hub—not a clone of ChatGPT.
+The bridge presents verified external links to:
 
-**Assistant:** The sidebar or bottom-right Assistant button opens
-`/assistant` in a compact, independent HTML iframe. Connection controls are
-collapsed independently from the transcript. The user can opt into local
-Ollama, a configured OpenAI Responses API key, or the developing
-**Continue with ChatGPT** open-source sign-in flow. GitHub App authorization
-is a separate consent action. A provider opens in its own new browser tab;
-the Portal must never embed the provider's login inside an iframe.
+- **ChatGPT:** `https://chatgpt.com/`, where the participant signs in to
+  their own existing ChatGPT account.
+- **Codex Cloud:** `https://chatgpt.com/codex/`, where eligible users can
+  connect their own GitHub repository, request actual code edits, inspect
+  test results and prepare a branch or pull request.
+- **GitHub:** A participant-chosen `owner/repo` (usually their fork),
+  including its pull requests and branch comparisons. New users can open
+  the public CrystalCove repository and use GitHub's built-in **Fork**
+  control to create their own copy.
+- **Optional other harness:** An explicitly entered HTTPS URL or a local
+  loopback HTTP interface, opened in its own tab. No automatic harness
+  installation or credential storage.
 
-**Important setup:**
+**How to work:** Choose your repository, save the local browser preference,
+type a request, select **Copy handoff**, then open the real ChatGPT/Codex tab
+and paste the instructions. The handoff includes the chosen repository URL,
+public upstream, active Portal room, desired change, test/review expectations
+and an explicit prohibition on changing upstream or auto-merging. A Codex
+task must be bound to the user's own authorized repository/environment in
+the real Codex interface; copying a URL alone does not grant access.
+Changes happen in genuine tools, not inside the Portal. No prompt is
+transmitted merely by typing or opening the bridge. ChatGPT's normal
+GitHub app provides supported repository read access; use Codex for
+source changes and pushing code.
 
-- Local Ollama requires a running Ollama process at `127.0.0.1:11434`.
-- OpenAI API key is optional and **not** supplied by a ChatGPT subscription;
-  configure `OPENAI_API_KEY` privately on the Portal host if using that route.
-- ChatGPT sign-in is an experimental local OAuth integration: it requires
-  the optional `PyJWT[crypto]` Python dependency, a supported/eligible
-  ChatGPT account and the provider's approval. Its end-to-end account grant
-  has **not** yet been acceptance-tested on a real account. No promise of
-  automatic ChatGPT conversation memory or historical Node continuity.
-- GitHub account sign-in needs a separately registered GitHub App, with
-  `CONFLUX_GITHUB_CLIENT_ID` and `CONFLUX_GITHUB_CLIENT_SECRET` provided
-  privately to the Portal backend. Its actual repository permissions depend
-  on the selected App installation. No general-purpose personal-access-token
-  field is presented in the browser.
+**What the bridge does NOT do:** It cannot frame/chat inside the genuine
+`chatgpt.com` website, impersonate an authenticated user, read their
+ChatGPT conversations, import personal memories or start Codex tasks by
+an unsupported deep link. It does not ask for API keys, GitHub tokens,
+passwords, or OAuth authorization inside Conflux. Authentication is
+handled by the real external websites; the Portal stores only local
+`owner/repo`, task text and optional harness URL. The earlier custom
+assistant/OAuth proof-of-concept is not used by this visible workflow.
+Legacy experimental code should not be mistaken for supported sign-in.
 
-**Agent-driven changes happen inside chat, not Studio or Setup.** Expand
-**Propose a Portal change** in the nested Assistant, select one CSS file,
-write the desired change into the ordinary chat input, and opt in to sharing
-that specific file with the chosen model. It returns a small,
-exact-match CSS edit as a **diff** to inspect. Publishing requires a
-second, exact repository-name confirmation. Only then does the Portal create
-an isolated worktree, commit and push a review branch to the active checkout's
-GitHub origin. With a connected GitHub App of sufficient permissions, it
-also tries to create a **draft PR**. If PR creation is not authorized,
-the user is given a GitHub compare link.
+**Updates & Setup is preserved:** The original
+**Check for Updates → Update → Relaunch** sequence still tracks the official
+CrystalCove checkout. The existing pull-request desk is scoped to the
+**active Git checkout's GitHub origin**, not automatically to the repository
+selected in the external development bridge. Users can follow the bridge's
+GitHub Pull Requests link to inspect PRs on their selected fork. Merging
+or updating requires separately authorized Git permissions and is never
+performed by simply opening ChatGPT or Codex.
 
-This is intentionally a **CSS-only pilot**: not arbitrary HTML/Python/JS edits,
-not automatically executed model code, not a multi-user service, and not
-deployment. Code changes beyond styling need additional sandboxing and review.
-The selected source file, request, and diff are **not** saved in the model
-provider's private ChatGPT conversation history by this Portal. The server
-holds a pending proposal in memory, and the short chat transcript stays in
-the iframe's browser memory until reloaded/cleared.
+**Personal Studio** still supports local color themes, five background
+textures, and JSON theme export/import. No account is necessary to explore
+or personalize.
 
-**Updates & Setup is unchanged as the updater.** It retains
-**Check for Updates → Update → Relaunch** for the official upstream main.
-A separate **GitHub pull requests** desk below lists the active checkout's
-open PRs, shows bounded text diffs when available, and offers explicit
-permission-checked merging with a typed confirmation. The inline merge
-control remains disabled for partial/unavailable diffs or blocked PRs.
-GitHub branch rules, required reviews and CI must still pass; GitHub can
-refuse the merge. The PR desk does **not** automatically update a user's
-checkout after a merge; the original update workflow still applies.
-
-The Portal's local authorized actions are available only from
-`http://127.0.0.1` with a valid session token and correct request origin;
-remote viewers cannot invoke Git, OAuth setup, or host-side services.
-The current release remains source preview until tested on actual Bazzite.
+**Security and usability:** This integration links genuine platforms rather
+than reproducing their web login. All provider links open a new tab with
+`rel="noopener noreferrer"`; the task handoff is explicit and user-copied.
+Never paste secrets into the handoff. If a repository is private, the Portal
+cannot verify access itself; connect it using Codex/GitHub's own authorization
+screens. Real-user acceptance testing remains separate from CI.
 
 ## Bazzite Media Mirror Setup (first candidate)
 

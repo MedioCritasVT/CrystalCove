@@ -68,50 +68,36 @@ def main():
                 page.reload(wait_until="domcontentloaded")
                 page.locator('button[data-page="studio"]').click()
                 assert page.locator("#studio-texture").input_value() == "constellation"
+                # Genuine provider links and a personally owned fork handoff.
+                # Browser tests intentionally never sign in or send private data.
                 page.locator("#assistant-open-nav").click()
                 assert page.locator("#assistant-dock").is_visible()
-                frame = page.frame_locator("#assistant-iframe")
-                frame.locator("#assistant-agent").select_option("specula")
-                frame.locator("#assistant-provider").select_option("ollama")
-                frame.locator("#connect-chatgpt").wait_for(state="visible")
-
-                def fake_assistant(route):
-                    packet = route.request.post_data_json
-                    assert packet["agent"] == "specula"
-                    assert packet["room"] == "studio"
-                    route.fulfill(status=200, content_type="application/json",
-                        body=json.dumps({"reply":"The texture belongs to the current theme.",
-                                         "provider":"ollama","agent":"specula","read_only":True}))
-                page.route("**/api/assistant/chat", fake_assistant)
-                frame.locator("#assistant-message").fill("Where should this texture be saved?")
-                frame.locator("#assistant-send").click()
-                frame.get_by_text("The texture belongs to the current theme.",exact=True).wait_for(timeout=10000)
-                assert frame.locator("#assistant-log .bubble.user").count() == 1
-                assert frame.locator("#assistant-log .bubble.assistant").count() == 1
-                page.unroute("**/api/assistant/chat", fake_assistant)
-
-                frame.locator("#assistant-edit-details summary").click()
-                frame.locator("#assistant-message").fill("Make the assistant dock padding more compact.")
-                frame.locator("#change-file").select_option("conflux/portal-app/portal_chat.css")
-                frame.locator("#change-share").check()
-                def fake_edit(route):
-                    packet = route.request.post_data_json
-                    assert packet["approve_share"] is True
-                    assert packet["file"] == "conflux/portal-app/portal_chat.css"
-                    route.fulfill(status=200, content_type="application/json",
-                        body=json.dumps({
-                            "ticket":"test", "repository":"example/repo", "base":"a1b2c3",
-                            "file":packet["file"], "agent":"specula",
-                            "diff":"--- a/dock.css\\n+++ b/dock.css\\n@@ -1 +1 @@\\n-padding: 12px\\n+padding: 8px",
-                            "applied":False}))
-                page.route("**/api/changes/propose", fake_edit)
-                frame.locator("#change-propose").click()
-                frame.get_by_text("Diff prepared in chat.", exact=False).wait_for(timeout=10000)
-                assert "padding: 8px" in frame.locator("#change-diff").inner_text()
-                page.unroute("**/api/changes/propose", fake_edit)
-                frame.locator("#assistant-close").count()
+                assert page.locator("#assistant-iframe").count() == 0
+                assert page.locator("#bridge-chatgpt").get_attribute("href") == "https://chatgpt.com/"
+                assert page.locator("#bridge-codex").get_attribute("href") == "https://chatgpt.com/codex/"
+                assert page.locator("#bridge-chatgpt").get_attribute("target") == "_blank"
+                assert page.locator("#bridge-codex").get_attribute("rel") == "noopener noreferrer"
+                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
+                page.locator("#bridge-task").fill("Adjust Portal spacing and run its existing tests.")
+                page.locator("#bridge-save").click()
+                assert page.locator("#bridge-open-repo").get_attribute("href") == "https://github.com/wayfarer/CrystalCove"
+                assert page.locator("#bridge-open-prs").get_attribute("href") == "https://github.com/wayfarer/CrystalCove/pulls"
+                assert "Adjust Portal spacing" in page.locator("#bridge-handoff").input_value()
+                assert "do not push to the upstream project" in page.locator("#bridge-handoff").input_value()
+                # No website should silently authorize ChatGPT, fork, or run a model.
+                page.locator("#bridge-repository").fill("javascript:bad")
+                page.locator("#bridge-save").click()
+                assert page.locator("#bridge-status").get_attribute("data-error") == "true"
+                assert page.locator("#bridge-open-repo").get_attribute("href") == "https://github.com/wayfarer/CrystalCove"
+                page.locator("#bridge-repository").fill("wayfarer/CrystalCove")
+                page.locator("#bridge-save").click()
                 page.locator("#assistant-close").click()
                 assert not page.locator("#assistant-dock").is_visible()
+                page.reload(wait_until="domcontentloaded")
+                page.locator("#assistant-open-nav").click()
+                assert page.locator("#bridge-repository").input_value() == "wayfarer/CrystalCove"
+                assert "Adjust Portal spacing" in page.locator("#bridge-task").input_value()
+                page.locator("#assistant-close").click()
                 page.locator('button[data-page="updates"]').click()
                 assert page.locator("#updates-check").count() == 1
                 assert page.locator("#updates-apply").count() == 1
@@ -151,7 +137,7 @@ def main():
                 page.unroute("**/api/pulls/list",fake_pr_list)
                 page.unroute("**/api/pulls/detail?number=11",fake_pr_detail)
                 page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
-                observations.append("Theme persists; nested chat proposes a review diff; Setup retains updates and PR desk")
+                observations.append("Real ChatGPT/Codex links, owner-specific fork handoff, local persistence and unchanged updater passed")
 
                 page.locator('button[data-page="nodes"]').click()
                 page.locator("#nodes h2").wait_for(state="visible")

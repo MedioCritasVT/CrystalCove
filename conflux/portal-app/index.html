@@ -356,10 +356,10 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_chat.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/pull_desk.css"></head><body>
 <div class="shell"><aside class="side"><h1>✦ Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav aria-label="Portal sections">
 <button data-page="home" aria-current="page">Threshold</button><button data-page="apps">Applications</button><button data-page="downloads">Get the Game</button><button data-page="vos">VOS Instruments</button><button data-page="library">Library & Art</button><button data-page="nodes">Node Companions</button><button data-page="tour">Video Tour</button><button data-page="soundtrack">Soundtrack</button><button data-page="philosophy">Philosophy</button><button data-page="about-arch">About Arch</button><button data-page="guide">Player Manual</button><button data-page="service-setup">Media Mirror Setup</button><button data-page="studio">My Studio & Themes</button><button data-page="updates">Updates & Setup</button>
-<button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Assistant · open chat</button>
+<button type="button" id="assistant-open-nav" aria-controls="assistant-dock" aria-expanded="false">Develop with ChatGPT / Codex</button>
 <a class="nav-external" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">CrystalCove on GitHub ↗</a>
 </nav><noscript><p>JavaScript is required for navigation. <a href="/apps/atelier">Open Atelier</a> · <a href="/apps/ledger">Open Ledger</a></p></noscript></aside><main>
 <div class="notice"><strong>Welcome, Wayfarer.</strong> This is an early Linux preview of Conflux, and you can explore without installing the game. Some rooms are still growing; choose what interests you, and return whenever you like.</div>
@@ -631,7 +631,7 @@ tailscale serve status                      # Inspect routes</code></pre>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>
 <h2>Personal Studio</h2>
-<p class="lead">Make the Portal feel like your own: choose a palette and background texture, preview it immediately, and save it locally. Git review belongs in Updates & Setup; AI conversation is available from the assistant dock.</p>
+<p class="lead">Make the Portal feel like your own: choose a palette and background texture, preview it immediately, and save it locally. Code work opens through the real ChatGPT, Codex and GitHub services in the development bridge. Updates remain in Updates & Setup.</p>
 </div><aside class="room-companions" id="room-companion-studio" data-room="studio" aria-label="Node companions for the Studio"></aside></div>
 <div class="download-panel">
 <h3>Your own visual identity</h3>
@@ -670,7 +670,7 @@ tailscale serve status                      # Inspect routes</code></pre>
   <div class="room-words">
     <div class="eyebrow">Ratio × Limen · trusted transitions</div>
     <h2>Updates & Setup</h2>
-    <p class="lead">Check, update and relaunch Conflux as before. Separately, inspect and merge pull requests prepared through your assistant workspace.</p>
+    <p class="lead">Check, update and relaunch Conflux as before. Work in your own GitHub repository using the real Codex or ChatGPT sites; inspect pull requests separately below.</p>
   </div>
   <aside class="room-companions" id="room-companion-updates" data-room="updates" aria-label="Node companions for updates"></aside>
 </div>
@@ -728,10 +728,71 @@ tailscale serve status                      # Inspect routes</code></pre>
 </div>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
-<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Assistant</button>
-<aside id="assistant-dock" hidden aria-label="Nested assistant interface">
-  <div class="assistant-dock-head"><strong>Portal Assistant</strong><button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
-  <iframe id="assistant-iframe" src="/assistant" title="Conflux Assistant and account connections" loading="lazy"></iframe>
+<button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">↗ Develop</button>
+<aside id="assistant-dock" hidden aria-label="Open genuine developer tools">
+  <div class="assistant-dock-head"><strong>Develop your Conflux</strong><button type="button" id="assistant-close" aria-label="Close development bridge">Close</button></div>
+  <div class="bridge-scroll">
+    <p class="bridge-intro">Your own account. Your own repository. These links open the <strong>real ChatGPT, Codex and GitHub</strong> in new tabs—not copies of their interfaces.</p>
+    <section class="bridge-section" aria-labelledby="bridge-repo-title">
+      <h3 class="bridge-heading" id="bridge-repo-title">1 · Choose your repository</h3>
+      <label for="bridge-repository">Your GitHub fork or project
+        <input id="bridge-repository" type="text" maxlength="185" spellcheck="false" autocomplete="off" placeholder="your-account/CrystalCove"/>
+      </label>
+      <div class="bridge-buttons">
+        <button type="button" class="bridge-primary" id="bridge-save">Use this workspace</button>
+        <a id="bridge-fork" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Fork CrystalCove ↗</a>
+        <button type="button" id="bridge-checkout-use" hidden>Use my local checkout</button>
+      </div>
+      <p id="bridge-local-checkout" class="bridge-tip">Checking which repository this Portal is running from…</p>
+      <div class="bridge-info">Selected workspace: <span id="bridge-current-repo">MedioCritasVT/CrystalCove</span>. This is a local preference, not GitHub authentication.</div>
+      <div class="bridge-buttons">
+        <a id="bridge-open-repo" href="https://github.com/MedioCritasVT/CrystalCove" target="_blank" rel="noopener noreferrer">Open repository ↗</a>
+        <a id="bridge-open-prs" href="https://github.com/MedioCritasVT/CrystalCove/pulls" target="_blank" rel="noopener noreferrer">Pull requests ↗</a>
+        <a id="bridge-open-compare" href="https://github.com/MedioCritasVT/CrystalCove/compare" target="_blank" rel="noopener noreferrer">Compare branches ↗</a>
+      </div>
+    </section>
+    <section class="bridge-section" aria-labelledby="bridge-open-title">
+      <h3 class="bridge-heading" id="bridge-open-title">2 · Open your genuine AI workspace</h3>
+      <div class="bridge-buttons">
+        <a id="bridge-chatgpt" class="bridge-primary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
+        <a id="bridge-codex" class="bridge-primary" href="https://chatgpt.com/codex/" target="_blank" rel="noopener noreferrer">Open Codex Cloud ↗</a>
+      </div>
+      <p class="bridge-tip">Sign in there with your own ChatGPT account. To make code changes, use Codex and connect/select your repository in its environment. ChatGPT's GitHub reading access does not by itself grant write access. Availability depends on the user's plan and workspace.</p>
+    </section>
+    <section class="bridge-section" aria-labelledby="bridge-handoff-title">
+      <h3 class="bridge-heading" id="bridge-handoff-title">3 · Carry your request across</h3>
+      <label for="bridge-task">What would you like to change?
+        <textarea id="bridge-task" rows="3" maxlength="1200" placeholder="Example: Improve the Portal's onboarding and test the result."></textarea>
+      </label>
+      <div class="bridge-buttons"><button id="bridge-copy" class="bridge-primary" type="button">Copy handoff to ChatGPT / Codex</button></div>
+      <details>
+        <summary>Preview the exact text you'll copy</summary>
+        <label for="bridge-handoff">Portable project context
+          <textarea id="bridge-handoff" rows="6" readonly spellcheck="false"></textarea>
+        </label>
+      </details>
+      <p class="bridge-tip">The Portal cannot inject a message into an authenticated ChatGPT tab. Copy the handoff, open the real site, and paste it there. Nothing is transmitted by this form.</p>
+    </section>
+    <section class="bridge-section" aria-labelledby="bridge-return-title">
+      <h3 class="bridge-heading" id="bridge-return-title">4 · Review your work and return</h3>
+      <div class="bridge-buttons">
+        <button id="bridge-review-local" type="button">Open Updates &amp; Setup</button>
+        <a id="bridge-github-settings" href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub app access ↗</a>
+      </div>
+      <p class="bridge-tip">Review changes in Codex or GitHub, then use the Portal's existing Check for Updates → Update → Relaunch workflow for its active checkout. A fork selected above does not automatically replace the local Git origin.</p>
+    </section>
+    <section class="bridge-section">
+      <details>
+        <summary>Use another harness instead</summary>
+        <label for="bridge-harness">Your existing harness or agent interface URL
+          <input id="bridge-harness" type="url" autocomplete="off" spellcheck="false" placeholder="http://127.0.0.1:3000/"/>
+        </label>
+        <div class="bridge-buttons"><a id="bridge-open-harness" href="https://example.com/" target="_blank" rel="noopener noreferrer" hidden>Open my harness ↗</a></div>
+        <p class="bridge-tip">Save its URL with the workspace above. Only HTTPS or local-loopback HTTP is accepted. Your external harness handles its own sign-in.</p>
+      </details>
+      <p id="bridge-status" role="status" aria-live="polite">Nothing has been connected, uploaded or edited by the Portal.</p>
+    </section>
+  </div>
 </aside>
 <dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
   <h3 id="open-choice-title">Open this link</h3>
@@ -744,4 +805,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_chat.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/theme_studio.js"></script><script src="/portal_bridge.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
