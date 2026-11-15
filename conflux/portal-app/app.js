@@ -127,6 +127,7 @@ const roomFamiliar = {
   tour: {who:["Medio","Specula"], message:"Medio offers a look inside; Specula helps you notice what is shown."},
   soundtrack: {who:["Nexus","Medio"], message:"Nexus preserves the voices; Medio welcomes the music."},
   "service-setup": {who:["Ratio","Specula"], message:"Ratio checks the dependencies; Specula checks the evidence."},
+  studio: {who:["Limen","Ratio","Medio"], message:"Limen shapes the invitation; Ratio tests the change; Medio keeps it welcoming."},
   updates: {who:["Ratio","Limen"], message:"Ratio verifies the version; Limen makes the transition explicit."}
 };
 for (const [room, detail] of Object.entries(roomFamiliar)) {
