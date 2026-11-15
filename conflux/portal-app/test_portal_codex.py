@@ -35,11 +35,18 @@ for line in sys.stdin:
     elif method=="thread/resume":
         out({"id":rid,"result":{"thread":{"id":req["params"]["threadId"]}}})
     elif method=="turn/start":
-        out({"id":rid,"result":{"turn":{"id":"turn_test_123","status":"inProgress"}}})
-        out({"method":"turn/started","params":{"turn":{"id":"turn_test_123"}}})
-        out({"method":"item/agentMessage/delta","params":{"itemId":"m1","delta":"Here are the checks."}})
-        out({"method":"item/completed","params":{"item":{"id":"m1","type":"agentMessage","text":"Here are the checks."}}})
-        out({"method":"turn/completed","params":{"turn":{"id":"turn_test_123","status":"completed"}}})
+        policy=req["params"].get("sandboxPolicy") or {}
+        if "access" in policy or "readOnlyAccess" in policy:
+            out({"id":rid,"error":{"code":-32602,
+                                    "message":"Invalid request: legacy restricted reads are no longer supported"}})
+        elif policy.get("type") not in ("readOnly","workspaceWrite"):
+            out({"id":rid,"error":{"code":-32602,"message":"Unexpected sandbox policy"}})
+        else:
+            out({"id":rid,"result":{"turn":{"id":"turn_test_123","status":"inProgress"}}})
+            out({"method":"turn/started","params":{"turn":{"id":"turn_test_123"}}})
+            out({"method":"item/agentMessage/delta","params":{"itemId":"m1","delta":"Here are the checks."}})
+            out({"method":"item/completed","params":{"item":{"id":"m1","type":"agentMessage","text":"Here are the checks."}}})
+            out({"method":"turn/completed","params":{"turn":{"id":"turn_test_123","status":"completed"}}})
     elif rid is not None:
         out({"id":rid,"result":{}})
 """
