@@ -31,8 +31,8 @@ def status():
         "ollama": {"configured": True, "label": "Local Ollama (requires running server)"},
         "openai": {"configured": bool(os.getenv("OPENAI_API_KEY")),
                    "label": "OpenAI API (requires server key)"},
-        "oauth": False,
-        "note": "No ChatGPT account sign-in, Git read/write or agent tools are connected.",
+        "oauth": True,
+        "note": "ChatGPT local OAuth is optional; no Git write or agent tools are granted.",
     }
 
 
@@ -44,7 +44,7 @@ def validate_request(data):
     room = data.get("room")
     message = data.get("message")
     history = data.get("history", [])
-    if provider not in ("ollama", "openai"):
+    if provider not in ("ollama", "openai", "chatgpt"):
         raise ChatError("Choose a connected provider.")
     if agent not in NODES:
         raise ChatError("Choose a Node.")
@@ -63,7 +63,73 @@ def validate_request(data):
     return provider, agent, room, message.strip(), history
 
 
-def chat(data):
+def _chatgpt_plan_reply(messages, instructions, connections):
+    """Use the opted-in ChatGPT plan with its required streaming contract."""
+    from portal_auth import AuthError
+    if connections is None:
+        raise ChatError("Connect ChatGPT on this Portal host first.")
+    try:
+        token = connections.token("chatgpt")
+    except AuthError as error:
+        raise ChatError(str(error)) from error
+    headers = {"Authorization": "Bearer " + token, "Accept": "application/json"}
+    try:
+        with urlopen(Request("https://api.openai.com/v1/models", headers=headers),
+                     timeout=20) as res:
+            catalog = json.loads(res.read(96_000))
+        entries = catalog.get("models", catalog.get("data", []))
+        available = [entry.get("slug") or entry.get("id") for entry in entries
+                     if isinstance(entry, dict)
+                     and entry.get("visibility", "list") == "list"
+                     and isinstance(entry.get("slug") or entry.get("id"), str)]
+        if not available:
+            raise ChatError("ChatGPT provided no available models for this connection.")
+        preferred = os.getenv("CONFLUX_CHATGPT_MODEL", "")
+        model = preferred if preferred in available else available[0]
+        payload = {"model": model, "instructions": instructions,
+                   "input": messages, "store": False, "stream": True}
+        req = Request("https://api.openai.com/v1/responses",
+                      data=json.dumps(payload).encode("utf-8"), method="POST",
+                      headers={"Authorization": "Bearer " + token,
+                               "Content-Type": "application/json",
+                               "Accept": "text/event-stream"})
+        parts = []
+        complete = False
+        total = 0
+        with urlopen(req, timeout=90) as result:
+            for line in result:
+                total += len(line)
+                if total > 2_000_000:
+                    raise ChatError("The ChatGPT response stream was too large.")
+                if not line.startswith(b"data: "):
+                    continue
+                data = line[6:].strip()
+                if data == b"[DONE]":
+                    continue
+                event = json.loads(data)
+                kind = event.get("type")
+                if kind == "response.output_text.delta":
+                    value = event.get("delta", "")
+                    if isinstance(value, str) and sum(map(len, parts)) < 4000:
+                        parts.append(value)
+                elif kind == "response.completed":
+                    complete = True
+                    break
+                elif kind in ("response.failed", "response.incomplete", "error"):
+                    raise ChatError("ChatGPT did not complete the request. Check plan usage or retry.")
+        if not complete:
+            raise ChatError("The ChatGPT stream ended without a completed response.")
+        text = "".join(parts).strip()[:4000]
+        if not text:
+            raise ChatError("ChatGPT returned no text.")
+        return text
+    except ChatError:
+        raise
+    except (HTTPError, URLError, TimeoutError, ValueError, OSError, KeyError) as error:
+        raise ChatError("ChatGPT plan request failed. Check authorization and usage limits.") from error
+
+
+def chat(data, connections=None):
     provider, agent, room, message, history = validate_request(data)
     instructions = (
         "You are speaking as a configured Conflux design lens named "
@@ -79,6 +145,10 @@ def chat(data):
         "test, install, or update has happened. Keep replies concise."
     )
     messages = history + [{"role": "user", "content": message}]
+    if provider == "chatgpt":
+        result = _chatgpt_plan_reply(messages, instructions, connections)
+        return {"reply": result, "provider": provider,
+                "agent": agent, "read_only": True}
     try:
         if provider == "ollama":
             endpoint = "http://127.0.0.1:11434/api/chat"
