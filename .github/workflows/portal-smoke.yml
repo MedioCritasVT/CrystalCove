@@ -29,13 +29,14 @@ jobs:
         run: python3 -m unittest discover -p "test_*.py" -v
       - name: Compile local Python entry points
         working-directory: conflux/portal-app
-        run: python3 -m compileall -q portal.py app_updater.py theme_studio.py portal_chat.py portal_auth.py portal_changes.py portal_prs.py portal_desktop.py install_desktop_launcher.py game_locator.py
+        run: python3 -m compileall -q portal.py app_updater.py theme_studio.py portal_chat.py portal_auth.py portal_changes.py portal_prs.py portal_codex.py portal_desktop.py install_desktop_launcher.py game_locator.py
       - name: JavaScript parse check
         run: |
           node --check conflux/portal-app/app.js
           node --check conflux/portal-app/theme_studio.js
           node --check conflux/portal-app/portal_chat.js
           node --check conflux/portal-app/portal_bridge.js
+          node --check conflux/portal-app/portal_codex.js
           node --check conflux/portal-app/assistant_frame.js
           node --check conflux/portal-app/pull_desk.js
           node --check conflux/portal-app/music.js
