@@ -22,6 +22,7 @@ from theme_studio import ThemeStudio, StudioError
 from portal_chat import ChatError, chat as assistant_chat, status as assistant_status
 from portal_auth import AuthError, PortalConnections
 from portal_prs import PullDesk, PullError
+from portal_changes import ChatEdits, EditError
 from urllib.parse import parse_qs
 from install_desktop_launcher import install_desktop_launcher
 
@@ -43,6 +44,7 @@ UPDATES = UpdateManager(ROOT.parents[1])
 STUDIO = ThemeStudio(ROOT.parents[1])
 CONNECTIONS = PortalConnections()
 PULLS = PullDesk(STUDIO.repository, CONNECTIONS)
+CHANGES = ChatEdits(ROOT.parents[1], CONNECTIONS, PULLS)
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -355,6 +357,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self.respond(200, PULLS.detail(num))
             except PullError as error:
                 return self.respond(409, {"error": str(error)[:350]})
+        if route == "/api/changes/files":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local agent editing only."})
+            return self.respond(200, {"files": CHANGES.files(), "scope": "reviewed CSS files"})
         if route == "/api/connections/status":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local connections only."})
@@ -414,7 +420,7 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/studio/preview", "/api/studio/main",
                          "/api/assistant/chat",
                          "/api/connections/start", "/api/connections/sign-out",
-                         "/api/pulls/merge"):
+                         "/api/pulls/merge", "/api/changes/propose", "/api/changes/publish"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -443,6 +449,15 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route in ("/api/changes/propose", "/api/changes/publish"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local agent editing only."})
+            try:
+                if route.endswith("/propose"):
+                    return self.respond(200, CHANGES.propose(body))
+                return self.respond(200, CHANGES.publish(body))
+            except EditError as error:
+                return self.respond(409, {"error": str(error)[:380]})
         if route == "/api/pulls/merge":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local PR merge only."})
