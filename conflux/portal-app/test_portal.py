@@ -86,6 +86,8 @@ class PortalSmokeTest(unittest.TestCase):
             ("/soundstage.js", "createMediaStreamSource"),
             ("/portal_finish.css", "grid-template-areas"),
             ("/portal_symbols.css", ".nav-symbol"),
+            ("/portal_typography.css", "Conflux Marcellus"),
+            ("/portal_optical.css", 'data-node="nexus"'),
 
             ("/video_tour.js", "conflux.portal.video-tour.v0.1"),
         ):
@@ -97,6 +99,17 @@ class PortalSmokeTest(unittest.TestCase):
         tour = json.loads(body)
         self.assertEqual(len(tour["items"]), 4)
         self.assertEqual(tour["release_tag"], "conflux-portal-tour-v0.1")
+
+    def test_self_hosted_offline_fonts_and_bounded_routes(self):
+        for name in ("Marcellus-Latin.woff2", "SourceSans3-Latin.woff2",
+                     "JetBrainsMono-Latin.woff2"):
+            with urlopen(self.base + "/fonts/" + name, timeout=3) as response:
+                self.assertEqual(response.status, 200)
+                self.assertEqual(response.headers["Content-Type"], "font/woff2")
+                self.assertEqual(response.read(4), b"wOF2")
+        with self.assertRaises(HTTPError) as unknown:
+            urlopen(self.base + "/fonts/not-registered.woff2", timeout=3)
+        self.assertEqual(unknown.exception.code, 404)
 
     def test_bundled_apps_open(self):
         for route, expected in (("/apps/atelier", "Conflux · The Atelier"),
