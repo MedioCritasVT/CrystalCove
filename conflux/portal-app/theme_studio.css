@@ -22,3 +22,5 @@ body.theme-personal .threshold-postscript{border-color:var(--line)}
 #studio .studio-actions{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}
 #studio .studio-actions button{max-width:100%}
 #studio .studio-details{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+
+#studio [hidden]{display:none!important}
