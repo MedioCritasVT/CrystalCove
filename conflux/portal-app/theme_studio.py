@@ -236,6 +236,11 @@ class ThemeStudio:
                     self.git("switch", "-c", branch, cwd=worktree)
                     destination = worktree / relative
                     destination.parent.mkdir(parents=True, exist_ok=True)
+                    # Refuse symlinked ancestor directories in the checkout.
+                    # A source tree must not redirect palette writes outside the
+                    # disposable worktree, even if its content is untrusted.
+                    if not destination.parent.resolve().is_relative_to(worktree.resolve()):
+                        raise StudioError("Theme directory escapes the review worktree.")
                     if destination.exists() or destination.is_symlink():
                         raise StudioError("Theme name already exists in the checkout; choose another.")
                     destination.write_text(payload, encoding="utf-8")
@@ -290,6 +295,8 @@ class ThemeStudio:
             data = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError) as error:
             raise StudioError("Cannot read the theme file.") from error
+        if data.get("schema") != 1 or data.get("agent") not in NODES:
+            raise StudioError("Theme version or Node identity is unsupported.")
         return {"name": data.get("name"), "agent": data.get("agent"),
                 "palette": validate_palette(data.get("palette")),
-                "schema": data.get("schema"), "loaded": True}
+                "schema": 1, "loaded": True}
