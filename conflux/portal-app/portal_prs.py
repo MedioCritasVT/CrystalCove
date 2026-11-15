@@ -57,7 +57,7 @@ class PullDesk:
         headers = {
             "Accept": "application/vnd.github+json",
             "User-Agent": "Conflux-Portal-Local",
-            "X-GitHub-Api-Version": "2026-03-10",
+            "X-GitHub-Api-Version": "2022-11-28",
         }
         if token:
             headers["Authorization"] = "Bearer " + token
@@ -126,6 +126,11 @@ class PullDesk:
             raise PullError("This pull request is not open.")
         if not COMMIT.fullmatch(summary["head_sha"]):
             raise PullError("GitHub did not return a valid head commit.")
+        all_patches = all(isinstance(x.get("patch"), str) and
+                          0 < len(x["patch"]) <= 7000 for x in files)
+        complete = (len(files) < 100 and
+                    int(pr.get("changed_files", 0)) == len(files) and
+                    len(files) <= 25 and all_patches)
         summary.update({
             "repository": repo, "mergeable": pr.get("mergeable"),
             "mergeable_state": pr.get("mergeable_state", "unknown"),
@@ -135,10 +140,11 @@ class PullDesk:
                 "status": x.get("status", "unknown"),
                 "additions": x.get("additions", 0),
                 "deletions": x.get("deletions", 0),
-            } for x in files[:75]],
-            "partial_file_list": len(files) >= 100 or int(pr.get("changed_files", 0)) > 75,
+                "patch": x.get("patch") if complete else None,
+            } for x in files[:25]],
+            "partial_file_list": not complete,
             "body": str(pr.get("body") or "")[:1800],
-            "review_complete": False,
+            "review_complete": complete,
         })
         ticket = secrets.token_urlsafe(24)
         with self.lock:
