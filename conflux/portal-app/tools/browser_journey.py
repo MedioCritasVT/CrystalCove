@@ -95,7 +95,9 @@ def main():
                 assert page.locator("#assistant-dock select").count() == 0
                 assert page.locator("#bridge-repository").is_hidden()
                 page.locator("#codex-start").click()
-                page.locator("#codex-message").wait_for(state="visible")
+                page.wait_for_function(
+                    "() => document.querySelector('#codex-message')?.disabled === false",
+                    timeout=10000)
                 assert page.locator("#codex-message").is_enabled()
                 page.locator("#codex-message").fill("Inspect Portal styles and report issues.")
                 page.locator("#codex-send").click()
