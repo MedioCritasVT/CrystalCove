@@ -117,13 +117,16 @@ class CodexProtocolTest(unittest.TestCase):
             with mock.patch.object(bridge,"running",return_value=True), \
                  mock.patch.object(bridge,"_request",return_value={"turn":{"id":"turn_abc"}}) as call:
                 bridge.send("Read only?")
-                self.assertEqual(call.call_args.args[1]["sandboxPolicy"]["type"],"readOnly")
+                readonly=call.call_args.args[1]["sandboxPolicy"]
+                self.assertEqual(readonly["type"],"readOnly")
+                self.assertEqual(readonly["access"]["readableRoots"],[str(Path(tmp).resolve())])
                 bridge.busy=False
                 bridge.edits(True)
                 bridge.send("Apply approved changes.")
                 policy=call.call_args.args[1]["sandboxPolicy"]
                 self.assertEqual(policy["type"],"workspaceWrite")
                 self.assertFalse(policy["networkAccess"])
+                self.assertEqual(policy["readOnlyAccess"]["readableRoots"],[str(Path(tmp).resolve())])
                 self.assertEqual(policy["writableRoots"],[str(Path(tmp).resolve())])
 
 
