@@ -215,9 +215,9 @@ class CodexBridge:
             thread = params.get("thread") or {}
             self._event("notice", message="Codex conversation started: " + str(thread.get("id") or "")[:100])
 
-    def _reader(self):
+    def _reader(self, process):
         try:
-            for raw in self.proc.stdout:
+            for raw in process.stdout:
                 if len(raw) > 260000:
                     continue
                 try:
@@ -247,7 +247,7 @@ class CodexBridge:
                         stderr=subprocess.DEVNULL, bufsize=1)
                 except (OSError, ValueError) as error:
                     raise CodexError("Could not start the locally installed Codex CLI.") from error
-                threading.Thread(target=self._reader, name="conflux-codex-reader", daemon=True).start()
+                threading.Thread(target=self._reader, args=(self.proc,), name="conflux-codex-reader", daemon=True).start()
                 try:
                     self._request("initialize", {
                         "clientInfo": {"name": "conflux_portal", "title": "Conflux Portal",
@@ -330,7 +330,14 @@ class CodexBridge:
                 "sandboxPolicy": {
                     "type": "workspaceWrite", "writableRoots": [str(self.checkout)],
                     "networkAccess": False,
-                } if self.edit_enabled else {"type": "readOnly"},
+                    "readOnlyAccess": {"type": "restricted",
+                                       "includePlatformDefaults": True,
+                                       "readableRoots": [str(self.checkout)]},
+                } if self.edit_enabled else {
+                    "type": "readOnly",
+                    "access": {"type": "restricted", "includePlatformDefaults": True,
+                               "readableRoots": [str(self.checkout)]},
+                },
             }, timeout=25)
             turn = (result.get("turn") or {}).get("id")
             if isinstance(turn, str):
