@@ -6,6 +6,9 @@
   const baseline = {bg:"#111522",side:"#151b2a",surface:"#202638",ink:"#f5f2f6",
     muted:"#c4c4d3",line:"#53556b",amber:"#e9bf84",violet:"#c2a4f3",
     blue:"#84bff3",green:"#9cdec0"};
+  // Four expressive accents over ten compatible CSS color fields.
+  const accents = ["amber","violet","blue","green"];
+  const accentNames = {amber:"Gold",violet:"Violet",blue:"Blue",green:"Green"};
   const palettes = {
     "Classic Conflux": baseline,
     "Tidal": {...baseline,bg:"#101d28",side:"#152b35",surface:"#213743",
@@ -13,7 +16,24 @@
     "Ember": {...baseline,bg:"#201721",side:"#2a1d2a",surface:"#382936",
       amber:"#ffd19b",violet:"#e4b4ec",blue:"#a8cafa",green:"#ade8c4"},
     "Quiet Grove": {...baseline,bg:"#132018",side:"#1c2823",surface:"#26362c",
-      amber:"#e5d5a6",violet:"#c7b7ed",blue:"#a4d9e8",green:"#a9e9ba"}
+      amber:"#e5d5a6",violet:"#c7b7ed",blue:"#a4d9e8",green:"#a9e9ba"},
+    "Amethyst Observatory": {...baseline,bg:"#141426",side:"#1c1c32",surface:"#292742",
+      muted:"#ccc4df",line:"#615d7f",amber:"#e8c58e",violet:"#d5adff",blue:"#92c6ff",green:"#a2dec3"},
+    "Rose Circuit": {...baseline,bg:"#21151e",side:"#2a1e2b",surface:"#392a39",
+      ink:"#fff1f4",muted:"#e2ccd8",line:"#805e78",
+      amber:"#ffcc99",violet:"#f5b1e5",blue:"#9bc4f2",green:"#a9dcc0"},
+    "Sapphire Nocturne": {...baseline,bg:"#0d1828",side:"#142239",surface:"#20324b",
+      ink:"#f1f7ff",muted:"#c3d4e5",line:"#57718c",
+      amber:"#eacb94",violet:"#bcb9f4",blue:"#7ab8f9",green:"#85ddc9"},
+    "Copper Atlas": {...baseline,bg:"#1c1715",side:"#28221f",surface:"#362e2c",
+      ink:"#f9f1e5",muted:"#d4c8c1",line:"#736457",
+      amber:"#f2bb83",violet:"#d6aeef",blue:"#92c8da",green:"#a8d3aa"},
+    "Jade Aether": {...baseline,bg:"#0d201f",side:"#152d2a",surface:"#203d37",
+      ink:"#e9fbf4",muted:"#bee1d7",line:"#547e76",
+      amber:"#efd69a",violet:"#c8b9ef",blue:"#90d9e8",green:"#82e8be"},
+    "Opal Twilight": {...baseline,bg:"#191821",side:"#232234",surface:"#2e3042",
+      ink:"#f7f4f7",muted:"#d0ced9",line:"#6d7185",
+      amber:"#f0d0af",violet:"#c0a6ec",blue:"#a7d6e9",green:"#badcca"}
   };
   const storageKey = "conflux-personal-theme-v1";
   const textureTypes = new Set(["none","parchment","constellation","grid","weave"]);
