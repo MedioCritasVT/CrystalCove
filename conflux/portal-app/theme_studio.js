@@ -59,8 +59,66 @@
   function paletteFromInputs() {
     return Object.fromEntries(fields.map(k => [k, $("studio-color-" + k).value]));
   }
+  function syncHarmony(p) {
+    for (const k of accents) $("studio-harmony-" + k).value = p[k];
+    const preview = $("studio-preset-preview");
+    preview.replaceChildren();
+    for (const k of accents) {
+      const swatch = document.createElement("span");
+      swatch.className = "studio-preset-chip";
+      const spot = document.createElement("span");
+      spot.className = "studio-preset-spot";
+      spot.style.backgroundColor = p[k];
+      spot.setAttribute("aria-hidden", "true");
+      const label = document.createElement("small");
+      label.textContent = accentNames[k] + " · " + p[k].toUpperCase();
+      swatch.append(spot, label);
+      preview.append(swatch);
+    }
+  }
   function putInputs(p) {
     for (const k of fields) $("studio-color-" + k).value = p[k];
+    syncHarmony(p);
+  }
+  // The opposite of a hue is 180 degrees around the color wheel, softened
+  // to a luminous Conflux blue rather than allowing unreadably dark accents.
+  function opposite(hex) {
+    const [r,g,b] = [1,3,5].map(index => parseInt(hex.slice(index,index+2),16)/255);
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    const d = max - min, l = (max + min) / 2;
+    const sat = d === 0 ? 0 : d / (1 - Math.abs(2*l - 1));
+    let hue = 0;
+    if (d !== 0) {
+      if (max === r) hue = ((g-b)/d) % 6;
+      else if (max === g) hue = (b-r)/d + 2;
+      else hue = (r-g)/d + 4;
+      hue = (hue*60 + 360) % 360;
+    }
+    hue = (hue + 180) % 360;
+    const strength = Math.min(.75,Math.max(.43,sat));
+    const light = Math.min(.83,Math.max(.70,l));
+    const chroma = strength * Math.min(light,1-light);
+    function channel(n) {
+      const k = (n + hue / 30) % 12;
+      const v = light - chroma * Math.max(-1,Math.min(k-3,9-k,1));
+      return Math.round(v*255).toString(16).padStart(2,"0");
+    }
+    return "#" + channel(0) + channel(8) + channel(4);
+  }
+  const linkComplement = $("studio-link-complement");
+  function customSelection() { $("studio-preset").value = "custom"; }
+  function applyAccent(key,value) {
+    $("studio-color-" + key).value = value;
+    if (key === "amber" && linkComplement.checked) {
+      $("studio-color-blue").value = opposite(value);
+    } else if (key === "blue" && linkComplement.checked) {
+      // Manual changes always take precedence over a requested relationship.
+      linkComplement.checked = false;
+    }
+    syncHarmony(paletteFromInputs());
+    applyPalette(paletteFromInputs());
+    customSelection();
+    show("Four-color palette previewed. Save to retain it.");
   }
   function applyPalette(p) {
     if (!valid(p)) throw Error("Invalid theme colors.");
