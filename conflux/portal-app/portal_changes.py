@@ -31,8 +31,8 @@ MAX_SOURCE = 30000
 MAX_DIFF = 14000
 MAX_REPLACE = 3800
 CSS_DANGEROUS = re.compile(
-    r"(?i)@import|url\\s*\\(|expression\\s*\\(|"
-    r"-moz-binding|behavior\\s*:|</|\\x00"
+    r"(?i)@import|url\s*\(|expression\s*\(|"
+    r"-moz-binding|behavior\s*:|</|\x00"
 )
 
 
@@ -43,7 +43,7 @@ class EditError(Exception):
 def json_reply(message):
     text = message.strip()
     if text.startswith("```"):
-        text = re.sub(r"^\\x60{3}(?:json)?\\s*|\\s*\\x60{3}$", "", text,
+        text = re.sub(r"^\x60{3}(?:json)?\s*|\s*\x60{3}$", "", text,
                       flags=re.I).strip()
     try:
         parsed = json.loads(text)
