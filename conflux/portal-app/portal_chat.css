@@ -21,3 +21,5 @@
 .assistant-dock-actions button,.assistant-dock-head button{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:var(--surface);color:var(--ink);font-size:.85rem;cursor:pointer}
 .assistant-dock-actions button:disabled{opacity:.5;cursor:wait}
 @media(max-width:650px){#assistant-dock{right:8px;bottom:65px;width:calc(100vw - 16px);height:min(530px,calc(100dvh - 84px))}#assistant-dock-toggle{right:10px;bottom:10px}}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
