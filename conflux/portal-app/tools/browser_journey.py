@@ -89,6 +89,15 @@ def main():
                 small.locator('button[data-page="studio"]').click()
                 assert small.locator("#studio").is_visible()
                 small.screenshot(path=str(proof / "01-wayfinding-mobile.png"),full_page=True)
+                small.locator("#music-visual-toggle").click()
+                assert small.locator("#music-visual-panel").is_visible()
+                md = small.locator("#music-dock").bounding_box()
+                mp = small.locator("#music-visual-panel").bounding_box()
+                assert md and mp and mp["x"] >= 0
+                assert mp["x"]+mp["width"] <= 390 + 2, "music stage clipped on phone"
+                assert mp["y"]+mp["height"] <= md["y"]+5, "stage overlaps mobile controls"
+                small.screenshot(path=str(proof / "01-music-mobile.png"),full_page=False)
+                small.locator("#music-visual-close").click()
                 small.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
                 observations.append("Four grouped nav areas, 14 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
@@ -322,7 +331,24 @@ def main():
                 page.locator("#music-visual-toggle").click()
                 assert page.locator("#music-visual-panel").is_visible()
                 visual_state = page.locator("#music-visual-status").text_content()
+                dock_box = page.locator("#music-dock").bounding_box()
+                stage_box = page.locator("#music-visual-panel").bounding_box()
+                canvas_box = page.locator("#music-spectrum").bounding_box()
+                assert stage_box and dock_box and canvas_box
+                assert stage_box["width"] >= dock_box["width"] * .78, (
+                    f"soundstage needs to span the music dock: {stage_box} vs {dock_box}")
+                assert canvas_box["width"] >= stage_box["width"] - 50, (
+                    f"real spectrum canvas did not grow: {canvas_box}")
+                assert stage_box["y"] + stage_box["height"] <= dock_box["y"] + 5, (
+                    "wide soundstage should remain above the music controls")
+                assert page.locator("#music-dock").evaluate(
+                    "(e)=>getComputedStyle(e).display") == "grid"
+                assert page.locator("#home .room-hero").evaluate(
+                    "(e)=>getComputedStyle(e).boxShadow") != "none"
+                assert page.locator("main > .notice").evaluate(
+                    "(e)=>getComputedStyle(e).boxShadow") != "none"
                 page.screenshot(path=str(proof / "05-music-while-exploring.png"), full_page=True)
+                page.screenshot(path=str(proof / "05-wide-soundstage.png"), full_page=False)
                 page.locator("#music-visual-close").click()
                 assert not page.locator("#music-visual-panel").is_visible()
                 observations.append("Optional spectrum panel opens and closes without starting or stopping music: " + visual_state)
