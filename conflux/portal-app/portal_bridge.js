@@ -8,13 +8,10 @@
  */
 (() => {
   const $ = id => document.getElementById(id);
-  const dock = $("assistant-dock");
-  const toggle = $("assistant-dock-toggle");
-  const nav = $("assistant-open-nav");
   const repoField = $("bridge-repository");
   const taskField = $("bridge-task");
   const handoff = $("bridge-handoff");
-  if (!dock || !toggle || !nav || !repoField || !taskField || !handoff) return;
+  if (!repoField || !taskField || !handoff) return;
 
   const UPSTREAM = "MedioCritasVT/CrystalCove";
   const KEY = "conflux-development-bridge-v1";
@@ -51,14 +48,6 @@
     const el = $("bridge-status");
     el.textContent = message;
     el.dataset.error = String(error);
-  }
-
-  function open(opened) {
-    dock.hidden = !opened;
-    toggle.setAttribute("aria-expanded", String(opened));
-    nav.setAttribute("aria-expanded", String(opened));
-    if (opened) repoField.focus();
-    else toggle.focus();
   }
 
   function updateLinks() {
@@ -174,23 +163,12 @@
     });
   }
 
-  toggle.addEventListener("click", () => open(dock.hidden));
-  nav.addEventListener("click", () => open(true));
-  $("assistant-close").addEventListener("click", () => open(false));
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && !dock.hidden) open(false);
-  });
   $("bridge-save").addEventListener("click", save);
   $("bridge-copy").addEventListener("click", copy);
   $("bridge-checkout-use").addEventListener("click", () => {
     if (!checkout?.git_ready) return;
     repoField.value = checkout.repository;
     save();
-  });
-  $("bridge-review-local").addEventListener("click", () => {
-    open(false);
-    document.querySelector('nav button[data-page="updates"]')?.click();
-    $("updates-check")?.focus();
   });
   taskField.addEventListener("input", () => {
     updateHandoff();
