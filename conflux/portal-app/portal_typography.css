@@ -1,0 +1,125 @@
+/* Conflux typography — self-hosted OFL Latin subsets for offline Portal use.
+ * The glyph tiles use their own Unicode symbol fallback; do not force
+ * decorative marks through Latin-only UI fonts.
+ * Licenses: fonts/licenses/*.txt. Originals pinned by Git blob SHA in Git. */
+@font-face{
+  font-family:"Conflux Marcellus";font-style:normal;font-weight:400;
+  src:url("/fonts/Marcellus-Latin.woff2") format("woff2");
+  font-display:swap;
+}
+@font-face{
+  font-family:"Conflux Source Sans 3";font-style:normal;font-weight:400 600;
+  src:url("/fonts/SourceSans3-Latin.woff2") format("woff2");
+  font-display:swap;
+}
+@font-face{
+  font-family:"Conflux JetBrains Mono";font-style:normal;font-weight:400 500;
+  src:url("/fonts/JetBrainsMono-Latin.woff2") format("woff2");
+  font-display:swap;
+}
+:root{
+  --font-display:"Conflux Marcellus",Marcellus,Georgia,"Times New Roman",serif;
+  --font-ui:"Conflux Source Sans 3","Source Sans 3",system-ui,-apple-system,Arial,sans-serif;
+  --font-instrument:"Conflux JetBrains Mono","JetBrains Mono",ui-monospace,"DejaVu Sans Mono",monospace;
+}
+html,body{font-family:var(--font-ui)}
+button,input,textarea,select,option{font-family:var(--font-ui)}
+/* Marcellus belongs to the world's architecture, not maintenance consoles. */
+.side h1,
+.panel h2,
+.panel h3,
+.panel .room-hero h2,
+.panel .room-hero .eyebrow,
+.room-companions .pet-names,
+#studio .studio-harmony legend,
+.library-book h3,
+.readme-body h1,.readme-body h2,
+.readme-body h3,.readme-body h4{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-synthesis:weight;
+}
+.side h1{font-size:2rem;line-height:1.13;letter-spacing:-.008em}
+.panel .room-hero h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  letter-spacing:-.014em;
+  line-height:1.12;
+  text-wrap:balance;
+}
+/* The earlier deliberately ultra-light sans title treatment was difficult
+ * to read. Keep every room title part of one architectural voice. */
+#apps .room-hero h2,#downloads .room-hero h2,#vos .room-hero h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  letter-spacing:-.014em;
+}
+.panel h3{line-height:1.28;letter-spacing:.002em}
+.panel .room-hero .eyebrow{
+  font-size:.86rem;font-weight:400;letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.room-companions .pet-names{font-size:1.18rem;letter-spacing:.015em}
+.panel .lead,
+.panel .card p,
+.panel .download-panel p,
+.panel .room-hero .lead,
+main > .notice,
+.readme-body,
+.portal-nav .nav-group button .nav-label{
+  font-family:var(--font-ui);
+}
+/* One interface voice for every navigation group, including Begin. */
+.portal-nav .nav-group button,
+.portal-nav .nav-group[data-group="begin"] button .nav-label,
+.portal-nav .nav-group[data-group="maintain"] button .nav-label,
+.portal-nav .nav-group button .nav-label{
+  font-family:var(--font-ui);
+  font-weight:550;
+  letter-spacing:.006em;
+}
+.portal-nav .nav-group button .nav-label,
+.portal-nav .nav-group[data-group="begin"] button .nav-label{font-size:.94rem;line-height:1.27}
+.portal-nav .nav-group[data-group="maintain"] button .nav-label{font-size:.91rem}
+.portal-nav .nav-group button[aria-current="page"] .nav-label{font-weight:650}
+.portal-nav .nav-group button.nav-secondary .nav-label{font-weight:500}
+.portal-nav .nav-group-label{
+  font-family:var(--font-ui);font-weight:700;letter-spacing:.135em;
+}
+.music-dock,.music-advanced-panel,.music-dock button,.music-dock select{
+  font-family:var(--font-ui);
+}
+.music-dock-heading strong{font-weight:650;letter-spacing:.012em}
+/* Technical notation and measured states are distinct from narrative prose. */
+code,pre,kbd,samp,
+.mirror-code,.readme-body code,.readme-body pre,
+.music-timeline output,#music-elapsed,#music-duration,
+.nav-group .nav-group-label span,
+.music-visual-status,
+#updates-status,#codex-indicator,
+#studio-theme-status,.status-line{
+  font-family:var(--font-instrument);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0;
+}
+pre{tab-size:2}
+#music-elapsed,#music-duration{font-size:.74rem;min-width:3.5ch}
+.readme-body code{font-size:.91em}
+#studio .studio-preset-chip small{font-family:var(--font-instrument);font-size:.68rem}
+/* Brand symbols, Node sigils and visual marks intentionally retain the
+ * dedicated glyph fallback stack in portal_symbols.css. */
+@media(max-width:740px){
+  .portal-nav .nav-group button .nav-label,
+  .portal-nav .nav-group[data-group="begin"] button .nav-label,
+  .portal-nav .nav-group[data-group="maintain"] button .nav-label{
+    font-size:.85rem;
+  }
+  .side h1{font-size:1.88rem}
+  .room-companions .pet-names{font-size:1.07rem}
+}
+@media(max-width:420px){
+  .portal-nav .nav-group button .nav-label,
+  .portal-nav .nav-group[data-group="begin"] button .nav-label{
+    font-size:.81rem;
+  }
+}
