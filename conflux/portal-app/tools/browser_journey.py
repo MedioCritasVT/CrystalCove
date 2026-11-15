@@ -141,7 +141,7 @@ def main():
                 page.locator("#pull-refresh").click()
                 page.locator("#pull-list").select_option("11")
                 page.locator("#pull-inspect").click()
-                assert page.locator("#pull-review").is_visible()
+                page.locator("#pull-review").wait_for(state="visible",timeout=10000)
                 assert "+padding:8px" in page.locator("#pull-files").inner_text()
                 assert page.locator("#pull-merge").is_disabled()
                 page.locator("#pull-reviewed").check()
