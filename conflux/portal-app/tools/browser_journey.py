@@ -99,6 +99,26 @@ def main():
                 small.screenshot(path=str(proof / "01-music-mobile.png"),full_page=False)
                 small.locator("#music-visual-close").click()
                 small.close()
+                # Match the Architect's 876px desktop screenshot: check the
+                # mid-width dock while music is off and the spectrum is opt-in.
+                medium=context.new_page()
+                medium.set_viewport_size({"width":876,"height":900})
+                medium.goto(base,wait_until="domcontentloaded")
+                medium.locator("#music-visual-toggle").click()
+                assert medium.locator("#music-visual-panel").is_visible()
+                middle_dock=medium.locator("#music-dock").bounding_box()
+                middle_stage=medium.locator("#music-visual-panel").bounding_box()
+                assert middle_dock and middle_stage
+                assert middle_stage["width"]>=middle_dock["width"]*.80
+                assert middle_stage["y"]+middle_stage["height"]<=middle_dock["y"]+5
+                for cid in ("music-toggle","music-prev","music-play","music-next",
+                            "music-select","music-version","music-visual-toggle"):
+                    b=medium.locator("#"+cid).bounding_box()
+                    assert b and b["x"]>=middle_dock["x"]-2 and (
+                        b["x"]+b["width"]<=middle_dock["x"]+middle_dock["width"]+2), (
+                        f"mid-width music control clipped: {cid}: {b}")
+                medium.screenshot(path=str(proof / "01-music-medium.png"),full_page=False)
+                medium.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
                 observations.append("Four grouped nav areas, 14 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
 
@@ -311,6 +331,9 @@ def main():
                 rows = page.locator("#music-select option").count()
                 assert rows >= 10, f"expected ten music compositions, got {rows}"
                 observations.append("Official 11-track GitHub Release installs into an isolated user library")
+                page.locator(".music-advanced summary").click()
+                assert not page.locator(".music-advanced").evaluate("(e) => e.open"), (
+                    "options should close before showing the wide spectrum")
 
                 # Music On itself starts playback. Do not immediately click
                 # Play a second time: it becomes Pause once audio is playing.
