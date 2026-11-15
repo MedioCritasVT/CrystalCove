@@ -713,6 +713,7 @@ tailscale serve status                      # Inspect routes</code></pre>
       <option value="squash">Squash and merge</option>
       <option value="rebase">Rebase and merge</option>
     </select>
+    <label class="pull-approval"><input type="checkbox" id="pull-reviewed"/> I reviewed the displayed diff, understand the affected repository and branch, and want to authorize a merge.</label>
     <div class="studio-actions"><button class="action" type="button" id="pull-merge" disabled>Merge reviewed PR</button></div>
   </div>
   <p id="pull-status" role="status" aria-live="polite" class="studio-status">The Portal never merges on its own. GitHub still enforces branch protections and required reviews.</p>
