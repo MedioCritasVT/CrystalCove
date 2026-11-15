@@ -21,6 +21,7 @@ from app_updater import UpdateManager, UpdateError
 from theme_studio import ThemeStudio, StudioError
 from portal_chat import ChatError, chat as assistant_chat, status as assistant_status
 from portal_auth import AuthError, PortalConnections
+from portal_prs import PullDesk, PullError
 from urllib.parse import parse_qs
 from install_desktop_launcher import install_desktop_launcher
 
@@ -41,6 +42,7 @@ HOST = "127.0.0.1"
 UPDATES = UpdateManager(ROOT.parents[1])
 STUDIO = ThemeStudio(ROOT.parents[1])
 CONNECTIONS = PortalConnections()
+PULLS = PullDesk(STUDIO.repository, CONNECTIONS)
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -343,6 +345,16 @@ class Handler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(data)
             return
+        if route in ("/api/pulls/list", "/api/pulls/detail"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local PR desk only."})
+            try:
+                if route.endswith("/list"):
+                    return self.respond(200, PULLS.list())
+                num = parse_qs(urlsplit(self.path).query).get("number", [""])[0]
+                return self.respond(200, PULLS.detail(num))
+            except PullError as error:
+                return self.respond(409, {"error": str(error)[:350]})
         if route == "/api/connections/status":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local connections only."})
@@ -401,7 +413,8 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/studio/propose", "/api/studio/publish",
                          "/api/studio/preview", "/api/studio/main",
                          "/api/assistant/chat",
-                         "/api/connections/start", "/api/connections/sign-out"):
+                         "/api/connections/start", "/api/connections/sign-out",
+                         "/api/pulls/merge"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -430,6 +443,13 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route == "/api/pulls/merge":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local PR merge only."})
+            try:
+                return self.respond(200, PULLS.merge(body))
+            except PullError as error:
+                return self.respond(409, {"error": str(error)[:350]})
         if route in ("/api/connections/start", "/api/connections/sign-out"):
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Local account connection only."})
