@@ -7,11 +7,23 @@ const vm = require("node:vm");
 const html = fs.readFileSync("index.html", "utf8");
 const source = fs.readFileSync("app.js", "utf8");
 const petCss = fs.readFileSync("familiars.css","utf8");
+const polishCss = fs.readFileSync("portal_polish.css", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
 const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates"];
 assert.deepEqual(new Set(navIds), new Set(panels));
+assert.equal(navIds.length, panels.length, "each room appears in the navigation once");
+assert.equal(new Set(navIds).size, 14, "duplicate room navigation");
+const groupIds = [...html.matchAll(/<div class="nav-group" data-group="([^"]+)"/g)].map(m => m[1]);
+assert.deepEqual(groupIds, ["begin","discover","create","maintain"], "visitor-first navigation groups");
+assert(html.includes('class="nav-stewards"'), "stewardship must be optional");
+assert(html.includes("A Node offers a perspective, never a required path."), "a Node must not gate room access");
+assert(html.includes('href="/portal_polish.css"'), "room polish stylesheet is required");
+assert(polishCss.includes("@media(prefers-reduced-motion:reduce)"), "animations must respect reduced motion");
+assert(polishCss.includes(".nav-group button[aria-current=\"page\"]"), "active room must be clear");
+assert(source.includes("stewardDuties") && source.includes("pet-duty"), "Node responsibility labels missing");
+
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
                   "game-launch", "game-linked-state", "game-picker-availability",
@@ -190,12 +202,18 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
     assert.equal(crew.children.length, id === "nodes" ? 5 : id === "studio" ? 3 : 2);
     assert(crew.children.every(pet => pet.className === "pet-token"));
     assert(dock.children[1].textContent.length > 0, "unlabeled page companion");
+    assert.equal(dock.children[1].className, "pet-steward-heading", "stewardship label missing");
+    assert.equal(dock.children[2].className, "pet-names", "Node names should remain visible");
+    assert.equal(dock.children[3].className, "pet-duties", "room responsibilities missing");
+    assert.equal(dock.children[3].children.length, crew.children.length, "one duty per Node");
   }
   const memberCards = named["node-list"].children;
   assert(memberCards.every(c => c.children[0].children[1].children.some(x => x.className === "pet-reference-link")),
           "every Node must link her source character panel");
   assert(memberCards.every(c => c.children[0].children[0].children[0].className === "pet-token"),
          "Node profiles should show the same familiar character motif");
+  assert(memberCards.every(c => c.children[0].children[1].children.some(x => x.className === "node-portal-duty")),
+         "each Node card needs her Portal responsibility");
 
   assert.equal(named["home-game-action"].textContent, "Get the Game");
   assert.equal(named["app-list"].children.length, 3);
