@@ -1,0 +1,62 @@
+/* Local Codex app-server conversation. No fork/auth dropdowns in this panel. */
+#assistant-dock-toggle{position:fixed;right:18px;bottom:16px;z-index:60;
+ padding:11px 16px;border-radius:23px;border:1px solid var(--line);
+ background:var(--surface);color:var(--ink);font-weight:750;
+ box-shadow:0 9px 25px #0009;cursor:pointer}
+#assistant-open-nav{display:block;width:100%;border:1px solid var(--line);
+ background:transparent;color:var(--ink);border-radius:9px;padding:10px 12px;
+ text-align:left;cursor:pointer}
+#assistant-dock{position:fixed;right:12px;bottom:72px;z-index:59;
+ width:min(460px,calc(100vw - 24px));height:min(670px,calc(100dvh - 92px));
+ border:1px solid var(--line);border-radius:15px;background:var(--side);
+ color:var(--ink);box-shadow:0 16px 50px #000b;display:flex;flex-direction:column;
+ overflow:hidden}
+#assistant-dock[hidden],#assistant-dock [hidden]{display:none!important}
+#assistant-dock .assistant-dock-head{display:flex;align-items:center;
+ justify-content:space-between;gap:9px;padding:12px 15px;
+ border-bottom:1px solid var(--line);background:var(--surface)}
+#assistant-dock .assistant-dock-head strong{font-size:1rem;display:flex;gap:8px;align-items:baseline}
+#assistant-dock .codex-caption{font-size:.7rem;color:var(--muted);font-weight:500}
+#assistant-dock button{font:inherit;cursor:pointer;padding:7px 11px;
+ border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+#assistant-dock button:disabled{opacity:.5;cursor:not-allowed}
+#assistant-dock .codex-status-bar{display:flex;justify-content:space-between;
+ align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);
+ font-size:.77rem;color:var(--muted)}
+#assistant-dock .codex-scope{flex-shrink:0}
+#assistant-dock .codex-transcript{flex:1;overflow:auto;padding:14px;display:flex;
+ flex-direction:column;gap:12px;scrollbar-gutter:stable;min-height:80px}
+#assistant-dock .codex-welcome{margin:0;line-height:1.55;color:var(--muted);font-size:.86rem}
+#assistant-dock .codex-message{padding:10px 12px;border-radius:11px;line-height:1.5;
+ font-size:.87rem;white-space:pre-wrap;overflow-wrap:anywhere;max-width:96%}
+#assistant-dock .codex-message.user{align-self:flex-end;
+ background:color-mix(in srgb,var(--violet) 19%,var(--surface));border:1px solid var(--line)}
+#assistant-dock .codex-message.agent{align-self:flex-start;
+ background:var(--surface);border:1px solid var(--line)}
+#assistant-dock .codex-message.event{align-self:center;font-size:.77rem;
+ color:var(--muted);padding:5px 8px}
+#assistant-dock .codex-message a{color:var(--blue)}
+#assistant-dock .codex-approval{border-top:1px solid var(--line);
+ padding:11px 13px;background:color-mix(in srgb,var(--amber) 8%,var(--surface));
+ max-height:150px;overflow:auto;font-size:.82rem}
+#assistant-dock .codex-approval strong{display:block;margin-bottom:5px}
+#assistant-dock .codex-approval p{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere}
+#assistant-dock #codex-form{border-top:1px solid var(--line);padding:11px 12px;
+ display:grid;gap:8px;background:var(--surface)}
+#assistant-dock #codex-message{width:100%;border-radius:10px;border:1px solid var(--line);
+ color:var(--ink);background:var(--side);padding:9px 10px;resize:vertical;
+ min-height:59px;max-height:135px;font:inherit;line-height:1.45}
+#assistant-dock .codex-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+#assistant-dock .codex-actions button{font-size:.78rem}
+#assistant-dock #codex-send,#assistant-dock #codex-start{
+ background:color-mix(in srgb,var(--violet) 28%,var(--surface));
+ border-color:var(--violet);font-weight:750}
+#assistant-dock .codex-footer{font-size:.72rem;color:var(--muted);line-height:1.45;
+ border-top:1px solid var(--line);padding:9px 12px;margin:0;
+ max-height:83px;overflow:auto}
+#assistant-dock .sr-only{position:absolute;width:1px;height:1px;padding:0;
+ margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#assistant-dock :is(button,textarea):focus-visible,#assistant-dock-toggle:focus-visible,
+#assistant-open-nav:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:600px){#assistant-dock{right:6px;bottom:61px;width:calc(100vw - 12px);
+ height:calc(100dvh - 74px)}#assistant-dock-toggle{right:9px;bottom:9px}}
