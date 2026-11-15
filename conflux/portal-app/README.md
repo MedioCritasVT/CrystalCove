@@ -26,11 +26,19 @@ ChatGPT web embeds in this panel.
   streams agent text and tool activity, provides a new-conversation
   action and interruption, and remembers the Codex thread ID in local
   browser storage. Codex maintains its own conversation history.
-- Starts **read-only**. Only an explicit in-panel confirmation enables
-  sandboxed workspace-write operations. Elevated command/file-change
-  requests require a per-request user decision. The bridge does not grant
-  unattended full filesystem/network access, automatically push Git
-  branches, or merge pull requests.
+- Starts **read-only** (no writes in the normal sandbox). Only an explicit
+  in-panel confirmation enables sandboxed workspace-write operations,
+  scoped to the current checkout and with network access disabled.
+  Elevated command/file-change requests require a per-request user decision.
+  The bridge does not automatically push branches or merge pull requests.
+  **Read-only is not read-path isolation**: Codex's stable app-server sandbox
+  allows standard read access beyond the working directory where the OS
+  permits it. Do not run this single-user bridge on a shared or
+  untrusted machine, and do not expose sensitive files to its agent.
+  Per-turn restricted readable roots through legacy `readOnly.access`
+  and `workspaceWrite.readOnlyAccess` are rejected by current Codex builds.
+  A future exact-read-scoping integration would require independently
+  validating the newer permission-profile protocol; we do not claim it here.
 - The Codex account and session are **separate** from an existing private
   ChatGPT conversation or any named Conflux Node's personal context;
   it does not impersonate Limen, import ChatGPT memories, or promise
