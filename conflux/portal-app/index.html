@@ -690,6 +690,8 @@ tailscale serve status                      # Inspect routes</code></pre>
 <div class="download-panel">
 <h3>Personal theme → Git review → relaunch → test</h3>
 <p>This separate review area handles Git work. Use the small <strong>Assistant</strong> dock on any Portal page for ordinary model conversations; it never auto-commits code. This review currently publishes only a verified palette and texture data file.</p>
+<label for="studio-review-agent">Attribution lens for this theme</label>
+<select id="studio-review-agent"><option value="limen">Limen</option><option value="medio">Medio</option><option value="ratio">Ratio</option><option value="specula">Specula</option><option value="nexus">Nexus</option></select>
 <button class="action secondary" type="button" id="studio-propose">Prepare current theme for Git review</button>
 <pre class="studio-preview" id="studio-preview">No personal theme is prepared for review.</pre>
 <p id="studio-git-status" class="theme-note">Inspecting the active checkout…</p>
@@ -720,25 +722,10 @@ tailscale serve status                      # Inspect routes</code></pre>
 </section>
 <footer>Conflux Portal 0.1 · Linux only · local-first · no automatic VOS control · more to come.</footer></main></div>
 <button id="assistant-dock-toggle" type="button" aria-controls="assistant-dock" aria-expanded="false">✦ Assistant</button>
-<section id="assistant-dock" hidden aria-label="Conflux assistant conversation">
-  <div class="assistant-dock-head"><strong>Conflux Assistant</strong>
-    <button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
-  <div class="assistant-dock-controls">
-    <label for="assistant-provider">Connection
-      <select id="assistant-provider"><option value="ollama">Local Ollama</option><option value="openai">OpenAI API</option></select>
-    </label>
-    <label for="assistant-agent">Perspective
-      <select id="assistant-agent"><option value="limen">Limen</option><option value="medio">Medio</option><option value="ratio">Ratio</option><option value="specula">Specula</option><option value="nexus">Nexus</option></select>
-    </label>
-  </div>
-  <p id="assistant-connection" role="status" aria-live="polite">Connecting is optional.</p>
-  <div id="assistant-log" role="log" aria-label="Conversation" aria-live="polite"></div>
-  <form id="assistant-form">
-    <label for="assistant-message" class="sr-only">Message to the assistant</label>
-    <textarea id="assistant-message" maxlength="1500" placeholder="Ask about your project… (Enter to send)" aria-label="Your message to the assistant"></textarea>
-    <div class="assistant-dock-actions"><button id="assistant-clear" type="button">Clear</button><button id="assistant-send" type="submit">Send</button></div>
-  </form>
-</section>
+<aside id="assistant-dock" hidden aria-label="Nested assistant interface">
+  <div class="assistant-dock-head"><strong>Portal Assistant</strong><button type="button" id="assistant-close" aria-label="Close assistant">Close</button></div>
+  <iframe id="assistant-iframe" src="/assistant" title="Conflux Assistant and account connections" loading="lazy"></iframe>
+</aside>
 <dialog id="open-choice-dialog" aria-labelledby="open-choice-title" aria-describedby="open-choice-description">
   <h3 id="open-choice-title">Open this link</h3>
   <p id="open-choice-description">Where would you like to open it?</p>
