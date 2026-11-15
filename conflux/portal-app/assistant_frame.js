@@ -218,6 +218,15 @@
       const r=await fetch("/api/status",{cache:"no-store"});
       token=(await r.json()).launch_token||"";
     }catch{notify("Local Portal session unavailable.");}
+    if(window.parent!==window){
+      try{
+        const initial=window.parent.document.body.dataset.view;
+        if(rooms.has(initial)){
+          room=initial;
+          $("room-label").textContent=initial.replaceAll("-"," ");
+        }
+      }catch{/* Not required for standalone assistant page. */}
+    }
     clear();await refresh();await loadEditableFiles();
     if(window.parent!==window)window.parent.postMessage({type:"conflux-assistant-ready"},location.origin);
   })();
