@@ -152,34 +152,27 @@ class PortalSmokeTest(unittest.TestCase):
         with urlopen(request, timeout=3) as response:
             return response.status, json.loads(response.read().decode("utf-8"))
 
-    def test_chat_requires_local_origin_and_does_not_run_without_provider(self):
+    def test_portal_opens_real_chatgpt_codex_and_personal_fork(self):
         status, html = self.get("/")
         self.assertEqual(status, 200)
         self.assertIn('id="assistant-dock-toggle"', html)
         self.assertIn('id="assistant-open-nav"', html)
-        self.assertIn('id="assistant-iframe"', html)
-        status, nested = self.get("/assistant")
+        self.assertIn('id="bridge-repository"', html)
+        self.assertIn('id="bridge-handoff"', html)
+        self.assertIn('id="bridge-chatgpt"', html)
+        self.assertIn('id="bridge-codex"', html)
+        self.assertIn('href="https://chatgpt.com/"', html)
+        self.assertIn('href="https://chatgpt.com/codex/"', html)
+        self.assertIn('target="_blank" rel="noopener noreferrer"', html)
+        self.assertNotIn('id="assistant-iframe"', html)
+        self.assertNotIn('id="connect-chatgpt"', html)
+        self.assertEqual(self.get("/portal_bridge.js")[0], 200)
+        self.assertEqual(self.get("/portal_bridge.css")[0], 200)
+        # No credentials are needed to open these external sites; the Portal
+        # has only a stored repo preference and text handoff.
+        status, raw = self.get("/api/studio/status")
         self.assertEqual(status, 200)
-        self.assertIn('id="assistant-log"', nested)
-        self.assertIn('id="change-propose"', nested)
-        self.assertIn('id="connect-chatgpt"', nested)
-        self.assertEqual(self.get("/portal_chat.js")[0], 200)
-        self.assertEqual(self.get("/portal_chat.css")[0], 200)
-        status, result = self.get("/api/assistant/status")
-        self.assertEqual(status, 200)
-        self.assertIn("openai", json.loads(result))
-        with mock.patch.object(portal, "assistant_chat", return_value={"reply": "Hello", "read_only": True}) as chat:
-            _, data = self.post("/api/assistant/chat", {
-                "provider": "ollama", "agent": "limen", "room": "studio",
-                "message": "Hello", "history": []})
-            self.assertEqual(data["reply"], "Hello")
-            chat.assert_called_once()
-        unauthorized = Request(self.base + "/api/assistant/chat",
-                               data=b'{}', method="POST",
-                               headers={"Content-Type": "application/json"})
-        with self.assertRaises(HTTPError) as denied:
-            urlopen(unauthorized, timeout=3)
-        self.assertEqual(denied.exception.code, 403)
+        self.assertIn("git_ready", json.loads(raw))
 
     def test_studio_is_local_and_requires_explicit_theme_approval(self):
         from theme_studio import DEFAULT
