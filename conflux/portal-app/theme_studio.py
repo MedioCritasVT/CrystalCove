@@ -27,6 +27,7 @@ DEFAULT = {
 }
 NODES = {"medio", "ratio", "nexus", "specula", "limen"}
 COLORS = re.compile(r"#[0-9a-fA-F]{6}\Z")
+TEXTURES = {"none", "parchment", "constellation", "grid", "weave"}
 GITHUB_REMOTE = re.compile(
     r"(?:https://github\.com/|git@github\.com:|ssh://git@github\.com/)"
     r"([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?/?\Z", re.I)
@@ -199,14 +200,19 @@ class ThemeStudio:
                 palette = ask_agent(provider, node, instruction)
             else:
                 raise StudioError("Choose Manual, Ollama, or OpenAI API.")
+            texture = body.get("texture", "none")
+            if texture not in TEXTURES:
+                raise StudioError("Unrecognized Portal background texture.")
             ticket = secrets.token_urlsafe(22)
             self.pending = {"ticket": ticket, "name": name, "slug": slug,
-                            "palette": palette, "agent": node, "provider": provider,
+                            "palette": palette, "texture": texture,
+                            "agent": node, "provider": provider,
                             "created": time.monotonic()}
             return {"ticket": ticket, "name": name, "slug": slug,
-                    "palette": palette, "agent": node, "provider": provider,
+                    "palette": palette, "texture": texture,
+                    "agent": node, "provider": provider,
                     "tests": ["Supported fields only", "Hex colors only",
-                              "Readable text contrast"], "published": False}
+                              "Readable text contrast", "Known texture"], "published": False}
 
     def publish(self, body):
         with self.lock:
@@ -223,7 +229,7 @@ class ThemeStudio:
             relative = "conflux/portal-app/studio-themes/" + proposal["slug"] + ".json"
             payload = json.dumps({
                 "name": proposal["name"], "agent": proposal["agent"],
-                "palette": proposal["palette"], "schema": 1,
+                "palette": proposal["palette"], "texture": proposal["texture"], "schema": 1,
             }, indent=2, ensure_ascii=False) + "\n"
             # Build from HEAD inside an isolated worktree so unsaved local user
             # changes cannot be staged, committed, stashed, reset or overwritten.
@@ -297,6 +303,9 @@ class ThemeStudio:
             raise StudioError("Cannot read the theme file.") from error
         if data.get("schema") != 1 or data.get("agent") not in NODES:
             raise StudioError("Theme version or Node identity is unsupported.")
+        texture = data.get("texture", "none")
+        if texture not in TEXTURES:
+            raise StudioError("Invalid theme background texture.")
         return {"name": data.get("name"), "agent": data.get("agent"),
                 "palette": validate_palette(data.get("palette")),
-                "schema": 1, "loaded": True}
+                "texture": texture, "schema": 1, "loaded": True}
