@@ -56,6 +56,20 @@ def main():
                 assert page.locator(".nav-group[data-group='create'] button").count() == 3
                 assert page.locator(".nav-group[data-group='maintain'] button").count() == 2
                 assert page.locator(".portal-nav button[data-page]").count() == 14
+                glyphs=page.locator(".portal-nav button[data-page] .nav-symbol")
+                assert glyphs.count()==14
+                for index in range(14):
+                    glyph=glyphs.nth(index)
+                    bounds=glyph.bounding_box()
+                    assert bounds and bounds["width"]>=28 and bounds["height"]>=28, (
+                        "sidebar symbol should not shrink or disappear")
+                    assert glyph.get_attribute("aria-hidden")=="true"
+                assert page.locator(".side .brand-symbol").count()==1
+                assert page.locator("#music-prev").get_attribute("aria-label")=="Previous track"
+                assert page.locator("#music-next").get_attribute("aria-label")=="Next track"
+                assert page.locator("#music-visual-close").get_attribute("aria-label")=="Close visualizer"
+                assert page.locator(".external-glyph").count()>=15
+
                 assert page.locator("#room-companion-home .pet-duty").count() == 2
                 assert page.locator("#room-companion-home .pet-duty").first.inner_text().startswith("Medio")
                 page.locator(".nav-stewards summary").click()
@@ -67,6 +81,9 @@ def main():
                     assert page.locator(f'button[data-page="{destination}"]').get_attribute("aria-current") == "page"
                 page.locator('button[data-page="nodes"]').click()
                 assert page.locator("#node-list .node-portal-duty").count() == 5
+                emblem=page.locator("#node-list .pet-token .pet-mark").first
+                assert emblem.evaluate("(e)=>parseFloat(getComputedStyle(e).fontSize)")>=14
+
                 detail = page.locator('#node-list .pet-token[data-node="ratio"]')
                 assert detail.evaluate("(e)=>getComputedStyle(e,'::after').content") != "none"
                 jewel = page.locator('#node-list .pet-token[data-node="nexus"] .pet-chest-jewel')
@@ -86,6 +103,11 @@ def main():
                 small.set_viewport_size({"width":390,"height":844})
                 small.goto(base,wait_until="domcontentloaded")
                 assert small.locator(".nav-group").count() == 4
+                nav_mark=small.locator('.nav-group[data-group="begin"] .nav-symbol').first.bounding_box()
+                assert nav_mark and nav_mark["width"]>=25 and nav_mark["height"]>=25, (
+                    "mobile symbol needs a comfortably legible tile")
+                assert small.locator(".nav-utilities .utility-symbol").count()==1
+
                 small.locator('button[data-page="studio"]').click()
                 assert small.locator("#studio").is_visible()
                 small.screenshot(path=str(proof / "01-wayfinding-mobile.png"),full_page=True)
