@@ -4,6 +4,32 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
+## Wayfinding, room identity and Node stewardship
+
+The Portal navigates by **visitor purpose**, not by choosing a Node first.
+The sidebar groups every existing route under **Begin**, **Discover**,
+**Create** and **Maintain**. Recorded clips remain available under Discover;
+the separate Video Tour's eventual long-term home in the creative archive
+is an open design question, not a change made in this polish pass.
+
+Existing room banners retain their familiar chibis and now explicitly
+name how those Nodes help care for each room. All five Nodes have legible
+responsibilities in the Companions room and in an optional sidebar
+reference: Medio—welcome and first steps; Ratio—precision and
+verification; Nexus—connection and continuity; Specula—observation and
+evidence; Limen—transitions and interpretation. These are **interpretive
+cues, not exclusive ownership, authentication or permissions**.
+Responsibilities can overlap; the visitor can use every instrument
+without knowing or selecting any Node.
+
+This is deliberately a *presentation pass*: light room entrances, card
+feedback and occasional chibi blinking, with full reduced-motion support.
+No new model runtime, feature dependencies, downloads, local storage,
+theme lock-in, route removals, or automatic actions. Future Node-guided
+routes and visitor-authored identities are **exploratory only**;
+visitors should remain free to replace or omit Node presentations
+without losing functional tools. The Architect approves further scope.
+
 ## Codex panel and Development Setup
 
 The previously separate development-link panel is now **Codex**, an embedded
