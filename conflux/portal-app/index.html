@@ -677,9 +677,26 @@ tailscale serve status                      # Inspect routes</code></pre>
 <p>Choose a starting palette, adjust the colors, and save it locally in this browser profile. No login or Git connection is needed to customize your appearance.</p>
 <label for="studio-preset">Starting palette</label>
 <select id="studio-preset"></select>
+<div id="studio-preset-preview" class="studio-preset-preview" aria-label="Four accent colors in the selected palette"></div>
 <label for="studio-name">Theme name</label>
 <input type="text" id="studio-name" maxlength="80" value="My Wayfarer Theme" autocomplete="off"/>
-<div id="studio-colors" class="studio-colors" aria-label="Personal theme color selection"></div>
+<fieldset class="studio-harmony" aria-describedby="studio-harmony-help">
+  <legend>Four colors · your Conflux signature</legend>
+  <p id="studio-harmony-help" class="theme-note">Warmth, wonder, precision, and care. Adjust these four accents together or separately. All other theme colors remain editable below.</p>
+  <div class="studio-harmony-grid">
+    <label for="studio-harmony-amber"><input type="color" id="studio-harmony-amber" aria-label="Gold, warm accent color"><span><strong>Gold</strong><small>Warmth · Medio</small></span></label>
+    <label for="studio-harmony-violet"><input type="color" id="studio-harmony-violet" aria-label="Violet, imaginative accent color"><span><strong>Violet</strong><small>Wonder · Nexus</small></span></label>
+    <label for="studio-harmony-blue"><input type="color" id="studio-harmony-blue" aria-label="Blue, cool accent color"><span><strong>Blue</strong><small>Precision · Ratio</small></span></label>
+    <label for="studio-harmony-green"><input type="color" id="studio-harmony-green" aria-label="Green, soft accent color"><span><strong>Green</strong><small>Care · Limen</small></span></label>
+  </div>
+  <label class="studio-link-row" for="studio-link-complement"><input type="checkbox" id="studio-link-complement"/><span>Link the opposite: blue follows gold across the color wheel</span></label>
+  <p class="studio-link-hint">Optional color harmony only. The other accents remain yours; turn the link off anytime to adjust blue independently.</p>
+</fieldset>
+<details class="studio-advanced-colors" id="studio-advanced-colors">
+  <summary>Fine-tune all ten theme colors</summary>
+  <p class="theme-note">Advanced colors for backgrounds, text, outlines, and accents. Your four-color choices stay synchronized with these controls.</p>
+  <div id="studio-colors" class="studio-colors" aria-label="Personal theme color selection"></div>
+</details>
 <div class="studio-actions">
 <button class="action" type="button" id="studio-save">Save personal theme</button>
 <button class="action secondary" type="button" id="studio-reset">Restore original look</button>
@@ -691,7 +708,7 @@ tailscale serve status                      # Inspect routes</code></pre>
 </div>
 <div class="download-panel">
 <h3>Background textures</h3>
-<p>Choose a subtle pattern independently from the color palette. These are local CSS textures, not downloaded artwork or AI-generated instructions.</p>
+<p>Choose how your colors move through the atmosphere. These lightweight CSS textures borrow the <strong>four accents</strong> from your chosen palette—no background image downloads or automated edits.</p>
 <label for="studio-texture">Portal background texture</label>
 <select id="studio-texture">
 <option value="none">Smooth · original ambient gradient</option>
