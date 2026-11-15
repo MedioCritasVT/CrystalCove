@@ -185,7 +185,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
     const dock = named["room-companion-" + id];
     assert.equal(dock.children.length, 4, "missing pet ensemble for " + id);
     const crew = dock.children[0];
-    assert.equal(crew.children.length, id === "nodes" ? 5 : 2);
+    assert.equal(crew.children.length, id === "nodes" ? 5 : id === "studio" ? 3 : 2);
     assert(crew.children.every(pet => pet.className === "pet-token"));
     assert(dock.children[1].textContent.length > 0, "unlabeled page companion");
   }
