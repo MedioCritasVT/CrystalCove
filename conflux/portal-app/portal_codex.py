@@ -193,8 +193,10 @@ class CodexBridge:
                 self.turn_id = None
                 # Stale approval requests must not be left actionable.
                 self.approvals.clear()
+            failure = turn.get("error")
+            failure_text = failure.get("message", "") if isinstance(failure, dict) else ""
             self._event("turn_finished", status=str(turn.get("status") or "unknown"),
-                        error=str((turn.get("error") or {}).get("message") or "")[:350])
+                        error=str(failure_text)[:350])
         elif method == "account/login/completed":
             self._event("login_finished", success=bool(params.get("success")))
         elif method == "account/updated":
@@ -343,17 +345,16 @@ class CodexBridge:
         if not isinstance(identifier, str) or decision not in DECISIONS:
             raise CodexError("Only explicit accept or decline is supported.")
         with self.lock:
-            approval = self.approvals.pop(identifier, None)
-        if not approval:
-            raise CodexError("This approval request has expired or was already answered.")
-        if not self.busy or approval["thread"] != self.thread_id:
-            raise CodexError("The approval does not match the active conversation.")
-        if decision == "accept" and not self.edit_enabled:
-            # Read-only mode still allows explicit command elevation for
-            # individual commands but never approve writes without edit mode.
-            if approval["method"] == "item/fileChange/requestApproval":
-                raise CodexError("Enable editing before approving file writes.")
-        self._send({"id": approval["id"], "result": {"decision": decision}})
+            approval = self.approvals.get(identifier)
+            if not approval:
+                raise CodexError("This approval request has expired or was already answered.")
+            if not self.busy or approval["thread"] != self.thread_id:
+                raise CodexError("The approval does not match the active conversation.")
+            if decision == "accept" and not self.edit_enabled:
+                raise CodexError("Enable workspace editing before approving elevated operations.")
+            # Denials always remain available, including read-only sessions.
+            self._send({"id": approval["id"], "result": {"decision": decision}})
+            self.approvals.pop(identifier, None)
         self._event("approval_resolved", request_id=identifier)
         return {"answered": True, "decision": decision}
 
