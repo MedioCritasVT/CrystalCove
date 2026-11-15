@@ -127,6 +127,7 @@ body{padding-bottom:calc(var(--music-dock-rise,132px) + 26px)}
 .music-dock .music-volume{grid-area:volume;justify-self:end}
 .music-dock .music-volume input{width:82px;accent-color:var(--blue)}
 .music-dock .music-advanced{grid-area:advanced;justify-self:end}
+.music-dock audio{display:none}
 .music-dock .music-mini-status{
   /* Keep the live status available to screen readers, without crowding
      the controls. Playback state remains visible on the buttons. */
@@ -227,11 +228,12 @@ body{padding-bottom:calc(var(--music-dock-rise,132px) + 26px)}
 @media(max-width:920px){
   .music-dock{
     grid-template-columns:auto auto minmax(0,1fr) auto;
-    grid-template-areas:"brand toggle controls advanced" "timeline timeline selects visual";
-    gap:8px 9px;
+    grid-template-areas:"toggle controls selects advanced" "timeline timeline timeline visual";
+    gap:8px 7px;
   }
+  .music-dock-heading{display:none}
   .music-dock .music-options{justify-self:stretch;min-width:0}
-  .music-dock .music-options select{width:clamp(65px,8vw,110px)}
+  .music-dock .music-options select{width:clamp(62px,7vw,110px)}
   .music-dock .music-timeline{min-width:0}
 }
 @media(max-width:740px){
