@@ -27,6 +27,20 @@ const nodes = [
   ["Limen", "Transitions · interpretation", "#9cdec0"]
 ];
 const petSymbols = {medio:"✦",ratio:"▦",nexus:"∞",specula:"◉",limen:"◇"};
+// These are interpretive responsibilities, never a permission model or a
+// requirement to choose a Node before using a tool. Visitors may ignore them.
+const stewardDuties = Object.freeze({
+  medio: "Welcome & first steps",
+  ratio: "Precision & verification",
+  nexus: "Connection & continuity",
+  specula: "Observation & evidence",
+  limen: "Transitions & interpretation"
+});
+const stewardShort = Object.freeze({
+  medio: "Welcoming", ratio: "Checking", nexus: "Connecting",
+  specula: "Observing", limen: "Translating"
+});
+
 // Each Node keeps a distinct source panel, not just a shared, recolored mascot.
 const nodePanels = {
   medio: "medio/Mediocritas_ Gothic Angel Character Sheet.png",
@@ -136,6 +150,20 @@ for (const [room, detail] of Object.entries(roomFamiliar)) {
   crew.className = "pet-crew";
   crew.dataset.count = String(detail.who.length);
   for (const name of detail.who) crew.append(makePet(name));
+  // The companions describe how this room is cared for, not who owns it.
+  const careTitle = document.createElement("span");
+  careTitle.className = "pet-steward-heading";
+  careTitle.textContent = room === "nodes" ? "Five perspectives" : "Stewards of this room";
+  const duties = document.createElement("div");
+  duties.className = "pet-duties";
+  for (const name of detail.who) {
+    const duty = document.createElement("span");
+    duty.className = "pet-duty";
+    duty.dataset.node = name.toLowerCase();
+    duty.textContent = name + " · " + stewardShort[name.toLowerCase()];
+    duty.setAttribute("title", stewardDuties[name.toLowerCase()]);
+    duties.append(duty);
+  }
   const names = document.createElement("strong");
   names.className = "pet-names";
   names.textContent = detail.who.join(" + ");
@@ -145,7 +173,7 @@ for (const [room, detail] of Object.entries(roomFamiliar)) {
   const caveat = document.createElement("small");
   caveat.className = "pet-disclaimer";
   caveat.textContent = "Chibi-style concept familiars · final art pending";
-  dock.append(crew, names, note, caveat);
+  dock.append(crew, careTitle, names, duties, note, caveat);
 }
 
 for (const [name, role, color] of nodes) {
@@ -162,6 +190,9 @@ for (const [name, role, color] of nodes) {
   title.textContent = name;
   const detail = document.createElement("small");
   detail.textContent = role + " · provisional chibi study; compare source panel";
+  const responsibility = document.createElement("small");
+  responsibility.className = "node-portal-duty";
+  responsibility.textContent = "Portal lens · " + stewardDuties[name.toLowerCase()];
   const reference = document.createElement("a");
   const node = name.toLowerCase();
   reference.href = referenceBase + nodePanels[node].split("/").map(encodeURIComponent).join("/");
@@ -169,7 +200,7 @@ for (const [name, role, color] of nodes) {
   reference.rel = "noopener noreferrer";
   reference.textContent = "View character panel";
   reference.className = "pet-reference-link";
-  words.append(title, detail, reference);
+  words.append(title, detail, responsibility, reference);
   wrap.append(petFigure, words);
   card.append(wrap);
   document.querySelector("#node-list").append(card);

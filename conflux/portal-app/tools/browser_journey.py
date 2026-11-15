@@ -48,6 +48,43 @@ def main():
                 page.screenshot(path=str(proof / "01-threshold.png"), full_page=True)
                 observations.append("Threshold loads; no VOS service or game starts")
                 assert page.locator("#music-toggle").get_attribute("aria-pressed") == "false"
+                # Navigation is functional, not Node-gated. Verify visual
+                # hierarchy, room switching, steward labels, and motion safety.
+                assert page.locator(".nav-group").count() == 4
+                assert page.locator(".nav-group[data-group='begin'] button").count() == 3
+                assert page.locator(".nav-group[data-group='discover'] button").count() == 6
+                assert page.locator(".nav-group[data-group='create'] button").count() == 3
+                assert page.locator(".nav-group[data-group='maintain'] button").count() == 2
+                assert page.locator(".portal-nav button[data-page]").count() == 14
+                assert page.locator("#room-companion-home .pet-duty").count() == 2
+                assert page.locator("#room-companion-home .pet-duty").first.inner_text().startswith("Medio")
+                page.locator(".nav-stewards summary").click()
+                assert "Observation" in page.locator(".nav-stewards").inner_text()
+                page.locator(".nav-stewards summary").click()
+                for destination in ("guide","nodes","library","apps","vos","updates"):
+                    page.locator(f'button[data-page="{destination}"]').click()
+                    assert page.locator(f"#{destination}").is_visible()
+                    assert page.locator(f'button[data-page="{destination}"]').get_attribute("aria-current") == "page"
+                page.locator('button[data-page="nodes"]').click()
+                assert page.locator("#node-list .node-portal-duty").count() == 5
+                page.emulate_media(reduced_motion="reduce")
+                assert page.locator("#nodes .room-hero").evaluate(
+                    "(el) => getComputedStyle(el).animationName") == "none"
+                page.emulate_media(reduced_motion="no-preference")
+                page.locator('button[data-page="home"]').click()
+                # Render and exercise a narrow viewport without any clone,
+                # external login, launch or write action.
+                small=context.new_page()
+                small.set_viewport_size({"width":390,"height":844})
+                small.goto(base,wait_until="domcontentloaded")
+                assert small.locator(".nav-group").count() == 4
+                small.locator('button[data-page="studio"]').click()
+                assert small.locator("#studio").is_visible()
+                small.screenshot(path=str(proof / "01-wayfinding-mobile.png"),full_page=True)
+                small.close()
+                page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
+                observations.append("Four grouped nav areas, 14 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
+
 
                 # Personal theme journey: local preview, save, reload and
                 # bounded manual agent proposal. Do not publish to Git in CI.

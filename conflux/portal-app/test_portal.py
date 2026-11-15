@@ -264,6 +264,21 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertIn("--blue:#84bff3", html)
         self.assertIn("--green:#9cdec0", html)
 
+    def test_wayfinding_styles_and_single_room_nav(self):
+        status, html = self.get("/")
+        self.assertEqual(status, 200)
+        self.assertEqual(html.count('class="nav-group"'), 4)
+        self.assertEqual(html.count('class="nav-stewards"'), 1)
+        sidebar_nav = html.split('<nav class="portal-nav"', 1)[1].split('</nav>', 1)[0]
+        self.assertEqual(sidebar_nav.count('<button data-page='), 14)
+        self.assertIn('id="nav-group-create"', html)
+        self.assertIn('id="nav-group-maintain"', html)
+        self.assertIn('href="/portal_polish.css"', html)
+        status, css = self.get("/portal_polish.css")
+        self.assertEqual(status, 200)
+        self.assertIn("prefers-reduced-motion:reduce", css)
+        self.assertIn("pet-steward-heading", css)
+
     def test_bounded_folder_search_and_explicit_registration(self):
         game = Path(self.tmp.name) / "Games" / "V0.1"
         game.mkdir(parents=True)
