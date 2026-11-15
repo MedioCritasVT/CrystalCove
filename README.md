@@ -40,20 +40,21 @@ Four **tiny looping previews**, taken from Arch's early Portal recording, show w
 
 The **local Portal** also has a **Media Mirror Setup** room for a proposed second media-service installation on Bazzite. It checks prerequisites and shows local/Tailscale ports before offering a separate explicit installation, without touching existing CachyOS libraries. This candidate is **not** a required step for players, not part of the static public website, and not yet tested on a real Bazzite host. See the [installer, backup and updates README](conflux/platforms/bazzite-service-bundle/README.md).
 
-## Build through real ChatGPT, Codex and your own GitHub fork
+## Embedded Codex and developer connections
 
-The local Portal's **Develop** control opens a compact personal development
-bridge. Choose your GitHub fork, describe a project change, then **copy a
-portable handoff and open the genuine ChatGPT or Codex Cloud website in a
-new browser tab**. Sign in with your own accounts on those services; there
-is no imitation ChatGPT window, API-key requirement, or automatic sharing
-of your local files. Use Codex's supported repository connection to work
-on your fork, inspect tests and changes, and open a pull request. Return
-to the Portal and use the existing **Check for Updates → Update → Relaunch**
-controls for its active local checkout. A selected fork does not silently
-change your local Git origin. Personal Studio still supports colors and
-background textures.
-See [the real-site development bridge and boundaries](conflux/portal-app/README.md#real-chatgpt-codex-and-github-development-bridge).
+The Portal's compact **Codex** panel provides a genuine, optional local
+Codex app-server session in the *current checkout*, using an installed Codex
+CLI and the user's own authorized account. The panel has conversation,
+streaming responses, explicit edit permissions and approval prompts—not
+fork selectors, links or an imitation ChatGPT login. No Codex process starts
+until the user asks, and there is no automatic installation or repository clone.
+
+**Updates & Setup** contains all external developer options: personal GitHub
+fork selection, ChatGPT and Codex Cloud links, portable handoff, GitHub
+application access, optional custom harness URL, pull requests and the
+unchanged **Check for Updates → Update → Relaunch** workflow.
+
+Read [setup, consent and limitations](conflux/portal-app/README.md#codex-panel-and-development-setup).
 
 ## Start here — choose your experience
 
