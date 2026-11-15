@@ -4,47 +4,69 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
-## Personal themes, background textures, and conversational dock
+## Personal themes, assistant and owned Git review
 
-**My Studio & Themes** is now exclusively the appearance workspace: preview a
-palette, select a CSS-only background texture (Smooth, Parchment, Constellation,
-Grid or Weave), save it in this browser profile, and import/export a JSON backup.
-Neither a login nor an AI connection is required to change your appearance.
+**Personal Studio** changes only appearance: color palette, CSS background
+textures (Smooth, Parchment, Constellation, Grid and Weave), local save, and
+JSON import/export. It requires no login.
 
-**Assistant dock:** Click **Assistant · open chat** in the left sidebar or
-the small lower-right **Assistant** button from any room. A compact text
-conversation opens in place. Choose one Node *perspective* (Medio, Ratio,
-Nexus, Specula or Limen) and one available provider:
+**Assistant:** The sidebar or bottom-right Assistant button opens
+`/assistant` in a compact, independent HTML iframe. Connection controls are
+collapsed independently from the transcript. The user can opt into local
+Ollama, a configured OpenAI Responses API key, or the developing
+**Continue with ChatGPT** open-source sign-in flow. GitHub App authorization
+is a separate consent action. A provider opens in its own new browser tab;
+the Portal must never embed the provider's login inside an iframe.
 
-- **Local Ollama:** run a model server on `127.0.0.1:11434`, default model
-  `qwen3.5:4b`, override with `CONFLUX_STUDIO_OLLAMA_MODEL`.
-- **OpenAI Responses API:** configure `OPENAI_API_KEY` in the **Portal server's
-  environment**, not in the browser or Git. Default `gpt-5-mini`, configurable
-  with `CONFLUX_STUDIO_OPENAI_MODEL`. API use may incur separate charges.
+**Important setup:**
 
-The dock is opt-in. It sends the typed message, limited recent chat history,
-the currently open *room name* (not its contents), and the chosen design-lens
-instructions to the selected provider. The chat history is held only in the
-browser tab's memory and cleared when the page reloads or the user selects
-**Clear**. No long-term ChatGPT account history or saved memories are imported.
-Agent labels do not establish identity or permissions. **No repo/filesystem
-tools are available to the chat model**, and replies are plain text, not
-executable instructions.
+- Local Ollama requires a running Ollama process at `127.0.0.1:11434`.
+- OpenAI API key is optional and **not** supplied by a ChatGPT subscription;
+  configure `OPENAI_API_KEY` privately on the Portal host if using that route.
+- ChatGPT sign-in is an experimental local OAuth integration: it requires
+  the optional `PyJWT[crypto]` Python dependency, a supported/eligible
+  ChatGPT account and the provider's approval. Its end-to-end account grant
+  has **not** yet been acceptance-tested on a real account. No promise of
+  automatic ChatGPT conversation memory or historical Node continuity.
+- GitHub account sign-in needs a separately registered GitHub App, with
+  `CONFLUX_GITHUB_CLIENT_ID` and `CONFLUX_GITHUB_CLIENT_SECRET` provided
+  privately to the Portal backend. Its actual repository permissions depend
+  on the selected App installation. No general-purpose personal-access-token
+  field is presented in the browser.
 
-**Updates & Setup is the Git review desk.** After creating your appearance,
-use **Prepare current theme for Git review** on that page. It validates the
-current palette and texture without calling a model. With separate user
-confirmation it can push only a JSON theme file to a new branch using the
-current checkout's preconfigured Git credentials, without changing main,
-force-pushing, or staging unrelated files. Branch preview, safe return to
-main, relaunch and theme-file verification are also on Updates & Setup.
-The model chat does **not** automatically modify code or push changes.
+**Agent-driven changes happen inside chat, not Studio or Setup.** Expand
+**Propose a Portal change** in the nested Assistant, select one CSS file,
+write the desired change into the ordinary chat input, and opt in to sharing
+that specific file with the chosen model. It returns a small,
+exact-match CSS edit as a **diff** to inspect. Publishing requires a
+second, exact repository-name confirmation. Only then does the Portal create
+an isolated worktree, commit and push a review branch to the active checkout's
+GitHub origin. With a connected GitHub App of sufficient permissions, it
+also tries to create a **draft PR**. If PR creation is not authorized,
+the user is given a GitHub compare link.
 
-**Not yet included:** ChatGPT or GitHub OAuth login in a new tab, choosing and
-creating forks from a browser, per-user private repo syncing, full source-code
-editing from chat, autonomous shell/tests, or automatic pull request merging.
-The local `127.0.0.1` Portal and user approval remain required for Git actions.
-The official upstream updater is separate from personal-fork branch review.
+This is intentionally a **CSS-only pilot**: not arbitrary HTML/Python/JS edits,
+not automatically executed model code, not a multi-user service, and not
+deployment. Code changes beyond styling need additional sandboxing and review.
+The selected source file, request, and diff are **not** saved in the model
+provider's private ChatGPT conversation history by this Portal. The server
+holds a pending proposal in memory, and the short chat transcript stays in
+the iframe's browser memory until reloaded/cleared.
+
+**Updates & Setup is unchanged as the updater.** It retains
+**Check for Updates → Update → Relaunch** for the official upstream main.
+A separate **GitHub pull requests** desk below lists the active checkout's
+open PRs, shows bounded text diffs when available, and offers explicit
+permission-checked merging with a typed confirmation. The inline merge
+control remains disabled for partial/unavailable diffs or blocked PRs.
+GitHub branch rules, required reviews and CI must still pass; GitHub can
+refuse the merge. The PR desk does **not** automatically update a user's
+checkout after a merge; the original update workflow still applies.
+
+The Portal's local authorized actions are available only from
+`http://127.0.0.1` with a valid session token and correct request origin;
+remote viewers cannot invoke Git, OAuth setup, or host-side services.
+The current release remains source preview until tested on actual Bazzite.
 
 ## Bazzite Media Mirror Setup (first candidate)
 
