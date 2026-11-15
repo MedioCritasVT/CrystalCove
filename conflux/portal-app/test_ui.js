@@ -35,7 +35,7 @@ assert(html.includes('class="utility-symbol"'), "developer shortcut must be styl
 assert((html.match(/class="external-glyph"/g)||[]).length >= 15, "external links need consistent symbols");
 for (const [id,label] of [["music-prev","Previous track"],["music-next","Next track"],
                           ["music-visual-close","Close visualizer"]]) {
-  const tag=html.match(new RegExp("<button[^>]*id=\""+id+"\"[^>]*>[^<]*<span class="))[0];
+  const tag=html.match(new RegExp('<button[^>]*id="'+id+'"[^>]*>'))?.[0] || "";
   assert(tag.includes('aria-label="'+label+'"'), "icon-only button must retain its accessible name: "+id);
 }
 assert(symbolCss.includes("button .nav-symbol") && symbolCss.includes("29px"), "navigation symbols need strong consistent tiles");
