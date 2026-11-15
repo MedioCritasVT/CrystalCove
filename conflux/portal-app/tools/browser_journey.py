@@ -49,6 +49,28 @@ def main():
                 observations.append("Threshold loads; no VOS service or game starts")
                 assert page.locator("#music-toggle").get_attribute("aria-pressed") == "false"
 
+                # Personal theme journey: local preview, save, reload and
+                # bounded manual agent proposal. Do not publish to Git in CI.
+                page.locator('button[data-page="studio"]').click()
+                page.locator("#studio h2").wait_for(state="visible")
+                assert page.locator("#studio-colors input[type=color]").count() == 10
+                page.locator("#studio-name").fill("Wayfarer CI")
+                page.locator("#studio-color-violet").fill("#a5b3c7")
+                page.locator("#studio-save").click()
+                page.wait_for_function(
+                    "() => document.documentElement.style.getPropertyValue('--violet') === '#a5b3c7'")
+                page.reload(wait_until="domcontentloaded")
+                page.locator('button[data-page="studio"]').click()
+                assert page.locator("#studio-color-violet").input_value() == "#a5b3c7"
+                page.locator("#studio-provider").select_option("manual")
+                page.locator("#studio-agent").select_option("specula")
+                page.locator("#studio-propose").click()
+                page.get_by_text("Preview ready: colors and contrast validated", exact=False).wait_for(timeout=10000)
+                assert page.locator("#studio-commit").is_enabled()
+                assert "specula" in page.locator("#studio-preview").inner_text()
+                page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
+                observations.append("Personal themes survive reload; manual Node palette can be reviewed without writing Git")
+
                 page.locator('button[data-page="nodes"]').click()
                 page.locator("#nodes h2").wait_for(state="visible")
                 assert page.locator("#node-list .node-card").count() == 5
