@@ -197,7 +197,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(named["node-list"].children.length, 5);
   for (const id of roomIds) {
     const dock = named["room-companion-" + id];
-    assert.equal(dock.children.length, 4, "missing pet ensemble for " + id);
+    assert.equal(dock.children.length, 6, "missing steward, familiar or explanatory text for " + id);
     const crew = dock.children[0];
     assert.equal(crew.children.length, id === "nodes" ? 5 : id === "studio" ? 3 : 2);
     assert(crew.children.every(pet => pet.className === "pet-token"));
