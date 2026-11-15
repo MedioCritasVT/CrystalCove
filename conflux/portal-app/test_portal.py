@@ -152,6 +152,40 @@ class PortalSmokeTest(unittest.TestCase):
         with urlopen(request, timeout=3) as response:
             return response.status, json.loads(response.read().decode("utf-8"))
 
+    def test_studio_is_local_and_requires_explicit_theme_approval(self):
+        from theme_studio import DEFAULT
+        status, page = self.get("/")
+        self.assertEqual(status, 200)
+        self.assertIn('id="studio"', page)
+        self.assertIn('id="studio-agent"', page)
+        self.assertIn('id="studio-commit"', page)
+        self.assertEqual(self.get("/theme_studio.js")[0], 200)
+        self.assertEqual(self.get("/theme_studio.css")[0], 200)
+        status, raw = self.get("/api/studio/status")
+        self.assertEqual(status, 200)
+        self.assertIn("git_ready", json.loads(raw))
+
+        with mock.patch.object(portal.STUDIO, "pending", None):
+            status, result = self.post("/api/studio/propose", {
+                "name": "Local Test", "agent": "ratio",
+                "provider": "manual", "palette": DEFAULT,
+                "instruction": "",
+            })
+            self.assertEqual(status, 200)
+            self.assertEqual(result["slug"], "local-test")
+            with self.assertRaises(HTTPError) as denied:
+                self.post("/api/studio/publish", {"ticket": result["ticket"]})
+            self.assertEqual(denied.exception.code, 409)
+
+        request = Request(self.base + "/api/studio/main",
+                          data=b'{"confirmation":"RETURN TO MAIN"}', method="POST",
+                          headers={"Content-Type": "application/json",
+                                   "Origin": "https://attacker.invalid",
+                                   "X-Conflux-Token": portal.TOKEN})
+        with self.assertRaises(HTTPError) as forbidden:
+            urlopen(request, timeout=3)
+        self.assertEqual(forbidden.exception.code, 403)
+
     def test_download_page_and_palettes(self):
         status, html = self.get("/downloads")
         self.assertEqual(status, 200)
@@ -514,7 +548,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)

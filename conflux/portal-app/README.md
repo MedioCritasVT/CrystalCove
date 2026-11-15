@@ -4,6 +4,57 @@
 
 **Status:** Source-code preview, not a signed installer or security-reviewed release. This iteration proposes a per-menu Atelier/Ledger identity and an explicit, beginner-friendly game download and installation discovery workflow. No VOS host control is enabled.
 
+## Personal Studio — first bounded implementation (review branch)
+
+The **My Studio & Themes** room is available from Portal navigation. It adds a personal
+palette stored in this browser profile (with a JSON export/import option). The theme
+is optional: the original Conflux appearance remains available.
+
+**First agent-assisted workflow:** Choose Medio, Ratio, Nexus, Specula or Limen as
+a design perspective, and choose manual colors, local Ollama, or OpenAI Responses API.
+An agent may return **only a validated ten-color palette**. Contrast and schema
+checks reject unsafe/unreadable values. The preview is applied only in the browser.
+
+To use a provider:
+
+- Manual: works offline, without a model or a Git repository.
+- Ollama: run an Ollama server on `127.0.0.1:11434`. Default model is
+  `qwen3.5:4b`; override with `CONFLUX_STUDIO_OLLAMA_MODEL`.
+- OpenAI: set `OPENAI_API_KEY` **in the Portal server's environment**; the
+  default model is `gpt-5-mini` and can be changed using
+  `CONFLUX_STUDIO_OPENAI_MODEL`. No key is stored in Git or browser storage.
+
+**Git publication is a separate approval:** Open the Portal from a real Git
+checkout whose `origin` is the GitHub repository you control (ideally your own
+fork), with Git credentials already configured. After reviewing a proposed theme,
+Approve & Push creates an isolated Git worktree, a new
+`conflux/studio-...` branch, a single
+`conflux/portal-app/studio-themes/<name>.json` data file, and a Git push
+using the machine's existing Git credential helper/SSH setup. The main branch,
+untracked files and existing local modifications remain untouched. The generated
+GitHub comparison URL opens the review branch; a pull request and merge are
+**not** automatic.
+
+**Preview, reload and verify:** With explicit approval, Preview switches the
+Portal checkout to the review branch using normal Git safeguards. Then choose
+**Updates & Setup → Relaunch** to run the updated checkout. Back in Studio,
+enter the filename slug and use **Check active checkout & preview theme** to
+verify the committed JSON and apply its palette. **Return to local main**
+uses a normal safe branch switch and may require another relaunch.
+
+**Scope and limitations:** This is an intentionally bounded first slice of the
+proposed full-stack assistant workflow. It does **not** currently include
+Sign in with ChatGPT, GitHub OAuth login in a new tab, choosing repositories
+through GitHub App permissions, agent-written Python/JS, autonomous testing,
+automatic PR merges, or portable synchronization of personal browser storage.
+OpenAI API keys and ChatGPT subscriptions are different authentication routes.
+The existing **Updates & Setup** fast-forward updater still supports only the
+official CrystalCove `main`; Studio's branch preview is a separate mechanism.
+All Git actions require the locally served `127.0.0.1` Portal, current session
+token, correct origin, and explicit approvals. There is no remote host-control
+exposure. Future broad code-editing would require a sandboxed test runner and
+file-scoped permissions, not simply widening the palette prompt.
+
 ## Bazzite Media Mirror Setup (first candidate)
 
 The local Portal sidebar includes **Media Mirror Setup**. On a Bazzite desktop, it offers a read-only prerequisite/port check and a single explicit **Install new services** action after a reviewed plan, approval checkbox, and native desktop confirmation. It creates fresh, empty, rootless localhost services for **Jellyfin (8096), Kavita (5000) and Navidrome (4533)**. Suggested **optional** Tailscale HTTPS listeners are **8443, 8444 and 8445**. The installer does not activate Tailscale Serve, copy media, set up recurring backups, install Immich, or modify CachyOS.

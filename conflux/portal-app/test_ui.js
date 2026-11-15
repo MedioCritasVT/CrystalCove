@@ -10,7 +10,7 @@ const petCss = fs.readFileSync("familiars.css","utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","updates"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   "game-browse", "game-find", "game-folder-input",
@@ -185,7 +185,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 0));
     const dock = named["room-companion-" + id];
     assert.equal(dock.children.length, 4, "missing pet ensemble for " + id);
     const crew = dock.children[0];
-    assert.equal(crew.children.length, id === "nodes" ? 5 : 2);
+    assert.equal(crew.children.length, id === "nodes" ? 5 : id === "studio" ? 3 : 2);
     assert(crew.children.every(pet => pet.className === "pet-token"));
     assert(dock.children[1].textContent.length > 0, "unlabeled page companion");
   }
