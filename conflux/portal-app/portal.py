@@ -20,6 +20,8 @@ import music_library
 from app_updater import UpdateManager, UpdateError
 from theme_studio import ThemeStudio, StudioError
 from portal_chat import ChatError, chat as assistant_chat, status as assistant_status
+from portal_auth import AuthError, PortalConnections
+from urllib.parse import parse_qs
 from install_desktop_launcher import install_desktop_launcher
 
 ROOT = Path(__file__).resolve().parent
@@ -38,6 +40,7 @@ TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
 UPDATES = UpdateManager(ROOT.parents[1])
 STUDIO = ThemeStudio(ROOT.parents[1])
+CONNECTIONS = PortalConnections()
 SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
@@ -264,6 +267,12 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
         if route == "/theme_studio.css":
             return self.serve_file(ROOT / "theme_studio.css", "text/css; charset=utf-8")
+        if route in ("/assistant", "/assistant/"):
+            return self.serve_file(ROOT / "assistant.html", "text/html; charset=utf-8")
+        if route == "/assistant_frame.js":
+            return self.serve_file(ROOT / "assistant_frame.js", "text/javascript; charset=utf-8")
+        if route == "/assistant_frame.css":
+            return self.serve_file(ROOT / "assistant_frame.css", "text/css; charset=utf-8")
         if route == "/portal_chat.css":
             return self.serve_file(ROOT / "portal_chat.css", "text/css; charset=utf-8")
         if route == "/portal_chat.js":
@@ -305,6 +314,39 @@ class Handler(BaseHTTPRequestHandler):
         if route == "/service-setup.js":
             return self.serve_file(ROOT / "service_setup.js",
                                    "text/javascript; charset=utf-8")
+        if route in ("/auth/chatgpt/callback", "/auth/github/callback"):
+            # Browser OAuth callback from the provider. State and nonce were
+            # created only by an authorized POST from the locally served Portal.
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local OAuth callback only."})
+            kind = "chatgpt" if route.startswith("/auth/chatgpt") else "github"
+            try:
+                CONNECTIONS.finish(kind, parse_qs(urlsplit(self.path).query,
+                                                   keep_blank_values=True))
+                success = True
+                label = kind.title() + " connected. Return to the Portal assistant."
+            except AuthError:
+                success = False
+                label = "Sign-in could not complete. Return to the Portal and retry."
+            data = ("<!doctype html><meta charset='utf-8'>"
+                    "<meta name='viewport' content='width=device-width,initial-scale=1'>"
+                    "<title>Conflux connection</title>"
+                    "<style>body{font:1.1rem system-ui;max-width:36rem;margin:12vh auto;"
+                    "padding:2rem;background:#151b2a;color:#f5f2f6}"
+                    "a{color:#9cdec0}</style><h1>Conflux Portal</h1><p>"
+                    + label + "</p><p>You can close this tab.</p>").encode("utf-8")
+            self.send_response(200 if success else 400)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
+        if route == "/api/connections/status":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local connections only."})
+            return self.respond(200, CONNECTIONS.status())
         if route == "/api/assistant/status":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Portal to access the assistant."})
@@ -358,7 +400,8 @@ class Handler(BaseHTTPRequestHandler):
                          "/api/services/storage/browse",
                          "/api/studio/propose", "/api/studio/publish",
                          "/api/studio/preview", "/api/studio/main",
-                         "/api/assistant/chat"):
+                         "/api/assistant/chat",
+                         "/api/connections/start", "/api/connections/sign-out"):
             return self.respond(404, {"error": "not-found"})
         if not self.authorized():
             return self.respond(403, {"error": "forbidden"})
@@ -387,11 +430,22 @@ class Handler(BaseHTTPRequestHandler):
         body = self.read_json()
         if body is None:
             return self.respond(400, {"error": "invalid-request"})
+        if route in ("/api/connections/start", "/api/connections/sign-out"):
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local account connection only."})
+            try:
+                kind = body.get("provider")
+                if route.endswith("/start"):
+                    callback = "http://127.0.0.1:" + str(self.server.server_port) + "/auth/" + str(kind) + "/callback"
+                    return self.respond(200, CONNECTIONS.start(kind, callback))
+                return self.respond(200, CONNECTIONS.sign_out(kind))
+            except AuthError as error:
+                return self.respond(409, {"error": str(error)[:300]})
         if route == "/api/assistant/chat":
             if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
                 return self.respond(403, {"error": "Use the local Portal to chat."})
             try:
-                return self.respond(200, assistant_chat(body))
+                return self.respond(200, assistant_chat(body, connections=CONNECTIONS))
             except ChatError as error:
                 return self.respond(400, {"error": str(error)[:400]})
         if route.startswith("/api/studio/"):
@@ -534,7 +588,11 @@ class Handler(BaseHTTPRequestHandler):
             return self.respond(400, {"error": "request-failed"})
 
     def log_message(self, fmt, *args):
-        print(fmt % args, file=sys.stderr)
+        # OAuth callbacks carry one-time codes; never print query strings.
+        if self.path.startswith("/auth/"):
+            print("Conflux OAuth callback handled", file=sys.stderr)
+        else:
+            print(fmt % args, file=sys.stderr)
 
 
 if __name__ == "__main__":
