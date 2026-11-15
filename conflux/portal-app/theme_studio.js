@@ -145,6 +145,11 @@
     option.textContent = label;
     preset.append(option);
   }
+  const customOption = document.createElement("option");
+  customOption.value = "custom";
+  customOption.textContent = "Custom · your own mix";
+  customOption.disabled = true;
+  preset.append(customOption);
   for (const key of fields) {
     const label = document.createElement("label");
     label.className = "studio-color";
@@ -159,10 +164,24 @@
     colors.append(label);
   }
   putInputs(baseline);
+  for (const key of accents) {
+    $("studio-harmony-" + key).addEventListener("input", event => {
+      applyAccent(key,event.target.value);
+    });
+  }
+  linkComplement.addEventListener("change", () => {
+    if (linkComplement.checked) {
+      applyAccent("amber",$("studio-harmony-amber").value);
+      show("Gold and blue now track as complements. Save to retain these colors.");
+    } else {
+      show("Gold and blue unlinked. Customize any of the four colors freely.");
+    }
+  });
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
     if (saved && valid(saved.palette)) {
       putInputs(saved.palette);
+      customSelection();
       $("studio-name").value = String(saved.name || "My Theme").slice(0,80);
       applyPalette(saved.palette);
       const savedTexture = textureTypes.has(saved.texture) ? saved.texture : "none";
@@ -171,17 +190,28 @@
     }
   } catch { /* A damaged or blocked browser preference never breaks the Portal. */ }
   preset.addEventListener("change", () => {
+    if (preset.value === "custom" || !palettes[preset.value]) return;
+    linkComplement.checked = false;
     putInputs(palettes[preset.value]);
     applyPalette(paletteFromInputs());
-    show("Palette previewed. Save locally, or prepare a new reviewed proposal.");
+    show("Curated four-color palette previewed. Save locally to keep this choice.");
   });
   $("studio-texture").addEventListener("change", () => {
     texture($("studio-texture").value);
     show("Background texture previewed. Save your theme to retain it.");
   });
-  colors.addEventListener("input", () => {
+  colors.addEventListener("input", event => {
+    const key = event.target?.dataset?.color;
+    if (!fields.includes(key)) return;
+    if (key === "amber" && linkComplement.checked) {
+      $("studio-color-blue").value = opposite($("studio-color-amber").value);
+    } else if (key === "blue" && linkComplement.checked) {
+      linkComplement.checked = false;
+    }
+    customSelection();
+    syncHarmony(paletteFromInputs());
     applyPalette(paletteFromInputs());
-    show("Palette previewed but not saved or committed.");
+    show("Advanced colors previewed but not saved or committed.");
   });
   $("studio-save").addEventListener("click", () => {
     try { store(); } catch (e) { show("Could not save browser preference: " + e.message,true); }
@@ -189,6 +219,8 @@
   $("studio-reset").addEventListener("click", () => {
     reset();
     putInputs(baseline);
+    linkComplement.checked = false;
+    preset.value = "Classic Conflux";
     $("studio-texture").value = "none";
     localStorage.removeItem(storageKey);
     show("Default colors restored on this browser. Git records were not changed.");
@@ -211,12 +243,14 @@
       const data = JSON.parse(await file.text());
       if (data.schema !== 1 || !valid(data.palette)) throw Error("Unsupported theme format.");
       putInputs(data.palette);
+      customSelection();
+      linkComplement.checked = false;
       $("studio-texture").value = textureTypes.has(data.texture) ? data.texture : "none";
       texture($("studio-texture").value);
       $("studio-name").value = String(data.name || "Imported Theme").slice(0,80);
       applyPalette(data.palette);
-      proposal = null;
-      $("studio-commit").disabled = true;
+      // A theme import remains an explicitly local preview. It does not
+      // initiate any agent, Git change, or publication workflow.
       show("Imported for preview. Click Save to keep it on this browser.");
     } catch (e) { show("Import refused: " + e.message,true); }
     event.target.value = "";
