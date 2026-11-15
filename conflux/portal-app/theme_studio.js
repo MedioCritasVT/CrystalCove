@@ -178,7 +178,7 @@
     try {
       const data = await post("/api/studio/propose",{
         name:$("studio-name").value.trim(),
-        agent:$("assistant-agent").value,
+        agent:$("studio-review-agent").value,
         provider:"manual", instruction:"",
         texture:$("studio-texture").value, palette:paletteFromInputs()
       });
