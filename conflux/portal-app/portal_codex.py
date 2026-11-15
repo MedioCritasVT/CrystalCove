@@ -327,16 +327,15 @@ class CodexBridge:
                 "input": [{"type": "text", "text": message.strip()}],
                 "cwd": str(self.checkout),
                 "approvalPolicy": "on-request",
+                # Codex app-server no longer accepts the old
+                # readOnly.access/workspaceWrite.readOnlyAccess restricted
+                # fields. Named permission profiles are a separate beta API;
+                # do not claim a per-turn read-path restriction here.
                 "sandboxPolicy": {
                     "type": "workspaceWrite", "writableRoots": [str(self.checkout)],
                     "networkAccess": False,
-                    "readOnlyAccess": {"type": "restricted",
-                                       "includePlatformDefaults": True,
-                                       "readableRoots": [str(self.checkout)]},
                 } if self.edit_enabled else {
-                    "type": "readOnly",
-                    "access": {"type": "restricted", "includePlatformDefaults": True,
-                               "readableRoots": [str(self.checkout)]},
+                    "type": "readOnly", "networkAccess": False,
                 },
             }, timeout=25)
             turn = (result.get("turn") or {}).get("id")
