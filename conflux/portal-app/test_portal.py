@@ -85,6 +85,7 @@ class PortalSmokeTest(unittest.TestCase):
             ("/soundstage.css", ".music-timeline"),
             ("/soundstage.js", "createMediaStreamSource"),
             ("/portal_finish.css", "grid-template-areas"),
+            ("/portal_symbols.css", ".nav-symbol"),
 
             ("/video_tour.js", "conflux.portal.video-tour.v0.1"),
         ):
