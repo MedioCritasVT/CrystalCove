@@ -16,6 +16,12 @@
       amber:"#e5d5a6",violet:"#c7b7ed",blue:"#a4d9e8",green:"#a9e9ba"}
   };
   const storageKey = "conflux-personal-theme-v1";
+  const textureTypes = new Set(["none","parchment","constellation","grid","weave"]);
+  function texture(value) {
+    if (!textureTypes.has(value)) throw Error("Unrecognized Portal texture.");
+    if (value === "none") delete document.body.dataset.texture;
+    else document.body.dataset.texture = value;
+  }
   const $ = id => document.getElementById(id);
   const colors = $("studio-colors");
   if (!colors) return;
@@ -28,12 +34,17 @@
       Object.keys(palette).length === fields.length;
   }
   function show(message, error = false) {
-    const el = $("studio-status");
+    const el = $("studio-theme-status");
     el.textContent = message;
     el.dataset.error = error ? "true" : "false";
   }
   function paletteFromInputs() {
     return Object.fromEntries(fields.map(k => [k, $("studio-color-" + k).value]));
+  }
+  function reviewNotice(message, error = false) {
+    const el = $("studio-status");
+    el.textContent = message;
+    el.dataset.error = error ? "true" : "false";
   }
   function putInputs(p) {
     for (const k of fields) $("studio-color-" + k).value = p[k];
@@ -46,12 +57,14 @@
   function reset() {
     fields.forEach(k => document.documentElement.style.removeProperty("--" + k));
     document.body.classList.remove("theme-personal");
+    texture("none");
   }
   function store() {
     const theme = {name:$("studio-name").value.trim() || "My Theme",
-      palette:paletteFromInputs()};
+      texture:$("studio-texture").value, palette:paletteFromInputs()};
     localStorage.setItem(storageKey, JSON.stringify(theme));
     applyPalette(theme.palette);
+    texture(theme.texture);
     show("Personal theme saved in this browser profile. No repository was changed.");
   }
   const preset = $("studio-preset");
@@ -81,6 +94,9 @@
       putInputs(saved.palette);
       $("studio-name").value = String(saved.name || "My Theme").slice(0,80);
       applyPalette(saved.palette);
+      const savedTexture = textureTypes.has(saved.texture) ? saved.texture : "none";
+      $("studio-texture").value = savedTexture;
+      texture(savedTexture);
     }
   } catch { /* A damaged or blocked browser preference never breaks the Portal. */ }
   preset.addEventListener("change", () => {
@@ -89,6 +105,12 @@
     proposal = null;
     $("studio-commit").disabled = true;
     show("Palette previewed. Save locally, or prepare a new reviewed proposal.");
+  });
+  $("studio-texture").addEventListener("change", () => {
+    texture($("studio-texture").value);
+    proposal = null;
+    $("studio-commit").disabled = true;
+    show("Background texture previewed. Save your theme to retain it.");
   });
   colors.addEventListener("input", () => {
     applyPalette(paletteFromInputs());
@@ -102,6 +124,7 @@
   $("studio-reset").addEventListener("click", () => {
     reset();
     putInputs(baseline);
+    $("studio-texture").value = "none";
     localStorage.removeItem(storageKey);
     proposal = null;
     $("studio-commit").disabled = true;
@@ -109,7 +132,7 @@
   });
   $("studio-export").addEventListener("click", () => {
     const documentData = {schema:1,name:$("studio-name").value.trim() || "My Theme",
-      palette:paletteFromInputs()};
+      texture:$("studio-texture").value, palette:paletteFromInputs()};
     const blob = new Blob([JSON.stringify(documentData,null,2)+"\n"],{type:"application/json"});
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
@@ -125,6 +148,8 @@
       const data = JSON.parse(await file.text());
       if (data.schema !== 1 || !valid(data.palette)) throw Error("Unsupported theme format.");
       putInputs(data.palette);
+      $("studio-texture").value = textureTypes.has(data.texture) ? data.texture : "none";
+      texture($("studio-texture").value);
       $("studio-name").value = String(data.name || "Imported Theme").slice(0,80);
       applyPalette(data.palette);
       proposal = null;
@@ -149,29 +174,30 @@
     button.disabled = true;
     $("studio-commit").disabled = true;
     proposal = null;
-    show("Preparing a bounded palette proposal…");
+    reviewNotice("Preparing the current theme data for review…");
     try {
       const data = await post("/api/studio/propose",{
-        name:$("studio-name").value.trim(),agent:$("studio-agent").value,
-        provider:$("studio-provider").value,
-        instruction:$("studio-instruction").value,
-        palette:paletteFromInputs()
+        name:$("studio-name").value.trim(),
+        agent:$("assistant-agent").value,
+        provider:"manual", instruction:"",
+        texture:$("studio-texture").value, palette:paletteFromInputs()
       });
       proposal = data;
       putInputs(data.palette);
       applyPalette(data.palette);
+      texture(data.texture || "none");
       $("studio-preview").textContent = JSON.stringify({
         name:data.name,agent:data.agent,provider:data.provider,
-        palette:data.palette,checks:data.tests},null,2);
+        palette:data.palette,texture:data.texture,checks:data.tests},null,2);
       $("studio-commit").disabled = false;
-      show("Preview ready: colors and contrast validated. No files changed. Review before publishing.");
-    } catch (e) { show("Proposal not prepared: "+e.message,true); }
+      reviewNotice("Review ready: colors, texture and contrast validated. Nothing has been pushed.");
+    } catch (e) { reviewNotice("Review preparation failed: "+e.message,true); }
     finally { button.disabled = false; }
   });
   $("studio-commit").addEventListener("click", async () => {
     if (!proposal || !confirm("Publish this exact palette on a NEW Git review branch? The Portal will not merge it into main.")) return;
     $("studio-commit").disabled = true;
-    show("Creating isolated Git worktree, committing reviewed palette and pushing a review branch…");
+    reviewNotice("Creating isolated Git worktree, committing reviewed palette and pushing a review branch…");
     try {
       published = await post("/api/studio/publish",{
         ticket:proposal.ticket,confirmation:"PUBLISH REVIEWED THEME"});
@@ -179,11 +205,11 @@
       link.href = published.review_url;
       link.hidden = false;
       $("studio-checkout").disabled = false;
-      show("Published "+published.branch+" at "+published.commit+
+      reviewNotice("Published "+published.branch+" at "+published.commit+
         ". Your main branch and existing unsaved files were not modified.");
       await refreshGit();
     } catch (e) {
-      show("Publish stopped: "+e.message,true);
+      reviewNotice("Publish stopped: "+e.message,true);
       $("studio-commit").disabled = false;
     }
   });
@@ -192,32 +218,34 @@
     try {
       const response = await post("/api/studio/preview",{
         branch:published.branch,confirmation:"PREVIEW REVIEW BRANCH"});
-      show(response.detail+" Use Updates & Setup → Relaunch to load and test it.");
+      reviewNotice(response.detail+" Use Updates & Setup → Relaunch to load and test it.");
       $("updates-relaunch").disabled = false;
       await refreshGit();
-    } catch (e) { show("Preview stopped: "+e.message,true); }
+    } catch (e) { reviewNotice("Preview stopped: "+e.message,true); }
   });
   $("studio-main").addEventListener("click", async () => {
     if (!confirm("Return this checkout to its existing local main branch? No reset or force will run.")) return;
     try {
       const response = await post("/api/studio/main",{confirmation:"RETURN TO MAIN"});
       $("updates-relaunch").disabled = false;
-      show(response.detail+" Use Updates & Setup → Relaunch.");
+      reviewNotice(response.detail+" Use Updates & Setup → Relaunch.");
       await refreshGit();
-    } catch (e) { show("Return stopped: "+e.message,true); }
+    } catch (e) { reviewNotice("Return stopped: "+e.message,true); }
   });
   $("studio-verify").addEventListener("click", async () => {
     const name = $("studio-verify-slug").value.trim();
-    if (!name) return show("Enter the saved theme slug.",true);
+    if (!name) return reviewNotice("Enter the saved theme slug.",true);
     try {
       const res = await fetch("/api/studio/theme?slug="+encodeURIComponent(name),{cache:"no-store"});
       const data = await res.json();
       if (!res.ok) throw Error(data.error || "Theme not found.");
       putInputs(data.palette);
       applyPalette(data.palette);
+      $("studio-texture").value = textureTypes.has(data.texture) ? data.texture : "none";
+      texture($("studio-texture").value);
       $("studio-preview").textContent = JSON.stringify(data,null,2);
-      show("Passed: theme exists in active checkout, schema and contrast verified. Preview applied.");
-    } catch (e) { show("Theme verification failed: "+e.message,true); }
+      reviewNotice("Passed: theme exists in active checkout, schema and contrast verified. Preview applied.");
+    } catch (e) { reviewNotice("Theme verification failed: "+e.message,true); }
   });
   refreshGit();
 })();
