@@ -12,6 +12,8 @@ const themeCss = fs.readFileSync("theme_studio.css","utf8");
 const polishCss = fs.readFileSync("portal_polish.css", "utf8");
 const finishCss = fs.readFileSync("portal_finish.css", "utf8");
 const symbolCss = fs.readFileSync("portal_symbols.css", "utf8");
+const typeCss = fs.readFileSync("portal_typography.css", "utf8");
+const opticalCss = fs.readFileSync("portal_optical.css", "utf8");
 const stageJs = fs.readFileSync("soundstage.js", "utf8");
 
 
@@ -28,6 +30,26 @@ assert(html.includes("A Node offers a perspective, never a required path."), "a 
 assert(html.includes('href="/portal_polish.css"'), "room polish stylesheet is required");
 assert(html.includes('href="/portal_finish.css"'), "final Portal layer must load");
 assert(html.includes('href="/portal_symbols.css"'), "symbol contrast layer must be included");
+assert(html.includes('href="/portal_typography.css"') &&
+       html.includes('href="/portal_optical.css"'), "bundled font and optical layers must load");
+assert.equal((html.match(/class="nav-glyph"/g)||[]).length,14,
+             "fourteen icon glyphs need independent optical centering");
+for (const [font,role] of [["Conflux Marcellus","display"],
+                           ["Conflux Source Sans 3","interface"],
+                           ["Conflux JetBrains Mono","instrument"]]) {
+  assert(typeCss.includes(font), "missing offline "+role+" font: "+font);
+}
+for(const file of ["Marcellus-Latin.woff2","SourceSans3-Latin.woff2","JetBrainsMono-Latin.woff2"]) {
+  const data=fs.readFileSync("fonts/"+file);
+  assert(data.subarray(0,4).toString("ascii")==="wOF2","corrupt font "+file);
+}
+assert(typeCss.includes(".panel .room-hero h2") &&
+       typeCss.includes(".portal-nav .nav-group button .nav-label") &&
+       typeCss.includes(".music-timeline output"), "three type roles must be explicit");
+assert(opticalCss.includes(".nav-glyph") &&
+       opticalCss.includes('data-page="guide"'), "optical offsets missing");
+assert(opticalCss.includes('.pet-token[data-node="nexus"] .pet-mark::before') &&
+       opticalCss.includes('data:image/svg+xml'), "Nexus infinity must have a crisp rendered shape");
 assert.equal((html.match(/class="nav-symbol"/g)||[]).length, 14, "each sidebar room needs a glyph");
 assert(html.includes('class="brand-symbol"'), "Portal brand mark needs consistent sizing");
 assert(html.includes('class="codex-glyph"'), "Codex shortcut mark should be legible");

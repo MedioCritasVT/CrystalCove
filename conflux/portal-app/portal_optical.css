@@ -1,0 +1,94 @@
+/* Fine optical corrections for the existing glyph system.
+ * Tiles themselves remain mathematically centered; only the printed
+ * marks shift inside them. No functional controls or lore change. */
+.portal-nav .nav-group button .nav-symbol{
+  display:grid;place-items:center;
+  padding:0;position:relative;
+  vertical-align:middle;
+  flex:none;
+}
+.portal-nav .nav-group button .nav-glyph{
+  display:block;
+  position:relative;
+  width:1.5em;
+  min-width:0;
+  line-height:1;
+  font-family:"DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  font-size:1em;
+  text-align:center;
+  letter-spacing:0;
+  transform:translate3d(0,-.045em,0);
+  white-space:nowrap;
+  font-variant-emoji:text;
+  -webkit-font-smoothing:antialiased;
+}
+/* The outline symbols in particular have asymmetric bearings. */
+.portal-nav [data-page="home"] .nav-glyph{transform:translate3d(0,-.04em,0)}
+.portal-nav [data-page="downloads"] .nav-glyph{transform:translate3d(.025em,-.075em,0)}
+.portal-nav [data-page="guide"] .nav-glyph{transform:translate3d(.025em,-.025em,0)}
+.portal-nav [data-page="nodes"] .nav-glyph{transform:translate3d(0,-.055em,0)}
+.portal-nav [data-page="library"] .nav-glyph{transform:translate3d(0,-.03em,0)}
+.portal-nav [data-page="soundtrack"] .nav-glyph{transform:translate3d(.015em,-.055em,0)}
+.portal-nav [data-page="tour"] .nav-glyph{transform:translate3d(.04em,-.05em,0)}
+.portal-nav [data-page="philosophy"] .nav-glyph{transform:translate3d(-.015em,-.035em,0)}
+.portal-nav [data-page="about-arch"] .nav-glyph{transform:translate3d(.012em,-.065em,0)}
+.portal-nav [data-page="apps"] .nav-glyph{transform:translate3d(0,-.015em,0)}
+.portal-nav [data-page="studio"] .nav-glyph{transform:translate3d(.025em,-.07em,0)}
+.portal-nav [data-page="vos"] .nav-glyph{transform:translate3d(0,-.03em,0)}
+.portal-nav [data-page="updates"] .nav-glyph{transform:translate3d(0,-.075em,0)}
+.portal-nav [data-page="service-setup"] .nav-glyph{transform:translate3d(0,-.02em,0)}
+.side h1 .brand-symbol{position:relative;top:.015em}
+.portal-nav .nav-utilities .utility-symbol{position:relative;top:-.035em}
+.music-dock .music-glyph{padding-bottom:1px}
+#music-visual-toggle .spectrum-glyph{padding-bottom:1px}
+.music-dock .music-controls .transport-glyph{position:relative;top:-.04em}
+/* Nexus: a clean, stroke-defined infinity loop, rather than a tiny
+ * font-dependent infinity glyph disappearing against her violet costume.
+ * This is decorative, matching the pet-token's existing aria-hidden state. */
+.pet-token[data-node="nexus"] .pet-mark{
+  left:32px;
+  bottom:-2px;
+  width:30px;height:25px;
+  border:1.5px solid #ecd8ff;
+  border-radius:9px;
+  background:linear-gradient(150deg,#59407a,#342447);
+  box-shadow:inset 0 1px 0 #fff9,inset 0 -2px 0 #1810265e,
+    0 0 9px #d3a6ffb3,0 3px 5px #0e0b218c;
+  color:transparent;
+  font-size:0;
+  overflow:visible;
+  z-index:17;
+}
+.pet-token[data-node="nexus"] .pet-mark::before{
+  content:"";
+  display:block;
+  width:25px;height:17px;flex:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 32'%3E%3Cpath d='M32 16 C26 8 21 5 15 5 C8 5 4 10 4 16 C4 22 9 27 15 27 C21 27 25 23 32 16 C39 9 43 5 49 5 C56 5 60 10 60 16 C60 22 56 27 49 27 C43 27 38 23 32 16' fill='none' stroke='%23fff2ff' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:drop-shadow(0 0 2px #bd77ff);
+}
+.pet-token[data-node="nexus"] .pet-mark::after{
+  content:"";position:absolute;
+  top:4px;left:5px;width:5px;height:3px;
+  border-radius:50%;background:#fff6;
+  pointer-events:none;
+}
+/* Consistent emblem alignment without altering the five shapes. */
+.pet-token .pet-mark{
+  justify-content:center;align-items:center;
+  line-height:1;
+  padding:0;
+}
+@media(max-width:740px){
+  .portal-nav .nav-group button .nav-glyph{
+    width:1.45em;
+    font-size:1em;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .portal-nav .nav-group button .nav-glyph{
+    transition:none!important;
+  }
+}

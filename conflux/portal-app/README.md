@@ -30,6 +30,35 @@ routes and visitor-authored identities are **exploratory only**;
 visitors should remain free to replace or omit Node presentations
 without losing functional tools. The Architect approves further scope.
 
+## Portal typography and optical symbol alignment
+
+**Approved type roles:** Marcellus for architectural room headings and major
+literary titles; Source Sans 3 for navigation, controls, prose and labels;
+JetBrains Mono for diagnostics, timings, status values and technical notation.
+The three fonts are pinned, **locally bundled WOFF2 Latin subsets**, not
+Google Fonts/CDN runtime requests. The Portal continues to work offline.
+Non-Latin characters and Unicode symbol tiles use system fallbacks; their
+clarity does not depend on the UI subset containing every special glyph.
+Font CSS loads last, and existing room and user-selectable Studio palette
+colors remain unchanged.
+
+**Small symbol corrections:** the fourteen navigation tile boxes stay the
+same size, while each visible mark receives a separate inner optical
+alignment. A custom crisp **infinity** stroke makes Nexus's small sigil
+noticeable without changing her established appearance. Node responsibility
+labels, all route names, and the accessible text labels for music controls
+remain intact; no new Node selection requirement is introduced.
+
+Font files and the three associated copies of the
+[SIL Open Font License](https://openfontlicense.org/) are included in
+`fonts/` and `fonts/licenses/`. The original source is pinned to upstream
+public commit `31e922c011d20b60ca0f0119c28116dbf1251c58` of the
+[ForeverHYX/Homepage font subset archive](https://github.com/ForeverHYX/Homepage/tree/main/static/fonts),
+which documents its Google Fonts/OFL provenance. The checked-in Git object
+IDs match that upstream commit. No runtime installer, CDN call, generated
+image, new backend, or modification of those font binaries is required.
+Only three fixed font URLs are served by the local Python Portal.
+
 ## Symbol legibility finish
 
 The original small room symbols now share a consistent high-contrast glyph

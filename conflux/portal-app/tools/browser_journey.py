@@ -45,6 +45,28 @@ def main():
                 page.on("pageerror", lambda exc: errors.append(str(exc)))
                 page.goto(base, wait_until="domcontentloaded", timeout=25000)
                 page.locator("#home h2").wait_for(state="visible")
+                # The three bundled OFL fonts must actually load on Linux,
+                # not just appear as decorative names in a CSS declaration.
+                fonts=page.evaluate("""async () => {
+                  const families=["Conflux Marcellus","Conflux Source Sans 3",
+                                  "Conflux JetBrains Mono"];
+                  const result={};
+                  for (const family of families) {
+                    const loaded=await document.fonts.load('16px "'+family+'"');
+                    result[family]={loaded:loaded.length,
+                                    present:document.fonts.check('16px "'+family+'"')};
+                  }
+                  return result;
+                }""")
+                assert all(item["loaded"]>=1 and item["present"] for item in fonts.values()), (
+                    "one or more offline Portal fonts failed to load: "+str(fonts))
+                assert "Conflux Source Sans 3" in page.locator("body").evaluate(
+                    "(e)=>getComputedStyle(e).fontFamily")
+                assert "Conflux Marcellus" in page.locator("#home h2").evaluate(
+                    "(e)=>getComputedStyle(e).fontFamily")
+                assert "Conflux JetBrains Mono" in page.locator("#music-elapsed").evaluate(
+                    "(e)=>getComputedStyle(e).fontFamily")
+
                 page.screenshot(path=str(proof / "01-threshold.png"), full_page=True)
                 observations.append("Threshold loads; no VOS service or game starts")
                 assert page.locator("#music-toggle").get_attribute("aria-pressed") == "false"
@@ -58,6 +80,14 @@ def main():
                 assert page.locator(".portal-nav button[data-page]").count() == 14
                 glyphs=page.locator(".portal-nav button[data-page] .nav-symbol")
                 assert glyphs.count()==14
+                assert page.locator(".portal-nav .nav-glyph").count()==14
+                for index in range(14):
+                    tile=glyphs.nth(index).bounding_box()
+                    ink=page.locator(".portal-nav .nav-glyph").nth(index).bounding_box()
+                    assert tile and ink
+                    centers=abs((tile["x"]+tile["width"]/2)-(ink["x"]+ink["width"]/2))
+                    assert centers<2.6, "room glyph is optically outside its tile"
+
                 for index in range(14):
                     glyph=glyphs.nth(index)
                     bounds=glyph.bounding_box()
@@ -81,6 +111,13 @@ def main():
                     assert page.locator(f'button[data-page="{destination}"]').get_attribute("aria-current") == "page"
                 page.locator('button[data-page="nodes"]').click()
                 assert page.locator("#node-list .node-portal-duty").count() == 5
+                nexus=page.locator('#node-list .pet-token[data-node="nexus"] .pet-mark')
+                assert nexus.is_visible()
+                nx=nexus.bounding_box()
+                assert nx and nx["width"]>=29 and nx["height"]>=24
+                nexus_mark=nexus.evaluate("(el)=>getComputedStyle(el,'::before').backgroundImage")
+                assert "data:image/svg+xml" in nexus_mark, "Nexus loop needs a sharp, font-independent shape"
+
                 emblem=page.locator("#node-list .pet-token .pet-mark").first
                 assert emblem.evaluate("(e)=>parseFloat(getComputedStyle(e).fontSize)")>=14
 
@@ -139,6 +176,8 @@ def main():
                     assert b and b["x"]>=middle_dock["x"]-2 and (
                         b["x"]+b["width"]<=middle_dock["x"]+middle_dock["width"]+2), (
                         f"mid-width music control clipped: {cid}: {b}")
+                assert "Conflux Marcellus" in medium.locator("h1").first.evaluate(
+                    "(el)=>getComputedStyle(el).fontFamily")
                 medium.screenshot(path=str(proof / "01-music-medium.png"),full_page=False)
                 medium.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
