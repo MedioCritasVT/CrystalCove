@@ -118,6 +118,38 @@ def main():
                 assert page.locator("#updates-relaunch").count() == 1
                 assert page.locator("#pull-desk").count() == 1
                 assert page.locator("#studio-commit").count() == 0
+                def fake_pr_list(route):
+                    route.fulfill(status=200,content_type="application/json",
+                        body=json.dumps({
+                            "repository":"example/fork","connected":True,"truncated":False,
+                            "pulls":[{"number":11,"title":"Theme tweak","draft":False}]
+                        }))
+                def fake_pr_detail(route):
+                    route.fulfill(status=200,content_type="application/json",
+                        body=json.dumps({
+                            "number":11,"title":"Theme tweak","repository":"example/fork",
+                            "head":"theme","base":"main","author":"Wayfarer",
+                            "head_sha":"a"*40,"ticket":"reviewticket",
+                            "mergeable":True,"mergeable_state":"clean","merge_available":True,
+                            "review_complete":True,"partial_file_list":False,"body":"Compact padding",
+                            "files":[{"filename":"theme_studio.css","status":"modified",
+                                      "additions":1,"deletions":1,
+                                      "patch":"@@ -1 +1 @@\\n-padding:12px\\n+padding:8px"}]
+                        }))
+                page.route("**/api/pulls/list",fake_pr_list)
+                page.route("**/api/pulls/detail?number=11",fake_pr_detail)
+                page.locator("#pull-refresh").click()
+                page.locator("#pull-list").select_option("11")
+                page.locator("#pull-inspect").click()
+                assert page.locator("#pull-review").is_visible()
+                assert "+padding:8px" in page.locator("#pull-files").inner_text()
+                assert page.locator("#pull-merge").is_disabled()
+                page.locator("#pull-reviewed").check()
+                assert page.locator("#pull-merge").is_enabled()
+                page.locator("#pull-reviewed").uncheck()
+                assert page.locator("#pull-merge").is_disabled()
+                page.unroute("**/api/pulls/list",fake_pr_list)
+                page.unroute("**/api/pulls/detail?number=11",fake_pr_detail)
                 page.screenshot(path=str(proof / "01-personal-studio.png"), full_page=True)
                 observations.append("Theme persists; nested chat proposes a review diff; Setup retains updates and PR desk")
 
