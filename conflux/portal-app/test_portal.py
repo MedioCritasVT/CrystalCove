@@ -152,12 +152,38 @@ class PortalSmokeTest(unittest.TestCase):
         with urlopen(request, timeout=3) as response:
             return response.status, json.loads(response.read().decode("utf-8"))
 
+    def test_chat_requires_local_origin_and_does_not_run_without_provider(self):
+        status, html = self.get("/")
+        self.assertEqual(status, 200)
+        self.assertIn('id="assistant-dock-toggle"', html)
+        self.assertIn('id="assistant-open-nav"', html)
+        self.assertIn('id="assistant-log"', html)
+        self.assertEqual(self.get("/portal_chat.js")[0], 200)
+        self.assertEqual(self.get("/portal_chat.css")[0], 200)
+        status, result = self.get("/api/assistant/status")
+        self.assertEqual(status, 200)
+        self.assertIn("openai", json.loads(result))
+        with mock.patch.object(portal, "assistant_chat", return_value={"reply": "Hello", "read_only": True}) as chat:
+            _, data = self.post("/api/assistant/chat", {
+                "provider": "ollama", "agent": "limen", "room": "studio",
+                "message": "Hello", "history": []})
+            self.assertEqual(data["reply"], "Hello")
+            chat.assert_called_once()
+        unauthorized = Request(self.base + "/api/assistant/chat",
+                               data=b'{}', method="POST",
+                               headers={"Content-Type": "application/json"})
+        with self.assertRaises(HTTPError) as denied:
+            urlopen(unauthorized, timeout=3)
+        self.assertEqual(denied.exception.code, 403)
+
     def test_studio_is_local_and_requires_explicit_theme_approval(self):
         from theme_studio import DEFAULT
         status, page = self.get("/")
         self.assertEqual(status, 200)
         self.assertIn('id="studio"', page)
-        self.assertIn('id="studio-agent"', page)
+        self.assertIn('id="studio-texture"', page)
+        self.assertIn('id="assistant-dock"', page)
+        self.assertIn('id="assistant-provider"', page)
         self.assertIn('id="studio-commit"', page)
         self.assertEqual(self.get("/theme_studio.js")[0], 200)
         self.assertEqual(self.get("/theme_studio.css")[0], 200)
@@ -548,7 +574,7 @@ class PortalSmokeTest(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js", "portal_chat.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)
