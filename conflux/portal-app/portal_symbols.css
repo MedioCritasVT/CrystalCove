@@ -1,0 +1,167 @@
+/* One small visual vocabulary for the Portal's glyphs.
+ * Unicode symbols remain decorative: every functional button keeps its
+ * existing textual label or aria-label. No icon fonts, SVG downloads, JS,
+ * canvas effects, or changes to established Node characters. */
+:root{
+  --glyph-outline:color-mix(in srgb,var(--violet) 52%,#9ba6c2);
+  --glyph-ink:#fff9f2;
+}
+.side h1 .brand-symbol{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:1.1em;vertical-align:-.015em;
+  color:color-mix(in srgb,var(--amber) 84%,#fff);
+  font:700 1.15em/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",Georgia,serif;
+  text-shadow:0 1px 0 #fff5c5ae,0 0 13px color-mix(in srgb,var(--amber) 37%,transparent);
+}
+/* Navigation: consistently sized engraved glyph tiles, no reliance on
+   the system's emoji-font palette and no icon-only destinations. */
+.portal-nav .nav-group button .nav-symbol{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex:none;
+  width:29px;min-width:29px;height:29px;
+  border:1px solid color-mix(in srgb,var(--group-accent) 56%,#a1a6bd);
+  border-radius:8px;
+  color:color-mix(in srgb,var(--group-accent) 83%,#fff);
+  background:linear-gradient(147deg,
+    color-mix(in srgb,var(--group-accent) 20%,#293047),
+    color-mix(in srgb,var(--group-accent) 6%,#1c263a));
+  font:650 1.26rem/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",Arial,sans-serif;
+  text-align:center;
+  letter-spacing:0;
+  opacity:1;
+  text-shadow:0 1px 1px #020614f0,0 0 7px color-mix(in srgb,var(--group-accent) 22%,transparent);
+  box-shadow:inset 0 1px 0 #ffffff1c,0 2px 7px #080b1c70;
+  transition:background-color .15s,border-color .15s,box-shadow .15s;
+}
+/* Small marks such as a hollow diamond/play triangle need a little more
+   shape than the label beside them; active marks should be especially clear. */
+.portal-nav .nav-group button[aria-current="page"] .nav-symbol,
+.portal-nav .nav-group button:hover .nav-symbol,
+.portal-nav .nav-group button:focus-visible .nav-symbol{
+  color:#fffdf6;
+  border-color:color-mix(in srgb,var(--group-accent) 80%,#fff);
+  background:linear-gradient(140deg,
+    color-mix(in srgb,var(--group-accent) 29%,#384259),
+    color-mix(in srgb,var(--group-accent) 10%,#222a41));
+  box-shadow:inset 0 1px 0 #ffffff40,
+    0 0 12px color-mix(in srgb,var(--group-accent) 22%,transparent);
+}
+.portal-nav .nav-group button.nav-secondary .nav-symbol{
+  opacity:1;color:color-mix(in srgb,var(--group-accent) 80%,#e6e8fa);
+}
+.portal-nav .nav-group-label span[aria-hidden="true"]{
+  display:inline-flex;justify-content:center;align-items:center;
+  width:26px;min-width:26px;height:19px;
+  border:1px solid color-mix(in srgb,var(--group-accent) 43%,#788098);
+  border-radius:5px;
+  color:color-mix(in srgb,var(--group-accent) 80%,white);
+  background:#141b2b75;
+  font:700 .66rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  opacity:1;
+}
+.portal-nav .nav-utilities .utility-symbol{
+  display:inline-flex;justify-content:center;align-items:center;
+  width:23px;height:23px;margin-right:4px;
+  vertical-align:-.17em;
+  border:1px solid #a8d9ef8c;border-radius:7px;
+  background:#263d5173;color:#d9f6ff;
+  font:700 1.03rem/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  text-shadow:0 0 7px #8ed7ff72;
+}
+/* Inline arrows are visually consistent on every existing external link.
+   They do not replace the textual destination or alter link behavior. */
+a .external-glyph{
+  display:inline-flex;justify-content:center;align-items:center;
+  min-width:1.22em;height:1.2em;padding:0 .08em;margin-left:.12em;
+  border:1px solid color-mix(in srgb,currentColor 38%,transparent);
+  border-radius:.34em;
+  color:inherit;
+  font:750 .95em/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  vertical-align:-.08em;
+  text-shadow:0 0 6px color-mix(in srgb,currentColor 22%,transparent);
+}
+a:hover .external-glyph,a:focus-visible .external-glyph{
+  border-color:currentColor;
+  background:color-mix(in srgb,currentColor 10%,transparent);
+}
+.heart-glyph{color:#f1b3d4;font-size:1.15em;text-shadow:0 0 8px #f3a8cf60}
+/* The existing five chibi emblems are only 20px across. Preserve their
+   costumes and mark shape; give their glyphs an actual legible face. */
+.pet-token .pet-mark{
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid color-mix(in srgb,var(--pet-trim) 74%,white);
+  color:color-mix(in srgb,var(--pet-lining) 82%,white);
+  background:color-mix(in srgb,var(--pet-outfit) 80%,#141a2a);
+  font:750 14px/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  text-shadow:0 1px 2px #050512ef,0 0 4px color-mix(in srgb,var(--pet-glow) 35%,transparent);
+  box-shadow:inset 0 1px 0 #ffffff40,0 2px 6px #0609179c;
+}
+/* Playback and spectrum marks need a little more weight, especially when
+   the player is sitting on a color-rich atmospheric background. */
+.music-dock .music-glyph{
+  display:inline-flex;justify-content:center;align-items:center;
+  width:33px;min-width:33px;height:33px;
+  border:1px solid color-mix(in srgb,var(--violet) 67%,#b6bfda);
+  border-radius:11px;
+  color:#f3deff;
+  background:linear-gradient(145deg,#48375c,#2a3049);
+  font:750 1.58rem/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  text-shadow:0 0 10px color-mix(in srgb,var(--violet) 55%,transparent);
+  box-shadow:inset 0 1px 0 #ffffff3c,0 0 10px color-mix(in srgb,var(--violet) 16%,transparent);
+}
+.music-dock .music-controls button{
+  min-width:39px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff7ef;
+}
+.music-dock .music-controls .transport-glyph{
+  font:750 13px/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  letter-spacing:-.16em;padding-right:.14em;
+  text-shadow:0 1px 2px #070914,0 0 7px #fff2cd42;
+}
+.music-dock .music-controls button:disabled{opacity:.55}
+.music-dock #music-play{min-width:56px;letter-spacing:.005em}
+#music-visual-toggle .spectrum-glyph{
+  display:inline-flex;justify-content:center;align-items:center;
+  min-width:23px;height:23px;margin-left:4px;
+  border:1px solid color-mix(in srgb,var(--violet) 62%,#b3bdd3);
+  border-radius:5px;
+  color:#e9cfff;
+  background:color-mix(in srgb,var(--violet) 15%,#24293b);
+  font:700 1.13rem/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  text-shadow:0 0 7px #cab0ff9a;
+  vertical-align:-.17em;
+}
+#music-visual-close{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;min-width:34px;height:34px;
+  border-color:#b1a7c6;border-radius:9px;
+}
+#music-visual-close .close-glyph{
+  font:750 1.5rem/1 "DejaVu Sans","Segoe UI Symbol",sans-serif;
+  color:#fff9f9;text-shadow:0 1px 4px #04050bcc;
+}
+#assistant-dock-toggle .codex-glyph{
+  display:inline-block;margin-right:4px;vertical-align:-.06em;
+  color:var(--amber);
+  font:750 1.23em/1 "DejaVu Sans","Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
+  text-shadow:0 0 9px color-mix(in srgb,var(--amber) 37%,transparent);
+}
+/* Disclosure arrows are also symbols. Use a consistent, clearly visible
+   color without changing native details/summary keyboard behavior. */
+details > summary::marker{font-size:1.06em;color:var(--violet)}
+/* Keep the tactile feedback restrained for people sensitive to motion. */
+@media(prefers-reduced-motion:reduce){
+  .portal-nav .nav-group button .nav-symbol{transition:none!important}
+}
+@media(max-width:740px){
+  nav.portal-nav .nav-group button{gap:6px}
+  nav.portal-nav .nav-group button .nav-symbol{
+    width:26px;min-width:26px;height:26px;
+    font-size:1.13rem;
+  }
+  nav.portal-nav .nav-group-label span[aria-hidden="true"]{
+    width:23px;min-width:23px;height:18px;
+  }
+  .music-dock .music-glyph{width:30px;min-width:30px;height:30px}
+}
