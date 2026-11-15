@@ -10,6 +10,9 @@ const petCss = fs.readFileSync("familiars.css","utf8");
 const themeJs = fs.readFileSync("theme_studio.js","utf8");
 const themeCss = fs.readFileSync("theme_studio.css","utf8");
 const polishCss = fs.readFileSync("portal_polish.css", "utf8");
+const finishCss = fs.readFileSync("portal_finish.css", "utf8");
+const stageJs = fs.readFileSync("soundstage.js", "utf8");
+
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
@@ -22,6 +25,16 @@ assert.deepEqual(groupIds, ["begin","discover","create","maintain"], "visitor-fi
 assert(html.includes('class="nav-stewards"'), "stewardship must be optional");
 assert(html.includes("A Node offers a perspective, never a required path."), "a Node must not gate room access");
 assert(html.includes('href="/portal_polish.css"'), "room polish stylesheet is required");
+assert(html.includes('href="/portal_finish.css"'), "final Portal layer must load");
+assert(html.includes('id="music-spectrum" width="800" height="166"'), "wide spectrum initial size missing");
+assert(finishCss.includes('grid-template-areas:') && finishCss.includes('"timeline timeline timeline visual volume"'), "music dock must keep an intentional row layout");
+assert(finishCss.includes('border:1px solid var(--dock-edge)'), "dock needs legible edge");
+assert(finishCss.includes('main > .notice') && finishCss.includes('.panel .room-hero'), "accent borders and notice elevation missing");
+assert(finishCss.includes('.panel .room-hero h2') && finishCss.includes('text-shadow'), "font highlighting missing");
+assert(finishCss.includes('left:calc(244px + 17px);right:17px'), "soundstage must span the content area");
+assert(finishCss.includes('@media(max-width:740px)') && finishCss.includes('prefers-reduced-motion:reduce'), "mobile and reduced-motion paths required");
+assert(stageJs.includes('new ResizeObserver(measureDock)') && stageJs.includes('"--music-dock-rise"'), "dock height should stay synchronized");
+assert(stageJs.includes('getByteFrequencyData(freqData)') && stageJs.includes('palette.getPropertyValue("--violet")'), "real audio must drive palette-aware bars");
 assert(polishCss.includes("@media(prefers-reduced-motion:reduce)"), "animations must respect reduced motion");
 assert(polishCss.includes(".nav-group button[aria-current=\"page\"]"), "active room must be clear");
 assert(source.includes("stewardDuties") && source.includes("pet-duty"), "Node responsibility labels missing");
