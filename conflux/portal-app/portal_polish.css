@@ -126,6 +126,12 @@
 .room-companions .pet-duty[data-node="limen"]{border-color:#74b69a99}
 .room-companions .pet-purpose{max-width:250px}
 .room-companions .pet-disclaimer{opacity:.8}
+.node-card .node-portal-duty{
+  display:block;margin:8px 0 9px;padding:7px 9px;width:fit-content;
+  border-left:2px solid var(--node-accent);
+  color:#e6e5f2;background:#1b2331a6;
+  font-size:.77rem;line-height:1.45;
+}
 /* A little motion and tactile lift. Never scroll, play music or activate a tool. */
 .panel:not([hidden]) > .room-hero{transform-origin:center top}
 .panel .room-hero{position:relative;isolation:isolate}
