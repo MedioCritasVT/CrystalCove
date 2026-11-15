@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conflux · Assistant</title>
+<link rel="stylesheet" href="/assistant_frame.css">
+</head>
+<body>
+<header class="top">
+  <div><strong>Conflux Assistant</strong><small>Optional · local-first connections</small></div>
+  <span id="room-label">Your Portal</span>
+</header>
+<main>
+  <section class="connections" aria-labelledby="connect-title">
+    <div class="line-heading"><h1 id="connect-title">Connections</h1><button type="button" id="connections-toggle" aria-expanded="true" aria-controls="connection-list">Hide</button></div>
+    <div id="connection-list">
+      <div class="connection" id="chatgpt-card">
+        <div class="connection-title"><strong>ChatGPT</strong><span id="chatgpt-state" class="state">Not connected</span></div>
+        <div class="connection-actions">
+          <button id="connect-chatgpt" type="button" class="primary" data-oai-siwc-button>Continue with ChatGPT</button>
+          <button id="disconnect-chatgpt" type="button" hidden>Disconnect</button>
+        </div>
+        <small id="chatgpt-details">Use your eligible ChatGPT plan, with permission. No API key.</small>
+      </div>
+      <div class="connection" id="github-card">
+        <div class="connection-title"><strong>GitHub</strong><span id="github-state" class="state">Not connected</span></div>
+        <div class="connection-actions">
+          <button id="connect-github" type="button">Connect GitHub</button>
+          <button id="disconnect-github" type="button" hidden>Disconnect</button>
+        </div>
+        <small id="github-details">Separate authorization for a GitHub App. No repository changes from chat.</small>
+      </div>
+      <div id="connection-help" class="helper" role="status" aria-live="polite">Nothing connects automatically.</div>
+    </div>
+  </section>
+  <section class="conversation" aria-labelledby="chat-title">
+    <div class="line-heading"><h2 id="chat-title">Conversation</h2><button type="button" id="assistant-clear">Clear</button></div>
+    <div class="pickers">
+      <label>Via
+        <select id="assistant-provider">
+          <option value="chatgpt">ChatGPT account</option>
+          <option value="ollama">Local Ollama</option>
+          <option value="openai">OpenAI API key (advanced)</option>
+        </select>
+      </label>
+      <label>Perspective
+        <select id="assistant-agent">
+          <option value="limen">Limen</option>
+          <option value="medio">Medio</option>
+          <option value="ratio">Ratio</option>
+          <option value="specula">Specula</option>
+          <option value="nexus">Nexus</option>
+        </select>
+      </label>
+    </div>
+    <p id="assistant-connection" class="subtle" role="status" aria-live="polite">Choose a provider to start.</p>
+    <div id="assistant-log" role="log" aria-label="Assistant conversation" aria-live="polite"></div>
+    <form id="assistant-form">
+      <label for="assistant-message" class="sr-only">Message</label>
+      <textarea id="assistant-message" maxlength="1500" placeholder="Ask a question about this part of Conflux…" rows="2" aria-label="Type a message"></textarea>
+      <div class="send-row"><span>Enter to send · Shift+Enter for newline</span><button id="assistant-send" type="submit" class="primary">Send</button></div>
+    </form>
+    <p class="privacy">Read-only. Only messages you send, limited chat history and the room name reach your selected model. No source files or Git permissions are shared with the assistant.</p>
+  </section>
+</main>
+<script src="/assistant_frame.js"></script>
+</body>
+</html>
