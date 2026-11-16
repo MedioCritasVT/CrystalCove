@@ -326,6 +326,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT.parent / "video-tour" / "catalog.json", "application/json; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
+        if route == "/node_atlas.js":
+            return self.serve_file(ROOT / "node_atlas.js", "text/javascript; charset=utf-8")
+        if route == "/node_atlas.css":
+            return self.serve_file(ROOT / "node_atlas.css", "text/css; charset=utf-8")
         if route == "/readme.js":
             return self.serve_file(ROOT / "readme.js", "text/javascript; charset=utf-8")
         if route == "/link_choice.js":
