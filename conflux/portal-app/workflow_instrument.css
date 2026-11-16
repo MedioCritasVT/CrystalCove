@@ -1,0 +1,21 @@
+/* Local, educational VOS workflow guidance. */
+#workflow-instrument{margin:24px 0;padding:clamp(16px,3vw,26px);border:1px solid #6a9eac8a;border-radius:18px;background:linear-gradient(145deg,#142d3d,#1f3041)}
+#workflow-instrument h3{margin:0 0 7px}
+#workflow-instrument .workflow-intro{color:#c8dbe2;margin:0 0 19px}
+#workflow-instrument .workflow-form-label{display:block;font-weight:650;margin-bottom:7px}
+#workflow-instrument #workflow-task{display:block;box-sizing:border-box;width:100%;max-width:800px;min-height:45px;padding:11px 12px;border-radius:10px;border:1px solid #6c95aa;background:#112533;color:#f5f9fa;font:inherit}
+#workflow-instrument #workflow-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin:15px 0 20px}
+#workflow-instrument .workflow-choice{display:flex;flex-direction:column;align-items:flex-start;gap:7px;text-align:left;min-height:122px;padding:13px;border:1px solid #658394;border-radius:12px;background:#1b3748;color:#f4f7fa;cursor:pointer;font:inherit;transition:background .2s,border-color .2s,transform .2s}
+#workflow-instrument .workflow-choice:hover{background:#264b5c;transform:translateY(-2px)}
+#workflow-instrument .workflow-choice[aria-pressed="true"]{border:2px solid #9cdec0;background:#244a49;padding:12px}
+#workflow-instrument .workflow-symbol{font-size:1.4rem;color:#b7e5d2;line-height:1}
+#workflow-instrument .workflow-use{color:#cbdae2;font-size:.83rem;line-height:1.5}
+#workflow-instrument .workflow-preview{padding:16px;border-radius:13px;background:#0e2434;border:1px solid #486c80}
+#workflow-instrument #workflow-summary{color:#c1dddc}
+#workflow-instrument #workflow-steps{margin:12px 0 0;padding-left:22px}
+#workflow-instrument #workflow-steps li{padding:4px 0;line-height:1.55}
+#workflow-instrument .workflow-footer{font-size:.78rem;color:#b5cbd3;margin:12px 0 0}
+#workflow-instrument #workflow-clear{margin-top:10px}
+@media(max-width:620px){#workflow-instrument #workflow-options{grid-template-columns:repeat(2,minmax(0,1fr))}#workflow-instrument .workflow-choice{min-height:144px}}
+@media(max-width:350px){#workflow-instrument #workflow-options{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#workflow-instrument .workflow-choice{transition:none}}
