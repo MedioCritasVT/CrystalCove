@@ -269,6 +269,8 @@ class Handler(BaseHTTPRequestHandler):
         route = urlsplit(self.path).path
         if route in ("/", "/downloads"):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
+        if route in ("/book-of-inquiry", "/book-of-inquiry.html"):
+            return self.serve_file(ROOT.parents[1] / "docs" / "book-of-inquiry.html", "text/html; charset=utf-8")
         if route == "/familiars.css":
             return self.serve_file(ROOT / "familiars.css", "text/css; charset=utf-8")
         if route == "/theme_studio.css":
