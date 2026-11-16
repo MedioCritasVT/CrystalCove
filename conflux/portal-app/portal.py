@@ -330,6 +330,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT / "node_atlas.js", "text/javascript; charset=utf-8")
         if route == "/node_atlas.css":
             return self.serve_file(ROOT / "node_atlas.css", "text/css; charset=utf-8")
+        if route == "/workflow_instrument.js":
+            return self.serve_file(ROOT / "workflow_instrument.js", "text/javascript; charset=utf-8")
+        if route == "/workflow_instrument.css":
+            return self.serve_file(ROOT / "workflow_instrument.css", "text/css; charset=utf-8")
         if route == "/readme.js":
             return self.serve_file(ROOT / "readme.js", "text/javascript; charset=utf-8")
         if route == "/link_choice.js":
