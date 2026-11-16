@@ -287,11 +287,15 @@ The **Player Manual** renders the installed checkout's root **README.md** (serve
 
 The **Meet the Nodes** room now includes an interactive, Architect-centered radial Atlas, built from the Architect's spatial sketch rather than embedding the handwritten image. Tap a Node to zoom gently toward her branch and reveal a readable profile; **Return to Atlas** or Escape resets the view. Keyboard focus and reduced-motion preferences are supported. The five principal Nodes are distinguishable from the related creative concept Alchemia and external reviewer Hospes.
 
-Profiles separate the Node's conceptual role, current associated AI tool, project responsibilities and **general GitHub access**. These labels are curated information, **not** live authorization checks or autonomous AI sessions. The familiar character-study cards remain below the Atlas. Atlas data is in `node_atlas.js`; presentation is in `node_atlas.css`.
+Profiles separate the Node's conceptual role, current associated AI tool, project responsibilities and **general GitHub access**. These labels are curated information, **not** live authorization checks or autonomous AI sessions. The familiar character-study cards remain below the Atlas. The Architect observed a glitch-like appearance in **Specula's Atlas bubble**, considers it narratively meaningful, and explicitly asked that it be preserved. Do not normalize or redesign that effect without review; its underlying cause and any intentional lore treatment remain undetermined. Atlas data is in `node_atlas.js`; presentation is in `node_atlas.css`.
 
 ## VOS Instruments · Workflow guide (local preview)
 
-The **Workflow** section in VOS Instruments helps a visitor describe an optional task and choose approaches: technical, practical, design, problem-solving, critical thinking, optional support and exploration. It produces a local, editable-by-selection outline: state the goal, explore each chosen approach, then review results. It does **not** classify text using AI, assign Nodes, call remote services, store task text, or connect to the 4AgentHarness. Harness integration is future work requiring separate authorization. Source is `workflow_instrument.js` and `workflow_instrument.css`.
+The **Workflow** section in VOS Instruments lets a visitor choose a task **concept** (technical, practical, design, problem-solving, critical thinking, optional support, exploration) and see **which Nodes might offer useful perspectives, and why**. This is not a checklist generator or a mandatory assignment system. An optional typed idea acts as a label only; changing the text does not analyze or reroute it.
+
+The Architect explicitly associated **Practical → Ratio, Limen, Hospes; Design → Medio, Nexus, Alchemia; Optional Support → Limen, Alchemia, Nexus, Hospes**. These three groupings are labeled as Architect-supplied. Other categories contain clearly labeled *proposed starting connections* awaiting review. Selecting multiple types shows each set and its distinct reasons separately; the visitor remains free to choose any collaborator.
+
+This version does **not** classify text using AI, assign Nodes, call remote services, store task text, or connect to the 4AgentHarness. Harness integration is future work requiring separate authorization. Source is `workflow_instrument.js` and `workflow_instrument.css`.
 
 For focused smoke checks, run `node test_atlas_workflow.js` from `conflux/portal-app`; the existing Portal test suite and GitHub PR workflow still apply.
 
