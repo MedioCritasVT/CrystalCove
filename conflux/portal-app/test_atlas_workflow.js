@@ -66,21 +66,43 @@ function run(file,rootId,elementIds){
   assert(e["#atlas-arch"].focused,"return moves focus to the center");
 }
 {
-  const {root,children:e}=run("workflow_instrument.js","workflow-instrument",[
-    "workflow-options","workflow-summary","workflow-steps","workflow-task","workflow-clear"
+  const {children:e}=run("workflow_instrument.js","workflow-instrument",[
+    "workflow-options","workflow-summary","workflow-suggestions","workflow-task","workflow-clear"
   ]);
-  const options=e["#workflow-options"],summary=e["#workflow-summary"];
-  assert.equal(options.children.length,7);
-  assert.equal(e["#workflow-steps"].children.length,0,"no workflow is preassigned");
-  options.children[0].click();
-  options.children[2].click();
-  assert.equal(e["#workflow-steps"].children.length,4,"goal + two approaches + review");
-  assert(summary.textContent.includes("2 kinds"));
+  const options=e["#workflow-options"],summary=e["#workflow-summary"],suggestions=e["#workflow-suggestions"];
+  assert.equal(options.children.length,7,"seven selectable workflow concepts");
+  assert.equal(suggestions.children.length,0,"no Nodes automatically assigned");
+  const choose=label=>{
+    const option=options.children.find(button=>button.children.some(child=>child.textContent===label));
+    assert(option,"missing concept "+label);
+    option.click();
+    return option;
+  };
+  const nodeNames=()=>suggestions.children.map(group=>
+    group.children.find(child=>child.className==="workflow-node-list").children
+      .map(card=>card.children.find(child=>child.className==="workflow-node-name").textContent));
+  const practical=choose("Practical");
+  assert.equal(practical.getAttribute("aria-pressed"),"true");
+  assert.deepEqual(nodeNames(),[["Ratio","Limen","Hospes"]],"Practical follows Architect's exact associations");
+  choose("Design");
+  assert.deepEqual(nodeNames(),[["Ratio","Limen","Hospes"],["Medio","Nexus","Alchemia"]],
+    "Design follows Architect's exact associations");
+  choose("Optional support");
+  assert.deepEqual(nodeNames()[2],["Limen","Alchemia","Nexus","Hospes"],
+    "Optional Support offers all Architect-named alternatives");
+  assert.equal(suggestions.children.length,3,"each chosen concept gets its own group");
+  assert(summary.textContent.includes("3 kinds"),"summary reflects categories, not work assigned");
+  assert(suggestions.children[0].children.some(child=>child.className==="workflow-provenance"&&child.textContent.includes("Architect")),
+    "explicit user mapping must have provenance label");
   e["#workflow-task"].value="<script>not markup</script>";
   e["#workflow-task"].dispatch("input");
-  assert(e["#workflow-steps"].children[0].textContent.includes("<script>"),"idea is kept as text, not interpreted HTML");
+  assert(summary.textContent.includes("<script>"),"idea is a label, never HTML");
+  assert.equal(nodeNames()[0][0],"Ratio","task text does not silently reroute selections");
   e["#workflow-clear"].click();
-  assert.equal(e["#workflow-steps"].children.length,0);
+  assert.equal(suggestions.children.length,0,"clearing removes suggestions");
   assert.equal(e["#workflow-task"].value,"");
+  choose("Technical");
+  assert.deepEqual(nodeNames(),[["Ratio","Limen","Specula"]],"draft mapping remains explicit");
+  assert(suggestions.children[0].children.some(child=>child.className==="workflow-provenance"&&child.textContent.includes("Proposed")));
 }
-console.log("Atlas and Workflow: selection, details, return and local-only outline OK");
+console.log("Atlas and Workflow: selection, details, reason-to-visit mappings, return OK");
