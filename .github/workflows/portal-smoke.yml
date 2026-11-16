@@ -33,6 +33,9 @@ jobs:
       - name: JavaScript parse check
         run: |
           node --check conflux/portal-app/app.js
+          node --check conflux/portal-app/node_atlas.js
+          node --check conflux/portal-app/workflow_instrument.js
+          node --check conflux/portal-app/test_atlas_workflow.js
           node --check conflux/portal-app/theme_studio.js
           node --check conflux/portal-app/portal_chat.js
           node --check conflux/portal-app/portal_bridge.js
@@ -57,7 +60,9 @@ jobs:
         run: bash -n conflux/video-tour/publish_from_recording.sh
       - name: Browser-flow DOM smoke check (no browser packages)
         working-directory: conflux/portal-app
-        run: node test_ui.js
+        run: |
+          node test_ui.js
+          node test_atlas_workflow.js
       - name: External link tab/window/cancel choice smoke
         working-directory: conflux/portal-app
         run: node test_link_choice.js
