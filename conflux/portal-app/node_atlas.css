@@ -1,0 +1,45 @@
+/* Conflux Atlas: an accessible, spatial map rather than a data table. */
+#node-atlas{margin:24px 0 34px;padding:clamp(14px,3vw,28px);border:1px solid #76869888;border-radius:20px;background:linear-gradient(145deg,#162b3b,#231c36 62%,#192934);overflow:hidden}
+#node-atlas .atlas-intro{margin:0 0 12px;color:#cbd9e6}
+#node-atlas .atlas-intro strong{color:#f2e7d6;font-size:1.3rem}
+#node-atlas .atlas-intro p{margin:5px 0 0}
+#node-atlas .atlas-viewport{overflow:hidden;border-radius:15px;background:radial-gradient(circle at center,#40516c55 0,#192a4155 34%,transparent 64%);border:1px solid #546b8266}
+#node-atlas .atlas-map{position:relative;min-height:510px;isolation:isolate}
+#node-atlas .atlas-constellation{position:absolute;inset:0;transform-origin:var(--focus-x,50%) var(--focus-y,50%);transition:transform .46s cubic-bezier(.18,.8,.2,1)}
+#node-atlas .atlas-focused .atlas-constellation{transform:scale(1.12)}
+#node-atlas .atlas-connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+#node-atlas .atlas-connections line{stroke:#b7c3d3;stroke-opacity:.42;stroke-width:2;stroke-dasharray:6 5;transition:stroke-opacity .35s,stroke-width .35s}
+#node-atlas .atlas-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:50%;border:2px solid #edd6a0;background:radial-gradient(circle,#5f536d,#252637 72%);box-shadow:0 0 45px #e9bf8444;color:white;z-index:2;font:inherit}
+#node-atlas .atlas-core span:first-child{font-family:serif;font-size:1.7rem}
+#node-atlas .atlas-core span:last-child{font-size:.72rem;letter-spacing:.09em}
+#node-atlas .atlas-point{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:134px;min-height:71px;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:11px 5px;border-radius:19px;border:2px solid var(--tone);box-shadow:0 0 22px color-mix(in srgb,var(--tone) 23%,transparent);background:#18263bea;color:#fff;font:inherit;text-align:center;cursor:pointer;z-index:3;transition:opacity .34s,transform .34s,background .34s}
+#node-atlas .atlas-point:hover,#node-atlas .atlas-point:focus-visible{transform:translate(-50%,-50%) scale(1.08);background:#31425b}
+#node-atlas .atlas-point-name{font-size:1rem;font-weight:750}
+#node-atlas .atlas-point-kind{font-size:.68rem;color:#d5e2ec;letter-spacing:.04em}
+#node-atlas .atlas-point[data-kind="related"]{border-style:dashed;background:#1e2535d9}
+#node-atlas .atlas-focused .atlas-point:not([aria-pressed="true"]){opacity:.24}
+#node-atlas .atlas-focused .atlas-connections line{stroke-opacity:.12}
+#node-atlas .atlas-focused[data-selected="medio"] line[data-target="medio"],#node-atlas .atlas-focused[data-selected="ratio"] line[data-target="ratio"],#node-atlas .atlas-focused[data-selected="nexus"] line[data-target="nexus"],#node-atlas .atlas-focused[data-selected="specula"] line[data-target="specula"],#node-atlas .atlas-focused[data-selected="limen"] line[data-target="limen"],#node-atlas .atlas-focused[data-selected="alchemia"] line[data-target="alchemia"],#node-atlas .atlas-focused[data-selected="hospes"] line[data-target="hospes"]{stroke-opacity:1;stroke-width:4}
+#node-atlas .atlas-point[aria-pressed="true"]{background:#3b405c;box-shadow:0 0 30px color-mix(in srgb,var(--tone) 55%,transparent)}
+#node-atlas .atlas-detail{margin-top:16px;padding:20px;border:1px solid #7b94a680;border-radius:15px;background:#172739;animation:atlas-appear .35s ease both}
+#node-atlas .atlas-detail[hidden]{display:none}
+#node-atlas .atlas-detail-type{color:#c8b9ed;text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;margin:0}
+#node-atlas .atlas-detail h3{font-size:1.65rem;margin:4px 0}
+#node-atlas .atlas-detail-concept{color:#bce5cf}
+#node-atlas .atlas-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#node-atlas .atlas-field{border-top:1px solid #526679;padding-top:10px}
+#node-atlas .atlas-field dt{color:#b8ccda;font-size:.78rem}
+#node-atlas .atlas-field dd{margin:5px 0 0;color:#eef4f6}
+#node-atlas .atlas-disclaimer{font-size:.8rem;color:#b8c6d3}
+#node-atlas #atlas-back{margin-bottom:6px}
+@keyframes atlas-appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){
+ #node-atlas .atlas-map{min-height:420px}
+ #node-atlas .atlas-point{width:91px;min-height:56px;padding:8px 3px;border-radius:14px}
+ #node-atlas .atlas-point-name{font-size:.81rem}
+ #node-atlas .atlas-point-kind{font-size:.59rem}
+ #node-atlas .atlas-core{width:71px;height:71px}
+ #node-atlas .atlas-detail-grid{grid-template-columns:1fr}
+ #node-atlas .atlas-focused .atlas-constellation{transform:scale(1.06)}
+}
+@media(prefers-reduced-motion:reduce){#node-atlas .atlas-constellation,#node-atlas .atlas-point,#node-atlas .atlas-connections line{transition:none}#node-atlas .atlas-detail{animation:none}}
