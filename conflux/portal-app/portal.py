@@ -267,8 +267,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         route = urlsplit(self.path).path
-        if route in ("/", "/downloads"):
+        if route in ("/", "/downloads", "/index.html"):
             return self.serve_file(ROOT / "index.html", "text/html; charset=utf-8")
+        if route in ("/about-arch.html", "/philosophy.html"):
+            return self.serve_file(ROOT.parents[1] / "docs" / route.lstrip("/"), "text/html; charset=utf-8")
         if route in ("/book-of-inquiry", "/book-of-inquiry.html"):
             return self.serve_file(ROOT.parents[1] / "docs" / "book-of-inquiry.html", "text/html; charset=utf-8")
         if route == "/familiars.css":
