@@ -103,6 +103,7 @@ for (const id of ["mirror-storage-manager","mirror-storage-service","mirror-stor
 assert(html.includes("No reinstall and no media copying"), "storage update must explain data preservation");
 
 assert(html.includes("The Circle of Inquiry") && html.includes("About Arch"), "new reading rooms missing");
+assert(html.includes("The Conflux Book of Inquiry") && html.includes("/book-of-inquiry.html"), "booklet entry point missing");
 assert(html.includes("An exploratory proposal is not an approved feature."), "philosophy evidence boundary missing");
 assert(html.includes("Worked example: from uncertainty to the Portal Threshold"), "practical method walkthrough missing");
 assert(html.includes("Side by side: the ritual and the workspace"), "ritual comparison missing");
