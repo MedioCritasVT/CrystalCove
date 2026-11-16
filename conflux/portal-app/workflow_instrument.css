@@ -12,8 +12,14 @@
 #workflow-instrument .workflow-use{color:#cbdae2;font-size:.83rem;line-height:1.5}
 #workflow-instrument .workflow-preview{padding:16px;border-radius:13px;background:#0e2434;border:1px solid #486c80}
 #workflow-instrument #workflow-summary{color:#c1dddc}
-#workflow-instrument #workflow-steps{margin:12px 0 0;padding-left:22px}
-#workflow-instrument #workflow-steps li{padding:4px 0;line-height:1.55}
+#workflow-instrument #workflow-suggestions{display:grid;gap:16px;margin-top:13px}
+#workflow-instrument .workflow-group{border-top:1px solid #526d7f;padding-top:12px}
+#workflow-instrument .workflow-group h4{font-size:1.03rem;color:#f1f5f7;margin:0 0 4px}
+#workflow-instrument .workflow-provenance{font-size:.77rem;color:#c0d1d9;margin:0 0 10px}
+#workflow-instrument .workflow-node-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+#workflow-instrument .workflow-node-card{border:1px solid color-mix(in srgb,var(--node-color) 56%,#465467);border-left:4px solid var(--node-color);background:#20354a;border-radius:10px;padding:13px}
+#workflow-instrument .workflow-node-name{color:var(--node-color);font-size:1.02rem;display:block;margin-bottom:5px}
+#workflow-instrument .workflow-node-card p{font-size:.86rem;line-height:1.55;margin:0;color:#e1e8ed}
 #workflow-instrument .workflow-footer{font-size:.78rem;color:#b5cbd3;margin:12px 0 0}
 #workflow-instrument #workflow-clear{margin-top:10px}
 @media(max-width:620px){#workflow-instrument #workflow-options{grid-template-columns:repeat(2,minmax(0,1fr))}#workflow-instrument .workflow-choice{min-height:144px}}
