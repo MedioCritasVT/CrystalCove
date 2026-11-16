@@ -283,6 +283,18 @@ Both download buttons create **point-in-time snapshots**, not continuously synch
 
 The **Player Manual** renders the installed checkout's root **README.md** (served locally and refreshed after approved Git updates), followed by a separate gameplay quick reference. **Book 5** remains a labeled literary WIP with Chapters 3–10 currently in GitHub. **Concept Art** links to Ratio's labeled archive, not yet an approved final-asset gallery. The first expressive CSS chibi-style familiar previews are included; final reference-based character artwork remains pending. **VOS** remains disconnected and does not collect machine telemetry.
 
+## Meet the Nodes · Node Atlas (local preview)
+
+The **Meet the Nodes** room now includes an interactive, Architect-centered radial Atlas, built from the Architect's spatial sketch rather than embedding the handwritten image. Tap a Node to zoom gently toward her branch and reveal a readable profile; **Return to Atlas** or Escape resets the view. Keyboard focus and reduced-motion preferences are supported. The five principal Nodes are distinguishable from the related creative concept Alchemia and external reviewer Hospes.
+
+Profiles separate the Node's conceptual role, current associated AI tool, project responsibilities and **general GitHub access**. These labels are curated information, **not** live authorization checks or autonomous AI sessions. The familiar character-study cards remain below the Atlas. Atlas data is in `node_atlas.js`; presentation is in `node_atlas.css`.
+
+## VOS Instruments · Workflow guide (local preview)
+
+The **Workflow** section in VOS Instruments helps a visitor describe an optional task and choose approaches: technical, practical, design, problem-solving, critical thinking, optional support and exploration. It produces a local, editable-by-selection outline: state the goal, explore each chosen approach, then review results. It does **not** classify text using AI, assign Nodes, call remote services, store task text, or connect to the 4AgentHarness. Harness integration is future work requiring separate authorization. Source is `workflow_instrument.js` and `workflow_instrument.css`.
+
+For focused smoke checks, run `node test_atlas_workflow.js` from `conflux/portal-app`; the existing Portal test suite and GitHub PR workflow still apply.
+
 ## Room identity and companions
 
 Color is not limited to the navigation. The **entire page atmosphere** changes between rooms: a room-specific background gradient, headline and lead typography, card surfaces, text accents, and little symbolic Node familiars beside the heading.
