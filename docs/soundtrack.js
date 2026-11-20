@@ -67,8 +67,9 @@
           detail.append(link);
         } else {
           const msg = document.createElement("span");
-          msg.textContent = variant.publication_status === "metadata_only_pending_file_verification" ?
-            "Source received · release file not published" : "SHA-verified source · public audio upload pending";
+          msg.textContent = variant.sha256 ?
+            "Original SHA-verified recording · standalone MP3 pending" :
+            "No matching public MP3 asset currently confirmed";
           detail.append(msg);
         }
         card.append(detail);
@@ -76,10 +77,10 @@
       fragment.append(card);
     }
     root.replaceChildren(fragment);
-    state.textContent = available.size ? available.size + " verified public download(s) available. " +
-      "Other tracks remain pending publication." :
-      "Catalog updated; the MP3 recordings are not yet publicly downloadable here. " +
-      "No Git clone is needed once the owner publishes the release assets.";
+    const mp3Count = [...available].filter(name => name !== albumName).length;
+    state.textContent = mp3Count ? mp3Count +
+      " standalone MP3 release asset(s) available. Newly published assets have not yet been independently checksum-verified." :
+      "No standalone MP3 assets currently confirmed. The original album ZIP may be available separately above.";
   }
   void load();
 })();

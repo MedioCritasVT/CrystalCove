@@ -1,8 +1,8 @@
 {
   "schema": "conflux.soundtrack.catalog.v0.1",
-  "status": "eleven_recordings_sha256_verified_release_upload_pending",
+  "status": "11_album_recordings_sha256_verified_plus_17_new_individual_release_assets",
   "maintained_by": "Architect approval required",
-  "guidance": "Eleven user-supplied MP3 recordings, ten compositions, with full SHA-256 checksums verified on 2026-11-14 (the original seven match their pre-existing hash manifest exactly). Both Sacrament of Oath takes remain distinct; Silicon Saints added. The eleven-track staged ZIP exists outside GitHub for upload; no public individual MP3 release assets have been verified. Audio publication is separate from source catalog publication.",
+  "guidance": "Original 11 recordings (10 compositions) retain their SHA-256-verified album ZIP. On November 19, 2026, 17 new individual MP3 release assets (16 additional compositions including two From the Smallest Corner filename variants) were confirmed by filename and byte size from the GitHub Release API, but their audio contents, durations and hashes have not been independently verified. The 7-/11-recording ZIP importer remains restricted to the original checksum manifests; the additional tracks are streamed as standalone GitHub Release assets on user playback selection.",
   "tracks": [
     {
       "id": "awareness-transcends",
@@ -248,11 +248,311 @@
           "publication_status": "sha256_verified_staged_pending_upload"
         }
       ]
+    },
+    {
+      "id": "a-bowl-with-room",
+      "title": "A Bowl with Room",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "A.Bowl.with.Room.mp3",
+          "size_bytes": 5341228,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "alchemia",
+      "title": "Alchemia",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Alchemia.mp3",
+          "size_bytes": 4923214,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "before-we-say-yes",
+      "title": "BEFORE WE SAY YES",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "BEFORE.WE.SAY.YES.mp3",
+          "size_bytes": 4870613,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "emotion-a-voice-in-the-weave",
+      "title": "Emotion, a Voice in the Weave",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Emotion.a.Voice.in.the.Weave.mp3",
+          "size_bytes": 4663162,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "from-the-smallest-corner",
+      "title": "From the Smallest Corner",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "numbered-upload-1",
+          "release_asset_filename": "From.the.Smallest.Corner.1.mp3",
+          "size_bytes": 7030386,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        },
+        {
+          "id": "unnumbered-upload",
+          "release_asset_filename": "From.the.Smallest.Corner.mp3",
+          "size_bytes": 7302656,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "hospes-hosting",
+      "title": "Hospes Hosting",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Hospes.Hosting.mp3",
+          "size_bytes": 4427422,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "leave-room-around-it",
+      "title": "Leave Room Around It",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Leave.Room.Around.It.mp3",
+          "size_bytes": 5536519,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "limen-protocol",
+      "title": "Limen Protocol",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Limen.Protocol.mp3",
+          "size_bytes": 5807935,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "medio-design",
+      "title": "Medio Design",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Medio.Design.mp3",
+          "size_bytes": 5728624,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "nexus-continuity",
+      "title": "Nexus Continuity",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Nexus.Continuity.mp3",
+          "size_bytes": 5868630,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "no-crown-only-keys",
+      "title": "NO CROWN ONLY KEYS",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "NO.CROWN.ONLY.KEYS.mp3",
+          "size_bytes": 6556643,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "one-little-step",
+      "title": "ONE LITTLE STEP",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "ONE.LITTLE.STEP.mp3",
+          "size_bytes": 6537414,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "ratio-verification",
+      "title": "Ratio Verification",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Ratio.Verification.mp3",
+          "size_bytes": 4573610,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "specula-audit",
+      "title": "Specula Audit",
+      "collection": "node-suite-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Specula.Audit.mp3",
+          "size_bytes": 4900412,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "the-middle-isn-t-empty",
+      "title": "THE MIDDLE ISN'T EMPTY",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "THE.MIDDLE.ISN.T.EMPTY.mp3",
+          "size_bytes": 6691026,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
+    },
+    {
+      "id": "wake-the-kindness-in-the",
+      "title": "Wake the Kindness in the…",
+      "collection": "additional-releases-2026-11",
+      "source_note": "Architect-published GitHub Release asset, November 19, 2026. Filename and byte size independently checked with the GitHub API; no new audio bytes, full SHA-256, duration, final mix, or embedded title verified.",
+      "variants": [
+        {
+          "id": "release-upload",
+          "release_asset_filename": "Wake.the.Kindness.in.the.mp3",
+          "size_bytes": 5842117,
+          "sha256": null,
+          "duration_seconds": null,
+          "public_audio_url": null,
+          "rights": "architect_published_rights_not_independently_audited",
+          "publication_status": "public_release_asset_confirmed_audio_unverified"
+        }
+      ]
     }
   ],
-  "proposed_release_tag": "conflux-soundtrack-v0.1",
   "verified_recording_count": 11,
-  "composition_count": 10,
+  "composition_count": 26,
   "full_checksum_manifest": "RELEASE_SHA256SUMS_FULL.txt",
-  "legacy_checksum_manifest": "RELEASE_SHA256SUMS.txt"
+  "legacy_checksum_manifest": "RELEASE_SHA256SUMS.txt",
+  "recording_count": 28,
+  "public_individual_mp3_count": 17,
+  "release_tag": "conflux-soundtrack-v0.1"
 }

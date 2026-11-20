@@ -190,10 +190,10 @@
         link.href = data.album_download_url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = "Download the complete 11-recording soundtrack ZIP";
+        link.textContent = "Download the original 11-recording album ZIP";
         albumDownload.append(link);
       } else {
-        albumDownload.textContent = "Complete soundtrack download pending publication on GitHub Releases.";
+        albumDownload.textContent = "Original 11-recording album ZIP not available on GitHub Releases.";
       }
       // Don't replace an actively playing manual file selection during a refresh.
       if (enabled && groups.size) stop();
