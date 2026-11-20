@@ -156,6 +156,11 @@ def install_from_public_release():
     """
     public, error = public_release_assets(refresh=True)
     url = public.get(ALBUM_ASSET)
+    # GitHub may rate-limit the public release metadata API. For this ONE fixed
+    # original archive, allow a direct official URL fallback only when that API
+    # is unreachable. install_release_zip still verifies every album SHA-256.
+    if not url and error == "release-not-yet-reachable":
+        url = RELEASE_PREFIX + ALBUM_ASSET
     if url and url != RELEASE_PREFIX + ALBUM_ASSET:
         raise MusicError("The public release returned an unexpected album URL.")
     if not url:
