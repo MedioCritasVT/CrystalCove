@@ -186,6 +186,23 @@ class SoundtrackLibraryTests(unittest.TestCase):
         self.assertEqual(result["installed"], 2)
         self.assertEqual((self.directory / "Conflux-A.mp3").read_bytes(), self.a)
 
+    def test_metadata_api_outage_uses_only_pinned_hash_verified_album(self):
+        payload = self.make_zip()
+        class Reply:
+            def __enter__(self): return self
+            def __exit__(self, *_): return None
+            def read(self, limit): return payload
+        with mock.patch.object(music_library, "public_release_assets",
+            return_value=({}, "release-not-yet-reachable")) as listing:
+            with mock.patch.object(music_library.urllib.request, "urlopen",
+                return_value=Reply()) as download:
+                result = music_library.install_from_public_release()
+        listing.assert_called_once_with(refresh=True)
+        self.assertEqual(download.call_args.args[0].full_url,
+                         music_library.RELEASE_PREFIX + music_library.ALBUM_ASSET)
+        self.assertEqual(result["installed"], 2)
+        self.assertEqual((self.directory / "Conflux-A.mp3").read_bytes(), self.a)
+
     def test_remote_install_refuses_missing_or_untrusted_album(self):
         with mock.patch.object(music_library, "public_release_assets",
                                return_value=({}, "release-not-public")):
