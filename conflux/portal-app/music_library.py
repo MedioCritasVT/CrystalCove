@@ -67,6 +67,13 @@ def expected_assets():
     }
 
 
+def expected_asset_sizes():
+    """Published size guard; byte counts alone are not an audio hash audit."""
+    return {v["release_asset_filename"]: v["size_bytes"]
+            for track in metadata()["tracks"] for v in track["variants"]
+            if isinstance(v.get("size_bytes"), int) and v["size_bytes"] > 0}
+
+
 def local_asset(name):
     if name not in expected_assets():
         return None
@@ -86,6 +93,7 @@ def public_release_assets(refresh=False):
                       "User-Agent": "Conflux-Portal/0.1"})
     error = None
     found = {}
+    sizes = expected_asset_sizes()
     try:
         with urllib.request.urlopen(request, timeout=4) as response:
             obj = json.load(response)
@@ -95,7 +103,8 @@ def public_release_assets(refresh=False):
             for asset in obj.get("assets", []):
                 name, url = asset.get("name"), asset.get("browser_download_url")
                 if (name in expected_assets() | {ALBUM_ASSET} and isinstance(url, str) and
-                        url == RELEASE_PREFIX + name and asset.get("size", 0) > 0):
+                        url == RELEASE_PREFIX + name and asset.get("size", 0) > 0 and
+                        (name not in sizes or sizes[name] == asset.get("size"))):
                     found[name] = url
             if not found:
                 error = "release-has-no-matching-audio"
@@ -147,6 +156,11 @@ def install_from_public_release():
     """
     public, error = public_release_assets(refresh=True)
     url = public.get(ALBUM_ASSET)
+    # GitHub may rate-limit the public release metadata API. For this ONE fixed
+    # original archive, allow a direct official URL fallback only when that API
+    # is unreachable. install_release_zip still verifies every album SHA-256.
+    if not url and error == "release-not-yet-reachable":
+        url = RELEASE_PREFIX + ALBUM_ASSET
     if url and url != RELEASE_PREFIX + ALBUM_ASSET:
         raise MusicError("The public release returned an unexpected album URL.")
     if not url:
@@ -175,9 +189,9 @@ def install_release_zip(payload):
         raise MusicError("Choose the Conflux soundtrack ZIP (70 MB maximum).")
     legacy = checksums()
     complete = checksums(FULL_CHECKSUMS_PATH)
-    known = set(complete)
+    known = set(complete)  # Only original checksum-verified ZIP files; newer MP3s are separate.
     if (not legacy or not known or not set(legacy).issubset(known)
-            or known != expected_assets()
+            or not known.issubset(expected_assets())
             or any(complete[name] != digest for name, digest in legacy.items())):
         raise MusicError("The soundtrack release checksum lists disagree with the catalog.")
     try:

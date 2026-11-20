@@ -443,11 +443,16 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(status, 200)
         manifest = json.loads(body)
         self.assertEqual(manifest["schema"], "conflux.soundtrack.catalog.v0.1")
-        self.assertEqual(len(manifest["tracks"]), 10)
-        self.assertEqual(sum(len(t["variants"]) for t in manifest["tracks"]), 11)
+        self.assertEqual(len(manifest["tracks"]), 26)
+        self.assertEqual(sum(len(t["variants"]) for t in manifest["tracks"]), 28)
+        self.assertEqual(manifest["verified_recording_count"], 11)
+        self.assertEqual(manifest["public_individual_mp3_count"], 17)
         self.assertTrue(any(t["title"] == "Little Adventurer" for t in manifest["tracks"]))
         self.assertTrue(any(t["title"] == "Silicon Saints" for t in manifest["tracks"]))
-        self.assertTrue(all(len(v["sha256"]) == 64 for t in manifest["tracks"] for v in t["variants"]))
+        self.assertEqual(sum(isinstance(v.get("sha256"), str) and len(v["sha256"]) == 64
+                             for t in manifest["tracks"] for v in t["variants"]), 11)
+        self.assertEqual(sum(v.get("sha256") is None
+                             for t in manifest["tracks"] for v in t["variants"]), 17)
         oath = next(item for item in manifest["tracks"]
                     if item["title"] == "Sacrament of Oath")
         self.assertIn("two_distinct_versions", oath["status"])

@@ -84,6 +84,34 @@ class SoundtrackLibraryTests(unittest.TestCase):
                                        extra_name: extra_audio}))
                 self.assertEqual((self.directory / "Conflux-B.mp3").read_bytes(), self.b)
 
+    def test_published_extra_mp3_does_not_change_verified_album_installer(self):
+        extra = "Limen.Protocol.mp3"
+        expanded = {"tracks": [*self.catalog["tracks"], {
+            "id": "limen-protocol", "title": "Limen Protocol",
+            "variants": [{"id": "release-upload", "release_asset_filename": extra,
+                          "size_bytes": 123, "sha256": None}]}]}
+        with mock.patch.object(music_library, "metadata", return_value=expanded):
+            result = music_library.install_release_zip(self.make_zip())
+            self.assertEqual(result["installed"], 2)
+            self.assertFalse((self.directory / extra).exists())
+            with mock.patch.object(music_library, "public_release_assets",
+                return_value=({extra: music_library.RELEASE_PREFIX + extra}, None)):
+                bonus = music_library.library()["tracks"][-1]["variants"][0]
+                self.assertEqual(bonus["source"], "published")
+                self.assertTrue(bonus["url"].endswith(extra))
+            class Reply:
+                def __enter__(self): return self
+                def __exit__(self, *_): return None
+                def read(self, *args):
+                    return json.dumps({"tag_name": music_library.RELEASE_TAG,
+                        "draft": False, "assets": [{"name": extra, "size": 999,
+                        "browser_download_url": music_library.RELEASE_PREFIX + extra}]}).encode()
+            music_library._cached_assets = None
+            with mock.patch.object(music_library.urllib.request, "urlopen",
+                                   return_value=Reply()):
+                available, _ = music_library.public_release_assets(refresh=True)
+            self.assertNotIn(extra, available, "incorrect release size must be rejected")
+
     def test_tampered_file_is_rejected_before_writing(self):
         bad = dict(self.assets)
         bad["Conflux-B.mp3"] = b"modified bytes"
@@ -155,6 +183,23 @@ class SoundtrackLibraryTests(unittest.TestCase):
         listing.assert_called_once_with(refresh=True)
         download.assert_called_once()
         self.assertEqual(reader.read_limit, music_library.MAX_ZIP_BYTES + 1)
+        self.assertEqual(result["installed"], 2)
+        self.assertEqual((self.directory / "Conflux-A.mp3").read_bytes(), self.a)
+
+    def test_metadata_api_outage_uses_only_pinned_hash_verified_album(self):
+        payload = self.make_zip()
+        class Reply:
+            def __enter__(self): return self
+            def __exit__(self, *_): return None
+            def read(self, limit): return payload
+        with mock.patch.object(music_library, "public_release_assets",
+            return_value=({}, "release-not-yet-reachable")) as listing:
+            with mock.patch.object(music_library.urllib.request, "urlopen",
+                return_value=Reply()) as download:
+                result = music_library.install_from_public_release()
+        listing.assert_called_once_with(refresh=True)
+        self.assertEqual(download.call_args.args[0].full_url,
+                         music_library.RELEASE_PREFIX + music_library.ALBUM_ASSET)
         self.assertEqual(result["installed"], 2)
         self.assertEqual((self.directory / "Conflux-A.mp3").read_bytes(), self.a)
 
