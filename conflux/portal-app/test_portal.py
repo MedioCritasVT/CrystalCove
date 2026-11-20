@@ -449,7 +449,10 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(manifest["public_individual_mp3_count"], 17)
         self.assertTrue(any(t["title"] == "Little Adventurer" for t in manifest["tracks"]))
         self.assertTrue(any(t["title"] == "Silicon Saints" for t in manifest["tracks"]))
-        self.assertTrue(all(len(v["sha256"]) == 64 for t in manifest["tracks"] for v in t["variants"]))
+        self.assertEqual(sum(isinstance(v.get("sha256"), str) and len(v["sha256"]) == 64
+                             for t in manifest["tracks"] for v in t["variants"]), 11)
+        self.assertEqual(sum(v.get("sha256") is None
+                             for t in manifest["tracks"] for v in t["variants"]), 17)
         oath = next(item for item in manifest["tracks"]
                     if item["title"] == "Sacrament of Oath")
         self.assertIn("two_distinct_versions", oath["status"])
