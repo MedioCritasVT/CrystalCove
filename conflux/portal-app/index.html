@@ -707,7 +707,9 @@ tailscale serve status                      # Inspect routes</code></pre>
   <div class="discovery-workspace">
   <article class="card discovery-card discovery-sidebar">
     <h3>Registered projects</h3><p class="theme-note">Expand arrows to explore folder branches; select a folder to see its files. ◆ marks a terminal folder. Counts show endpoints · depth below the branch. Project details show snapshot age and scan controls.</p><div id="discovery-projects"><p>No projects loaded.</p></div>
-    <button id="discovery-reload" type="button" class="action secondary">Reload index view</button>
+    <div class="discovery-actions"><button id="discovery-reload" type="button" class="action secondary">Reload index view</button><button id="discovery-scan-all" type="button" class="action secondary">Scan all</button></div>
+    <label class="discovery-launch-option"><input id="discovery-launch-refresh" type="checkbox"> Refresh registered projects when Portal starts</label>
+    <p id="discovery-refresh-status" class="theme-note" role="status" aria-live="polite">Automatic refresh is off by default.</p>
   </article>
   <article class="card discovery-card">
     <h3>Find work</h3>
@@ -718,7 +720,7 @@ tailscale serve status                      # Inspect routes</code></pre>
     <div id="discovery-pagination" class="discovery-actions"></div>
   </article>
   </div>
-  <p id="discovery-status" role="status" aria-live="polite">Select a project to begin. No automatic scanning.</p>
+  <p id="discovery-status" role="status" aria-live="polite">Select a project to begin. Automatic refresh is optional.</p>
 </section>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>

@@ -152,6 +152,8 @@ class DiscoveryIndexTests(unittest.TestCase):
         self.assertEqual(discovery.folder_page(self.db,"Demo","Empty")["entries"], [])
         with sqlite3.connect(self.db) as conn:
             conn.execute("DROP TABLE directories")
+            conn.execute("DROP TABLE project_apps")
+            conn.execute("DROP TABLE discovery_preferences")
             conn.execute("PRAGMA user_version=1")
         inferred = discovery.projects(self.db)[0]
         self.assertFalse(inferred["topology"]["complete"])
@@ -162,6 +164,29 @@ class DiscoveryIndexTests(unittest.TestCase):
         discovery.forget(self.db,"Demo")
         with sqlite3.connect(self.db) as conn:
             self.assertEqual(conn.execute("SELECT count(*) FROM directories").fetchone()[0],0)
+
+    def test_preferences_and_project_association(self):
+        self.assertEqual(discovery.preferences(self.db), {"launch_refresh":False})
+        self.assertFalse(self.db.exists())
+        self.add("Nested/source.kt")
+        self.scan()
+        discovery.set_preferences(self.db, True)
+        self.assertTrue(discovery.preferences(self.db)["launch_refresh"])
+        with self.assertRaises(discovery.DiscoveryError):
+            discovery.associate(self.db,"Demo","arbitrary-command")
+        with self.assertRaises(discovery.DiscoveryError):
+            discovery.associate(self.db,"Demo","studio","../outside")
+        discovery.associate(self.db,"Demo","studio","Nested")
+        self.assertEqual(discovery.projects(self.db)[0]["association"], {"app":"studio","directory":"Nested"})
+        with mock.patch.object(discovery,"app_command",return_value=["/usr/bin/studio"]), mock.patch.object(discovery.subprocess,"Popen") as launch:
+            discovery.open_project(self.db,"Demo")
+            self.assertEqual(launch.call_args.args[0],["/usr/bin/studio",str(self.root/"Nested")])
+        self.scan()
+        self.assertEqual(discovery.projects(self.db)[0]["association"]["app"],"studio")
+        discovery.forget(self.db,"Demo")
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute("SELECT count(*) FROM project_apps").fetchone()[0],0)
+        self.assertTrue(discovery.preferences(self.db)["launch_refresh"])
 
     def test_project_isolation_and_limits(self):
         self.add("first.txt")
