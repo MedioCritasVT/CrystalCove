@@ -356,7 +356,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 #tour .tour-card .theme-note{font-size:.74rem}
 .essay{max-width:880px;margin:10px 0 22px}.essay-section{padding:20px 0;border-bottom:1px solid #64708388}.essay-section h3{color:var(--accent);margin:0 0 10px}.essay-section p{color:#d7e0e3;max-width:76ch;line-height:1.75;margin:8px 0 14px}#philosophy .room-hero,#about-arch .room-hero{min-height:210px}
 .comparison-scroll{overflow-x:auto;max-width:100%;margin:16px 0 8px;border:1px solid #64708388;border-radius:10px}.comparison-scroll:focus-visible{outline:3px solid #9cdec0;outline-offset:3px}.comparison-table{border-collapse:collapse;min-width:620px;width:100%;font-size:.94rem}.comparison-table th,.comparison-table td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid #64708380}.comparison-table th{color:#e1c58a;background:#26343d}.comparison-table td{color:#d7e0e3}.method-steps{padding-left:1.45rem}.method-steps li{margin:0 0 15px;padding-left:.35rem;line-height:1.75;color:#d7e0e3}.method-steps li strong{color:#e1c58a}.mirror-table-wrap{overflow-x:auto}.mirror-table-wrap table{min-width:520px}.mirror-report{margin:16px 0}.mirror-report li{margin:5px 0}.mirror-confirm{display:flex;align-items:flex-start;gap:12px;font-weight:normal}.mirror-confirm input{margin-top:7px;flex-shrink:0;width:20px;height:20px}.mirror-code{background:#0e1e2a;color:#d5eaed;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #58748c;border-radius:10px;font-size:.84rem}#service-setup code{overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/portal_codex.css"><link rel="stylesheet" href="/pull_desk.css"><link rel="stylesheet" href="/portal_polish.css"><link rel="stylesheet" href="/portal_finish.css"><link rel="stylesheet" href="/portal_symbols.css"><link rel="stylesheet" href="/portal_typography.css"><link rel="stylesheet" href="/portal_optical.css"><link rel="stylesheet" href="/node_atlas.css"><link rel="stylesheet" href="/workflow_instrument.css"></head><body>
+</style><link rel="stylesheet" href="/familiars.css"><link rel="stylesheet" href="/soundstage.css"><link rel="stylesheet" href="/theme_studio.css"><link rel="stylesheet" href="/portal_bridge.css"><link rel="stylesheet" href="/portal_codex.css"><link rel="stylesheet" href="/pull_desk.css"><link rel="stylesheet" href="/portal_polish.css"><link rel="stylesheet" href="/discovery.css"><link rel="stylesheet" href="/portal_finish.css"><link rel="stylesheet" href="/portal_symbols.css"><link rel="stylesheet" href="/portal_typography.css"><link rel="stylesheet" href="/portal_optical.css"><link rel="stylesheet" href="/node_atlas.css"><link rel="stylesheet" href="/workflow_instrument.css"></head><body>
 <div class="shell"><aside class="side"><h1><span class="brand-symbol" aria-hidden="true">✦</span> Conflux</h1><p class="subtitle">Atelier × Ledger<br>Linux development preview</p><div class="motif" aria-hidden="true"><span></span><span></span><span></span><span></span></div><nav class="portal-nav" aria-label="Portal rooms">
   <div class="nav-group" data-group="begin" role="group" aria-labelledby="nav-group-begin">
     <p class="nav-group-label" id="nav-group-begin"><span aria-hidden="true">01</span> Begin</p>
@@ -377,6 +377,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
     <p class="nav-group-label" id="nav-group-create"><span aria-hidden="true">03</span> Create</p>
     <button data-page="apps" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">▦</span></span><span class="nav-label">Applications</span></button>
     <button data-page="studio" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">✎</span></span><span class="nav-label">My Studio &amp; Themes</span></button>
+    <button data-page="discovery" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">⌕</span></span><span class="nav-label">Discovery</span></button>
     <button data-page="vos" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">◎</span></span><span class="nav-label">VOS Instruments</span></button>
   </div>
   <div class="nav-group" data-group="maintain" role="group" aria-labelledby="nav-group-maintain">
@@ -691,6 +692,30 @@ tailscale serve status                      # Inspect routes</code></pre>
   <p>The bundle includes a manual, stop-first tool to archive its new application state into a private backup folder. It does not back up media, copy existing CachyOS records, or create redundant media automatically. Updating the Portal, Bazzite, or individual container images are three distinct operations.</p>
   <p><a href="https://github.com/MedioCritasVT/CrystalCove/blob/main/conflux/platforms/bazzite-service-bundle/README.md" target="_blank" rel="noopener noreferrer">Read the complete Bazzite installer and backup README <span class="external-glyph" aria-hidden="true">↗</span></a></p>
 </section>
+<section class="panel" id="discovery" hidden>
+  <div class="room-hero"><div class="room-words"><div class="eyebrow">Local project index</div><h2>Discovery</h2><p class="lead">Find your work by project or filename, not by remembering where it lives.</p></div></div>
+  <p class="theme-note">Private to this local Portal. Only folders you explicitly choose are scanned. Files stay where they are; no contents are read or uploaded. Index results are snapshots, not proof of current file existence or approval.</p>
+  <article class="card discovery-card">
+    <h3>Register a project</h3>
+    <form id="discovery-register">
+      <label for="discovery-name">Project name</label><input id="discovery-name" required maxlength="100" placeholder="Example: Creative assets">
+      <label for="discovery-root">Project directory</label><div class="discovery-line"><input id="discovery-root" required maxlength="4096" placeholder="/absolute/path/to/project"><button id="discovery-browse" type="button" class="action secondary">Choose folder</button></div>
+      <p class="theme-note">Choose a specific project folder, not your home directory. Names of sensitive non-hidden files can still be indexed. Hidden folders, symlinks and common dependency folders are skipped.</p>
+      <button type="submit" class="action">Register and scan</button>
+    </form>
+  </article>
+  <article class="card discovery-card">
+    <h3>Registered projects</h3><div id="discovery-projects"><p>No projects loaded.</p></div>
+    <button id="discovery-reload" type="button" class="action secondary">Reload index view</button>
+  </article>
+  <article class="card discovery-card">
+    <h3>Find work</h3>
+    <form id="discovery-search"><label for="discovery-query">Filename or project name</label><input id="discovery-query" maxlength="500" placeholder="e.g. blend, report, APK"><label for="discovery-filter">Project</label><select id="discovery-filter"><option value="">All projects</option></select><button class="action" type="submit">Search / recent files</button></form>
+    <p class="theme-note">Up to 100 results, newest modified first. Locations are shown as text, not executable links.</p>
+    <div id="discovery-results"></div>
+  </article>
+  <p id="discovery-status" role="status" aria-live="polite">Select a project to begin. No automatic scanning.</p>
+</section>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>
 <h2>Personal Studio</h2>
@@ -918,4 +943,4 @@ tailscale serve status                      # Inspect routes</code></pre>
   </div>
   <p class="theme-note">Your browser may choose how windows open. Ctrl-click and middle-click keep their normal behavior.</p>
 </dialog>
-<script src="/app.js"></script><script src="/node_atlas.js"></script><script src="/workflow_instrument.js"></script><script src="/theme_studio.js"></script><script src="/portal_bridge.js"></script><script src="/portal_codex.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>
+<script src="/app.js"></script><script src="/discovery.js"></script><script src="/node_atlas.js"></script><script src="/workflow_instrument.js"></script><script src="/theme_studio.js"></script><script src="/portal_bridge.js"></script><script src="/portal_codex.js"></script><script src="/pull_desk.js"></script><script src="/music.js"></script><script src="/readme.js"></script><script src="/link_choice.js"></script><script src="/soundstage.js"></script><script src="/video_tour.js"></script><script src="/service-setup.js"></script></body></html>

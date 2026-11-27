@@ -27,7 +27,7 @@ def picker_program():
     return None
 
 
-def choose_folder():
+def choose_folder(title="Find your extracted Conflux game"):
     """Use a native desktop folder picker. No shell, no terminal commands."""
     picker = picker_program()
     if picker is None:
@@ -35,10 +35,10 @@ def choose_folder():
     name, executable = picker
     if name == "kdialog":
         argv = [executable, "--getexistingdirectory", str(Path.home()),
-                "--title", "Find your extracted Conflux game"]
+                "--title", title]
     else:
         argv = [executable, "--file-selection", "--directory",
-                "--title=Find your extracted Conflux game"]
+                "--title=" + title]
     try:
         proc = subprocess.run(argv, text=True, capture_output=True,
                               timeout=180, check=False)

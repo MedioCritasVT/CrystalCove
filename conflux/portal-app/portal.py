@@ -16,6 +16,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 import game_locator
+import discovery_index
+import sqlite3
 import music_library
 from app_updater import UpdateManager, UpdateError
 from theme_studio import ThemeStudio, StudioError
@@ -38,6 +40,7 @@ else:
     MEDIA_MIRROR = None
     MEDIA_MOUNTS = None
 MIRROR_LOCK = threading.Lock()
+DISCOVERY_LOCK = threading.Lock()
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
@@ -328,6 +331,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.serve_file(ROOT.parents[1] / "docs" / "video_tour.js", "text/javascript; charset=utf-8")
         if route == "/video-tour/catalog.json":
             return self.serve_file(ROOT.parent / "video-tour" / "catalog.json", "application/json; charset=utf-8")
+        if route == "/discovery.js":
+            return self.serve_file(ROOT / "discovery.js", "text/javascript; charset=utf-8")
+        if route == "/discovery.css":
+            return self.serve_file(ROOT / "discovery.css", "text/css; charset=utf-8")
         if route == "/app.js":
             return self.serve_file(ROOT / "app.js", "text/javascript; charset=utf-8")
         if route == "/node_atlas.js":
@@ -438,6 +445,8 @@ class Handler(BaseHTTPRequestHandler):
             except StudioError as error:
                 return self.respond(404, {"error": str(error)[:400]})
         if route == "/api/status":
+            if self.headers.get("Host") != "127.0.0.1:" + str(self.server.server_port):
+                return self.respond(403, {"error": "Local Portal only."})
             return self.respond(200, {
                 "platform": sys.platform, "mode": "local-preview",
                 "portal_root": str(ROOT),
@@ -462,8 +471,64 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, TypeError, ValueError):
             return None
 
+    def discovery_request(self, route):
+        """Private, explicit local operations; no file serving or launch."""
+        expected = "127.0.0.1:" + str(self.server.server_port)
+        if (self.client_address[0] != "127.0.0.1"
+                or self.headers.get("Host") != expected or not self.authorized()):
+            return self.respond(403, {"error": "Discovery is local only."})
+        action = route.removeprefix("/api/discovery/")
+        if action not in ("projects", "search", "browse", "scan", "refresh", "forget"):
+            return self.respond(404, {"error": "not-found"})
+        if self.headers.get("Content-Type", "").split(";")[0].strip() != "application/json":
+            return self.respond(400, {"error": "Expected JSON."})
+        body = self.read_json()
+        if body is None:
+            return self.respond(400, {"error": "invalid-request"})
+        # Serialize scans, refresh and forget so an in-flight scan cannot
+        # silently restore a project that the user has just forgotten.
+        if not DISCOVERY_LOCK.acquire(blocking=False):
+            return self.respond(409, {"error": "Discovery is busy. Try again after the current operation."})
+        try:
+            db = discovery_index.default_db()
+            if action == "browse":
+                folder = game_locator.choose_folder(title="Choose a project folder for Discovery")
+                result = {"folder": folder, "cancelled": folder is None}
+            elif action in ("projects", "search") and not os.path.lexists(db):
+                # Viewing an empty room does not initialize storage.
+                result = {"projects" if action == "projects" else "files": []}
+            elif action == "projects":
+                result = {"projects": discovery_index.projects(db)}
+            elif action == "search":
+                result = {"files": discovery_index.search(
+                    db, body.get("query", ""), body.get("project"), limit=100)}
+            elif action == "scan":
+                root = body.get("root")
+                if not isinstance(root, str) or not root.strip() or len(root) > 4096:
+                    raise discovery_index.DiscoveryError("Choose an explicit project folder.")
+                result = discovery_index.scan(db, body.get("project"), root)
+            elif action == "refresh":
+                name = discovery_index.project_name(body.get("project"))
+                rows = discovery_index.projects(db) if os.path.lexists(db) else []
+                found = next((row for row in rows if row["name"] == name), None)
+                if found is None:
+                    raise discovery_index.DiscoveryError("Project is not registered.")
+                result = discovery_index.scan(db, name, found["root"])
+            else:
+                name = discovery_index.project_name(body.get("project"))
+                result = discovery_index.forget(db, name) if os.path.lexists(db) else {"removed_project_records": 0}
+            return self.respond(200, result)
+        except (discovery_index.DiscoveryError, game_locator.LocateError) as exc:
+            return self.respond(400, {"error": str(exc)[:350]})
+        except (OSError, sqlite3.Error, ValueError, RuntimeError, TypeError):
+            return self.respond(400, {"error": "Discovery could not complete the operation. Check folder availability and private index permissions. Existing successful snapshots are retained on scan failure."})
+        finally:
+            DISCOVERY_LOCK.release()
+
     def do_POST(self):
         route = urlsplit(self.path).path
+        if route.startswith("/api/discovery/"):
+            return self.discovery_request(route)
         if route not in ("/api/music/install", "/api/music/install-public", "/api/launch", "/api/game/browse",
                          "/api/game/find", "/api/game/register",
                          "/api/updates/check", "/api/updates/apply",
