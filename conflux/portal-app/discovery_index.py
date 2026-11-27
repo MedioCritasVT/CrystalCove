@@ -335,7 +335,7 @@ def folder_page(db, project, directory="", offset=0):
     return {"entries": entries[offset:offset+PAGE_SIZE], "total": len(entries), "offset": offset}
 
 
-def open_indexed(db, project, path, *, reveal=False):
+def open_indexed(db, project, path, *, reveal=False, app=None):
     """Explicit desktop handoff of an indexed regular file, never a command."""
     name = project_name(project)
     parts = relative_parts(path)
@@ -360,20 +360,40 @@ def open_indexed(db, project, path, *, reveal=False):
         wanted = stat.S_ISREG if i == len(parts)-1 else stat.S_ISDIR
         if not wanted(info.st_mode) or info.st_dev != device:
             raise DiscoveryError("Indexed location changed. Refresh the project.")
-    if not reveal and (target.suffix.lower() not in OPEN_SUFFIXES or info.st_mode & 0o111):
-        raise DiscoveryError("This file type or executable is reveal-only.")
+    if reveal:
+        if app is not None:
+            raise DiscoveryError("Reveal does not accept an application.")
+        opener = shutil.which("xdg-open")
+        if not opener:
+            raise DiscoveryError("Desktop opener (xdg-open) is unavailable.")
+        return launch_desktop([opener], target.parent, "File manager", "reveal")
+    suffix = target.suffix.lower()
+    if info.st_mode & 0o111:
+        raise DiscoveryError("Executable files are reveal-only.")
+    if app is not None and (not isinstance(app, str) or app not in FILE_APPS or suffix not in FILE_APPS[app]):
+        raise DiscoveryError("Choose an application supported for this file type.")
+    if app is None and suffix not in OPEN_SUFFIXES:
+        raise DiscoveryError("This file type is reveal-only unless a supported editor is chosen.")
+    # A native Blender document has a specific editor, regardless of the
+    # project-level IDE association. Other types keep the desktop default.
+    if app is None and suffix == ".blend":
+        command = app_command("blender")
+        if command:
+            return launch_desktop(command, target, "Blender", "open")
+    if app is not None:
+        command = app_command(app)
+        if not command:
+            raise DiscoveryError(APP_OPTIONS[app][0] + " launcher was not detected.")
+        return launch_desktop(command, target, APP_OPTIONS[app][0], "open")
     opener = shutil.which("xdg-open")
     if not opener:
         raise DiscoveryError("Desktop opener (xdg-open) is unavailable.")
-    subprocess.Popen([opener, str(target.parent if reveal else target)],
-                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
-                     stderr=subprocess.DEVNULL, start_new_session=True)
-    return {"requested": True, "action": "reveal" if reveal else "open"}
+    return launch_desktop([opener], target, "Desktop default", "open")
 
 
 APP_OPTIONS = {
-    "pycharm": ("PyCharm", ("pycharm", "pycharm-community", "pycharm-professional"), ()),
-    "studio": ("Android Studio", ("studio", "android-studio"), ()),
+    "pycharm": ("PyCharm", ("pycharm", "pycharm-community", "pycharm-professional", "pycharm.sh"), ("com.jetbrains.PyCharm-Community", "com.jetbrains.PyCharm-Professional")),
+    "studio": ("Android Studio", ("studio", "android-studio", "studio.sh"), ("com.google.AndroidStudio",)),
     "blender": ("Blender", ("blender",), ("org.blender.Blender",)),
     "code": ("Visual Studio Code", ("code",), ("com.visualstudio.code",)),
     "kate": ("Kate", ("kate",), ("org.kde.kate",)),
@@ -381,10 +401,67 @@ APP_OPTIONS = {
 }
 
 
+EDITOR_SUFFIXES = frozenset({".py", ".js", ".kt", ".java", ".cpp", ".h", ".cs", ".css", ".ini", ".json", ".md", ".txt", ".csv", ".xml", ".toml", ".yaml", ".yml", ".gradle", ".kts"})
+FILE_APPS = {
+    "blender": frozenset({".blend"}),
+    "pycharm": EDITOR_SUFFIXES,
+    "studio": EDITOR_SUFFIXES,
+    "code": EDITOR_SUFFIXES,
+    "kate": EDITOR_SUFFIXES,
+}
+DESKTOP_IDS = {
+    "pycharm": ("jetbrains-pycharm.desktop", "jetbrains-pycharm-ce.desktop", "pycharm.desktop", "com.jetbrains.PyCharm-Community.desktop", "com.jetbrains.PyCharm-Professional.desktop"),
+    "studio": ("jetbrains-studio.desktop", "android-studio.desktop", "com.google.AndroidStudio.desktop"),
+    "blender": ("blender.desktop", "org.blender.Blender.desktop"),
+    "code": ("code.desktop", "com.visualstudio.code.desktop"),
+    "kate": ("org.kde.kate.desktop", "kate.desktop"),
+}
+
+
+def desktop_entry(app):
+    gio = shutil.which("gio")
+    if not gio:
+        return None
+    data_home = Path(os.environ.get("XDG_DATA_HOME") or Path.home()/".local/share")
+    data_dirs = [Path(p) for p in os.environ.get("XDG_DATA_DIRS", "/usr/local/share:/usr/share").split(":") if p.startswith("/")]
+    roots = [data_home, Path.home()/".local/share/flatpak/exports/share", Path("/var/lib/flatpak/exports/share"), *data_dirs]
+    for root in roots:
+        if not root.is_absolute():
+            continue
+        for name in DESKTOP_IDS.get(app, ()):
+            path = root / "applications" / name
+            if path.is_file():
+                return [gio, "launch", str(path)]
+    return None
+
+
+def launch_desktop(command, target, label, action):
+    """Check immediate failures without claiming an actual window appeared."""
+    try:
+        child = subprocess.Popen([*command, str(target)], stdin=subprocess.DEVNULL,
+                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                 start_new_session=True)
+        try:
+            code = child.wait(timeout=0.8)
+        except subprocess.TimeoutExpired:
+            return {"requested": True, "action": action, "application": label, "launch_state": "running"}
+    except OSError as exc:
+        raise DiscoveryError(label + " could not start (OS error " + str(exc.errno) + "). Check the local launcher.") from exc
+    if code != 0:
+        raise DiscoveryError(label + " launcher exited with status " + str(code) + ". Check the installed launcher and desktop session; try opening the same item from Dolphin.")
+    return {"requested": True, "action": action, "application": label, "launch_state": "accepted"}
+
+
 def app_command(app):
     if not isinstance(app, str) or app not in APP_OPTIONS:
         raise DiscoveryError("Choose a supported application.")
     _, names, flatpaks = APP_OPTIONS[app]
+    # Desktop entries can carry the correct Toolbox/Flatpak environment and
+    # launcher path even when the Portal's inherited PATH does not.
+    if app in ("pycharm", "studio"):
+        desktop = desktop_entry(app)
+        if desktop:
+            return desktop
     for name in names:
         path = shutil.which(name)
         if path:
@@ -395,6 +472,9 @@ def app_command(app):
             path = scripts / name
             if path.is_file() and os.access(path, os.X_OK):
                 return [str(path)]
+    desktop = desktop_entry(app)
+    if desktop:
+        return desktop
     flatpak = shutil.which("flatpak")
     if flatpak:
         for app_id in flatpaks:
@@ -410,7 +490,8 @@ def app_command(app):
 
 def app_options():
     # Detection is local; no network request, installation or app launch.
-    return [{"id": app, "label": spec[0], "available": bool(app_command(app))}
+    return [{"id": app, "label": spec[0], "available": bool(app_command(app)),
+             "extensions": sorted(FILE_APPS.get(app, ())), "project": app != "blender"}
             for app, spec in APP_OPTIONS.items()]
 
 
@@ -476,9 +557,7 @@ def open_project(db, project):
     command = app_command(row["app"])
     if not command:
         raise DiscoveryError("Application launcher is unavailable. Check your local installation.")
-    subprocess.Popen([*command, str(target)], stdin=subprocess.DEVNULL,
-                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
-    return {"requested": True, "app": row["app"]}
+    return {**launch_desktop(command, target, APP_OPTIONS[row["app"]][0], "project"), "app": row["app"]}
 
 
 def forget(db, name):

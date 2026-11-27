@@ -88,7 +88,7 @@
     const select = element("select");
     select.setAttribute("aria-label","Application for "+project.name);
     select.add(new Option("No project application",""));
-    for (const app of applications) select.add(new Option(app.label+(app.available?"":" (launcher not detected)"),app.id));
+    for (const app of applications.filter(a=>a.project)) select.add(new Option(app.label+(app.available?"":" (launcher not detected)"),app.id));
     select.value=project.association?.app || "";
     const directoryInput=element("input");
     directoryInput.setAttribute("aria-label","Relative application directory for "+project.name);
@@ -105,8 +105,8 @@
   function launchProject(project) {
     if (!window.confirm("Open this trusted project in its associated application? IDEs may run project-specific configuration.")) return;
     run("Opening project application…",async()=>{
-      await request("open-project",{project:project.name});
-      status.textContent="Application launch requested. Check your desktop.";
+      const result = await request("open-project",{project:project.name});
+      status.textContent=(result.application || "Application")+" launcher "+(result.launch_state==="running"?"is running":"accepted the request")+". Check your desktop; a window is not confirmed.";
     });
   }
   function syncSelection() {
@@ -127,11 +127,13 @@
     label.append(icon, element("span", name, "discovery-folder-name"));
     return label;
   }
-  function desktop(file, action) {
+  function desktop(file, action, app = null) {
     if (action === "open" && !window.confirm("Open this indexed file using your desktop's associated application? Only open trusted files.")) return;
     run("Requesting desktop handoff…", async () => {
-      await request(action, {project:file.project, path:file.path});
-      status.textContent = "Desktop handoff requested. The associated application may open separately.";
+      const payload={project:file.project,path:file.path};
+      if(app) payload.app=app;
+      const result=await request(action,payload);
+      status.textContent=(result.application || "Desktop")+" launcher "+(result.launch_state==="running"?"is running":"accepted the request")+". Check your desktop.";
     });
   }
   function record(file) {
@@ -142,6 +144,20 @@
       element("p", file.root + "/" + file.path, "discovery-location"));
     const actions = element("div", undefined, "discovery-actions");
     actions.append(button("Open", () => desktop(file, "open")), button("Reveal", () => desktop(file, "reveal")));
+    const suffix = /\.[^./]+$/.exec(file.path)?.[0].toLowerCase() || "";
+    const choices = applications.filter(app=>app.extensions?.includes(suffix));
+    if(choices.length){
+      const select=element("select");
+      select.setAttribute("aria-label","Open "+(file.name||file.path)+" with");
+      select.add(new Option("Choose application",""));
+      for(const app of choices) select.add(new Option(app.label+(app.available?"":" (not detected)"),app.id));
+      const launch=button("Open with",()=>{
+        if(!select.value){status.textContent="Choose a file application first.";return;}
+        desktop(file,"open",select.value);
+      });
+      const group=element("div",undefined,"discovery-open-with");
+      group.append(select,launch); actions.append(group);
+    }
     row.append(main, actions);
     return row;
   }

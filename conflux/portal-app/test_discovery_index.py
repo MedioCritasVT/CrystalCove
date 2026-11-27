@@ -124,6 +124,7 @@ class DiscoveryIndexTests(unittest.TestCase):
             with self.assertRaises(discovery.DiscoveryError):
                 discovery.open_indexed(self.db, "Demo", path)
         with mock.patch.object(discovery.shutil, "which", return_value="/usr/bin/xdg-open"), mock.patch.object(discovery.subprocess, "Popen") as launch:
+            launch.return_value.wait.return_value = 0
             discovery.open_indexed(self.db, "Demo", "Reports/note.txt")
             self.assertEqual(launch.call_args.args[0], ["/usr/bin/xdg-open", str(source)])
             discovery.open_indexed(self.db, "Demo", "launch.desktop", reveal=True)
@@ -179,6 +180,7 @@ class DiscoveryIndexTests(unittest.TestCase):
         discovery.associate(self.db,"Demo","studio","Nested")
         self.assertEqual(discovery.projects(self.db)[0]["association"], {"app":"studio","directory":"Nested"})
         with mock.patch.object(discovery,"app_command",return_value=["/usr/bin/studio"]), mock.patch.object(discovery.subprocess,"Popen") as launch:
+            launch.return_value.wait.return_value = 0
             discovery.open_project(self.db,"Demo")
             self.assertEqual(launch.call_args.args[0],["/usr/bin/studio",str(self.root/"Nested")])
         self.scan()
@@ -187,6 +189,29 @@ class DiscoveryIndexTests(unittest.TestCase):
         with sqlite3.connect(self.db) as conn:
             self.assertEqual(conn.execute("SELECT count(*) FROM project_apps").fetchone()[0],0)
         self.assertTrue(discovery.preferences(self.db)["launch_refresh"])
+
+    def test_file_open_with_is_independent_and_reports_failure(self):
+        blend = self.add("Models/model.blend")
+        script = self.add("source.py")
+        self.add("unsafe.desktop")
+        self.scan()
+        discovery.associate(self.db,"Demo","pycharm")
+        with mock.patch.object(discovery,"app_command",side_effect=lambda app:["/usr/bin/"+app]), mock.patch.object(discovery.subprocess,"Popen") as launch:
+            launch.return_value.wait.return_value=0
+            result=discovery.open_indexed(self.db,"Demo","Models/model.blend")
+            self.assertEqual(result["application"],"Blender")
+            self.assertEqual(launch.call_args.args[0],["/usr/bin/blender",str(blend)])
+            discovery.open_indexed(self.db,"Demo","source.py",app="kate")
+            self.assertEqual(launch.call_args.args[0],["/usr/bin/kate",str(script)])
+            for path,app in (("unsafe.desktop","kate"),("source.py","blender"),("Models/model.blend","untrusted")):
+                with self.assertRaises(discovery.DiscoveryError):
+                    discovery.open_indexed(self.db,"Demo",path,app=app)
+            launch.return_value.wait.return_value=2
+            with self.assertRaisesRegex(discovery.DiscoveryError,"status 2"):
+                discovery.open_project(self.db,"Demo")
+            launch.return_value.wait.side_effect=discovery.subprocess.TimeoutExpired("launcher",.8)
+            self.assertEqual(discovery.open_indexed(self.db,"Demo","Models/model.blend",app="blender")["launch_state"],"running")
+        self.assertEqual(discovery.projects(self.db)[0]["association"]["app"],"pycharm")
 
     def test_project_isolation_and_limits(self):
         self.add("first.txt")

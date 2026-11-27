@@ -679,6 +679,8 @@ class PortalSmokeTest(unittest.TestCase):
             with mock.patch.object(portal.discovery_index, "open_indexed", return_value={"requested":True}) as opener:
                 self.assertTrue(self.post("/api/discovery/open", {"project":"Demo","path":"asset.blend"})[1]["requested"])
                 opener.assert_called_once_with(db, "Demo", "asset.blend", reveal=False)
+                self.post("/api/discovery/open", {"project":"Demo","path":"asset.blend","app":"blender"})
+                opener.assert_called_with(db, "Demo", "asset.blend", reveal=False, app="blender")
             (root / "second.txt").touch()
             self.assertEqual(self.post("/api/discovery/refresh", {"project":"Demo"})[1]["indexed"], 2)
             self.assertFalse(self.post("/api/discovery/preferences", {})[1]["launch_refresh"])
