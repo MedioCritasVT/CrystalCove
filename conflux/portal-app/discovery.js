@@ -52,6 +52,24 @@
   let directory = "";
   let offset = 0;
   const expanded = new Set();
+  function syncSelection() {
+    room.querySelectorAll(".discovery-tree-label").forEach(label => {
+      const selected = mode === "folder" && label.dataset.project === currentProject && label.dataset.path === directory;
+      if (selected) label.setAttribute("aria-current", "true");
+      else label.removeAttribute("aria-current");
+      label.closest(".discovery-tree-row").classList.toggle("is-selected", selected);
+    });
+  }
+  function folderLabel(project, path, name, root = false) {
+    const label = button("", () => browse(project, path));
+    label.className = "discovery-tree-label";
+    label.dataset.project = project; label.dataset.path = path;
+    label.title = path || project;
+    const icon = element("span", undefined, "discovery-folder-icon" + (root ? " discovery-root-icon" : ""));
+    icon.setAttribute("aria-hidden", "true");
+    label.append(icon, element("span", name, "discovery-folder-name"));
+    return label;
+  }
   function desktop(file, action) {
     if (action === "open" && !window.confirm("Open this indexed file using your desktop's associated application? Only open trusted files.")) return;
     run("Requesting desktop handoff…", async () => {
@@ -79,7 +97,7 @@
   }
   async function view() {
     const results = get("results"), crumb = get("breadcrumb");
-    results.replaceChildren(); crumb.replaceChildren();
+    results.replaceChildren(); crumb.replaceChildren(); syncSelection();
     if (mode === "folder") {
       const {entries,total} = await request("folder", {project:currentProject,directory,offset});
       const parts = directory ? directory.split("/") : [];
@@ -117,7 +135,7 @@
   async function search() { mode="search"; offset=0; await view(); }
   function treeNodes(container, project, path, page, replace = true) {
     if (replace) container.replaceChildren();
-    else container.querySelector(".discovery-more")?.remove();
+    else container.querySelector(":scope > .discovery-more")?.remove();
     for (const node of page.entries) {
       const line = element("div", undefined, "discovery-tree-node");
       const row = element("div", undefined, "discovery-tree-row");
@@ -127,15 +145,15 @@
       if (node.children) {
         const toggle = button("▸", () => {
           if (!nested.hidden) {
-            nested.hidden = true; toggle.textContent = "▸"; toggle.setAttribute("aria-expanded","false"); return;
+            nested.hidden = true; line.classList.remove("is-expanded"); toggle.textContent = "▸"; toggle.setAttribute("aria-expanded","false"); return;
           }
           if (loadedChildren) {
-            nested.hidden = false; toggle.textContent = "▾"; toggle.setAttribute("aria-expanded","true"); return;
+            nested.hidden = false; line.classList.add("is-expanded"); toggle.textContent = "▾"; toggle.setAttribute("aria-expanded","true"); return;
           }
           run("Loading folder branches…", async () => {
             const result = await request("tree", {project,directory:node.path,offset:0});
             treeNodes(nested,project,node.path,result);
-            loadedChildren = true; nested.hidden = false;
+            loadedChildren = true; nested.hidden = false; line.classList.add("is-expanded");
             toggle.textContent = "▾"; toggle.setAttribute("aria-expanded","true");
           });
         });
@@ -148,9 +166,7 @@
         leaf.setAttribute("aria-label","Terminal folder");
         row.append(leaf);
       }
-      const open = button(node.name,()=>browse(project,node.path));
-      open.className="discovery-tree-label";
-      open.title=node.path;
+      const open = folderLabel(project,node.path,node.name);
       row.append(open);
       const count=element("span",node.endpoints+" · d"+node.depth,"discovery-tree-metric");
       count.title=node.endpoints+" endpoints · "+node.depth+" levels below this folder";
@@ -164,6 +180,7 @@
       }));
       more.className="discovery-more action secondary"; container.append(more);
     }
+    syncSelection();
   }
   async function list() {
     const {projects} = await request("projects");
@@ -172,16 +189,31 @@
     if (!projects.length) target.append(element("p","No projects registered. Choose a folder above to start."));
     for (const project of projects) {
       filter.add(new Option(project.name,project.name));
-      const item=element("details",undefined,"discovery-project");
-      item.open=expanded.has(project.name);
-      item.addEventListener("toggle",()=>{if(item.open) expanded.add(project.name);else expanded.delete(project.name);});
+      const item=element("div",undefined,"discovery-project discovery-tree-node");
       const metrics=project.topology;
-      item.append(element("summary",project.name+" · "+project.indexed+" files"),
-        element("p",metrics.folders+" folders · "+metrics.endpoints+" endpoints · depth "+metrics.depth+(metrics.complete?"":" · inferred"),"discovery-project-metrics"));
-      const branch=element("div",undefined,"discovery-tree");
-      branch.append(button("▸ Browse folders",()=>browse(project.name,"")),
-        element("p",project.root,"discovery-location"),
-        element("p",project.skipped+" skipped · "+date(project.scanned_ns),"theme-note"));
+      const row=element("div",undefined,"discovery-tree-row discovery-root-row");
+      const branch=element("div",undefined,"discovery-tree-children discovery-root-children");
+      const tree=element("div",undefined,"discovery-folder-map");
+      treeNodes(tree,project.name,"",project.tree);
+      if(!project.tree.entries.length) tree.append(element("p","◆ Project root is the indexed endpoint.","theme-note"));
+      const setOpen=(open)=>{
+        branch.hidden=!open; item.classList.toggle("is-expanded",open);
+        toggle.textContent=open?"▾":"▸"; toggle.setAttribute("aria-expanded",String(open));
+        if(open) expanded.add(project.name); else expanded.delete(project.name);
+      };
+      const toggle=button("▸",()=>setOpen(branch.hidden));
+      toggle.className="discovery-tree-toggle";
+      toggle.setAttribute("aria-label","Expand or collapse project "+project.name);
+      const label=folderLabel(project.name,"",project.name,true);
+      label.addEventListener("click",()=>setOpen(true));
+      const count=element("span",metrics.endpoints+" · d"+metrics.depth,"discovery-tree-metric");
+      count.title=metrics.endpoints+" endpoints · "+metrics.depth+" levels below root";
+      row.append(toggle,label,count);
+      const metadata=element("details",undefined,"discovery-project-details");
+      metadata.append(element("summary","Project details"));
+      metadata.append(element("p",project.root,"discovery-location"),
+        element("p",metrics.folders+" folders · "+metrics.endpoints+" endpoints · depth "+metrics.depth+(metrics.complete?"":" · inferred"),"discovery-project-metrics"),
+        element("p",project.indexed+" files · "+project.skipped+" skipped · "+date(project.scanned_ns),"theme-note"));
       const actions=element("div",undefined,"discovery-actions");
       actions.append(button("Refresh scan",()=>run("Refreshing selected project…",async()=>{
         await request("refresh",{project:project.name}); await list(); await search();
@@ -193,14 +225,14 @@
           await list(); await search(); status.textContent="Index records removed. Original files unchanged.";
         });
       }));
-      const tree=element("div",undefined,"discovery-folder-map");
-      treeNodes(tree,project.name,"",project.tree);
-      if(!project.tree.entries.length) tree.append(element("p","◆ Project root is the indexed endpoint.","theme-note"));
-      branch.append(tree,actions); item.append(branch); target.append(item);
+      metadata.append(actions);
+      branch.append(tree,metadata); item.append(row,branch); target.append(item);
+      setOpen(expanded.has(project.name));
     }
     if(projects.some(p=>p.name===previous))filter.value=previous;
     if (!loaded && projects.length) get("registration").open=false;
     loaded=true;
+    syncSelection();
   }
   get("register").addEventListener("submit",event=>{
     event.preventDefault();
