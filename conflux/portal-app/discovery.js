@@ -53,6 +53,8 @@
   let offset = 0;
   const expanded = new Set();
   let applications = [];
+  let fileAssociations = {};
+  let desktopExtensions = [];
   let seenRefresh = null;
   let pollTimer = null;
   let refreshInProgress = false;
@@ -81,7 +83,10 @@
   async function loadPreferences() {
     const prefs = await request("preferences");
     get("launch-refresh").checked = prefs.launch_refresh;
-    applications = (await request("apps")).apps;
+    const catalog = await request("apps");
+    applications = catalog.apps;
+    desktopExtensions = catalog.desktop_extensions || [];
+    fileAssociations = (await request("file-associations")).associations;
   }
   function appAssociation(project) {
     const holder = element("div",undefined,"discovery-association");
@@ -143,20 +148,28 @@
       element("p", file.project + " · " + Number(file.bytes).toLocaleString() + " bytes · " + date(file.modified_ns), "theme-note"),
       element("p", file.root + "/" + file.path, "discovery-location"));
     const actions = element("div", undefined, "discovery-actions");
-    actions.append(button("Open", () => desktop(file, "open")), button("Reveal", () => desktop(file, "reveal")));
     const suffix = /\.[^./]+$/.exec(file.path)?.[0].toLowerCase() || "";
     const choices = applications.filter(app=>app.extensions?.includes(suffix));
+    if(choices.length || desktopExtensions.includes(suffix)) actions.append(button("Open", () => desktop(file, "open")));
+    actions.append(button("Reveal", () => desktop(file, "reveal")));
     if(choices.length){
       const select=element("select");
       select.setAttribute("aria-label","Open "+(file.name||file.path)+" with");
-      select.add(new Option("Choose application",""));
+      select.add(new Option("Automatic / recommended",""));
+      if(desktopExtensions.includes(suffix)) select.add(new Option("Desktop default","desktop"));
       for(const app of choices) select.add(new Option(app.label+(app.available?"":" (not detected)"),app.id));
+      select.value=fileAssociations[suffix] || "";
       const launch=button("Open with",()=>{
-        if(!select.value){status.textContent="Choose a file application first.";return;}
-        desktop(file,"open",select.value);
+        desktop(file,"open",select.value || null);
       });
       const group=element("div",undefined,"discovery-open-with");
-      group.append(select,launch); actions.append(group);
+      const remember=button("Remember "+suffix,()=>run("Saving file association…",async()=>{
+        fileAssociations=(await request("set-file-association",{suffix,app:select.value})).associations;
+        await view();
+        status.textContent=select.value?"Default application saved for "+suffix+".":"Automatic application restored for "+suffix+".";
+      }));
+      remember.title="Set the default for this file extension across all registered projects, without changing KDE settings.";
+      group.append(select,launch,remember); actions.append(group);
     }
     row.append(main, actions);
     return row;

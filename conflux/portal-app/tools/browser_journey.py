@@ -124,6 +124,9 @@ def main():
                 assert (project / "sample.blend").read_bytes() == b"fixture"
                 page.get_by_label("Open sample.blend with", exact=True).select_option("blender")
                 assert page.locator("#discovery-results").get_by_role("button",name="Open with",exact=True).is_visible()
+                page.locator("#discovery-results").get_by_role("button",name="Remember .blend",exact=True).click()
+                page.locator("#discovery-status").get_by_text("Default application saved for .blend.").wait_for()
+                assert page.get_by_label("Open sample.blend with",exact=True).input_value()=="blender"
                 page.locator("#discovery-projects").get_by_role("button", name="Browser fixture", exact=True).click()
                 page.locator("#discovery-breadcrumb").get_by_role("button", name="Browser fixture").wait_for()
                 page.locator("#discovery-results").get_by_text("sample.blend", exact=True).wait_for()

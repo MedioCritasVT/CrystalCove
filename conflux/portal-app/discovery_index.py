@@ -18,7 +18,7 @@ import time
 MAX_ENTRIES = 20000
 MAX_DEPTH = 24
 MAX_RESULTS = 200
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 SKIP_DIRS = {"node_modules", "__pycache__"}
 DIR_FLAGS = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
 
@@ -158,7 +158,9 @@ def connect(db):
             if version in (0, 1, 2):
                 conn.execute("CREATE TABLE discovery_preferences (id INTEGER PRIMARY KEY CHECK(id=1), launch_refresh INTEGER NOT NULL CHECK(launch_refresh IN (0,1)))")
                 conn.execute("CREATE TABLE project_apps (project TEXT PRIMARY KEY REFERENCES projects(name) ON DELETE CASCADE, app TEXT NOT NULL, directory TEXT NOT NULL)")
-                conn.execute("PRAGMA user_version = 3")
+            if version in (0, 1, 2, 3):
+                conn.execute("CREATE TABLE file_apps (suffix TEXT PRIMARY KEY, app TEXT NOT NULL)")
+                conn.execute("PRAGMA user_version = 4")
             elif version != SCHEMA_VERSION:
                 raise DiscoveryError("Unsupported discovery index schema; no migration attempted.")
         return conn
@@ -370,21 +372,26 @@ def open_indexed(db, project, path, *, reveal=False, app=None):
     suffix = target.suffix.lower()
     if info.st_mode & 0o111:
         raise DiscoveryError("Executable files are reveal-only.")
-    if app is not None and (not isinstance(app, str) or app not in FILE_APPS or suffix not in FILE_APPS[app]):
+    if app is not None and (not isinstance(app, str) or (app != "desktop" and (app not in FILE_APPS or suffix not in FILE_APPS[app]))):
         raise DiscoveryError("Choose an application supported for this file type.")
-    if app is None and suffix not in OPEN_SUFFIXES:
+    if suffix not in ALL_FILE_SUFFIXES or (app == "desktop" and suffix not in DESKTOP_SUFFIXES):
         raise DiscoveryError("This file type is reveal-only unless a supported editor is chosen.")
-    # A native Blender document has a specific editor, regardless of the
-    # project-level IDE association. Other types keep the desktop default.
-    if app is None and suffix == ".blend":
-        command = app_command("blender")
-        if command:
-            return launch_desktop(command, target, "Blender", "open")
-    if app is not None:
+    if app is None:
+        remembered = file_associations(db).get(suffix)
+        if remembered and remembered != "desktop":
+            app = remembered
+        elif remembered != "desktop":
+            for preferred in DEFAULT_FILE_APPS.get(suffix, ()):
+                command = app_command(preferred)
+                if command:
+                    return launch_desktop(command, target, APP_OPTIONS[preferred][0], "open")
+    if app is not None and app != "desktop":
         command = app_command(app)
         if not command:
             raise DiscoveryError(APP_OPTIONS[app][0] + " launcher was not detected.")
         return launch_desktop(command, target, APP_OPTIONS[app][0], "open")
+    if suffix not in DESKTOP_SUFFIXES:
+        raise DiscoveryError("Choose a compatible editor with Open with; no default editor is detected.")
     opener = shutil.which("xdg-open")
     if not opener:
         raise DiscoveryError("Desktop opener (xdg-open) is unavailable.")
@@ -398,23 +405,98 @@ APP_OPTIONS = {
     "code": ("Visual Studio Code", ("code",), ("com.visualstudio.code",)),
     "kate": ("Kate", ("kate",), ("org.kde.kate",)),
     "files": ("File manager", ("xdg-open",), ()),
+    "browser": ("Default web browser", ("xdg-open",), ()),
+    "zen": ("Zen Browser", ("zen", "zen-browser"), ("app.zen_browser.zen",)),
+    "firefox": ("Firefox", ("firefox",), ("org.mozilla.firefox",)),
+    "gwenview": ("Gwenview", ("gwenview",), ("org.kde.gwenview",)),
+    "celluloid": ("Celluloid", ("celluloid",), ("io.github.celluloid_player.Celluloid",)),
+    "vlc": ("VLC", ("vlc",), ("org.videolan.VLC",)),
+    "okular": ("Okular", ("okular",), ("org.kde.okular",)),
+    "krita": ("Krita", ("krita",), ("org.kde.krita",)),
+    "libreoffice": ("LibreOffice", ("libreoffice", "soffice"), ("org.libreoffice.LibreOffice",)),
+    "audacity": ("Audacity", ("audacity",), ("org.audacityteam.Audacity",)),
 }
 
 
 EDITOR_SUFFIXES = frozenset({".py", ".js", ".kt", ".java", ".cpp", ".h", ".cs", ".css", ".ini", ".json", ".md", ".txt", ".csv", ".xml", ".toml", ".yaml", ".yml", ".gradle", ".kts"})
+WEB_SUFFIXES = frozenset({".html", ".htm", ".xhtml"})
+IMAGE_SUFFIXES = frozenset({".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff", ".svg", ".ico", ".avif"})
+VIDEO_SUFFIXES = frozenset({".mp4", ".webm", ".mkv", ".mov", ".avi", ".mpeg", ".mpg", ".m4v", ".ogv", ".ts"})
+AUDIO_SUFFIXES = frozenset({".wav", ".flac", ".mp3", ".ogg", ".opus", ".m4a", ".aac", ".aiff", ".wma"})
+OFFICE_SUFFIXES = frozenset({".odt", ".ods", ".odp", ".docx", ".doc", ".xlsx", ".xls", ".pptx", ".ppt", ".rtf", ".csv"})
 FILE_APPS = {
     "blender": frozenset({".blend"}),
-    "pycharm": EDITOR_SUFFIXES,
-    "studio": EDITOR_SUFFIXES,
-    "code": EDITOR_SUFFIXES,
-    "kate": EDITOR_SUFFIXES,
+    "pycharm": EDITOR_SUFFIXES | WEB_SUFFIXES,
+    "studio": EDITOR_SUFFIXES | WEB_SUFFIXES,
+    "code": EDITOR_SUFFIXES | WEB_SUFFIXES,
+    "kate": EDITOR_SUFFIXES | WEB_SUFFIXES,
+    "browser": WEB_SUFFIXES,
+    "zen": WEB_SUFFIXES,
+    "firefox": WEB_SUFFIXES,
+    "gwenview": IMAGE_SUFFIXES,
+    "celluloid": VIDEO_SUFFIXES | AUDIO_SUFFIXES,
+    "vlc": VIDEO_SUFFIXES | AUDIO_SUFFIXES,
+    "okular": frozenset({".pdf", ".epub", ".djvu", ".cbz"}),
+    "krita": IMAGE_SUFFIXES | frozenset({".kra", ".ora", ".psd", ".tga", ".exr"}),
+    "libreoffice": OFFICE_SUFFIXES,
+    "audacity": AUDIO_SUFFIXES | frozenset({".aup3"}),
 }
+PROJECT_APPS = frozenset({"pycharm", "studio", "code", "kate", "files"})
+# Source code is opened only by a named editor, never by a generic handler.
+DESKTOP_SUFFIXES = OPEN_SUFFIXES | WEB_SUFFIXES | IMAGE_SUFFIXES | VIDEO_SUFFIXES | AUDIO_SUFFIXES | OFFICE_SUFFIXES | frozenset({".epub", ".djvu", ".cbz", ".kra", ".ora", ".psd", ".aup3"})
+ALL_FILE_SUFFIXES = DESKTOP_SUFFIXES | frozenset().union(*FILE_APPS.values())
+DEFAULT_FILE_APPS = {}
+for suffixes, apps in (
+    (WEB_SUFFIXES, ("browser",)),
+    (IMAGE_SUFFIXES, ("gwenview",)),
+    (VIDEO_SUFFIXES | AUDIO_SUFFIXES, ("celluloid", "vlc")),
+    (OFFICE_SUFFIXES - {".csv"}, ("libreoffice",)),
+    (FILE_APPS["okular"], ("okular",)),
+    (frozenset({".blend"}), ("blender",)),
+    (frozenset({".kra", ".ora", ".psd", ".tga", ".exr"}), ("krita",)),
+    (frozenset({".aup3"}), ("audacity",)),
+    (EDITOR_SUFFIXES - DESKTOP_SUFFIXES, ("kate", "code")),
+):
+    DEFAULT_FILE_APPS.update({suffix: apps for suffix in suffixes})
+
+
+def file_associations(db):
+    if not os.path.lexists(db):
+        return {}
+    with closing(connect(db)) as conn:
+        return {row["suffix"]: row["app"] for row in conn.execute("SELECT suffix, app FROM file_apps")
+                if row["suffix"] in ALL_FILE_SUFFIXES and
+                (row["app"] == "desktop" and row["suffix"] in DESKTOP_SUFFIXES or
+                 row["suffix"] in FILE_APPS.get(row["app"], ()))}
+
+
+def set_file_association(db, suffix, app):
+    if not isinstance(suffix, str) or suffix not in ALL_FILE_SUFFIXES or not isinstance(app, str):
+        raise DiscoveryError("Choose a supported file extension and application.")
+    if app and not (app == "desktop" and suffix in DESKTOP_SUFFIXES or suffix in FILE_APPS.get(app, ())):
+        raise DiscoveryError("Application does not support this file extension.")
+    with closing(connect(db)) as conn, conn:
+        if app:
+            conn.execute("INSERT INTO file_apps VALUES (?, ?) ON CONFLICT(suffix) DO UPDATE SET app=excluded.app", (suffix, app))
+        else:
+            conn.execute("DELETE FROM file_apps WHERE suffix=?", (suffix,))
+    return {"associations": file_associations(db)}
+
 DESKTOP_IDS = {
     "pycharm": ("jetbrains-pycharm.desktop", "jetbrains-pycharm-ce.desktop", "pycharm.desktop", "com.jetbrains.PyCharm-Community.desktop", "com.jetbrains.PyCharm-Professional.desktop"),
     "studio": ("jetbrains-studio.desktop", "android-studio.desktop", "com.google.AndroidStudio.desktop"),
     "blender": ("blender.desktop", "org.blender.Blender.desktop"),
     "code": ("code.desktop", "com.visualstudio.code.desktop"),
     "kate": ("org.kde.kate.desktop", "kate.desktop"),
+    "zen": ("app.zen_browser.zen.desktop", "zen.desktop", "zen-browser.desktop"),
+    "firefox": ("org.mozilla.firefox.desktop", "firefox.desktop"),
+    "gwenview": ("org.kde.gwenview.desktop", "gwenview.desktop"),
+    "celluloid": ("io.github.celluloid_player.Celluloid.desktop", "celluloid.desktop"),
+    "vlc": ("org.videolan.VLC.desktop", "vlc.desktop"),
+    "okular": ("org.kde.okular.desktop", "okular.desktop"),
+    "krita": ("org.kde.krita.desktop", "krita.desktop"),
+    "libreoffice": ("org.libreoffice.LibreOffice.desktop", "libreoffice-startcenter.desktop"),
+    "audacity": ("org.audacityteam.Audacity.desktop", "audacity.desktop"),
 }
 
 
@@ -491,7 +573,7 @@ def app_command(app):
 def app_options():
     # Detection is local; no network request, installation or app launch.
     return [{"id": app, "label": spec[0], "available": bool(app_command(app)),
-             "extensions": sorted(FILE_APPS.get(app, ())), "project": app != "blender"}
+             "extensions": sorted(FILE_APPS.get(app, ())), "project": app in PROJECT_APPS}
             for app, spec in APP_OPTIONS.items()]
 
 
@@ -514,12 +596,8 @@ def set_preferences(db, enabled):
 def associate(db, project, app, directory=""):
     name = project_name(project)
     relative_parts(directory, allow_empty=True)
-    if not isinstance(app, str) or (app and app not in APP_OPTIONS):
-        raise DiscoveryError("Choose a supported application.")
-    # Blender opens files, not projects. Keep it for file associations via
-    # xdg-open; project shortcuts are directory-oriented.
-    if app == "blender":
-        raise DiscoveryError("Use Open on an indexed Blender file instead.")
+    if not isinstance(app, str) or (app and app not in PROJECT_APPS):
+        raise DiscoveryError("Choose a directory-oriented project application.")
     with closing(connect(db)) as conn, conn:
         conn.execute("BEGIN IMMEDIATE")
         if not conn.execute("SELECT 1 FROM projects WHERE name=?", (name,)).fetchone():
