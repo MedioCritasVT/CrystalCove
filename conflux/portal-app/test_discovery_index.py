@@ -138,6 +138,31 @@ class DiscoveryIndexTests(unittest.TestCase):
             with self.assertRaises(discovery.DiscoveryError):
                 discovery.open_indexed(self.db, "Demo", "Reports/note.txt", reveal=True)
 
+    def test_topology_empty_folders_and_migration(self):
+        self.add("Models/Deep/tool.blend")
+        (self.root / "Empty").mkdir()
+        (self.root / "Models" / "EmptyChild").mkdir()
+        (self.root / ".hidden").mkdir()
+        self.scan()
+        project = discovery.projects(self.db)[0]
+        self.assertEqual(project["topology"], {"path":"", "name":"", "children":2,
+            "folders":4, "endpoints":3, "depth":2, "complete":True})
+        self.assertEqual([x["name"] for x in project["tree"]["entries"]], ["Empty","Models"])
+        self.assertEqual(discovery.tree_page(self.db,"Demo","Models")["total"], 2)
+        self.assertEqual(discovery.folder_page(self.db,"Demo","Empty")["entries"], [])
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("DROP TABLE directories")
+            conn.execute("PRAGMA user_version=1")
+        inferred = discovery.projects(self.db)[0]
+        self.assertFalse(inferred["topology"]["complete"])
+        self.assertEqual(inferred["topology"]["folders"], 2)
+        self.assertEqual(inferred["indexed"], 1)
+        self.scan()
+        self.assertTrue(discovery.projects(self.db)[0]["topology"]["complete"])
+        discovery.forget(self.db,"Demo")
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute("SELECT count(*) FROM directories").fetchone()[0],0)
+
     def test_project_isolation_and_limits(self):
         self.add("first.txt")
         self.scan()

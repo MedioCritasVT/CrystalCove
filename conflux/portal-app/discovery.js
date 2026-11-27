@@ -115,6 +115,56 @@
     });
   }
   async function search() { mode="search"; offset=0; await view(); }
+  function treeNodes(container, project, path, page, replace = true) {
+    if (replace) container.replaceChildren();
+    else container.querySelector(".discovery-more")?.remove();
+    for (const node of page.entries) {
+      const line = element("div", undefined, "discovery-tree-node");
+      const row = element("div", undefined, "discovery-tree-row");
+      const nested = element("div", undefined, "discovery-tree-children");
+      nested.hidden = true;
+      let loadedChildren = false;
+      if (node.children) {
+        const toggle = button("▸", () => {
+          if (!nested.hidden) {
+            nested.hidden = true; toggle.textContent = "▸"; toggle.setAttribute("aria-expanded","false"); return;
+          }
+          if (loadedChildren) {
+            nested.hidden = false; toggle.textContent = "▾"; toggle.setAttribute("aria-expanded","true"); return;
+          }
+          run("Loading folder branches…", async () => {
+            const result = await request("tree", {project,directory:node.path,offset:0});
+            treeNodes(nested,project,node.path,result);
+            loadedChildren = true; nested.hidden = false;
+            toggle.textContent = "▾"; toggle.setAttribute("aria-expanded","true");
+          });
+        });
+        toggle.className = "discovery-tree-toggle";
+        toggle.setAttribute("aria-label","Expand or collapse "+node.path);
+        toggle.setAttribute("aria-expanded","false");
+        row.append(toggle);
+      } else {
+        const leaf = element("span","◆","discovery-endpoint");
+        leaf.setAttribute("aria-label","Terminal folder");
+        row.append(leaf);
+      }
+      const open = button(node.name,()=>browse(project,node.path));
+      open.className="discovery-tree-label";
+      open.title=node.path;
+      row.append(open);
+      const count=element("span",node.endpoints+" · d"+node.depth,"discovery-tree-metric");
+      count.title=node.endpoints+" endpoints · "+node.depth+" levels below this folder";
+      row.append(count); line.append(row,nested); container.append(line);
+    }
+    const next=page.offset+page.entries.length;
+    if(next<page.total){
+      const more=button("Show next "+Math.min(25,page.total-next)+" folders",()=>run("Loading more branches…",async()=>{
+        const result=await request("tree",{project,directory:path,offset:next});
+        treeNodes(container,project,path,result,false);
+      }));
+      more.className="discovery-more action secondary"; container.append(more);
+    }
+  }
   async function list() {
     const {projects} = await request("projects");
     const target = get("projects"), filter=get("filter"), previous=filter.value;
@@ -125,7 +175,9 @@
       const item=element("details",undefined,"discovery-project");
       item.open=expanded.has(project.name);
       item.addEventListener("toggle",()=>{if(item.open) expanded.add(project.name);else expanded.delete(project.name);});
-      item.append(element("summary",project.name+" · "+project.indexed+" files"));
+      const metrics=project.topology;
+      item.append(element("summary",project.name+" · "+project.indexed+" files"),
+        element("p",metrics.folders+" folders · "+metrics.endpoints+" endpoints · depth "+metrics.depth+(metrics.complete?"":" · inferred"),"discovery-project-metrics"));
       const branch=element("div",undefined,"discovery-tree");
       branch.append(button("▸ Browse folders",()=>browse(project.name,"")),
         element("p",project.root,"discovery-location"),
@@ -141,7 +193,10 @@
           await list(); await search(); status.textContent="Index records removed. Original files unchanged.";
         });
       }));
-      branch.append(actions); item.append(branch); target.append(item);
+      const tree=element("div",undefined,"discovery-folder-map");
+      treeNodes(tree,project.name,"",project.tree);
+      if(!project.tree.entries.length) tree.append(element("p","◆ Project root is the indexed endpoint.","theme-note"));
+      branch.append(tree,actions); item.append(branch); target.append(item);
     }
     if(projects.some(p=>p.name===previous))filter.value=previous;
     if (!loaded && projects.length) get("registration").open=false;

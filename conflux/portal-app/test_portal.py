@@ -670,6 +670,10 @@ class PortalSmokeTest(unittest.TestCase):
             self.assertEqual(result["indexed"], 1)
             rows = self.post("/api/discovery/search", {"query":"blend"})[1]["files"]
             self.assertEqual(rows[0]["path"], "asset.blend")
+            topology = self.post("/api/discovery/projects", {})[1]["projects"][0]["topology"]
+            self.assertTrue(topology["complete"])
+            self.assertEqual(topology["depth"], 0)
+            self.assertEqual(self.post("/api/discovery/tree", {"project":"Demo"})[1]["entries"], [])
             folder = self.post("/api/discovery/folder", {"project":"Demo"})[1]
             self.assertEqual(folder["entries"][0]["name"], "asset.blend")
             with mock.patch.object(portal.discovery_index, "open_indexed", return_value={"requested":True}) as opener:
