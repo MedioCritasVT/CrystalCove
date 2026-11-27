@@ -695,25 +695,29 @@ tailscale serve status                      # Inspect routes</code></pre>
 <section class="panel" id="discovery" hidden>
   <div class="room-hero"><div class="room-words"><div class="eyebrow">Local project index</div><h2>Discovery</h2><p class="lead">Find your work by project or filename, not by remembering where it lives.</p></div><aside class="room-companions" id="room-companion-discovery" data-room="discovery" aria-label="Node companions for this section"></aside></div>
   <p class="theme-note">Private to this local Portal. Only folders you explicitly choose are scanned. Files stay where they are; no contents are read or uploaded. Index results are snapshots, not proof of current file existence or approval.</p>
-  <article class="card discovery-card">
-    <h3>Register a project</h3>
+  <details class="card discovery-card" id="discovery-registration" open>
+    <summary>Register a project</summary>
     <form id="discovery-register">
       <label for="discovery-name">Project name</label><input id="discovery-name" required maxlength="100" placeholder="Example: Creative assets">
       <label for="discovery-root">Project directory</label><div class="discovery-line"><input id="discovery-root" required maxlength="4096" placeholder="/absolute/path/to/project"><button id="discovery-browse" type="button" class="action secondary">Choose folder</button></div>
       <p class="theme-note">Choose a specific project folder, not your home directory. Names of sensitive non-hidden files can still be indexed. Hidden folders, symlinks and common dependency folders are skipped.</p>
       <button type="submit" class="action">Register and scan</button>
     </form>
-  </article>
-  <article class="card discovery-card">
+  </details>
+  <div class="discovery-workspace">
+  <article class="card discovery-card discovery-sidebar">
     <h3>Registered projects</h3><div id="discovery-projects"><p>No projects loaded.</p></div>
     <button id="discovery-reload" type="button" class="action secondary">Reload index view</button>
   </article>
   <article class="card discovery-card">
     <h3>Find work</h3>
     <form id="discovery-search"><label for="discovery-query">Filename or project name</label><input id="discovery-query" maxlength="500" placeholder="e.g. blend, report, APK"><label for="discovery-filter">Project</label><select id="discovery-filter"><option value="">All projects</option></select><button class="action" type="submit">Search / recent files</button></form>
-    <p class="theme-note">Up to 100 results, newest modified first. Locations are shown as text, not executable links.</p>
+    <p class="theme-note">Search across indexed paths or browse project branches. 25 entries per page. Open uses your desktop association for supported formats; Reveal opens the containing folder. Trust files before opening.</p>
+    <div id="discovery-breadcrumb" aria-label="Current directory"></div>
     <div id="discovery-results"></div>
+    <div id="discovery-pagination" class="discovery-actions"></div>
   </article>
+  </div>
   <p id="discovery-status" role="status" aria-live="polite">Select a project to begin. No automatic scanning.</p>
 </section>
 <section class="panel" id="studio" hidden>

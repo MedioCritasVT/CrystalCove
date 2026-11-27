@@ -670,6 +670,11 @@ class PortalSmokeTest(unittest.TestCase):
             self.assertEqual(result["indexed"], 1)
             rows = self.post("/api/discovery/search", {"query":"blend"})[1]["files"]
             self.assertEqual(rows[0]["path"], "asset.blend")
+            folder = self.post("/api/discovery/folder", {"project":"Demo"})[1]
+            self.assertEqual(folder["entries"][0]["name"], "asset.blend")
+            with mock.patch.object(portal.discovery_index, "open_indexed", return_value={"requested":True}) as opener:
+                self.assertTrue(self.post("/api/discovery/open", {"project":"Demo","path":"asset.blend"})[1]["requested"])
+                opener.assert_called_once_with(db, "Demo", "asset.blend", reveal=False)
             (root / "second.txt").touch()
             self.assertEqual(self.post("/api/discovery/refresh", {"project":"Demo"})[1]["indexed"], 2)
             self.assertEqual(self.post("/api/discovery/forget", {"project":"Demo"})[1]["removed_project_records"], 1)

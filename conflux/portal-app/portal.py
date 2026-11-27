@@ -472,13 +472,13 @@ class Handler(BaseHTTPRequestHandler):
             return None
 
     def discovery_request(self, route):
-        """Private, explicit local operations; no file serving or launch."""
+        """Private local operations; only indexed, explicit desktop handoffs."""
         expected = "127.0.0.1:" + str(self.server.server_port)
         if (self.client_address[0] != "127.0.0.1"
                 or self.headers.get("Host") != expected or not self.authorized()):
             return self.respond(403, {"error": "Discovery is local only."})
         action = route.removeprefix("/api/discovery/")
-        if action not in ("projects", "search", "browse", "scan", "refresh", "forget"):
+        if action not in ("projects", "search", "browse", "scan", "refresh", "forget", "folder", "open", "reveal"):
             return self.respond(404, {"error": "not-found"})
         if self.headers.get("Content-Type", "").split(";")[0].strip() != "application/json":
             return self.respond(400, {"error": "Expected JSON."})
@@ -500,8 +500,16 @@ class Handler(BaseHTTPRequestHandler):
             elif action == "projects":
                 result = {"projects": discovery_index.projects(db)}
             elif action == "search":
-                result = {"files": discovery_index.search(
-                    db, body.get("query", ""), body.get("project"), limit=100)}
+                offset = body.get("offset", 0)
+                rows = discovery_index.search(db, body.get("query", ""), body.get("project"), limit=26, offset=offset)
+                result = {"files": rows[:25], "more": len(rows) > 25}
+            elif action in ("folder", "open", "reveal"):
+                if not os.path.lexists(db):
+                    raise discovery_index.DiscoveryError("No project index exists.")
+                if action == "folder":
+                    result = discovery_index.folder_page(db, body.get("project"), body.get("directory", ""), body.get("offset", 0))
+                else:
+                    result = discovery_index.open_indexed(db, body.get("project"), body.get("path"), reveal=action == "reveal")
             elif action == "scan":
                 root = body.get("root")
                 if not isinstance(root, str) or not root.strip() or len(root) > 4096:

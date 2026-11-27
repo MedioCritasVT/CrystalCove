@@ -9,6 +9,8 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+import shutil
+import subprocess
 import stat
 import sys
 import time
@@ -187,11 +189,13 @@ def projects(db):
             "GROUP BY p.name ORDER BY p.name")]
 
 
-def search(db, query="", project=None, limit=50):
+def search(db, query="", project=None, limit=50, offset=0):
     if not isinstance(query, str) or len(query) > 500:
         raise DiscoveryError("Search text must be at most 500 characters.")
     if not isinstance(limit, int) or not 1 <= limit <= MAX_RESULTS:
         raise DiscoveryError("Result limit must be between 1 and 200.")
+    if type(offset) is not int or not 0 <= offset <= 1000000:
+        raise DiscoveryError("Invalid result offset.")
     # INSTR treats SQL wildcard characters literally; parameters are bound.
     statement = (
         "SELECT f.project, p.root, f.path, f.bytes, f.modified_ns, p.scanned_ns "
@@ -202,10 +206,97 @@ def search(db, query="", project=None, limit=50):
     if project is not None:
         statement += " AND f.project = ?"
         args.append(project_name(project))
-    statement += " ORDER BY f.modified_ns DESC, f.project, f.path LIMIT ?"
-    args.append(limit)
+    statement += " ORDER BY f.modified_ns DESC, f.project, f.path LIMIT ? OFFSET ?"
+    args.extend((limit, offset))
     with closing(connect(db)) as conn:
         return [dict(row) for row in conn.execute(statement, args)]
+
+
+PAGE_SIZE = 25
+# Only familiar creative/document formats can be handed to a desktop
+# association. Scripts, executables, shortcuts, HTML, archives and APKs
+# are deliberately excluded. All other files can be located in their folder.
+OPEN_SUFFIXES = frozenset({
+    ".blend", ".fbx", ".obj", ".gltf", ".glb", ".stl", ".usd", ".usda",
+    ".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".tga", ".exr",
+    ".wav", ".flac", ".mp3", ".ogg", ".mp4", ".webm", ".mkv",
+    ".txt", ".md", ".json", ".csv", ".pdf", ".odt", ".docx", ".xlsx",
+    ".py", ".kt", ".java", ".cpp", ".h", ".cs", ".js", ".css", ".ini",
+}) - {".py", ".js"}  # executable script formats remain reveal-only
+
+
+def relative_parts(value, *, allow_empty=False):
+    if not isinstance(value, str) or len(value) > 4096 or "\x00" in value:
+        raise DiscoveryError("Invalid indexed path.")
+    if not value and allow_empty:
+        return []
+    parts = value.split("/")
+    if any(not p or p in (".", "..") or p.startswith(".") for p in parts):
+        raise DiscoveryError("Choose an indexed relative path.")
+    return parts
+
+
+def folder_page(db, project, directory="", offset=0):
+    name = project_name(project)
+    relative_parts(directory, allow_empty=True)
+    if type(offset) is not int or not 0 <= offset <= 1000000:
+        raise DiscoveryError("Invalid result offset.")
+    prefix = directory + "/" if directory else ""
+    with closing(connect(db)) as conn:
+        row = conn.execute("SELECT root, scanned_ns FROM projects WHERE name=?", (name,)).fetchone()
+        if row is None:
+            raise DiscoveryError("Project is not registered.")
+        found = {}
+        for file in conn.execute(
+            "SELECT path, bytes, modified_ns FROM files WHERE project=? AND substr(path, 1, ?) = ?",
+            (name, len(prefix), prefix)):
+            tail = file["path"][len(prefix):]
+            first, sep, _ = tail.partition("/")
+            if sep:
+                found[first] = {"name": first, "path": prefix + first, "kind": "folder"}
+            else:
+                found[first] = {**dict(file), "name": first, "kind": "file",
+                                "project": name, "root": row["root"], "scanned_ns": row["scanned_ns"]}
+        if directory and not found:
+            raise DiscoveryError("Folder is not in the indexed snapshot. Refresh the project.")
+    entries = sorted(found.values(), key=lambda x: (x["kind"] != "folder", x["name"].casefold(), x["name"]))
+    return {"entries": entries[offset:offset+PAGE_SIZE], "total": len(entries), "offset": offset}
+
+
+def open_indexed(db, project, path, *, reveal=False):
+    """Explicit desktop handoff of an indexed regular file, never a command."""
+    name = project_name(project)
+    parts = relative_parts(path)
+    with closing(connect(db)) as conn:
+        row = conn.execute(
+            "SELECT p.root FROM files f JOIN projects p ON p.name=f.project WHERE f.project=? AND f.path=?",
+            (name, path)).fetchone()
+    if row is None:
+        raise DiscoveryError("File is not in this project's index.")
+    root = Path(row["root"])
+    target = root.joinpath(*parts)
+    # Revalidate every component and reject symlink replacement, missing
+    # files, mount changes and executable mode. The desktop association
+    # ultimately opens a pathname; do not use on actively modified/untrusted trees.
+    if root.resolve(strict=True) != root:
+        raise DiscoveryError("Project root changed. Refresh or register it again.")
+    device = root.stat().st_dev
+    current = root
+    for i, part in enumerate(parts):
+        current = current / part
+        info = current.lstat()
+        wanted = stat.S_ISREG if i == len(parts)-1 else stat.S_ISDIR
+        if not wanted(info.st_mode) or info.st_dev != device:
+            raise DiscoveryError("Indexed location changed. Refresh the project.")
+    if not reveal and (target.suffix.lower() not in OPEN_SUFFIXES or info.st_mode & 0o111):
+        raise DiscoveryError("This file type or executable is reveal-only.")
+    opener = shutil.which("xdg-open")
+    if not opener:
+        raise DiscoveryError("Desktop opener (xdg-open) is unavailable.")
+    subprocess.Popen([opener, str(target.parent if reveal else target)],
+                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                     stderr=subprocess.DEVNULL, start_new_session=True)
+    return {"requested": True, "action": "reveal" if reveal else "open"}
 
 
 def forget(db, name):

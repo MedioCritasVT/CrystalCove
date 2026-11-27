@@ -109,6 +109,35 @@ class DiscoveryIndexTests(unittest.TestCase):
         with self.assertRaises(discovery.DiscoveryError):
             discovery.projects(self.db)
 
+    def test_folder_pages_and_indexed_open(self):
+        for i in range(30):
+            self.add("Models/item%02d.blend" % i)
+        source = self.add("Reports/note.txt")
+        self.add("launch.desktop")
+        self.scan()
+        root = discovery.folder_page(self.db, "Demo")
+        self.assertEqual([x["name"] for x in root["entries"]], ["Models", "Reports", "launch.desktop"])
+        self.assertEqual(len(discovery.folder_page(self.db, "Demo", "Models")["entries"]), 25)
+        self.assertEqual(len(discovery.folder_page(self.db, "Demo", "Models", 25)["entries"]), 5)
+        self.assertEqual(len(discovery.search(self.db, "item", limit=25, offset=25)), 5)
+        for path in ("../secret", "/etc/passwd", "missing.txt"):
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.open_indexed(self.db, "Demo", path)
+        with mock.patch.object(discovery.shutil, "which", return_value="/usr/bin/xdg-open"), mock.patch.object(discovery.subprocess, "Popen") as launch:
+            discovery.open_indexed(self.db, "Demo", "Reports/note.txt")
+            self.assertEqual(launch.call_args.args[0], ["/usr/bin/xdg-open", str(source)])
+            discovery.open_indexed(self.db, "Demo", "launch.desktop", reveal=True)
+            self.assertEqual(launch.call_args.args[0], ["/usr/bin/xdg-open", str(self.root)])
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.open_indexed(self.db, "Demo", "launch.desktop")
+            source.chmod(0o700)
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.open_indexed(self.db, "Demo", "Reports/note.txt")
+            source.unlink()
+            source.symlink_to("/etc/passwd")
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.open_indexed(self.db, "Demo", "Reports/note.txt", reveal=True)
+
     def test_project_isolation_and_limits(self):
         self.add("first.txt")
         self.scan()
