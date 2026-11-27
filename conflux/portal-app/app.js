@@ -132,6 +132,7 @@ const roomFamiliar = {
   home: {who:["Medio","Nexus"], message:"Medio welcomes you; Nexus keeps the doors connected."},
   apps: {who:["Nexus","Ratio"], message:"Nexus gathers the tools; Ratio helps make them usable."},
   downloads: {who:["Ratio","Medio"], message:"Ratio checks the path; Medio welcomes the Wayfarer."},
+  discovery: {who:["Specula","Limen"], message:"Specula records the evidence; Limen helps you find your way back to it."},
   vos: {who:["Specula","Limen"], message:"Specula watches the evidence; Limen protects its meaning."},
   library: {who:["Nexus","Specula"], message:"Nexus preserves the thread; Specula checks its provenance."},
   nodes: {who:["Medio","Ratio","Nexus","Specula","Limen"], message:"Five independent perspectives, each with her own place."},

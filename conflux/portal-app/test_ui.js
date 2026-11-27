@@ -19,10 +19,10 @@ const stageJs = fs.readFileSync("soundstage.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates","discovery"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 assert.equal(navIds.length, panels.length, "each room appears in the navigation once");
-assert.equal(new Set(navIds).size, 14, "duplicate room navigation");
+assert.deepEqual(new Set(navIds), new Set(roomIds), "expected room inventory");
 const groupIds = [...html.matchAll(/<div class="nav-group" data-group="([^"]+)"/g)].map(m => m[1]);
 assert.deepEqual(groupIds, ["begin","discover","create","maintain"], "visitor-first navigation groups");
 assert(html.includes('class="nav-stewards"'), "stewardship must be optional");
@@ -32,8 +32,8 @@ assert(html.includes('href="/portal_finish.css"'), "final Portal layer must load
 assert(html.includes('href="/portal_symbols.css"'), "symbol contrast layer must be included");
 assert(html.includes('href="/portal_typography.css"') &&
        html.includes('href="/portal_optical.css"'), "bundled font and optical layers must load");
-assert.equal((html.match(/class="nav-glyph"/g)||[]).length,14,
-             "fourteen icon glyphs need independent optical centering");
+assert.equal((html.match(/class="nav-glyph"/g)||[]).length,roomIds.length,
+             "each room glyph needs independent optical centering");
 for (const [font,role] of [["Conflux Marcellus","display"],
                            ["Conflux Source Sans 3","interface"],
                            ["Conflux JetBrains Mono","instrument"]]) {
@@ -50,7 +50,7 @@ assert(opticalCss.includes(".nav-glyph") &&
        opticalCss.includes('data-page="guide"'), "optical offsets missing");
 assert(opticalCss.includes('.pet-token[data-node="nexus"] .pet-mark::before') &&
        opticalCss.includes('data:image/svg+xml'), "Nexus infinity must have a crisp rendered shape");
-assert.equal((html.match(/class="nav-symbol"/g)||[]).length, 14, "each sidebar room needs a glyph");
+assert.equal((html.match(/class="nav-symbol"/g)||[]).length, roomIds.length, "each sidebar room needs a glyph");
 assert(html.includes('class="brand-symbol"'), "Portal brand mark needs consistent sizing");
 assert(html.includes('class="codex-glyph"'), "Codex shortcut mark should be legible");
 assert(html.includes('class="utility-symbol"'), "developer shortcut must be styled");
