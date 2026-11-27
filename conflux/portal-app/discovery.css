@@ -69,3 +69,6 @@
 #discovery .discovery-launch-option input { width:auto; margin:.2rem 0 0; }
 #discovery .discovery-association { display:grid; gap:.4rem; margin:.6rem 0; }
 #discovery .discovery-app-shortcut { border:1px solid var(--violet,#c2a4f3); border-radius:.25rem; color:inherit; background:transparent; padding:.15rem .3rem; cursor:pointer; }
+
+#discovery .discovery-open-with {display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;flex:1 1 100%;}
+#discovery .discovery-open-with select {flex:1 1 10rem;width:auto;}

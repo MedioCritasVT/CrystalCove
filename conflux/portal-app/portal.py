@@ -557,7 +557,7 @@ class Handler(BaseHTTPRequestHandler):
             elif action == "set-preferences":
                 result = discovery_index.set_preferences(db, body.get("launch_refresh"))
             elif action == "apps":
-                result = {"apps": [app for app in discovery_index.app_options() if app["id"] != "blender"]}
+                result = {"apps": discovery_index.app_options()}
             elif action == "associate":
                 if not os.path.lexists(db):
                     raise discovery_index.DiscoveryError("No project index exists.")
@@ -585,7 +585,10 @@ class Handler(BaseHTTPRequestHandler):
                     reader = discovery_index.tree_page if action == "tree" else discovery_index.folder_page
                     result = reader(db, body.get("project"), body.get("directory", ""), body.get("offset", 0))
                 else:
-                    result = discovery_index.open_indexed(db, body.get("project"), body.get("path"), reveal=action == "reveal")
+                    kwargs = {"reveal": action == "reveal"}
+                    if "app" in body:
+                        kwargs["app"] = body["app"]
+                    result = discovery_index.open_indexed(db, body.get("project"), body.get("path"), **kwargs)
             elif action == "scan":
                 root = body.get("root")
                 if not isinstance(root, str) or not root.strip() or len(root) > 4096:
