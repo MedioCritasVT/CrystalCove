@@ -23,3 +23,14 @@
 #discovery-results { max-height:55vh; overflow-y:auto; padding-right:.4rem; }
 #discovery-pagination { align-items:center; }
 @media(max-width:900px){#discovery .discovery-workspace{grid-template-columns:1fr;} }
+
+#discovery .discovery-project-metrics { margin:0 0 .5rem .7rem; font-size:.78rem; opacity:.85; overflow-wrap:anywhere; }
+#discovery .discovery-folder-map { max-height:46vh; overflow:auto; margin:.5rem 0; }
+#discovery .discovery-tree-row { display:flex; align-items:center; gap:.28rem; min-height:1.9rem; }
+#discovery .discovery-tree-node { position:relative; }
+#discovery .discovery-tree-children { border-left:1px solid var(--green,#9cdec0); margin-left:.45rem; padding-left:.55rem; }
+#discovery .discovery-tree-toggle,#discovery .discovery-tree-label { background:transparent; color:inherit; border:0; padding:.2rem; text-align:left; font:inherit; cursor:pointer; }
+#discovery .discovery-tree-label { flex:1 1 auto; min-width:0; overflow-wrap:anywhere; }
+#discovery .discovery-tree-toggle,#discovery .discovery-endpoint { flex:0 0 1rem; color:var(--green,#9cdec0); font-size:.8rem; }
+#discovery .discovery-tree-metric { flex:0 0 auto; font-size:.72rem; opacity:.8; white-space:nowrap; }
+#discovery .discovery-more { font-size:.78rem; margin:.3rem 0; }

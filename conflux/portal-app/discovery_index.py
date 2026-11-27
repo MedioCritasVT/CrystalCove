@@ -18,7 +18,7 @@ import time
 MAX_ENTRIES = 20000
 MAX_DEPTH = 24
 MAX_RESULTS = 200
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 SKIP_DIRS = {"node_modules", "__pycache__"}
 DIR_FLAGS = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
 
@@ -56,6 +56,7 @@ def selected_root(value, db):
 def collect(root, *, max_entries=MAX_ENTRIES, max_depth=MAX_DEPTH):
     """Read bounded metadata via directory descriptors, not symlink targets."""
     files = []
+    directories = [""]  # root marker; includes empty traversed directories
     visited = 0
     skipped = 0
     with closing_fd(os.open(root, DIR_FLAGS)) as fd:
@@ -91,13 +92,14 @@ def collect(root, *, max_entries=MAX_ENTRIES, max_depth=MAX_DEPTH):
                             actual = os.fstat(child)
                             if (actual.st_dev, actual.st_ino) != (info.st_dev, info.st_ino):
                                 raise DiscoveryError("Folder changed during scan; retry.")
+                            directories.append(path.as_posix())
                             walk(child, path, depth + 1)
                     elif stat.S_ISREG(info.st_mode):
                         files.append((path.as_posix(), info.st_size, info.st_mtime_ns))
                     else:
                         skipped += 1
         walk(fd, Path(), 0)
-    return files, skipped
+    return files, skipped, directories
 
 
 class closing_fd:
@@ -149,7 +151,11 @@ def connect(db):
                 conn.execute("CREATE TABLE projects (name TEXT PRIMARY KEY, root TEXT NOT NULL UNIQUE, scanned_ns INTEGER NOT NULL, skipped INTEGER NOT NULL)")
                 conn.execute("CREATE TABLE files (project TEXT NOT NULL REFERENCES projects(name) ON DELETE CASCADE, path TEXT NOT NULL, bytes INTEGER NOT NULL, modified_ns INTEGER NOT NULL, PRIMARY KEY(project, path))")
                 conn.execute("CREATE INDEX files_recent ON files(modified_ns DESC)")
-                conn.execute("PRAGMA user_version = 1")
+            if version in (0, 1):
+                # Additive migration: preserve all existing project/file rows.
+                # No directory records for v1 snapshots until refreshed.
+                conn.execute("CREATE TABLE directories (project TEXT NOT NULL REFERENCES projects(name) ON DELETE CASCADE, path TEXT NOT NULL, PRIMARY KEY(project, path))")
+                conn.execute("PRAGMA user_version = 2")
             elif version != SCHEMA_VERSION:
                 raise DiscoveryError("Unsupported discovery index schema; no migration attempted.")
         return conn
@@ -162,7 +168,7 @@ def scan(db, name, folder, *, max_entries=MAX_ENTRIES, max_depth=MAX_DEPTH):
     """Replace a project's snapshot only after a complete successful scan."""
     name = project_name(name)
     root = selected_root(folder, db)
-    files, skipped = collect(root, max_entries=max_entries, max_depth=max_depth)
+    files, skipped, directories = collect(root, max_entries=max_entries, max_depth=max_depth)
     now = time.time_ns()
     with closing(connect(db)) as conn, conn:
         conn.execute("BEGIN IMMEDIATE")
@@ -177,16 +183,72 @@ def scan(db, name, folder, *, max_entries=MAX_ENTRIES, max_depth=MAX_DEPTH):
         conn.execute("DELETE FROM files WHERE project = ?", (name,))
         conn.executemany("INSERT INTO files VALUES (?, ?, ?, ?)",
                          ((name, *row) for row in files))
+        conn.execute("DELETE FROM directories WHERE project = ?", (name,))
+        conn.executemany("INSERT INTO directories VALUES (?, ?)", ((name, path) for path in directories))
     return {"project": name, "root": str(root), "indexed": len(files),
             "skipped": skipped, "scanned_ns": now}
 
 
+def topology(conn, name):
+    """Tree of traversed directories, or inferred parents for old snapshots."""
+    paths = {row["path"] for row in conn.execute(
+        "SELECT path FROM directories WHERE project=?", (name,))}
+    complete = "" in paths
+    if not complete:
+        paths = {""}
+        for row in conn.execute("SELECT path FROM files WHERE project=?", (name,)):
+            parts = row["path"].split("/")[:-1]
+            paths.update("/".join(parts[:i]) for i in range(1, len(parts)+1))
+    children = {path: [] for path in paths}
+    for path in paths - {""}:
+        parent = path.rpartition("/")[0]
+        children[parent].append(path)
+    summaries = {}
+    for path in sorted(paths, key=lambda p: (p.count("/") + bool(p)), reverse=True):
+        branch = children[path]
+        summaries[path] = {
+            "path": path, "name": path.rpartition("/")[2],
+            "children": len(branch),
+            "folders": sum(1 + summaries[child]["folders"] for child in branch),
+            "endpoints": sum(summaries[child]["endpoints"] for child in branch) if branch else 1,
+            "depth": 1 + max(summaries[child]["depth"] for child in branch) if branch else 0,
+        }
+    return children, summaries, complete
+
+
+def tree_slice(children, summaries, path, offset):
+    if path not in children:
+        raise DiscoveryError("Folder is not in the indexed snapshot.")
+    paths = sorted(children[path], key=lambda p: (p.casefold(), p))
+    return {"entries": [summaries[p] for p in paths[offset:offset+PAGE_SIZE]],
+            "total": len(paths), "offset": offset}
+
+
+def tree_page(db, project, directory="", offset=0):
+    name = project_name(project)
+    relative_parts(directory, allow_empty=True)
+    if type(offset) is not int or not 0 <= offset <= 1000000:
+        raise DiscoveryError("Invalid result offset.")
+    with closing(connect(db)) as conn:
+        conn.execute("BEGIN")
+        if not conn.execute("SELECT 1 FROM projects WHERE name=?", (name,)).fetchone():
+            raise DiscoveryError("Project is not registered.")
+        children, summaries, complete = topology(conn, name)
+        return {**tree_slice(children, summaries, directory, offset), "complete": complete}
+
+
 def projects(db):
     with closing(connect(db)) as conn:
-        return [dict(row) for row in conn.execute(
+        conn.execute("BEGIN")
+        rows = [dict(row) for row in conn.execute(
             "SELECT p.name, p.root, p.scanned_ns, p.skipped, COUNT(f.path) AS indexed "
             "FROM projects p LEFT JOIN files f ON p.name=f.project "
             "GROUP BY p.name ORDER BY p.name")]
+        for row in rows:
+            children, summaries, complete = topology(conn, row["name"])
+            row["topology"] = {**summaries[""], "complete": complete}
+            row["tree"] = tree_slice(children, summaries, "", 0)
+        return rows
 
 
 def search(db, query="", project=None, limit=50, offset=0):
@@ -257,8 +319,13 @@ def folder_page(db, project, directory="", offset=0):
             else:
                 found[first] = {**dict(file), "name": first, "kind": "file",
                                 "project": name, "root": row["root"], "scanned_ns": row["scanned_ns"]}
-        if directory and not found:
+        # Include actual traversed folders even when they contain no files.
+        children, summaries, _ = topology(conn, name)
+        if directory not in children:
             raise DiscoveryError("Folder is not in the indexed snapshot. Refresh the project.")
+        for child in children[directory]:
+            label = summaries[child]["name"]
+            found[label] = {"name": label, "path": child, "kind": "folder"}
     entries = sorted(found.values(), key=lambda x: (x["kind"] != "folder", x["name"].casefold(), x["name"]))
     return {"entries": entries[offset:offset+PAGE_SIZE], "total": len(entries), "offset": offset}
 

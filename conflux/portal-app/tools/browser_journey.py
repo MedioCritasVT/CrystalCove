@@ -116,6 +116,7 @@ def main():
                 project = Path(home) / "discovery-fixture"
                 project.mkdir()
                 (project / "sample.blend").write_bytes(b"fixture")
+                (project / "Branch" / "Endpoint").mkdir(parents=True)
                 page.locator("#discovery-name").fill("Browser fixture")
                 page.locator("#discovery-root").fill(str(project))
                 page.locator("#discovery-register button[type=submit]").click()
@@ -124,6 +125,10 @@ def main():
                 page.locator("#discovery-projects").get_by_role("button", name="▸ Browse folders").click()
                 page.locator("#discovery-breadcrumb").get_by_role("button", name="Browser fixture").wait_for()
                 page.locator("#discovery-results").get_by_text("sample.blend", exact=True).wait_for()
+                page.locator("#discovery-projects").get_by_text("2 folders · 1 endpoints · depth 2", exact=False).wait_for()
+                page.locator("#discovery-projects").get_by_role("button", name="Expand or collapse Branch").click()
+                page.locator("#discovery-projects").get_by_role("button", name="Endpoint", exact=True).click()
+                page.locator("#discovery-results").get_by_text("No indexed entries in this folder.").wait_for()
                 page.locator("#discovery-query").fill("nonexistent")
                 page.locator("#discovery-search button").click()
                 page.locator("#discovery-results").get_by_text("No matching indexed files.").wait_for()
