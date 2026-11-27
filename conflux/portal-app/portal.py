@@ -51,7 +51,7 @@ SUGGESTIONS = set()
 SUGGESTIONS_LOCK = threading.Lock()
 
 CATALOG = (
-    {"id": "conflux-game", "name": "Conflux Game V0.1",
+    {"id": "conflux-game", "name": "Conflux Game",
      "state": "published", "download_url": "/downloads"},
     {"id": "conflux-atelier", "name": "Conflux Atelier",
      "state": "bundled", "open_url": "/apps/atelier"},
@@ -104,7 +104,7 @@ def register_game(path):
     else:
         entries = []
     entries = [a for a in entries if not (isinstance(a, dict) and a.get("id") == "conflux-game")]
-    entries.append({"id": "conflux-game", "name": "Conflux Game V0.1", "executable": path})
+    entries.append({"id": "conflux-game", "name": "Conflux Game", "executable": path})
     CONFIG.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     temp_path = None
     try:

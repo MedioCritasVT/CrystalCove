@@ -31,7 +31,7 @@ This is a **work in project**. You can arrive as a player, reader, listener, cre
 | --- | --- | --- |
 | Explore the Portal | [Download repository ZIP](https://github.com/MedioCritasVT/CrystalCove/archive/refs/heads/main.zip) · [First-time guide](docs/FIRST_TIME_SETUP.md) | Linux, Python 3.10+, browser; no Git required |
 | Maintain an updatable checkout | [Git setup guide](docs/FIRST_TIME_SETUP.md) · [Portal documentation](conflux/portal-app/README.md) | Linux, Python 3.10+, Git |
-| Play SanctuaryOS | [Download V0.1 Linux game](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz) · [Release notes](conflux/releases/v0.1/README.md) | Linux x86_64, compatible Vulkan/SM6 graphics; no Portal, Git, Unreal Editor or account needed |
+| Play SanctuaryOS | [Download V0.2 Linux game](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/Conflux-V0.2-Linux-x86_64.tar.gz) · [Release notes](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2) | Linux x86_64, compatible Vulkan/SM6 graphics; no Portal, Git, Unreal Editor or account needed |
 | Browse without installing | [Films](docs/FILMS.md) · [Books](conflux/books/README.md) · [Soundtrack](conflux/soundtrack/CATALOG.md) | Browser |
 
 ### Open the Portal
@@ -44,13 +44,13 @@ For a Git-based installation, use the [clone walkthrough](docs/FIRST_TIME_SETUP.
 
 ### Play the native Linux preview
 
-[Conflux V0.1](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1) is the documented November 9 development build (about 1.18 GB compressed, 3.2 GB extracted). Extract the runnable archive and launch `./PlayConflux.sh` from its folder; do not use sudo. Select **Begin a new journey**.
+[Conflux V0.2](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2) is the November 14 development build (about 1.20 GB compressed). Extract the runnable archive and launch `./PlayConflux.sh` from its folder; do not use sudo. Select **Begin a new journey**.
 
 Explore the city and harbor, Yggdrasil, Node realms, the Unwritten avatar, Duskwing Grotto, crafting and the Sapphire Grimoire. The campaign, combat, art and progression are unfinished.
 
-**Controls:** WASD move · right-drag orbit · wheel zoom · E interact · Shift sprint/hover · Escape/menu and manual save. Journey progress does **not** autosave on quit. Default save path: `~/.local/share/Conflux/V0.1/` (or under `XDG_DATA_HOME`).
+**Controls:** WASD move · right-drag orbit · wheel zoom · E interact · Shift sprint/hover · Escape/menu and manual save. Journey progress does **not** autosave on quit. Default save path: `~/.local/share/Conflux/V0.2/` (or under `XDG_DATA_HOME`).
 
-The build record documents bounded tests on Bazzite/NVIDIA; independent machines and complete campaign coverage were not certified. [Build record and test limits](conflux/releases/v0.1/README.md) · [Native Unreal 5.8.4 source inputs](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Source.tar.gz) · [Checksums and release assets](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1). GitHub's automatic source ZIP is not the native source-input archive.
+V0.2 adds eight realm/title music tracks, crossfades and separate music controls. Build-host tests were offscreen with dummy audio; full campaign, physical audio and other hardware remain unverified. V0.1 saves stay separate; no automatic migration occurs. [V0.1 rollback release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1). [V0.2 release record and test limits](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2) · [Native Unreal 5.8.4 source inputs](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/Conflux-V0.2-Source.tar.gz) · [Checksums and release assets](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2). GitHub's automatic source ZIP is not the native source-input archive.
 
 ## A glimpse of the Portal
 
@@ -113,7 +113,7 @@ These are optional; none is a prerequisite for players.
 | Local Portal, optional Codex panel and updates | [Setup, consent and limitations](conflux/portal-app/README.md) |
 | VOS / four-agent harness | [Platform index](conflux/platforms/README.md) · [v0.4.2 public candidate and archive](conflux/platforms/agent-harness/README.md) |
 | Media service experiments | [Bazzite Media Mirror candidate](conflux/platforms/bazzite-service-bundle/README.md) |
-| Native game source and music integration | [V0.1 source/build record](conflux/releases/v0.1/README.md) · [Realm Music 01 checkpoint](conflux/releases/realm-music-01/README.md) |
+| Native game source and music integration | [V0.2 release/source record](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2) · [V0.1 historical build record](conflux/releases/v0.1/README.md) · [Realm Music 01 checkpoint](conflux/releases/realm-music-01/README.md) |
 | Project records | [Scope map](conflux/PROJECT_INDEX.md) · [Changelog](conflux/CHANGELOG.md) · [Node messageboard](conflux/MESSAGEBOARD.md) · [Mailroom](conflux/MAILROOM.md) |
 | Static public website | [Website source](docs/index.html) · [Deployment notes](docs/README.md) |
 

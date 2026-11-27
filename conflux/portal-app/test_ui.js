@@ -89,7 +89,8 @@ for (const id of ["node-list", "app-list", "game-feedback", "game-results",
                   ...roomIds.map(id => "room-companion-" + id)]) {
   assert(html.includes('id="' + id + '"'), "missing control " + id);
 }
-assert(html.includes("Conflux-V0.1-Linux-x86_64.tar.gz"));
+assert(html.includes("Conflux-V0.2-Linux-x86_64.tar.gz"));
+assert(html.includes("releases/tag/v0.1"));
 assert(html.includes("id=\"mirror-check\"") && html.includes("id=\"mirror-install\""), "service controls missing");
 assert(html.includes("8443") && html.includes("8444") && html.includes("8445"), "optional Tailscale port map missing");
 assert(html.includes("First run: add media without entering a container"), "container mount onboarding missing");
@@ -229,7 +230,7 @@ const fakeFetch = async (url, opts = {}) => {
       launch_token: "test-only-token", picker_available: true,
        portal_root: "/home/architect/Conflux/CrystalCove/conflux/portal-app",
       apps: [
-        {id:"conflux-game",name:"Conflux Game V0.1",action:installed?"launch":"download"},
+        {id:"conflux-game",name:"Conflux Game",action:installed?"launch":"download"},
         {id:"conflux-atelier",name:"Conflux Atelier",action:"open",open_url:"/apps/atelier"},
         {id:"conflux-ledger",name:"Conflux Ledger",action:"open",open_url:"/apps/ledger"}
       ]

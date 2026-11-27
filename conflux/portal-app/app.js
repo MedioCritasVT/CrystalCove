@@ -309,7 +309,7 @@ async function refresh() {
     const gameStatus = document.querySelector("#game-linked-state");
     gameStatus.textContent = registered ?
       "Game folder linked. You can launch it here or in Applications." :
-      "Game not linked yet. You can download V0.1 or locate an extracted copy below.";
+      "Game not linked yet. You can download V0.2 or locate an extracted copy below.";
     quickLaunch.hidden = !registered;
     homeGameAction.textContent = registered ? "Launch Game" : "Get the Game";
     homeGameStatus.textContent = registered ?
@@ -329,7 +329,7 @@ function renderCandidates(data) {
   if (data.directory) pathInput.value = data.directory;
   const candidates = data.candidates || [];
   if (!candidates.length) {
-    notice("No PlayConflux.sh found here. A Git repository clone alone is not the packaged game. Extract the V0.1 Linux release and choose that folder.", true);
+    notice("No PlayConflux.sh found here. A Git repository clone alone is not the packaged game. Extract the V0.2 Linux release and choose that folder.", true);
     return;
   }
   notice(candidates.length + " possible game launcher(s) found. Confirm the correct path below; nothing has started.");

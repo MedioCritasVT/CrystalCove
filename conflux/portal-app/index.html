@@ -447,31 +447,32 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 </div></section>
 
 <section class="panel" id="downloads" hidden>
-<div class="room-hero"><div class="room-words"><div class="eyebrow">Playable release · Linux</div><h2>Get Conflux V0.1</h2>
+<div class="room-hero"><div class="room-words"><div class="eyebrow">Playable release · Linux</div><h2>Get Conflux V0.2</h2>
 <p class="lead">A straightforward entrance to Sanctuary Reach. Download the <strong>playable Linux build</strong>, or link the copy you've already extracted on this computer.</p></div><aside class="room-companions" id="room-companion-downloads" data-room="downloads" aria-label="Node companions for this section"></aside></div>
 <div class="download-panel">
 <h3>Download the playable game</h3>
-<p>Linux x86_64 · approximately 1.18 GB compressed · around 3.2 GB extracted · Vulkan-capable GPU required.</p>
+<p>Linux x86_64 · approximately 1.20 GB compressed · Vulkan SM6-capable GPU required. V0.2 adds realm music, crossfades and music controls.</p>
 <div class="row-actions">
-<a class="action" href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz">Download V0.1 game archive</a>
-<a class="action secondary" href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1" target="_blank" rel="noopener noreferrer">View GitHub release page</a>
+<a class="action" href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/Conflux-V0.2-Linux-x86_64.tar.gz">Download V0.2 game archive</a>
+<a class="action secondary" href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2" target="_blank" rel="noopener noreferrer">View GitHub release page</a>
 </div>
 <ul>
 <li>Extract the downloaded <code>.tar.gz</code> archive into a folder.</li>
 <li>Find <code>PlayConflux.sh</code> within the extracted folder.</li>
 <li>Use the folder finder below once to link the game. The Portal can then launch it whenever you're ready.</li>
 </ul>
-<p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/SHA256SUMS" target="_blank" rel="noopener noreferrer">SHA-256 checksums</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/RELEASE-NOTES.md" target="_blank" rel="noopener noreferrer">Release notes</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Source.tar.gz" target="_blank" rel="noopener noreferrer">Unreal source archive (developers)</a></p>
+<p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/SHA256SUMS" target="_blank" rel="noopener noreferrer">SHA-256 checksums</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/RELEASE-NOTES.md" target="_blank" rel="noopener noreferrer">Release notes</a> · <a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/Conflux-V0.2-Source.tar.gz" target="_blank" rel="noopener noreferrer">Unreal source archive (developers)</a></p>
 </div>
 <div class="finder">
 <div class="eyebrow">Local discovery · Already installed?</div>
 <h3>Already cloned or downloaded?</h3>
+<p>V0.1 remains <a href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1">available for rollback</a>. V0.2 uses a separate save directory; no automatic migration occurs. Your currently linked game stays linked until you choose another.</p>
 <p>If the <strong>playable game is already extracted</strong>, don't download it again. Choose the folder where you put it. The Portal looks only in that folder and a few levels below for <code>PlayConflux.sh</code>; no game will start while searching.</p>
 <p><strong>Cloned just this GitHub repository?</strong> That gives you project files, but not necessarily the packaged game. Use the game release above if <code>PlayConflux.sh</code> is missing.</p>
 <p id="game-linked-state" class="status-line">Checking whether a game is linked…</p>
 <div class="row-actions"><button id="game-browse" class="action">Choose game folder…</button><button id="game-launch" class="action secondary" hidden>Launch linked game</button></div>
 <p id="game-picker-availability" class="theme-note">Checking for a native Linux folder picker…</p><label for="game-folder-input">Or paste a folder path from your Linux file manager</label>
-<input id="game-folder-input" type="text" autocomplete="off" spellcheck="false" placeholder="/home/you/Games/Conflux-V0.1" />
+<input id="game-folder-input" type="text" autocomplete="off" spellcheck="false" placeholder="/home/you/Games/Conflux-V0.2" />
 <p><button id="game-find" class="action secondary">Search this folder</button></p>
 <p id="game-feedback" role="status" aria-live="polite">Choose a folder, then click <strong>Use this game</strong> on the result to link it. Finding a file alone does not register it.</p>
 <div id="game-results" aria-live="polite"></div>
@@ -516,7 +517,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
         <article class="card tour-card"><h3>Threshold — A Place to Begin</h3><p>Welcome without requiring the game.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/01-threshold-welcome.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
         <article class="card tour-card"><h3>Ledger — Keeping the Record</h3><p>What the creative workspace offers.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/02-ledger-workspace.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
         <article class="card tour-card"><h3>SanctuaryOS — First Launch</h3><p>A look at the early game preview.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/03-game-first-launch.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
-        <article class="card tour-card"><h3>Meet the Node Familiars</h3><p>Five miniature companions and their different roles.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
+        <article class="card tour-card"><h3>Library and Art</h3><p>A recorded glimpse of the creative library.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/04-node-companions.mp4" target="_blank" rel="noopener noreferrer">Watch short clip <span class="external-glyph" aria-hidden="true">↗</span></a></article>
       </div>
 </section>
 <section class="panel" id="soundtrack" hidden>
@@ -602,7 +603,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <div id="project-readme" class="readme-body"></div></details>
 <h3>Gameplay quick reference</h3>
 <div class="cards">
-<article class="card"><h3>Begin your journey</h3><p>Download and extract the Linux game, run <code>PlayConflux.sh</code>, choose <strong>Begin a new journey</strong>, and create a local profile as the Unwritten.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1" target="_blank" rel="noopener noreferrer">Download V0.1</a></article>
+<article class="card"><h3>Begin your journey</h3><p>Download and extract the Linux game, run <code>PlayConflux.sh</code>, choose <strong>Begin a new journey</strong>, and create a local profile as the Unwritten.</p><a href="https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2" target="_blank" rel="noopener noreferrer">Download V0.2</a></article>
 <article class="card"><h3>Explore</h3><p>Discover Sanctuary Reach, meet its residents, gather materials, try the Duskwing Grotto encounters, and investigate Sapphire Grimoire puzzles. The experience remains a development preview.</p></article>
 <article class="card"><h3>Save manually</h3><p><strong>Journey progress is not automatically saved when you quit.</strong> Open the menu and save before closing. Settings and personal creative tools have separate persistence.</p></article>
 </div>
@@ -616,7 +617,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
 <tr><td>Escape / Menu</td><td>Save, load and settings</td></tr>
 </tbody></table>
 <h3>Meet the Nodes</h3>
-<p>Medio introduces balance and readable combat rhythm. Ratio suggests precision, Nexus coordination, Specula observation, and Limen transitions. These are guiding designs: <strong>not all realm mechanics are complete in V0.1.</strong></p>
+<p>Medio introduces balance and readable combat rhythm. Ratio suggests precision, Nexus coordination, Specula observation, and Limen transitions. These are guiding designs: <strong>not all realm mechanics are complete in V0.2.</strong></p>
 <h3>What to expect</h3>
 <p>The world, characters and menus are evolving. Some locations and progression systems are prototypes, and the current game is Linux-only. If something breaks, note the game version, Linux distribution, graphics card, location in the game, and steps that led to the problem.</p>
 </section>

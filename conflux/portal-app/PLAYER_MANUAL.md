@@ -1,16 +1,16 @@
-# Conflux V0.1 — Player Manual
+# Conflux V0.2 — Player Manual
 
-**Linux preview · Gameplay guide · Last checked against the published V0.1 project README on November 10, 2026**
+**Linux preview · Gameplay guide · Gameplay baseline: November 10 V0.1 manual; V0.2 release details refreshed November 26, 2026**
 
 Welcome to Sanctuary Reach. This is a guide to playing the current game, not to GitHub, project governance or the VOS platform. The world and its systems are still growing, so the guide deliberately distinguishes playable content from planned features.
 
 ## Begin a journey
 
-1. Download the [Conflux V0.1 Linux release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1).
+1. Download the [Conflux V0.2 Linux release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2).
 2. Extract the archive and run `PlayConflux.sh` from the extracted game folder.
 3. Choose **Begin a new journey**, create a local profile, and enter the world as the **Unwritten**.
 
-You do not need Unreal Editor or a GitHub account to play the packaged game. V0.1 requires a compatible Linux x86_64 system and Vulkan-capable graphics drivers.
+You do not need Unreal Editor or a GitHub account to play the packaged game. V0.2 requires a compatible Linux x86_64 system and Vulkan SM6-capable graphics drivers. V0.2 adds realm music and independent music controls; the release notes report retained gameplay systems, not a new campaign.
 
 ## Controls
 
@@ -27,13 +27,13 @@ You do not need Unreal Editor or a GitHub account to play the packaged game. V0.
 
 Explore Sanctuary Reach and its harbor districts, look for ways to interact with residents and surroundings, and get comfortable with movement before seeking tougher encounters. You can visit Duskwing Grotto for turn-based encounters, gather materials for crafting, and investigate the Sapphire Grimoire's puzzles. These are prototype systems, so menus, directions and progression may change.
 
-The five Nodes have distinct identities in this world: **Medio** (balance), **Ratio** (precision), **Nexus** (coordination), **Specula** (observation) and **Limen** (transitions). The future progression of combat literacy across these realms is a design direction; do not assume all of those mechanics are implemented in V0.1.
+The five Nodes have distinct identities in this world: **Medio** (balance), **Ratio** (precision), **Nexus** (coordination), **Specula** (observation) and **Limen** (transitions). The future progression of combat literacy across these realms is a design direction; do not assume all of those mechanics are implemented in V0.2.
 
 ## Saving and returning
 
 **Journey progress saves manually.** Open the in-game menu and save before you quit. Closing the game without doing so can discard journey changes since the previous save. Settings, photo pages and embedded creative-app workspaces have separate persistence and should not be mistaken for a journey save.
 
-On Linux, default saved data resides under `~/.local/share/Conflux/V0.1/` or the matching location under `XDG_DATA_HOME`. Advanced users may override the location with `CONFLUX_USER_DIR` before launching.
+On Linux, default saved data resides under `~/.local/share/Conflux/V0.2/` or the matching location under `XDG_DATA_HOME`. Advanced users may override the location with `CONFLUX_USER_DIR` before launching. V0.1 retains its separate default save directory; there is no automatic migration. [V0.1 rollback](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1).
 
 ## Other things to explore
 
