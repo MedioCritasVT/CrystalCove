@@ -2,7 +2,7 @@
 
 **Conflux is a work in project.** Welcome to its world, stories, creative tools, and experiments. **Portal is the intended first experience; the native game is an optional next step.** You can enjoy the Portal without installing or playing the game.
 
-**Current availability (reviewed November 13, 2026):** The local Conflux Portal is a **Python 3.10+ preview inside the public CrystalCove GitHub repository**, not yet a one-click executable installer. The separate public-facing website's source is in `docs/index.html`, but a live public domain has not been verified. This guide describes a real clean-folder test, not an installation already validated on a new user's Bazzite PC.
+**Portal availability (November 13 evidence; game release links refreshed November 26, 2026):** The local Conflux Portal is a **Python 3.10+ preview inside the public CrystalCove GitHub repository**, not yet a one-click executable installer. The separate public-facing website's source is in `docs/index.html`, but a live public domain has not been verified. This guide describes a real clean-folder test, not an installation already validated on a new user's Bazzite PC.
 
 **Start with Route A** for the Portal. When you want the native Linux game, choose Route B. Someone who only wants the game may still skip Route A, but players do **not** have to download the game to experience the Portal. GitHub knowledge, Unreal Editor, AI models, a personal server, and Tailscale are **not** game prerequisites.
 
@@ -65,12 +65,12 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
 
 **If something goes wrong:** Save the exact command/error and the step number. Do not move the old Portal installation, wipe game saves, or reinstall Unreal to fix this test.
 
-## Route B — optionally download and play Conflux V0.1
+## Route B — optionally download and play Conflux V0.2
 
-1. In your browser, open **[Conflux V0.1 GitHub Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1)**.
-2. Under **Assets**, download **`Conflux-V0.1-Linux-x86_64.tar.gz`**. Do not choose `Source code (zip)`, `Source code (tar.gz)`, or `Conflux-V0.1-Source.tar.gz` if your goal is to play.
+1. In your browser, open **[Conflux V0.2 GitHub Release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2)**.
+2. Under **Assets**, download **`Conflux-V0.2-Linux-x86_64.tar.gz`**. Do not choose `Source code (zip)`, `Source code (tar.gz)`, or `Conflux-V0.2-Source.tar.gz` if your goal is to play.
 3. In Dolphin, find the downloaded game archive (normally under **Downloads**, unless you selected another location). For this clean test, place the archive in a clearly named download folder such as `~/Conflux/Downloads/`. This is optional, not required for the game.
-4. In Dolphin, **extract** the `.tar.gz` archive into a new folder under `~/Conflux/`, such as `~/Conflux/Game/`. Ensure you have sufficient disk space: the archive is about 1.18 GB, and the extracted build is about 3.2 GB. You can leave the archive untouched as a backup.
+4. In Dolphin, **extract** the `.tar.gz` archive into a new folder under `~/Conflux/`, such as `~/Conflux/Game/`. Ensure you have sufficient disk space: the archive is about 1.20 GB; allow additional space for extraction. You can leave the archive untouched as a backup.
 5. Open the extracted folder, then locate **`PlayConflux.sh`**. It may be inside a folder created by extraction: use Dolphin to find the actual file rather than guessing the final folder name.
 6. In a terminal opened **in the folder containing `PlayConflux.sh`**, start the game using:
 
@@ -79,9 +79,9 @@ The local Portal includes **Atelier and Ledger**, a **player manual**, **library
    ```
 
    If Linux reports **Permission denied**, first check the script's executable permission in Dolphin's **Properties → Permissions**. Change only the downloaded game's own script, and only if you trust the GitHub release. Then retry.
-7. On the title screen, choose **Begin a new journey**. Try creating a character and saving. The game saves separately under `~/.local/share/Conflux/V0.1/` by default; it does not save its profile inside the extracted game folder.
+7. On the title screen, choose **Begin a new journey**. Try creating a character and saving. The game saves separately under `~/.local/share/Conflux/V0.2/` by default; it does not save its profile inside the extracted game folder. V0.1 data remains separate, and V0.2 does not automatically migrate it. [V0.1 rollback release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1).
 
-**Expected result:** The native Conflux V0.1 Linux preview starts. It is an early development build, not a complete game. Other Linux distributions, graphics drivers, and GPUs are not all certified. The native game also works **without** the local Portal: both experiences are independent.
+**Expected result:** The native Conflux V0.2 Linux preview starts. It is an early development build, not a complete game. Other Linux distributions, graphics drivers, and GPUs are not all certified. The native game also works **without** the local Portal: both experiences are independent.
 
 **If something fails:** Record which numbered step, the exact error text, whether `PlayConflux.sh` exists, and your Linux/GPU details. Do not delete another installation to troubleshoot this test.
 

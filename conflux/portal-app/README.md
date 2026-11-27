@@ -244,12 +244,12 @@ For troubleshooting, **Updates & Setup** now shows the absolute path of the Port
 
 ## Start playing
 
-1. Choose **Get the Game** from the Portal, or **Applications → Download** for Conflux V0.1.
-2. The local **Get Conflux V0.1** page has separate, verified GitHub links for the playable [Linux archive](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/Conflux-V0.1-Linux-x86_64.tar.gz), [release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1), [checksum](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.1/SHA256SUMS), and developer source archive. Do not confuse the native source archive or GitHub's repository ZIP with a runnable game.
-3. Download and extract the Linux archive (about 1.18 GB compressed and 3.2 GB extracted). Do **not** select the `.tar.gz` file in the finder: it needs an **extracted folder**.
+1. Choose **Get the Game** from the Portal, or **Applications → Download** for Conflux V0.2.
+2. The local **Get Conflux V0.2** page has separate, verified GitHub links for the playable [Linux archive](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/Conflux-V0.2-Linux-x86_64.tar.gz), [release page](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2), [checksum](https://github.com/MedioCritasVT/CrystalCove/releases/download/v0.2/SHA256SUMS), and developer source archive. Do not confuse the native source archive or GitHub's repository ZIP with a runnable game.
+3. Download and extract the Linux archive (about 1.20 GB compressed; allow additional extraction space). Do **not** select the `.tar.gz` file in the finder: it needs an **extracted folder**.
 4. In **Already cloned or downloaded?**, click **Choose game folder…**. On Linux systems with `kdialog` (KDE) or `zenity`, a native desktop picker opens. On systems without either, paste an absolute folder path copied from your file manager and choose **Search this folder**.
 5. The Portal searches **only that selected folder and up to four nested levels**, capped at 450 directories, for `PlayConflux.sh`. It will show its path; click **Use this game** to explicitly register it.
-6. The primary game button becomes **Launch**, without downloading anything again. The game does not launch while you browse or register.
+6. The primary game button becomes **Launch**, without downloading anything again. The game does not launch while you browse or register. Existing linked installations remain unchanged; V0.2 saves separately and does not migrate V0.1 data. [V0.1 rollback release](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.1).
 
 **A source-code clone is not automatically an installed game.** If you have only cloned the CrystalCove repository, the finder may report no `PlayConflux.sh`; download the packaged Linux release instead. If the script exists but is not executable, use your file manager's permissions controls to permit execution, then search again. Only run a build you trust.
 
@@ -259,7 +259,7 @@ For advanced users, manual registration via `~/.config/conflux-portal/apps.json`
 [
   {
     "id": "conflux-game",
-    "name": "Conflux V0.1",
+    "name": "Conflux Game",
     "executable": "/absolute/path/to/extracted/game/PlayConflux.sh"
   }
 ]

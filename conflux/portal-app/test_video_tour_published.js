@@ -5,6 +5,8 @@ const vm = require("node:vm");
 
 const catalog = JSON.parse(fs.readFileSync("../video-tour/catalog.json", "utf8"));
 const readme = fs.readFileSync("../../README.md", "utf8");
+const introduction = fs.readFileSync("../../docs/PROJECT_INTRODUCTION.md", "utf8");
+assert(readme.includes("docs/PROJECT_INTRODUCTION.md"), "README must link the full introduction");
 const portal = fs.readFileSync("index.html", "utf8");
 const website = fs.readFileSync("../../docs/index.html", "utf8");
 const prefix = "https://github.com/MedioCritasVT/CrystalCove/releases/download/conflux-portal-tour-v0.1/";
@@ -15,7 +17,7 @@ for (const entry of catalog.items) {
   assert.equal(entry.publication_status,"published");
   assert.equal(entry.published_url,url);
   assert(Number.isSafeInteger(entry.bytes) && entry.bytes>0);
-  for(const [label,page] of [["README",readme],["Portal",portal],["website",website]]) {
+  for(const [label,page] of [["Project introduction",introduction],["Portal",portal],["website",website]]) {
     assert(page.includes(url),label+" is missing direct "+entry.filename+" link");
   }
 }
@@ -25,7 +27,7 @@ for (const asset of ["01-threshold-preview.gif","02-creative-workspace-preview.g
   const file="../../docs/previews/"+asset;
   const bytes=fs.readFileSync(file);
   assert(bytes.length>8000 && bytes.length<1000000,asset+" must be a lightweight real image");
-  assert(readme.includes("docs/previews/"+asset),"README does not embed "+asset);
+  assert(introduction.includes("previews/"+asset),"Project introduction does not embed "+asset);
   if (asset.endsWith(".gif")) assert.equal(bytes.toString("ascii",0,3),"GIF",asset+" not a GIF");
   else assert.equal(bytes.subarray(1,4).toString("ascii"),"PNG",asset+" not PNG");
 }
@@ -65,5 +67,5 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
   assert(links.every(link=>link.href.startsWith(prefix)));
   assert(links.every(link=>link.target==="_blank"));
   assert(status.textContent.includes("All four"),"Must recognize four published videos");
-  console.log("Five README visuals and four resilient GitHub Video Tour links OK");
+  console.log("Five introduction visuals and four resilient GitHub Video Tour links OK");
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,3 +1,7 @@
+## 2026-11-26 — Published release and visitor-route reconciliation (Limen)
+
+GitHub release metadata confirms [V0.2](https://github.com/MedioCritasVT/CrystalCove/releases/tag/v0.2) was published November 14 as a Linux development prerelease. Current newcomer routes in the README, public website source, local Portal and player guides now point to V0.2; V0.1 remains available for rollback. V0.2 adds Realm Music 01, separate audio preferences and version-isolated saves. No automatic migration, game rebuild or new release is claimed. Historical build/checkpoint records remain unchanged. The platform index now points to harness v0.4.2; older Portal tour media remain identified as historical captures. The root README was reorganized into a concise entry point with linked introduction, films and crossover research pages. Source changes are confined to presentation, documentation and corresponding assertions; no existing installation or user data was modified.
+
 ## 2026-11-14 — Conflux Portal 1.0 creative milestone recorded (Limen)
 
 **Architect statement:** The Portal now feels like a complete, rounded **1.0 experience** to the Architect: a welcoming threshold into Conflux for humans and Nodes, not a promise that every connected system is finished. **This entry does not create a release tag, a standalone installer, or a new game version.**
