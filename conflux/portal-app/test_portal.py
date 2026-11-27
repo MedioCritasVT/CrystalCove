@@ -288,7 +288,8 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(html.count('class="nav-group"'), 4)
         self.assertEqual(html.count('class="nav-stewards"'), 1)
         sidebar_nav = html.split('<nav class="portal-nav"', 1)[1].split('</nav>', 1)[0]
-        self.assertEqual(sidebar_nav.count('<button data-page='), 14)
+        self.assertEqual(sidebar_nav.count('<button data-page='), 15)
+        self.assertIn('data-page="discovery"', sidebar_nav)
         self.assertIn('id="nav-group-create"', html)
         self.assertIn('id="nav-group-maintain"', html)
         self.assertIn('href="/portal_polish.css"', html)
@@ -649,9 +650,54 @@ class PortalSmokeTest(unittest.TestCase):
             urlopen(unauthorized, timeout=3)
         self.assertEqual(err.exception.code, 403)
 
+    def test_discovery_room_and_private_operations(self):
+        root = Path(self.tmp.name) / "project"
+        root.mkdir()
+        source = root / "asset.blend"
+        source.write_bytes(b"original")
+        db = Path(self.tmp.name) / "private-discovery" / "index.sqlite3"
+        with mock.patch.object(portal.discovery_index, "default_db", return_value=db):
+            _, html = self.get("/")
+            self.assertIn('id="discovery"', html)
+            self.assertEqual(self.get("/discovery.js")[0], 200)
+            self.assertEqual(self.get("/discovery.css")[0], 200)
+            self.assertEqual(self.post("/api/discovery/projects", {})[1], {"projects": []})
+            self.assertFalse(db.exists())
+            with mock.patch.object(portal.game_locator, "choose_folder", return_value=str(root)):
+                self.assertEqual(self.post("/api/discovery/browse", {})[1]["folder"], str(root))
+            self.assertFalse(db.exists())
+            result = self.post("/api/discovery/scan", {"project":"Demo", "root":str(root)})[1]
+            self.assertEqual(result["indexed"], 1)
+            rows = self.post("/api/discovery/search", {"query":"blend"})[1]["files"]
+            self.assertEqual(rows[0]["path"], "asset.blend")
+            (root / "second.txt").touch()
+            self.assertEqual(self.post("/api/discovery/refresh", {"project":"Demo"})[1]["indexed"], 2)
+            self.assertEqual(self.post("/api/discovery/forget", {"project":"Demo"})[1]["removed_project_records"], 1)
+            self.assertEqual(self.post("/api/discovery/search", {})[1]["files"], [])
+            self.assertEqual(source.read_bytes(), b"original")
+            self.assertTrue((root / "second.txt").exists())
+
+    def test_discovery_rejects_unauthorized_requests(self):
+        db = Path(self.tmp.name) / "private-discovery" / "index.sqlite3"
+        valid = {"Content-Type":"application/json", "Origin":self.base, "X-Conflux-Token":portal.TOKEN}
+        with mock.patch.object(portal.discovery_index, "default_db", return_value=db):
+            for headers in ({}, {**valid, "Host":"evil.example"}, {**valid, "Origin":"http://evil.example"},
+                            {**valid, "X-Conflux-Token":"wrong"}):
+                request = Request(self.base + "/api/discovery/projects", data=b"{}", headers=headers, method="POST")
+                with self.assertRaises(HTTPError) as err:
+                    urlopen(request, timeout=3)
+                self.assertEqual(err.exception.code, 403)
+            with self.assertRaises(HTTPError) as err:
+                self.get("/api/discovery/projects")
+            self.assertEqual(err.exception.code, 404)
+            with self.assertRaises(HTTPError) as err:
+                urlopen(Request(self.base + "/api/status", headers={"Host":"evil.example"}), timeout=3)
+            self.assertEqual(err.exception.code, 403)
+            self.assertFalse(db.exists())
+
     @unittest.skipUnless(shutil.which("node"), "Node.js not installed; browser syntax check skipped")
     def test_javascript_syntax(self):
-        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js", "portal_chat.js"):
+        for script_name in ("app.js", "readme.js", "music.js", "link_choice.js", "soundstage.js", "service_setup.js", "theme_studio.js", "portal_chat.js", "discovery.js"):
             script = Path(__file__).with_name(script_name)
             result = subprocess.run(["node", "--check", str(script)],
                                     text=True, capture_output=True, timeout=10)

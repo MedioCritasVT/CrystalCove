@@ -1,0 +1,11 @@
+/* Local Discovery room, independent of existing Portal styling. */
+#discovery .discovery-card { margin: 1rem 0; }
+#discovery form { display: grid; gap: .65rem; }
+#discovery input, #discovery select { width: 100%; min-width: 0; box-sizing: border-box; padding: .65rem; border: 1px solid var(--line, #727486); border-radius: .5rem; background: var(--panel, #232435); color: var(--text, #eee); font: inherit; }
+#discovery .discovery-line { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; }
+#discovery .discovery-line input { flex: 1 1 15rem; }
+#discovery .discovery-record { padding: .8rem 0; border-bottom: 1px solid var(--line, #727486); overflow-wrap: anywhere; }
+#discovery .discovery-record p { margin: .3rem 0; }
+#discovery .discovery-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+#discovery button:disabled { opacity: .55; cursor: not-allowed; }
+#discovery-status { position: sticky; bottom: 0; padding: .8rem; border: 1px solid var(--line, #727486); border-radius: .5rem; background: var(--panel, #232435); overflow-wrap: anywhere; }
