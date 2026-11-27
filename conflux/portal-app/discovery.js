@@ -52,6 +52,63 @@
   let directory = "";
   let offset = 0;
   const expanded = new Set();
+  let applications = [];
+  let seenRefresh = null;
+  let pollTimer = null;
+  let refreshInProgress = false;
+  async function refreshStatus() {
+    const state = await request("scan-status");
+    const display = get("refresh-status");
+    refreshInProgress = state.running;
+    if (state.running) {
+      display.textContent = "Refreshing " + state.done + "/" + state.total + (state.current ? " · " + state.current : "");
+      clearTimeout(pollTimer);
+      pollTimer = setTimeout(() => refreshStatus().catch(error => {display.textContent = error.message;}), 1500);
+    } else {
+      display.textContent = state.finished ? "Refresh complete: " + (state.done-state.errors.length) + "/" + state.total + " succeeded." + (state.errors.length ? " Previous snapshots kept for: " + state.errors.join(", ") : "") : "No batch refresh this session.";
+      if (seenRefresh !== null && state.finished !== seenRefresh) {
+        if (busy) {
+          clearTimeout(pollTimer);
+          pollTimer = setTimeout(() => refreshStatus().catch(error => {display.textContent = error.message;}), 1000);
+          return;
+        }
+        seenRefresh = state.finished;
+        await run("Updating refreshed index view…",async()=>{await list();await search();});
+      }
+    }
+    if (seenRefresh === null) seenRefresh = state.finished;
+  }
+  async function loadPreferences() {
+    const prefs = await request("preferences");
+    get("launch-refresh").checked = prefs.launch_refresh;
+    applications = (await request("apps")).apps;
+  }
+  function appAssociation(project) {
+    const holder = element("div",undefined,"discovery-association");
+    const select = element("select");
+    select.setAttribute("aria-label","Application for "+project.name);
+    select.add(new Option("No project application",""));
+    for (const app of applications) select.add(new Option(app.label+(app.available?"":" (launcher not detected)"),app.id));
+    select.value=project.association?.app || "";
+    const directoryInput=element("input");
+    directoryInput.setAttribute("aria-label","Relative application directory for "+project.name);
+    directoryInput.placeholder="Project root (or relative subfolder)";
+    directoryInput.value=project.association?.directory || "";
+    holder.append(element("p","Project application","theme-note"),select,directoryInput,
+      button("Use selected folder",()=>{if(mode==="folder" && currentProject===project.name) directoryInput.value=directory;else status.textContent="Select a folder in this project first.";}),
+      button("Save association",()=>run("Saving application association…",async()=>{
+        await request("associate",{project:project.name,app:select.value,directory:directoryInput.value});
+        await list(); status.textContent="Application association saved.";
+      })));
+    return holder;
+  }
+  function launchProject(project) {
+    if (!window.confirm("Open this trusted project in its associated application? IDEs may run project-specific configuration.")) return;
+    run("Opening project application…",async()=>{
+      await request("open-project",{project:project.name});
+      status.textContent="Application launch requested. Check your desktop.";
+    });
+  }
   function syncSelection() {
     room.querySelectorAll(".discovery-tree-label").forEach(label => {
       const selected = mode === "folder" && label.dataset.project === currentProject && label.dataset.path === directory;
@@ -209,6 +266,13 @@
       const count=element("span",metrics.endpoints+" · d"+metrics.depth,"discovery-tree-metric");
       count.title=metrics.endpoints+" endpoints · "+metrics.depth+" levels below root";
       row.append(toggle,label,count);
+      if(project.association){
+        const shortcut=button("↗",()=>launchProject(project));
+        shortcut.className="discovery-app-shortcut";
+        shortcut.setAttribute("aria-label","Open "+project.name+" in associated application");
+        shortcut.title=applications.find(a=>a.id===project.association.app)?.label || project.association.app;
+        row.append(shortcut);
+      }
       const metadata=element("details",undefined,"discovery-project-details");
       metadata.append(element("summary","Project details"));
       metadata.append(element("p",project.root,"discovery-location"),
@@ -225,7 +289,7 @@
           await list(); await search(); status.textContent="Index records removed. Original files unchanged.";
         });
       }));
-      metadata.append(actions);
+      metadata.append(appAssociation(project),actions);
       branch.append(tree,metadata); item.append(row,branch); target.append(item);
       setOpen(expanded.has(project.name));
     }
@@ -249,8 +313,17 @@
     if(!result.cancelled)get("root").value=result.folder;
     status.textContent=result.cancelled?"Folder selection cancelled.":"Folder selected. Register and scan to index it.";
   }));
+  get("scan-all").addEventListener("click",()=>run("Starting refresh of all registered projects…",async()=>{
+    const state=await request("scan-all");
+    seenRefresh=state.running?state.finished:state.finished-1;
+    clearTimeout(pollTimer); pollTimer=setTimeout(()=>refreshStatus().catch(error=>{get("refresh-status").textContent=error.message;}),500);
+    status.textContent="Refresh requested; existing snapshots remain available.";
+  }));
+  get("launch-refresh").addEventListener("change",()=>run("Saving refresh preference…",async()=>{
+    try {await request("set-preferences",{launch_refresh:get("launch-refresh").checked});status.textContent="Launch refresh preference saved.";}catch(error){get("launch-refresh").checked=!get("launch-refresh").checked;throw error;}
+  }));
   get("reload").addEventListener("click",()=>run("Loading index…",async()=>{await list();await search();}));
   get("search").addEventListener("submit",event=>{event.preventDefault();run("Searching index…",search);});
   document.querySelectorAll('[data-page="discovery"], [data-go="discovery"]').forEach(item=>
-    item.addEventListener("click",()=>{if(!loaded)run("Loading local index…",async()=>{await list();await search();});}));
+    item.addEventListener("click",()=>{if(!loaded)run("Loading local index…",async()=>{await loadPreferences();await list();await search();await refreshStatus();});}));
 })();

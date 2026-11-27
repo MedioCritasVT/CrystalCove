@@ -41,6 +41,58 @@ else:
     MEDIA_MOUNTS = None
 MIRROR_LOCK = threading.Lock()
 DISCOVERY_LOCK = threading.Lock()
+DISCOVERY_STATE_LOCK = threading.Lock()
+DISCOVERY_STATE = {"running": False, "total": 0, "done": 0, "current": "", "errors": [], "finished": 0}
+
+
+def discovery_status():
+    with DISCOVERY_STATE_LOCK:
+        return {**DISCOVERY_STATE, "errors": list(DISCOVERY_STATE["errors"])}
+
+
+def start_discovery_refresh(db):
+    """One bounded background batch; existing snapshots survive failures."""
+    if not DISCOVERY_LOCK.acquire(blocking=False):
+        raise discovery_index.DiscoveryError("Discovery is busy.")
+    try:
+        rows = discovery_index.projects(db) if os.path.lexists(db) else []
+        with DISCOVERY_STATE_LOCK:
+            DISCOVERY_STATE.update(running=True, total=len(rows), done=0, current="", errors=[])
+        def worker():
+            try:
+                for row in rows:
+                    name = row["name"]
+                    with DISCOVERY_STATE_LOCK:
+                        DISCOVERY_STATE["current"] = name
+                    try:
+                        discovery_index.scan(db, name, row["root"])
+                    except (discovery_index.DiscoveryError, OSError, sqlite3.Error, ValueError, RuntimeError):
+                        with DISCOVERY_STATE_LOCK:
+                            DISCOVERY_STATE["errors"].append(name)
+                    finally:
+                        with DISCOVERY_STATE_LOCK:
+                            DISCOVERY_STATE["done"] += 1
+            finally:
+                with DISCOVERY_STATE_LOCK:
+                    DISCOVERY_STATE.update(running=False, current="", finished=DISCOVERY_STATE["finished"]+1)
+                DISCOVERY_LOCK.release()
+        threading.Thread(target=worker, daemon=True, name="discovery-refresh").start()
+        return discovery_status()
+    except BaseException:
+        with DISCOVERY_STATE_LOCK:
+            DISCOVERY_STATE.update(running=False, current="")
+        DISCOVERY_LOCK.release()
+        raise
+
+
+def discovery_on_launch():
+    try:
+        db = discovery_index.default_db()
+        if discovery_index.preferences(db)["launch_refresh"]:
+            start_discovery_refresh(db)
+    except (discovery_index.DiscoveryError, OSError, sqlite3.Error, ValueError, RuntimeError):
+        print("Discovery launch refresh unavailable; existing index retained.", file=sys.stderr)
+
 CONFIG = Path.home() / ".config" / "conflux-portal" / "apps.json"
 TOKEN = secrets.token_urlsafe(24)
 HOST = "127.0.0.1"
@@ -478,7 +530,7 @@ class Handler(BaseHTTPRequestHandler):
                 or self.headers.get("Host") != expected or not self.authorized()):
             return self.respond(403, {"error": "Discovery is local only."})
         action = route.removeprefix("/api/discovery/")
-        if action not in ("projects", "search", "browse", "scan", "refresh", "forget", "folder", "tree", "open", "reveal"):
+        if action not in ("projects", "search", "browse", "scan", "refresh", "forget", "folder", "tree", "open", "reveal", "preferences", "set-preferences", "scan-all", "scan-status", "apps", "associate", "open-project"):
             return self.respond(404, {"error": "not-found"})
         if self.headers.get("Content-Type", "").split(";")[0].strip() != "application/json":
             return self.respond(400, {"error": "Expected JSON."})
@@ -487,11 +539,34 @@ class Handler(BaseHTTPRequestHandler):
             return self.respond(400, {"error": "invalid-request"})
         # Serialize scans, refresh and forget so an in-flight scan cannot
         # silently restore a project that the user has just forgotten.
-        if not DISCOVERY_LOCK.acquire(blocking=False):
+        db = discovery_index.default_db()
+        if action == "scan-status":
+            return self.respond(200, discovery_status())
+        if action == "scan-all":
+            try:
+                return self.respond(200, start_discovery_refresh(db))
+            except (discovery_index.DiscoveryError, OSError, sqlite3.Error, ValueError, RuntimeError):
+                return self.respond(409, {"error": "Could not start refresh. Discovery may be busy."})
+        # Read snapshots while the background batch scans. Mutations remain serialized.
+        read_only = action in ("projects", "search", "folder", "tree", "preferences", "apps")
+        if not read_only and not DISCOVERY_LOCK.acquire(blocking=False):
             return self.respond(409, {"error": "Discovery is busy. Try again after the current operation."})
         try:
-            db = discovery_index.default_db()
-            if action == "browse":
+            if action == "preferences":
+                result = discovery_index.preferences(db)
+            elif action == "set-preferences":
+                result = discovery_index.set_preferences(db, body.get("launch_refresh"))
+            elif action == "apps":
+                result = {"apps": [app for app in discovery_index.app_options() if app["id"] != "blender"]}
+            elif action == "associate":
+                if not os.path.lexists(db):
+                    raise discovery_index.DiscoveryError("No project index exists.")
+                result = discovery_index.associate(db, body.get("project"), body.get("app"), body.get("directory", ""))
+            elif action == "open-project":
+                if not os.path.lexists(db):
+                    raise discovery_index.DiscoveryError("No project index exists.")
+                result = discovery_index.open_project(db, body.get("project"))
+            elif action == "browse":
                 folder = game_locator.choose_folder(title="Choose a project folder for Discovery")
                 result = {"folder": folder, "cancelled": folder is None}
             elif action in ("projects", "search") and not os.path.lexists(db):
@@ -532,7 +607,8 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, sqlite3.Error, ValueError, RuntimeError, TypeError):
             return self.respond(400, {"error": "Discovery could not complete the operation. Check folder availability and private index permissions. Existing successful snapshots are retained on scan failure."})
         finally:
-            DISCOVERY_LOCK.release()
+            if not read_only:
+                DISCOVERY_LOCK.release()
 
     def do_POST(self):
         route = urlsplit(self.path).path
@@ -812,6 +888,7 @@ if __name__ == "__main__":
             server = ThreadingHTTPServer((HOST, port), Handler)
         except OSError as exc:
             raise SystemExit("Could not bind Portal to 127.0.0.1:%d: %s" % (port, exc))
+    threading.Thread(target=discovery_on_launch, daemon=True, name="discovery-launch-check").start()
     if "--open-browser" in sys.argv[1:]:
         webbrowser.open("http://127.0.0.1:%d" % port)
     print("Conflux Portal: http://127.0.0.1:%d" % server.server_port, flush=True)

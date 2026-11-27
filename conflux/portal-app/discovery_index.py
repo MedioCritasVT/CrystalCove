@@ -18,7 +18,7 @@ import time
 MAX_ENTRIES = 20000
 MAX_DEPTH = 24
 MAX_RESULTS = 200
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 SKIP_DIRS = {"node_modules", "__pycache__"}
 DIR_FLAGS = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
 
@@ -155,7 +155,10 @@ def connect(db):
                 # Additive migration: preserve all existing project/file rows.
                 # No directory records for v1 snapshots until refreshed.
                 conn.execute("CREATE TABLE directories (project TEXT NOT NULL REFERENCES projects(name) ON DELETE CASCADE, path TEXT NOT NULL, PRIMARY KEY(project, path))")
-                conn.execute("PRAGMA user_version = 2")
+            if version in (0, 1, 2):
+                conn.execute("CREATE TABLE discovery_preferences (id INTEGER PRIMARY KEY CHECK(id=1), launch_refresh INTEGER NOT NULL CHECK(launch_refresh IN (0,1)))")
+                conn.execute("CREATE TABLE project_apps (project TEXT PRIMARY KEY REFERENCES projects(name) ON DELETE CASCADE, app TEXT NOT NULL, directory TEXT NOT NULL)")
+                conn.execute("PRAGMA user_version = 3")
             elif version != SCHEMA_VERSION:
                 raise DiscoveryError("Unsupported discovery index schema; no migration attempted.")
         return conn
@@ -245,6 +248,8 @@ def projects(db):
             "FROM projects p LEFT JOIN files f ON p.name=f.project "
             "GROUP BY p.name ORDER BY p.name")]
         for row in rows:
+            association = conn.execute("SELECT app, directory FROM project_apps WHERE project=?", (row["name"],)).fetchone()
+            row["association"] = dict(association) if association else None
             children, summaries, complete = topology(conn, row["name"])
             row["topology"] = {**summaries[""], "complete": complete}
             row["tree"] = tree_slice(children, summaries, "", 0)
@@ -364,6 +369,116 @@ def open_indexed(db, project, path, *, reveal=False):
                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                      stderr=subprocess.DEVNULL, start_new_session=True)
     return {"requested": True, "action": "reveal" if reveal else "open"}
+
+
+APP_OPTIONS = {
+    "pycharm": ("PyCharm", ("pycharm", "pycharm-community", "pycharm-professional"), ()),
+    "studio": ("Android Studio", ("studio", "android-studio"), ()),
+    "blender": ("Blender", ("blender",), ("org.blender.Blender",)),
+    "code": ("Visual Studio Code", ("code",), ("com.visualstudio.code",)),
+    "kate": ("Kate", ("kate",), ("org.kde.kate",)),
+    "files": ("File manager", ("xdg-open",), ()),
+}
+
+
+def app_command(app):
+    if not isinstance(app, str) or app not in APP_OPTIONS:
+        raise DiscoveryError("Choose a supported application.")
+    _, names, flatpaks = APP_OPTIONS[app]
+    for name in names:
+        path = shutil.which(name)
+        if path:
+            return [path]
+    if app in ("pycharm", "studio"):
+        scripts = Path.home() / ".local/share/JetBrains/Toolbox/scripts"
+        for name in names:
+            path = scripts / name
+            if path.is_file() and os.access(path, os.X_OK):
+                return [str(path)]
+    flatpak = shutil.which("flatpak")
+    if flatpak:
+        for app_id in flatpaks:
+            try:
+                result = subprocess.run([flatpak, "info", app_id], stdout=subprocess.DEVNULL,
+                                        stderr=subprocess.DEVNULL, timeout=3)
+            except (OSError, subprocess.TimeoutExpired):
+                continue
+            if result.returncode == 0:
+                return [flatpak, "run", app_id]
+    return None
+
+
+def app_options():
+    # Detection is local; no network request, installation or app launch.
+    return [{"id": app, "label": spec[0], "available": bool(app_command(app))}
+            for app, spec in APP_OPTIONS.items()]
+
+
+def preferences(db):
+    if not os.path.lexists(db):
+        return {"launch_refresh": False}
+    with closing(connect(db)) as conn:
+        row = conn.execute("SELECT launch_refresh FROM discovery_preferences WHERE id=1").fetchone()
+        return {"launch_refresh": bool(row and row[0])}
+
+
+def set_preferences(db, enabled):
+    if type(enabled) is not bool:
+        raise DiscoveryError("Choose whether launch refresh is enabled.")
+    with closing(connect(db)) as conn, conn:
+        conn.execute("INSERT INTO discovery_preferences VALUES (1, ?) ON CONFLICT(id) DO UPDATE SET launch_refresh=excluded.launch_refresh", (int(enabled),))
+    return {"launch_refresh": enabled}
+
+
+def associate(db, project, app, directory=""):
+    name = project_name(project)
+    relative_parts(directory, allow_empty=True)
+    if not isinstance(app, str) or (app and app not in APP_OPTIONS):
+        raise DiscoveryError("Choose a supported application.")
+    # Blender opens files, not projects. Keep it for file associations via
+    # xdg-open; project shortcuts are directory-oriented.
+    if app == "blender":
+        raise DiscoveryError("Use Open on an indexed Blender file instead.")
+    with closing(connect(db)) as conn, conn:
+        conn.execute("BEGIN IMMEDIATE")
+        if not conn.execute("SELECT 1 FROM projects WHERE name=?", (name,)).fetchone():
+            raise DiscoveryError("Project is not registered.")
+        children, _, _ = topology(conn, name)
+        if directory not in children:
+            raise DiscoveryError("Choose an indexed project directory.")
+        if app:
+            conn.execute("INSERT INTO project_apps VALUES (?, ?, ?) ON CONFLICT(project) DO UPDATE SET app=excluded.app, directory=excluded.directory", (name, app, directory))
+        else:
+            conn.execute("DELETE FROM project_apps WHERE project=?", (name,))
+    return {"associated": bool(app)}
+
+
+def open_project(db, project):
+    name = project_name(project)
+    with closing(connect(db)) as conn:
+        row = conn.execute("SELECT p.root, a.app, a.directory FROM projects p JOIN project_apps a ON p.name=a.project WHERE p.name=?", (name,)).fetchone()
+        if not row:
+            raise DiscoveryError("Choose a project application first.")
+        children, _, _ = topology(conn, name)
+        if row["directory"] not in children:
+            raise DiscoveryError("Associated directory is no longer indexed.")
+    root = Path(row["root"])
+    parts = relative_parts(row["directory"], allow_empty=True)
+    if root.resolve(strict=True) != root or not root.is_dir():
+        raise DiscoveryError("Project root changed. Refresh the project.")
+    device = root.stat().st_dev
+    target = root
+    for part in parts:
+        target = target / part
+        info = target.lstat()
+        if not stat.S_ISDIR(info.st_mode) or info.st_dev != device:
+            raise DiscoveryError("Associated directory changed. Refresh the project.")
+    command = app_command(row["app"])
+    if not command:
+        raise DiscoveryError("Application launcher is unavailable. Check your local installation.")
+    subprocess.Popen([*command, str(target)], stdin=subprocess.DEVNULL,
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    return {"requested": True, "app": row["app"]}
 
 
 def forget(db, name):

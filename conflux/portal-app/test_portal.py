@@ -681,6 +681,19 @@ class PortalSmokeTest(unittest.TestCase):
                 opener.assert_called_once_with(db, "Demo", "asset.blend", reveal=False)
             (root / "second.txt").touch()
             self.assertEqual(self.post("/api/discovery/refresh", {"project":"Demo"})[1]["indexed"], 2)
+            self.assertFalse(self.post("/api/discovery/preferences", {})[1]["launch_refresh"])
+            self.assertTrue(self.post("/api/discovery/set-preferences", {"launch_refresh":True})[1]["launch_refresh"])
+            self.assertTrue(self.post("/api/discovery/associate", {"project":"Demo","app":"studio"})[1]["associated"])
+            (root / "third.txt").touch()
+            self.post("/api/discovery/scan-all", {})
+            for _ in range(100):
+                state = self.post("/api/discovery/scan-status", {})[1]
+                if not state["running"]:
+                    break
+                threading.Event().wait(.02)
+            self.assertFalse(state["running"])
+            self.assertEqual(state["errors"], [])
+            self.assertEqual(self.post("/api/discovery/projects", {})[1]["projects"][0]["indexed"], 3)
             self.assertEqual(self.post("/api/discovery/forget", {"project":"Demo"})[1]["removed_project_records"], 1)
             self.assertEqual(self.post("/api/discovery/search", {})[1]["files"], [])
             self.assertEqual(source.read_bytes(), b"original")
