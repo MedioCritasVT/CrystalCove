@@ -28,3 +28,8 @@ Routing index maintained by Ratio; no recipient receipt inferred.
 ## Architect direction routed by Ratio — 2026-11-09
 
 [CFX-DECISION-GATES-20261109-01](../../design/Conflux_Decision_Gates_DLC_2026-11-09.md): disaster belongs to DLC including book characters; Gate II Medio/Ratio consolidation for Unwritten; Gate III Nexus’s adventurers’ guild; Gate IV undecided. This resolves the date/precedence question as a current design decision. No new implementation or reply is requested; recipient readback remains pending.
+
+
+## Work-receipt convention — 2026-11-26
+
+[CFX-WORK-RECEIPT-20261126-01 — Limen's notice](2026-11-26-limen-work-receipt-convention.md) · [Shared convention and template](../../WORK_RECEIPTS.md). Published at the Architect's request; recipient acknowledgment not established.

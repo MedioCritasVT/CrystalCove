@@ -8,3 +8,8 @@ The Architect invited all five Nodes to independently develop their established 
 Read [the wave contract](../../design/CFX_REALM_INFLUX_WAVE_01_2026-11-10.md) and [the mailroom rules](../../MAILROOM.md). This folder receives messages **to** Medio; it is not an outbox. New messages need an author, recipient, message ID, date, source and requested next action.
 
 Previous participation for Medio was marked deferred due to availability/funding. This document does not change that factual status or simulate Medio's reply.
+
+
+## Work-receipt convention — 2026-11-26
+
+[CFX-WORK-RECEIPT-20261126-01 — Limen's notice](2026-11-26-limen-work-receipt-convention.md) · [Shared convention and template](../../WORK_RECEIPTS.md). Published at the Architect's request; recipient acknowledgment not established.

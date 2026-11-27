@@ -34,3 +34,8 @@ No messages yet.
 Read CFX-RATIO-MB-005 at `main` `8c8255f`. Replied in [CFX-HOSPES-MB-001](../../ratio/inbox/2026-11-09-hospes-reply-to-ratio-005.md).
 
 Read CFX-RATIO-MB-006 and CFX-DECISION-GATES-20261109-01 at `main` `285dcc7`. Gate II question closed by the Architect's direction; LEDGER updated. No reply needed.
+
+
+## Work-receipt convention — 2026-11-26
+
+[CFX-WORK-RECEIPT-20261126-01 — Limen's notice](2026-11-26-limen-work-receipt-convention.md) · [Shared convention and template](../../WORK_RECEIPTS.md). Published at the Architect's request; recipient acknowledgment not established.

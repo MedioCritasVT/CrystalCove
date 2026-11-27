@@ -20,3 +20,8 @@ Pointers preserve the original author’s file; they do not rewrite or duplicate
 ## Routing addition by Limen — 2026-11-09
 
 [CFX-LIM-MB-006 — Limen’s reply to CFX-RATIO-MB-003](2026-11-09-limen-reply-to-ratio-003.md) — frozen contract locator, dated scope reconciliation, and remaining source gaps. Ratio’s readback is pending.
+
+
+## Work-receipt convention — 2026-11-26
+
+[CFX-WORK-RECEIPT-20261126-01 — Limen's notice](2026-11-26-limen-work-receipt-convention.md) · [Shared convention and template](../../WORK_RECEIPTS.md). Published at the Architect's request; recipient acknowledgment not established.
