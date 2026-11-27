@@ -23,6 +23,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix="conflux-browser-review-") as home:
         os.environ["XDG_DATA_HOME"] = str(Path(home) / "data")
         os.environ["XDG_CONFIG_HOME"] = str(Path(home) / "config")
+        os.environ["XDG_STATE_HOME"] = str(Path(home) / "state")
         import portal
 
         # Do not accidentally use a real user's game registrations or app data.
@@ -75,20 +76,20 @@ def main():
                 assert page.locator(".nav-group").count() == 4
                 assert page.locator(".nav-group[data-group='begin'] button").count() == 3
                 assert page.locator(".nav-group[data-group='discover'] button").count() == 6
-                assert page.locator(".nav-group[data-group='create'] button").count() == 3
+                assert page.locator(".nav-group[data-group='create'] button").count() == 4
                 assert page.locator(".nav-group[data-group='maintain'] button").count() == 2
-                assert page.locator(".portal-nav button[data-page]").count() == 14
+                assert page.locator(".portal-nav button[data-page]").count() == 15
                 glyphs=page.locator(".portal-nav button[data-page] .nav-symbol")
-                assert glyphs.count()==14
-                assert page.locator(".portal-nav .nav-glyph").count()==14
-                for index in range(14):
+                assert glyphs.count()==15
+                assert page.locator(".portal-nav .nav-glyph").count()==15
+                for index in range(glyphs.count()):
                     tile=glyphs.nth(index).bounding_box()
                     ink=page.locator(".portal-nav .nav-glyph").nth(index).bounding_box()
                     assert tile and ink
                     centers=abs((tile["x"]+tile["width"]/2)-(ink["x"]+ink["width"]/2))
                     assert centers<2.6, "room glyph is optically outside its tile"
 
-                for index in range(14):
+                for index in range(glyphs.count()):
                     glyph=glyphs.nth(index)
                     bounds=glyph.bounding_box()
                     assert bounds and bounds["width"]>=28 and bounds["height"]>=28, (
@@ -109,6 +110,25 @@ def main():
                     page.locator(f'button[data-page="{destination}"]').click()
                     assert page.locator(f"#{destination}").is_visible()
                     assert page.locator(f'button[data-page="{destination}"]').get_attribute("aria-current") == "page"
+                page.locator('button[data-page="discovery"]').click()
+                page.locator("#discovery-projects").get_by_text("No projects registered.", exact=False).wait_for()
+                assert not portal.discovery_index.default_db().exists()
+                project = Path(home) / "discovery-fixture"
+                project.mkdir()
+                (project / "sample.blend").write_bytes(b"fixture")
+                page.locator("#discovery-name").fill("Browser fixture")
+                page.locator("#discovery-root").fill(str(project))
+                page.locator("#discovery-register button[type=submit]").click()
+                page.locator("#discovery-results").get_by_text("sample.blend", exact=True).wait_for()
+                assert (project / "sample.blend").read_bytes() == b"fixture"
+                page.locator("#discovery-query").fill("nonexistent")
+                page.locator("#discovery-search button").click()
+                page.locator("#discovery-results").get_by_text("No matching indexed files.").wait_for()
+                page.once("dialog", lambda dialog: dialog.accept())
+                page.locator("#discovery-projects").get_by_role("button", name="Forget index").click()
+                page.locator("#discovery-projects").get_by_text("No projects registered.", exact=False).wait_for()
+                assert (project / "sample.blend").exists()
+                observations.append("Discovery registers and searches a disposable project; forgetting preserves source files")
                 page.locator('button[data-page="nodes"]').click()
                 assert page.locator("#node-list .node-portal-duty").count() == 5
                 nexus=page.locator('#node-list .pet-token[data-node="nexus"] .pet-mark')
@@ -181,7 +201,7 @@ def main():
                 medium.screenshot(path=str(proof / "01-music-medium.png"),full_page=False)
                 medium.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
-                observations.append("Four grouped nav areas, 14 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
+                observations.append("Four grouped nav areas, 15 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
 
 
                 # Personal theme journey: local preview, save, reload and
