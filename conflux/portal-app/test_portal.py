@@ -3,6 +3,7 @@
 Run from conflux/portal-app: python3 -m unittest test_portal.py -v
 No game or external application is executed.
 """
+import re
 import json
 import os
 import shutil
@@ -288,8 +289,15 @@ class PortalSmokeTest(unittest.TestCase):
         self.assertEqual(html.count('class="nav-group"'), 4)
         self.assertEqual(html.count('class="nav-stewards"'), 1)
         sidebar_nav = html.split('<nav class="portal-nav"', 1)[1].split('</nav>', 1)[0]
-        self.assertEqual(sidebar_nav.count('<button data-page='), 15)
-        self.assertIn('data-page="discovery"', sidebar_nav)
+        expected_rooms = {"home", "apps", "downloads", "vos", "library", "nodes", "tour",
+                          "soundtrack", "philosophy", "about-arch", "guide", "service-setup",
+                          "studio", "updates", "discovery", "settings"}
+        nav_rooms = re.findall(r'<button data-page="([^"]+)"', sidebar_nav)
+        panel_rooms = re.findall(r'<section class="panel" id="([^"]+)"', html)
+        self.assertEqual(set(nav_rooms), expected_rooms)
+        self.assertEqual(set(panel_rooms), expected_rooms)
+        self.assertEqual(len(nav_rooms), len(expected_rooms))
+        self.assertEqual(len(panel_rooms), len(expected_rooms))
         self.assertIn('id="nav-group-create"', html)
         self.assertIn('id="nav-group-maintain"', html)
         self.assertIn('href="/portal_polish.css"', html)

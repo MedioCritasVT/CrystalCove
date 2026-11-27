@@ -382,6 +382,7 @@ body[data-view="tour"]{--ambient:var(--blue);--ambient2:var(--violet)}
   </div>
   <div class="nav-group" data-group="maintain" role="group" aria-labelledby="nav-group-maintain">
     <p class="nav-group-label" id="nav-group-maintain"><span aria-hidden="true">04</span> Maintain</p>
+    <button data-page="settings" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">⚙</span></span><span class="nav-label">Settings</span></button>
     <button data-page="updates" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">↻</span></span><span class="nav-label">Updates &amp; Setup</span></button>
     <button data-page="service-setup" type="button"><span class="nav-symbol" aria-hidden="true"><span class="nav-glyph">⚙</span></span><span class="nav-label">Media Mirror Setup</span></button>
   </div>
@@ -709,6 +710,7 @@ tailscale serve status                      # Inspect routes</code></pre>
     <h3>Registered projects</h3><p class="theme-note">Expand arrows to explore folder branches; select a folder to see its files. ◆ marks a terminal folder. Counts show endpoints · depth below the branch. Project details show snapshot age and scan controls.</p><div id="discovery-projects"><p>No projects loaded.</p></div>
     <div class="discovery-actions"><button id="discovery-reload" type="button" class="action secondary">Reload index view</button><button id="discovery-scan-all" type="button" class="action secondary">Scan all</button></div>
     <label class="discovery-launch-option"><input id="discovery-launch-refresh" type="checkbox"> Refresh registered projects when Portal starts</label>
+    <button class="action secondary" type="button" data-go="settings">Manage settings &amp; applications</button>
     <p id="discovery-refresh-status" class="theme-note" role="status" aria-live="polite">Automatic refresh is off by default.</p>
   </article>
   <article class="card discovery-card">
@@ -721,6 +723,42 @@ tailscale serve status                      # Inspect routes</code></pre>
   </article>
   </div>
   <p id="discovery-status" role="status" aria-live="polite">Select a project to begin. Automatic refresh is optional.</p>
+</section>
+<section class="panel" id="settings" hidden>
+  <div class="room-hero"><div class="room-words"><div class="eyebrow">Your local workspace</div><h2>Settings</h2><p class="lead">Make the Portal work the way you do.</p></div><aside class="room-companions" id="room-companion-settings" data-room="settings" aria-label="Node companions for this section"></aside></div>
+  <p class="theme-note">Settings are local to this Portal or browser profile. Saving updates the affected controls without restarting music or reloading the page. Reload settings reads saved values again, discarding unsaved edits.</p>
+  <div class="settings-top"><button class="action secondary" type="button" id="settings-reload">Reload saved settings</button><p id="settings-status" role="status" aria-live="polite">Open Settings to load your preferences.</p></div>
+  <div class="settings-grid">
+    <article class="card settings-card">
+      <h3>General</h3>
+      <label for="settings-startup">Startup room</label><select id="settings-startup"><option value="home">Threshold</option><option value="discovery">Discovery</option><option value="apps">Applications</option><option value="studio">My Studio &amp; Themes</option><option value="settings">Settings</option></select>
+      <p class="theme-note">Saved in this browser profile; applies the next time the Portal page opens.</p>
+      <button class="action" type="button" id="settings-save-startup">Save startup room</button>
+    </article>
+    <article class="card settings-card">
+      <h3>Discovery</h3>
+      <label class="settings-check"><input type="checkbox" id="settings-launch-refresh"> Refresh registered projects on Portal server launch</label>
+      <p class="theme-note">The same local preference as the checkbox in Discovery. Existing snapshots remain available while the index refreshes.</p>
+      <div class="discovery-actions"><button class="action" type="button" id="settings-save-refresh">Save refresh preference</button><button class="action secondary" type="button" data-go="discovery">Open Discovery</button></div>
+    </article>
+    <article class="card settings-card">
+      <h3>Appearance</h3><p>Choose palettes, textures and custom colors using the existing Studio controls. They already preview changes live and support theme backups.</p>
+      <button class="action secondary" type="button" data-go="studio">Open appearance editor</button>
+    </article>
+    <article class="card settings-card">
+      <h3>Maintenance &amp; storage</h3><p>Discovery registrations and associations are stored in the local index database, not in GitHub. Theme and startup preferences belong to this browser profile.</p>
+      <div class="discovery-actions"><button class="action secondary" type="button" data-go="updates">Updates &amp; Setup</button><button class="action secondary" type="button" data-go="service-setup">Media Mirror Setup</button></div>
+    </article>
+    <article class="card settings-card settings-wide">
+      <h3>Project applications</h3><p class="theme-note">Choose a project launcher and indexed directory independently of file-type defaults.</p>
+      <div id="settings-projects"><p>Project associations have not loaded.</p></div>
+    </article>
+    <article class="card settings-card settings-wide">
+      <h3>File-type associations</h3><p class="theme-note">These defaults apply inside Discovery only. They do not change your KDE associations. Automatic restores the recommended behavior.</p>
+      <div class="settings-file-form"><label for="settings-extension">File extension</label><select id="settings-extension"></select><label for="settings-file-app">Application</label><select id="settings-file-app"></select><button type="button" id="settings-save-file" class="action">Save file association</button></div>
+      <h4>Remembered defaults</h4><div id="settings-file-defaults"></div>
+    </article>
+  </div>
 </section>
 <section class="panel" id="studio" hidden>
 <div class="room-hero"><div class="room-words"><div class="eyebrow">Your workspace · locally owned</div>

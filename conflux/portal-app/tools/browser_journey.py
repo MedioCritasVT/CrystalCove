@@ -77,11 +77,11 @@ def main():
                 assert page.locator(".nav-group[data-group='begin'] button").count() == 3
                 assert page.locator(".nav-group[data-group='discover'] button").count() == 6
                 assert page.locator(".nav-group[data-group='create'] button").count() == 4
-                assert page.locator(".nav-group[data-group='maintain'] button").count() == 2
-                assert page.locator(".portal-nav button[data-page]").count() == 15
+                assert page.locator(".nav-group[data-group='maintain'] button").count() == 3
+                assert page.locator(".portal-nav button[data-page]").count() == 16
                 glyphs=page.locator(".portal-nav button[data-page] .nav-symbol")
-                assert glyphs.count()==15
-                assert page.locator(".portal-nav .nav-glyph").count()==15
+                assert glyphs.count()==16
+                assert page.locator(".portal-nav .nav-glyph").count()==16
                 for index in range(glyphs.count()):
                     tile=glyphs.nth(index).bounding_box()
                     ink=page.locator(".portal-nav .nav-glyph").nth(index).bounding_box()
@@ -149,6 +149,33 @@ def main():
                 branch_toggle.click()
                 assert endpoint.is_visible()
                 assert endpoint.get_attribute("aria-current") == "true"
+                page.locator('button[data-page="settings"]').click()
+                page.locator("#settings-status").get_by_text("Saved preferences loaded.").wait_for()
+                assert page.locator("#settings-launch-refresh").is_checked()
+                assert page.get_by_label("Settings application for Browser fixture").input_value()=="studio"
+                page.locator("#settings-launch-refresh").uncheck()
+                page.locator("#settings-save-refresh").click()
+                page.locator("#settings-status").get_by_text("Launch refresh preference saved.").wait_for()
+                page.locator("#settings-extension").select_option(".blend")
+                assert page.locator("#settings-file-app").input_value()=="blender"
+                page.locator("#settings-file-app").select_option("")
+                page.locator("#settings-save-file").click()
+                page.locator("#settings-status").get_by_text("File association saved for .blend.").wait_for()
+                page.get_by_label("Settings application for Browser fixture").select_option("kate")
+                page.locator("#settings-projects").get_by_role("button",name="Save project application").click()
+                page.locator("#settings-status").get_by_text("Application association saved.").wait_for()
+                page.locator("#settings-startup").select_option("discovery")
+                page.locator("#settings-save-startup").click()
+                page.locator("#settings-status").get_by_text("Startup room saved for the next page load.").wait_for()
+                assert page.evaluate("localStorage.getItem('conflux.portal.startup-room.v1')")=="discovery"
+                page.locator("#settings-startup").select_option("home")
+                page.locator("#settings-save-startup").click()
+                page.locator("#settings-status").get_by_text("Startup room saved for the next page load.").wait_for()
+                page.locator('button[data-page="discovery"]').click()
+                assert not page.locator("#discovery-launch-refresh").is_checked()
+                assert endpoint.is_visible()
+                assert endpoint.get_attribute("aria-current")=="true"
+                assert page.locator("#discovery-projects").get_by_role("button",name="Open Browser fixture in associated application").get_attribute("title")=="Kate"
                 page.locator("#discovery-query").fill("nonexistent")
                 page.locator("#discovery-search button").click()
                 page.locator("#discovery-results").get_by_text("No matching indexed files.").wait_for()
@@ -229,7 +256,7 @@ def main():
                 medium.screenshot(path=str(proof / "01-music-medium.png"),full_page=False)
                 medium.close()
                 page.screenshot(path=str(proof / "01-wayfinding-desktop.png"),full_page=True)
-                observations.append("Four grouped nav areas, 15 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
+                observations.append("Four grouped nav areas, 16 unique room actions, visible Node responsibilities, reduced-motion and mobile navigation passed")
 
 
                 # Personal theme journey: local preview, save, reload and

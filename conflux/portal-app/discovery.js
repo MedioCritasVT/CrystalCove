@@ -4,6 +4,11 @@
   if (!room) return;
   const get = id => document.getElementById("discovery-" + id);
   const status = get("status");
+  const settings = document.getElementById("settings");
+  const setting = id => document.getElementById("settings-"+id);
+  const settingsStatus = setting("status");
+  const startupKey = "conflux.portal.startup-room.v1";
+  const startupRooms = new Set(["home","discovery","apps","studio","settings"]);
   let busy = false;
   let loaded = false;
   function element(tag, text, className) {
@@ -30,16 +35,17 @@
     return result;
   }
   function controls(disabled) {
-    room.querySelectorAll("button, input, select").forEach(item => { item.disabled = disabled; });
+    [room, settings].forEach(panel=>panel.querySelectorAll("button, input, select").forEach(item => { item.disabled = disabled; }));
   }
   async function run(message, operation) {
     if (busy) return;
     busy = true;
     controls(true);
     status.textContent = message;
+    if(!settings.hidden) settingsStatus.textContent=message;
     try { await operation(); }
     catch (error) { status.textContent = error.message || "Discovery could not complete the operation."; }
-    finally { busy = false; controls(false); }
+    finally { if(!settings.hidden) settingsStatus.textContent=status.textContent; busy = false; controls(false); }
   }
   function button(label, handler) {
     const item = element("button", label, "action secondary");
@@ -83,27 +89,34 @@
   async function loadPreferences() {
     const prefs = await request("preferences");
     get("launch-refresh").checked = prefs.launch_refresh;
+    setting("launch-refresh").checked = prefs.launch_refresh;
     const catalog = await request("apps");
     applications = catalog.apps;
     desktopExtensions = catalog.desktop_extensions || [];
     fileAssociations = (await request("file-associations")).associations;
   }
-  function appAssociation(project) {
+  function appAssociation(project, central = false) {
     const holder = element("div",undefined,"discovery-association");
     const select = element("select");
-    select.setAttribute("aria-label","Application for "+project.name);
+    select.setAttribute("aria-label",(central?"Settings application for ":"Application for ")+project.name);
+    holder.dataset.project=project.name;
+    select.dataset.projectApp="true";
     select.add(new Option("No project application",""));
     for (const app of applications.filter(a=>a.project)) select.add(new Option(app.label+(app.available?"":" (launcher not detected)"),app.id));
     select.value=project.association?.app || "";
     const directoryInput=element("input");
-    directoryInput.setAttribute("aria-label","Relative application directory for "+project.name);
+    directoryInput.setAttribute("aria-label",(central?"Settings directory for ":"Relative application directory for ")+project.name);
+    directoryInput.dataset.projectDirectory="true";
     directoryInput.placeholder="Project root (or relative subfolder)";
     directoryInput.value=project.association?.directory || "";
     holder.append(element("p","Project application","theme-note"),select,directoryInput,
       button("Use selected folder",()=>{if(mode==="folder" && currentProject===project.name) directoryInput.value=directory;else status.textContent="Select a folder in this project first.";}),
-      button("Save association",()=>run("Saving application association…",async()=>{
+      button(central?"Save project application":"Save association",()=>run("Saving application association…",async()=>{
         await request("associate",{project:project.name,app:select.value,directory:directoryInput.value});
-        await list(); status.textContent="Application association saved.";
+        project.association=select.value?{app:select.value,directory:directoryInput.value}:null;
+        if(central) syncProjectApplication(project);
+        else await list();
+        status.textContent="Application association saved.";
       })));
     return holder;
   }
@@ -155,6 +168,7 @@
     if(choices.length){
       const select=element("select");
       select.setAttribute("aria-label","Open "+(file.name||file.path)+" with");
+      select.dataset.fileSuffix=suffix;
       select.add(new Option("Automatic / recommended",""));
       if(desktopExtensions.includes(suffix)) select.add(new Option("Desktop default","desktop"));
       for(const app of choices) select.add(new Option(app.label+(app.available?"":" (not detected)"),app.id));
@@ -268,6 +282,102 @@
     }
     syncSelection();
   }
+  function updateShortcut(row,project) {
+    row.querySelector(".discovery-app-shortcut")?.remove();
+    if(!project.association) return;
+    const shortcut=button("↗",()=>launchProject(project));
+    shortcut.className="discovery-app-shortcut";
+    shortcut.setAttribute("aria-label","Open "+project.name+" in associated application");
+    shortcut.title=applications.find(a=>a.id===project.association.app)?.label || project.association.app;
+    row.append(shortcut);
+  }
+  function syncProjectApplication(project) {
+    room.querySelectorAll(".discovery-root-row").forEach(row=>{
+      if(row.dataset.project===project.name) updateShortcut(row,project);
+    });
+    room.querySelectorAll(".discovery-association").forEach(form=>{
+      if(form.dataset.project!==project.name)return;
+      form.querySelector("[data-project-app]").value=project.association?.app || "";
+      form.querySelector("[data-project-directory]").value=project.association?.directory || "";
+    });
+  }
+  function startupPreference() {
+    try {
+      const value=localStorage.getItem(startupKey);
+      return startupRooms.has(value)?value:"home";
+    } catch (_) { return "home"; }
+  }
+  function renderSettingsFileChoices() {
+    const suffix=setting("extension").value, select=setting("file-app");
+    select.replaceChildren(new Option("Automatic / recommended",""));
+    if(desktopExtensions.includes(suffix)) select.add(new Option("Desktop default","desktop"));
+    for(const app of applications.filter(a=>a.extensions?.includes(suffix))) {
+      select.add(new Option(app.label+(app.available?"":" (not detected)"),app.id));
+    }
+    select.value=fileAssociations[suffix] || "";
+  }
+  function renderSettingsDefaults() {
+    const target=setting("file-defaults");
+    target.replaceChildren();
+    const entries=Object.entries(fileAssociations).sort(([a],[b])=>a.localeCompare(b));
+    if(!entries.length)target.append(element("p","No overrides saved. Recommended applications are used.","theme-note"));
+    for(const [suffix,app] of entries){
+      const row=element("div",undefined,"settings-default-row");
+      row.append(element("strong",suffix),
+        element("span",app==="desktop"?"Desktop default":applications.find(a=>a.id===app)?.label || app),
+        button("Edit",()=>{setting("extension").value=suffix;renderSettingsFileChoices();setting("file-app").focus();}));
+      target.append(row);
+    }
+  }
+  async function loadSettings() {
+    await loadPreferences();
+    setting("startup").value=startupPreference();
+    const previous=setting("extension").value;
+    const suffixes=[...new Set([...desktopExtensions,...applications.flatMap(a=>a.extensions || [])])].sort();
+    setting("extension").replaceChildren(...suffixes.map(s=>new Option(s,s)));
+    if(suffixes.includes(previous)) setting("extension").value=previous;
+    else if(suffixes.includes(".blend")) setting("extension").value=".blend";
+    renderSettingsFileChoices();renderSettingsDefaults();
+    const {projects}=await request("projects");
+    const target=setting("projects");target.replaceChildren();
+    if(!projects.length)target.append(element("p","Register a project in Discovery first.","theme-note"));
+    for(const project of projects){
+      const card=element("div",undefined,"settings-project-row");
+      card.append(element("strong",project.name),element("p",project.root,"discovery-location"),appAssociation(project,true));
+      target.append(card);
+    }
+    status.textContent="Saved preferences loaded.";
+  }
+  setting("reload").addEventListener("click",()=>run("Reloading preferences…",loadSettings));
+  setting("save-startup").addEventListener("click",()=>run("Saving startup room…",async()=>{
+    const value=setting("startup").value;
+    if(!startupRooms.has(value))throw new Error("Choose a valid startup room.");
+    try{localStorage.setItem(startupKey,value);}catch(_){throw new Error("Browser storage is unavailable; startup preference was not saved.");}
+    status.textContent="Startup room saved for the next page load.";
+  }));
+  setting("save-refresh").addEventListener("click",()=>run("Saving refresh preference…",async()=>{
+    const result=await request("set-preferences",{launch_refresh:setting("launch-refresh").checked});
+    get("launch-refresh").checked=result.launch_refresh;
+    setting("launch-refresh").checked=result.launch_refresh;
+    status.textContent="Launch refresh preference saved.";
+  }));
+  setting("extension").addEventListener("change",renderSettingsFileChoices);
+  setting("save-file").addEventListener("click",()=>run("Saving file association…",async()=>{
+    const suffix=setting("extension").value;
+    fileAssociations=(await request("set-file-association",{suffix,app:setting("file-app").value})).associations;
+    room.querySelectorAll("[data-file-suffix]").forEach(select=>{
+      if(select.dataset.fileSuffix===suffix)select.value=fileAssociations[suffix] || "";
+    });
+    renderSettingsFileChoices();renderSettingsDefaults();
+    status.textContent="File association saved for "+suffix+".";
+  }));
+  document.querySelectorAll('[data-page="settings"], [data-go="settings"]').forEach(item=>
+    item.addEventListener("click",()=>run("Loading settings…",loadSettings)));
+  // All room-specific handlers are installed before startup navigation.
+  document.addEventListener("DOMContentLoaded",()=>{
+    const startup=startupPreference();
+    if(startup!=="home")document.querySelector('nav button[data-page="'+startup+'"]')?.click();
+  },{once:true});
   async function list() {
     const {projects} = await request("projects");
     const target = get("projects"), filter=get("filter"), previous=filter.value;
@@ -295,13 +405,8 @@
       const count=element("span",metrics.endpoints+" · d"+metrics.depth,"discovery-tree-metric");
       count.title=metrics.endpoints+" endpoints · "+metrics.depth+" levels below root";
       row.append(toggle,label,count);
-      if(project.association){
-        const shortcut=button("↗",()=>launchProject(project));
-        shortcut.className="discovery-app-shortcut";
-        shortcut.setAttribute("aria-label","Open "+project.name+" in associated application");
-        shortcut.title=applications.find(a=>a.id===project.association.app)?.label || project.association.app;
-        row.append(shortcut);
-      }
+      row.dataset.project=project.name;
+      updateShortcut(row,project);
       const metadata=element("details",undefined,"discovery-project-details");
       metadata.append(element("summary","Project details"));
       metadata.append(element("p",project.root,"discovery-location"),
@@ -349,7 +454,7 @@
     status.textContent="Refresh requested; existing snapshots remain available.";
   }));
   get("launch-refresh").addEventListener("change",()=>run("Saving refresh preference…",async()=>{
-    try {await request("set-preferences",{launch_refresh:get("launch-refresh").checked});status.textContent="Launch refresh preference saved.";}catch(error){get("launch-refresh").checked=!get("launch-refresh").checked;throw error;}
+    try {const result=await request("set-preferences",{launch_refresh:get("launch-refresh").checked});setting("launch-refresh").checked=result.launch_refresh;status.textContent="Launch refresh preference saved.";}catch(error){get("launch-refresh").checked=!get("launch-refresh").checked;throw error;}
   }));
   get("reload").addEventListener("click",()=>run("Loading index…",async()=>{await list();await search();}));
   get("search").addEventListener("submit",event=>{event.preventDefault();run("Searching index…",search);});

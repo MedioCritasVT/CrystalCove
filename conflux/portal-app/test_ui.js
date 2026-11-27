@@ -19,7 +19,7 @@ const stageJs = fs.readFileSync("soundstage.js", "utf8");
 
 const panels = [...html.matchAll(/<section class="panel" id="([^"]+)"/g)].map(m => m[1]);
 const navIds = [...html.matchAll(/<button data-page="([^"]+)"/g)].map(m => m[1]);
-const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates","discovery"];
+const roomIds = ["home","apps","downloads","vos","library","nodes","tour","soundtrack","philosophy","about-arch","guide","service-setup","studio","updates","discovery","settings"];
 assert.deepEqual(new Set(navIds), new Set(panels));
 assert.equal(navIds.length, panels.length, "each room appears in the navigation once");
 assert.deepEqual(new Set(navIds), new Set(roomIds), "expected room inventory");
