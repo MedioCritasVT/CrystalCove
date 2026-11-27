@@ -681,6 +681,8 @@ class PortalSmokeTest(unittest.TestCase):
                 opener.assert_called_once_with(db, "Demo", "asset.blend", reveal=False)
                 self.post("/api/discovery/open", {"project":"Demo","path":"asset.blend","app":"blender"})
                 opener.assert_called_with(db, "Demo", "asset.blend", reveal=False, app="blender")
+            self.assertEqual(self.post("/api/discovery/set-file-association", {"suffix":".blend","app":"blender"})[1]["associations"], {".blend":"blender"})
+            self.assertEqual(self.post("/api/discovery/file-associations", {})[1]["associations"], {".blend":"blender"})
             (root / "second.txt").touch()
             self.assertEqual(self.post("/api/discovery/refresh", {"project":"Demo"})[1]["indexed"], 2)
             self.assertFalse(self.post("/api/discovery/preferences", {})[1]["launch_refresh"])

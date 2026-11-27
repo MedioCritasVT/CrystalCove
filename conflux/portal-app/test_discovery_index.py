@@ -155,6 +155,7 @@ class DiscoveryIndexTests(unittest.TestCase):
             conn.execute("DROP TABLE directories")
             conn.execute("DROP TABLE project_apps")
             conn.execute("DROP TABLE discovery_preferences")
+            conn.execute("DROP TABLE file_apps")
             conn.execute("PRAGMA user_version=1")
         inferred = discovery.projects(self.db)[0]
         self.assertFalse(inferred["topology"]["complete"])
@@ -211,6 +212,36 @@ class DiscoveryIndexTests(unittest.TestCase):
                 discovery.open_project(self.db,"Demo")
             launch.return_value.wait.side_effect=discovery.subprocess.TimeoutExpired("launcher",.8)
             self.assertEqual(discovery.open_indexed(self.db,"Demo","Models/model.blend",app="blender")["launch_state"],"running")
+        self.assertEqual(discovery.projects(self.db)[0]["association"]["app"],"pycharm")
+
+    def test_media_web_and_saved_file_associations(self):
+        model=self.add("model.blend")
+        web=self.add("site/index.html")
+        image=self.add("picture.PNG")
+        movie=self.add("movie.mkv")
+        pdf=self.add("manual.pdf")
+        self.add("shortcut.desktop")
+        self.scan()
+        discovery.associate(self.db,"Demo","pycharm")
+        with mock.patch.object(discovery,"app_command",side_effect=lambda app:["/usr/bin/"+app]), mock.patch.object(discovery.subprocess,"Popen") as launch:
+            launch.return_value.wait.return_value=0
+            for path,app,target in (("model.blend","blender",model),("site/index.html","browser",web),("picture.PNG","gwenview",image),("movie.mkv","celluloid",movie),("manual.pdf","okular",pdf)):
+                discovery.open_indexed(self.db,"Demo",path)
+                self.assertEqual(launch.call_args.args[0],["/usr/bin/"+app,str(target)])
+            discovery.set_file_association(self.db,".mkv","vlc")
+            discovery.open_indexed(self.db,"Demo","movie.mkv")
+            self.assertEqual(launch.call_args.args[0],["/usr/bin/vlc",str(movie)])
+            discovery.open_indexed(self.db,"Demo","movie.mkv",app="celluloid")
+            self.assertEqual(launch.call_args.args[0],["/usr/bin/celluloid",str(movie)])
+            self.assertEqual(discovery.file_associations(self.db),{".mkv":"vlc"})
+            discovery.set_file_association(self.db,".mkv","")
+            self.assertEqual(discovery.file_associations(self.db),{})
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.set_file_association(self.db,".png","studio")
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.open_indexed(self.db,"Demo","shortcut.desktop",app="browser")
+            with self.assertRaises(discovery.DiscoveryError):
+                discovery.associate(self.db,"Demo","gwenview")
         self.assertEqual(discovery.projects(self.db)[0]["association"]["app"],"pycharm")
 
     def test_project_isolation_and_limits(self):

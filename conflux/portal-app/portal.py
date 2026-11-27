@@ -530,7 +530,7 @@ class Handler(BaseHTTPRequestHandler):
                 or self.headers.get("Host") != expected or not self.authorized()):
             return self.respond(403, {"error": "Discovery is local only."})
         action = route.removeprefix("/api/discovery/")
-        if action not in ("projects", "search", "browse", "scan", "refresh", "forget", "folder", "tree", "open", "reveal", "preferences", "set-preferences", "scan-all", "scan-status", "apps", "associate", "open-project"):
+        if action not in ("projects", "search", "browse", "scan", "refresh", "forget", "folder", "tree", "open", "reveal", "preferences", "set-preferences", "scan-all", "scan-status", "apps", "associate", "open-project", "file-associations", "set-file-association"):
             return self.respond(404, {"error": "not-found"})
         if self.headers.get("Content-Type", "").split(";")[0].strip() != "application/json":
             return self.respond(400, {"error": "Expected JSON."})
@@ -548,7 +548,7 @@ class Handler(BaseHTTPRequestHandler):
             except (discovery_index.DiscoveryError, OSError, sqlite3.Error, ValueError, RuntimeError):
                 return self.respond(409, {"error": "Could not start refresh. Discovery may be busy."})
         # Read snapshots while the background batch scans. Mutations remain serialized.
-        read_only = action in ("projects", "search", "folder", "tree", "preferences", "apps")
+        read_only = action in ("projects", "search", "folder", "tree", "preferences", "apps", "file-associations")
         if not read_only and not DISCOVERY_LOCK.acquire(blocking=False):
             return self.respond(409, {"error": "Discovery is busy. Try again after the current operation."})
         try:
@@ -557,7 +557,11 @@ class Handler(BaseHTTPRequestHandler):
             elif action == "set-preferences":
                 result = discovery_index.set_preferences(db, body.get("launch_refresh"))
             elif action == "apps":
-                result = {"apps": discovery_index.app_options()}
+                result = {"apps": discovery_index.app_options(), "desktop_extensions": sorted(discovery_index.DESKTOP_SUFFIXES)}
+            elif action == "file-associations":
+                result = {"associations": discovery_index.file_associations(db)}
+            elif action == "set-file-association":
+                result = discovery_index.set_file_association(db, body.get("suffix"), body.get("app"))
             elif action == "associate":
                 if not os.path.lexists(db):
                     raise discovery_index.DiscoveryError("No project index exists.")
