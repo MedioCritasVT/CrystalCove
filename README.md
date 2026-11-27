@@ -23,6 +23,19 @@ This is a **work in project**. You can arrive as a player, reader, listener, cre
 
 *The answers show, but do you see?*
 
+## The principles of Conflux
+
+Four constitutional commitments guide the project across its different forms:
+
+- **Preservation:** Keep meaningful work, context and authorship recoverable without preventing revision or deliberate removal.
+- **Translation:** Let understanding cross boundaries between people, languages, media and architectures.
+- **Participation:** Leave room for others to question, reinterpret and contribute without requiring agreement.
+- **Independence:** Build Instruments that expand capability without demanding allegiance or dependence on their original creator. Make necessary dependencies recognizable, examinable and, wherever possible, replaceable.
+
+The Living Curriculum explores learning in both directions: people acquiring new capabilities, and AI systems developing testable ways to examine and revise their methods through feedback. This is a research aim, not a claim of AI consciousness or demonstrated autonomous self-improvement.
+
+[Read the constitutional principles and reciprocal inquiry record](docs/CONFLUX_CONSTITUTION_2026-11-27.md).
+
 ## Start here — choose your experience
 
 **The Portal is the intended welcome; the game is optional.** The repository ZIP and the standalone game are different downloads.
